@@ -1,0 +1,81 @@
+---
+title: "Module 2: Data Types and Toolbox — Practice"
+subtitle: "Lesson 1 | Classify, choose, summarize, interpret"
+css: ../../../assets/petra-brand.css
+---
+
+## Before you begin
+
+Read [Lesson 1](../01-data-types-and-toolbox.qmd). Work individually on Questions 1–3, then use R for Questions 4–5. Give reasons, units, and interpretations alongside your answers.
+
+## 1. Classify the variables
+
+For each variable, identify **categorical or numerical**, its **measurement level**, and, if numerical, **discrete or continuous**. Explain your decision. Classify the underlying quantity; mention separately if recording precision changes what is stored.
+
+| Variable | Example or definition |
+|---|---|
+| Restaurant identifier | 101, 102, 103: labels assigned to restaurants |
+| Payment method | Cash, card, e-wallet |
+| Quality rating | Good, Very Good, Excellent |
+| Number of orders | Completed orders during one hour |
+| Waiting duration | Time from joining a queue to receiving service, recorded to the nearest minute |
+| Temperature | Air temperature in degrees Celsius |
+| Calendar year | Year a restaurant opened, recorded as an integer |
+| Distance traveled | Delivery distance in kilometers |
+
+## 2. Explain the mistakes
+
+1. An analyst codes quality as Good = 1, Very Good = 2, Excellent = 3 and says: “Excellent is three times as good as Good.” Explain the problem.
+2. An analyst says: “The audit times have no decimal places, so elapsed audit duration must be discrete.” Explain the distinction between the quantity and its recorded values.
+3. A student says: “20°C is twice as hot as 10°C.” Why does the Celsius scale not support that conclusion?
+
+## 3. Choose the toolbox
+
+Choose a suitable **table**, **chart**, and, where appropriate, **numerical measure** for each question. Explain why each choice fits the variables.
+
+1. Which quality category occurs most often among the 300 restaurants?
+2. What is a typical audit duration, and how much do durations vary?
+3. How do meal-price distributions differ across quality categories?
+4. In the electronics data, how are weekly advertising counts associated with sales?
+
+Do not infer causation from an observed association.
+
+## 4. Summarize restaurant quality
+
+Download the [restaurant data](../../../data/module02/restaurant_ratings.csv), or open the course R project and use the path below.
+
+```{r}
+#| eval: false
+# factor() gives categories explicit levels and an optional order.
+# The level order controls grouping and display; ordered=TRUE records ordinal category order.
+restaurants <- read.csv("data/module02/restaurant_ratings.csv")
+restaurants$quality_rating <- factor(restaurants$quality_rating,
+  levels = c("Good", "Very Good", "Excellent"), ordered = TRUE)
+```
+
+1. Make a frequency table with counts and percentages. Check both totals.
+2. Draw an ordered bar chart with a clear title and labeled axes.
+3. State the modal category and its percentage.
+4. Explain why a histogram of the codes 1, 2, 3 would hide the categorical meaning.
+
+## 5. Summarize audit durations
+
+Download the [audit data](../../../data/module02/audit_times.csv), or use the course project path.
+
+```{r}
+#| eval: false
+# read.csv() imports a CSV into a data frame with named columns.
+# The relative path starts at the course project folder; the source CSV is not modified.
+audit <- read.csv("data/module02/audit_times.csv")
+names(audit) # Identify the duration column before calculating summaries.
+```
+
+1. Construct a grouped frequency table using intervals **10–<15, 15–<20, 20–<25, 25–<30, 30–<35 days**. Check that every audit is counted once.
+2. Draw a histogram using the same boundaries.
+3. Calculate the mean, median, sample standard deviation, minimum, maximum, range, quartiles, and IQR. Use `quantile(x, c(.25, .75), type = 6)` for the book's quartile convention.
+4. Explain the mean and sample standard deviation in a sentence using days. Describe the middle half using the quartiles.
+5. Compare the mean and median. What feature of the observed distribution helps explain their difference? Avoid claiming a population result from these 20 observations alone.
+
+## What to submit
+
+A short Quarto report containing your classifications, reasons, tables, charts, and interpretations. Show enough R code to reproduce your calculations. Use the shared course style: pale lavender title panels, dark text, and restrained Petra accents. Choose readable analytical colors for your charts.

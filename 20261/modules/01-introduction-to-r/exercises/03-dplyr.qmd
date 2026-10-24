@@ -1,0 +1,22 @@
+---
+title: "Module 1: dplyr Practice"
+subtitle: "Lesson 3 | Work with the Restaurant CSV"
+css: ../../../assets/petra-brand.css
+---
+
+## Preparation
+
+Read [Lesson 3](../03-dplyr.qmd). Load `data/module02/restaurant_ratings.csv` from the course project. Preserve the original values and ordered quality categories. Use pipes and save each requested result under a descriptive name.
+
+## Tasks
+
+1. Inspect column types, row count, missing values, and duplicate restaurant identifiers. State what one row means.
+2. Select restaurant ID, quality, and price. Retain Excellent restaurants priced at least USD 30. How many rows remain?
+3. Return the five highest-priced restaurants, ordering tied prices by restaurant ID.
+4. Create four price bands [10,20), [20,30), [30,40), [40,50), and a logical indicator for price at least USD 30. Verify that no price is left unclassified.
+5. Count restaurants by quality category. Calculate group size, mean price, and median price using `group_by()` and `summarise()`. Return an ungrouped result.
+6. Create a lookup containing one median price per quality group, then left-join it to the restaurant rows. Verify the row count and explain why duplicate lookup keys could change it.
+7. Reshape the mean and median summary columns into a long table with `measure` and `price_usd` columns. Reshape it back to wide form.
+8. Write a brief explanation of why repeated prices are not necessarily duplicate observations, and why ignoring missingness can mislead an analysis.
+
+[Return to Module 1](../index.qmd).

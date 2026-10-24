@@ -1,0 +1,96 @@
+project:
+  type: website
+  execute-dir: project
+  output-dir: _site
+  render:
+    - index.qmd
+    - modules/**/*.qmd
+    - resources/**/*.qmd
+    - resources/**/*.Rmd
+  post-render:
+    - python3 scripts/validate-course.py
+
+website:
+  title: "307312 Applied Statistics"
+  sidebar:
+    style: docked
+    search: true
+    contents:
+      - text: "Course home — start here"
+        href: index.qmd
+      - section: "Module 1: Introduction to R"
+        contents:
+          - text: "Overview"
+            href: modules/01-introduction-to-r/index.qmd
+          - text: "1. R and RStudio"
+            href: modules/01-introduction-to-r/01-r-and-rstudio.qmd
+          - text: "2. Basic concepts in R"
+            href: modules/01-introduction-to-r/02-basic-concepts.qmd
+          - text: "3. Data manipulation with dplyr"
+            href: modules/01-introduction-to-r/03-dplyr.qmd
+          - text: "4. Visualization with ggplot2"
+            href: modules/01-introduction-to-r/04-ggplot2.qmd
+          - text: "Practice: basic concepts"
+            href: modules/01-introduction-to-r/exercises/02-basic-concepts.qmd
+          - text: "Practice: dplyr"
+            href: modules/01-introduction-to-r/exercises/03-dplyr.qmd
+          - text: "Practice: ggplot2"
+            href: modules/01-introduction-to-r/exercises/04-ggplot2.qmd
+      - section: "Module 2: Data and descriptive statistics"
+        contents:
+          - text: "Overview"
+            href: modules/02-data-and-descriptive-statistics/index.qmd
+          - text: "1. Data types and descriptive toolbox"
+            href: modules/02-data-and-descriptive-statistics/01-data-types-and-toolbox.qmd
+          - text: "Practice: data types and toolbox"
+            href: modules/02-data-and-descriptive-statistics/exercises/01-data-types-and-toolbox.qmd
+          - text: "2. Frequency tables and charts"
+            href: modules/02-data-and-descriptive-statistics/02-frequency-tables-and-charts.qmd
+          - text: "Practice: frequency tables and charts"
+            href: modules/02-data-and-descriptive-statistics/exercises/02-frequency-tables-and-charts.qmd
+          - text: "3. Numerical measures"
+            href: modules/02-data-and-descriptive-statistics/03-numerical-measures.qmd
+          - text: "Practice: numerical measures"
+            href: modules/02-data-and-descriptive-statistics/exercises/03-numerical-measures.qmd
+          - text: "4. Relationships between variables"
+            href: modules/02-data-and-descriptive-statistics/04-relationships-between-variables.qmd
+          - text: "Practice: relationships between variables"
+            href: modules/02-data-and-descriptive-statistics/exercises/04-relationships-between-variables.qmd
+          - text: "Integrated descriptive statistics review"
+            href: modules/02-data-and-descriptive-statistics/05-descriptive-statistics-review.qmd
+      - section: "Module 3: Probability and distributions"
+        contents:
+          - text: "Overview"
+            href: modules/03-probability-and-distributions/index.qmd
+      - section: "Module 4: Sampling and estimation"
+        contents:
+          - text: "Overview"
+            href: modules/04-sampling-and-estimation/index.qmd
+      - section: "Module 5: Hypothesis testing and group comparisons"
+        contents:
+          - text: "Overview"
+            href: modules/05-hypothesis-testing/index.qmd
+          - text: "Existing lesson: hypothesis testing"
+            href: modules/05-hypothesis-testing/01-hypothesis-testing.qmd
+      - section: "Module 6: Regression"
+        contents:
+          - text: "Overview"
+            href: modules/06-regression/index.qmd
+      - section: "Module 7: Forecasting and applied analysis"
+        contents:
+          - text: "Overview"
+            href: modules/07-forecasting-and-applications/index.qmd
+      - text: "Data and course resources"
+        href: resources/index.qmd
+  page-navigation: true
+
+format:
+  html:
+    css: assets/petra-brand.css
+    toc: true
+    toc-title: "On this page"
+    toc-location: right
+    toc-depth: 3
+
+execute:
+  freeze: false

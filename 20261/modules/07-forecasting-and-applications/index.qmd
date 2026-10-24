@@ -1,0 +1,15 @@
+---
+title: "Module 7: Forecasting and applied analysis"
+subtitle: "Planned"
+css: ../../assets/petra-brand.css
+---
+
+## What this module covers
+
+Time-series forecasting and integrated business analysis.
+
+## Development status
+
+**Planned — no lesson has been written for this module yet.** This page identifies its position in the course; it is not teaching content.
+
+[Return to the course home](../../index.qmd).

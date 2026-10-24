@@ -1,0 +1,77 @@
+---
+title: "Module 2: Frequency Tables and Charts — Practice"
+subtitle: "Lesson 2 | Construct, check, interpret"
+css: ../../../assets/petra-brand.css
+---
+
+## Preparation
+
+Read [Lesson 2](../02-frequency-tables-and-charts.qmd). Use the [CSV bundle and data guide](../../../data/module02/descriptive-statistics-data.zip). Open the `20261` course project when using the paths below; adjust paths if working from a separate folder.
+
+Submit a short Quarto report with reproducible R code, labeled tables and figures, and interpretations. Use the course style. Answer questions about the observed data before making recommendations.
+
+```{r}
+#| eval: false
+# read.csv() imports a CSV into a data frame with named columns.
+# The relative path starts at the course project folder; the source CSV is not modified.
+library(ggplot2)
+soft <- read.csv("data/module02/soft_drinks.csv")
+audit <- read.csv("data/module02/audit_times.csv")
+```
+
+## 1. Reconstruct the soft-drink summary
+
+Use `brand_book_label`, not the two brand columns stacked together.
+
+1. State the observational unit and measurement level of the brand variable.
+2. Make a table of counts, relative frequencies, and percentages for all five brands.
+3. Check that the counts and proportions have the expected totals.
+4. Identify the largest share, the tied categories, and the combined share of the three most frequent brands.
+5. Explain why the two brand columns do not represent 100 separate purchases.
+
+## 2. Choose and defend a categorical chart
+
+1. Draw a horizontal bar chart ordered by descending frequency. Include readable labels and a zero baseline.
+2. Draw a flat pie chart of the same percentages.
+3. Explain which chart you would give a manager who wants to compare the two least frequent brands, and why.
+4. Explain why the statement “Coca-Cola has 38% of the national market” is not supported by this dataset.
+5. Suppose another sample contains 200 purchases. Explain why comparing raw counts alone could mislead; you do not need to invent or analyze a second dataset.
+
+## 3. Group audit durations
+
+1. Define five nonoverlapping intervals of width five days, starting at 10 and ending at 35. State which endpoints are included.
+2. Make frequency and percentage tables using these intervals.
+3. Draw a histogram with the same boundaries. Verify that its bar counts agree with your table.
+4. Identify the modal class. Explain why it does not necessarily identify the most frequent exact duration.
+5. Make a cumulative table. Report the count and percentage taking less than 25 days, and the count taking at least 25 days.
+6. Use the raw CSV to compare the counts for **less than 20 days** and **20 days or less**. Explain the difference.
+
+## 4. Investigate grouping choices
+
+Use wider intervals **[10,20), [20,30), [30,40)**.
+
+1. Recompute the frequencies and draw a second histogram.
+2. Confirm that both histograms contain the same 20 audits.
+3. Describe one detail that is less visible with wider bins.
+4. Explain why a new set of bins does not mean that the underlying observations changed.
+5. A colleague proposes unequal-width bins while keeping counts as heights. Explain why the area of each rectangle matters and what quantity should determine its height.
+
+## 5. Read the distribution
+
+1. For the Audit histogram, write one sentence for each feature: **shape, center, spread, and unusual features**. Distinguish approximate visual readings from exact CSV calculations.
+2. Explain how you decide whether a histogram is right-skewed or left-skewed. Does the direction come from its tallest bar or its longer tail?
+3. Compare the artificial unimodal, bimodal, and multimodal illustrations in the lesson. What might multiple peaks suggest? Give two reasons they do not prove that distinct populations exist.
+4. Explain why a roughly symmetric histogram does not establish normality and why an isolated bar does not establish a data error.
+5. Compare the 1-, 5-, and 10-day Audit histograms. Which features become harder to see in wider bins? Does the 33-day audit disappear from the dataset?
+6. Optional: use the [student age/height CSV](../../../data/module02/student_age_height.csv) to reproduce the comparison. Describe the age tail and the height concentration. Read the [source notes](../../../data/module02/student-age-height-notes.md) and explain why the charts retain recorded units and do not support claims about all university students.
+
+## 6. Write for a manager
+
+Write two short paragraphs, each about 60–90 words:
+
+- **Purchases:** summarize the leading brands and recommend a useful next information-gathering step before a purchasing decision. Distinguish an observed purchase share from profit or national demand.
+- **Audit durations:** summarize the modal class and the share below 25 days. State what these observations do and do not justify when planning future work.
+
+Do not claim that a descriptive chart establishes causation, guarantees completion times, or proves that an organization is inefficient.
+
+[Return to Lesson 2](../02-frequency-tables-and-charts.qmd).

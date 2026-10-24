@@ -1,0 +1,29 @@
+---
+title: "Lesson title"
+subtitle: "307312 | Topic | Chapter and sections"
+css: ../../../assets/petra-brand.css
+---
+
+## Business question
+
+State the question, the observational unit, the variables, and the decision the evidence can inform. Follow the English introduction with equivalent Arabic business narration in a `case-narration` block. Adjust the stylesheet path when copying the template to a module.
+
+## Statistical idea
+
+Explain the concept and list the short reading using printed page numbers.
+
+## Visual explanation
+
+Add a selected book figure or original illustration, with a caption, source, and meaningful alternative text. Ask an interpretation question.
+
+## Worked R example
+
+Load a verified teaching dataset, show reproducible code, then interpret its output. Keep technical detail expandable.
+
+## Practice and interpretation
+
+Set a short task that requires a method choice, an assumption check where relevant, a result, and a plain-language interpretation.
+
+## Sources and limitations
+
+Identify textbook sections, figure provenance, dataset verification status, units, and limits on the conclusion. Keep instructor solutions in a separate file.

@@ -1,0 +1,78 @@
+---
+title: "Module 2: Numerical Measures — Practice"
+subtitle: "Lesson 3 | Calculate, compare, and interpret"
+css: ../../../assets/petra-brand.css
+---
+
+## Preparation
+
+Read [Lesson 3](../03-numerical-measures.qmd). Use the Audit and Restaurant files in the [CSV bundle](../../../data/module02/descriptive-statistics-data.zip). Submit a concise Quarto report with reproducible calculations, units, and interpretations.
+
+Use the book's **type-6 percentile convention** throughout. Preserve the original CSV values. If an exercise changes an observation, create a separate hypothetical copy and label it clearly.
+
+```{r}
+#| eval: false
+# read.csv() imports a CSV into a data frame with named columns.
+# The relative path starts at the course project folder; the source CSV is not modified.
+library(ggplot2)
+audit <- read.csv("data/module02/audit_times.csv")
+restaurants <- read.csv("data/module02/restaurant_ratings.csv")
+x <- audit$audit_days
+```
+
+## 1. Describe the center
+
+1. Calculate the number of audits, total recorded duration, mean, and median.
+2. Show which sorted positions determine the median.
+3. Identify the statistical mode using value frequencies. Explain why `mode(x)` does not answer that question in R.
+4. Write a sentence explaining the mean and median to an audit manager. Explain why neither number guarantees a future completion date.
+
+## 2. Quantify variability
+
+1. Calculate minimum, maximum, and range.
+2. Calculate the sum of squared deviations from the sample mean, then divide by `n - 1` to obtain the sample variance. Check against `var(x)`.
+3. Take its square root and check against `sd(x)`.
+4. Give the units of the range, variance, and standard deviation.
+5. Explain why dividing by `n` would produce a different descriptive quantity and why having all 20 CSV rows does not automatically make them the full population of interest.
+
+## 3. Quartiles and a boxplot
+
+1. Calculate $Q_1$, median, and $Q_3$ with `quantile(x, c(.25,.5,.75), type = 6)`.
+2. Calculate IQR and the five-number summary.
+3. Calculate both 1.5-IQR fences and identify any flagged values.
+4. Identify the actual whisker endpoints. Explain how they differ from the fences and the overall maximum.
+5. Draw a boxplot with those quartiles and whiskers. Label its units and state the convention. If using a software default, check that its quartiles match your stated method for these data.
+6. State what you would investigate before deciding whether a flagged observation is erroneous.
+
+## 4. Sensitivity and relative measures
+
+1. Replace only the largest audit duration with **60 days in a separate copy**.
+2. Compare mean, median, sample SD, range, and IQR before and after the hypothetical change.
+3. Explain which measures changed most and why. Do not treat the hypothetical dataset as a corrected source file.
+4. Calculate the CV for the original audits and interpret it.
+5. Calculate the sample z-score of the original 33-day audit. Explain why it may be flagged by the IQR rule while having a z-score smaller than 3.
+6. Explain why a CV for Celsius temperature is not meaningful in the same way as a CV for elapsed duration.
+
+## 5. Return to the restaurant question
+
+For each quality category, calculate group size, mean, median, sample SD, $Q_1$, $Q_3$, and IQR. Preserve the order Good, Very Good, Excellent.
+
+1. Which group has the highest median price? Which has the smallest IQR?
+2. Calculate the difference between the Excellent and Good median prices, in USD. Describe it as a difference in group medians, not as an individual restaurant's price change.
+3. Compare the groups with side-by-side boxplots, using the same quartile convention as the table.
+4. Write a short interpretation of center, spread, and overlap. Explain why these data do not prove that changing a rating causes the price to change.
+
+## 6. Explain the limitations of a summary
+
+Use the [teaching-comparisons CSV](../../../data/module02/measure_limitations_examples.csv), separate from the textbook bundle.
+
+1. For the seven dollar values (`example == "extreme_value"`), calculate the mean and median. Which better describes the middle of the observations? When would the mean still be useful?
+2. For S1–S5 (`example == "same_mean"`), verify that every mean is 200 and calculate each range. Explain what the mean alone conceals.
+3. For A and B (`example == "same_range"`), calculate mean, range, mean absolute deviation about the mean, and sample SD. Explain how two sets with identical means and ranges can differ internally.
+4. Explain why replacing range with SD does not remove sensitivity to extreme values. What additional information do median, IQR, and a plot provide?
+
+## Reporting check
+
+Every table and chart should make the units and group sizes clear. Use English for statistical explanations. Arabic narration is reserved for introducing business cases; it is not required for your calculation answers.
+
+[Return to Lesson 3](../03-numerical-measures.qmd).

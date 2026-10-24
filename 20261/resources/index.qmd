@@ -1,0 +1,18 @@
+---
+title: "Data and Course Resources"
+css: ../assets/petra-brand.css
+---
+
+## Teaching datasets
+
+Use the [checked textbook CSV bundle](../data/module02/descriptive-statistics-data.zip) for the active descriptive-statistics lessons. The [data guide](../data/module02/README.md) explains columns, units, sources, and verification limits.
+
+The supplementary [student age and height CSV](../data/module02/student_age_height.csv) supports histogram interpretation. Read its [source and metadata limitations](../data/module02/student-age-height-notes.md) before using it.
+
+The [measure-limitations examples](../data/module02/measure_limitations_examples.csv) accompany Lesson 3. Their [provenance notes](../data/module02/measure-limitations-source-notes.md) distinguish instructor examples and original teaching illustrations.
+
+## Working with the course
+
+Follow the numbered modules from the [course home](../index.qmd). Lessons, practice, and the integrated review appear in their teaching order. Instructor answers stay separate.
+
+The local project README and BUILD guide explain editing and rendering. Syllabi, setup guidance, and reference slides are in the parent course folder's `docs/` directory. The book PDFs and original publisher workbooks are in `books/`.

@@ -1,0 +1,6 @@
+"workbook","rows","book_reference","status","limitation"
+"SoftDrink.xls",50,"Table 2.2; printed p.38","Verified totals after documented label mapping","Observation order not verified; retain original labels"
+"Audit.xls",20,"Table 2.4; printed p.47","All observations match","Historical teaching sample; not current operations data"
+"Restaurant.xls",300,"Tables 2.9 and 2.10; printed pp.65-66","Displayed rows and all crosstab cells match","Remaining individual rows not printed; aggregate verification only"
+"Stereo.xls",10,"Table 2.14; printed p.76","All observations match; filename differs","Sales are in hundreds of US dollars; association is not causation"
+"Butler.xls",10,"Tables 15.1 and 15.2; printed pp.689-690","Partial match: deliveries predictor absent","Use for simple regression only; incomplete for Table 15.2"

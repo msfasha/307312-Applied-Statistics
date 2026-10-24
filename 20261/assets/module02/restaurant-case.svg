@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="300" viewBox="0 0 1000 300" role="img" aria-labelledby="title desc">
+<title id="title">From a restaurant to a data record</title>
+<desc id="desc">A conceptual restaurant storefront leads to one observed restaurant record: restaurant ID 1, quality rating Good, meal price 18 US dollars. The drawing illustrates context rather than collected evidence.</desc>
+<g stroke="#586978" stroke-width="2.5" stroke-linejoin="round">
+<rect x="42" y="102" width="270" height="142" rx="5" fill="#EDF3F6"/>
+<rect x="66" y="159" width="88" height="61" rx="3" fill="#DCE8EF"/><path d="M110 159V220"/>
+<rect x="198" y="159" width="69" height="85" rx="3" fill="#FFFFFF"/><circle cx="252" cy="203" r="2.5" fill="#586978"/>
+<rect x="59" y="57" width="235" height="45" rx="5" fill="#FFFFFF"/>
+<path d="M42 102H312L327 137H27Z" fill="#B9CCD6"/>
+<path d="M79 102L71 137M124 102L122 137M169 102V137M214 102L219 137M259 102L268 137"/>
+<path d="M18 244H332" stroke="#B6C1C9"/>
+<path d="M360 160H435M424 149L437 160L424 171" stroke="#356B8C" fill="none"/>
+<rect x="465" y="28" width="517" height="231" rx="8" stroke="#DEE2E6" fill="#FFFFFF"/>
+</g>
+<g font-family="Arial,sans-serif" fill="#2F343B">
+<text x="177" y="87" font-size="22" font-weight="bold" text-anchor="middle">RESTAURANT</text>
+<text x="398" y="132" font-size="18" fill="#56616D" text-anchor="middle">Record</text>
+<text x="491" y="68" font-size="25" font-weight="bold">One restaurant = one observation</text>
+<g font-size="23"><g fill="#56616D"><text x="491" y="114">Restaurant ID</text><text x="491" y="156">Quality rating</text><text x="491" y="198">Meal price</text></g><g font-weight="bold"><text x="779" y="114">1</text><text x="779" y="156">Good</text><text x="779" y="198">18 USD</text></g></g>
+<text x="491" y="236" font-size="17" fill="#56616D">Example record from the course dataset.</text>
+</g></svg>

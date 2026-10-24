@@ -1,0 +1,71 @@
+---
+title: "Module 2: Descriptive Statistics Review"
+subtitle: "Bring the question, data, tools, and interpretation together"
+css: ../../assets/petra-brand.css
+---
+
+## Purpose and submission
+
+Prepare a **short Quarto report** using the checked textbook CSVs. This review brings Lessons 1–4 together. You should demonstrate that you can choose and interpret a tool, rather than simply produce every available statistic.
+
+Include one concise section for each task below, with readable tables, labeled plots, and reproducible calculations. Read the [data guide](../../data/module02/README.md) and use the [CSV bundle](../../data/module02/descriptive-statistics-data.zip). Keep source observations unchanged. Use type-6 quartiles consistently when requested.
+
+These are the same business cases introduced in the lessons. Refer back to their English and Arabic introductions for context. Statistical explanations and answers remain in English.
+
+## 1. Define the variables and choose tools
+
+For Restaurant quality rating and meal price, Audit duration, SoftDrink brand preference, and Electronics commercials and sales:
+
+1. Identify the observational unit, variable type, and measurement level. Distinguish numerical counts from measured quantities where relevant.
+2. Choose a suitable table, chart, or numerical measure for each task below. Justify your choice in one sentence.
+3. Explain why an average restaurant ID or average brand code would not answer a meaningful quantitative question.
+
+## 2. Summarize one categorical distribution
+
+Using **SoftDrink**:
+
+1. Construct a frequency and percentage table using `brand_book_label`.
+2. Draw a bar chart and identify the most frequent category.
+3. State what one record represents. Explain why percentages here describe the recorded purchases rather than all consumers in a market.
+
+## 3. Describe a numerical distribution
+
+Using **Audit**:
+
+1. Draw a histogram and a dot plot. Briefly discuss shape, center, spread, and unusual features. Explain why 20 observations and the histogram's bin width limit fine claims about modality.
+2. Report n, mean, median, range, sample SD, type-6 quartiles, and IQR, with units.
+3. Identify the 1.5-IQR fences and any flagged observations. Explain why a flag does not automatically justify deletion.
+4. Recommend a center-and-spread pair for a typical-duration description, while explaining what useful information the other pair contributes.
+
+## 4. Compare groups and percentages
+
+Using **Restaurant**:
+
+1. Show a compact table of group sizes, median prices, and type-6 IQRs. Compare groups using aligned boxplots with the same quartile convention.
+2. Construct a crosstab with the four price bands from Lesson 4.
+3. Compare the proportion priced at least USD 30 **within** each quality category. State the three denominators.
+4. Explain why the crosstab and boxplots complement each other, and why these descriptive differences do not establish a causal effect of quality ratings on price.
+
+## 5. Describe numerical association
+
+Using **Electronics**:
+
+1. Draw a scatterplot with clear sales units.
+2. Report sample covariance and Pearson correlation. Explain why covariance changes when sales are converted to USD but correlation does not.
+3. Write a concise conclusion supported by both the plot and the coefficient. Include a limitation concerning causal interpretation or generalization.
+
+## Review checklist
+
+| Criterion | Evidence in your report |
+|---|---|
+| Correct variable meaning | Observational units, labels, units, and classifications |
+| Suitable tool selection | A reason for each summary or plot |
+| Reproducible calculations | CSV input, correct denominators, stated quartile convention |
+| Clear communication | Legible plots, concise tables, context-specific interpretations |
+| Sound conclusions | Flags investigated; descriptive associations kept separate from causation |
+
+You are ready to move on when you can explain **why** each tool suits its question, describe what it leaves out, and recognize a conclusion that exceeds the evidence.
+
+This completes the planned descriptive-statistics sequence. [Module 3](../03-probability-and-distributions/index.qmd) introduces probability and distributions; its detailed lessons are still planned.
+
+[Return to the Module 2 overview](index.qmd).

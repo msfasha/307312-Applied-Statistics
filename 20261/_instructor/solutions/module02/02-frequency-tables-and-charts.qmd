@@ -1,0 +1,138 @@
+---
+title: "Instructor Answers: Frequency Tables and Charts"
+subtitle: "Module 2 | Lesson 2 practice"
+css: ../../../assets/petra-brand.css
+format:
+  html:
+    toc: true
+    code-fold: true
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+library(ggplot2)
+library(knitr)
+project <- normalizePath(getwd())
+while (!file.exists(file.path(project, "20261.Rproj")) && dirname(project) != project) {
+  project <- dirname(project)
+}
+stopifnot(file.exists(file.path(project, "20261.Rproj")))
+soft <- read.csv(file.path(project, "data/module02/soft_drinks.csv"))
+audit <- read.csv(file.path(project, "data/module02/audit_times.csv"))
+theme_set(theme_minimal(base_size = 13))
+```
+
+## 1. Soft-drink purchases
+
+The observational unit is **one purchase**. Brand is **nominal categorical**. Do not assume 50 different people. `brand_original` and `brand_book_label` are two labels for each of the same 50 observations; stacking them doubles the observations incorrectly.
+
+```{r}
+levels_book <- c("Coca-Cola", "Diet Coke", "Dr. Pepper", "Pepsi", "Sprite")
+tab <- as.data.frame(table(factor(soft$brand_book_label, levels = levels_book)))
+names(tab) <- c("Brand", "Frequency")
+tab$Relative <- tab$Frequency / nrow(soft)
+tab$Percent <- 100 * tab$Relative
+stopifnot(nrow(soft) == 50, sum(tab$Frequency) == 50,
+          abs(sum(tab$Relative) - 1) < 1e-12,
+          identical(as.integer(tab$Frequency), c(19L, 8L, 5L, 13L, 5L)))
+kable(tab, digits = c(0, 0, 2, 0))
+```
+
+Coca-Cola leads with **19 purchases (38%)**. Dr. Pepper and Sprite tie at **5 purchases (10%)** each. The three most frequent brands—Coca-Cola, Pepsi, and Diet Coke—account for **40 purchases (80%)**.
+
+## 2. Categorical charts and interpretation
+
+```{r}
+ranked <- tab[order(-tab$Frequency, as.character(tab$Brand)), ]
+ranked$Brand <- factor(ranked$Brand, levels = rev(as.character(ranked$Brand)))
+ggplot(ranked, aes(Frequency, Brand)) +
+  geom_col(fill = "#2878A5", width = .65) +
+  scale_x_continuous(limits = c(0, 22), breaks = seq(0, 20, 5)) +
+  labs(title = "Soft-drink purchases", x = "Purchases (n = 50)", y = NULL)
+pie_data <- tab
+pie_data$label <- paste0(pie_data$Brand, "\n", pie_data$Percent, "%")
+ggplot(pie_data, aes(x = "", y = Percent, fill = Brand)) +
+  geom_col(width = 1, colour = "white") + coord_polar(theta = "y") +
+  geom_text(aes(label = label), position = position_stack(vjust = .5), size = 3.3) +
+  scale_fill_manual(values = c("#99C1D9", "#D9E8F0", "#AAD5B7", "#F1DE99", "#E9B5B9")) +
+  theme_void() + theme(legend.position = "none")
+```
+
+A bar chart provides a shared length scale that makes the equal counts easy to compare. A pie chart can correctly show the composition, but slice comparisons are less precise. Accept another choice if the student gives a clear, task-specific justification and makes a readable chart.
+
+The national-market claim needs evidence about the target population and sampling, which these counts do not establish. Counts from a 200-purchase sample have a different denominator; compare percentage shares while also considering sampling and coverage differences.
+
+## 3. Grouped and cumulative audit summaries
+
+```{r}
+x <- audit$audit_days
+b <- seq(10, 35, 5)
+classes <- cut(x, breaks = b, right = FALSE)
+tab_audit <- as.data.frame(table(classes))
+names(tab_audit) <- c("Days", "Frequency")
+tab_audit$Percent <- 100 * tab_audit$Frequency / length(x)
+stopifnot(!anyNA(classes), length(x) == 20,
+          identical(as.integer(tab_audit$Frequency), c(4L, 8L, 5L, 2L, 1L)))
+kable(tab_audit)
+ggplot(audit, aes(audit_days)) +
+  geom_histogram(breaks = b, closed = "left", fill = "#2878A5", colour = "white") +
+  scale_x_continuous(breaks = b) +
+  labs(title = "Audit durations: five-day classes", x = "Days", y = "Audits")
+cumulative <- data.frame(Threshold_days = b[-1],
+                         Audits_below = cumsum(tab_audit$Frequency),
+                         Percent_below = cumsum(tab_audit$Percent))
+kable(cumulative)
+stopifnot(identical(as.integer(cumulative$Audits_below), c(4L,12L,17L,19L,20L)),
+          sum(x < 25) == 17, sum(x >= 25) == 3,
+          sum(x < 20) == 12, sum(x <= 20) == 13)
+```
+
+Each class includes its lower boundary and excludes its upper boundary. The modal class is **[15,20)** with **8 audits (40%)**. It groups several distinct durations, so its most frequent class cannot by itself identify the most frequent exact value. The exact mode is 18 days, which requires the raw data or dot plot to identify.
+
+**17 audits (85%)** took less than 25 days; **3 (15%)** took at least 25 days. There are **12** observations below 20 and **13** at or below 20, because one audit lasted exactly 20 days.
+
+## 4. Wider classes and histogram area
+
+```{r}
+wide_breaks <- c(10,20,30,40)
+wide <- table(cut(x, breaks = wide_breaks, right = FALSE))
+stopifnot(identical(as.integer(wide), c(12L,7L,1L)), sum(wide) == 20)
+kable(data.frame(Class = names(wide), Frequency = as.integer(wide)))
+ggplot(audit, aes(audit_days)) +
+  geom_histogram(breaks = wide_breaks, closed = "left", fill = "#2878A5", colour = "white") +
+  scale_x_continuous(breaks = wide_breaks) +
+  labs(title = "Same audit observations: ten-day classes", x = "Days", y = "Audits")
+```
+
+The broader classes hide the distinction between 10–<15 days (4 audits) and 15–<20 days (8). The data and total sample size are unchanged; only the grouping differs. Count heights also change when bin widths change, so read the axis and boundaries rather than compare bar heights in isolation.
+
+With unequal widths, using count heights gives wider classes disproportionate area. Use frequency density `count / class width`, or relative-frequency density `count / (n * class width)`. Rectangle area then corresponds to count or sample proportion, respectively.
+
+## 5. Read the distribution
+
+- **Audit shape:** the five-day grouping has one prominent peak at 15–<20 days and a longer extension toward high durations. With just 20 values, avoid claiming a stable population shape from this display alone.
+- **Center:** visually in the high teens; from the raw values, mean = 19.25 days and median = 18 days. Grouped bars alone do not supply those exact values.
+- **Spread:** the observed range is 12–33 days (width 21 days). Axis limits and empty classes can extend beyond those endpoints; distinguish the plotted scale from the observed range.
+- **Unusual features:** 33 days is separated from the main concentration. It deserves investigation, not automatic removal. The IQR rule in Lesson 3 is a stated screening procedure, not a rule inferred solely from the histogram.
+- Skew direction is the direction of the **longer tail**. Positive/right means toward larger values; negative/left means toward smaller values.
+- Multiple prominent peaks may suggest mixed groups or operating conditions. Bin width, bin origin, rounding, and sampling variation can also alter apparent peaks. Do not count every local bar fluctuation as a mode.
+- Symmetry is not sufficient to establish a normal distribution. A symmetric two-peaked distribution provides a counterexample. An isolated value can be valid; check source records and context.
+- With wider Audit bins, gaps and individual frequencies are combined. All three panels retain the same 20 audits, including 33. Higher counts in wider bins reflect aggregation, not additional audits.
+- **Optional student comparison:** recorded age is concentrated near the lower end with a long right tail; height has a broader, more balanced central concentration. Neither establishes exact normality or underlying demographic groups. Its population, collection method, and unit metadata remain undocumented, so use recorded units and make no population claims.
+
+## 6. Example management paragraphs
+
+**Purchases.** Of the 50 recorded purchases, Coca-Cola accounts for 38%, followed by Pepsi at 26% and Diet Coke at 16%. These three brands represent 80% of purchases. The sample suggests which brands were most often selected in these observations, but it does not establish national demand or profitability. Before deciding stock quantities, management should examine purchase coverage over different days, stock availability, and margins, and assess whether the observed purchases reflect the customers it intends to serve.
+
+**Audit durations.** The most frequent completion-time class is 15 to under 20 days, containing 40% of the 20 recorded audits. Seventeen audits, or 85%, took less than 25 days, while three took longer than that threshold. These results describe the observed workload and offer a starting point for planning. A future completion commitment should also consider case complexity and staffing; the sample alone does not guarantee a completion date or establish why some audits took longer.
+
+## Instructor notes
+
+- Require denominators and units, not just software output.
+- Preserve the original and book-aligned brand labels; do not silently overwrite source values.
+- Keep the distinction between `<` and `<=` explicit. In the book's integer classes, “at most 24” corresponds here to “less than 25.”
+- Original Audit values match Table 2.4; grouped frequencies match Table 2.5. SoftDrink totals match Tables 2.2–2.3 after documented label alignment. Do not claim the SoftDrink row ordering was verified.
+- Numerical measures are developed in Lesson 3. Artificial shape/modality examples and the separately documented student comparison supplement, rather than replace, the checked Audit example.

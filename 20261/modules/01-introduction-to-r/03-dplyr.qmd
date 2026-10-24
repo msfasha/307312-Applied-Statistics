@@ -1,0 +1,166 @@
+---
+title: "Module 1: Data Manipulation with dplyr"
+subtitle: "Lesson 3 | Prepare and summarize the textbook data"
+css: ../../assets/petra-brand.css
+---
+
+## Purpose and data
+
+Data analysis starts with a clear question and a well-defined table. This lesson uses the checked Restaurant CSV that we will revisit in Module 2. We focus on R operations here; the statistical interpretation comes later.
+
+An analyst wants to select restaurants by rating and price, then summarize prices within each quality group. **One row is one restaurant**, identified by `restaurant_id`. Prices are in USD, and ratings are ordered Good, Very Good, Excellent.
+
+::: {.case-narration lang="ar" dir="rtl"}
+يريد محلّل اختيار المطاعم حسب تقييم الجودة والسعر، ثم تلخيص الأسعار داخل كل فئة من فئات الجودة. **يمثّل كل صف مطعمًا واحدًا** يحدّده المتغيّر `restaurant_id`. الأسعار بالدولار الأمريكي، وفئات الجودة مرتبة: جيد، وجيد جدًا، وممتاز.
+:::
+
+```{r}
+# factor() gives categories explicit levels and an optional order.
+# The level order controls grouping and display; ordered=TRUE records ordinal category order.
+library(dplyr)
+restaurants <- read.csv("data/module02/restaurant_ratings.csv")
+restaurants$quality_rating <- factor(restaurants$quality_rating,
+  levels = c("Good", "Very Good", "Excellent"), ordered = TRUE)
+head(restaurants)
+glimpse(restaurants)
+```
+
+Use the RStudio project so these paths resolve from the `20261` folder. Keep the source CSV unchanged. Assign transformed tables to new objects.
+
+## Select columns
+
+`select()` chooses variables. Use meaningful names rather than column positions when practical.
+
+```{r}
+# select() retains or renames the specified columns.
+# It changes the variables included in the result without filtering observations.
+prices <- restaurants |> select(restaurant_id, meal_price_usd)
+head(prices)
+```
+
+## Filter rows
+
+`filter()` retains observations meeting conditions. A comma combines conditions with AND. Use `|` for OR and `%in%` for membership in a set.
+
+```{r}
+# filter() keeps rows whose conditions are TRUE; commas combine conditions with AND.
+# Missing comparisons do not pass the filter; the source object stays unchanged unless reassigned.
+selected <- restaurants |>
+  filter(quality_rating == "Excellent", meal_price_usd >= 30)
+head(selected)
+nrow(selected)
+
+restaurants |>
+  filter(quality_rating %in% c("Good", "Very Good"), meal_price_usd < 20) |>
+  head()
+```
+
+Missing values need deliberate treatment: a comparison that evaluates to `NA` will not pass `filter()`. Check for missingness before interpreting the remaining rows.
+
+## Pipes and readable steps
+
+The base pipe `|>` sends one result into the next operation. Read the chain from top to bottom. `dplyr` also supports `%>%`; use one style consistently in a report.
+
+```{r}
+# filter() keeps rows whose conditions are TRUE; commas combine conditions with AND.
+# Missing comparisons do not pass the filter; the source object stays unchanged unless reassigned.
+restaurants |>
+  filter(meal_price_usd >= 30) |>
+  select(restaurant_id, quality_rating, meal_price_usd) |>
+  arrange(desc(meal_price_usd), restaurant_id) |>
+  head(5)
+```
+
+## Arrange and create variables
+
+`arrange()` sorts rows. `desc()` reverses an ordering. `mutate()` creates or changes columns while retaining the rows.
+
+```{r}
+# cut() assigns numerical values to intervals defined by breaks.
+# Check right and include.lowest to determine which interval contains a boundary value.
+prepared <- restaurants |>
+  mutate(price_at_least_30 = meal_price_usd >= 30,
+         price_band = cut(meal_price_usd, c(10,20,30,40,50), right = FALSE)) |>
+  arrange(quality_rating, meal_price_usd)
+head(prepared)
+```
+
+The price bands include the lower boundary and exclude the upper one. These are derived labels, not corrections to the original price.
+
+## Count categories and summarize groups
+
+`count()` counts observations by categories. `group_by()` defines groups for subsequent operations. `summarise()` reduces each group to summary rows.
+
+```{r}
+# summarise() reduces each group to the statistics specified here.
+# group_by() defines the groups; .groups = "drop" removes grouping from the result.
+restaurants |> count(quality_rating, name = "restaurants")
+
+group_summary <- restaurants |>
+  group_by(quality_rating) |>
+  summarise(n = n(), mean_price_usd = mean(meal_price_usd),
+            median_price_usd = median(meal_price_usd), .groups = "drop")
+group_summary
+stopifnot(sum(group_summary$n) == nrow(restaurants))
+```
+
+Using `.groups = "drop"` makes the result ungrouped. Otherwise, grouping metadata can affect later calculations. `ungroup()` explicitly removes grouping when needed. Do not average arbitrary numeric category codes.
+
+## Missing values and duplicates
+
+```{r}
+# anyDuplicated() returns 0 when no duplicate value is found, otherwise its first position.
+# Check identifiers for duplicate records; equal measurements alone do not imply duplicates.
+colSums(is.na(restaurants))
+anyDuplicated(restaurants$restaurant_id)
+```
+
+A duplicate identifier and two restaurants with the same price are different issues. Investigate before dropping rows. Use `na.rm = TRUE` only when you can explain which observations are omitted and how that affects the summary.
+
+## Join on a key
+
+A join combines tables through shared keys. This lookup is **derived from our own group summary**. Each quality category occurs once in the lookup, so a left join should preserve the 300 restaurant rows.
+
+```{r}
+# left_join() adds matching lookup information using the specified key.
+# Repeated lookup keys can multiply rows, so check key uniqueness and the result row count.
+lookup <- group_summary |>
+  select(quality_rating, group_median_usd = median_price_usd)
+with_group_median <- restaurants |>
+  left_join(lookup, by = "quality_rating")
+stopifnot(nrow(with_group_median) == nrow(restaurants),
+          !anyNA(with_group_median$group_median_usd))
+head(with_group_median)
+```
+
+Repeated keys on both sides can multiply rows. Check key uniqueness and row counts rather than assuming a join is harmless. `inner_join()` keeps matching keys; `left_join()` retains all rows from the left table.
+
+## Reshape a summary
+
+`pivot_longer()` moves selected columns into name/value rows. `pivot_wider()` reverses that organization when the keys uniquely identify cells.
+
+```{r}
+# pivot_longer() turns selected columns into name-value rows.
+# names_to and values_to name the new columns; untouched columns identify the original groups.
+library(tidyr)
+long_summary <- group_summary |>
+  select(quality_rating, mean_price_usd, median_price_usd) |>
+  pivot_longer(-quality_rating, names_to = "measure", values_to = "price_usd")
+long_summary
+long_summary |>
+  pivot_wider(names_from = measure, values_from = price_usd)
+```
+
+## Export a derived result
+
+Run this manually when you want a report output. Generated results belong in `_output/`, separate from input data.
+
+```{r}
+#| eval: false
+# Assign the expression on the right to the object named on the left.
+# Later calculations use the stored value; assignment replaces any previous value with that name.
+dir.create("_output", showWarnings = FALSE)
+write.csv(group_summary, "_output/restaurant-price-summary.csv", row.names = FALSE)
+```
+
+[Practice Lesson 3](exercises/03-dplyr.qmd). The source CSV and verification limits are documented in the [data guide](../../data/module02/README.md).

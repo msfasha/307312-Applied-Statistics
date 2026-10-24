@@ -1,0 +1,35 @@
+---
+title: "Applied Statistics"
+subtitle: "307312 | University of Petra"
+css: assets/petra-brand.css
+---
+
+## Start here
+
+Work through the seven numbered **topic modules** below. The 8th-edition textbook supports the statistical topics, with reproducible R analyses in Quarto.
+
+**Start with [Module 1: Introduction to R](modules/01-introduction-to-r/index.qmd).** **Module 2** now begins with data types, measurement levels, and the descriptive statistics toolbox.
+
+## Course modules
+
+| Module | Topic | Current material |
+|---|---|---|
+| 1 | [Introduction to R](modules/01-introduction-to-r/index.qmd) | Four lessons and practice |
+| 2 | [Data and descriptive statistics](modules/02-data-and-descriptive-statistics/index.qmd) | Lessons 1–4, practice, and integrated review available |
+| 3 | [Probability and distributions](modules/03-probability-and-distributions/index.qmd) | Planned |
+| 4 | [Sampling and estimation](modules/04-sampling-and-estimation/index.qmd) | Planned |
+| 5 | [Hypothesis testing and group comparisons](modules/05-hypothesis-testing/index.qmd) | Existing lesson; expansion planned |
+| 6 | [Regression](modules/06-regression/index.qmd) | Planned |
+| 7 | [Forecasting and applied analysis](modules/07-forecasting-and-applications/index.qmd) | Planned |
+
+“Existing” means carried over from the previous course materials. “Planned” means a topic has been reserved in the course sequence, but its lessons have not yet been written.
+
+## How each module works
+
+Each module has a clear starting page, lessons, and student exercises where available. Instructor solutions and course-planning notes are stored separately. Readings and data sources appear inside the relevant lesson.
+
+## Reference and supporting material
+
+Our main statistical reference is *Essentials of Modern Business Statistics with Microsoft Excel*, **8th edition** (2020). We analyze data in **R** and write reproducible reports in **Quarto**.
+
+[Data and course resources](resources/index.qmd) provides dataset downloads and provenance guidance.

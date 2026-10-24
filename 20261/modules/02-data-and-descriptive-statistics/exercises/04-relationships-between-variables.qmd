@@ -1,0 +1,58 @@
+---
+title: "Module 2: Relationships Between Variables — Practice"
+subtitle: "Lesson 4 | State the denominator and interpret the pattern"
+css: ../../../assets/petra-brand.css
+---
+
+## Preparation
+
+Read [Lesson 4](../04-relationships-between-variables.qmd). Use Restaurant and Electronics from the [checked CSV bundle](../../../data/module02/descriptive-statistics-data.zip). Work in the `20261` project and submit a short Quarto report with reproducible code and interpretations.
+
+```{r}
+#| eval: false
+# read.csv() imports a CSV into a data frame with named columns.
+# The relative path starts at the course project folder; the source CSV is not modified.
+restaurants <- read.csv("data/module02/restaurant_ratings.csv")
+electronics <- read.csv("data/module02/electronics_sales.csv")
+```
+
+## 1. Construct and check the crosstab
+
+1. Identify the observational unit and classify the two Restaurant variables.
+2. Group prices into [10,20), [20,30), [30,40), [40,50) USD. Explain where a price of exactly USD 30 belongs.
+3. Construct the quality-by-price-band crosstab, retaining the order Good, Very Good, Excellent. Include marginal totals and verify that the grand total is 300.
+4. Interpret the cell containing 46 and its row and column totals.
+5. Explain what information price grouping loses compared with the original numerical values.
+
+## 2. Choose the denominator
+
+Calculate each percentage from counts. For every answer, state the numerator, denominator, and reference group.
+
+1. All restaurants: Very Good **and** priced USD 30 up to, but below, USD 40.
+2. Among Very Good restaurants: the proportion in that band.
+3. Among restaurants in that band: the proportion rated Very Good.
+4. Among Excellent restaurants: the proportion priced at least USD 30. Compare it with the corresponding proportion among Good restaurants.
+5. Among restaurants in the highest band: the proportion rated Excellent. Explain why this differs from the proportion in the highest band among Excellent restaurants.
+6. Draw percentage bars comparing price distributions within quality categories. Show group sizes and identify which dimension totals 100%.
+
+## 3. Inspect paired numerical observations
+
+1. Identify the observational unit and explain the sales units in Electronics. Convert the first week's sales to USD.
+2. Draw a scatterplot of commercials against sales. Describe direction, form, strength, and any observations that might deserve investigation.
+3. Explain why sorting the two columns independently invalidates the analysis.
+4. Explain why putting commercials on the horizontal axis does not establish causation.
+
+## 4. Calculate and interpret association
+
+1. Calculate both sample means and the sum of cross-products of deviations. Use them to calculate sample covariance and check with `cov()`.
+2. State covariance's units and explain its sign.
+3. Calculate Pearson correlation using covariance and the two sample SDs. Check with `cor()` and interpret it in context.
+4. Convert sales to USD. Recalculate covariance and correlation and explain the difference in behavior.
+5. Evaluate: “A correlation of 0.93 means each extra commercial raises sales by 93%.”
+6. Create `u <- -4:4` and `v <- u^2`. Draw the scatterplot and calculate correlation. Explain what the example shows about zero correlation.
+
+## 5. Write a responsible conclusion
+
+In three or four sentences, summarize the Electronics result, give one plausible alternative explanation to investigate, and explain what the ten observations do not establish. Label the alternative explanation as a possibility, rather than a fact in the file. Keep this conclusion descriptive; no hypothesis test or regression model is required.
+
+[Return to Lesson 4](../04-relationships-between-variables.qmd). Then complete the [integrated review](../05-descriptive-statistics-review.qmd).

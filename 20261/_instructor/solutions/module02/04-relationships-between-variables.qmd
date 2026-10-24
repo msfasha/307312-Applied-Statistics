@@ -1,0 +1,113 @@
+---
+title: "Instructor Answers: Relationships Between Variables"
+subtitle: "Module 2 | Lesson 4 practice"
+css: ../../../assets/petra-brand.css
+format:
+  html:
+    toc: true
+    code-fold: true
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+library(ggplot2)
+library(knitr)
+project <- normalizePath(getwd())
+while (!file.exists(file.path(project, "20261.Rproj")) && dirname(project) != project) project <- dirname(project)
+stopifnot(file.exists(file.path(project, "20261.Rproj")))
+restaurants <- read.csv(file.path(project,"data/module02/restaurant_ratings.csv"))
+e <- read.csv(file.path(project,"data/module02/electronics_sales.csv"))
+quality <- c("Good","Very Good","Excellent")
+restaurants$quality_rating <- factor(restaurants$quality_rating, levels=quality, ordered=TRUE)
+restaurants$price_band <- cut(restaurants$meal_price_usd,c(10,20,30,40,50),right=FALSE)
+tab <- with(restaurants,table(quality_rating,price_band))
+rp <- 100*prop.table(tab,1); cp <- 100*prop.table(tab,2)
+theme_set(theme_minimal(base_size=14))
+```
+
+## 1. Crosstab
+
+One observation is one restaurant. Quality is ordered categorical (ordinal), while price is numerical and ratio-scale. Price is treated as a measured monetary amount, recorded here in whole dollars. USD 30 belongs to [30,40). Grouping loses differences between prices inside each band.
+
+```{r}
+kable(addmargins(tab))
+stopifnot(sum(tab)==300,all(rowSums(tab)==c(84,150,66)),all(colSums(tab)==c(78,118,76,28)),
+          all(tab==matrix(c(42,40,2,0,34,64,46,6,2,14,28,22),nrow=3,byrow=TRUE)))
+```
+
+The cell **46** counts Very Good restaurants in [30,40) USD. Its row total is **150**, its column total **76**.
+
+## 2. Denominators
+
+```{r}
+answers <- data.frame(
+ Question=c("Very Good AND [30,40): all restaurants", "[30,40) among Very Good",
+            "Very Good among [30,40)", ">=30 among Excellent", ">=30 among Good",
+            "Excellent among [40,50)", "[40,50) among Excellent"),
+ Numerator=c(46,46,46,50,2,22,22),Denominator=c(300,150,76,66,84,28,66))
+answers$Percent <- 100*answers$Numerator/answers$Denominator
+kable(answers,digits=2)
+kable(rp,digits=1,caption="Row percentages")
+kable(cp,digits=1,caption="Column percentages")
+stopifnot(all(abs(rowSums(rp)-100)<1e-10),all(abs(colSums(cp)-100)<1e-10))
+bars <- as.data.frame(rp,responseName="Percent")
+ggplot(bars,aes(quality_rating,Percent,fill=price_band))+
+ geom_col(position=position_stack(reverse=TRUE),width=.6,colour="white")+
+ scale_fill_manual(values=c("#DCE8EF","#ACC9DA","#E8CFA5","#C9D8BD"))+
+ scale_x_discrete(labels=paste0(quality,"\n(n=",rowSums(tab),")"))+
+ labs(x="Quality",y="Within-quality percentage",fill="Price band (USD)")+
+ theme(legend.position="bottom")
+```
+
+Each bar totals 100% within its quality group. The >=30 shares are **75.76%** for Excellent and **2.38%** for Good. The highest-band comparisons are **78.57%** (22/28) and **33.33%** (22/66). Their numerators agree but their reference groups differ.
+
+## 3. Paired observations and the plot
+
+The unit is one week. First-week sales equal **50 hundreds of USD = USD 5,000**. Each commercials–sales pair must stay together. Independent sorting fabricates pairs and can create a misleading association.
+
+```{r}
+ggplot(e,aes(commercials,sales_hundreds_usd))+
+ geom_point(size=3,colour="#2878A5")+
+ scale_x_continuous(breaks=1:5)+
+ labs(x="Television commercials",y="Weekly sales (hundreds of USD)")
+```
+
+The pattern is positive, approximately linear, and fairly strong. Sales vary at each count. No obvious isolated point alone establishes a source error. Assigning an explanatory variable to an axis is a description of the question, not evidence of a causal effect.
+
+## 4. Covariance, correlation, and units
+
+```{r}
+x <- e$commercials; y <- e$sales_hundreds_usd
+products <- (x-mean(x))*(y-mean(y))
+kable(data.frame(Quantity=c("Mean commercials","Mean sales (hundreds USD)","Sum cross-products",
+                           "Sample covariance","Pearson correlation","Covariance with sales in USD",
+                           "Correlation with sales in USD"),
+                 Value=c(mean(x),mean(y),sum(products),cov(x,y),cor(x,y),cov(x,100*y),cor(x,100*y))),digits=5)
+stopifnot(mean(x)==3,mean(y)==51,sum(products)==99,cov(x,y)==11,
+          abs(cor(x,y)-cov(x,y)/(sd(x)*sd(y)))<1e-10,
+          abs(cor(x,y)-0.9304906)<1e-7,cov(x,100*y)==1100,
+          abs(cor(x,100*y)-cor(x,y))<1e-10)
+u <- -4:4; v <- u^2
+stopifnot(abs(cor(u,v))<1e-10)
+ggplot(data.frame(u,v),aes(u,v))+geom_point(size=3,colour="#2878A5")+
+ labs(title="Artificial curved example: correlation is zero",
+      x="u (arbitrary units)",y="u squared (arbitrary units)")
+```
+
+Covariance is **11 commercials × hundreds of USD**, with a positive sign indicating aligned deviations. Correlation is **0.93049**, unitless, indicating strong positive linear association for these observations. Positive rescaling of sales multiplies covariance by 100 but leaves correlation unchanged.
+
+The “93% increase” statement is unsupported. Correlation measures linear association, not percentage growth or a causal effect per commercial. In the artificial U-shaped example, zero correlation coexists with an exact nonlinear relationship.
+
+## 5. Example conclusion
+
+Across these ten observed weeks, more commercials accompany higher sales, with a strong positive linear pattern and Pearson correlation about 0.93. Seasonal demand or concurrent promotions are possible alternative explanations to investigate, though neither is measured in this file. The observations alone do not isolate the effect of advertising or establish the relationship for future weeks.
+
+## Teaching notes
+
+- Require the conditioning group before accepting a percentage.
+- Recompute percentages from counts; do not alter observations to reproduce printed rounding discrepancies.
+- Keep descriptive calculations separate from statistical inference, regression coefficients, and causal claims.
+- Use the artificial curve to challenge the claim that zero correlation means no relationship.

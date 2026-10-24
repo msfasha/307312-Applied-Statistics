@@ -1,0 +1,19 @@
+---
+title: "Module 5: Hypothesis testing and group comparisons"
+subtitle: "Existing lesson; expansion planned"
+css: ../../assets/petra-brand.css
+---
+
+## What this module covers
+
+One- and two-sample tests, ANOVA, chi-square, and nonparametric methods.
+
+## Lessons
+
+- [Existing lesson: hypothesis testing](01-hypothesis-testing.qmd)
+
+## Development status
+
+The existing hypothesis-testing lesson is retained. The full sequence of group comparisons and associated exercises is still to be developed.
+
+[Return to the course home](../../index.qmd).

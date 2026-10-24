@@ -1,0 +1,159 @@
+---
+title: "Instructor Answers: Numerical Measures"
+subtitle: "Module 2 | Lesson 3 practice"
+css: ../../../assets/petra-brand.css
+format:
+  html:
+    toc: true
+    code-fold: true
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+library(ggplot2)
+library(knitr)
+project <- normalizePath(getwd())
+while (!file.exists(file.path(project, "20261.Rproj")) && dirname(project) != project) project <- dirname(project)
+stopifnot(file.exists(file.path(project, "20261.Rproj")))
+x <- read.csv(file.path(project, "data/module02/audit_times.csv"))$audit_days
+restaurants <- read.csv(file.path(project, "data/module02/restaurant_ratings.csv"))
+quality_levels <- c("Good", "Very Good", "Excellent")
+restaurants$quality_rating <- factor(restaurants$quality_rating, levels = quality_levels, ordered = TRUE)
+q6 <- function(v, p) unname(quantile(v, p, type = 6))
+theme_set(theme_minimal(base_size = 13))
+box_record <- function(v, g) {
+  q <- q6(v, c(.25,.5,.75)); iqr <- q[3]-q[1]
+  lo <- q[1]-1.5*iqr; hi <- q[3]+1.5*iqr
+  inside <- v[v >= lo & v <= hi]
+  data.frame(Group=g, ymin=min(inside), Q1=q[1], Median=q[2], Q3=q[3], ymax=max(inside), Lo=lo, Hi=hi)
+}
+```
+
+## 1. Center
+
+```{r}
+counts <- table(x)
+modes <- as.numeric(names(counts)[counts == max(counts)])
+kable(data.frame(Measure = c("n", "Sum (days)", "Mean (days)", "Median (days)", "Mode (days)"),
+                 Value = c(length(x), sum(x), mean(x), median(x), modes)), digits = 2)
+stopifnot(length(x)==20, sum(x)==385, mean(x)==19.25, median(x)==18,
+          identical(modes,18), sort(x)[10]==18, sort(x)[11]==18)
+```
+
+Positions **10 and 11** determine the median. Both contain 18 days. The mode is **18**, occurring three times; R's `mode()` reports storage mode rather than a frequency maximum.
+
+The average duration of these 20 audits is **19.25 days**, while their middle duration is **18 days**. Longer observations increase the mean relative to the median. Neither establishes a future deadline because the data are a sample of historical audits and future scope, staffing, and conditions may differ.
+
+## 2. Variability and units
+
+```{r}
+ss <- sum((x-mean(x))^2)
+kable(data.frame(Measure = c("Minimum (days)", "Maximum (days)", "Range (days)",
+                            "Squared deviations (days squared)", "Sample variance (days squared)", "Sample SD (days)",
+                            "Variance with denominator n (days squared)"),
+                 Value = c(min(x),max(x),diff(range(x)),ss,ss/(length(x)-1),sqrt(ss/(length(x)-1)),ss/length(x))), digits=4)
+stopifnot(abs(ss/(length(x)-1)-var(x))<1e-10, abs(sqrt(ss/(length(x)-1))-sd(x))<1e-10,
+          diff(range(x))==21)
+```
+
+The sample variance is approximately **29.5658 days²**; sample SD is **5.4374 days**. With denominator `n`, variance is **28.0875 days²**, describing these observations with that population-style denominator. The relevant population is defined by the question, not the file boundary. The usual unbiased sample-variance claim requires independent sampling from a common population with finite variance.
+
+## 3. Quartiles, fences, and whiskers
+
+```{r}
+q <- q6(x,c(.25,.5,.75)); iqr <- q[3]-q[1]
+audit_box <- box_record(x,"Audit")
+flagged <- x[x < audit_box$Lo | x > audit_box$Hi]
+kable(data.frame(Quantity=c("Minimum","Q1","Median","Q3","Maximum","IQR","Lower fence","Upper fence","Lower whisker","Upper whisker"),
+                 Days=c(min(x),q,max(x),iqr,audit_box$Lo,audit_box$Hi,audit_box$ymin,audit_box$ymax)))
+stopifnot(identical(q,c(15,18,22)),iqr==7,audit_box$Lo==4.5,audit_box$Hi==32.5,
+          audit_box$ymin==12,audit_box$ymax==28,identical(as.integer(flagged),33L))
+ggplot(audit_box,aes(Group,ymin=ymin,lower=Q1,middle=Median,upper=Q3,ymax=ymax)) +
+  geom_boxplot(stat="identity",width=.35,fill="#B6D2E2") +
+  geom_point(data=data.frame(Group="Audit",Days=flagged),aes(Group,Days),inherit.aes=FALSE,colour="#B47816",size=3) +
+  labs(x=NULL,y="Audit duration (days)",title="Type-6 quartiles and 1.5-IQR fences")
+```
+
+The overall maximum is **33**, retained in the five-number summary. It lies above the **32.5** fence, so the upper whisker stops at the largest observed value inside the fences: **28**. Check the source record and audit circumstances. A flag alone does not establish an error or justify removing valid data.
+
+## 4. Hypothetical sensitivity and relative measures
+
+```{r}
+y <- x; y[which.max(y)] <- 60
+summary_values <- function(v) c(Mean=mean(v),Median=median(v),SD=sd(v),Range=diff(range(v)),IQR=diff(q6(v,c(.25,.75))))
+kable(rbind(Original=summary_values(x),Hypothetical=summary_values(y)),digits=2)
+cv <- 100*sd(x)/mean(x); z <- (33-mean(x))/sd(x)
+kable(data.frame(Measure=c("Original CV (%)","Original 33-day z-score"),Value=c(cv,z)),digits=3)
+stopifnot(max(x)==33,mean(y)==20.6,median(y)==18,diff(range(y))==48,
+          diff(q6(y,c(.25,.75)))==7,abs(cv-28.2464589)<1e-5,abs(z-2.5287624)<1e-5)
+```
+
+Mean increases from **19.25 to 20.60**, sample SD from **5.44 to 10.25**, and range from **21 to 48 days**. Median remains **18** and IQR **7** for this particular change. This demonstrates different sensitivities; it does not establish that median/IQR are always preferable.
+
+The original CV is **28.25%**: sample SD is about 28.25% of the sample mean. Elapsed duration has a meaningful zero and positive mean. Celsius has an arbitrary zero, so changing its scale changes the relative variability calculation without changing the underlying temperatures.
+
+The original 33-day z-score is approximately **2.53**. The IQR and z-score rules use different summaries and cutoffs and may flag different observations. A z-score is not automatically a probability or a declaration of normality.
+
+## 5. Restaurant comparisons
+
+```{r}
+groups <- split(restaurants$meal_price_usd,restaurants$quality_rating)
+tab <- do.call(rbind,lapply(names(groups),function(g){
+ v<-groups[[g]];q<-q6(v,c(.25,.75))
+ data.frame(Quality=g,N=length(v),Mean=mean(v),Median=median(v),SD=sd(v),Q1=q[1],Q3=q[2],IQR=diff(q))
+}))
+kable(tab,digits=2)
+stopifnot(identical(tab$N,c(84L,150L,66L)),identical(tab$Median,c(19.5,25,34.5)),
+          identical(tab$IQR,c(10,12,11.5)),diff(tab$Median[c(1,3)])==15)
+boxes <- do.call(rbind,lapply(names(groups),function(g)box_record(groups[[g]],g)))
+boxes$Group <- factor(boxes$Group,levels=quality_levels,ordered=TRUE)
+points <- do.call(rbind,lapply(names(groups),function(g){
+ r<-box_record(groups[[g]],g);v<-groups[[g]];o<-v[v<r$Lo|v>r$Hi]
+ data.frame(Group=rep(g,length(o)),Price=o)
+}))
+points$Group<-factor(points$Group,levels=quality_levels,ordered=TRUE)
+ggplot(boxes,aes(Group,ymin=ymin,lower=Q1,middle=Median,upper=Q3,ymax=ymax))+
+ geom_boxplot(stat="identity",width=.5,fill="#B6D2E2")+
+ geom_point(data=points,aes(Group,Price),inherit.aes=FALSE,colour="#B47816",size=2.5)+
+ labs(x="Quality rating",y="Meal price (USD)",title="Group comparisons with consistent quartiles")
+```
+
+Excellent has the highest median (**USD 34.50**), compared with **USD 19.50** for Good: a **USD 15 difference between group medians**. Good has the smallest IQR (**USD 10**); Very Good's IQR is **USD 12**, and Excellent's **USD 11.50**. The distributions overlap. The ordered ratings are associated with different observed price centers, but the data do not isolate causal effects or predict an individual's price change.
+
+## 6. Limitations and complementary measures
+
+```{r}
+illustrations <- read.csv(file.path(project, "data/module02/measure_limitations_examples.csv"))
+dollars <- subset(illustrations, example == "extreme_value")$value
+stopifnot(nrow(illustrations) == 32, sum(dollars) == 113, median(dollars) == 3)
+kable(data.frame(Mean_USD = mean(dollars), Median_USD = median(dollars)), digits = 2)
+sets <- subset(illustrations, example == "same_mean")
+comparisons <- do.call(rbind, lapply(split(sets$value, sets$series), function(v)
+  data.frame(Mean = mean(v), Range = diff(range(v)))))
+stopifnot(all(comparisons$Mean == 200), all(comparisons$Range == c(200,0,600,1200,4500)))
+kable(comparisons)
+ab <- subset(illustrations, example == "same_range")
+ab_summary <- do.call(rbind, lapply(split(ab$value, ab$series), function(v)
+  data.frame(Mean = mean(v), Range = diff(range(v)),
+             Mean_absolute_deviation = mean(abs(v-mean(v))), Sample_SD = sd(v))))
+stopifnot(all(ab_summary$Mean == 5), all(ab_summary$Range == 10),
+          all(ab_summary$Mean_absolute_deviation == c(2,4)),
+          abs(ab_summary$Sample_SD[1]-sqrt(12.5)) < 1e-10, ab_summary$Sample_SD[2] == 5)
+kable(ab_summary, digits = 2)
+```
+
+The dollar mean is **16.14**, while the median is **3**. Six of seven values lie between 1 and 3. The median better describes the middle, while the mean remains relevant to the total of 113. Preserve a valid large observation.
+
+S1–S5 share mean **200** but ranges **200, 0, 600, 1200, 4500**. Center alone conceals their variation. A and B share mean **5** and range **10**, while mean absolute deviations are **2 and 4** and sample SDs are **3.54 and 5**. B places more observations at the endpoints.
+
+SD uses all observations and responds to internal spread, but squared deviations also emphasize extremes. Median and IQR describe the central portion with less sensitivity to tail magnitudes. A plot reveals gaps, clusters, shape, and tail detail that these summaries omit. No single measure answers every descriptive question. R's `mad()` is not the mean absolute deviation used here.
+
+## Teaching notes
+
+- Use explicit type-6 quartiles and the same fences in the table and chart. A software default that happens to match Audit is not a universal match.
+- Emphasize units: variance in days² or USD²; SD and IQR in days or USD; CV as a percentage; z-score dimensionless.
+- Keep original data, hypothetical changes, and checked textbook outputs distinct. These are original course calculations from checked book data.
+- Weighted/geometric means and detailed shape rules can be developed where their business questions require them. They are not implicitly claimed covered by this lesson.

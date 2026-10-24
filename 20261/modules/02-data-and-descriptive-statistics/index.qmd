@@ -1,0 +1,57 @@
+---
+title: "Module 2: Data and descriptive statistics"
+subtitle: "Start with the variables, then choose the tools"
+css: ../../assets/petra-brand.css
+---
+
+## Learning sequence
+
+1. **Understand the data:** observational units, categorical and numerical variables, discrete and continuous quantities, and the four measurement levels.
+2. **Meet the descriptive statistics toolbox:** tables, charts, and numerical measures.
+3. **Apply the tools:** summarize distributions, compare groups, and interpret relationships in context.
+
+Our reference is the 8th-edition textbook, Section 1.2 and Chapters 2–3. The discrete/continuous distinction from Section 5.1 is introduced early because it helps us choose summaries.
+
+## Start here
+
+- [Lesson 1: Data types and the descriptive statistics toolbox](01-data-types-and-toolbox.qmd) — definitions, original diagrams, a book figure, and worked R examples.
+- [Practice: Data types and toolbox](exercises/01-data-types-and-toolbox.qmd) — classification, tool selection, and short analyses.
+
+- [Lesson 2: Frequency tables and charts](02-frequency-tables-and-charts.qmd) — counts, proportions, bar/pie charts, numerical classes, histogram shape and skewness, modality, unusual values, and cumulative frequencies.
+- [Practice: Frequency tables and charts](exercises/02-frequency-tables-and-charts.qmd) — construct, check, and interpret the displays.
+- [Lesson 3: Numerical measures](03-numerical-measures.qmd) — center, variability, quartiles, boxplots, z-scores, and descriptive group comparisons.
+- [Practice: Numerical measures](exercises/03-numerical-measures.qmd) — calculations, sensitivity, and interpretation.
+
+- [Lesson 4: Relationships between variables](04-relationships-between-variables.qmd) — crosstabs, conditional percentages, scatterplots, covariance, correlation, and interpretation limits.
+- [Practice: Relationships between variables](exercises/04-relationships-between-variables.qmd) — denominator choice and paired-data analysis.
+- [Integrated descriptive statistics review](05-descriptive-statistics-review.qmd) — a short Quarto report using all four textbook datasets.
+
+Read each lesson before attempting its practice. Instructor answers are kept separately.
+
+## Textbook examples used in this module
+
+We use examples from our main 8th-edition book, choosing each for its teaching purpose:
+
+- **Restaurant ratings and meal prices:** variable meaning, ordered categories, crosstabs, and group comparisons.
+- **Soft-drink preferences:** categorical frequency tables, proportions, and bar charts in Lesson 2.
+- **Audit durations:** numerical distributions, histograms, center, spread, and quartiles.
+- **Electronics advertising and sales:** scatterplots and descriptive association.
+
+Worked R analyses use prepared CSVs from the local textbook workbooks, with checks against the printed 8th-edition examples. The introductory lesson currently uses Restaurant, Audit, and Electronics. Lessons 2–4 develop these examples with reproducible R analyses.
+
+## CSV data files
+
+Student analyses use CSV files. [Download all four datasets and the data guide](../../data/module02/descriptive-statistics-data.zip), or select an individual file:
+
+- [Restaurant ratings and prices](../../data/module02/restaurant_ratings.csv) — 300 restaurants.
+- [Audit durations](../../data/module02/audit_times.csv) — 20 audits.
+- [Electronics advertising and sales](../../data/module02/electronics_sales.csv) — 10 weeks.
+- [Soft-drink preferences](../../data/module02/soft_drinks.csv) — 50 observations.
+
+The guide explains columns, units, category ordering, source files, and verification limits. The original Excel files are retained as source records.
+
+## Development status
+
+The planned descriptive-statistics sequence is complete: Lessons 1–4, their practice, and an integrated review are available. Separate instructor answer guides cover all four lessons and the review. Proceed through the review before moving to probability and distributions.
+
+[Return to the course home](../../index.qmd).

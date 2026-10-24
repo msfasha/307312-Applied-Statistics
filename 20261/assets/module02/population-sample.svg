@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="420" viewBox="0 0 1000 420" role="img" aria-labelledby="title desc">
+<title id="title">From a population to evidence</title><desc id="desc">A target population is sampled to obtain restaurant observations, then analyzed to produce a description. Generalization requires a defensible sampling design.</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#2878A5"/></marker></defs>
+<rect width="1000" height="420" fill="#F8FAFC" rx="16"/>
+<g font-family="Arial,sans-serif" fill="#292333" text-anchor="middle">
+<text x="500" y="45" font-size="26" font-weight="bold" fill="#2878A5">Define the question before analyzing the data</text>
+<g stroke="#80B8C7" stroke-width="2" fill="white"><rect x="35" y="110" width="270" height="140" rx="12"/><rect x="365" y="110" width="270" height="140" rx="12"/><rect x="695" y="110" width="270" height="140" rx="12"/></g>
+<g font-size="23" font-weight="bold"><text x="170" y="151">Target population</text><text x="500" y="151">Observed sample</text><text x="830" y="151">Description</text></g>
+<g font-size="19"><text x="170" y="190">Which restaurants</text><text x="170" y="219">do we want to understand?</text><text x="500" y="190">300 restaurants</text><text x="500" y="219">with ratings and prices</text><text x="830" y="190">Tables, charts,</text><text x="830" y="219">and numerical summaries</text></g>
+<g stroke="#2878A5" stroke-width="3" marker-end="url(#arrow)"><path d="M310 183H352"/><path d="M640 183H682"/></g>
+<text x="333" y="91" font-size="16">Sample</text><text x="663" y="91" font-size="16">Analyze</text>
+<rect x="100" y="299" width="800" height="80" rx="12" fill="#EDF4F7"/>
+<text x="500" y="330" font-size="21" font-weight="bold" fill="#2878A5">Can the sample support a wider conclusion?</text>
+<text x="500" y="358" font-size="18">Check selection, coverage, bias, and uncertainty before generalizing.</text>
+</g></svg>

@@ -1,0 +1,11 @@
+format:
+  html:
+    code-fold: true
+    code-summary: "Show R code"
+    code-copy: true
+execute:
+  warning: false
+  message: false
+  fig-width: 8
+  fig-height: 4.5
+  fig-dpi: 150

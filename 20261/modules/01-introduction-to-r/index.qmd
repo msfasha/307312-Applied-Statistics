@@ -1,0 +1,24 @@
+---
+title: "Module 1: Introduction to R"
+subtitle: "Lessons 1–4 | Foundations for the course"
+css: ../../assets/petra-brand.css
+---
+
+## What this module covers
+
+R setup, basic concepts, data manipulation, and ggplot2. The dplyr lesson and practical exercises use the checked textbook CSVs. Lesson, exercise, and solution numbers match.
+
+## Lessons
+
+- [1. R and RStudio](01-r-and-rstudio.qmd)
+- [2. Basic concepts in R](02-basic-concepts.qmd)
+- [3. Data manipulation with dplyr](03-dplyr.qmd)
+- [4. Visualization with ggplot2](04-ggplot2.qmd)
+
+## Student exercises
+
+- [Basic concepts](exercises/02-basic-concepts.qmd)
+- [Data manipulation with dplyr](exercises/03-dplyr.qmd)
+- [Visualization with ggplot2](exercises/04-ggplot2.qmd)
+
+[Return to the course home](../../index.qmd).

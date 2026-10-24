@@ -1,0 +1,68 @@
+---
+title: "Instructor Answers: dplyr"
+subtitle: "Module 1 | Lesson 3 practice"
+css: ../../../assets/petra-brand.css
+format:
+  html:
+    code-fold: true
+    toc: true
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+library(dplyr)
+library(tidyr)
+project <- normalizePath(getwd())
+while (!file.exists(file.path(project,"20261.Rproj")) && dirname(project)!=project) project <- dirname(project)
+restaurants <- read.csv(file.path(project,"data/module02/restaurant_ratings.csv"))
+restaurants$quality_rating <- factor(restaurants$quality_rating,
+ levels=c("Good","Very Good","Excellent"),ordered=TRUE)
+```
+
+## Inspection and selection
+
+```{r}
+glimpse(restaurants)
+colSums(is.na(restaurants))
+anyDuplicated(restaurants$restaurant_id)
+selected <- restaurants |> select(restaurant_id,quality_rating,meal_price_usd) |>
+ filter(quality_rating=="Excellent",meal_price_usd>=30)
+nrow(selected)
+restaurants |> arrange(desc(meal_price_usd),restaurant_id) |> head(5)
+stopifnot(nrow(restaurants)==300,!anyNA(restaurants),
+ anyDuplicated(restaurants$restaurant_id)==0,nrow(selected)==50)
+```
+
+One row represents one restaurant. Fifty Excellent restaurants have prices at least USD 30. Repeated prices may belong to different restaurants, so price alone cannot identify duplicates.
+
+## Derived columns and summaries
+
+```{r}
+prepared <- restaurants |> mutate(price_band=cut(meal_price_usd,c(10,20,30,40,50),right=FALSE),
+                                 price_at_least_30=meal_price_usd>=30)
+stopifnot(!anyNA(prepared$price_band))
+restaurants |> count(quality_rating)
+summary <- restaurants |> group_by(quality_rating) |>
+ summarise(n=n(),mean_price_usd=mean(meal_price_usd),median_price_usd=median(meal_price_usd),.groups="drop")
+summary
+stopifnot(all(summary$n==c(84,150,66)),all(summary$median_price_usd==c(19.5,25,34.5)),
+ !is_grouped_df(summary))
+```
+
+## Join and reshape
+
+```{r}
+lookup <- summary |> select(quality_rating,group_median_usd=median_price_usd)
+joined <- restaurants |> left_join(lookup,by="quality_rating")
+stopifnot(nrow(joined)==300,!anyNA(joined$group_median_usd))
+head(joined)
+long <- summary |> select(quality_rating,mean_price_usd,median_price_usd) |>
+ pivot_longer(-quality_rating,names_to="measure",values_to="price_usd")
+long
+long |> pivot_wider(names_from=measure,values_from=price_usd)
+```
+
+A lookup with repeated quality keys could multiply matching rows. Check uniqueness before joining and row counts afterward. Missing-value handling must be explicit because exclusions may change group sizes and the population represented by a summary.

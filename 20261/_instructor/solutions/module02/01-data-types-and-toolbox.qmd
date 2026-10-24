@@ -1,0 +1,113 @@
+---
+title: "Instructor Answers: Data Types and the Descriptive Toolbox"
+subtitle: "Module 2 | Lesson 1 practice"
+css: ../../../assets/petra-brand.css
+format:
+  html:
+    toc: true
+    code-fold: true
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+library(ggplot2)
+library(knitr)
+project <- normalizePath(getwd())
+while (!file.exists(file.path(project, "20261.Rproj")) && dirname(project) != project) {
+  project <- dirname(project)
+}
+stopifnot(file.exists(file.path(project, "20261.Rproj")))
+restaurants <- read.csv(file.path(project, "data/module02/restaurant_ratings.csv"))
+audit <- read.csv(file.path(project, "data/module02/audit_times.csv"))
+restaurants$quality_rating <- factor(restaurants$quality_rating,
+  levels = c("Good", "Very Good", "Excellent"), ordered = TRUE)
+theme_set(theme_minimal(base_size = 13))
+```
+
+## 1. Variable classifications
+
+| Variable | Type | Discrete / continuous | Measurement level | Reason |
+|---|---|---|---|---|
+| Restaurant identifier | Categorical | Not applicable | Nominal | Numbers identify units |
+| Payment method | Categorical | Not applicable | Nominal | Labels have no inherent order |
+| Quality rating | Categorical | Not applicable | Ordinal | Categories are ordered; gaps are not defined |
+| Number of orders | Numerical | Discrete | Ratio | Integer counts; zero means no orders |
+| Waiting duration | Numerical | Continuous underlying quantity | Ratio | Zero means no elapsed waiting; ratios of positive durations are meaningful |
+| Celsius temperature | Numerical | Continuous | Interval | Equal differences; conventional zero |
+| Calendar year | Numerical | Discrete as defined here | Interval | Integer years have meaningful differences, but no absolute zero |
+| Delivery distance | Numerical | Continuous | Ratio | Zero distance and meaningful ratios |
+
+The stored waiting durations have one-minute increments. Accept an answer that explicitly classifies **recorded rounded values** as discrete while recognizing the underlying duration as continuous. Do not teach “decimals = continuous” or “integer storage = discrete.” Discrete/continuous and measurement level answer separate questions.
+
+## 2. Corrections
+
+1. Quality codes preserve order only. The coding does not define equal distances or a meaningful zero. Changing the codes changes numerical ratios without changing restaurant quality.
+2. Recorded precision does not determine the underlying quantity. Elapsed duration is continuous, although the stored observations are rounded to whole days.
+3. Celsius has a conventional zero. A 10-degree difference has meaning; the ratio 20/10 changes if the same temperatures are converted to Fahrenheit. It does not establish “twice as hot.”
+
+## 3. Toolbox choices
+
+| Question | Suitable table | Suitable chart | Useful measures |
+|---|---|---|---|
+| Most common quality | Frequency / percentage table | Ordered bar chart | Mode, proportions |
+| Audit duration | Grouped frequency table | Histogram or dot plot | Mean, median, sample SD, quartiles, IQR, range |
+| Prices by quality | Summary table within each quality group | Side-by-side boxplots | Group medians and IQRs; means and SDs when appropriate |
+| Advertising and sales | Paired observations | Scatterplot | Correlation as a descriptive measure of linear association |
+
+Several defensible choices are possible. Assess whether the choice answers the question and respects the variable definitions. Reserve time-series line charts for questions about change over time.
+
+## 4. Restaurant quality
+
+```{r}
+quality <- as.data.frame(table(restaurants$quality_rating))
+names(quality) <- c("Quality", "Count")
+quality$Percent <- 100 * quality$Count / sum(quality$Count)
+stopifnot(identical(as.integer(quality$Count), c(84L, 150L, 66L)),
+          sum(quality$Count) == 300, sum(quality$Percent) == 100)
+kable(quality)
+ggplot(restaurants, aes(quality_rating)) +
+  geom_bar(fill = "#2878A5", width = .65) +
+  labs(title = "Restaurant quality ratings", x = "Quality rating", y = "Restaurants")
+```
+
+**Very Good** is the modal category: **150 restaurants (50%)**. A bar chart presents separate categories. A histogram treats its axis as numerical intervals and would suggest quantitative spacing between the codes.
+
+## 5. Audit durations
+
+```{r}
+names(audit)
+x <- audit$audit_days
+stopifnot(length(x) == 20, !anyNA(x))
+groups <- cut(x, breaks = seq(10, 35, 5), right = FALSE)
+frequency <- as.data.frame(table(groups))
+names(frequency) <- c("Days", "Frequency")
+stopifnot(identical(as.integer(frequency$Frequency), c(4L, 8L, 5L, 2L, 1L)))
+kable(frequency)
+ggplot(data.frame(days = x), aes(days)) +
+  geom_histogram(breaks = seq(10, 35, 5), closed = "left",
+                 fill = "#2878A5", colour = "white") +
+  labs(title = "Duration of 20 audits", x = "Audit duration (days)", y = "Audits")
+q <- quantile(x, c(.25, .75), type = 6)
+summary_values <- data.frame(
+  Measure = c("Mean", "Median", "Sample standard deviation", "Minimum", "Maximum",
+              "Range", "Q1", "Q3", "IQR"),
+  Days = c(mean(x), median(x), sd(x), min(x), max(x), diff(range(x)),
+           q[1], q[2], diff(q)))
+kable(summary_values, digits = 2)
+stopifnot(mean(x) == 19.25, median(x) == 18, q[1] == 15, q[2] == 22)
+```
+
+The 20 audits took **19.25 days on average**, with a **sample standard deviation of `r round(sd(x), 2)` days**. Standard deviation describes spread around the mean; it is not a guarantee that every audit lies within one standard deviation. The middle half is described by Q1 = **15 days** and Q3 = **22 days**, an IQR of **7 days**.
+
+The mean (19.25) exceeds the median (18). The longer observed durations, including 28 and 33 days, pull the mean upward. The histogram supports a longer right tail in these observations; mean versus median alone is not a universal test of shape.
+
+## Teaching notes and source conventions
+
+- Keep the first discussion about the **meaning of the variable**, before introducing R storage classes.
+- Use the book's Section 1.2 for measurement levels and Section 5.1 for discrete/continuous quantities; introduce the latter early without probability calculations.
+- The book uses the interior percentile position `(n + 1) * p`, matching R's `type = 6` interpolation for these quartiles. R's default uses a different convention. Explain small differences rather than treating all software output as identical.
+- ggplot2 boxplots use their own default quartile convention. If comparing them to a `type = 6` table, explain the convention or construct boxplot statistics explicitly.
+- The restaurant counts and audit observations are checked against the printed textbook examples. See the lesson's source note for the scope of the checks.

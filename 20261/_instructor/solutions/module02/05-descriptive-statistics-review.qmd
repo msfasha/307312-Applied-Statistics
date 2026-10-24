@@ -1,0 +1,131 @@
+---
+title: "Instructor Guide: Descriptive Statistics Review"
+subtitle: "Module 2 | Integrated review and expected evidence"
+css: ../../../assets/petra-brand.css
+format:
+  html:
+    toc: true
+    code-fold: true
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+library(ggplot2)
+library(knitr)
+project <- normalizePath(getwd())
+while (!file.exists(file.path(project,"20261.Rproj")) && dirname(project)!=project) project <- dirname(project)
+stopifnot(file.exists(file.path(project,"20261.Rproj")))
+read_data <- function(name) read.csv(file.path(project,"data/module02",name))
+audit <- read_data("audit_times.csv")$audit_days
+restaurants <- read_data("restaurant_ratings.csv")
+soft <- read_data("soft_drinks.csv")
+e <- read_data("electronics_sales.csv")
+quality <- c("Good","Very Good","Excellent")
+restaurants$quality_rating <- factor(restaurants$quality_rating,levels=quality,ordered=TRUE)
+q6 <- function(v,p) unname(quantile(v,p,type=6))
+theme_set(theme_minimal(base_size=14))
+```
+
+## 1. Variable meaning and tool selection
+
+| Dataset and unit | Variable | Classification | Measurement level |
+|---|---|---|---|
+| Restaurant: one restaurant | Quality rating | Ordered categorical | Ordinal |
+| Restaurant: one restaurant | Meal price | Numerical monetary measurement, recorded in whole USD | Ratio |
+| Audit: one audit | Duration | Numerical elapsed-time measurement, recorded in whole days | Ratio |
+| SoftDrink: one recorded purchase | Brand | Categorical | Nominal |
+| Electronics: one week | Commercials | Numerical discrete count | Ratio |
+| Electronics: one week | Sales | Numerical monetary measurement, recorded in hundreds of USD | Ratio |
+
+Rounding or currency precision does not make a measured amount a count of entities. Accept a carefully justified distinction between an underlying measurement and its recording resolution. IDs and arbitrary category codes identify labels, so their arithmetic means lack the quantitative interpretation asked for here.
+
+Use frequencies and bars for brand preference; distribution plots plus center/spread for Audit; group summaries/boxplots and conditional crosstabs for Restaurant; a scatterplot and suitable association measures for Electronics.
+
+## 2. SoftDrink
+
+```{r}
+f <- table(factor(soft$brand_book_label,levels=c("Coca-Cola","Diet Coke","Dr. Pepper","Pepsi","Sprite")))
+s <- data.frame(Brand=names(f),Count=as.integer(f),Percent=100*as.integer(f)/sum(f))
+kable(s)
+stopifnot(all(s$Count==c(19,8,5,13,5)),sum(s$Count)==50,sum(s$Percent)==100)
+ggplot(s,aes(reorder(Brand,-Count),Count))+geom_col(fill="#2878A5",width=.65)+
+ labs(x="Brand",y="Recorded purchases",title="Coca-Cola is the most frequent recorded brand")
+```
+
+Coca-Cola accounts for **19/50 = 38%**. These are recorded purchases in a teaching dataset. Without a documented sampling design and target market, they do not establish population market shares or unique-person preferences.
+
+## 3. Audit
+
+```{r}
+q <- q6(audit,c(.25,.5,.75)); iqr <- q[3]-q[1]
+lo <- q[1]-1.5*iqr; hi <- q[3]+1.5*iqr
+kable(data.frame(Measure=c("n","Mean (days)","Median (days)","Range (days)","Sample SD (days)",
+                           "Q1 (days)","Q3 (days)","IQR (days)","Lower fence (days)","Upper fence (days)"),
+                 Value=c(length(audit),mean(audit),median(audit),diff(range(audit)),sd(audit),q[1],q[3],iqr,lo,hi)),digits=2)
+flagged <- audit[audit<lo|audit>hi]
+stopifnot(mean(audit)==19.25,median(audit)==18,all(q==c(15,18,22)),iqr==7,
+          lo==4.5,hi==32.5,all(flagged==33),length(flagged)==1)
+ggplot(data.frame(Days=audit),aes(Days))+
+ geom_histogram(binwidth=5,boundary=10,closed="left",fill="#ACC9DA",colour="white")+
+ labs(x="Audit duration (days)",y="Audits",title="Most audits finish below 25 days")
+dots <- data.frame(Days=sort(audit));dots$Stack<-ave(dots$Days,dots$Days,FUN=seq_along)
+ggplot(dots,aes(Days,Stack))+geom_point(size=3,colour="#2878A5")+
+ scale_y_continuous(breaks=1:3)+labs(x="Audit duration (days)",y="Stacked observations")
+```
+
+The distribution extends farther toward long durations, with center around 18–19 days, a 12–33-day observed span, and a flagged 33-day value. Only 20 observations and a choice of bin width support a cautious description, not a stable estimate of the number of population modes.
+
+Median **18 days** and IQR **7 days** are a reasonable typical-duration description in view of the long upper tail. Mean **19.25** and SD **5.44 days** add information about all observed magnitudes and workload variation. Accept another pair if justified and accompanied by its limitations. The 33-day value remains valid unless investigation supplies a reason to correct it.
+
+## 4. Restaurant
+
+```{r}
+groups <- split(restaurants$meal_price_usd,restaurants$quality_rating)
+summaries <- do.call(rbind,lapply(names(groups),function(g){
+ v<-groups[[g]];q<-q6(v,c(.25,.5,.75));d<-q[3]-q[1]
+ inside<-v[v>=q[1]-1.5*d & v<=q[3]+1.5*d]
+ data.frame(Quality=g,N=length(v),Median=q[2],IQR=d,Q1=q[1],Q3=q[3],ymin=min(inside),ymax=max(inside))
+}))
+kable(summaries[c("Quality","N","Median","IQR")],digits=2)
+stopifnot(all(summaries$N==c(84,150,66)),all(summaries$Median==c(19.5,25,34.5)),
+          all(summaries$IQR==c(10,12,11.5)))
+summaries$Quality<-factor(summaries$Quality,levels=quality)
+flagged_prices<-do.call(rbind,lapply(names(groups),function(g){
+ v<-groups[[g]];q<-q6(v,c(.25,.75));d<-diff(q);o<-v[v<q[1]-1.5*d|v>q[2]+1.5*d]
+ data.frame(Quality=rep(g,length(o)),Price=o)
+}))
+flagged_prices$Quality<-factor(flagged_prices$Quality,levels=quality)
+ggplot(summaries,aes(Quality,ymin=ymin,lower=Q1,middle=Median,upper=Q3,ymax=ymax))+
+ geom_boxplot(stat="identity",fill="#ACC9DA",width=.5)+
+ geom_point(data=flagged_prices,aes(Quality,Price),inherit.aes=FALSE,colour="#B47816")+
+ labs(x="Quality rating",y="Meal price (USD)",title="Prices differ in center, with overlapping distributions")
+bands <- cut(restaurants$meal_price_usd,c(10,20,30,40,50),right=FALSE)
+tab <- table(restaurants$quality_rating,bands)
+kable(addmargins(tab))
+high <- rowSums(tab[,3:4])
+kable(data.frame(Quality=quality,Numerator=high,Denominator=rowSums(tab),Percent=100*high/rowSums(tab)),digits=2)
+stopifnot(all(high==c(2,52,50)))
+```
+
+The >=30 shares are **2/84 = 2.38%**, **52/150 = 34.67%**, and **50/66 = 75.76%**. Boxplots preserve original numerical prices for center/spread comparisons; price bands show conditional proportions but discard within-band detail. Observational differences do not isolate effects of ratings. Possible confounding characteristics are not available in the file.
+
+## 5. Electronics
+
+```{r}
+x<-e$commercials;y<-e$sales_hundreds_usd
+kable(data.frame(Sales_unit=c("Hundreds of USD","USD"),
+                 Covariance=c(cov(x,y),cov(x,100*y)),Correlation=c(cor(x,y),cor(x,100*y))),digits=5)
+stopifnot(cov(x,y)==11,cov(x,100*y)==1100,abs(cor(x,y)-0.9304906)<1e-7,
+          abs(cor(x,y)-cor(x,100*y))<1e-10)
+ggplot(e,aes(commercials,sales_hundreds_usd))+geom_point(size=3,colour="#2878A5")+
+ scale_x_continuous(breaks=1:5)+labs(x="Television commercials",y="Weekly sales (hundreds of USD)")
+```
+
+The ten weeks show strong positive, approximately linear association, with **r ≈ 0.9305**. Covariance is **11 commercials × hundreds of USD**, or **1100 commercials × USD** after conversion. Correlation stays unchanged under this positive rescaling. Neither a causal advertising effect nor stable future performance follows from these descriptions alone.
+
+## Feedback priorities
+
+Use the student checklist as the assessment criteria. Correct a wrong observational unit, denominator, sales unit, or causal interpretation before rewarding polished output. Accept statistically defensible alternatives to plot bins and summary recommendations when clearly explained. Refer to Lessons 2–4 answer guides for detailed working.

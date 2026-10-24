@@ -1,0 +1,15 @@
+---
+title: "Module 4: Sampling and estimation"
+subtitle: "Planned"
+css: ../../assets/petra-brand.css
+---
+
+## What this module covers
+
+Sampling variability, sampling distributions, standard errors, and confidence intervals.
+
+## Development status
+
+**Planned — no lesson has been written for this module yet.** This page identifies its position in the course; it is not teaching content.
+
+[Return to the course home](../../index.qmd).

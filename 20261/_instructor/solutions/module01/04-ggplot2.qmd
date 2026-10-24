@@ -1,0 +1,73 @@
+---
+title: "Instructor Answers: ggplot2"
+subtitle: "Module 1 | Lesson 4 practice"
+css: ../../../assets/petra-brand.css
+format:
+  html:
+    code-fold: true
+    toc: true
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+library(ggplot2)
+library(dplyr)
+project <- normalizePath(getwd())
+while (!file.exists(file.path(project,"20261.Rproj")) && dirname(project)!=project) project <- dirname(project)
+read_data <- function(name) read.csv(file.path(project,"data/module02",name))
+restaurants <- read_data("restaurant_ratings.csv")
+restaurants$quality_rating <- factor(restaurants$quality_rating,levels=c("Good","Very Good","Excellent"))
+audit <- read_data("audit_times.csv")
+e <- read_data("electronics_sales.csv")
+theme_set(theme_minimal(base_size=14))
+```
+
+## Raw rows and summarized counts
+
+```{r}
+ggplot(restaurants,aes(quality_rating))+geom_bar(fill="#2878A5")+
+ labs(title="Restaurant ratings in the teaching sample",x="Quality",y="Restaurants")
+counts <- restaurants |> count(quality_rating)
+ggplot(counts,aes(quality_rating,n))+geom_col(fill="#2878A5")+
+ labs(x="Quality",y="Restaurants")
+stopifnot(all(counts$n==c(84,150,66)))
+```
+
+`geom_bar()` counts rows by default. `geom_col()` uses the supplied numerical heights.
+
+## Numerical distribution
+
+```{r}
+ggplot(audit,aes(audit_days))+
+ geom_histogram(binwidth=5,boundary=10,closed="left",fill="#ACC9DA",colour="white")+
+ labs(title="Distribution of audit completion times",x="Audit duration (days)",y="Audits")
+```
+
+Each bar counts audits in a five-day interval. The chosen boundaries include the lower endpoint and exclude the upper endpoint.
+
+## Paired observations and units
+
+```{r}
+p <- ggplot(e,aes(commercials,sales_hundreds_usd))+
+ geom_point(size=3,colour="#2878A5")+geom_text(aes(label=week),nudge_y=1)+
+ labs(title="Commercials and sales across ten weeks",x="Television commercials",y="Sales (hundreds of USD)")
+p
+e$sales_usd <- 100*e$sales_hundreds_usd
+ggplot(e,aes(commercials,sales_usd))+geom_point(size=3,colour="#2878A5")+
+ labs(x="Television commercials",y="Sales (USD)")
+```
+
+Multiplying sales by 100 changes vertical units and numerical labels, while preserving the paired pattern. An unordered category needs distinct categorical encoding rather than a gradient implying magnitude or order.
+
+## Manual export
+
+```{r}
+#| eval: false
+dir.create("_output",showWarnings=FALSE)
+ggsave("_output/electronics-scatterplot.png",plot=p,width=8,height=4.5,dpi=150)
+```
+
+Exports belong outside input-data folders. A plot's association alone does not establish causation.

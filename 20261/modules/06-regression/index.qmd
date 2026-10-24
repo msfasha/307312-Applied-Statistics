@@ -1,0 +1,15 @@
+---
+title: "Module 6: Regression"
+subtitle: "Planned"
+css: ../../assets/petra-brand.css
+---
+
+## What this module covers
+
+Simple and multiple regression, diagnostics, and model validation.
+
+## Development status
+
+**Planned — no lesson has been written for this module yet.** This page identifies its position in the course; it is not teaching content.
+
+[Return to the course home](../../index.qmd).

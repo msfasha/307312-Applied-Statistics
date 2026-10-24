@@ -1,0 +1,23 @@
+---
+title: "Module 1: ggplot2 Practice"
+subtitle: "Lesson 4 | Visualize the textbook CSVs"
+css: ../../../assets/petra-brand.css
+---
+
+## Preparation
+
+Read [Lesson 4](../04-ggplot2.qmd). Use the checked CSVs in `data/module02/`. The [data guide](../../../data/module02/README.md) explains their variables and units. These exercises focus on constructing clear plots; Module 2 develops their statistical interpretation.
+
+## Tasks
+
+1. Load Restaurant. Create a count bar chart for its quality ratings, ordered Good, Very Good, Excellent. Explain why `geom_bar()` is appropriate for raw rows.
+2. Summarize those counts into a separate table, then reproduce the chart with `geom_col()`. Explain the difference between the two functions.
+3. Load Audit. Draw a histogram of `audit_days` with bin width 5 and lower boundary 10. Label both axes and state what a bar represents.
+4. Load Electronics. Draw a scatterplot of `commercials` against `sales_hundreds_usd`. Label the sales units explicitly. Add week labels without connecting the points.
+5. Convert sales to USD in a new column and redraw the plot with corrected labels. Explain what changes and what remains the same visually.
+6. Improve one chart using an informative title, a readable theme, and purposeful color. Explain why a continuous color gradient would be unsuitable for unordered brand categories.
+7. Save one plot manually under `_output/` using `ggsave()`. Keep source data unchanged.
+
+Avoid causal claims based on a chart alone. Use the shared course stylesheet for the report title; choose chart colors to communicate the data.
+
+[Return to Module 1](../index.qmd).
