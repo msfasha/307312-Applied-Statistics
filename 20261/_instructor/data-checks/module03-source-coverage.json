@@ -1,0 +1,62 @@
+[
+  {
+    "file": "20261/modules/03-probability-and-distributions/01-probability-rules.qmd",
+    "R_chunks": 5,
+    "Arabic_cases": 1
+  },
+  {
+    "file": "20261/modules/03-probability-and-distributions/02-conditional-probability.qmd",
+    "R_chunks": 5,
+    "Arabic_cases": 2
+  },
+  {
+    "file": "20261/modules/03-probability-and-distributions/03-discrete-random-variables.qmd",
+    "R_chunks": 5,
+    "Arabic_cases": 1
+  },
+  {
+    "file": "20261/modules/03-probability-and-distributions/04-binomial-and-poisson.qmd",
+    "R_chunks": 7,
+    "Arabic_cases": 2
+  },
+  {
+    "file": "20261/modules/03-probability-and-distributions/05-continuous-distributions.qmd",
+    "R_chunks": 6,
+    "Arabic_cases": 2
+  },
+  {
+    "file": "20261/modules/03-probability-and-distributions/06-probability-and-distributions-review.qmd",
+    "R_chunks": 0,
+    "Arabic_cases": 0
+  },
+  {
+    "file": "20261/modules/03-probability-and-distributions/exercises/01-probability-rules.qmd",
+    "R_chunks": 1,
+    "Arabic_cases": 0
+  },
+  {
+    "file": "20261/modules/03-probability-and-distributions/exercises/02-conditional-probability.qmd",
+    "R_chunks": 0,
+    "Arabic_cases": 0
+  },
+  {
+    "file": "20261/modules/03-probability-and-distributions/exercises/03-discrete-random-variables.qmd",
+    "R_chunks": 1,
+    "Arabic_cases": 0
+  },
+  {
+    "file": "20261/modules/03-probability-and-distributions/exercises/04-binomial-and-poisson.qmd",
+    "R_chunks": 0,
+    "Arabic_cases": 0
+  },
+  {
+    "file": "20261/modules/03-probability-and-distributions/exercises/05-continuous-distributions.qmd",
+    "R_chunks": 0,
+    "Arabic_cases": 0
+  },
+  {
+    "file": "20261/modules/03-probability-and-distributions/index.qmd",
+    "R_chunks": 0,
+    "Arabic_cases": 0
+  }
+]

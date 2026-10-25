@@ -1,0 +1,39 @@
+---
+title: "Module 3: Discrete Random Variables — Practice"
+subtitle: "Lesson 3 | Calculate, justify, and interpret"
+css: ../../../assets/petra-brand.css
+---
+
+## Preparation
+
+Read [Lesson 3](../03-discrete-random-variables.qmd), including the DiCarlo English–Arabic introduction and the distinction between the published aggregate table and individual observations.
+
+```{r}
+# data.frame(): builds a table whose named columns have compatible lengths.
+# c(): combines values into a vector, converting them to a common type when needed.
+# Enter the six published count categories, not a fabricated sequence of individual sales days.
+# Each Days value is a frequency; divide by their total to obtain probability weights.
+sales <- data.frame(Cars = 0:5, Days = c(54, 117, 72, 42, 12, 3))
+```
+
+## 1. Build the distribution
+
+Define $X$ and its support. Calculate the probability mass function and verify nonnegative masses summing to 1. Is 1.5 a possible realization of $X$?
+
+## 2. Translate events
+
+Calculate the probabilities of exactly two cars, at most two cars, at least two cars, more than two cars, and between one and three cars inclusive. List the included count values before computing each answer.
+
+## 3. Use a cumulative table
+
+Add a CDF column. Find the smallest sales count whose cumulative probability is at least 0.50. Explain how this differs from calculating the expected value.
+
+## 4. Center and spread
+
+Find the model mean, variance, SD, and mode. Explain why applying `mean()` or `var()` directly to the six values `0:5` ignores important information. State which quantities have cars, squared cars, or no units.
+
+## 5. Extend with care
+
+Find expected total sales for 30 operating days if the daily expectation remains the same. Does that expected-total calculation require independence? What extra condition would justify multiplying the daily variance by 30? Explain why the summary does not establish a five-car upper limit for future operations.
+
+Submit a table, a probability plot, and your interpretations. [Return to the lesson](../03-discrete-random-variables.qmd).

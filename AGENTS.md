@@ -41,6 +41,10 @@ These instructions apply throughout this course workspace.
 - Active course sources belong in `20261/modules/`; use `NN-topic.qmd` with lowercase hyphenated words. Exercises and instructor answers use their corresponding lesson number. Module overview files are `index.qmd`.
 - Keep instructor-only sources and original nonpublisher measurement data in `20261/_instructor/`. Render instructor answers with `20261/scripts/render-instructor.sh` into `_instructor/_output/`.
 - `20261/assets/petra-brand.css` is the single maintained stylesheet. Keep used images under `assets/branding`, `assets/module01`, or `assets/module02`.
-- Syllabi, setup guidance, and reference slides belong under `docs/`. Preserve publisher PDFs and raw workbooks in `books/` under their existing source names.
+- Syllabi belong under `20261/syllabi/`; setup guidance and reference slides belong under `docs/`. Preserve publisher PDFs and raw workbooks in `books/` under their existing source names.
 - Keep legacy drafts and unrelated resources outside the active course; see `docs/maintenance/cleanup-report.md` for recovery. Rebuild `_site/` from active sources; do not restore old exported pages or broad legacy redirect maps.
 - Superstore lessons, exercises, and datasets have been retired from the working course. Use checked textbook CSVs for the active R practical exercises.
+
+## Code explanations for students
+
+Add about two concise English comment lines inside each nonempty student-facing R chunk. State its purpose and explain unfamiliar functions and consequential arguments (for example cut boundaries and right=FALSE, percentile type, or percentage denominator). Explain every unfamiliar function at its point of use, including validation helpers such as `stopifnot()` and plotting defaults such as `theme_set()`; a minimum comment count alone does not establish adequate documentation. Explain consequential argument values, units, and assumptions. Use additional short comments when needed for accuracy. Keep chunk options first, leave blank practice scaffolds blank, and preserve existing calculations when documenting code.

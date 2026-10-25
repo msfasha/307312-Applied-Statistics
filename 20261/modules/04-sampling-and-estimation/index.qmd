@@ -1,15 +1,35 @@
 ---
-title: "Module 4: Sampling and estimation"
-subtitle: "Planned"
+title: "Module 4: Sampling and Estimation"
+subtitle: "Four lessons | From sample selection to uncertainty"
 css: ../../assets/petra-brand.css
 ---
 
-## What this module covers
+## Learning sequence
 
-Sampling variability, sampling distributions, standard errors, and confidence intervals.
+Complete Module 3 first. We distinguish individual outcomes from sample statistics, develop standard errors, then use them to construct intervals and plan precision.
 
-## Development status
+| Lesson | Practice |
+|---|---|
+| [1. Sampling and Variability](01-sampling-and-variability.qmd) | [1. Practice](exercises/01-sampling-and-variability.qmd) |
+| [2. Sampling Distributions and Standard Errors](02-sampling-distributions.qmd) | [2. Practice](exercises/02-sampling-distributions.qmd) |
+| [3. Confidence Intervals for Means](03-confidence-intervals-for-means.qmd) | [3. Practice](exercises/03-confidence-intervals-for-means.qmd) |
+| [4. Proportions and Sample-size Planning](04-proportions-and-sample-size.qmd) | [4. Practice](exercises/04-proportions-and-sample-size.qmd) |
 
-**Planned — no lesson has been written for this module yet.** This page identifies its position in the course; it is not teaching content.
+Finish the [integrated review](05-sampling-and-estimation-review.qmd). Instructor answers are kept separately.
 
-[Return to the course home](../../index.qmd).
+## Cases, readings, and evidence
+
+The main textbook is Anderson et al. (2020), 8th edition. Selected Chapter 7 material develops sampling and sampling distributions; selected Chapter 8 material develops mean and proportion intervals and planning.
+
+- EAI employees: population summaries p.308; sample summaries p.316; finite correction and CLT pp.323–324.
+- Lloyd's spending: known-SD inputs p.357.
+- Household credit-card balances: rounded sample summaries and t interval pp.367–368.
+- Women golfers: survey counts and normal interval p.378; planning pp.380–381.
+
+We use stated book parameters and summaries rather than introducing unverified observation files. Artificial simulations and original planning extensions are labeled. No new workbook-to-CSV match is claimed.
+
+## Next step
+
+[Module 5: Hypothesis testing and group comparisons](../05-hypothesis-testing/index.qmd) follows interval estimation; its existing lesson remains retained material pending expansion.
+
+[Return to course home](../../index.qmd).

@@ -1,0 +1,75 @@
+---
+title: "Module 4: Sampling and Variability"
+subtitle: "Lesson 1 | From a population to a sample"
+css: ../../assets/petra-brand.css
+---
+
+## Learning objectives and reading
+
+Distinguish a target population, sampling frame, sample, parameter, and statistic; explain a simple random sample; and separate sampling variability from selection bias. Read main textbook §§7.1–7.4, especially printed pp.308 and 316.
+
+## Business case: EAI employees
+
+The textbook's EAI population contains **2,500 employees**, with annual salary mean **\$71,800**, population SD **\$4,000**, and **1,500 employees** who completed management training. Its sample of **30 employees** has mean salary **\$71,814** and **19 training completers**. How much can a sample estimate vary? We use the printed population parameters and sample summaries; the individual personnel records have not been verified for this lesson.
+
+::: {.case-narration lang="ar" dir="rtl"}
+يتكون مجتمع موظفي **[EAI]{lang=en}** في الكتاب من **2,500 موظف**، بمتوسط راتب سنوي **71,800 دولار** وانحراف معياري للمجتمع **4,000 دولار**، وقد أكمل **1,500 موظف** التدريب الإداري. يبلغ متوسط الراتب في عينة الكتاب المكونة من **30 موظفًا** **71,814 دولارًا**، وأكمل **19 منهم** التدريب. إلى أي مدى قد يختلف تقدير العينة؟ نستخدم معلمات المجتمع وملخصات العينة المنشورة؛ ولم نتحقق من سجلات الموظفين الفردية لهذا الدرس.
+:::
+
+## Define what is sampled
+
+The **target population** is the group about which a conclusion is intended. The **sampling frame** is the list or mechanism from which units can actually be selected. Missing workers in a frame can create coverage bias even if selection from that frame is random. An observational unit here is one employee; salary is measured in dollars per year and training status is categorical.
+
+A **parameter** describes a population, such as $\mu$ or $p$. A **statistic** is computed from a sample, such as $\bar{x}$ or $\hat p$. A statistic used to estimate a parameter is an estimator; its realized numerical result is an estimate.
+
+A **simple random sample without replacement** gives every possible subset of $n$ employees the same probability of selection. Equal selection probabilities for individual employees alone do not establish this stronger property. A selected employee cannot appear twice within a sample.
+
+```{r}
+# sample(): randomly selects values; size sets the count and replace=FALSE prevents repeats within a draw.
+# seq_len(): returns integer positions 1 through n, safely returning an empty vector when n=0.
+# head(): shows the first n entries or rows, six by default.
+# Select employee identifiers only: no salaries or training outcomes are fabricated.
+# set.seed() reproduces the draw; replace=FALSE prevents duplicate IDs within this sample.
+set.seed(307312)
+selected_ids <- sample(seq_len(2500), size = 30, replace = FALSE)
+head(selected_ids)
+```
+
+These are illustrative selected IDs, not a reconstruction of the book's sample. Without the checked personnel records, they cannot be joined to verified salaries.
+
+## Point estimates and realized errors
+
+```{r}
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# c(): combines values into a vector, converting them to a common type when needed.
+# Calculate estimates from the book's summaries, not from artificial employee observations.
+# The proportion denominator is all 30 sampled employees; multiplying by 100 gives percentage points.
+mean_estimate <- 71814
+proportion_estimate <- 19 / 30
+knitr::kable(data.frame(
+  Quantity = c("Salary estimate (USD/year)", "Salary error (USD/year)",
+               "Training estimate", "Training error (percentage points)"),
+  Value = c(mean_estimate, mean_estimate - 71800,
+            proportion_estimate, 100 * (proportion_estimate - .60))), digits = 4)
+```
+
+The realized salary error is \$14 and the training error is about 3.33 percentage points. We can calculate these errors only because the teaching example supplies the population parameters. In an actual estimation problem the unknown parameter prevents us from observing the estimation error directly.
+
+## Why estimates change
+
+A second random sample generally includes different employees, producing a different statistic. This is **sampling variability**. It does not mean either sample was selected incorrectly. A **sampling distribution** is the distribution of a statistic across repeated samples under the same design, not the distribution of employees' salaries in one sample.
+
+Probability sampling permits design-based uncertainty calculations. A convenience sample of available staff can miss systematic differences; a larger convenience sample need not remove that bias. Nonresponse and measurement errors are further sources of error. Random selection supports generalization to a covered population; random assignment to treatments supports causal comparisons. They serve different purposes.
+
+Other designs include stratified sampling (sample within each stratum), cluster sampling (select groups, then observe all or some units in them), and systematic sampling (a random start followed by regular spacing). Their uncertainty calculations depend on the design. Do not apply the simple-random-sample SE automatically to clustered observations.
+
+## Check your understanding
+
+Explain why a sample estimate that differs from its parameter is not automatically biased. Then explain why randomly selecting 30 people from an incomplete employee list may still misrepresent all employees.
+
+## Source and limits
+
+Anderson et al. (2020), 8th ed., printed p.308 (population) and p.316 (Table 7.2 and sample summaries). The book reports the sample SD as approximately \$3,348; no raw-row compatibility is claimed here. Selection of IDs above is an original course demonstration, not publisher observations.
+
+Complete [the practice](exercises/01-sampling-and-variability.qmd), then return to the [module overview](index.qmd).

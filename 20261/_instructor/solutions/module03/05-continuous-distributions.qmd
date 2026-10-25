@@ -1,0 +1,77 @@
+---
+title: "Instructor Answers: Continuous Distributions"
+subtitle: "Module 3 | Lesson 5 practice"
+css: ../../../assets/petra-brand.css
+format:
+  html:
+    toc: true
+    code-fold: true
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+# library(): loads a package so its functions can be used in this session.
+# normalizePath(): resolves a path into a canonical absolute path.
+# getwd(): returns the current working-directory path.
+# file.exists(): checks whether each specified file path exists.
+# file.path(): joins path components with the platform-appropriate separator.
+# dirname(): returns the directory portion of a file path.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+library(knitr)
+project <- normalizePath(getwd())
+while (!file.exists(file.path(project, "20261.Rproj")) && dirname(project) != project) project <- dirname(project)
+stopifnot(file.exists(file.path(project, "20261.Rproj")))
+```
+## 1. Uniform calculation
+
+```{r}
+# c(): combines values into a vector, converting them to a common type when needed.
+# punif(): returns uniform cumulative probability between min and max; subtract CDF values for an interval.
+# dunif(): returns uniform density height on min to max, not a probability at one exact point.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# names(): reads or assigns names to vector elements or table columns.
+# unname(): removes names or dimension names without changing the underlying values.
+a <- c(Interval_128_136=punif(136,120,140)-punif(128,120,140),Above_135=punif(135,120,140,lower.tail=FALSE),Exact_130=0,
+       Density_130=dunif(130,120,140),Rounded_130=punif(130.5,120,140)-punif(129.5,120,140))
+kable(data.frame(Quantity=names(a),Value=unname(a)),digits=6)
+```
+
+Probabilities: 0.40, 0.25, and 0. Density: 0.05 per minute. The nearest-minute interval corresponding to a recorded 130 has probability 0.05. Its numerical equality with the density is a consequence of that interval's width being one minute, not an equality of concepts or units.
+
+## 2–3. Normal probabilities and cutoff
+
+```{r}
+# qnorm(): returns a normal lower-tail quantile; sd is standard deviation, not variance.
+# c(): combines values into a vector, converting them to a common type when needed.
+# pnorm(): returns a normal lower-tail probability; lower.tail=FALSE requests the upper tail.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# names(): reads or assigns names to vector elements or table columns.
+# unname(): removes names or dimension names without changing the underlying values.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# abs(): returns absolute values; a small tolerance in an equality check permits floating-point rounding.
+mu <- 36500; sigma <- 5000
+z <- (40000-mu)/sigma
+cutoff <- qnorm(.1,mu,sigma)
+a <- c(z_score=z,Upper_tail=pnorm(40000,mu,sigma,lower.tail=FALSE),
+       Standardized_tail=pnorm(z,lower.tail=FALSE),
+       Interval_30000_40000=pnorm(40000,mu,sigma)-pnorm(30000,mu,sigma),
+       Percentile10_miles=cutoff,Check_probability=pnorm(cutoff,mu,sigma),
+       Below_30000=pnorm(30000,mu,sigma))
+kable(data.frame(Quantity=names(a),Value=unname(a)),digits=6)
+stopifnot(abs(pnorm(cutoff,mu,sigma)-.1)<1e-12)
+```
+
+Results: z = 0.70; upper tail 0.241964; interval 30,000–40,000 about 0.661236; cutoff about 30,092.242 miles; lower tail at 30,000 about 0.096800. `dnorm()` is a density per mile, not the upper-tail probability. The cutoff is a lifetime in miles, while a CDF value is unit-free. R's `sd` argument uses 5,000, not its square.
+
+## 4. Plot standard
+
+Accept an original R normal-density plot with miles on the horizontal axis, density per mile on the vertical axis, and the region above 40,000 shaded. Compare with the lesson plot. A finite display window must not be described as the model's support. Check the label says approximately 24.20%, not a density height.
+
+## 5. Limits and the next module
+
+A z-score rescales a variable but does not change its shape to normal. Raw road-test observations, unavailable here, would be needed to assess the fit and investigate unusual lifetimes. A sample mean is a statistic with its own sampling distribution, generally different from that of one tire; its distribution depends on the sample design and dependence among observations. Module 4 will develop this distinction. The normal model's negative tail is a mathematical limitation, even when negligible for the given parameters.

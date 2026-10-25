@@ -34,7 +34,7 @@ The source-to-CSV preparation and checks are in `20261/scripts/verify-data.R`; r
 5. Completed: integrated review across all four checked textbook datasets, with a separate instructor guide.
 6. Optional future extension: consider a larger case report only after confirming the required data. Pelican Stores is a promising book case, but its matching local workbook has not been located and verified.
 
-The planned descriptive-statistics module is complete with Lessons 1–4, practice, and an integrated review. A larger new case and exhaustive coverage of every Chapter 2–3 topic are optional extensions, not requirements for this sequence. Probability and distributions is the next planned module.
+The planned descriptive-statistics module is complete with Lessons 1–4, practice, and an integrated review. A larger new case and exhaustive coverage of every Chapter 2–3 topic are optional extensions, not requirements for this sequence. Module 3 now develops probability and distributions in five lessons with practice and a review; see `probability-distributions-plan.md`.
 
 ## Language and teaching data format
 

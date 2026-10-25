@@ -1,0 +1,40 @@
+---
+title: "Module 3: Probability Rules — Practice"
+subtitle: "Lesson 1 | Calculate, justify, and interpret"
+css: ../../../assets/petra-brand.css
+---
+
+## Preparation
+
+Read [Lesson 1](../01-probability-rules.qmd). Use uniform selection of one record from the checked Restaurant CSV. Let $A$ mean Very Good and $B$ mean a price from USD 20 to less than USD 30. The full business introduction is in the lesson.
+
+```{r}
+# read.csv() imports the checked teaching file; the analysis leaves its observations unchanged.
+# >=20 and <30 define a half-open price band, so USD 30 is excluded.
+r <- read.csv("data/module02/restaurant_ratings.csv")
+A <- r$quality_rating == "Very Good"
+B <- r$meal_price_usd >= 20 & r$meal_price_usd < 30
+```
+
+## 1. Define the experiment
+
+State the sample space, one outcome, and the events $A$ and $B$. Explain why restaurant identifiers are categorical labels even though R may import them as numbers. Are the three quality categories equally likely in this experiment?
+
+## 2. Count event regions
+
+Find the counts for both conditions, only $A$, only $B$, and neither condition. Check that they total 300. Create a labeled four-cell table or chart.
+
+## 3. Calculate and interpret
+
+Calculate $P(A)$, $P(B)$, $P(A\cap B)$, $P(A\cup B)$, $P(A^c)$, and the probability of **exactly one** of $A$ and $B$. Show the denominator and interpret the difference between “or” and “exactly one.”
+
+## 4. Explain two errors
+
+1. A student adds $P(A)+P(B)$ to calculate the union. Identify the double-counted records and correct the result.
+2. Another student says the result proves the proportion of all current Los Angeles restaurants with those characteristics. Explain the limitation.
+
+## 5. Count pairs
+
+How many ordered pairs of distinct records are possible without replacement? How many unordered pairs? Explain why a count of possibilities alone does not identify an event probability.
+
+Submit a short Quarto report with the calculations, one display, and interpretations. [Return to the lesson](../01-probability-rules.qmd).

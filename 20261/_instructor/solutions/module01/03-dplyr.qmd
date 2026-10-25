@@ -13,6 +13,15 @@ execute:
 
 ```{r}
 #| include: false
+# library(): loads a package so its functions can be used in this session.
+# normalizePath(): resolves a path into a canonical absolute path.
+# getwd(): returns the current working-directory path.
+# file.exists(): checks whether each specified file path exists.
+# file.path(): joins path components with the platform-appropriate separator.
+# dirname(): returns the directory portion of a file path.
+# read.csv(): reads a comma-separated file into a data frame; its first row supplies column names by default.
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
+# c(): combines values into a vector, converting them to a common type when needed.
 library(dplyr)
 library(tidyr)
 project <- normalizePath(getwd())
@@ -25,6 +34,18 @@ restaurants$quality_rating <- factor(restaurants$quality_rating,
 ## Inspection and selection
 
 ```{r}
+# glimpse(): shows table dimensions, column types, and example values.
+# colSums(): sums each column separately.
+# is.na(): marks missing values with TRUE; na.rm=TRUE elsewhere removes missing values only when justified.
+# anyDuplicated(): returns the position of the first duplicate, or zero if none is found.
+# select(): chooses columns by name or selection rule.
+# filter(): keeps rows whose logical conditions are TRUE; missing conditions are not retained.
+# nrow(): returns the number of rows in a table or matrix.
+# arrange(): orders rows by supplied columns; desc() reverses a column to descending order.
+# desc(): reverses sorting order to descending inside arrange().
+# head(): shows the first n entries or rows, six by default.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# anyNA(): returns TRUE if any value is missing; !anyNA(...) requires no missing values.
 glimpse(restaurants)
 colSums(is.na(restaurants))
 anyDuplicated(restaurants$restaurant_id)
@@ -41,6 +62,19 @@ One row represents one restaurant. Fifty Excellent restaurants have prices at le
 ## Derived columns and summaries
 
 ```{r}
+# mutate(): creates or replaces columns while retaining the original rows.
+# cut(): groups numeric values into intervals; breaks sets edges and right=FALSE makes [left,right) intervals.
+# c(): combines values into a vector, converting them to a common type when needed.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# anyNA(): returns TRUE if any value is missing; !anyNA(...) requires no missing values.
+# count(): counts rows for each combination of supplied categories.
+# group_by(): defines groups for subsequent dplyr operations without itself calculating a summary.
+# summarise(): reduces each group to summary rows; .groups="drop" removes grouping from the result.
+# n(): counts rows in the current dplyr group.
+# mean(): computes an average; logical TRUE/FALSE values contribute 1/0, giving a proportion.
+# median(): returns the middle sorted value, averaging the middle pair for even sample sizes.
+# all(): returns TRUE only when every supplied logical value is TRUE.
+# is_grouped_df(): checks whether a tibble still carries dplyr grouping metadata.
 prepared <- restaurants |> mutate(price_band=cut(meal_price_usd,c(10,20,30,40,50),right=FALSE),
                                  price_at_least_30=meal_price_usd>=30)
 stopifnot(!anyNA(prepared$price_band))
@@ -55,6 +89,14 @@ stopifnot(all(summary$n==c(84,150,66)),all(summary$median_price_usd==c(19.5,25,3
 ## Join and reshape
 
 ```{r}
+# select(): chooses columns by name or selection rule.
+# left_join(): matches tables on the by key while retaining left-table rows; duplicate keys can multiply rows.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# nrow(): returns the number of rows in a table or matrix.
+# anyNA(): returns TRUE if any value is missing; !anyNA(...) requires no missing values.
+# head(): shows the first n entries or rows, six by default.
+# pivot_longer(): turns selected columns into name-value rows using names_to and values_to.
+# pivot_wider(): turns name-value rows into columns using names_from and values_from.
 lookup <- summary |> select(quality_rating,group_median_usd=median_price_usd)
 joined <- restaurants |> left_join(lookup,by="quality_rating")
 stopifnot(nrow(joined)==300,!anyNA(joined$group_median_usd))

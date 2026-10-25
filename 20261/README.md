@@ -15,6 +15,6 @@ Open **20261.Rproj** in RStudio. Start with **index.qmd** to edit, or **_site/in
 
 Use **NN-topic.qmd** with lowercase hyphenated words for lessons. Exercises and instructor answers use the corresponding lesson number. Overviews use `index.qmd`. Keep dataset column names and documented publisher source names stable.
 
-Module 1 has four R lessons and practice. Module 2 has four completed descriptive-statistics lessons, practice, and an integrated review. Other modules clearly state whether they are planned or contain retained material.
+Module 1 has four R lessons and practice. Module 2 has four completed descriptive-statistics lessons, practice, and an integrated review. Module 3 has five probability/distribution lessons, practice, and an integrated review. Module 4 has four sampling/estimation lessons, practice, and an integrated review. Other modules clearly state whether they are planned or contain retained material.
 
-Read `BUILD.md` before rendering. Instructor exports go to `_instructor/_output/`. Temporary Quarto state lives in `.quarto/` and can be regenerated. Syllabi, guides, and reference slides are in `../docs/`; book PDFs and original publisher workbooks are in `../books/`.
+Read `BUILD.md` before rendering. Instructor exports go to `_instructor/_output/`. Temporary Quarto state lives in `.quarto/` and can be regenerated. Syllabi are in `syllabi/`. Guides and reference slides are in `../docs/`; book PDFs and original publisher workbooks are in `../books/`.

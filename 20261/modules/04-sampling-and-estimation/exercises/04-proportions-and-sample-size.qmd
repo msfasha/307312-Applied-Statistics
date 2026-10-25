@@ -1,0 +1,14 @@
+---
+title: "Practice: Proportions and Sample-size Planning"
+subtitle: "Module 4 | Lesson 4 | Estimate a share and plan precision"
+css: ../../../assets/petra-brand.css
+---
+
+Use the [lesson](../04-proportions-and-sample-size.qmd) for the checked case introductions and source limits. Submit a short Quarto report with calculations, units, assumptions, and interpretation.
+
+1. Reproduce the 95% tee-time Wald interval and interpret its margin in percentage points.
+2. Calculate a 90% interval from the same counts. Compare widths without treating them as different datasets.
+3. Reproduce both 95% planning sample sizes for E=.025. Then halve E and compare the unrounded required sizes.
+4. Explain why ceiling(), not round(), is required and why p*=.50 is conservative in this formula.
+5. For Lloyd's original planning extension, find n for a \$1 margin at 95% confidence. State the role and units of the planning SD.
+6. Explain why default prop.test() may give different limits from the lesson and why large n alone cannot fix nonresponse bias.

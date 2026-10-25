@@ -1,0 +1,30 @@
+# Isolated print output; the normal HTML build remains unchanged.
+project:
+  type: default
+  output-dir: _output/pdf
+  post-render: []
+format:
+  pdf:
+    pdf-engine: xelatex
+    lang: en
+    dir: ltr
+    papersize: a4
+    geometry:
+      - margin=20mm
+    mainfont: DejaVu Sans
+    sansfont: DejaVu Sans
+    monofont: DejaVu Sans Mono
+    fontsize: 10pt
+    toc: true
+    toc-depth: 2
+    colorlinks: true
+    linkcolor: PetraLink
+    urlcolor: PetraLink
+    code-overflow: wrap
+    include-in-header: assets/pdf/petra-print.tex
+    filters:
+      - scripts/pdf-layout.lua
+execute:
+  echo: true
+  warning: false
+  message: false

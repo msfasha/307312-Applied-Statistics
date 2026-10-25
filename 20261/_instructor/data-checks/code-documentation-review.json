@@ -1,0 +1,3648 @@
+{
+  "date": "2026-10-25",
+  "scope": "All nonempty R chunks in active course QMD/Rmd files, including instructor guides, plus active R support scripts. Blank and intentionally incomplete practice scaffolds preserved. Function calls inventoried with the R parser; existing explanations retained and missing local explanations added. Calculations unchanged.",
+  "files_revised": 42,
+  "chunks_revised": 270,
+  "details": [
+    {
+      "path": "20261/_instructor/course-plan.qmd",
+      "chunk": 0,
+      "documented_functions": [
+        "file.exists",
+        "read.csv",
+        "kable",
+        "c"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module01/02-basic-concepts.qmd",
+      "chunk": 1,
+      "documented_functions": [
+        "print"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module01/02-basic-concepts.qmd",
+      "chunk": 2,
+      "documented_functions": [
+        "cat"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module01/02-basic-concepts.qmd",
+      "chunk": 3,
+      "documented_functions": [
+        "print"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module01/02-basic-concepts.qmd",
+      "chunk": 4,
+      "documented_functions": [
+        "print",
+        "typeof",
+        "class"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module01/02-basic-concepts.qmd",
+      "chunk": 5,
+      "documented_functions": [
+        "list",
+        "print",
+        "typeof",
+        "sapply"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module01/02-basic-concepts.qmd",
+      "chunk": 6,
+      "documented_functions": [
+        "print"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module01/02-basic-concepts.qmd",
+      "chunk": 7,
+      "documented_functions": [
+        "print"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module01/02-basic-concepts.qmd",
+      "chunk": 8,
+      "documented_functions": [
+        "print"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module01/02-basic-concepts.qmd",
+      "chunk": 9,
+      "documented_functions": [
+        "return",
+        "calculate_area"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module01/02-basic-concepts.qmd",
+      "chunk": 10,
+      "documented_functions": [
+        "c",
+        "print"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module01/02-basic-concepts.qmd",
+      "chunk": 11,
+      "documented_functions": [
+        "print"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module01/02-basic-concepts.qmd",
+      "chunk": 12,
+      "documented_functions": [
+        "factor",
+        "c",
+        "print",
+        "levels",
+        "as.numeric"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module01/02-basic-concepts.qmd",
+      "chunk": 13,
+      "documented_functions": [
+        "data.frame",
+        "c",
+        "print"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module01/02-basic-concepts.qmd",
+      "chunk": 14,
+      "documented_functions": [
+        "readline",
+        "as.numeric",
+        "paste",
+        "print"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module01/02-basic-concepts.qmd",
+      "chunk": 15,
+      "documented_functions": [
+        "c",
+        "mean",
+        "which.max",
+        "which.min",
+        "round"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module01/03-dplyr.qmd",
+      "chunk": 16,
+      "documented_functions": [
+        "library",
+        "normalizePath",
+        "getwd",
+        "file.exists",
+        "file.path",
+        "dirname",
+        "read.csv",
+        "factor",
+        "c"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module01/03-dplyr.qmd",
+      "chunk": 17,
+      "documented_functions": [
+        "glimpse",
+        "colSums",
+        "is.na",
+        "anyDuplicated",
+        "select",
+        "filter",
+        "nrow",
+        "arrange",
+        "desc",
+        "head",
+        "stopifnot",
+        "anyNA"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module01/03-dplyr.qmd",
+      "chunk": 18,
+      "documented_functions": [
+        "mutate",
+        "cut",
+        "c",
+        "stopifnot",
+        "anyNA",
+        "count",
+        "group_by",
+        "summarise",
+        "n",
+        "mean",
+        "median",
+        "all",
+        "is_grouped_df"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module01/03-dplyr.qmd",
+      "chunk": 19,
+      "documented_functions": [
+        "select",
+        "left_join",
+        "stopifnot",
+        "nrow",
+        "anyNA",
+        "head",
+        "pivot_longer",
+        "pivot_wider"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module01/04-ggplot2.qmd",
+      "chunk": 20,
+      "documented_functions": [
+        "library",
+        "normalizePath",
+        "getwd",
+        "file.exists",
+        "file.path",
+        "dirname",
+        "read.csv",
+        "read_data",
+        "factor",
+        "c",
+        "theme_set",
+        "theme_minimal"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module01/04-ggplot2.qmd",
+      "chunk": 21,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_bar",
+        "labs",
+        "count",
+        "geom_col",
+        "stopifnot",
+        "all",
+        "c"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module01/04-ggplot2.qmd",
+      "chunk": 22,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_histogram",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module01/04-ggplot2.qmd",
+      "chunk": 23,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_point",
+        "geom_text",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module01/04-ggplot2.qmd",
+      "chunk": 24,
+      "documented_functions": [
+        "dir.create",
+        "ggsave"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module02/01-data-types-and-toolbox.qmd",
+      "chunk": 25,
+      "documented_functions": [
+        "library",
+        "normalizePath",
+        "getwd",
+        "file.exists",
+        "file.path",
+        "dirname",
+        "stopifnot",
+        "read.csv",
+        "factor",
+        "c",
+        "theme_set",
+        "theme_minimal"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module02/01-data-types-and-toolbox.qmd",
+      "chunk": 26,
+      "documented_functions": [
+        "as.data.frame",
+        "table",
+        "names",
+        "c",
+        "sum",
+        "stopifnot",
+        "identical",
+        "as.integer",
+        "kable",
+        "ggplot",
+        "aes",
+        "geom_bar",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module02/01-data-types-and-toolbox.qmd",
+      "chunk": 27,
+      "documented_functions": [
+        "names",
+        "stopifnot",
+        "length",
+        "anyNA",
+        "cut",
+        "seq",
+        "as.data.frame",
+        "table",
+        "c",
+        "identical",
+        "as.integer",
+        "kable",
+        "ggplot",
+        "data.frame",
+        "aes",
+        "geom_histogram",
+        "labs",
+        "quantile",
+        "mean",
+        "median",
+        "sd",
+        "min",
+        "max",
+        "diff",
+        "range"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module02/02-frequency-tables-and-charts.qmd",
+      "chunk": 28,
+      "documented_functions": [
+        "library",
+        "normalizePath",
+        "getwd",
+        "file.exists",
+        "file.path",
+        "dirname",
+        "stopifnot",
+        "read.csv",
+        "theme_set",
+        "theme_minimal"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module02/02-frequency-tables-and-charts.qmd",
+      "chunk": 29,
+      "documented_functions": [
+        "c",
+        "as.data.frame",
+        "table",
+        "factor",
+        "names",
+        "nrow",
+        "stopifnot",
+        "sum",
+        "abs",
+        "identical",
+        "as.integer",
+        "kable"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module02/02-frequency-tables-and-charts.qmd",
+      "chunk": 30,
+      "documented_functions": [
+        "order",
+        "as.character",
+        "factor",
+        "rev",
+        "ggplot",
+        "aes",
+        "geom_col",
+        "scale_x_continuous",
+        "c",
+        "seq",
+        "labs",
+        "paste0",
+        "coord_polar",
+        "geom_text",
+        "position_stack",
+        "scale_fill_manual",
+        "theme_void",
+        "theme"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module02/02-frequency-tables-and-charts.qmd",
+      "chunk": 31,
+      "documented_functions": [
+        "seq",
+        "cut",
+        "as.data.frame",
+        "table",
+        "names",
+        "c",
+        "length",
+        "stopifnot",
+        "anyNA",
+        "identical",
+        "as.integer",
+        "kable",
+        "ggplot",
+        "aes",
+        "geom_histogram",
+        "scale_x_continuous",
+        "labs",
+        "data.frame",
+        "cumsum",
+        "sum"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module02/02-frequency-tables-and-charts.qmd",
+      "chunk": 32,
+      "documented_functions": [
+        "c",
+        "table",
+        "cut",
+        "stopifnot",
+        "identical",
+        "as.integer",
+        "sum",
+        "kable",
+        "data.frame",
+        "names",
+        "ggplot",
+        "aes",
+        "geom_histogram",
+        "scale_x_continuous",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module02/03-numerical-measures.qmd",
+      "chunk": 33,
+      "documented_functions": [
+        "library",
+        "normalizePath",
+        "getwd",
+        "file.exists",
+        "file.path",
+        "dirname",
+        "stopifnot",
+        "read.csv",
+        "c",
+        "factor",
+        "unname",
+        "quantile",
+        "theme_set",
+        "theme_minimal",
+        "q6",
+        "data.frame",
+        "min",
+        "max"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module02/03-numerical-measures.qmd",
+      "chunk": 34,
+      "documented_functions": [
+        "table",
+        "as.numeric",
+        "names",
+        "max",
+        "kable",
+        "data.frame",
+        "c",
+        "length",
+        "sum",
+        "mean",
+        "median",
+        "stopifnot",
+        "identical",
+        "sort"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module02/03-numerical-measures.qmd",
+      "chunk": 35,
+      "documented_functions": [
+        "sum",
+        "mean",
+        "kable",
+        "data.frame",
+        "c",
+        "min",
+        "max",
+        "diff",
+        "range",
+        "length",
+        "sqrt",
+        "stopifnot",
+        "abs",
+        "var",
+        "sd"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module02/03-numerical-measures.qmd",
+      "chunk": 36,
+      "documented_functions": [
+        "q6",
+        "c",
+        "box_record",
+        "kable",
+        "data.frame",
+        "min",
+        "max",
+        "stopifnot",
+        "identical",
+        "as.integer",
+        "ggplot",
+        "aes",
+        "geom_boxplot",
+        "geom_point",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module02/03-numerical-measures.qmd",
+      "chunk": 37,
+      "documented_functions": [
+        "which.max",
+        "c",
+        "mean",
+        "median",
+        "sd",
+        "diff",
+        "range",
+        "q6",
+        "kable",
+        "rbind",
+        "summary_values",
+        "data.frame",
+        "stopifnot",
+        "max",
+        "abs"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module02/03-numerical-measures.qmd",
+      "chunk": 38,
+      "documented_functions": [
+        "split",
+        "do.call",
+        "lapply",
+        "names",
+        "q6",
+        "c",
+        "data.frame",
+        "length",
+        "mean",
+        "median",
+        "sd",
+        "diff",
+        "kable",
+        "stopifnot",
+        "identical",
+        "box_record",
+        "factor",
+        "rep",
+        "ggplot",
+        "aes",
+        "geom_boxplot",
+        "geom_point",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module02/03-numerical-measures.qmd",
+      "chunk": 39,
+      "documented_functions": [
+        "read.csv",
+        "file.path",
+        "subset",
+        "stopifnot",
+        "nrow",
+        "sum",
+        "median",
+        "kable",
+        "data.frame",
+        "mean",
+        "do.call",
+        "lapply",
+        "split",
+        "diff",
+        "range",
+        "all",
+        "c",
+        "abs",
+        "sd",
+        "sqrt"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module02/04-relationships-between-variables.qmd",
+      "chunk": 40,
+      "documented_functions": [
+        "library",
+        "normalizePath",
+        "getwd",
+        "file.exists",
+        "file.path",
+        "dirname",
+        "stopifnot",
+        "read.csv",
+        "c",
+        "factor",
+        "cut",
+        "with",
+        "table",
+        "prop.table",
+        "theme_set",
+        "theme_minimal"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module02/04-relationships-between-variables.qmd",
+      "chunk": 41,
+      "documented_functions": [
+        "kable",
+        "addmargins",
+        "stopifnot",
+        "sum",
+        "all",
+        "rowSums",
+        "c",
+        "colSums",
+        "matrix"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module02/04-relationships-between-variables.qmd",
+      "chunk": 42,
+      "documented_functions": [
+        "data.frame",
+        "c",
+        "kable",
+        "stopifnot",
+        "all",
+        "abs",
+        "rowSums",
+        "colSums",
+        "as.data.frame",
+        "ggplot",
+        "aes",
+        "geom_col",
+        "position_stack",
+        "scale_fill_manual",
+        "scale_x_discrete",
+        "paste0",
+        "labs",
+        "theme"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module02/04-relationships-between-variables.qmd",
+      "chunk": 43,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_point",
+        "scale_x_continuous",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module02/04-relationships-between-variables.qmd",
+      "chunk": 44,
+      "documented_functions": [
+        "mean",
+        "kable",
+        "data.frame",
+        "c",
+        "sum",
+        "cov",
+        "cor",
+        "stopifnot",
+        "abs",
+        "sd",
+        "ggplot",
+        "aes",
+        "geom_point",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module02/05-descriptive-statistics-review.qmd",
+      "chunk": 45,
+      "documented_functions": [
+        "library",
+        "normalizePath",
+        "getwd",
+        "file.exists",
+        "file.path",
+        "dirname",
+        "stopifnot",
+        "read.csv",
+        "read_data",
+        "c",
+        "factor",
+        "unname",
+        "quantile",
+        "theme_set",
+        "theme_minimal"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module02/05-descriptive-statistics-review.qmd",
+      "chunk": 46,
+      "documented_functions": [
+        "table",
+        "factor",
+        "c",
+        "data.frame",
+        "names",
+        "as.integer",
+        "sum",
+        "kable",
+        "stopifnot",
+        "all",
+        "ggplot",
+        "aes",
+        "reorder",
+        "geom_col",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module02/05-descriptive-statistics-review.qmd",
+      "chunk": 47,
+      "documented_functions": [
+        "q6",
+        "c",
+        "kable",
+        "data.frame",
+        "length",
+        "mean",
+        "median",
+        "diff",
+        "range",
+        "sd",
+        "stopifnot",
+        "all",
+        "ggplot",
+        "aes",
+        "geom_histogram",
+        "labs",
+        "sort",
+        "ave",
+        "geom_point",
+        "scale_y_continuous"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module02/05-descriptive-statistics-review.qmd",
+      "chunk": 48,
+      "documented_functions": [
+        "split",
+        "do.call",
+        "lapply",
+        "names",
+        "q6",
+        "c",
+        "data.frame",
+        "length",
+        "min",
+        "max",
+        "kable",
+        "stopifnot",
+        "all",
+        "factor",
+        "diff",
+        "rep",
+        "ggplot",
+        "aes",
+        "geom_boxplot",
+        "geom_point",
+        "labs",
+        "cut",
+        "table",
+        "addmargins",
+        "rowSums"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module02/05-descriptive-statistics-review.qmd",
+      "chunk": 49,
+      "documented_functions": [
+        "kable",
+        "data.frame",
+        "c",
+        "cov",
+        "cor",
+        "stopifnot",
+        "abs",
+        "ggplot",
+        "aes",
+        "geom_point",
+        "scale_x_continuous",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module03/01-probability-rules.qmd",
+      "chunk": 50,
+      "documented_functions": [
+        "library",
+        "normalizePath",
+        "getwd",
+        "file.exists",
+        "file.path",
+        "dirname",
+        "stopifnot"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module03/01-probability-rules.qmd",
+      "chunk": 51,
+      "documented_functions": [
+        "read.csv",
+        "file.path"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module03/01-probability-rules.qmd",
+      "chunk": 52,
+      "documented_functions": [
+        "c",
+        "sum",
+        "kable",
+        "data.frame",
+        "names",
+        "unname",
+        "stopifnot",
+        "identical",
+        "mean",
+        "xor"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module03/02-conditional-probability.qmd",
+      "chunk": 53,
+      "documented_functions": [
+        "library",
+        "normalizePath",
+        "getwd",
+        "file.exists",
+        "file.path",
+        "dirname",
+        "stopifnot"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module03/02-conditional-probability.qmd",
+      "chunk": 54,
+      "documented_functions": [
+        "read.csv",
+        "file.path",
+        "c",
+        "sum",
+        "mean",
+        "kable",
+        "data.frame",
+        "names",
+        "unname",
+        "stopifnot"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module03/02-conditional-probability.qmd",
+      "chunk": 55,
+      "documented_functions": [
+        "kable",
+        "data.frame",
+        "c"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module03/02-conditional-probability.qmd",
+      "chunk": 56,
+      "documented_functions": [
+        "c",
+        "sum",
+        "kable",
+        "data.frame",
+        "stopifnot",
+        "abs"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module03/03-discrete-random-variables.qmd",
+      "chunk": 57,
+      "documented_functions": [
+        "library",
+        "normalizePath",
+        "getwd",
+        "file.exists",
+        "file.path",
+        "dirname",
+        "stopifnot"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module03/03-discrete-random-variables.qmd",
+      "chunk": 58,
+      "documented_functions": [
+        "data.frame",
+        "c",
+        "sum",
+        "cumsum",
+        "kable",
+        "names",
+        "unname",
+        "stopifnot",
+        "abs"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module03/03-discrete-random-variables.qmd",
+      "chunk": 59,
+      "documented_functions": [
+        "sum",
+        "kable",
+        "data.frame",
+        "sqrt",
+        "which.max",
+        "stopifnot",
+        "abs"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module03/04-binomial-and-poisson.qmd",
+      "chunk": 60,
+      "documented_functions": [
+        "library",
+        "normalizePath",
+        "getwd",
+        "file.exists",
+        "file.path",
+        "dirname",
+        "stopifnot"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module03/04-binomial-and-poisson.qmd",
+      "chunk": 61,
+      "documented_functions": [
+        "c",
+        "dbinom",
+        "pbinom",
+        "kable",
+        "data.frame",
+        "names",
+        "unname",
+        "sqrt",
+        "stopifnot",
+        "abs"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module03/04-binomial-and-poisson.qmd",
+      "chunk": 62,
+      "documented_functions": [
+        "c",
+        "dpois",
+        "ppois",
+        "kable",
+        "data.frame",
+        "names",
+        "unname"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module03/04-binomial-and-poisson.qmd",
+      "chunk": 63,
+      "documented_functions": [
+        "set.seed",
+        "rbinom",
+        "kable",
+        "data.frame",
+        "pbinom",
+        "mean"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module03/05-continuous-distributions.qmd",
+      "chunk": 64,
+      "documented_functions": [
+        "library",
+        "normalizePath",
+        "getwd",
+        "file.exists",
+        "file.path",
+        "dirname",
+        "stopifnot"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module03/05-continuous-distributions.qmd",
+      "chunk": 65,
+      "documented_functions": [
+        "c",
+        "punif",
+        "dunif",
+        "kable",
+        "data.frame",
+        "names",
+        "unname"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module03/05-continuous-distributions.qmd",
+      "chunk": 66,
+      "documented_functions": [
+        "qnorm",
+        "c",
+        "pnorm",
+        "kable",
+        "data.frame",
+        "names",
+        "unname",
+        "stopifnot",
+        "abs"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module04/01-sampling-and-variability.qmd",
+      "chunk": 67,
+      "documented_functions": [
+        "set.seed",
+        "sample",
+        "seq_len",
+        "c",
+        "length",
+        "unique"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module04/02-sampling-distributions.qmd",
+      "chunk": 68,
+      "documented_functions": [
+        "c",
+        "kable",
+        "data.frame",
+        "sqrt",
+        "set.seed",
+        "replicate",
+        "mean",
+        "rnorm",
+        "sd"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module04/03-confidence-intervals-for-means.qmd",
+      "chunk": 69,
+      "documented_functions": [
+        "c",
+        "qnorm",
+        "kable",
+        "data.frame",
+        "qt",
+        "sqrt"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module04/04-proportions-and-sample-size.qmd",
+      "chunk": 70,
+      "documented_functions": [
+        "c",
+        "qnorm",
+        "sqrt",
+        "kable",
+        "data.frame",
+        "ceiling"
+      ]
+    },
+    {
+      "path": "20261/_instructor/solutions/module04/05-sampling-and-estimation-review.qmd",
+      "chunk": 71,
+      "documented_functions": [
+        "sqrt",
+        "c",
+        "qt",
+        "qnorm",
+        "ceiling"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 78,
+      "documented_functions": [
+        "print",
+        "Print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 79,
+      "documented_functions": [
+        "data.frame",
+        "c"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 80,
+      "documented_functions": [
+        "print",
+        "class",
+        "typeof",
+        "str"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 81,
+      "documented_functions": [
+        "c"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 83,
+      "documented_functions": [
+        "seq",
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 84,
+      "documented_functions": [
+        "seq",
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 85,
+      "documented_functions": [
+        "rep",
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 86,
+      "documented_functions": [
+        "rep",
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 87,
+      "documented_functions": [
+        "c",
+        "seq",
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 88,
+      "documented_functions": [
+        "c",
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 89,
+      "documented_functions": [
+        "c",
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 90,
+      "documented_functions": [
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 91,
+      "documented_functions": [
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 93,
+      "documented_functions": [
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 94,
+      "documented_functions": [
+        "c",
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 97,
+      "documented_functions": [
+        "c",
+        "sqrt",
+        "exp",
+        "log"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 98,
+      "documented_functions": [
+        "sqrt",
+        "exp"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 102,
+      "documented_functions": [
+        "mean",
+        "median",
+        "quantile",
+        "var",
+        "sd",
+        "min",
+        "max"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 105,
+      "documented_functions": [
+        "c",
+        "sort"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 106,
+      "documented_functions": [
+        "rnorm",
+        "rep"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 107,
+      "documented_functions": [
+        "rnorm",
+        "system.time",
+        "rep",
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 109,
+      "documented_functions": [
+        "array",
+        "c"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 110,
+      "documented_functions": [
+        "list",
+        "c",
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 111,
+      "documented_functions": [
+        "data.frame",
+        "c"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 112,
+      "documented_functions": [
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 113,
+      "documented_functions": [
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 114,
+      "documented_functions": [
+        "c",
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 115,
+      "documented_functions": [
+        "rownames",
+        "print",
+        "head",
+        "c",
+        "length",
+        "nrow",
+        "ncol",
+        "mean"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 116,
+      "documented_functions": [
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 117,
+      "documented_functions": [
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 118,
+      "documented_functions": [
+        "subset",
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 119,
+      "documented_functions": [
+        "c",
+        "data.frame",
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 123,
+      "documented_functions": [
+        "readline",
+        "cat"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 127,
+      "documented_functions": [
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 130,
+      "documented_functions": [
+        "print",
+        "paste"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 132,
+      "documented_functions": [
+        "print",
+        "paste"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 133,
+      "documented_functions": [
+        "matrix",
+        "nrow",
+        "ncol",
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 135,
+      "documented_functions": [
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 137,
+      "documented_functions": [
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 139,
+      "documented_functions": [
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 141,
+      "documented_functions": [
+        "switch",
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 142,
+      "documented_functions": [
+        "return",
+        "print",
+        "add_two_numbers"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 143,
+      "documented_functions": [
+        "paste",
+        "return",
+        "print",
+        "greet_person"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 144,
+      "documented_functions": [
+        "return",
+        "print",
+        "raise_to_power"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 145,
+      "documented_functions": [
+        "mean",
+        "sum",
+        "return",
+        "list",
+        "calculate_stats",
+        "c",
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 146,
+      "documented_functions": [
+        "sapply",
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+      "chunk": 147,
+      "documented_functions": [
+        "return",
+        "increment",
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/03-dplyr.qmd",
+      "chunk": 148,
+      "documented_functions": [
+        "library",
+        "read.csv",
+        "factor",
+        "c",
+        "head",
+        "glimpse"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/03-dplyr.qmd",
+      "chunk": 149,
+      "documented_functions": [
+        "select",
+        "head"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/03-dplyr.qmd",
+      "chunk": 150,
+      "documented_functions": [
+        "filter",
+        "head",
+        "nrow",
+        "c"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/03-dplyr.qmd",
+      "chunk": 151,
+      "documented_functions": [
+        "filter",
+        "select",
+        "arrange",
+        "desc",
+        "head"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/03-dplyr.qmd",
+      "chunk": 152,
+      "documented_functions": [
+        "mutate",
+        "cut",
+        "c",
+        "arrange",
+        "head"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/03-dplyr.qmd",
+      "chunk": 153,
+      "documented_functions": [
+        "count",
+        "group_by",
+        "summarise",
+        "n",
+        "mean",
+        "median",
+        "stopifnot",
+        "sum",
+        "nrow"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/03-dplyr.qmd",
+      "chunk": 154,
+      "documented_functions": [
+        "colSums",
+        "is.na",
+        "anyDuplicated"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/03-dplyr.qmd",
+      "chunk": 155,
+      "documented_functions": [
+        "select",
+        "left_join",
+        "stopifnot",
+        "nrow",
+        "anyNA",
+        "head"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/03-dplyr.qmd",
+      "chunk": 156,
+      "documented_functions": [
+        "library",
+        "select",
+        "pivot_longer",
+        "pivot_wider"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/04-ggplot2.qmd",
+      "chunk": 160,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_point",
+        "geom_line",
+        "factor",
+        "geom_bar"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/04-ggplot2.qmd",
+      "chunk": 162,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "factor",
+        "geom_point",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/04-ggplot2.qmd",
+      "chunk": 163,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "factor",
+        "geom_point",
+        "xlim",
+        "ylim",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/04-ggplot2.qmd",
+      "chunk": 164,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_point",
+        "scale_x_continuous",
+        "seq",
+        "scale_y_continuous"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/04-ggplot2.qmd",
+      "chunk": 165,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "factor",
+        "geom_point",
+        "labs",
+        "guides",
+        "guide_legend"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/04-ggplot2.qmd",
+      "chunk": 166,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "factor",
+        "geom_point",
+        "geom_smooth",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/04-ggplot2.qmd",
+      "chunk": 167,
+      "documented_functions": [
+        "library",
+        "ggplot",
+        "aes",
+        "geom_point",
+        "facet_wrap",
+        "facet_grid"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/04-ggplot2.qmd",
+      "chunk": 168,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_point",
+        "facet_wrap"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/04-ggplot2.qmd",
+      "chunk": 169,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_point",
+        "facet_grid"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/04-ggplot2.qmd",
+      "chunk": 170,
+      "documented_functions": [
+        "library",
+        "ggplot",
+        "aes",
+        "geom_point"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/04-ggplot2.qmd",
+      "chunk": 171,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_line",
+        "geom_point"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/04-ggplot2.qmd",
+      "chunk": 172,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_smooth"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/04-ggplot2.qmd",
+      "chunk": 173,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_bar"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/04-ggplot2.qmd",
+      "chunk": 174,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_histogram"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/04-ggplot2.qmd",
+      "chunk": 175,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_boxplot"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/04-ggplot2.qmd",
+      "chunk": 176,
+      "documented_functions": [
+        "library",
+        "ggplot",
+        "aes",
+        "factor",
+        "geom_boxplot",
+        "labs",
+        "theme_bw",
+        "facet_wrap"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/04-ggplot2.qmd",
+      "chunk": 177,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_area"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/04-ggplot2.qmd",
+      "chunk": 178,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_density"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/04-ggplot2.qmd",
+      "chunk": 179,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_violin"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/04-ggplot2.qmd",
+      "chunk": 180,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_col"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/04-ggplot2.qmd",
+      "chunk": 181,
+      "documented_functions": [
+        "expand.grid",
+        "runif",
+        "ggplot",
+        "aes",
+        "geom_tile"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/04-ggplot2.qmd",
+      "chunk": 182,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "rownames",
+        "geom_text",
+        "geom_label"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/04-ggplot2.qmd",
+      "chunk": 183,
+      "documented_functions": [
+        "data.frame",
+        "sin",
+        "rnorm",
+        "ggplot",
+        "aes",
+        "geom_ribbon",
+        "geom_line"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/04-ggplot2.qmd",
+      "chunk": 184,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_jitter"
+      ]
+    },
+    {
+      "path": "20261/modules/01-introduction-to-r/04-ggplot2.qmd",
+      "chunk": 185,
+      "documented_functions": [
+        "library",
+        "data",
+        "ggplot",
+        "aes",
+        "geom_point",
+        "scale_size_continuous",
+        "c",
+        "labs",
+        "theme_minimal"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/01-data-types-and-toolbox.qmd",
+      "chunk": 187,
+      "documented_functions": [
+        "library",
+        "theme_set",
+        "theme_minimal",
+        "theme",
+        "element_text",
+        "element_blank",
+        "read.csv",
+        "as.character",
+        "factor",
+        "c",
+        "stopifnot",
+        "nrow",
+        "anyNA"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/01-data-types-and-toolbox.qmd",
+      "chunk": 188,
+      "documented_functions": [
+        "kable",
+        "head",
+        "c"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/01-data-types-and-toolbox.qmd",
+      "chunk": 189,
+      "documented_functions": [
+        "as.data.frame",
+        "table",
+        "names",
+        "c",
+        "nrow",
+        "kable"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/01-data-types-and-toolbox.qmd",
+      "chunk": 190,
+      "documented_functions": [
+        "cut",
+        "seq",
+        "as.data.frame",
+        "table",
+        "names",
+        "c",
+        "stopifnot",
+        "identical",
+        "kable"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/01-data-types-and-toolbox.qmd",
+      "chunk": 191,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_col",
+        "geom_text",
+        "scale_y_continuous",
+        "c",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/01-data-types-and-toolbox.qmd",
+      "chunk": 192,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_histogram",
+        "seq",
+        "scale_x_continuous",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/01-data-types-and-toolbox.qmd",
+      "chunk": 193,
+      "documented_functions": [
+        "quantile",
+        "c",
+        "data.frame",
+        "length",
+        "mean",
+        "median",
+        "min",
+        "max",
+        "diff",
+        "range",
+        "var",
+        "sd",
+        "kable"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/01-data-types-and-toolbox.qmd",
+      "chunk": 194,
+      "documented_functions": [
+        "split",
+        "do.call",
+        "lapply",
+        "names",
+        "quantile",
+        "c",
+        "data.frame",
+        "length",
+        "median",
+        "kable"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/01-data-types-and-toolbox.qmd",
+      "chunk": 195,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_boxplot",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/01-data-types-and-toolbox.qmd",
+      "chunk": 196,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_point",
+        "scale_x_continuous",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/02-frequency-tables-and-charts.qmd",
+      "chunk": 197,
+      "documented_functions": [
+        "library",
+        "read.csv",
+        "c",
+        "factor",
+        "stopifnot",
+        "nrow",
+        "anyNA",
+        "theme_set",
+        "theme_minimal",
+        "theme",
+        "element_blank",
+        "element_text"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/02-frequency-tables-and-charts.qmd",
+      "chunk": 199,
+      "documented_functions": [
+        "as.data.frame",
+        "table",
+        "names",
+        "c",
+        "nrow",
+        "stopifnot",
+        "identical",
+        "as.integer",
+        "sum",
+        "abs",
+        "kable"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/02-frequency-tables-and-charts.qmd",
+      "chunk": 200,
+      "documented_functions": [
+        "order",
+        "as.character",
+        "factor",
+        "rev",
+        "ggplot",
+        "aes",
+        "geom_col",
+        "geom_text",
+        "scale_x_continuous",
+        "c",
+        "seq",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/02-frequency-tables-and-charts.qmd",
+      "chunk": 201,
+      "documented_functions": [
+        "paste0",
+        "ggplot",
+        "aes",
+        "geom_col",
+        "coord_polar",
+        "geom_text",
+        "position_stack",
+        "scale_fill_manual",
+        "c",
+        "theme_void",
+        "theme"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/02-frequency-tables-and-charts.qmd",
+      "chunk": 202,
+      "documented_functions": [
+        "kable",
+        "data.frame",
+        "seq_len",
+        "nrow",
+        "c"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/02-frequency-tables-and-charts.qmd",
+      "chunk": 203,
+      "documented_functions": [
+        "seq",
+        "cut",
+        "as.data.frame",
+        "table",
+        "names",
+        "c",
+        "nrow",
+        "stopifnot",
+        "anyNA",
+        "sum",
+        "identical",
+        "as.integer",
+        "kable"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/02-frequency-tables-and-charts.qmd",
+      "chunk": 204,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_histogram",
+        "scale_x_continuous",
+        "scale_y_continuous",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/02-frequency-tables-and-charts.qmd",
+      "chunk": 205,
+      "documented_functions": [
+        "seq_len",
+        "qnorm",
+        "qbeta",
+        "c",
+        "data.frame",
+        "factor",
+        "rep",
+        "stopifnot",
+        "all",
+        "ggplot",
+        "aes",
+        "geom_histogram",
+        "seq",
+        "facet_wrap",
+        "scale_x_continuous",
+        "labs",
+        "theme",
+        "element_text"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/02-frequency-tables-and-charts.qmd",
+      "chunk": 206,
+      "documented_functions": [
+        "length",
+        "seq_len",
+        "unlist",
+        "lapply",
+        "qnorm",
+        "c",
+        "data.frame",
+        "make_components",
+        "factor",
+        "rep",
+        "stopifnot",
+        "all",
+        "ggplot",
+        "aes",
+        "geom_histogram",
+        "seq",
+        "facet_wrap",
+        "scale_x_continuous",
+        "labs",
+        "theme",
+        "element_text"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/02-frequency-tables-and-charts.qmd",
+      "chunk": 207,
+      "documented_functions": [
+        "read.csv",
+        "stopifnot",
+        "nrow",
+        "anyNA",
+        "identical",
+        "names",
+        "c",
+        "rbind",
+        "data.frame",
+        "factor",
+        "do.call",
+        "lapply",
+        "levels",
+        "startsWith",
+        "seq",
+        "hist",
+        "sum",
+        "head",
+        "tail",
+        "ggplot",
+        "aes",
+        "geom_rect",
+        "facet_wrap",
+        "labs",
+        "theme",
+        "element_text"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/02-frequency-tables-and-charts.qmd",
+      "chunk": 208,
+      "documented_functions": [
+        "list",
+        "seq",
+        "do.call",
+        "lapply",
+        "names",
+        "hist",
+        "stopifnot",
+        "sum",
+        "data.frame",
+        "head",
+        "tail",
+        "factor",
+        "ggplot",
+        "aes",
+        "geom_rect",
+        "geom_vline",
+        "facet_wrap",
+        "scale_x_continuous",
+        "c",
+        "scale_y_continuous",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/02-frequency-tables-and-charts.qmd",
+      "chunk": 209,
+      "documented_functions": [
+        "data.frame",
+        "paste",
+        "cumsum",
+        "nrow",
+        "stopifnot",
+        "identical",
+        "as.integer",
+        "c",
+        "sum",
+        "kable"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/03-numerical-measures.qmd",
+      "chunk": 210,
+      "documented_functions": [
+        "library",
+        "read.csv",
+        "c",
+        "factor",
+        "stopifnot",
+        "length",
+        "anyNA",
+        "nrow",
+        "theme_set",
+        "theme_minimal",
+        "theme",
+        "element_blank",
+        "element_text",
+        "unname",
+        "quantile",
+        "q6",
+        "data.frame",
+        "min",
+        "max"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/03-numerical-measures.qmd",
+      "chunk": 211,
+      "documented_functions": [
+        "data.frame",
+        "seq_along",
+        "sort",
+        "kable",
+        "c"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/03-numerical-measures.qmd",
+      "chunk": 212,
+      "documented_functions": [
+        "table",
+        "as.numeric",
+        "names",
+        "max",
+        "data.frame",
+        "c",
+        "mean",
+        "median",
+        "stopifnot",
+        "identical",
+        "kable"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/03-numerical-measures.qmd",
+      "chunk": 213,
+      "documented_functions": [
+        "data.frame",
+        "sort",
+        "ave",
+        "c",
+        "mean",
+        "median",
+        "ggplot",
+        "aes",
+        "geom_point",
+        "geom_vline",
+        "scale_y_continuous",
+        "labs",
+        "theme"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/03-numerical-measures.qmd",
+      "chunk": 214,
+      "documented_functions": [
+        "subset",
+        "kable",
+        "data.frame",
+        "c",
+        "sum",
+        "mean",
+        "median",
+        "stopifnot",
+        "abs"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/03-numerical-measures.qmd",
+      "chunk": 215,
+      "documented_functions": [
+        "split",
+        "subset",
+        "do.call",
+        "lapply",
+        "names",
+        "data.frame",
+        "paste",
+        "mean",
+        "stopifnot",
+        "all",
+        "kable"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/03-numerical-measures.qmd",
+      "chunk": 216,
+      "documented_functions": [
+        "subset",
+        "ave",
+        "ggplot",
+        "aes",
+        "geom_vline",
+        "geom_point",
+        "facet_wrap",
+        "scale_x_continuous",
+        "c",
+        "scale_y_continuous",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/03-numerical-measures.qmd",
+      "chunk": 217,
+      "documented_functions": [
+        "sum",
+        "mean",
+        "data.frame",
+        "c",
+        "diff",
+        "range",
+        "var",
+        "sd",
+        "stopifnot",
+        "abs",
+        "length",
+        "kable"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/03-numerical-measures.qmd",
+      "chunk": 218,
+      "documented_functions": [
+        "do.call",
+        "lapply",
+        "split",
+        "data.frame",
+        "length",
+        "mean",
+        "diff",
+        "range",
+        "abs",
+        "sd",
+        "stopifnot",
+        "all",
+        "c",
+        "sqrt",
+        "kable"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/03-numerical-measures.qmd",
+      "chunk": 219,
+      "documented_functions": [
+        "quantile",
+        "c",
+        "kable",
+        "data.frame",
+        "unname",
+        "stopifnot",
+        "identical"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/03-numerical-measures.qmd",
+      "chunk": 220,
+      "documented_functions": [
+        "c",
+        "min",
+        "median",
+        "max",
+        "kable",
+        "data.frame",
+        "unname"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/03-numerical-measures.qmd",
+      "chunk": 221,
+      "documented_functions": [
+        "box_record",
+        "stopifnot",
+        "identical",
+        "as.integer",
+        "ggplot",
+        "aes",
+        "geom_boxplot",
+        "geom_point",
+        "data.frame",
+        "geom_hline",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/03-numerical-measures.qmd",
+      "chunk": 222,
+      "documented_functions": [
+        "which.max",
+        "data.frame",
+        "c",
+        "mean",
+        "median",
+        "sd",
+        "diff",
+        "q6",
+        "kable",
+        "stopifnot",
+        "max"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/03-numerical-measures.qmd",
+      "chunk": 223,
+      "documented_functions": [
+        "kable",
+        "data.frame",
+        "c",
+        "sd",
+        "mean"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/03-numerical-measures.qmd",
+      "chunk": 224,
+      "documented_functions": [
+        "split",
+        "do.call",
+        "lapply",
+        "names",
+        "q6",
+        "c",
+        "data.frame",
+        "length",
+        "mean",
+        "median",
+        "sd",
+        "diff",
+        "stopifnot",
+        "sum",
+        "identical",
+        "kable"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/03-numerical-measures.qmd",
+      "chunk": 225,
+      "documented_functions": [
+        "do.call",
+        "lapply",
+        "names",
+        "box_record",
+        "factor",
+        "data.frame",
+        "rep",
+        "length",
+        "ggplot",
+        "aes",
+        "geom_boxplot",
+        "geom_point",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/04-relationships-between-variables.qmd",
+      "chunk": 226,
+      "documented_functions": [
+        "library",
+        "read.csv",
+        "c",
+        "factor",
+        "cut",
+        "stopifnot",
+        "nrow",
+        "anyNA",
+        "theme_set",
+        "theme_minimal",
+        "theme",
+        "element_blank",
+        "element_text",
+        "with",
+        "table",
+        "prop.table",
+        "matrix",
+        "all",
+        "sum",
+        "abs",
+        "rowSums",
+        "colSums"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/04-relationships-between-variables.qmd",
+      "chunk": 228,
+      "documented_functions": [
+        "kable",
+        "cbind",
+        "rowSums"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/04-relationships-between-variables.qmd",
+      "chunk": 229,
+      "documented_functions": [
+        "as.data.frame",
+        "factor",
+        "ifelse",
+        "sprintf",
+        "paste0",
+        "rowSums",
+        "ggplot",
+        "aes",
+        "geom_col",
+        "position_stack",
+        "geom_text",
+        "scale_fill_manual",
+        "c",
+        "scale_x_discrete",
+        "scale_y_continuous",
+        "seq",
+        "labs",
+        "theme"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/04-relationships-between-variables.qmd",
+      "chunk": 230,
+      "documented_functions": [
+        "kable",
+        "rbind",
+        "colSums"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/04-relationships-between-variables.qmd",
+      "chunk": 231,
+      "documented_functions": [
+        "stopifnot",
+        "abs"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/04-relationships-between-variables.qmd",
+      "chunk": 232,
+      "documented_functions": [
+        "kable",
+        "c"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/04-relationships-between-variables.qmd",
+      "chunk": 233,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_point",
+        "geom_text",
+        "scale_x_continuous",
+        "scale_y_continuous",
+        "expansion",
+        "c",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/04-relationships-between-variables.qmd",
+      "chunk": 234,
+      "documented_functions": [
+        "data.frame",
+        "mean",
+        "kable",
+        "stopifnot",
+        "sum",
+        "cov"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/04-relationships-between-variables.qmd",
+      "chunk": 235,
+      "documented_functions": [
+        "cor",
+        "kable",
+        "data.frame",
+        "c",
+        "sd",
+        "cov",
+        "stopifnot",
+        "abs"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/04-relationships-between-variables.qmd",
+      "chunk": 236,
+      "documented_functions": [
+        "data.frame",
+        "c",
+        "cov",
+        "cor",
+        "kable",
+        "stopifnot",
+        "abs"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/04-relationships-between-variables.qmd",
+      "chunk": 237,
+      "documented_functions": [
+        "rbind",
+        "data.frame",
+        "factor",
+        "c",
+        "stopifnot",
+        "cor",
+        "abs",
+        "ggplot",
+        "aes",
+        "geom_point",
+        "facet_wrap",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/exercises/01-data-types-and-toolbox.qmd",
+      "chunk": 238,
+      "documented_functions": [
+        "read.csv",
+        "factor",
+        "c"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/exercises/01-data-types-and-toolbox.qmd",
+      "chunk": 239,
+      "documented_functions": [
+        "read.csv",
+        "names"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/exercises/02-frequency-tables-and-charts.qmd",
+      "chunk": 240,
+      "documented_functions": [
+        "library",
+        "read.csv"
+      ]
+    },
+    {
+      "path": "20261/modules/02-data-and-descriptive-statistics/exercises/03-numerical-measures.qmd",
+      "chunk": 241,
+      "documented_functions": [
+        "library",
+        "read.csv"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/01-probability-rules.qmd",
+      "chunk": 243,
+      "documented_functions": [
+        "library",
+        "read.csv",
+        "stopifnot",
+        "nrow",
+        "anyNA",
+        "sum",
+        "theme_set",
+        "theme_minimal"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/01-probability-rules.qmd",
+      "chunk": 244,
+      "documented_functions": [
+        "data.frame",
+        "c",
+        "sum",
+        "nrow",
+        "kable"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/01-probability-rules.qmd",
+      "chunk": 245,
+      "documented_functions": [
+        "c",
+        "mean",
+        "stopifnot",
+        "abs",
+        "kable",
+        "data.frame",
+        "names",
+        "unname"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/01-probability-rules.qmd",
+      "chunk": 246,
+      "documented_functions": [
+        "data.frame",
+        "rep",
+        "c",
+        "sum",
+        "paste0",
+        "sprintf",
+        "stopifnot",
+        "ggplot",
+        "aes",
+        "geom_tile",
+        "geom_text",
+        "scale_fill_gradient",
+        "labs",
+        "theme",
+        "element_blank"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/01-probability-rules.qmd",
+      "chunk": 247,
+      "documented_functions": [
+        "kable",
+        "data.frame",
+        "c",
+        "choose"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/02-conditional-probability.qmd",
+      "chunk": 248,
+      "documented_functions": [
+        "library",
+        "read.csv",
+        "stopifnot",
+        "length",
+        "sum",
+        "theme_set",
+        "theme_minimal"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/02-conditional-probability.qmd",
+      "chunk": 249,
+      "documented_functions": [
+        "data.frame",
+        "c",
+        "rep",
+        "sum",
+        "nrow",
+        "kable"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/02-conditional-probability.qmd",
+      "chunk": 250,
+      "documented_functions": [
+        "mean",
+        "kable",
+        "data.frame",
+        "c",
+        "isTRUE",
+        "all.equal"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/02-conditional-probability.qmd",
+      "chunk": 251,
+      "documented_functions": [
+        "data.frame",
+        "c",
+        "sum",
+        "stopifnot",
+        "abs",
+        "kable"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/02-conditional-probability.qmd",
+      "chunk": 252,
+      "documented_functions": [
+        "data.frame",
+        "rep",
+        "c",
+        "ggplot",
+        "aes",
+        "geom_col",
+        "position_dodge",
+        "geom_text",
+        "sprintf",
+        "scale_fill_manual",
+        "scale_y_continuous",
+        "paste0",
+        "labs",
+        "theme"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/03-discrete-random-variables.qmd",
+      "chunk": 253,
+      "documented_functions": [
+        "library",
+        "data.frame",
+        "c",
+        "sum",
+        "stopifnot",
+        "all",
+        "abs",
+        "theme_set",
+        "theme_minimal"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/03-discrete-random-variables.qmd",
+      "chunk": 254,
+      "documented_functions": [
+        "stopifnot",
+        "all",
+        "abs",
+        "sum",
+        "kable"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/03-discrete-random-variables.qmd",
+      "chunk": 255,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_col",
+        "geom_text",
+        "sprintf",
+        "scale_fill_manual",
+        "c",
+        "scale_x_continuous",
+        "scale_y_continuous",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/03-discrete-random-variables.qmd",
+      "chunk": 256,
+      "documented_functions": [
+        "cumsum",
+        "kable",
+        "c",
+        "sum"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/03-discrete-random-variables.qmd",
+      "chunk": 257,
+      "documented_functions": [
+        "sum",
+        "kable",
+        "data.frame",
+        "c",
+        "sqrt",
+        "stopifnot",
+        "abs"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/04-binomial-and-poisson.qmd",
+      "chunk": 258,
+      "documented_functions": [
+        "library",
+        "theme_set",
+        "theme_minimal"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/04-binomial-and-poisson.qmd",
+      "chunk": 259,
+      "documented_functions": [
+        "data.frame",
+        "dbinom",
+        "kable",
+        "stopifnot",
+        "abs",
+        "choose"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/04-binomial-and-poisson.qmd",
+      "chunk": 260,
+      "documented_functions": [
+        "c",
+        "dbinom",
+        "pbinom",
+        "kable",
+        "data.frame",
+        "names",
+        "unname"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/04-binomial-and-poisson.qmd",
+      "chunk": 261,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_col",
+        "geom_text",
+        "sprintf",
+        "scale_fill_manual",
+        "c",
+        "scale_x_continuous",
+        "scale_y_continuous",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/04-binomial-and-poisson.qmd",
+      "chunk": 262,
+      "documented_functions": [
+        "set.seed",
+        "rbinom",
+        "kable",
+        "data.frame",
+        "c",
+        "dbinom",
+        "mean"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/04-binomial-and-poisson.qmd",
+      "chunk": 263,
+      "documented_functions": [
+        "c",
+        "dpois",
+        "ppois",
+        "kable",
+        "data.frame",
+        "names",
+        "unname"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/04-binomial-and-poisson.qmd",
+      "chunk": 264,
+      "documented_functions": [
+        "data.frame",
+        "dpois",
+        "ggplot",
+        "aes",
+        "geom_col",
+        "geom_vline",
+        "scale_fill_manual",
+        "c",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/05-continuous-distributions.qmd",
+      "chunk": 265,
+      "documented_functions": [
+        "library",
+        "theme_set",
+        "theme_minimal"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/05-continuous-distributions.qmd",
+      "chunk": 266,
+      "documented_functions": [
+        "punif",
+        "kable",
+        "data.frame",
+        "c",
+        "dunif"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/05-continuous-distributions.qmd",
+      "chunk": 267,
+      "documented_functions": [
+        "ggplot",
+        "geom_rect",
+        "aes",
+        "annotate",
+        "scale_x_continuous",
+        "c",
+        "scale_y_continuous",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/05-continuous-distributions.qmd",
+      "chunk": 268,
+      "documented_functions": [
+        "c",
+        "pnorm",
+        "kable",
+        "data.frame",
+        "names",
+        "unname",
+        "stopifnot",
+        "abs"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/05-continuous-distributions.qmd",
+      "chunk": 269,
+      "documented_functions": [
+        "data.frame",
+        "sort",
+        "unique",
+        "c",
+        "seq",
+        "dnorm",
+        "ggplot",
+        "aes",
+        "geom_area",
+        "subset",
+        "geom_line",
+        "geom_vline",
+        "annotate",
+        "labs"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/05-continuous-distributions.qmd",
+      "chunk": 270,
+      "documented_functions": [
+        "qnorm",
+        "kable",
+        "data.frame",
+        "c",
+        "pnorm"
+      ]
+    },
+    {
+      "path": "20261/modules/03-probability-and-distributions/exercises/03-discrete-random-variables.qmd",
+      "chunk": 272,
+      "documented_functions": [
+        "data.frame",
+        "c"
+      ]
+    },
+    {
+      "path": "20261/modules/04-sampling-and-estimation/01-sampling-and-variability.qmd",
+      "chunk": 273,
+      "documented_functions": [
+        "set.seed",
+        "sample",
+        "seq_len",
+        "head"
+      ]
+    },
+    {
+      "path": "20261/modules/04-sampling-and-estimation/01-sampling-and-variability.qmd",
+      "chunk": 274,
+      "documented_functions": [
+        "kable",
+        "data.frame",
+        "c"
+      ]
+    },
+    {
+      "path": "20261/modules/04-sampling-and-estimation/02-sampling-distributions.qmd",
+      "chunk": 275,
+      "documented_functions": [
+        "sqrt",
+        "kable",
+        "data.frame",
+        "c"
+      ]
+    },
+    {
+      "path": "20261/modules/04-sampling-and-estimation/02-sampling-distributions.qmd",
+      "chunk": 276,
+      "documented_functions": [
+        "set.seed",
+        "replicate",
+        "mean",
+        "rnorm",
+        "c",
+        "sd",
+        "sqrt"
+      ]
+    },
+    {
+      "path": "20261/modules/04-sampling-and-estimation/02-sampling-distributions.qmd",
+      "chunk": 278,
+      "documented_functions": [
+        "sqrt",
+        "pnorm"
+      ]
+    },
+    {
+      "path": "20261/modules/04-sampling-and-estimation/03-confidence-intervals-for-means.qmd",
+      "chunk": 279,
+      "documented_functions": [
+        "sqrt",
+        "qnorm",
+        "c",
+        "kable",
+        "data.frame"
+      ]
+    },
+    {
+      "path": "20261/modules/04-sampling-and-estimation/03-confidence-intervals-for-means.qmd",
+      "chunk": 280,
+      "documented_functions": [
+        "set.seed",
+        "rnorm",
+        "qnorm",
+        "mean"
+      ]
+    },
+    {
+      "path": "20261/modules/04-sampling-and-estimation/03-confidence-intervals-for-means.qmd",
+      "chunk": 281,
+      "documented_functions": [
+        "plot",
+        "range",
+        "c",
+        "segments",
+        "ifelse",
+        "text",
+        "abline"
+      ]
+    },
+    {
+      "path": "20261/modules/04-sampling-and-estimation/03-confidence-intervals-for-means.qmd",
+      "chunk": 282,
+      "documented_functions": [
+        "qt",
+        "sqrt",
+        "c",
+        "kable",
+        "data.frame"
+      ]
+    },
+    {
+      "path": "20261/modules/04-sampling-and-estimation/04-proportions-and-sample-size.qmd",
+      "chunk": 283,
+      "documented_functions": [
+        "sqrt",
+        "qnorm",
+        "c",
+        "kable",
+        "data.frame"
+      ]
+    },
+    {
+      "path": "20261/modules/04-sampling-and-estimation/04-proportions-and-sample-size.qmd",
+      "chunk": 284,
+      "documented_functions": [
+        "qnorm",
+        "c",
+        "ceiling",
+        "kable",
+        "data.frame"
+      ]
+    },
+    {
+      "path": "20261/modules/04-sampling-and-estimation/04-proportions-and-sample-size.qmd",
+      "chunk": 285,
+      "documented_functions": [
+        "ceiling",
+        "qnorm"
+      ]
+    },
+    {
+      "path": "20261/modules/05-hypothesis-testing/01-hypothesis-testing.qmd",
+      "chunk": 286,
+      "documented_functions": [
+        "library",
+        "read_csv"
+      ]
+    },
+    {
+      "path": "20261/modules/05-hypothesis-testing/01-hypothesis-testing.qmd",
+      "chunk": 287,
+      "documented_functions": [
+        "summary",
+        "t.test",
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/05-hypothesis-testing/01-hypothesis-testing.qmd",
+      "chunk": 288,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_boxplot",
+        "labs",
+        "scale_y_continuous",
+        "seq",
+        "floor",
+        "min",
+        "ceiling",
+        "max",
+        "theme_minimal"
+      ]
+    },
+    {
+      "path": "20261/modules/05-hypothesis-testing/01-hypothesis-testing.qmd",
+      "chunk": 289,
+      "documented_functions": [
+        "library",
+        "summarize",
+        "min",
+        "quantile",
+        "median",
+        "max",
+        "mean",
+        "ggplot",
+        "aes",
+        "geom_boxplot",
+        "annotate",
+        "paste",
+        "round",
+        "labs",
+        "scale_y_continuous",
+        "seq",
+        "floor",
+        "ceiling",
+        "theme_minimal",
+        "theme",
+        "element_blank"
+      ]
+    },
+    {
+      "path": "20261/modules/05-hypothesis-testing/01-hypothesis-testing.qmd",
+      "chunk": 290,
+      "documented_functions": [
+        "t.test",
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/05-hypothesis-testing/01-hypothesis-testing.qmd",
+      "chunk": 291,
+      "documented_functions": [
+        "library",
+        "ggplot",
+        "aes",
+        "geom_boxplot",
+        "labs",
+        "scale_y_continuous",
+        "seq",
+        "floor",
+        "min",
+        "ceiling",
+        "max",
+        "theme_minimal"
+      ]
+    },
+    {
+      "path": "20261/modules/05-hypothesis-testing/01-hypothesis-testing.qmd",
+      "chunk": 292,
+      "documented_functions": [
+        "library",
+        "group_by",
+        "summarize",
+        "min",
+        "quantile",
+        "median",
+        "max",
+        "mean",
+        "ggplot",
+        "aes",
+        "geom_boxplot",
+        "geom_text",
+        "round",
+        "paste",
+        "labs",
+        "scale_y_continuous",
+        "seq",
+        "floor",
+        "ceiling",
+        "theme_minimal"
+      ]
+    },
+    {
+      "path": "20261/modules/05-hypothesis-testing/01-hypothesis-testing.qmd",
+      "chunk": 293,
+      "documented_functions": [
+        "t.test",
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/05-hypothesis-testing/01-hypothesis-testing.qmd",
+      "chunk": 294,
+      "documented_functions": [
+        "library",
+        "ggplot",
+        "aes",
+        "geom_boxplot",
+        "labs",
+        "scale_y_continuous",
+        "seq",
+        "floor",
+        "min",
+        "ceiling",
+        "max",
+        "theme_minimal"
+      ]
+    },
+    {
+      "path": "20261/modules/05-hypothesis-testing/01-hypothesis-testing.qmd",
+      "chunk": 295,
+      "documented_functions": [
+        "library",
+        "group_by",
+        "summarize",
+        "min",
+        "quantile",
+        "median",
+        "max",
+        "mean",
+        "ggplot",
+        "aes",
+        "geom_boxplot",
+        "geom_text",
+        "round",
+        "paste",
+        "labs",
+        "scale_y_continuous",
+        "seq",
+        "floor",
+        "ceiling",
+        "theme_minimal"
+      ]
+    },
+    {
+      "path": "20261/modules/05-hypothesis-testing/01-hypothesis-testing.qmd",
+      "chunk": 296,
+      "documented_functions": [
+        "filter",
+        "c",
+        "t.test",
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/05-hypothesis-testing/01-hypothesis-testing.qmd",
+      "chunk": 297,
+      "documented_functions": [
+        "library",
+        "ggplot",
+        "aes",
+        "geom_boxplot",
+        "labs",
+        "scale_y_continuous",
+        "seq",
+        "floor",
+        "min",
+        "ceiling",
+        "max",
+        "theme_minimal"
+      ]
+    },
+    {
+      "path": "20261/modules/05-hypothesis-testing/01-hypothesis-testing.qmd",
+      "chunk": 298,
+      "documented_functions": [
+        "library",
+        "group_by",
+        "summarize",
+        "min",
+        "quantile",
+        "median",
+        "max",
+        "mean",
+        "ggplot",
+        "aes",
+        "geom_boxplot",
+        "geom_text",
+        "paste",
+        "round",
+        "labs",
+        "scale_y_continuous",
+        "seq",
+        "floor",
+        "ceiling",
+        "theme_minimal"
+      ]
+    },
+    {
+      "path": "20261/modules/05-hypothesis-testing/01-hypothesis-testing.qmd",
+      "chunk": 299,
+      "documented_functions": [
+        "set.seed",
+        "rnorm",
+        "t.test",
+        "print"
+      ]
+    },
+    {
+      "path": "20261/modules/05-hypothesis-testing/01-hypothesis-testing.qmd",
+      "chunk": 300,
+      "documented_functions": [
+        "mutate",
+        "factor",
+        "c",
+        "filter",
+        "aov",
+        "print",
+        "summary"
+      ]
+    },
+    {
+      "path": "20261/modules/05-hypothesis-testing/01-hypothesis-testing.qmd",
+      "chunk": 301,
+      "documented_functions": [
+        "library",
+        "group_by",
+        "summarise",
+        "n",
+        "ggplot",
+        "aes",
+        "geom_boxplot",
+        "ggtitle",
+        "xlab",
+        "ylab",
+        "scale_y_continuous",
+        "seq",
+        "scale_fill_brewer",
+        "theme_minimal",
+        "geom_text",
+        "paste0",
+        "position_dodge"
+      ]
+    },
+    {
+      "path": "20261/modules/05-hypothesis-testing/01-hypothesis-testing.qmd",
+      "chunk": 302,
+      "documented_functions": [
+        "library",
+        "group_by",
+        "summarize",
+        "min",
+        "quantile",
+        "median",
+        "max",
+        "mean",
+        "n",
+        "ggplot",
+        "aes",
+        "geom_boxplot",
+        "ggtitle",
+        "xlab",
+        "ylab",
+        "scale_y_continuous",
+        "seq",
+        "scale_fill_brewer",
+        "theme_minimal",
+        "geom_text",
+        "paste",
+        "round",
+        "paste0"
+      ]
+    },
+    {
+      "path": "20261/modules/05-hypothesis-testing/01-hypothesis-testing.qmd",
+      "chunk": 303,
+      "documented_functions": [
+        "as.factor",
+        "aov",
+        "summary"
+      ]
+    },
+    {
+      "path": "20261/modules/05-hypothesis-testing/01-hypothesis-testing.qmd",
+      "chunk": 304,
+      "documented_functions": [
+        "group_by",
+        "summarise",
+        "n",
+        "ggplot",
+        "aes",
+        "geom_boxplot",
+        "ggtitle",
+        "xlab",
+        "ylab",
+        "scale_y_continuous",
+        "seq",
+        "scale_fill_brewer",
+        "theme_minimal",
+        "geom_text",
+        "paste0",
+        "position_dodge"
+      ]
+    },
+    {
+      "path": "20261/modules/05-hypothesis-testing/01-hypothesis-testing.qmd",
+      "chunk": 305,
+      "documented_functions": [
+        "table",
+        "print",
+        "chisq.test"
+      ]
+    },
+    {
+      "path": "20261/modules/05-hypothesis-testing/01-hypothesis-testing.qmd",
+      "chunk": 306,
+      "documented_functions": [
+        "ggplot",
+        "aes",
+        "geom_bar",
+        "ggtitle",
+        "xlab",
+        "ylab",
+        "scale_fill_brewer",
+        "theme_minimal"
+      ]
+    },
+    {
+      "path": "20261/scripts/prepare-histogram-student-data.R",
+      "chunk": 307,
+      "documented_functions": [
+        "library",
+        "grep",
+        "commandArgs",
+        "length",
+        "stop",
+        "normalizePath",
+        "file.path",
+        "dirname",
+        "sub",
+        "read_excel",
+        "stopifnot",
+        "all",
+        "c",
+        "names",
+        "nrow",
+        "as.data.frame",
+        "is.numeric",
+        "anyNA",
+        "is.finite",
+        "identical",
+        "range",
+        "write.csv",
+        "cat",
+        "unname",
+        "md5sum",
+        "read.csv",
+        "isTRUE",
+        "all.equal",
+        "as.numeric"
+      ]
+    },
+    {
+      "path": "20261/scripts/verify-data.R",
+      "chunk": 308,
+      "documented_functions": [
+        "library",
+        "grep",
+        "commandArgs",
+        "length",
+        "normalizePath",
+        "file.path",
+        "dirname",
+        "sub",
+        "getwd",
+        "file.exists",
+        "stop",
+        "dir.exists",
+        "dir.create",
+        "as.data.frame",
+        "read_excel",
+        "sort",
+        "list.files",
+        "data.frame",
+        "substring",
+        "nchar",
+        "basename",
+        "unname",
+        "md5sum",
+        "write.csv",
+        "read_source",
+        "c",
+        "stopifnot",
+        "nrow",
+        "anyNA",
+        "all",
+        "identical",
+        "as.integer",
+        "table",
+        "factor",
+        "names",
+        "cut",
+        "matrix",
+        "as.numeric",
+        "ncol",
+        "cat",
+        "unique",
+        "tolower",
+        "print"
+      ]
+    }
+  ],
+  "nonempty_blocks_and_scripts_checked": 312,
+  "ordinary_R_syntax_templates_checked": 3,
+  "syntax_template_repair": "Removed a stray backtick from the seq() signature; no calculation changed.",
+  "documented_unfinished_scaffolds": 2,
+  "future_check": "scripts/audit-code-documentation.py, automatically run before rendering; function-name coverage is a guard, not proof of explanatory quality.",
+  "reviewed_R_blocks_and_scripts": 309,
+  "numeric_calculations_preserved": true,
+  "presentation_only_R_changes": "Four Module 4 table/plot labels use USD instead of dollar signs to avoid math-delimiter interpretation in PDF output."
+}

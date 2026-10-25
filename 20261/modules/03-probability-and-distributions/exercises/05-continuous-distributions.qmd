@@ -1,0 +1,36 @@
+---
+title: "Module 3: Continuous Distributions — Practice"
+subtitle: "Lesson 5 | Calculate, justify, and interpret"
+css: ../../../assets/petra-brand.css
+---
+
+## Preparation
+
+Read [Lesson 5](../05-continuous-distributions.qmd). Use the flight and Grear settings, units, and stated model parameters from their English–Arabic introductions. No raw flight or tire observations are supplied.
+
+## 1. Uniform areas
+
+For the flight model $T\sim\operatorname{Uniform}(120,140)$ minutes, calculate $P(128\leq T\leq136)$, $P(T>135)$, and $P(T=130)$. State the density height and its units. Explain why “exactly 130” in a continuous model differs from a duration recorded after rounding to the nearest minute.
+
+## 2. Normal probabilities
+
+Use the Grear mean 36,500 miles and SD 5,000 miles.
+
+1. Standardize 40,000 miles.
+2. Find the probability of exceeding 40,000 miles, both directly and using a standard normal value.
+3. Find the probability of a lifetime between 30,000 and 40,000 miles.
+4. Explain why `dnorm(40000,...)` does not answer the upper-tail question.
+
+## 3. A cutoff rather than a probability
+
+Find the 10th-percentile lifetime. Check the result using `pnorm()`. Find the probability below 30,000 miles and explain the effect of rounding the practical cutoff down to that value. Distinguish miles from probability in the output.
+
+## 4. Draw and explain
+
+Create a normal density plot with the area above 40,000 miles shaded. Label the horizontal axis in miles and the vertical axis as density. Identify the parameters, the event, and the interpretation of the shaded area.
+
+## 5. Model limits
+
+Explain why not every numerical variable is normal, why a z-score alone does not justify a normal tail calculation, and what the unavailable raw road-test data prevent us from checking. Would the distribution of one tire's lifetime automatically equal the distribution of the mean lifetime of many tires? Explain without calculating a sampling distribution yet.
+
+Submit calculations, the plot, and interpretations. Then complete the [integrated review](../06-probability-and-distributions-review.qmd). [Return to the lesson](../05-continuous-distributions.qmd).

@@ -23,6 +23,18 @@ By the end of this lesson, you should be able to:
 ```{r}
 #| label: setup-frequency-lesson
 #| include: false
+# library(): loads a package so its functions can be used in this session.
+# read.csv(): reads a comma-separated file into a data frame; its first row supplies column names by default.
+# c(): combines values into a vector, converting them to a common type when needed.
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# nrow(): returns the number of rows in a table or matrix.
+# anyNA(): returns TRUE if any value is missing; !anyNA(...) requires no missing values.
+# theme_set(): sets the default theme for subsequent ggplot charts in this R session.
+# theme_minimal(): uses a minimal chart style; base_size controls the base text size in points.
+# theme(): customizes non-data plot elements such as legends, grids, and axis text.
+# element_blank(): removes the selected non-data plot element.
+# element_text(): sets text appearance; size uses points and angle rotates labels.
 # Load the packages and teaching data used by the lesson, and define shared settings or helpers.
 # This setup chunk is hidden in the report; stopifnot() checks required data conditions where specified.
 library(ggplot2)
@@ -75,6 +87,14 @@ A relative frequency is a proportion, such as 0.38. Its percentage equivalent is
 
 ```{r}
 #| label: soft-drink-frequency-table
+# names(): reads or assigns names to vector elements or table columns.
+# c(): combines values into a vector, converting them to a common type when needed.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# identical(): requires exact equality of values, types, and attributes.
+# as.integer(): converts to integers by truncating numeric fractional parts; it does not round to nearest.
+# sum(): adds vector entries; on logical values it counts TRUE entries.
+# abs(): returns absolute values; a small tolerance in an equality check permits floating-point rounding.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
 # table() counts brand occurrences; as.data.frame() turns the counts into columns.
 # Divide by nrow(soft) for proportions and multiply by 100 for percentages.
 brand_table <- as.data.frame(table(soft$brand))
@@ -104,6 +124,14 @@ Nominal brands have no inherent ranking. Alphabetical order is reasonable for lo
 #| label: fig-soft-drink-bars
 #| fig-cap: "Original R chart from the checked SoftDrink CSV. Counts match book Table 2.2, printed p.38."
 #| fig-alt: "Horizontal bars ordered by frequency show Coca-Cola 19, Pepsi 13, Diet Coke 8, Dr. Pepper 5, and Sprite 5 purchases."
+# as.character(): converts values to character text; for a factor it returns displayed category labels.
+# rev(): reverses the order of a vector.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# scale_x_continuous(): controls numeric x-axis breaks, labels, limits, and spacing.
+# c(): combines values into a vector, converting them to a common type when needed.
+# seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
 # order() ranks the frequency rows; factor() fixes the displayed category order.
 # geom_col() plots the supplied counts and geom_text() places their labels.
 ranked <- brand_table[order(-brand_table$Frequency, as.character(brand_table$Brand)), ]
@@ -129,6 +157,15 @@ Use it only when categories describe nonoverlapping parts of one clearly defined
 #| fig-height: 4.8
 #| fig-cap: "Original R chart: the same 50 purchases shown as percentages of one whole. Colors distinguish categories; they do not encode a ranking."
 #| fig-alt: "A flat pie chart labels Coca-Cola 38 percent, Diet Coke 16 percent, Dr. Pepper 10 percent, Pepsi 26 percent, and Sprite 10 percent."
+# paste0(): joins text with no separator; collapse can combine a vector into one string.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_col(): draws bars at supplied heights; it does not count records.
+# geom_text(): draws labels from mapped data; position and hjust/vjust control placement.
+# scale_fill_manual(): assigns explicit fill colors to categories; named values preserve category-color mappings.
+# c(): combines values into a vector, converting them to a common type when needed.
+# theme_void(): removes axes and most non-data decoration.
+# theme(): customizes non-data plot elements such as legends, grids, and axis text.
 # coord_polar(theta = "y") turns the stacked percentage bar into a circle.
 # position_stack(vjust = .5) centers each label within its corresponding slice.
 pie_data <- brand_table
@@ -161,6 +198,7 @@ An accounting firm wants to describe the completion times of **20 year-end audit
 
 ```{r}
 #| label: audit-observations
+# c(): combines values into a vector, converting them to a common type when needed.
 # seq_len(nrow(audit)) creates one row number for each recorded audit.
 # data.frame() pairs row numbers with durations; kable() prints the table.
 kable(data.frame(Audit = seq_len(nrow(audit)), Days = audit$audit_days),
@@ -181,6 +219,16 @@ Every value must fall into exactly one class. Avoid gaps, overlap, or an uncover
 
 ```{r}
 #| label: audit-grouped-table
+# as.data.frame(): converts an object to a rectangular data frame.
+# names(): reads or assigns names to vector elements or table columns.
+# c(): combines values into a vector, converting them to a common type when needed.
+# nrow(): returns the number of rows in a table or matrix.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# anyNA(): returns TRUE if any value is missing; !anyNA(...) requires no missing values.
+# sum(): adds vector entries; on logical values it counts TRUE entries.
+# identical(): requires exact equality of values, types, and attributes.
+# as.integer(): converts to integers by truncating numeric fractional parts; it does not round to nearest.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
 # seq(10,35,5) sets class boundaries; cut() assigns each audit to an interval.
 # right = FALSE gives [lower, upper) classes; table() counts each class.
 boundaries <- seq(10, 35, 5)
@@ -205,6 +253,11 @@ A **histogram** places numerical intervals on the horizontal axis. With equal-wi
 #| label: fig-audit-frequency-histogram
 #| fig-cap: "Original R histogram using the same five classes as the table; frequencies match book Table 2.5, printed p.49."
 #| fig-alt: "Five adjacent 5-day bars show counts 4, 8, 5, 2, and 1 from 10 to under 35 days."
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# scale_x_continuous(): controls numeric x-axis breaks, labels, limits, and spacing.
+# scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
 # geom_histogram() counts the raw days using the same boundaries as the table.
 # closed = "left" keeps the histogram and cut(..., right = FALSE) consistent.
 ggplot(audit, aes(audit_days)) +
@@ -243,6 +296,22 @@ A **roughly symmetric distribution** has similar shapes on either side of its ce
 #| fig-height: 3.6
 #| fig-cap: "Original illustrations constructed from model quantiles, with 1,200 artificial values per panel. These are teaching patterns, not observed students or textbook records. Bin widths and axes are shared."
 #| fig-alt: "Three histograms show a balanced symmetric pattern, a right-skewed pattern with a longer tail toward high values, and a left-skewed pattern with a longer tail toward low values."
+# seq_len(): returns integer positions 1 through n, safely returning an empty vector when n=0.
+# c(): combines values into a vector, converting them to a common type when needed.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
+# rep(): repeats values; times repeats a vector and each repeats individual elements.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# all(): returns TRUE only when every supplied logical value is TRUE.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_histogram(): bins numeric observations; binwidth or breaks controls the intervals and boundary anchors them.
+# seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.
+# facet_wrap(): splits the plot into panels defined by a categorical formula.
+# scale_x_continuous(): controls numeric x-axis breaks, labels, limits, and spacing.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
+# theme(): customizes non-data plot elements such as legends, grids, and axis text.
+# element_text(): sets text appearance; size uses points and angle rotates labels.
 # qnorm() and qbeta() generate artificial values at evenly spaced probabilities.
 # Reflecting the right-skewed values creates the left-skewed comparison; these are not observed cases.
 p <- (seq_len(1200) - .5) / 1200
@@ -273,6 +342,25 @@ A **unimodal** distribution has one prominent peak; **bimodal** has two; **multi
 #| fig-height: 3.6
 #| fig-cap: "Original illustrations, each containing 1,200 artificial values. The multi-peak patterns combine constructed groups; such a mechanism cannot be inferred from an observed histogram alone."
 #| fig-alt: "Histograms on common axes show one prominent peak near 50, two near 30 and 70, and three near 20, 50 and 80."
+# length(): counts elements in a vector or list.
+# seq_len(): returns integer positions 1 through n, safely returning an empty vector when n=0.
+# unlist(): flattens a list into a vector, converting entries to a common type as needed.
+# qnorm(): returns a normal lower-tail quantile; sd is standard deviation, not variance.
+# c(): combines values into a vector, converting them to a common type when needed.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# make_components(): is a locally defined helper building explicitly conceptual distribution examples, not observed data.
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
+# rep(): repeats values; times repeats a vector and each repeats individual elements.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# all(): returns TRUE only when every supplied logical value is TRUE.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_histogram(): bins numeric observations; binwidth or breaks controls the intervals and boundary anchors them.
+# seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.
+# scale_x_continuous(): controls numeric x-axis breaks, labels, limits, and spacing.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
+# theme(): customizes non-data plot elements such as legends, grids, and axis text.
+# element_text(): sets text appearance; size uses points and angle rotates labels.
 # The helper combines artificial normal-component values with chosen centers.
 # lapply() builds each component and facet_wrap() separates the modality examples.
 make_components <- function(centers, spread) {
@@ -307,6 +395,31 @@ The local teaching workbook contains **8,239 records** with age and height colum
 #| fig-height: 4.2
 #| fig-cap: "Original histograms from the local students worksheet (8,239 values per variable; no missing values in these two columns). Age bins have width 2 recorded units and height bins width 3. Each panel has its own axis scales; different scales and bin widths mean bar heights and visual widths should not be compared directly."
 #| fig-alt: "Recorded student ages are concentrated near 20 with a long right tail extending to 64. Recorded heights form a broad central concentration near 170, extending from 135 to 206."
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# nrow(): returns the number of rows in a table or matrix.
+# anyNA(): returns TRUE if any value is missing; !anyNA(...) requires no missing values.
+# identical(): requires exact equality of values, types, and attributes.
+# names(): reads or assigns names to vector elements or table columns.
+# c(): combines values into a vector, converting them to a common type when needed.
+# rbind(): combines compatible vectors or tables by adding rows.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
+# do.call(): calls a function using a list of arguments, e.g. rbind to combine a list of tables.
+# lapply(): applies a function separately to each element and returns a list.
+# levels(): reads or replaces the category labels and order of a factor.
+# startsWith(): checks whether each text value begins with a specified prefix.
+# seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.
+# hist(): bins numeric values; breaks controls intervals and plot=FALSE returns counts without drawing.
+# sum(): adds vector entries; on logical values it counts TRUE entries.
+# head(): shows the first n entries or rows, six by default.
+# tail(): shows the last n entries or rows, six by default.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_rect(): draws rectangles using xmin, xmax, ymin, and ymax.
+# facet_wrap(): splits the plot into panels defined by a categorical formula.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
+# theme(): customizes non-data plot elements such as legends, grids, and axis text.
+# element_text(): sets text appearance; size uses points and angle rotates labels.
 # read.csv() loads the two exported measurements; stopifnot() checks their structure.
 # The panels use different bin widths and recorded units, so compare shapes rather than bar heights.
 students_hist <- read.csv("data/module02/student_age_height.csv")
@@ -346,8 +459,27 @@ Compare the **same 20 Audit values** with three class widths. The dashed line ma
 #| fig-height: 3.8
 #| fig-cap: "Original R comparison of the unchanged Audit data. Widths of 1, 5, and 10 days change the apparent detail and prominence of gaps. Every panel contains all 20 audits."
 #| fig-alt: "Three Audit histograms use 1-, 5-, and 10-day bins. Narrow bins show gaps and the isolated 33-day value more distinctly; wider bins combine values and obscure detail."
+# list(): stores named or unnamed objects that may have different types and lengths.
+# seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.
+# do.call(): calls a function using a list of arguments, e.g. rbind to combine a list of tables.
+# names(): reads or assigns names to vector elements or table columns.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# sum(): adds vector entries; on logical values it counts TRUE entries.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# head(): shows the first n entries or rows, six by default.
+# tail(): shows the last n entries or rows, six by default.
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_rect(): draws rectangles using xmin, xmax, ymin, and ymax.
+# geom_vline(): adds vertical references at xintercept; linetype selects solid or dashed lines.
+# facet_wrap(): splits the plot into panels defined by a categorical formula.
+# scale_x_continuous(): controls numeric x-axis breaks, labels, limits, and spacing.
+# c(): combines values into a vector, converting them to a common type when needed.
+# scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
 # lapply() repeats the grouping for three bin-width specifications without changing audit values.
-# cut() assigns bins; the shared frequency scale helps compare how bin width changes the display.
+# hist(..., plot = FALSE) counts left-closed bins without drawing; the panels share a frequency scale.
 audit_bin_specs <- list("1-day bins"=seq(10,40,1),"5-day bins"=seq(10,40,5),"10-day bins"=seq(10,40,10))
 audit_bin_comparison <- do.call(rbind,lapply(names(audit_bin_specs),function(label){
   h <- hist(audit$audit_days,breaks=audit_bin_specs[[label]],right=FALSE,plot=FALSE)
@@ -398,6 +530,14 @@ A **cumulative frequency** adds the counts in successive numerical classes. It a
 
 ```{r}
 #| label: audit-cumulative-table
+# data.frame(): builds a table whose named columns have compatible lengths.
+# paste(): joins text using sep between pieces; collapse combines a vector into one string.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# identical(): requires exact equality of values, types, and attributes.
+# as.integer(): converts to integers by truncating numeric fractional parts; it does not round to nearest.
+# c(): combines values into a vector, converting them to a common type when needed.
+# sum(): adds vector entries; on logical values it counts TRUE entries.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
 # cumsum() adds frequencies successively to count observations below each upper boundary.
 # Divide those running totals by nrow(audit) and multiply by 100 for cumulative percentages.
 cumulative <- data.frame(

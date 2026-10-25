@@ -22,6 +22,25 @@ By the end, you should be able to:
 ```{r}
 #| label: setup-numerical-measures
 #| include: false
+# library(): loads a package so its functions can be used in this session.
+# read.csv(): reads a comma-separated file into a data frame; its first row supplies column names by default.
+# c(): combines values into a vector, converting them to a common type when needed.
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# length(): counts elements in a vector or list.
+# anyNA(): returns TRUE if any value is missing; !anyNA(...) requires no missing values.
+# nrow(): returns the number of rows in a table or matrix.
+# theme_set(): sets the default theme for subsequent ggplot charts in this R session.
+# theme_minimal(): uses a minimal chart style; base_size controls the base text size in points.
+# theme(): customizes non-data plot elements such as legends, grids, and axis text.
+# element_blank(): removes the selected non-data plot element.
+# element_text(): sets text appearance; size uses points and angle rotates labels.
+# unname(): removes names or dimension names without changing the underlying values.
+# quantile(): computes sample percentiles; probs gives probabilities and type selects the interpolation rule.
+# q6(): is a locally defined helper computing type-6 sample quartiles for textbook consistency.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# min(): returns the smallest supplied value.
+# max(): returns the largest supplied value.
 # Load the packages and teaching data used by the lesson, and define shared settings or helpers.
 # This setup chunk is hidden in the report; stopifnot() checks required data conditions where specified.
 library(ggplot2)
@@ -76,6 +95,8 @@ The **median** is the middle ordered value. With an odd number of observations, 
 
 ```{r}
 #| label: audit-ordered-values
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# c(): combines values into a vector, converting them to a common type when needed.
 # sort() orders audit days; seq_along() numbers their positions from 1 to n.
 # data.frame() pairs positions with values so we can identify the median observations.
 ordered_audits <- data.frame(Position = seq_along(x), Days = sort(x))
@@ -92,6 +113,14 @@ R's `mode()` describes an object's storage mode; it does **not** calculate the s
 
 ```{r}
 #| label: audit-center
+# max(): returns the largest supplied value.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# c(): combines values into a vector, converting them to a common type when needed.
+# mean(): computes an average; logical TRUE/FALSE values contribute 1/0, giving a proportion.
+# median(): returns the middle sorted value, averaging the middle pair for even sample sizes.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# identical(): requires exact equality of values, types, and attributes.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
 # table() counts exact durations; the largest count identifies the statistical mode.
 # as.numeric(names(...)) converts the matching table labels back to numerical days.
 value_counts <- table(x)
@@ -107,6 +136,17 @@ kable(center, digits = 2)
 #| label: fig-audit-center
 #| fig-cap: "Original R display of the checked Audit observations. Each dot is one audit; line styles distinguish the mean and median."
 #| fig-alt: "Stacked audit observations show a median at 18 days and a mean at 19.25 days, with longer values extending to 33 days."
+# data.frame(): builds a table whose named columns have compatible lengths.
+# sort(): sorts values; decreasing=TRUE reverses the default ascending order.
+# c(): combines values into a vector, converting them to a common type when needed.
+# mean(): computes an average; logical TRUE/FALSE values contribute 1/0, giving a proportion.
+# median(): returns the middle sorted value, averaging the middle pair for even sample sizes.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_point(): draws a point for each row at its mapped x and y values.
+# scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
+# theme(): customizes non-data plot elements such as legends, grids, and axis text.
 # ave(..., FUN = seq_along) stacks repeated durations so every observation is visible.
 # geom_vline() marks the calculated mean and median using distinct line styles.
 dots <- data.frame(Days = sort(x))
@@ -130,6 +170,11 @@ Your instructor's slide 38 uses seven dollar amounts: **1, 2, 3, 3, 3, 1, 100**.
 
 ```{r}
 #| label: mean-limitation-example
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# c(): combines values into a vector, converting them to a common type when needed.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# abs(): returns absolute values; a small tolerance in an equality check permits floating-point rounding.
 # subset() selects the extreme-value teaching example from the supplementary CSV.
 # sum(), mean(), and median() show how the large value changes the reported center.
 amounts <- subset(limitations, example == "extreme_value")$value
@@ -148,6 +193,14 @@ A measure of center needs a measure of spread. Your instructor's slides 44–45 
 
 ```{r}
 #| label: same-mean-different-spread
+# subset(): keeps entries or rows satisfying a condition; select can choose columns.
+# do.call(): calls a function using a list of arguments, e.g. rbind to combine a list of tables.
+# names(): reads or assigns names to vector elements or table columns.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# mean(): computes an average; logical TRUE/FALSE values contribute 1/0, giving a proportion.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# all(): returns TRUE only when every supplied logical value is TRUE.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
 # split() separates the instructor examples by set; lapply() summarizes each set.
 # paste(..., collapse = ", ") lists its values, and rbind combines the summary rows.
 same_mean <- split(subset(limitations, example == "same_mean")$value,
@@ -182,6 +235,15 @@ Both have **mean 5 and range 10**. In A, three observations sit at the center. I
 #| fig-height: 3.4
 #| fig-cap: "Original course illustration. Each dot is one observation; stacked dots indicate repeated values. Both sets share the same mean and range."
 #| fig-alt: "Set A has three observations at 5 and one at each endpoint 0 and 10. Set B has one at 5 and two at each endpoint."
+# subset(): keeps entries or rows satisfying a condition; select can choose columns.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_vline(): adds vertical references at xintercept; linetype selects solid or dashed lines.
+# geom_point(): draws a point for each row at its mapped x and y values.
+# scale_x_continuous(): controls numeric x-axis breaks, labels, limits, and spacing.
+# c(): combines values into a vector, converting them to a common type when needed.
+# scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
 # ave() gives repeated values stacking positions within each set.
 # facet_wrap() separates A and B while the dashed line marks their common mean.
 same_range <- subset(limitations, example == "same_range")
@@ -226,6 +288,15 @@ Standard deviation summarizes spread around the mean. It is not the standard err
 
 ```{r}
 #| label: audit-variability
+# sum(): adds vector entries; on logical values it counts TRUE entries.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# c(): combines values into a vector, converting them to a common type when needed.
+# diff(): subtracts each preceding value from the next by default; diff(range(x)) gives max minus min.
+# range(): returns the minimum and maximum as a two-element vector.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# abs(): returns absolute values; a small tolerance in an equality check permits floating-point rounding.
+# length(): counts elements in a vector or list.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
 # Subtract mean(x), square the deviations, and sum them to measure total squared variation.
 # var() divides by n-1; sd() returns its square root in the original units.
 squared_deviations <- sum((x - mean(x))^2)
@@ -242,6 +313,15 @@ Returning to sets A and B, both measures that use all observations detect the di
 
 ```{r}
 #| label: same-range-summary
+# do.call(): calls a function using a list of arguments, e.g. rbind to combine a list of tables.
+# lapply(): applies a function separately to each element and returns a list.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# length(): counts elements in a vector or list.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# all(): returns TRUE only when every supplied logical value is TRUE.
+# c(): combines values into a vector, converting them to a common type when needed.
+# sqrt(): returns the nonnegative square root of a nonnegative number.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
 # split() processes sets A and B separately; diff(range(v)) calculates maximum minus minimum.
 # mean(abs(v-mean(v))) averages absolute distances; sd(v) calculates sample SD.
 spread_comparison <- do.call(rbind, lapply(split(same_range$value, same_range$series), function(v) {
@@ -276,6 +356,11 @@ For 20 audits:
 
 ```{r}
 #| label: audit-quartiles
+# c(): combines values into a vector, converting them to a common type when needed.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# identical(): requires exact equality of values, types, and attributes.
 # quantile() finds the requested percentiles; type = 6 follows our book convention.
 # unname() removes percentile labels for the display; the numerical quartiles are unchanged.
 quartiles <- quantile(x, c(.25,.50,.75), type = 6)
@@ -300,6 +385,11 @@ A **five-number summary** contains the minimum, $Q_1$, median, $Q_3$, and maximu
 
 ```{r}
 #| label: audit-five-numbers
+# min(): returns the smallest supplied value.
+# median(): returns the middle sorted value, averaging the middle pair for even sample sizes.
+# max(): returns the largest supplied value.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# data.frame(): builds a table whose named columns have compatible lengths.
 # c() combines the minimum, quartiles, median, and maximum into a named vector.
 # unname() supplies its values to the table without duplicating the vector labels.
 five <- c(Minimum = min(x), Q1 = quartiles[1], Median = median(x),
@@ -330,6 +420,16 @@ For Audit, the fences are **4.5 and 32.5 days**. The whiskers end at **12 and 28
 #| fig-height: 4.5
 #| fig-cap: "Original R boxplot using explicit type-6 quartiles and 1.5-IQR fences. The separately drawn point is the 33-day audit; it has not been removed."
 #| fig-alt: "Audit box spans 15 to 22 days with median 18, whiskers at 12 and 28, and an outlier flag at 33 days. A dashed upper fence lies at 32.5."
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# identical(): requires exact equality of values, types, and attributes.
+# as.integer(): converts to integers by truncating numeric fractional parts; it does not round to nearest.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_boxplot(): draws quartiles, whiskers, and flagged points; a flagged value is not automatically an error.
+# geom_point(): draws a point for each row at its mapped x and y values.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# geom_hline(): adds horizontal references at yintercept.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
 # box_record() is our helper for type-6 quartiles, fences, and observed whisker endpoints.
 # stat = "identity" draws those supplied statistics instead of recomputing ggplot2 defaults.
 audit_box <- box_record(x, "Audit")
@@ -353,6 +453,15 @@ Consider a **hypothetical sensitivity exercise**: replace the 33-day value with 
 
 ```{r}
 #| label: audit-sensitivity
+# data.frame(): builds a table whose named columns have compatible lengths.
+# c(): combines values into a vector, converting them to a common type when needed.
+# mean(): computes an average; logical TRUE/FALSE values contribute 1/0, giving a proportion.
+# median(): returns the middle sorted value, averaging the middle pair for even sample sizes.
+# sd(): computes sample standard deviation using denominator n-1.
+# diff(): subtracts each preceding value from the next by default; diff(range(x)) gives max minus min.
+# q6(): is a locally defined helper computing type-6 sample quartiles for textbook consistency.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
 # Create a separate copy, then which.max() locates the largest duration to replace.
 # Recalculate both sets of summaries while preserving the original audit vector x.
 hypothetical <- x
@@ -391,6 +500,9 @@ The 33-day audit has $z\approx2.53$: it is about 2.53 sample standard deviations
 
 ```{r}
 #| label: audit-relative-measures
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# c(): combines values into a vector, converting them to a common type when needed.
 # 100*sd(x)/mean(x) expresses sample spread as a percentage of the mean (CV).
 # (33-mean(x))/sd(x) places the 33-day audit in sample-standard-deviation units.
 kable(data.frame(Measure = c("Coefficient of variation (%)", "Z-score of the 33-day audit"),
@@ -409,6 +521,18 @@ Return to the **300 restaurants**. An analyst wants to compare meal prices acros
 
 ```{r}
 #| label: restaurant-numerical-measures
+# names(): reads or assigns names to vector elements or table columns.
+# c(): combines values into a vector, converting them to a common type when needed.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# length(): counts elements in a vector or list.
+# mean(): computes an average; logical TRUE/FALSE values contribute 1/0, giving a proportion.
+# median(): returns the middle sorted value, averaging the middle pair for even sample sizes.
+# sd(): computes sample standard deviation using denominator n-1.
+# diff(): subtracts each preceding value from the next by default; diff(range(x)) gives max minus min.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# sum(): adds vector entries; on logical values it counts TRUE entries.
+# identical(): requires exact equality of values, types, and attributes.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
 # split() separates prices by ordered rating; q6() is our type-6 quantile helper.
 # lapply() calculates each group summary and do.call(rbind, ...) joins the rows.
 groups <- split(restaurants$meal_price_usd, restaurants$quality_rating)
@@ -429,6 +553,17 @@ kable(group_summary[c("Quality","Q1","Q3","IQR")], digits = 2,
 #| label: fig-restaurant-consistent-boxplots
 #| fig-cap: "Original R boxplots. Quartiles and fences are explicitly calculated with the same type-6 convention as the summary table. Separate points are flagged observations."
 #| fig-alt: "Restaurant price boxplots show increasing median prices from Good to Very Good to Excellent, with overlapping price distributions."
+# do.call(): calls a function using a list of arguments, e.g. rbind to combine a list of tables.
+# lapply(): applies a function separately to each element and returns a list.
+# names(): reads or assigns names to vector elements or table columns.
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# rep(): repeats values; times repeats a vector and each repeats individual elements.
+# length(): counts elements in a vector or list.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_point(): draws a point for each row at its mapped x and y values.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
 # box_record() supplies matching quartiles and whisker endpoints for every quality group.
 # geom_boxplot(stat = "identity") draws them; separate points mark values beyond the fences.
 restaurant_boxes <- do.call(rbind, lapply(names(groups), function(g) box_record(groups[[g]], g)))

@@ -1,0 +1,61 @@
+---
+title: "Module 3: Probability and Distributions Review"
+subtitle: "Connect the experiment, the model, and the interpretation"
+css: ../../assets/petra-brand.css
+---
+
+## Purpose and submission
+
+Prepare a short Quarto report with the five sections below. Give the event in notation, justify the method and assumptions, show reproducible R code, and interpret every result with its units or reference group. Keep instructor answers separate.
+
+These are the cases introduced in Lessons 1–5. Return to their English–Arabic introductions for the business settings; this review introduces no new case or observations.
+
+## 1. Define the probability experiment
+
+Use the [Restaurant CSV](../../data/module02/restaurant_ratings.csv), with uniform selection of one of its 300 records. Define $A$ as a Very Good rating and $B$ as a price from USD 20 to less than USD 30.
+
+1. Find $P(A\cup B)$ and $P(A\cap B)$.
+2. Explain why selecting uniformly among the three rating names would be a different experiment.
+3. State why these probabilities do not establish the proportion in today's restaurant market.
+
+## 2. Choose the denominator
+
+1. Calculate $P(A\mid B)$ and $P(B\mid A)$; explain the difference.
+2. Determine whether these events are independent in the finite selection experiment.
+3. Using the two-supplier inputs from Lesson 2, find $P(S_1\mid D)$ and distinguish it from $P(D\mid S_1)$.
+
+## 3. Interpret a discrete distribution
+
+Use the six published DiCarlo frequency cells in Lesson 3.
+
+1. Construct the PMF and show that its masses sum to 1.
+2. Find $P(X\geq3)$, the expected daily count, and the model SD.
+3. Explain why 1.50 is neither the mode nor a possible one-day count.
+4. Distinguish the published aggregate frequencies from an individual-day dataset.
+
+## 4. Select a count model
+
+1. For Martin Clothing Store, justify the binomial model and find the probability of at least two purchases among the next three customers.
+2. For the arrivals example, state the Poisson-process assumptions and calculate the probability of no arrivals in three minutes.
+3. Explain why using mean count 10 in that three-minute calculation is incorrect.
+4. Explain why simulation under either model does not verify its assumptions against real operations.
+
+## 5. Separate area, height, and cutoff
+
+1. Under the flight model, find $P(128\leq T\leq136)$ and explain why the density height is a different quantity.
+2. Under the Grear normal model, find $P(X>40{,}000)$ and the 10th-percentile lifetime in miles.
+3. Explain why a z-score alone does not justify a normal model.
+4. State which raw observations are unavailable and what that prevents you from checking.
+
+## Review checklist
+
+| Criterion | Evidence in the report |
+|---|---|
+| Clear experiment | Outcome, event, and reference group |
+| Suitable model | Variable type, parameters, units, and assumptions |
+| Correct event | Exact / at most / at least / more than translated correctly |
+| Reproducible calculation | CSV for observations; cited constants for published model inputs |
+| Sound interpretation | Probability versus density, expectation versus realization |
+| Honest limits | Historical data, model assumptions, unavailable raw observations |
+
+This completes the selected Module 3 sequence. Proceed to [Module 4: Sampling and estimation](../04-sampling-and-estimation/index.qmd) when its lessons are available, or return to the [Module 3 overview](index.qmd).

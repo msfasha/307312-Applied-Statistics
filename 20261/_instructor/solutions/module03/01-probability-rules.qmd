@@ -1,0 +1,68 @@
+---
+title: "Instructor Answers: Probability Rules"
+subtitle: "Module 3 | Lesson 1 practice"
+css: ../../../assets/petra-brand.css
+format:
+  html:
+    toc: true
+    code-fold: true
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+# library(): loads a package so its functions can be used in this session.
+# normalizePath(): resolves a path into a canonical absolute path.
+# getwd(): returns the current working-directory path.
+# file.exists(): checks whether each specified file path exists.
+# file.path(): joins path components with the platform-appropriate separator.
+# dirname(): returns the directory portion of a file path.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+library(knitr)
+project <- normalizePath(getwd())
+while (!file.exists(file.path(project, "20261.Rproj")) && dirname(project) != project) project <- dirname(project)
+stopifnot(file.exists(file.path(project, "20261.Rproj")))
+```
+## 1. Experiment and categories
+
+One outcome is one restaurant identifier; the sample space contains 300 such identifiers. Quality categories have counts Good 84, Very Good 150, Excellent 66, so uniform selection of a record does not make the categories equally likely. Identifiers label restaurants, rather than measuring a numerical quantity.
+
+```{r}
+# read.csv(): reads a comma-separated file into a data frame; its first row supplies column names by default.
+# file.path(): joins path components with the platform-appropriate separator.
+r <- read.csv(file.path(project, "data/module02/restaurant_ratings.csv"))
+A <- r$quality_rating == "Very Good"
+B <- r$meal_price_usd >= 20 & r$meal_price_usd < 30
+```
+
+## 2–3. Regions and probabilities
+
+```{r}
+# c(): combines values into a vector, converting them to a common type when needed.
+# sum(): adds vector entries; on logical values it counts TRUE entries.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# names(): reads or assigns names to vector elements or table columns.
+# unname(): removes names or dimension names without changing the underlying values.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# identical(): requires exact equality of values, types, and attributes.
+# mean(): computes an average; logical TRUE/FALSE values contribute 1/0, giving a proportion.
+# xor(): returns TRUE when exactly one of two logical conditions is TRUE.
+counts <- c(Both = sum(A & B), Only_A = sum(A & !B), Only_B = sum(!A & B), Neither = sum(!A & !B))
+kable(data.frame(Region = names(counts), Count = unname(counts), Probability = unname(counts)/300), digits=4)
+stopifnot(identical(unname(counts), c(64L,86L,54L,96L)), sum(counts)==300)
+p <- c(A=mean(A), B=mean(B), Intersection=mean(A&B), Union=mean(A|B), Complement_A=mean(!A), Exactly_one=mean(xor(A,B)))
+kable(data.frame(Event=names(p),Probability=unname(p)),digits=4)
+```
+
+The union is 204/300 = 0.68. Exactly one condition corresponds to 140/300 = 0.4667. A region display should show all four disjoint cells with labels; no Venn-circle area needs to be interpreted as proportional to a count.
+
+## 4. Corrections
+
+Adding 150/300 and 118/300 double counts 64/300; subtract that intersection once. The experiment samples the fixed historical records. The available source match is aggregate plus the first ten printed rows, and the table does not establish the current population's proportions.
+
+## 5. Pairs
+
+Ordered pairs: 89,700; unordered pairs: 44,850. A probability additionally requires a specified event and probabilities for the pairs; counts alone do not determine a probability.

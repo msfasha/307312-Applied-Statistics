@@ -1,0 +1,54 @@
+[
+  {
+    "file": "20261/modules/01-introduction-to-r/02-basic-concepts.qmd",
+    "chunks": 76
+  },
+  {
+    "file": "20261/modules/01-introduction-to-r/03-dplyr.qmd",
+    "chunks": 10
+  },
+  {
+    "file": "20261/modules/01-introduction-to-r/04-ggplot2.qmd",
+    "chunks": 28
+  },
+  {
+    "file": "20261/modules/01-introduction-to-r/exercises/02-basic-concepts.qmd",
+    "chunks": 1
+  },
+  {
+    "file": "20261/modules/02-data-and-descriptive-statistics/01-data-types-and-toolbox.qmd",
+    "chunks": 10
+  },
+  {
+    "file": "20261/modules/02-data-and-descriptive-statistics/02-frequency-tables-and-charts.qmd",
+    "chunks": 13
+  },
+  {
+    "file": "20261/modules/02-data-and-descriptive-statistics/03-numerical-measures.qmd",
+    "chunks": 16
+  },
+  {
+    "file": "20261/modules/02-data-and-descriptive-statistics/04-relationships-between-variables.qmd",
+    "chunks": 12
+  },
+  {
+    "file": "20261/modules/02-data-and-descriptive-statistics/exercises/01-data-types-and-toolbox.qmd",
+    "chunks": 2
+  },
+  {
+    "file": "20261/modules/02-data-and-descriptive-statistics/exercises/02-frequency-tables-and-charts.qmd",
+    "chunks": 1
+  },
+  {
+    "file": "20261/modules/02-data-and-descriptive-statistics/exercises/03-numerical-measures.qmd",
+    "chunks": 1
+  },
+  {
+    "file": "20261/modules/02-data-and-descriptive-statistics/exercises/04-relationships-between-variables.qmd",
+    "chunks": 1
+  },
+  {
+    "file": "20261/modules/05-hypothesis-testing/01-hypothesis-testing.qmd",
+    "chunks": 21
+  }
+]

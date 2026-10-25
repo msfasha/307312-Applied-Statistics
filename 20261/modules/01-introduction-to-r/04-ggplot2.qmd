@@ -17,30 +17,6 @@ css: ../../assets/petra-brand.css
 
 ## Introduction to ggplot2
 
-### Grammar of Graphics
-
-![](../../assets/module01/minard.png)
-
-Minard's Map or Minard's Flow Map, is a remarkable example of how data visualization can tell a powerful and complex story in a single image.
-
-The map, created in 1869, is widely considered one of the most effective and impactful pieces of statistical graphics ever produced.
-
-The maps tells us the following:
-
-1.  **Army Size Decrease**: The size of Napoleon’s army drastically reduced from over 400,000 men at the start to fewer than 10,000 by the end of the campaign.
-
-2.  **Geographical Journey**: The army's route from the western border of Russia to Moscow and back is clearly depicted.
-
-3.  **Impact of Weather**: The map highlights the severe cold temperatures during the retreat, which significantly contributed to the army’s losses.
-
-4.  **Temporal Progression**: Dates along the route show when the army reached different points, illustrating the timeline of the campaign.
-
-5.  **Catastrophic Loss**: The map visually emphasizes the catastrophic nature of the Russian campaign and its role in Napoleon’s downfall.
-
-Minard's map relates to the "Grammar of Graphics" concept by exemplifying how complex data can be effectively communicated through systematic visual components.
-
-The "Grammar of Graphics" is a framework that describes the building blocks of data visualization, allowing for the structured and meaningful presentation of data.
-
 ### What is ggplot2?
 
 `ggplot2` is a powerful and highly versatile plotting system for R, designed to help researchers, analysts, and data scientists create meaningful and visually appealing data visualizations. Based on the principles of the Grammar of Graphics, `ggplot2` allows users to construct plots by specifying graphical primitives that represent data in a declarative way. This approach enables a clear and logical structure for creating a wide variety of charts, from simple scatter plots to complex multi-panel graphics.
@@ -84,8 +60,8 @@ This guide will equip you with the knowledge to harness the full potential of `g
 To begin working with `ggplot2`, you first need to load the package and prepare a dataset. For our examples, we will use the `mtcars` dataset which is built into R.
 
 ```{r}
-# Evaluate the named object or expression to inspect its current result.
-# Use the output to check that the values and object structure match the surrounding example.
+# library(ggplot2) makes its plotting functions available in this R session.
+# data(mtcars) loads the built-in car dataset used in the following plotting examples.
 library(ggplot2)
 data(mtcars)
 ```
@@ -107,6 +83,11 @@ Here, `data` specifies the dataset to use, and `aes` is used to define the prima
 Geometric objects (geoms) visually represent data. For a scatter plot, we use `geom_point()`, which plots a point for each observation in the dataset.
 
 ```{r}
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_point(): draws a point for each row at its mapped x and y values.
+# geom_line(): joins observations in x order; group determines which observations form each line.
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
 # geom_bar() counts raw observations within each x category by default.
 # A fill mapping subdivides the counts; position="dodge" places subgroup bars side by side.
 # Scatter plot with points
@@ -145,6 +126,7 @@ This code sets the title of the plot and labels each axis.
 Customizing the appearance of your plot can help highlight specific data or make your plot easier to read. Use color and shape within your aesthetic mappings to differentiate groups or categories.
 
 ```{r}
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
 # ggplot() defines the data and aes() maps variables to visual properties such as x, y, and color.
 # geom_point() adds paired observations when present; labs() and scale functions control labels and axes.
 ggplot(data = mtcars, aes(x = wt, y = mpg, color = factor(cyl), shape = factor(cyl))) +
@@ -163,6 +145,9 @@ Here, cars are colored and shaped according to the number of cylinders, which he
 Adjusting the scales and limits of your axes can focus your analysis on specific areas of interest. `xlim()` and `ylim()` functions control the limits of the x-axis and y-axis respectively.
 
 ```{r}
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
+# xlim(): sets x-axis scale limits; ggplot scale limits can discard observations outside the range.
+# ylim(): sets y-axis scale limits; ggplot scale limits can discard observations outside the range.
 # ggplot() defines the data and aes() maps variables to visual properties such as x, y, and color.
 # geom_point() adds paired observations when present; labs() and scale functions control labels and axes.
 ggplot(data = mtcars, aes(x = wt, y = mpg, color = factor(cyl))) +
@@ -177,6 +162,9 @@ ggplot(data = mtcars, aes(x = wt, y = mpg, color = factor(cyl))) +
 This adjustment restricts the display to cars weighing between 2,000 and 5,000 lbs and with MPG between 10 and 35.
 
 ```{r}
+# scale_x_continuous(): controls numeric x-axis breaks, labels, limits, and spacing.
+# seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.
+# scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.
 # ggplot() defines the data and aes() maps variables to visual properties such as x, y, and color.
 # geom_point() adds paired observations when present; labs() and scale functions control labels and axes.
 # Customizing scales
@@ -191,6 +179,9 @@ ggplot(mtcars, aes(x = wt, y = mpg)) +
 Legends are key to understanding the plotted data. They can be adjusted with the `guides()` or through direct specifications in the `scale_color_*` or `scale_shape_*` functions.
 
 ```{r}
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
+# guides(): controls legend display for mapped visual properties.
+# guide_legend(): sets legend layout and appearance.
 # ggplot() defines the data and aes() maps variables to visual properties such as x, y, and color.
 # geom_point() adds paired observations when present; labs() and scale functions control labels and axes.
 ggplot(data = mtcars, aes(x = wt, y = mpg, color = factor(cyl))) +
@@ -209,6 +200,11 @@ This code ensures that the legend is clearly labeled as "Cylinders".
 Sometimes, additional layers can help further analyze the data. Adding a smooth line can help visualize trends.
 
 ```{r}
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
+# geom_point(): draws a point for each row at its mapped x and y values.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
 # geom_smooth(method = "lm") adds a fitted linear trend to the plotted pairs.
 # Its default shaded band is uncertainty about the mean trend; se=FALSE suppresses that band.
 ggplot(data = mtcars, aes(x = wt, y = mpg, color = factor(cyl))) +
@@ -238,6 +234,10 @@ In the first code, multiple regression lines are plotted — one for each cylind
 Faceting in **`ggplot2`** is a feature that allows you to split one plot into multiple plots based on a factor or factors contained in the dataset. Each resulting panel (or facet) displays a subset of the data and is a standalone plot with the same axes and scales. This makes it easy to compare different subsets of the data visually.
 
 ```{r}
+# library(): loads a package so its functions can be used in this session.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_point(): draws a point for each row at its mapped x and y values.
 # facet_wrap() or facet_grid() separates observations into panels using grouping variables.
 # The ~ formula defines the grouping layout; compare panels with attention to their axis scales.
 library(ggplot2)
@@ -256,6 +256,9 @@ ggplot(mtcars, aes(x = wt, y = mpg)) +
 **Faceting by Number of Cylinders**
 
 ```{r}
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_point(): draws a point for each row at its mapped x and y values.
 # facet_wrap() or facet_grid() separates observations into panels using grouping variables.
 # The ~ formula defines the grouping layout; compare panels with attention to their axis scales.
 ggplot(mtcars, aes(x = wt, y = mpg)) +
@@ -270,6 +273,9 @@ ggplot(mtcars, aes(x = wt, y = mpg)) +
 **Faceting with Grid**
 
 ```{r}
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_point(): draws a point for each row at its mapped x and y values.
 # facet_wrap() or facet_grid() separates observations into panels using grouping variables.
 # The ~ formula defines the grouping layout; compare panels with attention to their axis scales.
 ggplot(mtcars, aes(x = wt, y = mpg)) +
@@ -328,6 +334,7 @@ Below are code examples using different geometric objects (`geoms`) in `ggplot2`
 **Code Example**: The point plot shown below uses the **`mtcars`** dataset to create a scatter plot of car weight (**`wt`**) against miles per gallon (**`mpg`**). Each point represents a car, with its position determined by these two variables. The plot can be used to analyze the relationship between a car's weight and its fuel efficiency. Generally, one might expect to see a trend where heavier cars achieve lower fuel efficiency.
 
 ```{r}
+# library(): loads a package so its functions can be used in this session.
 # ggplot() defines the data and aes() maps variables to visual properties such as x, y, and color.
 # geom_point() adds paired observations when present; labs() and scale functions control labels and axes.
 library(ggplot2)
@@ -346,6 +353,9 @@ ggplot(mtcars, aes(x = wt, y = mpg)) +
 **Code Example**: The line plot presented below is also based on the **`mtcars`** dataset, displaying a continuous line connecting points plotted by car weight (**`wt`**) against miles per gallon (**`mpg`**). The addition of points helps to highlight the actual data positions. This plot is useful for observing the trend of how fuel efficiency changes as car weight increases, suggesting a potential negative correlation.
 
 ```{r}
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_point(): draws a point for each row at its mapped x and y values.
 # geom_line() joins observations in x order within each plot group.
 # Connecting values implies an ordered progression, so check whether that meaning fits the question.
 ggplot(mtcars, aes(x = wt, y = mpg)) +
@@ -363,6 +373,8 @@ ggplot(mtcars, aes(x = wt, y = mpg)) +
 **Code Example**: Here, a smoothed line plot is created using a linear model (**`lm`**) to approximate the relationship between **`wt`** (weight of the cars) and **`mpg`** (miles per gallon). This plot helps in visualizing a clear trend or pattern, smoothing out any outliers or anomalies, which can be particularly useful for presentations or reports where a simplified visual explanation is required.
 
 ```{r}
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
 # geom_smooth(method = "lm") adds a fitted linear trend to the plotted pairs.
 # Its default shaded band is uncertainty about the mean trend; se=FALSE suppresses that band.
 ggplot(mtcars, aes(x = wt, y = mpg)) +
@@ -380,6 +392,8 @@ ggplot(mtcars, aes(x = wt, y = mpg)) +
 **Code Example**: This bar chart presented below uses the **`mpg`** dataset to display the count of cars in each vehicle class. Each bar represents a different class, and its height indicates the number of cars in that class. This type of visualization is excellent for comparing categorical data, showing which vehicle classes are more or less common.
 
 ```{r}
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
 # geom_bar() counts raw observations within each x category by default.
 # A fill mapping subdivides the counts; position="dodge" places subgroup bars side by side.
 ggplot(mpg, aes(x = class)) +
@@ -397,6 +411,8 @@ ggplot(mpg, aes(x = class)) +
 **Code Example**: The histogram example below plots the distribution of miles per gallon (**`mpg`**) across the cars in the **`mtcars`** dataset. By dividing the **`mpg`** values into bins (in this case, 10 bins), it shows how many cars fall into each range of fuel efficiency. This is useful for understanding the overall distribution of fuel efficiency across the dataset.
 
 ```{r}
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
 # geom_histogram() groups raw numerical observations into intervals and counts each interval.
 # bins requests an approximate number of intervals; binwidth or explicit breaks gives direct width control.
 ggplot(mtcars, aes(x = mpg)) +
@@ -414,6 +430,8 @@ ggplot(mtcars, aes(x = mpg)) +
 **Code Example**: This boxplot example provides a visual summary of highway miles per gallon (**`hwy`**) across different vehicle classes in the **`mpg`** dataset. Boxplots show the median, quartiles, and outliers, giving a clear statistical summary of the distribution within each category. This plot is particularly valuable for identifying differences and spread in highway efficiency across vehicle types.
 
 ```{r}
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
 # geom_boxplot() summarizes each numerical distribution with a box, median, whiskers, and flagged points.
 # This plot uses ggplot2 quartile defaults unless explicit statistics are supplied.
 ggplot(mpg, aes(x = class, y = hwy)) +
@@ -423,6 +441,13 @@ ggplot(mpg, aes(x = class, y = hwy)) +
 Boxplots are usually used for making comparisons between different categories.
 
 ```{r}
+# library(): loads a package so its functions can be used in this session.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
+# geom_boxplot(): draws quartiles, whiskers, and flagged points; a flagged value is not automatically an error.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
+# theme_bw(): applies a white-background ggplot theme.
 # facet_wrap() or facet_grid() separates observations into panels using grouping variables.
 # The ~ formula defines the grouping layout; compare panels with attention to their axis scales.
 library(ggplot2)
@@ -449,6 +474,8 @@ ggplot(data = mtcars, aes( y = mpg)) +
 **Code Example**: The area plot show below visualizes unemployment data (**`unemploy`**) from the **`economics`** dataset over time (**`date`**). The area under the line is filled, emphasizing the volume of unemployment over time. This plot is effective for showing trends in data, such as increases or decreases in unemployment rates, and can be particularly impactful for economic reporting.
 
 ```{r}
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
 # geom_area() fills the area beneath the supplied numerical values along x.
 # Here the x-axis is time; the height represents the recorded value rather than a frequency count.
 ggplot(economics, aes(x = date, y = unemploy)) +
@@ -466,6 +493,8 @@ ggplot(economics, aes(x = date, y = unemploy)) +
 **Code Example**: The density plot is used here to show the distribution of highway miles per gallon (**`hwy`**) in the **`mpg`** dataset. Unlike a histogram, the density plot provides a smooth curve that is useful for identifying where the data concentrates, indicating the most common fuel efficiency values observed on the highway.
 
 ```{r}
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
 # geom_density() estimates a smooth numerical distribution from the observations.
 # The vertical axis is density rather than a raw count; the smoothing choice affects the shape.
 ggplot(mpg, aes(x = hwy)) +
@@ -483,6 +512,8 @@ ggplot(mpg, aes(x = hwy)) +
 **Code Example**: This violin plot compares the distribution of highway miles per gallon (**`hwy`**) across different vehicle classes (**`class`**). Violin plots combine boxplot and density plot features, showing both the summary statistics and the density estimates. This helps in comparing how fuel efficiency varies among classes, highlighting differences in distribution shapes and widths.
 
 ```{r}
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
 # geom_violin() shows a smoothed distribution for each category, mirrored around its center.
 # Its shape depends on smoothing and sample size; it does not display every observation individually.
 ggplot(mpg, aes(x = class, y = hwy)) +
@@ -500,6 +531,8 @@ ggplot(mpg, aes(x = class, y = hwy)) +
 **Code Example**: The column chart here represents average highway miles per gallon (**`hwy`**) for different vehicle classes (**`class`**) in the **`mpg`** dataset. Each column's height is proportional to the average **`hwy`** value, allowing for direct comparison across categories. This plot is useful for straightforward visual comparisons and is often used in business contexts to compare averages across different groups or categories.
 
 ```{r}
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
 # geom_col() draws the supplied hwy heights and stacks records sharing a class.
 # This totals the recorded hwy values within a class; calculate group means first if comparing average fuel economy.
 ggplot(mpg, aes(x = class, y = hwy)) +
@@ -515,6 +548,9 @@ ggplot(mpg, aes(x = class, y = hwy)) +
 **Code Example**: This heatmap uses an example data frame created with 10 rows and 10 columns labeled by letters and numbers, respectively. The **`value`** for each tile varies randomly between 0 and 100. In this visualization, each tile's color intensity represents its associated value, providing a quick visual summary of how values are distributed across two dimensions. Heatmaps like this are commonly used in business analytics to display data density across different categories or times, making it easy to spot patterns, concentrations, and outliers.
 
 ```{r}
+# expand.grid(): constructs every combination of its input values as rows of a data frame.
+# runif(): generates artificial uniform draws; min and max set the bounds.
+# ggplot(): starts a plot from data; additional layers are joined with +.
 # geom_tile() draws one colored tile for each x-y combination supplied in the table.
 # aes(fill=value) encodes the numerical value by color; these generated values are artificial.
 # Create some example data
@@ -535,6 +571,8 @@ ggplot(data, aes(x = Var1, y = Var2, fill = value)) +
 **Code Example**: Both of these plots use the **`mtcars`** dataset, mapping car weight to miles per gallon, and label each point with the car model. **`geom_text()`** adds labels directly to the plot without any background, which can help in identifying specific points clearly. **`geom_label()`**, however, adds a background to each label, enhancing readability especially in crowded plots. These methods are useful in presentations or detailed reports where clarity in data point identification is crucial.
 
 ```{r}
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# rownames(): reads or replaces the row labels of a matrix or data frame.
 # geom_text() or geom_label() places text at coordinates defined through aes().
 # The label mapping supplies the text; nudges or justification control its placement.
 # Use geom_text for adding text
@@ -557,6 +595,12 @@ ggplot(mtcars, aes(x = wt, y = mpg, label = rownames(mtcars))) +
 **Example**: The ribbon plot shown below illustrates variability around a central line, created using simulated data. It shows a sinusoidal trend (the central line), with ribbons representing a confidence interval or variability range around this trend. This type of visualization is particularly useful for representing uncertainty in predictions, such as economic forecasts, stock price projections, or any other metric where expressing the confidence of predictions is valuable.
 
 ```{r}
+# data.frame(): builds a table whose named columns have compatible lengths.
+# sin(): computes the sine of an angle measured in radians.
+# rnorm(): generates artificial normal draws; n is the draw count and sd is standard deviation.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_line(): joins observations in x order; group determines which observations form each line.
 # geom_ribbon() fills the band between the supplied ymin and ymax values along x.
 # The band has the meaning assigned by its input values; a ribbon is not automatically a confidence interval.
 # Simulate some data
@@ -581,6 +625,8 @@ ggplot(df, aes(x = x, ymin = ymin, ymax = ymax, y = y)) +
 **Code Example**: The jitter plot is an adaptation of a scatter plot that adds a small, random displacement to each point. This is particularly useful when dealing with categorical data on one axis (like **`class`** in this example) to avoid overplotting where multiple points have exactly the same position. In the example show below which uses the **`mpg`** dataset, the jitter helps visualize the distribution of highway miles per gallon (**`hwy`**) for different vehicle classes, making it easier to discern individual data points within each category.
 
 ```{r}
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
 # geom_jitter() offsets point positions slightly so overlapping observations become visible.
 # width controls horizontal displacement; the jittered positions are display adjustments, not changed source values.
 ggplot(mpg, aes(x = class, y = hwy)) +
@@ -598,6 +644,15 @@ Each of these examples is tailored to show we how different types of visual repr
 **Code Example:** For this example, we'll use the `mtcars` dataset that comes built into R. We'll plot the relationship between `wt` (car weight) and `mpg` (miles per gallon) with the bubble size representing `hp` (horsepower).
 
 ```{r}
+# library(): loads a package so its functions can be used in this session.
+# data(): loads a named dataset supplied by an installed package.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_point(): draws a point for each row at its mapped x and y values.
+# scale_size_continuous(): maps numeric values to symbol sizes over the chosen range.
+# c(): combines values into a vector, converting them to a common type when needed.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
+# theme_minimal(): uses a minimal chart style; base_size controls the base text size in points.
 # The size mapping encodes an additional numerical variable using point area.
 # alpha controls transparency so overlapping bubbles can still be seen.
 library(ggplot2)

@@ -1,0 +1,13 @@
+---
+title: "Practice: Sampling Distributions and Standard Errors"
+subtitle: "Module 4 | Lesson 2 | Individuals versus statistics"
+css: ../../../assets/petra-brand.css
+---
+
+Use the [lesson](../02-sampling-distributions.qmd) for the checked case introductions and source limits. Submit a short Quarto report with calculations, units, assumptions, and interpretation.
+
+1. For EAI, calculate the approximate salary SE at n = 30 and n = 120. What stays unchanged about individual salary SD?
+2. Compute finite-population-corrected salary SEs at both sizes. Which sampling fraction exceeds 5%?
+3. Calculate the approximate training-proportion SE at n = 30 and check the expected counts for a normal approximation.
+4. Repeat the lesson's artificial mean simulation with n = 120. Label its model and compare empirical SD with theoretical SE.
+5. Explain why the CLT does not justify a normal salary histogram or fix dependence between coworkers.

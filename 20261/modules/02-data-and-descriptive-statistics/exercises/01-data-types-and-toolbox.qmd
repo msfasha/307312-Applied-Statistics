@@ -46,6 +46,8 @@ Download the [restaurant data](../../../data/module02/restaurant_ratings.csv), o
 
 ```{r}
 #| eval: false
+# read.csv(): reads a comma-separated file into a data frame; its first row supplies column names by default.
+# c(): combines values into a vector, converting them to a common type when needed.
 # factor() gives categories explicit levels and an optional order.
 # The level order controls grouping and display; ordered=TRUE records ordinal category order.
 restaurants <- read.csv("data/module02/restaurant_ratings.csv")
@@ -64,6 +66,7 @@ Download the [audit data](../../../data/module02/audit_times.csv), or use the co
 
 ```{r}
 #| eval: false
+# names(): reads or assigns names to vector elements or table columns.
 # read.csv() imports a CSV into a data frame with named columns.
 # The relative path starts at the course project folder; the source CSV is not modified.
 audit <- read.csv("data/module02/audit_times.csv")

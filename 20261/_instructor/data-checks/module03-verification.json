@@ -1,0 +1,17 @@
+{
+  "review_date": "2026-10-24",
+  "student_HTML_pages": 37,
+  "instructor_HTML_documents": 15,
+  "module03_lessons": 5,
+  "module03_practices": 5,
+  "module03_review_guides": 1,
+  "module03_student_PDF_pages": 40,
+  "publisher_data_checks": "Passed scripts/verify-data.R; original scope of matches retained.",
+  "source_checks": "See probability-distributions-plan.md for exact printed pages, all model inputs, and aggregate-versus-observation limits.",
+  "calculation_checks": "All student and instructor R chunks executed successfully; numerical assertions passed.",
+  "source_comment_checks": "All nonempty student-facing Module 3 R chunks contain at least two purpose/argument comments.",
+  "student_links": "All local file targets in 37 HTML pages and 152 PDF links exist.",
+  "instructor_links": "All local instructor-export targets exist.",
+  "visual_checks": "Seven model/event plots and all Module 3 PDF pages reviewed; mixed-language English names marked lang=en inside Arabic narration.",
+  "scope": "Selected coverage of textbook Chapters 4\u20136; extensions deferred; Module 4 remains planned."
+}

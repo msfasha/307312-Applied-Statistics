@@ -12,6 +12,7 @@ Use the book's **type-6 percentile convention** throughout. Preserve the origina
 
 ```{r}
 #| eval: false
+# library(): loads a package so its functions can be used in this session.
 # read.csv() imports a CSV into a data frame with named columns.
 # The relative path starts at the course project folder; the source CSV is not modified.
 library(ggplot2)

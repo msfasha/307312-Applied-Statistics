@@ -1,0 +1,15 @@
+% Soft Petra palette: dark headings, restrained purple accents, neutral body.
+\definecolor{PetraHeading}{HTML}{493347}
+\definecolor{PetraAccent}{HTML}{A83296}
+\definecolor{PetraLink}{HTML}{356B8C}
+\definecolor{PetraBody}{HTML}{2F343B}
+\addtokomafont{title}{\color{PetraHeading}}
+\addtokomafont{disposition}{\color{PetraHeading}}
+\AtBeginDocument{\color{PetraBody}}
+\usepackage{fvextra}
+\usepackage{needspace}
+\fvset{breaklines=true,breakanywhere=true,fontsize=\small}
+% R console output uses lowercase verbatim rather than highlighted Verbatim.
+\RecustomVerbatimEnvironment{verbatim}{Verbatim}{breaklines=true,breakanywhere=true}
+\babelprovide[import]{arabic}
+\babelfont[arabic]{rm}[Script=Arabic]{Noto Naskh Arabic}

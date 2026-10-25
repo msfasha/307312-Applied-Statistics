@@ -1,0 +1,30 @@
+---
+title: "Instructor Answers: Sampling Distributions and Standard Errors"
+subtitle: "Module 4 | Lesson 2 | Individuals versus statistics"
+css: ../../../assets/petra-brand.css
+---
+
+## Calculations
+
+```{r}
+# c(): combines values into a vector, converting them to a common type when needed.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# sqrt(): returns the nonnegative square root of a nonnegative number.
+# set.seed(): fixes the pseudorandom sequence so rerunning the same code reproduces its artificial draws.
+# replicate(): repeats an expression n times and collects the results.
+# mean(): computes an average; logical TRUE/FALSE values contribute 1/0, giving a proportion.
+# rnorm(): generates artificial normal draws; n is the draw count and sd is standard deviation.
+# sd(): computes sample standard deviation using denominator n-1.
+# Calculate design-specific SEs for the two requested sample sizes.
+# The correction applies to sampling without replacement from N=2500, unlike the independent simulation.
+n <- c(30,120)
+knitr::kable(data.frame(n=n, fraction=n/2500, approximate=4000/sqrt(n),
+ corrected=4000/sqrt(n)*sqrt((2500-n)/2499)), digits=5)
+c(proportion_SE=sqrt(.6*.4/30), expected_successes=30*.6, expected_failures=30*.4)
+set.seed(307312)
+means <- replicate(4000,mean(rnorm(120,71800,4000)))
+c(empirical_SE=sd(means), theoretical_SE=4000/sqrt(120))
+```
+
+Approximate SEs: \$730.30 and \$365.15; individual SD remains \$4,000. Fractions are .012 and .048, so neither exceeds 5%. Expected counts 18 and 12 meet our rule. A simulation using independent normal draws supports the model calculation, not an empirical claim about EAI. The CLT concerns means, and its independent-data version does not handle arbitrary coworker dependence.

@@ -1,0 +1,214 @@
+{
+  "review_date": "2026-10-25",
+  "pdfs": 50,
+  "total_pages": 266,
+  "local_links_checked": 175,
+  "errors": [],
+  "outside_page_character_flags": [],
+  "files": [
+    {
+      "file": "assets/pdf/svg/module02/data-types.pdf",
+      "pages": 1
+    },
+    {
+      "file": "assets/pdf/svg/module02/descriptive-toolbox.pdf",
+      "pages": 1
+    },
+    {
+      "file": "assets/pdf/svg/module02/frequency-workflow.pdf",
+      "pages": 1
+    },
+    {
+      "file": "assets/pdf/svg/module02/numerical-measures-summary.pdf",
+      "pages": 1
+    },
+    {
+      "file": "index.pdf",
+      "pages": 2
+    },
+    {
+      "file": "modules/01-introduction-to-r/01-r-and-rstudio.pdf",
+      "pages": 8
+    },
+    {
+      "file": "modules/01-introduction-to-r/02-basic-concepts.pdf",
+      "pages": 38
+    },
+    {
+      "file": "modules/01-introduction-to-r/03-dplyr.pdf",
+      "pages": 6
+    },
+    {
+      "file": "modules/01-introduction-to-r/04-ggplot2.pdf",
+      "pages": 32
+    },
+    {
+      "file": "modules/01-introduction-to-r/exercises/02-basic-concepts.pdf",
+      "pages": 3
+    },
+    {
+      "file": "modules/01-introduction-to-r/exercises/03-dplyr.pdf",
+      "pages": 1
+    },
+    {
+      "file": "modules/01-introduction-to-r/exercises/04-ggplot2.pdf",
+      "pages": 1
+    },
+    {
+      "file": "modules/01-introduction-to-r/index.pdf",
+      "pages": 1
+    },
+    {
+      "file": "modules/02-data-and-descriptive-statistics/01-data-types-and-toolbox.pdf",
+      "pages": 16
+    },
+    {
+      "file": "modules/02-data-and-descriptive-statistics/02-frequency-tables-and-charts.pdf",
+      "pages": 16
+    },
+    {
+      "file": "modules/02-data-and-descriptive-statistics/03-numerical-measures.pdf",
+      "pages": 17
+    },
+    {
+      "file": "modules/02-data-and-descriptive-statistics/04-relationships-between-variables.pdf",
+      "pages": 11
+    },
+    {
+      "file": "modules/02-data-and-descriptive-statistics/05-descriptive-statistics-review.pdf",
+      "pages": 2
+    },
+    {
+      "file": "modules/02-data-and-descriptive-statistics/exercises/01-data-types-and-toolbox.pdf",
+      "pages": 2
+    },
+    {
+      "file": "modules/02-data-and-descriptive-statistics/exercises/02-frequency-tables-and-charts.pdf",
+      "pages": 3
+    },
+    {
+      "file": "modules/02-data-and-descriptive-statistics/exercises/03-numerical-measures.pdf",
+      "pages": 3
+    },
+    {
+      "file": "modules/02-data-and-descriptive-statistics/exercises/04-relationships-between-variables.pdf",
+      "pages": 2
+    },
+    {
+      "file": "modules/02-data-and-descriptive-statistics/index.pdf",
+      "pages": 2
+    },
+    {
+      "file": "modules/03-probability-and-distributions/01-probability-rules.pdf",
+      "pages": 5
+    },
+    {
+      "file": "modules/03-probability-and-distributions/02-conditional-probability.pdf",
+      "pages": 6
+    },
+    {
+      "file": "modules/03-probability-and-distributions/03-discrete-random-variables.pdf",
+      "pages": 5
+    },
+    {
+      "file": "modules/03-probability-and-distributions/04-binomial-and-poisson.pdf",
+      "pages": 7
+    },
+    {
+      "file": "modules/03-probability-and-distributions/05-continuous-distributions.pdf",
+      "pages": 6
+    },
+    {
+      "file": "modules/03-probability-and-distributions/06-probability-and-distributions-review.pdf",
+      "pages": 2
+    },
+    {
+      "file": "modules/03-probability-and-distributions/exercises/01-probability-rules.pdf",
+      "pages": 2
+    },
+    {
+      "file": "modules/03-probability-and-distributions/exercises/02-conditional-probability.pdf",
+      "pages": 2
+    },
+    {
+      "file": "modules/03-probability-and-distributions/exercises/03-discrete-random-variables.pdf",
+      "pages": 2
+    },
+    {
+      "file": "modules/03-probability-and-distributions/exercises/04-binomial-and-poisson.pdf",
+      "pages": 2
+    },
+    {
+      "file": "modules/03-probability-and-distributions/exercises/05-continuous-distributions.pdf",
+      "pages": 2
+    },
+    {
+      "file": "modules/03-probability-and-distributions/index.pdf",
+      "pages": 2
+    },
+    {
+      "file": "modules/04-sampling-and-estimation/01-sampling-and-variability.pdf",
+      "pages": 3
+    },
+    {
+      "file": "modules/04-sampling-and-estimation/02-sampling-distributions.pdf",
+      "pages": 4
+    },
+    {
+      "file": "modules/04-sampling-and-estimation/03-confidence-intervals-for-means.pdf",
+      "pages": 4
+    },
+    {
+      "file": "modules/04-sampling-and-estimation/04-proportions-and-sample-size.pdf",
+      "pages": 4
+    },
+    {
+      "file": "modules/04-sampling-and-estimation/05-sampling-and-estimation-review.pdf",
+      "pages": 1
+    },
+    {
+      "file": "modules/04-sampling-and-estimation/exercises/01-sampling-and-variability.pdf",
+      "pages": 1
+    },
+    {
+      "file": "modules/04-sampling-and-estimation/exercises/02-sampling-distributions.pdf",
+      "pages": 1
+    },
+    {
+      "file": "modules/04-sampling-and-estimation/exercises/03-confidence-intervals-for-means.pdf",
+      "pages": 1
+    },
+    {
+      "file": "modules/04-sampling-and-estimation/exercises/04-proportions-and-sample-size.pdf",
+      "pages": 1
+    },
+    {
+      "file": "modules/04-sampling-and-estimation/index.pdf",
+      "pages": 1
+    },
+    {
+      "file": "modules/05-hypothesis-testing/01-hypothesis-testing.pdf",
+      "pages": 28
+    },
+    {
+      "file": "modules/05-hypothesis-testing/index.pdf",
+      "pages": 1
+    },
+    {
+      "file": "modules/06-regression/index.pdf",
+      "pages": 1
+    },
+    {
+      "file": "modules/07-forecasting-and-applications/index.pdf",
+      "pages": 1
+    },
+    {
+      "file": "resources/index.pdf",
+      "pages": 1
+    }
+  ],
+  "bundle_integrity": "passed",
+  "visual_review": "All 21 Module 4 pages rendered and inspected, with repaired currency tables and long formula inspected at larger size. Updated conditional-probability code display inspected. Retained lessons receive build/link/documentation checks, not a new full statistical or visual audit.",
+  "student_document_pdfs": 46,
+  "supporting_diagram_pdfs": 4
+}

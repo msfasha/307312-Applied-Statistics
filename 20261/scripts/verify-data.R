@@ -1,3 +1,46 @@
+# library(): loads a package so its functions can be used in this session.
+# grep(): finds text matching a regular expression; value=TRUE returns matching text rather than positions.
+# commandArgs(): reads arguments passed to R; trailingOnly=TRUE keeps arguments intended for the script.
+# length(): counts elements in a vector or list.
+# normalizePath(): resolves a path into a canonical absolute path.
+# file.path(): joins path components with the platform-appropriate separator.
+# dirname(): returns the directory portion of a file path.
+# sub(): replaces the first pattern match in each text value; patterns normally use regular expressions.
+# getwd(): returns the current working-directory path.
+# file.exists(): checks whether each specified file path exists.
+# stop(): ends execution and displays an error message.
+# dir.exists(): checks whether a specified directory exists.
+# dir.create(): creates an output folder; recursive=TRUE creates missing parents and showWarnings=FALSE silences existing-folder warnings.
+# as.data.frame(): converts an object to a rectangular data frame.
+# read_excel(): reads a publisher workbook for provenance checks; sheet selects its worksheet.
+# sort(): sorts values; decreasing=TRUE reverses the default ascending order.
+# list.files(): lists directory entries; pattern filters names and recursive=TRUE searches subdirectories.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# substring(): extracts characters between the supplied first and last positions.
+# nchar(): counts the characters in each text value by default.
+# basename(): returns the final filename portion of a path.
+# unname(): removes names or dimension names without changing the underlying values.
+# md5sum(): computes a file checksum to detect byte-level differences; it does not establish textbook compatibility.
+# write.csv(): exports comma-separated data; row.names=FALSE avoids adding an unwanted index column.
+# read_source(): is a locally defined helper reading a preserved source workbook for reproducible verification.
+# c(): combines values into a vector, converting them to a common type when needed.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# nrow(): returns the number of rows in a table or matrix.
+# anyNA(): returns TRUE if any value is missing; !anyNA(...) requires no missing values.
+# all(): returns TRUE only when every supplied logical value is TRUE.
+# identical(): requires exact equality of values, types, and attributes.
+# as.integer(): converts to integers by truncating numeric fractional parts; it does not round to nearest.
+# table(): counts observations for each category or combination of categories.
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
+# names(): reads or assigns names to vector elements or table columns.
+# cut(): groups numeric values into intervals; breaks sets edges and right=FALSE makes [left,right) intervals.
+# matrix(): arranges values in rows and columns; byrow=TRUE fills rows rather than the default columns.
+# as.numeric(): converts values to numbers; for a factor this gives internal codes rather than printed labels.
+# ncol(): returns the number of columns in a table or matrix.
+# cat(): prints combined values directly; \n in its strings starts a new output line.
+# unique(): keeps distinct values or rows in first-occurrence order.
+# tolower(): converts text to lowercase for consistent matching.
+# print(): displays the supplied value or object.
 library(readxl)
 
 script_arg <- grep("^--file=", commandArgs(), value = TRUE)

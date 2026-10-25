@@ -16,8 +16,8 @@ Work through the seven numbered **topic modules** below. The 8th-edition textboo
 |---|---|---|
 | 1 | [Introduction to R](modules/01-introduction-to-r/index.qmd) | Four lessons and practice |
 | 2 | [Data and descriptive statistics](modules/02-data-and-descriptive-statistics/index.qmd) | Lessons 1–4, practice, and integrated review available |
-| 3 | [Probability and distributions](modules/03-probability-and-distributions/index.qmd) | Planned |
-| 4 | [Sampling and estimation](modules/04-sampling-and-estimation/index.qmd) | Planned |
+| 3 | [Probability and distributions](modules/03-probability-and-distributions/index.qmd) | Five lessons, practice, and integrated review available |
+| 4 | [Sampling and estimation](modules/04-sampling-and-estimation/index.qmd) | Four lessons, practice, and integrated review available |
 | 5 | [Hypothesis testing and group comparisons](modules/05-hypothesis-testing/index.qmd) | Existing lesson; expansion planned |
 | 6 | [Regression](modules/06-regression/index.qmd) | Planned |
 | 7 | [Forecasting and applied analysis](modules/07-forecasting-and-applications/index.qmd) | Planned |

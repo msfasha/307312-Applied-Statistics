@@ -66,6 +66,6 @@ Using **Electronics**:
 
 You are ready to move on when you can explain **why** each tool suits its question, describe what it leaves out, and recognize a conclusion that exceeds the evidence.
 
-This completes the planned descriptive-statistics sequence. [Module 3](../03-probability-and-distributions/index.qmd) introduces probability and distributions; its detailed lessons are still planned.
+This completes the planned descriptive-statistics sequence. [Module 3](../03-probability-and-distributions/index.qmd) now provides five lessons, practice, and a review on probability and distributions.
 
 [Return to the Module 2 overview](index.qmd).

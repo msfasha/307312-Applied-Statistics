@@ -13,6 +13,16 @@ execute:
 
 ```{r}
 #| include: false
+# library(): loads a package so its functions can be used in this session.
+# normalizePath(): resolves a path into a canonical absolute path.
+# getwd(): returns the current working-directory path.
+# file.exists(): checks whether each specified file path exists.
+# file.path(): joins path components with the platform-appropriate separator.
+# dirname(): returns the directory portion of a file path.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# read.csv(): reads a comma-separated file into a data frame; its first row supplies column names by default.
+# theme_set(): sets the default theme for subsequent ggplot charts in this R session.
+# theme_minimal(): uses a minimal chart style; base_size controls the base text size in points.
 library(ggplot2)
 library(knitr)
 project <- normalizePath(getwd())
@@ -30,6 +40,18 @@ theme_set(theme_minimal(base_size = 13))
 The observational unit is **one purchase**. Brand is **nominal categorical**. Do not assume 50 different people. `brand_original` and `brand_book_label` are two labels for each of the same 50 observations; stacking them doubles the observations incorrectly.
 
 ```{r}
+# c(): combines values into a vector, converting them to a common type when needed.
+# as.data.frame(): converts an object to a rectangular data frame.
+# table(): counts observations for each category or combination of categories.
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
+# names(): reads or assigns names to vector elements or table columns.
+# nrow(): returns the number of rows in a table or matrix.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# sum(): adds vector entries; on logical values it counts TRUE entries.
+# abs(): returns absolute values; a small tolerance in an equality check permits floating-point rounding.
+# identical(): requires exact equality of values, types, and attributes.
+# as.integer(): converts to integers by truncating numeric fractional parts; it does not round to nearest.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
 levels_book <- c("Coca-Cola", "Diet Coke", "Dr. Pepper", "Pepsi", "Sprite")
 tab <- as.data.frame(table(factor(soft$brand_book_label, levels = levels_book)))
 names(tab) <- c("Brand", "Frequency")
@@ -46,6 +68,24 @@ Coca-Cola leads with **19 purchases (38%)**. Dr. Pepper and Sprite tie at **5 pu
 ## 2. Categorical charts and interpretation
 
 ```{r}
+# order(): returns row or element positions in sorting order, rather than the sorted values themselves.
+# as.character(): converts values to character text; for a factor it returns displayed category labels.
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
+# rev(): reverses the order of a vector.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_col(): draws bars at supplied heights; it does not count records.
+# scale_x_continuous(): controls numeric x-axis breaks, labels, limits, and spacing.
+# c(): combines values into a vector, converting them to a common type when needed.
+# seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
+# paste0(): joins text with no separator; collapse can combine a vector into one string.
+# coord_polar(): converts Cartesian positions to polar coordinates, e.g. bars to a pie chart.
+# geom_text(): draws labels from mapped data; position and hjust/vjust control placement.
+# position_stack(): stacks groups; vjust controls label placement inside each stack.
+# scale_fill_manual(): assigns explicit fill colors to categories; named values preserve category-color mappings.
+# theme_void(): removes axes and most non-data decoration.
+# theme(): customizes non-data plot elements such as legends, grids, and axis text.
 ranked <- tab[order(-tab$Frequency, as.character(tab$Brand)), ]
 ranked$Brand <- factor(ranked$Brand, levels = rev(as.character(ranked$Brand)))
 ggplot(ranked, aes(Frequency, Brand)) +
@@ -68,6 +108,26 @@ The national-market claim needs evidence about the target population and samplin
 ## 3. Grouped and cumulative audit summaries
 
 ```{r}
+# seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.
+# cut(): groups numeric values into intervals; breaks sets edges and right=FALSE makes [left,right) intervals.
+# as.data.frame(): converts an object to a rectangular data frame.
+# table(): counts observations for each category or combination of categories.
+# names(): reads or assigns names to vector elements or table columns.
+# c(): combines values into a vector, converting them to a common type when needed.
+# length(): counts elements in a vector or list.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# anyNA(): returns TRUE if any value is missing; !anyNA(...) requires no missing values.
+# identical(): requires exact equality of values, types, and attributes.
+# as.integer(): converts to integers by truncating numeric fractional parts; it does not round to nearest.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_histogram(): bins numeric observations; binwidth or breaks controls the intervals and boundary anchors them.
+# scale_x_continuous(): controls numeric x-axis breaks, labels, limits, and spacing.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# cumsum(): computes running totals in the current order.
+# sum(): adds vector entries; on logical values it counts TRUE entries.
 x <- audit$audit_days
 b <- seq(10, 35, 5)
 classes <- cut(x, breaks = b, right = FALSE)
@@ -97,6 +157,21 @@ Each class includes its lower boundary and excludes its upper boundary. The moda
 ## 4. Wider classes and histogram area
 
 ```{r}
+# c(): combines values into a vector, converting them to a common type when needed.
+# table(): counts observations for each category or combination of categories.
+# cut(): groups numeric values into intervals; breaks sets edges and right=FALSE makes [left,right) intervals.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# identical(): requires exact equality of values, types, and attributes.
+# as.integer(): converts to integers by truncating numeric fractional parts; it does not round to nearest.
+# sum(): adds vector entries; on logical values it counts TRUE entries.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# names(): reads or assigns names to vector elements or table columns.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_histogram(): bins numeric observations; binwidth or breaks controls the intervals and boundary anchors them.
+# scale_x_continuous(): controls numeric x-axis breaks, labels, limits, and spacing.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
 wide_breaks <- c(10,20,30,40)
 wide <- table(cut(x, breaks = wide_breaks, right = FALSE))
 stopifnot(identical(as.integer(wide), c(12L,7L,1L)), sum(wide) == 20)

@@ -7,6 +7,8 @@ project:
     - modules/**/*.qmd
     - resources/**/*.qmd
     - resources/**/*.Rmd
+  pre-render:
+    - python3 scripts/audit-code-documentation.py
   post-render:
     - python3 scripts/validate-course.py
 
@@ -62,10 +64,50 @@ website:
         contents:
           - text: "Overview"
             href: modules/03-probability-and-distributions/index.qmd
+          - text: "1. Probability rules"
+            href: modules/03-probability-and-distributions/01-probability-rules.qmd
+          - text: "Practice: probability rules"
+            href: modules/03-probability-and-distributions/exercises/01-probability-rules.qmd
+          - text: "2. Conditional probability"
+            href: modules/03-probability-and-distributions/02-conditional-probability.qmd
+          - text: "Practice: conditional probability"
+            href: modules/03-probability-and-distributions/exercises/02-conditional-probability.qmd
+          - text: "3. Discrete random variables"
+            href: modules/03-probability-and-distributions/03-discrete-random-variables.qmd
+          - text: "Practice: discrete random variables"
+            href: modules/03-probability-and-distributions/exercises/03-discrete-random-variables.qmd
+          - text: "4. Binomial and Poisson models"
+            href: modules/03-probability-and-distributions/04-binomial-and-poisson.qmd
+          - text: "Practice: binomial and poisson models"
+            href: modules/03-probability-and-distributions/exercises/04-binomial-and-poisson.qmd
+          - text: "5. Continuous distributions"
+            href: modules/03-probability-and-distributions/05-continuous-distributions.qmd
+          - text: "Practice: continuous distributions"
+            href: modules/03-probability-and-distributions/exercises/05-continuous-distributions.qmd
+          - text: "Integrated probability and distributions review"
+            href: modules/03-probability-and-distributions/06-probability-and-distributions-review.qmd
       - section: "Module 4: Sampling and estimation"
         contents:
           - text: "Overview"
             href: modules/04-sampling-and-estimation/index.qmd
+          - text: "1. Sampling and variability"
+            href: modules/04-sampling-and-estimation/01-sampling-and-variability.qmd
+          - text: "Practice: sampling and variability"
+            href: modules/04-sampling-and-estimation/exercises/01-sampling-and-variability.qmd
+          - text: "2. Sampling distributions and standard errors"
+            href: modules/04-sampling-and-estimation/02-sampling-distributions.qmd
+          - text: "Practice: sampling distributions and standard errors"
+            href: modules/04-sampling-and-estimation/exercises/02-sampling-distributions.qmd
+          - text: "3. Confidence intervals for means"
+            href: modules/04-sampling-and-estimation/03-confidence-intervals-for-means.qmd
+          - text: "Practice: confidence intervals for means"
+            href: modules/04-sampling-and-estimation/exercises/03-confidence-intervals-for-means.qmd
+          - text: "4. Proportions and sample-size planning"
+            href: modules/04-sampling-and-estimation/04-proportions-and-sample-size.qmd
+          - text: "Practice: proportions and sample-size planning"
+            href: modules/04-sampling-and-estimation/exercises/04-proportions-and-sample-size.qmd
+          - text: "Integrated sampling and estimation review"
+            href: modules/04-sampling-and-estimation/05-sampling-and-estimation-review.qmd
       - section: "Module 5: Hypothesis testing and group comparisons"
         contents:
           - text: "Overview"

@@ -1,0 +1,24 @@
+---
+title: "Instructor Answers: Sampling and Variability"
+subtitle: "Module 4 | Lesson 1 | From a population to a sample"
+css: ../../../assets/petra-brand.css
+---
+
+## Answers
+
+The population is all 2,500 EAI employees in the book's setting; the intended frame is their personnel list. One employee is the unit. Parameters are $\mu=71800$, $\sigma=4000$, $p=.60$; sample statistics include $\bar x=71814$ and $\hat p=19/30$.
+
+```{r}
+# set.seed(): fixes the pseudorandom sequence so rerunning the same code reproduces its artificial draws.
+# sample(): randomly selects values; size sets the count and replace=FALSE prevents repeats within a draw.
+# seq_len(): returns integer positions 1 through n, safely returning an empty vector when n=0.
+# c(): combines values into a vector, converting them to a common type when needed.
+# length(): counts elements in a vector or list.
+# Show realized errors and a reproducible simple random sample of identifiers.
+# replace=FALSE excludes repeated IDs; unique() checks the number of distinct selections.
+set.seed(307312)
+ids <- sample(seq_len(2500), 50, replace = FALSE)
+c(salary_error = 71814 - 71800, training_error_pp = 100 * (19/30 - .6), distinct = length(unique(ids)))
+```
+
+Errors are \$14 per year and 3.3333 percentage points. The seed controls the pseudorandom sequence; it does not make a biased frame representative. Without checked employee-level records, selected IDs provide no salary observations. Volunteer selection can favor particular employee groups, and increasing its size does not guarantee removal of that bias.

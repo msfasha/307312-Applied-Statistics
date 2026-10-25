@@ -1,0 +1,31 @@
+---
+title: "Instructor Answers: Sampling and Estimation Review"
+css: ../../../assets/petra-brand.css
+---
+
+## Numerical answers
+
+```{r}
+# sqrt(): returns the nonnegative square root of a nonnegative number.
+# c(): combines values into a vector, converting them to a common type when needed.
+# qt(): returns a t lower-tail quantile; df sets degrees of freedom, n-1 for a one-sample mean interval.
+# qnorm(): returns a normal lower-tail quantile; sd is standard deviation, not variance.
+# ceiling(): rounds upward to an integer; sample-size planning must meet the minimum required size.
+# Verify integrated answers from the same published summaries used in the lessons.
+# Quantiles use lower-tail probabilities; the finite correction applies only to sampling without replacement.
+se <- 4000/sqrt(100)
+mean_ci <- 9312+c(-1,1)*qt(.975,69)*4007/sqrt(70)
+p <- 396/900
+proportion_ci <- p+c(-1,1)*qnorm(.975)*sqrt(p*(1-p)/900)
+c(SE=se, corrected_SE=se*sqrt(2400/2499), lower_mean=mean_ci[1],upper_mean=mean_ci[2],
+ lower_proportion=proportion_ci[1],upper_proportion=proportion_ci[2],
+ required=ceiling(qnorm(.975)^2*.25/.025^2))
+```
+
+## Interpretation standard
+
+SE is \$400 before correction and about \$392 after correction; it is not the \$4,000 individual SD. Household intervals use t with 69 df because population SD is unknown. Proportion limits are about .40757 and .47243; completed planning n=1537. Require a defined satisfied outcome, adequate success/failure counts, and design assumptions.
+
+A parameter describes the population; an estimate is a realized sample statistic; error is estimate minus parameter and is normally unknown; SE is repeated-sampling spread. Missing groups in a frame can create bias. Mean intervals estimate a mean rather than containing 95% of salaries. Unknown SD requires t even above 30. Large volunteer samples can remain biased. The CLT concerns statistics rather than transforming the population.
+
+All EAI, Lloyd's, household, and golfer inputs are stated book summaries or parameters. Artificial normal draws are explicitly illustrative. No individual records or actual survey implementation were verified in Module 4. Request design documentation and raw records to examine coverage, nonresponse, outliers, shape, and dependence. Do not award an unconditional population conclusion merely for correct arithmetic.

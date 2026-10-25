@@ -15,6 +15,11 @@ An analyst wants to select restaurants by rating and price, then summarize price
 :::
 
 ```{r}
+# library(): loads a package so its functions can be used in this session.
+# read.csv(): reads a comma-separated file into a data frame; its first row supplies column names by default.
+# c(): combines values into a vector, converting them to a common type when needed.
+# head(): shows the first n entries or rows, six by default.
+# glimpse(): shows table dimensions, column types, and example values.
 # factor() gives categories explicit levels and an optional order.
 # The level order controls grouping and display; ordered=TRUE records ordinal category order.
 library(dplyr)
@@ -32,6 +37,7 @@ Use the RStudio project so these paths resolve from the `20261` folder. Keep the
 `select()` chooses variables. Use meaningful names rather than column positions when practical.
 
 ```{r}
+# head(): shows the first n entries or rows, six by default.
 # select() retains or renames the specified columns.
 # It changes the variables included in the result without filtering observations.
 prices <- restaurants |> select(restaurant_id, meal_price_usd)
@@ -43,6 +49,9 @@ head(prices)
 `filter()` retains observations meeting conditions. A comma combines conditions with AND. Use `|` for OR and `%in%` for membership in a set.
 
 ```{r}
+# head(): shows the first n entries or rows, six by default.
+# nrow(): returns the number of rows in a table or matrix.
+# c(): combines values into a vector, converting them to a common type when needed.
 # filter() keeps rows whose conditions are TRUE; commas combine conditions with AND.
 # Missing comparisons do not pass the filter; the source object stays unchanged unless reassigned.
 selected <- restaurants |>
@@ -62,6 +71,10 @@ Missing values need deliberate treatment: a comparison that evaluates to `NA` wi
 The base pipe `|>` sends one result into the next operation. Read the chain from top to bottom. `dplyr` also supports `%>%`; use one style consistently in a report.
 
 ```{r}
+# select(): chooses columns by name or selection rule.
+# arrange(): orders rows by supplied columns; desc() reverses a column to descending order.
+# desc(): reverses sorting order to descending inside arrange().
+# head(): shows the first n entries or rows, six by default.
 # filter() keeps rows whose conditions are TRUE; commas combine conditions with AND.
 # Missing comparisons do not pass the filter; the source object stays unchanged unless reassigned.
 restaurants |>
@@ -76,6 +89,10 @@ restaurants |>
 `arrange()` sorts rows. `desc()` reverses an ordering. `mutate()` creates or changes columns while retaining the rows.
 
 ```{r}
+# mutate(): creates or replaces columns while retaining the original rows.
+# c(): combines values into a vector, converting them to a common type when needed.
+# arrange(): orders rows by supplied columns; desc() reverses a column to descending order.
+# head(): shows the first n entries or rows, six by default.
 # cut() assigns numerical values to intervals defined by breaks.
 # Check right and include.lowest to determine which interval contains a boundary value.
 prepared <- restaurants |>
@@ -92,6 +109,13 @@ The price bands include the lower boundary and exclude the upper one. These are 
 `count()` counts observations by categories. `group_by()` defines groups for subsequent operations. `summarise()` reduces each group to summary rows.
 
 ```{r}
+# count(): counts rows for each combination of supplied categories.
+# n(): counts rows in the current dplyr group.
+# mean(): computes an average; logical TRUE/FALSE values contribute 1/0, giving a proportion.
+# median(): returns the middle sorted value, averaging the middle pair for even sample sizes.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# sum(): adds vector entries; on logical values it counts TRUE entries.
+# nrow(): returns the number of rows in a table or matrix.
 # summarise() reduces each group to the statistics specified here.
 # group_by() defines the groups; .groups = "drop" removes grouping from the result.
 restaurants |> count(quality_rating, name = "restaurants")
@@ -109,6 +133,8 @@ Using `.groups = "drop"` makes the result ungrouped. Otherwise, grouping metadat
 ## Missing values and duplicates
 
 ```{r}
+# colSums(): sums each column separately.
+# is.na(): marks missing values with TRUE; na.rm=TRUE elsewhere removes missing values only when justified.
 # anyDuplicated() returns 0 when no duplicate value is found, otherwise its first position.
 # Check identifiers for duplicate records; equal measurements alone do not imply duplicates.
 colSums(is.na(restaurants))
@@ -122,6 +148,11 @@ A duplicate identifier and two restaurants with the same price are different iss
 A join combines tables through shared keys. This lookup is **derived from our own group summary**. Each quality category occurs once in the lookup, so a left join should preserve the 300 restaurant rows.
 
 ```{r}
+# select(): chooses columns by name or selection rule.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# nrow(): returns the number of rows in a table or matrix.
+# anyNA(): returns TRUE if any value is missing; !anyNA(...) requires no missing values.
+# head(): shows the first n entries or rows, six by default.
 # left_join() adds matching lookup information using the specified key.
 # Repeated lookup keys can multiply rows, so check key uniqueness and the result row count.
 lookup <- group_summary |>
@@ -140,6 +171,9 @@ Repeated keys on both sides can multiply rows. Check key uniqueness and row coun
 `pivot_longer()` moves selected columns into name/value rows. `pivot_wider()` reverses that organization when the keys uniquely identify cells.
 
 ```{r}
+# library(): loads a package so its functions can be used in this session.
+# select(): chooses columns by name or selection rule.
+# pivot_wider(): turns name-value rows into columns using names_from and values_from.
 # pivot_longer() turns selected columns into name-value rows.
 # names_to and values_to name the new columns; untouched columns identify the original groups.
 library(tidyr)
@@ -157,8 +191,8 @@ Run this manually when you want a report output. Generated results belong in `_o
 
 ```{r}
 #| eval: false
-# Assign the expression on the right to the object named on the left.
-# Later calculations use the stored value; assignment replaces any previous value with that name.
+# dir.create() prepares an output folder; write.csv() saves the derived summary as a CSV.
+# row.names = FALSE omits row-number columns and leaves the original input file unchanged.
 dir.create("_output", showWarnings = FALSE)
 write.csv(group_summary, "_output/restaurant-price-summary.csv", row.names = FALSE)
 ```

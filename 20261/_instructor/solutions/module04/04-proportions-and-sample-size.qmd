@@ -1,0 +1,28 @@
+---
+title: "Instructor Answers: Proportions and Sample-size Planning"
+subtitle: "Module 4 | Lesson 4 | Estimate a share and plan precision"
+css: ../../../assets/petra-brand.css
+---
+
+## Calculations
+
+```{r}
+# c(): combines values into a vector, converting them to a common type when needed.
+# qnorm(): returns a normal lower-tail quantile; sd is standard deviation, not variance.
+# sqrt(): returns the nonnegative square root of a nonnegative number.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# ceiling(): rounds upward to an integer; sample-size planning must meet the minimum required size.
+# Reproduce the textbook approximation and compare a lower confidence level.
+# E and interval endpoints use proportions; multiply a margin by 100 for percentage points.
+p <- 396/900
+level <- c(.95,.90)
+m <- qnorm(1-(1-level)/2)*sqrt(p*(1-p)/900)
+knitr::kable(data.frame(level=level,lower=p-m,upper=p+m,margin_pp=100*m),digits=5)
+pstar <- c(.44,.50)
+raw <- qnorm(.975)^2*pstar*(1-pstar)/.025^2
+knitr::kable(data.frame(planning_p=pstar,raw=raw,required=ceiling(raw),half_margin_required=ceiling(4*raw)),digits=4)
+ceiling((qnorm(.975)*20/1)^2)
+```
+
+Halving E quadruples unrounded n; rounded n need not be exactly four times the first rounded result. Rounding down can fail the target. The .50 share maximizes the variance factor at .25. Mean planning needs 1,537 completed observations for the \$1 extension; \$20 is the planning SD of individual spending, not an SE. Default prop.test() uses a different interval method. Neither interval calculation establishes representativeness or removes nonresponse bias.

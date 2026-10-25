@@ -1,0 +1,38 @@
+---
+title: "Module 3: Binomial and Poisson Models — Practice"
+subtitle: "Lesson 4 | Calculate, justify, and interpret"
+css: ../../../assets/petra-brand.css
+---
+
+## Preparation
+
+Read [Lesson 4](../04-binomial-and-poisson.qmd). Use the Martin Clothing Store and arrivals inputs already introduced in English and Arabic. These are model calculations rather than an analysis of newly supplied observations.
+
+## 1. Select the model
+
+Explain why the store example can be binomial with $n=3$ and $p=0.30$, and why the arrival count can be Poisson with mean 10 per 15 minutes. Give one plausible way each model's assumptions could fail.
+
+## 2. Translate binomial events
+
+Calculate the probability of exactly two, at most two, at least two, and more than two purchases. Then find the expected count, variance, and SD. Explain the difference between `dbinom()` and `pbinom()` and the boundary needed for “at least two.”
+
+## 3. Change the exposure
+
+For the same stated arrival rate, find:
+
+1. The mean count in three minutes.
+2. The probability of no arrivals in three minutes.
+3. The probability of at least two arrivals in three minutes.
+4. The probability of more than ten arrivals in fifteen minutes.
+
+Explain why the model mean must be tied to the interval and why the count has no fixed upper bound in the Poisson model.
+
+## 4. Simulate and interpret
+
+Use a fixed seed and simulate 10,000 three-customer binomial counts. Estimate the probability of at least two purchases and compare it with the exact value. Explain why a different seed may change the estimate and why this comparison does not establish model fit for real customers.
+
+## 5. Sampling without replacement
+
+Explain why taking three records from a finite list without replacement need not give independent trials with the same success probability. Do not apply a binomial model merely because there are three selections and two possible labels.
+
+Submit a method-and-event table with results and a short interpretation. [Return to the lesson](../04-binomial-and-poisson.qmd).

@@ -13,6 +13,18 @@ execute:
 
 ```{r}
 #| include: false
+# library(): loads a package so its functions can be used in this session.
+# normalizePath(): resolves a path into a canonical absolute path.
+# getwd(): returns the current working-directory path.
+# file.exists(): checks whether each specified file path exists.
+# file.path(): joins path components with the platform-appropriate separator.
+# dirname(): returns the directory portion of a file path.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# read.csv(): reads a comma-separated file into a data frame; its first row supplies column names by default.
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
+# c(): combines values into a vector, converting them to a common type when needed.
+# theme_set(): sets the default theme for subsequent ggplot charts in this R session.
+# theme_minimal(): uses a minimal chart style; base_size controls the base text size in points.
 library(ggplot2)
 library(knitr)
 project <- normalizePath(getwd())
@@ -62,6 +74,19 @@ Several defensible choices are possible. Assess whether the choice answers the q
 ## 4. Restaurant quality
 
 ```{r}
+# as.data.frame(): converts an object to a rectangular data frame.
+# table(): counts observations for each category or combination of categories.
+# names(): reads or assigns names to vector elements or table columns.
+# c(): combines values into a vector, converting them to a common type when needed.
+# sum(): adds vector entries; on logical values it counts TRUE entries.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# identical(): requires exact equality of values, types, and attributes.
+# as.integer(): converts to integers by truncating numeric fractional parts; it does not round to nearest.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_bar(): counts records by category by default; stat="identity" instead uses supplied heights.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
 quality <- as.data.frame(table(restaurants$quality_rating))
 names(quality) <- c("Quality", "Count")
 quality$Percent <- 100 * quality$Count / sum(quality$Count)
@@ -78,6 +103,31 @@ ggplot(restaurants, aes(quality_rating)) +
 ## 5. Audit durations
 
 ```{r}
+# names(): reads or assigns names to vector elements or table columns.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# length(): counts elements in a vector or list.
+# anyNA(): returns TRUE if any value is missing; !anyNA(...) requires no missing values.
+# cut(): groups numeric values into intervals; breaks sets edges and right=FALSE makes [left,right) intervals.
+# seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.
+# as.data.frame(): converts an object to a rectangular data frame.
+# table(): counts observations for each category or combination of categories.
+# c(): combines values into a vector, converting them to a common type when needed.
+# identical(): requires exact equality of values, types, and attributes.
+# as.integer(): converts to integers by truncating numeric fractional parts; it does not round to nearest.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_histogram(): bins numeric observations; binwidth or breaks controls the intervals and boundary anchors them.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
+# quantile(): computes sample percentiles; probs gives probabilities and type selects the interpolation rule.
+# mean(): computes an average; logical TRUE/FALSE values contribute 1/0, giving a proportion.
+# median(): returns the middle sorted value, averaging the middle pair for even sample sizes.
+# sd(): computes sample standard deviation using denominator n-1.
+# min(): returns the smallest supplied value.
+# max(): returns the largest supplied value.
+# diff(): subtracts each preceding value from the next by default; diff(range(x)) gives max minus min.
+# range(): returns the minimum and maximum as a two-element vector.
 names(audit)
 x <- audit$audit_days
 stopifnot(length(x) == 20, !anyNA(x))

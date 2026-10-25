@@ -1,0 +1,13 @@
+---
+title: "Practice: Sampling and Variability"
+subtitle: "Module 4 | Lesson 1 | From a population to a sample"
+css: ../../../assets/petra-brand.css
+---
+
+Use the [lesson](../01-sampling-and-variability.qmd) for the checked case introductions and source limits. Submit a short Quarto report with calculations, units, assumptions, and interpretation.
+
+1. Identify the population, frame, observational unit, parameters, and statistics in EAI.
+2. Reproduce the sample salary error and training error in percentage points.
+3. Draw 50 distinct IDs from 1:2500 with a fixed seed. Explain `replace = FALSE` and why a different seed may change the result.
+4. Explain why we cannot calculate a verified mean salary from these IDs alone.
+5. A manager surveys only staff who volunteer. Does increasing the volunteer count guarantee removal of bias? Distinguish this issue from sampling variability.

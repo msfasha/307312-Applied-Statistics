@@ -20,6 +20,7 @@ css: ../../../assets/petra-brand.css
 **Solution A:**
 
 ```{r}
+# print(): displays the supplied value or object.
 print("Hello, World!")
 print("Hello, [Your Name]!")
 ```
@@ -29,6 +30,7 @@ print("Hello, [Your Name]!")
 **Solution B:**
 
 ```{r}
+# cat(): prints combined values directly; \n in its strings starts a new output line.
 cat("Hello, World!\n")
 ```
 
@@ -39,6 +41,7 @@ Store your preferred number, color, and a boolean value that signifies your liki
 **Solution:**
 
 ```{r}
+# print(): displays the supplied value or object.
 favorite_number <- 42
 favorite_color <- "blue"
 likes_pizza <- TRUE
@@ -54,6 +57,9 @@ print(likes_pizza)
 **Solution A:**
 
 ```{r}
+# print(): displays the supplied value or object.
+# typeof(): reports an object's internal storage type.
+# class(): reports an object's class, which influences how functions handle it.
 numbers_vector <- 1:10
 print(typeof(numbers_vector))
 print(class(numbers_vector[1]))
@@ -64,6 +70,10 @@ print(class(numbers_vector[1]))
 **Solution B:**
 
 ```{r}
+# list(): stores named or unnamed objects that may have different types and lengths.
+# print(): displays the supplied value or object.
+# typeof(): reports an object's internal storage type.
+# sapply(): applies a function to each element and simplifies compatible results to a vector or matrix.
 mixed_list <- list(42, "hello", TRUE)
 print(typeof(mixed_list))
 print(sapply(mixed_list, class))
@@ -76,6 +86,7 @@ Compose a script that discerns whether a given number (hard-coded in the script)
 **Solution:**
 
 ```{r}
+# print(): displays the supplied value or object.
 number <- -5  # Replace with any number
 if (number > 0) {
   print("The number is positive.")
@@ -93,6 +104,7 @@ if (number > 0) {
 **Solution A:**
 
 ```{r}
+# print(): displays the supplied value or object.
 for (i in 1:10) {
   print(i^2)
 }
@@ -103,6 +115,7 @@ for (i in 1:10) {
 **Solution B:**
 
 ```{r}
+# print(): displays the supplied value or object.
 count <- 10
 while (count > 0) {
   print(count)
@@ -117,6 +130,8 @@ Craft a function named `calculate_area` that accepts a circle's radius and retur
 **Solution:**
 
 ```{r}
+# return(): ends the current function call and returns the specified value.
+# calculate_area(): calls the locally defined function to calculate area from its stated dimensions.
 calculate_area <- function(radius) {
   return(pi * radius^2)
 }
@@ -132,6 +147,8 @@ calculate_area(5)  # Replace with different radii
 **Solution A:**
 
 ```{r}
+# c(): combines values into a vector, converting them to a common type when needed.
+# print(): displays the supplied value or object.
 a <- c(2, 4, 6, 8, 10)
 b <- c(1, 3, 5, 7, 9)
 print(a + b)
@@ -145,6 +162,7 @@ print(a / b)
 **Solution B:**
 
 ```{r}
+# print(): displays the supplied value or object.
 print(a > b)
 print(a < b)
 ```
@@ -156,6 +174,11 @@ Institute a factor variable that delineates three kinds of fruit. Illustrate the
 **Solution:**
 
 ```{r}
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
+# c(): combines values into a vector, converting them to a common type when needed.
+# print(): displays the supplied value or object.
+# levels(): reads or replaces the category labels and order of a factor.
+# as.numeric(): converts values to numbers; for a factor this gives internal codes rather than printed labels.
 fruits <- factor(c("apple", "banana", "cherry"))
 print(fruits)
 print(levels(fruits))
@@ -172,6 +195,9 @@ Forge a modest data frame that enlists student IDs, names, and scores. Accomplis
 **Solution:**
 
 ```{r}
+# data.frame(): builds a table whose named columns have compatible lengths.
+# c(): combines values into a vector, converting them to a common type when needed.
+# print(): displays the supplied value or object.
 students <- data.frame(
   ID = 1:5,
   Name = c("Alice", "Bob", "Charlie", "David", "Eve"),
@@ -195,6 +221,10 @@ Write code that asks the user to enter his name and age, then returns a message 
 **Solution:**
 
 ```{r eval=FALSE}
+# readline(): reads one line of interactive console input as text; it is not suitable for unattended input.
+# as.numeric(): converts values to numbers; for a factor this gives internal codes rather than printed labels.
+# paste(): joins text using sep between pieces; collapse combines a vector into one string.
+# print(): displays the supplied value or object.
 # This task is optional as it requires interactive R environment
 user_name <- readline(prompt = "Enter your name: ")
 user_age <- as.numeric(readline(prompt = "Enter your age: "))
@@ -239,6 +269,11 @@ You have been supplied with two vectors of data: monthly revenue and monthly exp
 -   Note: It is okay for tax for any given month to be negative (in accounting terms, negative tax translates into a deferred tax asset).
 
     ```{r}
+# c(): combines values into a vector, converting them to a common type when needed.
+# mean(): computes an average; logical TRUE/FALSE values contribute 1/0, giving a proportion.
+# which.max(): returns the position of the first maximum value.
+# which.min(): returns the position of the first minimum value.
+# round(): rounds displayed values; digits selects decimal places and does not change statistical uncertainty.
     # Given data
     revenue <- c(14574.49, 7606.46, 8611.41, 9175.41, 8058.65, 8105.44, 11496.28, 9766.09, 10305.32, 14379.96, 10713.97, 15433.50)
     expenses <- c(12051.82, 5695.07, 12319.20, 12089.72, 8658.57, 840.20, 3285.73, 5821.12, 6976.93, 16618.61, 10054.37, 3803.96)

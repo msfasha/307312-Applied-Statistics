@@ -54,6 +54,10 @@ The source folder contains **237 Excel files and 200 distinct filenames**. These
 ```{r}
 #| label: dataset-shortlist
 #| echo: false
+# file.exists(): checks whether each specified file path exists.
+# read.csv(): reads a comma-separated file into a data frame; its first row supplies column names by default.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# c(): combines values into a vector, converting them to a common type when needed.
 checks_path <- if (file.exists("_instructor/data-checks/dataset-checks.csv")) "_instructor/data-checks/dataset-checks.csv" else "data-checks/dataset-checks.csv"
 checks <- read.csv(checks_path)
 knitr::kable(checks[c("workbook", "rows", "book_reference", "status")],
@@ -86,7 +90,7 @@ Use selected book figures with the chapter, figure number, printed page, and cop
 
 ## Next teaching materials
 
-Module 2 is complete with four lessons, practice, and an integrated review. Module 1 practical exercises use the checked textbook CSVs. The next development topic is Module 3: probability and distributions. Verify any newly assigned dataset before use.
+Module 2 is complete with four lessons, practice, and an integrated review. Module 1 practical exercises use the checked textbook CSVs. Module 3 now has five lessons, practice, and an integrated review; see `probability-distributions-plan.md` for selected coverage and checked model inputs. Module 4 now has four sampling/estimation lessons, matching practice, and an integrated review; see `sampling-estimation-plan.md` for source scope. Module 5 expansion is next. Verify any newly assigned dataset before use.
 
 ## References
 

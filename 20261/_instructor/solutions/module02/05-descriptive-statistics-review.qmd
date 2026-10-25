@@ -13,6 +13,21 @@ execute:
 
 ```{r}
 #| include: false
+# library(): loads a package so its functions can be used in this session.
+# normalizePath(): resolves a path into a canonical absolute path.
+# getwd(): returns the current working-directory path.
+# file.exists(): checks whether each specified file path exists.
+# file.path(): joins path components with the platform-appropriate separator.
+# dirname(): returns the directory portion of a file path.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# read.csv(): reads a comma-separated file into a data frame; its first row supplies column names by default.
+# read_data(): is a locally defined helper reading the specified course dataset; inspect its path and column mapping.
+# c(): combines values into a vector, converting them to a common type when needed.
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
+# unname(): removes names or dimension names without changing the underlying values.
+# quantile(): computes sample percentiles; probs gives probabilities and type selects the interpolation rule.
+# theme_set(): sets the default theme for subsequent ggplot charts in this R session.
+# theme_minimal(): uses a minimal chart style; base_size controls the base text size in points.
 library(ggplot2)
 library(knitr)
 project <- normalizePath(getwd())
@@ -47,6 +62,21 @@ Use frequencies and bars for brand preference; distribution plots plus center/sp
 ## 2. SoftDrink
 
 ```{r}
+# table(): counts observations for each category or combination of categories.
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
+# c(): combines values into a vector, converting them to a common type when needed.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# names(): reads or assigns names to vector elements or table columns.
+# as.integer(): converts to integers by truncating numeric fractional parts; it does not round to nearest.
+# sum(): adds vector entries; on logical values it counts TRUE entries.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# all(): returns TRUE only when every supplied logical value is TRUE.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# reorder(): orders factor levels by a summary of another variable.
+# geom_col(): draws bars at supplied heights; it does not count records.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
 f <- table(factor(soft$brand_book_label,levels=c("Coca-Cola","Diet Coke","Dr. Pepper","Pepsi","Sprite")))
 s <- data.frame(Brand=names(f),Count=as.integer(f),Percent=100*as.integer(f)/sum(f))
 kable(s)
@@ -60,6 +90,26 @@ Coca-Cola accounts for **19/50 = 38%**. These are recorded purchases in a teachi
 ## 3. Audit
 
 ```{r}
+# q6(): is a locally defined helper computing type-6 sample quartiles for textbook consistency.
+# c(): combines values into a vector, converting them to a common type when needed.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# length(): counts elements in a vector or list.
+# mean(): computes an average; logical TRUE/FALSE values contribute 1/0, giving a proportion.
+# median(): returns the middle sorted value, averaging the middle pair for even sample sizes.
+# diff(): subtracts each preceding value from the next by default; diff(range(x)) gives max minus min.
+# range(): returns the minimum and maximum as a two-element vector.
+# sd(): computes sample standard deviation using denominator n-1.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# all(): returns TRUE only when every supplied logical value is TRUE.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_histogram(): bins numeric observations; binwidth or breaks controls the intervals and boundary anchors them.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
+# sort(): sorts values; decreasing=TRUE reverses the default ascending order.
+# ave(): computes a grouped summary while retaining one result per original observation.
+# geom_point(): draws a point for each row at its mapped x and y values.
+# scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.
 q <- q6(audit,c(.25,.5,.75)); iqr <- q[3]-q[1]
 lo <- q[1]-1.5*iqr; hi <- q[3]+1.5*iqr
 kable(data.frame(Measure=c("n","Mean (days)","Median (days)","Range (days)","Sample SD (days)",
@@ -83,6 +133,31 @@ Median **18 days** and IQR **7 days** are a reasonable typical-duration descript
 ## 4. Restaurant
 
 ```{r}
+# split(): separates a vector or table into groups named by a grouping variable.
+# do.call(): calls a function using a list of arguments, e.g. rbind to combine a list of tables.
+# lapply(): applies a function separately to each element and returns a list.
+# names(): reads or assigns names to vector elements or table columns.
+# q6(): is a locally defined helper computing type-6 sample quartiles for textbook consistency.
+# c(): combines values into a vector, converting them to a common type when needed.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# length(): counts elements in a vector or list.
+# min(): returns the smallest supplied value.
+# max(): returns the largest supplied value.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# all(): returns TRUE only when every supplied logical value is TRUE.
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
+# diff(): subtracts each preceding value from the next by default; diff(range(x)) gives max minus min.
+# rep(): repeats values; times repeats a vector and each repeats individual elements.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_boxplot(): draws quartiles, whiskers, and flagged points; a flagged value is not automatically an error.
+# geom_point(): draws a point for each row at its mapped x and y values.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
+# cut(): groups numeric values into intervals; breaks sets edges and right=FALSE makes [left,right) intervals.
+# table(): counts observations for each category or combination of categories.
+# addmargins(): adds marginal totals to a table, normally row and column sums.
+# rowSums(): sums each row separately.
 groups <- split(restaurants$meal_price_usd,restaurants$quality_rating)
 summaries <- do.call(rbind,lapply(names(groups),function(g){
  v<-groups[[g]];q<-q6(v,c(.25,.5,.75));d<-q[3]-q[1]
@@ -115,6 +190,18 @@ The >=30 shares are **2/84 = 2.38%**, **52/150 = 34.67%**, and **50/66 = 75.76%*
 ## 5. Electronics
 
 ```{r}
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# c(): combines values into a vector, converting them to a common type when needed.
+# cov(): computes sample covariance, with units equal to the product of the two measurement units.
+# cor(): computes correlation; its default Pearson method measures linear association.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# abs(): returns absolute values; a small tolerance in an equality check permits floating-point rounding.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_point(): draws a point for each row at its mapped x and y values.
+# scale_x_continuous(): controls numeric x-axis breaks, labels, limits, and spacing.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
 x<-e$commercials;y<-e$sales_hundreds_usd
 kable(data.frame(Sales_unit=c("Hundreds of USD","USD"),
                  Covariance=c(cov(x,y),cov(x,100*y)),Correlation=c(cor(x,y),cor(x,100*y))),digits=5)

@@ -13,6 +13,22 @@ execute:
 
 ```{r}
 #| include: false
+# library(): loads a package so its functions can be used in this session.
+# normalizePath(): resolves a path into a canonical absolute path.
+# getwd(): returns the current working-directory path.
+# file.exists(): checks whether each specified file path exists.
+# file.path(): joins path components with the platform-appropriate separator.
+# dirname(): returns the directory portion of a file path.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# read.csv(): reads a comma-separated file into a data frame; its first row supplies column names by default.
+# c(): combines values into a vector, converting them to a common type when needed.
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
+# cut(): groups numeric values into intervals; breaks sets edges and right=FALSE makes [left,right) intervals.
+# with(): evaluates an expression using the named columns of a supplied data frame.
+# table(): counts observations for each category or combination of categories.
+# prop.table(): divides counts by their total; margin=1 uses row totals and margin=2 uses column totals.
+# theme_set(): sets the default theme for subsequent ggplot charts in this R session.
+# theme_minimal(): uses a minimal chart style; base_size controls the base text size in points.
 library(ggplot2)
 library(knitr)
 project <- normalizePath(getwd())
@@ -33,6 +49,15 @@ theme_set(theme_minimal(base_size=14))
 One observation is one restaurant. Quality is ordered categorical (ordinal), while price is numerical and ratio-scale. Price is treated as a measured monetary amount, recorded here in whole dollars. USD 30 belongs to [30,40). Grouping loses differences between prices inside each band.
 
 ```{r}
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# addmargins(): adds marginal totals to a table, normally row and column sums.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# sum(): adds vector entries; on logical values it counts TRUE entries.
+# all(): returns TRUE only when every supplied logical value is TRUE.
+# rowSums(): sums each row separately.
+# c(): combines values into a vector, converting them to a common type when needed.
+# colSums(): sums each column separately.
+# matrix(): arranges values in rows and columns; byrow=TRUE fills rows rather than the default columns.
 kable(addmargins(tab))
 stopifnot(sum(tab)==300,all(rowSums(tab)==c(84,150,66)),all(colSums(tab)==c(78,118,76,28)),
           all(tab==matrix(c(42,40,2,0,34,64,46,6,2,14,28,22),nrow=3,byrow=TRUE)))
@@ -43,6 +68,24 @@ The cell **46** counts Very Good restaurants in [30,40) USD. Its row total is **
 ## 2. Denominators
 
 ```{r}
+# data.frame(): builds a table whose named columns have compatible lengths.
+# c(): combines values into a vector, converting them to a common type when needed.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# all(): returns TRUE only when every supplied logical value is TRUE.
+# abs(): returns absolute values; a small tolerance in an equality check permits floating-point rounding.
+# rowSums(): sums each row separately.
+# colSums(): sums each column separately.
+# as.data.frame(): converts an object to a rectangular data frame.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_col(): draws bars at supplied heights; it does not count records.
+# position_stack(): stacks groups; vjust controls label placement inside each stack.
+# scale_fill_manual(): assigns explicit fill colors to categories; named values preserve category-color mappings.
+# scale_x_discrete(): controls category order, labels, and spacing on the x-axis.
+# paste0(): joins text with no separator; collapse can combine a vector into one string.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
+# theme(): customizes non-data plot elements such as legends, grids, and axis text.
 answers <- data.frame(
  Question=c("Very Good AND [30,40): all restaurants", "[30,40) among Very Good",
             "Very Good among [30,40)", ">=30 among Excellent", ">=30 among Good",
@@ -69,6 +112,11 @@ Each bar totals 100% within its quality group. The >=30 shares are **75.76%** fo
 The unit is one week. First-week sales equal **50 hundreds of USD = USD 5,000**. Each commercials–sales pair must stay together. Independent sorting fabricates pairs and can create a misleading association.
 
 ```{r}
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_point(): draws a point for each row at its mapped x and y values.
+# scale_x_continuous(): controls numeric x-axis breaks, labels, limits, and spacing.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
 ggplot(e,aes(commercials,sales_hundreds_usd))+
  geom_point(size=3,colour="#2878A5")+
  scale_x_continuous(breaks=1:5)+
@@ -80,6 +128,20 @@ The pattern is positive, approximately linear, and fairly strong. Sales vary at 
 ## 4. Covariance, correlation, and units
 
 ```{r}
+# mean(): computes an average; logical TRUE/FALSE values contribute 1/0, giving a proportion.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# c(): combines values into a vector, converting them to a common type when needed.
+# sum(): adds vector entries; on logical values it counts TRUE entries.
+# cov(): computes sample covariance, with units equal to the product of the two measurement units.
+# cor(): computes correlation; its default Pearson method measures linear association.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# abs(): returns absolute values; a small tolerance in an equality check permits floating-point rounding.
+# sd(): computes sample standard deviation using denominator n-1.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_point(): draws a point for each row at its mapped x and y values.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
 x <- e$commercials; y <- e$sales_hundreds_usd
 products <- (x-mean(x))*(y-mean(y))
 kable(data.frame(Quantity=c("Mean commercials","Mean sales (hundreds USD)","Sum cross-products",

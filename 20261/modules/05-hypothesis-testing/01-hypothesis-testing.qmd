@@ -16,6 +16,7 @@ css: ../../assets/petra-brand.css
 ### Open survey data
 
 ```{r}
+# library(): loads a package so its functions can be used in this session.
 # read_csv() imports a CSV and infers column types using readr.
 # Inspect the types and missing values before applying summaries or statistical tests.
 library (dplyr)
@@ -38,6 +39,8 @@ survey_data <- read_csv("data/module05/student-survey.csv", show_col_types = FAL
 *Alternative Hypothesis: Mean age of BI students ≠ 21*
 
 ```{r}
+# summary(): returns summaries appropriate to the object, such as numeric quartiles or fitted-model results.
+# print(): displays the supplied value or object.
 # t.test() calculates a mean-comparison test and a confidence interval.
 # mu sets a hypothesized mean; a grouping formula compares groups, while paired=TRUE uses paired differences.
   # Check the data to ensure there are no missing values and age is numeric
@@ -69,6 +72,16 @@ survey_data <- read_csv("data/module05/student-survey.csv", show_col_types = FAL
 ### Visualize the mean students age
 
 ```{r}
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
+# scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.
+# seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.
+# floor(): rounds downward to the nearest integer.
+# min(): returns the smallest supplied value.
+# ceiling(): rounds upward to an integer; sample-size planning must meet the minimum required size.
+# max(): returns the largest supplied value.
+# theme_minimal(): uses a minimal chart style; base_size controls the base text size in points.
 # geom_boxplot() summarizes each numerical distribution with a box, median, whiskers, and flagged points.
 # This plot uses ggplot2 quartile defaults unless explicit statistics are supplied.
 ggplot(survey_data, aes(y = age)) +
@@ -81,6 +94,26 @@ ggplot(survey_data, aes(y = age)) +
 Extended Plot
 
 ```{r}
+# library(): loads a package so its functions can be used in this session.
+# summarize(): is the alternative spelling of summarise(), reducing each group to summary rows.
+# min(): returns the smallest supplied value.
+# quantile(): computes sample percentiles; probs gives probabilities and type selects the interpolation rule.
+# median(): returns the middle sorted value, averaging the middle pair for even sample sizes.
+# max(): returns the largest supplied value.
+# mean(): computes an average; logical TRUE/FALSE values contribute 1/0, giving a proportion.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# annotate(): adds a fixed plot annotation rather than mapping one label per data row.
+# paste(): joins text using sep between pieces; collapse combines a vector into one string.
+# round(): rounds displayed values; digits selects decimal places and does not change statistical uncertainty.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
+# scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.
+# seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.
+# floor(): rounds downward to the nearest integer.
+# ceiling(): rounds upward to an integer; sample-size planning must meet the minimum required size.
+# theme_minimal(): uses a minimal chart style; base_size controls the base text size in points.
+# theme(): customizes non-data plot elements such as legends, grids, and axis text.
+# element_blank(): removes the selected non-data plot element.
 # geom_boxplot() summarizes each numerical distribution with a box, median, whiskers, and flagged points.
 # This plot uses ggplot2 quartile defaults unless explicit statistics are supplied.
 library(ggplot2)
@@ -124,6 +157,7 @@ ggplot(survey_data, aes(y = age, x = 1)) +  # Use x = 1 to fix the position on t
 *Alternative Hypothesis: There is a difference between the mean GPA for male and female BI students*
 
 ```{r}
+# print(): displays the supplied value or object.
 # t.test() calculates a mean-comparison test and a confidence interval.
 # mu sets a hypothesized mean; a grouping formula compares groups, while paired=TRUE uses paired differences.
 # Perform a two-sample t-test for GPA between genders
@@ -148,6 +182,17 @@ This suggests that there is no significant difference in GPA between female and 
 To create a boxplot showing the GPA distribution by gender, use the following R code:
 
 ```{r}
+# library(): loads a package so its functions can be used in this session.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
+# scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.
+# seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.
+# floor(): rounds downward to the nearest integer.
+# min(): returns the smallest supplied value.
+# ceiling(): rounds upward to an integer; sample-size planning must meet the minimum required size.
+# max(): returns the largest supplied value.
+# theme_minimal(): uses a minimal chart style; base_size controls the base text size in points.
 # geom_boxplot() summarizes each numerical distribution with a box, median, whiskers, and flagged points.
 # This plot uses ggplot2 quartile defaults unless explicit statistics are supplied.
 library(ggplot2)
@@ -163,6 +208,25 @@ ggplot(survey_data, aes(x = gender, y = gpa, fill = gender)) +
 Extended Plot with numbers
 
 ```{r}
+# library(): loads a package so its functions can be used in this session.
+# group_by(): defines groups for subsequent dplyr operations without itself calculating a summary.
+# summarize(): is the alternative spelling of summarise(), reducing each group to summary rows.
+# min(): returns the smallest supplied value.
+# quantile(): computes sample percentiles; probs gives probabilities and type selects the interpolation rule.
+# median(): returns the middle sorted value, averaging the middle pair for even sample sizes.
+# max(): returns the largest supplied value.
+# mean(): computes an average; logical TRUE/FALSE values contribute 1/0, giving a proportion.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_text(): draws labels from mapped data; position and hjust/vjust control placement.
+# round(): rounds displayed values; digits selects decimal places and does not change statistical uncertainty.
+# paste(): joins text using sep between pieces; collapse combines a vector into one string.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
+# scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.
+# seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.
+# floor(): rounds downward to the nearest integer.
+# ceiling(): rounds upward to an integer; sample-size planning must meet the minimum required size.
+# theme_minimal(): uses a minimal chart style; base_size controls the base text size in points.
 # geom_boxplot() summarizes each numerical distribution with a box, median, whiskers, and flagged points.
 # This plot uses ggplot2 quartile defaults unless explicit statistics are supplied.
 library(ggplot2)
@@ -197,6 +261,7 @@ ggplot(survey_data, aes(x = gender, y = gpa, fill = gender)) +
 **Example 2: Test if having a job has influence on Student's GPA**
 
 ```{r}
+# print(): displays the supplied value or object.
 # t.test() calculates a mean-comparison test and a confidence interval.
 # mu sets a hypothesized mean; a grouping formula compares groups, while paired=TRUE uses paired differences.
 # Perform a two-sample t-test for GPA between work status
@@ -221,6 +286,17 @@ This suggests that there is no significant difference in GPA between students wh
 To create a boxplot showing the GPA distribution by work status, use the following R code:
 
 ```{r}
+# library(): loads a package so its functions can be used in this session.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
+# scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.
+# seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.
+# floor(): rounds downward to the nearest integer.
+# min(): returns the smallest supplied value.
+# ceiling(): rounds upward to an integer; sample-size planning must meet the minimum required size.
+# max(): returns the largest supplied value.
+# theme_minimal(): uses a minimal chart style; base_size controls the base text size in points.
 # geom_boxplot() summarizes each numerical distribution with a box, median, whiskers, and flagged points.
 # This plot uses ggplot2 quartile defaults unless explicit statistics are supplied.
 library(ggplot2)
@@ -236,6 +312,25 @@ ggplot(survey_data, aes(x = does_work, y = gpa, fill = does_work)) +
 Extended Plot
 
 ```{r}
+# library(): loads a package so its functions can be used in this session.
+# group_by(): defines groups for subsequent dplyr operations without itself calculating a summary.
+# summarize(): is the alternative spelling of summarise(), reducing each group to summary rows.
+# min(): returns the smallest supplied value.
+# quantile(): computes sample percentiles; probs gives probabilities and type selects the interpolation rule.
+# median(): returns the middle sorted value, averaging the middle pair for even sample sizes.
+# max(): returns the largest supplied value.
+# mean(): computes an average; logical TRUE/FALSE values contribute 1/0, giving a proportion.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_text(): draws labels from mapped data; position and hjust/vjust control placement.
+# round(): rounds displayed values; digits selects decimal places and does not change statistical uncertainty.
+# paste(): joins text using sep between pieces; collapse combines a vector into one string.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
+# scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.
+# seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.
+# floor(): rounds downward to the nearest integer.
+# ceiling(): rounds upward to an integer; sample-size planning must meet the minimum required size.
+# theme_minimal(): uses a minimal chart style; base_size controls the base text size in points.
 # geom_boxplot() summarizes each numerical distribution with a box, median, whiskers, and flagged points.
 # This plot uses ggplot2 quartile defaults unless explicit statistics are supplied.
 library(ggplot2)
@@ -270,6 +365,9 @@ ggplot(survey_data, aes(x = does_work, y = gpa, fill = does_work)) +
 **Example 3: Compare the GPA of Adabi Tawjihi Branch and Scientifc Tawjihi Branch**
 
 ```{r}
+# filter(): keeps rows whose logical conditions are TRUE; missing conditions are not retained.
+# c(): combines values into a vector, converting them to a common type when needed.
+# print(): displays the supplied value or object.
 # t.test() calculates a mean-comparison test and a confidence interval.
 # mu sets a hypothesized mean; a grouping formula compares groups, while paired=TRUE uses paired differences.
 # Filter the data for the two branches
@@ -296,6 +394,17 @@ This suggests that there is no significant difference in GPA between students fr
 ### Visualize GPA by High School Category:
 
 ```{r}
+# library(): loads a package so its functions can be used in this session.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
+# scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.
+# seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.
+# floor(): rounds downward to the nearest integer.
+# min(): returns the smallest supplied value.
+# ceiling(): rounds upward to an integer; sample-size planning must meet the minimum required size.
+# max(): returns the largest supplied value.
+# theme_minimal(): uses a minimal chart style; base_size controls the base text size in points.
 # geom_boxplot() summarizes each numerical distribution with a box, median, whiskers, and flagged points.
 # This plot uses ggplot2 quartile defaults unless explicit statistics are supplied.
 library(ggplot2)
@@ -311,6 +420,25 @@ ggplot(survey_data, aes(x = national_high_school_category, y = gpa, fill = natio
 Extended Plot
 
 ```{r}
+# library(): loads a package so its functions can be used in this session.
+# group_by(): defines groups for subsequent dplyr operations without itself calculating a summary.
+# summarize(): is the alternative spelling of summarise(), reducing each group to summary rows.
+# min(): returns the smallest supplied value.
+# quantile(): computes sample percentiles; probs gives probabilities and type selects the interpolation rule.
+# median(): returns the middle sorted value, averaging the middle pair for even sample sizes.
+# max(): returns the largest supplied value.
+# mean(): computes an average; logical TRUE/FALSE values contribute 1/0, giving a proportion.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_text(): draws labels from mapped data; position and hjust/vjust control placement.
+# paste(): joins text using sep between pieces; collapse combines a vector into one string.
+# round(): rounds displayed values; digits selects decimal places and does not change statistical uncertainty.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
+# scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.
+# seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.
+# floor(): rounds downward to the nearest integer.
+# ceiling(): rounds upward to an integer; sample-size planning must meet the minimum required size.
+# theme_minimal(): uses a minimal chart style; base_size controls the base text size in points.
 # geom_boxplot() summarizes each numerical distribution with a box, median, whiskers, and flagged points.
 # This plot uses ggplot2 quartile defaults unless explicit statistics are supplied.
 library(ggplot2)
@@ -351,6 +479,9 @@ ggplot(survey_data, aes(x = national_high_school_category, y = gpa, fill = natio
 **Code:**
 
 ```{r}
+# set.seed(): fixes the pseudorandom sequence so rerunning the same code reproduces its artificial draws.
+# rnorm(): generates artificial normal draws; n is the draw count and sd is standard deviation.
+# print(): displays the supplied value or object.
 # t.test() calculates a mean-comparison test and a confidence interval.
 # mu sets a hypothesized mean; a grouping formula compares groups, while paired=TRUE uses paired differences.
 # Set seed for reproducibility
@@ -392,6 +523,11 @@ To perform an ANOVA test to compare the effect of study hours on GPA, we first n
 ### R Code for ANOVA Test Comparing Study Hours with GPA
 
 ```{r}
+# mutate(): creates or replaces columns while retaining the original rows.
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
+# c(): combines values into a vector, converting them to a common type when needed.
+# filter(): keeps rows whose logical conditions are TRUE; missing conditions are not retained.
+# print(): displays the supplied value or object.
 # aov() fits the ANOVA model specified by the response ~ group formula.
 # summary() reports its ANOVA table; interpretation also requires checking the model assumptions.
 # Convert the columns to ordered factors
@@ -435,6 +571,22 @@ print(summary(anova_result))
 ### Visualize GPA by Study Hours
 
 ```{r}
+# library(): loads a package so its functions can be used in this session.
+# group_by(): defines groups for subsequent dplyr operations without itself calculating a summary.
+# summarise(): reduces each group to summary rows; .groups="drop" removes grouping from the result.
+# n(): counts rows in the current dplyr group.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# ggtitle(): sets the plot title.
+# xlab(): sets the x-axis title.
+# ylab(): sets the y-axis title.
+# scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.
+# seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.
+# scale_fill_brewer(): uses a named ColorBrewer palette for categorical fills.
+# theme_minimal(): uses a minimal chart style; base_size controls the base text size in points.
+# geom_text(): draws labels from mapped data; position and hjust/vjust control placement.
+# paste0(): joins text with no separator; collapse can combine a vector into one string.
+# position_dodge(): places groups side by side; width controls their horizontal separation.
 # geom_boxplot() summarizes each numerical distribution with a box, median, whiskers, and flagged points.
 # This plot uses ggplot2 quartile defaults unless explicit statistics are supplied.
 # Load necessary library for visualization
@@ -464,6 +616,28 @@ ggplot(survey_data, aes(x = study_hours, y = gpa, fill=study_hours)) +
 Extended Plot
 
 ```{r}
+# library(): loads a package so its functions can be used in this session.
+# group_by(): defines groups for subsequent dplyr operations without itself calculating a summary.
+# summarize(): is the alternative spelling of summarise(), reducing each group to summary rows.
+# min(): returns the smallest supplied value.
+# quantile(): computes sample percentiles; probs gives probabilities and type selects the interpolation rule.
+# median(): returns the middle sorted value, averaging the middle pair for even sample sizes.
+# max(): returns the largest supplied value.
+# mean(): computes an average; logical TRUE/FALSE values contribute 1/0, giving a proportion.
+# n(): counts rows in the current dplyr group.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# ggtitle(): sets the plot title.
+# xlab(): sets the x-axis title.
+# ylab(): sets the y-axis title.
+# scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.
+# seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.
+# scale_fill_brewer(): uses a named ColorBrewer palette for categorical fills.
+# theme_minimal(): uses a minimal chart style; base_size controls the base text size in points.
+# geom_text(): draws labels from mapped data; position and hjust/vjust control placement.
+# paste(): joins text using sep between pieces; collapse combines a vector into one string.
+# round(): rounds displayed values; digits selects decimal places and does not change statistical uncertainty.
+# paste0(): joins text with no separator; collapse can combine a vector into one string.
 # geom_boxplot() summarizes each numerical distribution with a box, median, whiskers, and flagged points.
 # This plot uses ggplot2 quartile defaults unless explicit statistics are supplied.
 library(ggplot2)
@@ -503,6 +677,7 @@ ggplot(survey_data, aes(x = study_hours, y = gpa, fill = study_hours)) +
 ***Example 2:- Test if there is a difference in student GPA according to the high school certificate category (National, SAT/ACT, IG, IB)***
 
 ```{r}
+# as.factor(): converts values to categories; use factor(...,levels=...) when a specific order matters.
 # aov() fits the ANOVA model specified by the response ~ group formula.
 # summary() reports its ANOVA table; interpretation also requires checking the model assumptions.
 # Convert high_school_category to a factor if it is not already
@@ -534,6 +709,21 @@ The ANOVA table helps determine if there is a significant relationship between t
 To complement the statistical results, you can create a box plot to visualize the GPA distribution across different high school categories:
 
 ```{r}
+# group_by(): defines groups for subsequent dplyr operations without itself calculating a summary.
+# summarise(): reduces each group to summary rows; .groups="drop" removes grouping from the result.
+# n(): counts rows in the current dplyr group.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# ggtitle(): sets the plot title.
+# xlab(): sets the x-axis title.
+# ylab(): sets the y-axis title.
+# scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.
+# seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.
+# scale_fill_brewer(): uses a named ColorBrewer palette for categorical fills.
+# theme_minimal(): uses a minimal chart style; base_size controls the base text size in points.
+# geom_text(): draws labels from mapped data; position and hjust/vjust control placement.
+# paste0(): joins text with no separator; collapse can combine a vector into one string.
+# position_dodge(): places groups side by side; width controls their horizontal separation.
 # geom_boxplot() summarizes each numerical distribution with a box, median, whiskers, and flagged points.
 # This plot uses ggplot2 quartile defaults unless explicit statistics are supplied.
 # Calculate the sample size for each category
@@ -584,6 +774,8 @@ To better understand the results, it might be useful to:
 **Code:**
 
 ```{r}
+# table(): counts observations for each category or combination of categories.
+# print(): displays the supplied value or object.
 # chisq.test() compares observed table counts with counts expected under independence.
 # Inspect expected counts and the sampling design before interpreting its p-value.
 # Create a contingency table for gender and work status
@@ -620,6 +812,13 @@ print(chi_square_test)
 We can also create a bar plot to visualize the relationship between gender and work status:
 
 ```{r}
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# ggtitle(): sets the plot title.
+# xlab(): sets the x-axis title.
+# ylab(): sets the y-axis title.
+# scale_fill_brewer(): uses a named ColorBrewer palette for categorical fills.
+# theme_minimal(): uses a minimal chart style; base_size controls the base text size in points.
 # geom_bar() counts raw observations within each x category by default.
 # A fill mapping subdivides the counts; position="dodge" places subgroup bars side by side.
 # Create a bar plot to visualize the relationship between gender and work status

@@ -33,3 +33,13 @@ The instructor-provided Part 1 Descriptive Statistics deck, slides 38 and 44–4
 ## Lesson 4 and integrated review
 
 Lesson 4 uses §2.3 pp.65–69, §2.4 pp.75–80, and §3.5 pp.144–152 of the main book. The 12 Restaurant cells match Table 2.10. Conditional percentages are recomputed without altering counts to match printed rounding (Table 2.11 contains 33.4 for 22/66, which rounds independently to 33.3). Electronics observations repeat in Tables 2.14 and 3.6; calculations reproduce means 3 and 51, cross-product sum 99, sample covariance 11, correlation 0.9304906. All charts are original R outputs. The three correlation patterns are explicitly artificial, including u=-4:4 and y=u² with zero Pearson correlation. No regression, causal effect, inferential procedure, or newly verified dataset is implied. The review integrates the four checked book CSVs, with separate instructor guidance.
+
+## Restaurant case illustration replacement
+
+The opening case now uses `assets/module02/restaurant-data-and-price-insights-verified.png`, adapted from the instructor-supplied `restaurant-data-and-price-insights.png` using the built-in image generation editor. The original remains unchanged. Its lower chart used Poor/Fair categories and hypothetical averages that do not match the Restaurant CSV, so the adapted illustration retains only the question, storefront, one-observation explanation, and checked first record (ID 1, Good, USD 18). Statistical charts in the lesson remain computed in R.
+
+Edit prompt: Preserve the supplied upper restaurant infographic, including its analytical-question header, storefront, one-restaurant-one-observation explanation, arrow, and record card. Remove the whole lower average-price chart and takeaway panel. Keep all wording, the soft blue style, and record values 1, Good, 18 USD unchanged. Produce a wide landscape image on white with readable text. Add no chart, averages, new categories, or numbers.
+
+## Module 3 probability and distributions
+
+Five lessons, matching practice, and an integrated review now use checked Restaurant counts plus stated textbook aggregate/model inputs. See `probability-distributions-plan.md` for exact printed references, values, units, and verification scope. Supplier probabilities are parameters, DiCarlo is a six-cell published frequency table, and the named-distribution examples do not supply raw observations. No observation workbook or teaching CSV was invented. All probability plots are original R calculations; simulation is explicitly artificial.

@@ -1,0 +1,27 @@
+---
+title: "Instructor Guide: Probability and Distributions Review"
+subtitle: "Module 3 | Integrated review"
+css: ../../../assets/petra-brand.css
+---
+
+## Expected results
+
+| Section | Essential results |
+|---|---|
+| 1. Probability experiment | Restaurant union 0.68; intersection 64/300 = 0.213333; outcomes are 300 records, not three equally likely category names |
+| 2. Conditioning | 64/118 = 0.542373; 64/150 = 0.426667; joint differs from 0.5(118/300), so dependence holds for the finite selection experiment; supplier 1 given bad = 0.426230 rather than 0.02 |
+| 3. Discrete distribution | Masses 0.18, 0.39, 0.24, 0.14, 0.04, 0.01; at least 3 = 0.19; mean 1.50; SD 1.118034; mode 1 |
+| 4. Count models | Binomial at least 2 = 0.216; Poisson mean in 3 minutes = 2; no arrivals = exp(-2) = 0.135335 |
+| 5. Continuous models | Uniform interval area 0.40, density 0.05 per minute; normal upper tail 0.241964; 10th percentile 30,092.242 miles |
+
+Detailed calculations are in the five corresponding instructor answer guides. Evaluate model choice and interpretation alongside numerical accuracy.
+
+## Assessment guidance
+
+Award credit for explicit events and reference groups, meaningful assumptions, reproducible code, correct units, and restrained conclusions. A correct number attached to the wrong event is not a fully correct answer. Penalize replacing “at least two” with “more than two,” reversing conditional probabilities, treating a normal density as a probability, or interpreting an expected count as a guaranteed realization.
+
+The Restaurant aggregate checks do not establish the remaining unprinted rows individually. DiCarlo supplies published frequencies, not a daily sequence. The other examples supply model parameters, not new raw observations. Artificial simulation cannot validate the assumed real-world mechanism. No pupil should be expected to fit or diagnose a model from raw data that were never supplied.
+
+## Completion standard
+
+Students should explain why the selected method answers the question, then interpret the result in context. Before Module 4, check that they distinguish a random variable's value from a statistic calculated on a sample. Do not introduce confidence intervals or p-values prematurely in this review.

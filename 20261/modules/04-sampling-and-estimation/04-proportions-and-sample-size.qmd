@@ -1,0 +1,107 @@
+---
+title: "Module 4: Proportions and Sample-size Planning"
+subtitle: "Lesson 4 | Estimate a share and plan precision"
+css: ../../assets/petra-brand.css
+---
+
+## Learning objectives and reading
+
+Construct a large-sample proportion interval, check its conditions, and plan a sample size for a proportion or mean. Read §§8.3–8.4, especially printed pp.378–381. The proportion interval below reproduces the book's normal approximation; it is not a universal method for small counts.
+
+## Business case: women golfers and tee times
+
+The textbook reports a national survey of **900 women golfers**, of whom **396** were satisfied with the availability of tee times. What interval estimates the population proportion satisfied? How many completed responses would a new survey need for a margin of error of **0.025** at **95% confidence**? We use the published counts and planning question, not verified individual responses or an independently checked survey design.
+
+::: {.case-narration lang="ar" dir="rtl"}
+يعرض الكتاب مسحًا وطنيًا شمل **900 لاعبة غولف**، كانت **396 منهن** راضيات عن توافر مواعيد بدء اللعب. ما الفترة التي تقدّر نسبة الراضيات في المجتمع؟ وكم استجابة مكتملة يحتاجها مسح جديد لهامش خطأ **0.025** عند مستوى ثقة **95%**؟ نستخدم الأعداد وسؤال التخطيط المنشورين، وليس استجابات فردية جرى التحقق منها أو تصميم مسح تحقّقنا منه بصورة مستقلة.
+:::
+
+## From a binary response to a proportion
+
+Define success before counting: here it means **satisfied**, not every favorable response on an unspecified question. For $x$ successes among $n$ responses,
+
+$$\hat p=\frac{x}{n},\qquad \widehat{SE}=\sqrt{\frac{\hat p(1-\hat p)}{n}}.$$
+
+$$
+\hat p\ \pm\ z_{1-\alpha/2}\widehat{SE}.$$
+
+This is the normal or **Wald interval**. It assumes a design supporting independent binary responses or an appropriate small sampling fraction, and a meaningful target population. Check $n\hat p\geq10$ and $n(1-\hat p)\geq10$ in this course. A large count does not establish representative selection or eliminate nonresponse bias.
+
+```{r}
+# c(): combines values into a vector, converting them to a common type when needed.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# The success denominator includes all 900 surveyed women golfers, not only the satisfied respondents.
+# qnorm(.975) is the two-sided 95% normal critical value; sqrt() computes the estimated SE.
+x <- 396
+n <- 900
+phat <- x/n
+se <- sqrt(phat*(1-phat)/n)
+margin <- qnorm(.975)*se
+ci <- phat+c(-1,1)*margin
+knitr::kable(data.frame(Estimate=phat, Successes=x, Failures=n-x,
+ SE=se, Margin=margin, Lower=ci[1], Upper=ci[2]),digits=5)
+```
+
+Both counts (396 and 504) are comfortably above 10. The interval is approximately **0.4076 to 0.4724**, or **40.76% to 47.24%**. The margin is about **3.24 percentage points**, not 3.24% of the estimated proportion.
+
+If there are very few successes or failures, the Wald approximation may fail badly, including zero width or endpoints outside [0,1]. Do not silently clip endpoints and claim that coverage is repaired. Score or exact binomial methods are possible extensions. R's default `prop.test()` uses a score-based approach with a continuity correction, so its interval need not equal this textbook Wald calculation.
+
+## Plan a proportion sample size
+
+Before collecting new data, choose confidence, desired margin $E$, and a planning value $p^*$:
+
+$$n=\left\lceil\frac{z_{1-\alpha/2}^2p^*(1-p^*)}{E^2}\right\rceil.$$
+
+The ceiling rounds **up** because the minimum required size must be met. A prior survey can suggest $p^*$ but cannot guarantee the new population share. If no defensible value is available, $.50$ maximizes $p^*(1-p^*)$ and is conservative within this simple-sampling normal approximation.
+
+```{r}
+# qnorm(): returns a normal lower-tail quantile; sd is standard deviation, not variance.
+# c(): combines values into a vector, converting them to a common type when needed.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# ceiling() rounds upward to a whole number of completed responses; E=.025 means 2.5 percentage points.
+# Compare the prior-survey planning share with .50; exact R quantiles may differ slightly from rounded tables.
+z <- qnorm(.975)
+E <- .025
+planning_p <- c(.44,.50)
+required <- ceiling(z^2*planning_p*(1-planning_p)/E^2)
+knitr::kable(data.frame(Planning_share=planning_p, Completed_responses=required))
+```
+
+The required completed samples are **1,515** using .44 and **1,537** using .50, matching the book's recommendations. This controls the planned normal-approximation margin under the design assumptions. It does not guarantee response or remove coverage bias. Invitations must exceed completed responses if some invitees do not respond; nonresponse adjustment requires a justified response-rate assumption.
+
+## Plan precision for a mean
+
+With a defensible planning SD $\sigma^*$, the normal-based planning formula is
+
+$$n=\left\lceil\left(\frac{z_{1-\alpha/2}\sigma^*}{E}\right)^2\right\rceil.$$
+
+Use $E$ and $\sigma^*$ in the **same measurement units**. A pilot or relevant historical source may provide the planning SD. This is a planning approximation when SD is estimated; a final unknown-SD mean interval still uses *t*. Complex designs and substantial sampling fractions need their corresponding design calculations.
+
+For an **original planning extension** of the checked Lloyd's example, take its \$20 SD and request a \$2 margin at 95% confidence:
+
+```{r}
+# qnorm(): returns a normal lower-tail quantile; sd is standard deviation, not variance.
+# Use the checked Lloyd's SD in an explicitly new planning question, not a new observed sample.
+# Squaring gives required n; ceiling() preserves the requested maximum planned margin.
+ceiling((qnorm(.975)*20/2)^2)
+```
+
+This gives 385 completed observations under the stated assumptions. Halving $E$ roughly quadruples the required sample size. More precision has a cost; select a practically useful margin before collecting data.
+
+## Choose the method after learning the conditions
+
+| Target and inputs | Interval or planning tool | Key check |
+|---|---|---|
+| Mean, known population SD | Normal z interval | SD genuinely treated as known; valid design |
+| Mean, unknown population SD | t interval with n−1 df | Outliers, shape, independence, sampling design |
+| Binary proportion, adequate counts | Textbook normal/Wald interval | Success/failure counts and representative design |
+| Planned mean precision | z-based planning SD formula | Units and credibility of SD |
+| Planned proportion precision | Planning share formula | E in proportion units; round up |
+
+## Sources and limits
+
+Anderson et al. (2020), §8.4, p.378 (396/900 and interval), pp.380–381 (E=.025 and sample sizes). Mean planning formula: §8.3; the Lloyd's \$2 margin is an explicitly original extension using the SD on p.357. Published survey counts do not verify response order, sampling implementation, or present-day satisfaction.
+
+Complete [the practice](exercises/04-proportions-and-sample-size.qmd), then return to the [module overview](index.qmd).

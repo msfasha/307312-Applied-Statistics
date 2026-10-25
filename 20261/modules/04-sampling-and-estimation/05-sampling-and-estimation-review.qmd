@@ -1,0 +1,23 @@
+---
+title: "Module 4: Sampling and Estimation Review"
+subtitle: "Select, calculate, interpret, qualify"
+css: ../../assets/petra-brand.css
+---
+
+## Integrated tasks
+
+Use the checked cases from Lessons 1–4; no new business observations are introduced. Submit a concise report with a method choice, calculation, interpretation, and limitation for each task.
+
+1. **Selection and bias:** Explain why a random sample from an incomplete EAI employee frame may not represent all employees. Distinguish parameter, estimate, realized error, and SE.
+2. **Sampling distribution:** For EAI salary samples of n=100, compute the approximate and corrected SE for N=2500. Contrast the SE with the \$4,000 population SD.
+3. **Mean interval:** Use the household summaries n=70, mean=\$9,312, s=\$4,007 to construct a 95% interval. Explain the critical distribution and df.
+4. **Proportion interval:** Use 396/900 for tee-time satisfaction. Compute a 95% Wald interval and state its conditions. Explain why it describes a population proportion rather than a range of binary observations.
+5. **Planning:** Find the completed sample needed for E=.025 and p*=.50 at 95% confidence. Identify what the result does and does not guarantee.
+6. **Communication:** Correct these claims: “95% of salaries lie in the mean confidence interval”; “n>30 means use z”; “a huge volunteer sample removes bias”; “the CLT makes the population normal.”
+7. **Evidence limits:** List which inputs are published summaries, which computations rely on assumptions, and what raw data or design evidence would be required to assess those assumptions.
+
+## Bridge to hypothesis testing
+
+An interval shows plausible parameter values under a procedure and its assumptions. The next module evaluates a specified null claim. Retain the same target parameter, sampling conditions, and distinction between practical importance and statistical uncertainty.
+
+[Return to the module overview](index.qmd).

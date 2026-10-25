@@ -1,0 +1,124 @@
+---
+title: "Module 4: Confidence Intervals for Means"
+subtitle: "Lesson 3 | Quantify uncertainty about a mean"
+css: ../../assets/petra-brand.css
+---
+
+## Learning objectives and reading
+
+Construct and interpret a confidence interval for a population mean; distinguish known population SD from estimated SD; and justify a *t* critical value. Read §§8.1–8.2, especially printed pp.357 and 367–368.
+
+## Business case: spending at Lloyd's
+
+Lloyd's Department Store samples **100 customers** and reports mean spending **\$82 per shopping trip**. The textbook treats the population SD as known at **\$20**, supported by historical data, and assumes a normal spending population. What interval estimates population mean spending? We use the stated summaries, not verified individual transactions.
+
+::: {.case-narration lang="ar" dir="rtl"}
+يأخذ متجر **[Lloyd's Department Store]{lang=en}** عينة من **100 عميل**، ويبلغ متوسط الإنفاق **82 دولارًا لكل رحلة تسوق**. يعامل الكتاب الانحراف المعياري للمجتمع على أنه معلوم ويساوي **20 دولارًا** استنادًا إلى بيانات تاريخية، ويفترض أن الإنفاق في المجتمع يتبع توزيعًا طبيعيًا. ما الفترة التي تقدّر متوسط الإنفاق في المجتمع؟ نستخدم الملخصات المعطاة، وليس معاملات فردية جرى التحقق منها.
+:::
+
+## From an estimator to an interval
+
+A point estimate alone omits uncertainty. For a two-sided confidence level $1-\alpha$, a known-SD normal interval is
+
+$$\bar x\ \pm\ z_{1-\alpha/2}\frac{\sigma}{\sqrt n}.$$
+
+Here $z_{1-\alpha/2}$ is the standard normal **lower-tail quantile**. At 95% confidence, $\alpha=.05$ and the quantile is about 1.96. The margin of error is the critical value times SE; interval width is twice the margin.
+
+```{r}
+# sqrt(): returns the nonnegative square root of a nonnegative number.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# qnorm(.975) leaves .025 in each normal tail for a two-sided 95% interval.
+# c(-1,1) subtracts and adds the margin of error to give lower and upper endpoints in dollars.
+se <- 20 / sqrt(100)
+margin <- qnorm(.975) * se
+ci <- 82 + c(-1, 1) * margin
+knitr::kable(data.frame(Estimate = 82, SE = se, Margin = margin, Lower = ci[1], Upper = ci[2]), digits = 3)
+```
+
+The interval is approximately **\$78.08 to \$85.92** for population mean spending per trip. It is not an interval containing 95% of customer spending, nor a prediction interval for one customer.
+
+## What 95% confidence means
+
+In repeated samples under the assumptions, about 95% of intervals constructed by this procedure contain the fixed population mean. After observing one interval, that interval either contains the mean or does not. The frequentist confidence level describes the procedure's long-run coverage, not a posterior probability assigned to a fixed parameter.
+
+The following illustration fixes an artificial population mean at \$82 solely to demonstrate coverage. The actual Lloyd's population mean is unknown.
+
+```{r}
+# set.seed(): fixes the pseudorandom sequence so rerunning the same code reproduces its artificial draws.
+# rnorm(): generates artificial normal draws; n is the draw count and sd is standard deviation.
+# qnorm(): returns a normal lower-tail quantile; sd is standard deviation, not variance.
+# Simulate sample means directly: under the normal model their SD is 20/sqrt(100).
+# A logical containment test is TRUE for covered intervals; mean() turns TRUE/FALSE into a coverage fraction.
+set.seed(307312)
+centers <- rnorm(1000, mean = 82, sd = 2)
+lower <- centers - qnorm(.975) * 2
+upper <- centers + qnorm(.975) * 2
+mean(lower <= 82 & upper >= 82)
+```
+
+```{r}
+# range(): returns the minimum and maximum as a two-element vector.
+# c(): combines values into a vector, converting them to a common type when needed.
+# ifelse(): chooses a value element by element according to a logical condition.
+# text(): adds labels to a base plot; pos sets the side and cex scales label size.
+# plot(type="n") sets up empty axes; segments() draws the first 40 simulated intervals.
+# Red intervals miss the known artificial mean, marked by abline(v=82); labels also identify misses.
+keep <- 1:40
+miss <- lower[keep] > 82 | upper[keep] < 82
+plot(range(c(lower[keep],upper[keep])), c(1,40), type="n",
+ xlab="Interval for mean spending (USD)", ylab="Artificial sample number")
+segments(lower[keep], keep, upper[keep], keep, col=ifelse(miss,"#B35C44","#356B8C"), lwd=2)
+text(upper[keep][miss], keep[miss], labels=" miss", pos=4, cex=.7)
+abline(v=82, lty=2)
+```
+
+*Original artificial coverage illustration; intervals vary across samples and the model mean stays fixed.*
+
+## Business case: household credit-card balances
+
+The textbook's sample of **70 U.S. households** gives mean credit-card balance **\$9,312** and sample SD **\$4,007**. Population SD is unknown. Estimate the population mean balance with 95% confidence. We use the book's rounded sample summaries; the individual household records and sampling implementation are not independently checked here.
+
+::: {.case-narration lang="ar" dir="rtl"}
+تعطي عينة الكتاب المكونة من **70 أسرة أمريكية** متوسط رصيد بطاقة ائتمان **9,312 دولارًا** وانحرافًا معياريًا للعينة **4,007 دولارات**. الانحراف المعياري للمجتمع غير معلوم. نريد تقدير متوسط الرصيد في المجتمع بثقة 95%. نستخدم ملخصات العينة المدوّرة في الكتاب؛ ولم نتحقق هنا بصورة مستقلة من سجلات الأسر الفردية أو تنفيذ أسلوب المعاينة.
+:::
+
+## Unknown SD: use a t interval
+
+Estimating $\sigma$ introduces uncertainty. For independent normal observations,
+
+$$T=\frac{\bar X-\mu}{S/\sqrt n}\sim t_{n-1},\qquad
+\bar x\ \pm\ t_{1-\alpha/2,n-1}\frac{s}{\sqrt n}.$$
+
+The *t* distribution is symmetric with heavier tails than the standard normal. Its degrees of freedom are $n-1$ because deviations from the fitted sample mean sum to zero. At larger degrees of freedom its critical values approach normal critical values. **Unknown population SD calls for t even when n exceeds 30.**
+
+For nonnormal data this interval may be approximately valid with a sufficiently informative sample; severe skewness, extreme outliers, dependence, or a poor sampling design require further assessment. A summary alone cannot reveal those features. Exact normal-theory coverage is conditional on independent normal observations.
+
+```{r}
+# sqrt(): returns the nonnegative square root of a nonnegative number.
+# c(): combines values into a vector, converting them to a common type when needed.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# qt(.975,df=69) gives a two-sided 95% t critical value with n-1 degrees of freedom.
+# Use the sample SD in the estimated SE; rounded book summaries produce approximate endpoints.
+n <- 70
+xbar <- 9312
+s <- 4007
+critical <- qt(.975, df = n - 1)
+margin <- critical * s/sqrt(n)
+ci <- xbar + c(-1,1) * margin
+knitr::kable(data.frame(df=n-1, Critical=critical, SE=s/sqrt(n), Margin=margin,
+ Lower=ci[1], Upper=ci[2]), digits=3)
+```
+
+The interval is about **\$8,357 to \$10,267**, matching the book to rounded dollars. This inference is conditional on the sample supporting generalization to the stated household population. If raw data were available, `t.test(x, conf.level = .95)$conf.int` would compute a one-sample *t* interval; the vector `x` must contain observations, not the three summary values.
+
+## How precision changes
+
+Higher confidence requires a larger critical value and a wider interval for the same sample. Larger $n$ generally narrows the interval under the same design and variability. Neither change repairs bias. If sampling without replacement takes more than 5% of a finite population, revisit design-specific SEs rather than using these large-population formulas automatically.
+
+## Sources and limits
+
+Anderson et al. (2020), §8.1, p.357 (Lloyd's inputs); §8.2, pp.367–368 (household inputs and interval). Historical SD is treated as known only under the book's modeling assumption. Household summaries are rounded; no workbook match or independently checked distribution shape is asserted.
+
+Complete [the practice](exercises/03-confidence-intervals-for-means.qmd), then return to the [module overview](index.qmd).

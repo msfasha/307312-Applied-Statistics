@@ -1,0 +1,81 @@
+---
+title: "Instructor Answers: Conditional Probability"
+subtitle: "Module 3 | Lesson 2 practice"
+css: ../../../assets/petra-brand.css
+format:
+  html:
+    toc: true
+    code-fold: true
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+# library(): loads a package so its functions can be used in this session.
+# normalizePath(): resolves a path into a canonical absolute path.
+# getwd(): returns the current working-directory path.
+# file.exists(): checks whether each specified file path exists.
+# file.path(): joins path components with the platform-appropriate separator.
+# dirname(): returns the directory portion of a file path.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+library(knitr)
+project <- normalizePath(getwd())
+while (!file.exists(file.path(project, "20261.Rproj")) && dirname(project) != project) project <- dirname(project)
+stopifnot(file.exists(file.path(project, "20261.Rproj")))
+```
+## 1–2. Restaurant conditioning
+
+```{r}
+# read.csv(): reads a comma-separated file into a data frame; its first row supplies column names by default.
+# file.path(): joins path components with the platform-appropriate separator.
+# c(): combines values into a vector, converting them to a common type when needed.
+# sum(): adds vector entries; on logical values it counts TRUE entries.
+# mean(): computes an average; logical TRUE/FALSE values contribute 1/0, giving a proportion.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# names(): reads or assigns names to vector elements or table columns.
+# unname(): removes names or dimension names without changing the underlying values.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+r <- read.csv(file.path(project, "data/module02/restaurant_ratings.csv"))
+A <- r$quality_rating == "Very Good"
+B <- r$meal_price_usd >= 20 & r$meal_price_usd < 30
+ans <- c(A_given_B=sum(A&B)/sum(B), B_given_A=sum(A&B)/sum(A), Joint=mean(A&B), Product=mean(A)*mean(B))
+kable(data.frame(Quantity=names(ans),Value=unname(ans)),digits=6)
+stopifnot(sum(A&B)==64, sum(B)==118, sum(A)==150)
+```
+
+The conditional probabilities are 0.542373 and 0.426667, compared with joint probability 0.213333. The independence product is 0.196667, so independence fails within the finite selection experiment. This arithmetic comparison is not a population hypothesis test. Very Good and Excellent cannot both describe one selected record; both have positive probability, so their zero joint probability cannot equal the product of their marginal probabilities.
+
+## 3. Two selections
+
+```{r}
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# c(): combines values into a vector, converting them to a common type when needed.
+kable(data.frame(Mechanism=c("Without replacement","Independent with replacement"),
+                 Probability=c((150/300)*(149/299), (150/300)^2)),digits=6)
+```
+
+Without replacement: about 0.249164. With replacement: 0.25. Given a first Very Good selection, the second-selection numerator is 149 and denominator is 299.
+
+## 4. Supplier evidence
+
+```{r}
+# c(): combines values into a vector, converting them to a common type when needed.
+# sum(): adds vector entries; on logical values it counts TRUE entries.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# abs(): returns absolute values; a small tolerance in an equality check permits floating-point rounding.
+prior <- c(.65,.35); bad <- c(.02,.05)
+joint_bad <- prior*bad
+posterior_bad <- joint_bad/sum(joint_bad)
+joint_good <- prior*(1-bad)
+posterior_good <- joint_good/sum(joint_good)
+kable(data.frame(Supplier=1:2,Joint_bad=joint_bad,Given_bad=posterior_bad,Given_good=posterior_good),digits=6)
+stopifnot(abs(sum(joint_bad)-.0305)<1e-12,abs(sum(posterior_bad)-1)<1e-12)
+```
+
+$P(S_1\mid D)=0.426230$, $P(S_2\mid D)=0.573770$, and $P(S_2\mid G)=0.342960$. The 0.05 input is $P(D\mid S_2)$, not the reverse conditional. Individual inspection records and sample sizes behind those stated rates are unavailable; do not fabricate them or claim present-day supplier validation.

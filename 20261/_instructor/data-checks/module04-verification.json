@@ -1,0 +1,17 @@
+{
+  "review_date": "2026-10-25",
+  "module04_lessons": 4,
+  "module04_practices": 4,
+  "module04_integrated_reviews": 1,
+  "module04_instructor_guides": 5,
+  "student_HTML_pages": 46,
+  "instructor_HTML_documents": 20,
+  "publisher_data_checks": "Passed scripts/verify-data.R; existing scope of dataset matches retained.",
+  "code_documentation": "312 nonempty active R blocks/scripts and syntax templates checked; 2 documented intentionally incomplete scaffolds retained. Function calls identified with the R parser, local explanations supplied, meaningful argument comments reviewed. Audit runs before rendering and correctly rejected a deliberately undocumented function.",
+  "calculation_preservation": "Existing R calculations unchanged during documentation review. Four new Module 4 table/plot unit labels changed from $ to USD for print rendering; no numerical change.",
+  "calculations": "Full student and instructor builds executed successfully; separate assertions matched printed EAI SE, Lloyd's interval, household t interval, tee-time interval, and planning sample sizes.",
+  "sources": "sampling-estimation-plan.md records checked pages, units, modeling assumptions and summary-only scope. No new workbook or observation CSV adopted.",
+  "PDFs": "46 student documents rebuilt, plus four linked diagram PDFs. 175 local PDF file links checked; bundle byte comparisons passed and no characters extended outside PDF pages.",
+  "visual_review": "All 21 Module 4 PDF pages inspected, including Arabic case narration, plots, corrected currency table labels and split long formula. Refreshed conditional-probability code display inspected. Retained material is not claimed to have a new exhaustive statistical/visual audit.",
+  "next_step": "Expand Module 5 hypothesis testing and group comparisons."
+}

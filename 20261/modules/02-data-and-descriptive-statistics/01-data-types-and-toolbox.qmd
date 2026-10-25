@@ -23,7 +23,7 @@ This case gives the lesson a concrete purpose. We will return to the same questi
 :::
 
 
-![Original course illustration: a restaurant becomes one record in our dataset. The storefront is conceptual; the displayed values are the first restaurant record.](../../assets/module02/restaurant-case.svg){fig-alt="Restaurant storefront connected to one observation: restaurant ID 1, quality rating Good, and meal price 18 USD."}
+![Restaurant case: one restaurant becomes one dataset record. Adapted instructor-supplied illustration; the values match the first checked CSV record.](../../assets/module02/restaurant-data-and-price-insights-verified.png){width=100% fig-alt="A restaurant storefront leads to one observation, with restaurant ID 1, quality rating Good, and meal price 18 USD. The analytical question asks how meal prices differ across quality ratings."}
 
 This lesson follows a deliberate sequence:
 
@@ -39,6 +39,19 @@ By the end, you should be able to classify a variable, justify a suitable summar
 ```{r}
 #| label: setup
 #| include: false
+# library(): loads a package so its functions can be used in this session.
+# theme_set(): sets the default theme for subsequent ggplot charts in this R session.
+# theme_minimal(): uses a minimal chart style; base_size controls the base text size in points.
+# theme(): customizes non-data plot elements such as legends, grids, and axis text.
+# element_text(): sets text appearance; size uses points and angle rotates labels.
+# element_blank(): removes the selected non-data plot element.
+# read.csv(): reads a comma-separated file into a data frame; its first row supplies column names by default.
+# as.character(): converts values to character text; for a factor it returns displayed category labels.
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
+# c(): combines values into a vector, converting them to a common type when needed.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# nrow(): returns the number of rows in a table or matrix.
+# anyNA(): returns TRUE if any value is missing; !anyNA(...) requires no missing values.
 # Load the packages and teaching data used by the lesson, and define shared settings or helpers.
 # This setup chunk is hidden in the report; stopifnot() checks required data conditions where specified.
 library(ggplot2)
@@ -70,6 +83,7 @@ In our restaurant dataset:
 ```{r}
 #| label: restaurant-preview
 #| echo: false
+# c(): combines values into a vector, converting them to a common type when needed.
 # head(..., 5) selects the first five restaurant records for inspection.
 # kable() formats them as a report table; col.names supplies readable headings.
 kable(head(restaurants, 5), col.names = c("Restaurant ID", "Quality rating", "Meal price (USD)"))
@@ -192,6 +206,9 @@ For the 300 restaurants, keep the quality categories in their natural order.
 
 ```{r}
 #| label: quality-frequency
+# as.data.frame(): converts an object to a rectangular data frame.
+# names(): reads or assigns names to vector elements or table columns.
+# c(): combines values into a vector, converting them to a common type when needed.
 # table() counts restaurants in each ordered quality category.
 # Divide counts by nrow(restaurants) to obtain proportions; kable() displays them.
 quality_table <- as.data.frame(table(restaurants$quality_rating))
@@ -217,6 +234,10 @@ An audit manager wants to understand how long audits take and how much their dur
 
 ```{r}
 #| label: audit-frequency
+# names(): reads or assigns names to vector elements or table columns.
+# c(): combines values into a vector, converting them to a common type when needed.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# identical(): requires exact equality of values, types, and attributes.
 # cut() groups days using boundaries 10, 15, ..., 35 from seq(10,35,5).
 # right = FALSE includes the lower endpoint: [10,15), [15,20), and so on.
 # table() counts each class; as.data.frame() makes the counts into columns.
@@ -249,6 +270,10 @@ A bar chart separates categories; a histogram groups values along a numerical ax
 #| label: fig-quality-bar
 #| fig-cap: "Original R chart from the checked Restaurant workbook. Counts agree with the book's Table 2.10 (printed p.66)."
 #| fig-alt: "An ordered bar chart shows Good 84, Very Good 150, and Excellent 66 restaurants."
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.
+# c(): combines values into a vector, converting them to a common type when needed.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
 # geom_col() uses the frequencies already calculated in quality_table.
 # aes() maps categories and counts to axes; geom_text() adds the count labels.
 ggplot(quality_table, aes(Quality, Frequency)) +
@@ -271,6 +296,11 @@ The histogram below uses the same checked observations and the same class bounda
 #| label: fig-audit-histogram
 #| fig-cap: "Original R histogram. The class frequencies are 4, 8, 5, 2, and 1, matching the book's audit example."
 #| fig-alt: "A histogram of twenty audit durations has its tallest bar from fifteen to under twenty days, and a longer tail toward thirty-three days."
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.
+# scale_x_continuous(): controls numeric x-axis breaks, labels, limits, and spacing.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
 # geom_histogram() counts raw audit durations within the supplied boundaries.
 # closed = "left" includes each lower endpoint and excludes its upper endpoint.
 ggplot(audit, aes(audit_days)) +
@@ -313,6 +343,15 @@ A **z-score** expresses distance from the mean in standard-deviation units: $(x-
 
 ```{r}
 #| label: audit-numerical-summary
+# c(): combines values into a vector, converting them to a common type when needed.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# length(): counts elements in a vector or list.
+# min(): returns the smallest supplied value.
+# max(): returns the largest supplied value.
+# diff(): subtracts each preceding value from the next by default; diff(range(x)) gives max minus min.
+# range(): returns the minimum and maximum as a two-element vector.
+# var(): computes sample variance using denominator n-1.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
 # quantile(..., type = 6) calculates quartiles using our stated book convention.
 # mean(), median(), sd(), and the quartiles summarize different distribution features.
 x <- audit$audit_days
@@ -339,6 +378,13 @@ Return to the restaurants. Quality is ordinal and price is numerical, so an orde
 
 ```{r}
 #| label: restaurant-group-summary
+# names(): reads or assigns names to vector elements or table columns.
+# quantile(): computes sample percentiles; probs gives probabilities and type selects the interpolation rule.
+# c(): combines values into a vector, converting them to a common type when needed.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# length(): counts elements in a vector or list.
+# median(): returns the middle sorted value, averaging the middle pair for even sample sizes.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
 # split() separates meal prices by rating while retaining the original values.
 # lapply() summarizes each group; do.call(rbind, ...) combines the summary rows.
 price_by_quality <- split(restaurants$meal_price_usd, restaurants$quality_rating)
@@ -356,6 +402,9 @@ kable(group_summary, digits = 2)
 #| label: fig-price-boxplot
 #| fig-cap: "Original R boxplots from the checked Restaurant data. Dots outside whiskers are potential outliers to investigate. The numerical quartiles above use the book's type-6 convention; ggplot2 uses its own standard boxplot calculation, so small differences in hinges can occur."
 #| fig-alt: "Side-by-side meal-price boxplots preserve the order Good, Very Good, Excellent and allow their medians and spreads to be compared."
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
 # geom_boxplot() compares the price distributions within quality categories.
 # This overview uses ggplot2 defaults; Lesson 3 constructs explicit type-6 boxplots.
 ggplot(restaurants, aes(quality_rating, meal_price_usd)) +
@@ -379,6 +428,8 @@ An electronics retailer wants to examine whether weeks with more advertising com
 #| label: fig-advertising-sales
 #| fig-cap: "Original R scatterplot. The ten Electronics observations in book Table 2.14 (printed p.76) match the local Stereo workbook; sales are in hundreds of USD."
 #| fig-alt: "Ten weekly observations show a positive relationship between the number of commercials and sales, with differing sales at the same number of commercials."
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# scale_x_continuous(): controls numeric x-axis breaks, labels, limits, and spacing.
 # geom_point() draws one paired commercials-sales observation per week.
 # aes() maps the two numerical variables; labs() states sales in hundreds of USD.
 ggplot(electronics, aes(commercials, sales_hundreds_usd)) +

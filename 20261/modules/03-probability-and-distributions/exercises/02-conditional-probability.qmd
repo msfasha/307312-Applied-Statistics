@@ -1,0 +1,35 @@
+---
+title: "Module 3: Conditional Probability — Practice"
+subtitle: "Lesson 2 | Calculate, justify, and interpret"
+css: ../../../assets/petra-brand.css
+---
+
+## Preparation
+
+Read [Lesson 2](../02-conditional-probability.qmd). Use its Restaurant events and supplier model inputs, retaining their stated business settings and assumptions. Refer to the English–Arabic introductions there; no additional observations are provided here.
+
+## 1. Which reference group?
+
+Using the Restaurant CSV, calculate $P(A\mid B)$, $P(B\mid A)$, and $P(A\cap B)$. Show the numerator and denominator for each. Interpret each in one sentence.
+
+## 2. Independence and exclusion
+
+1. Compare $P(A\cap B)$ with $P(A)P(B)$. Are the events independent for uniform selection from these records?
+2. Explain why this is not an independence hypothesis test for a larger population.
+3. Explain why Very Good and Excellent ratings are mutually exclusive but are not independent when both have positive probability.
+
+## 3. Two selections
+
+Find the probability that two records are both Very Good when sampling without replacement. Compare it with independent selection with replacement. State the changed second-selection denominator and numerator.
+
+## 4. Supplier evidence
+
+Use supplier shares 0.65 and 0.35 and bad-part rates 0.02 and 0.05 from the lesson.
+
+1. Calculate each supplier-and-bad joint probability and the total probability of a bad part.
+2. Calculate both supplier probabilities conditional on a bad part and check that they sum to 1.
+3. Calculate the probability a part comes from supplier 2 **given that it is good**.
+4. Explain why 0.05 is not the answer to the question “Which supplier produced this bad part?”
+5. State what raw inspection information is unavailable.
+
+Submit a table of results with reference groups and assumptions. [Return to the lesson](../02-conditional-probability.qmd).

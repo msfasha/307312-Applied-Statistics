@@ -21,6 +21,28 @@ By the end, you should be able to:
 ```{r}
 #| label: setup-relationships
 #| include: false
+# library(): loads a package so its functions can be used in this session.
+# read.csv(): reads a comma-separated file into a data frame; its first row supplies column names by default.
+# c(): combines values into a vector, converting them to a common type when needed.
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
+# cut(): groups numeric values into intervals; breaks sets edges and right=FALSE makes [left,right) intervals.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# nrow(): returns the number of rows in a table or matrix.
+# anyNA(): returns TRUE if any value is missing; !anyNA(...) requires no missing values.
+# theme_set(): sets the default theme for subsequent ggplot charts in this R session.
+# theme_minimal(): uses a minimal chart style; base_size controls the base text size in points.
+# theme(): customizes non-data plot elements such as legends, grids, and axis text.
+# element_blank(): removes the selected non-data plot element.
+# element_text(): sets text appearance; size uses points and angle rotates labels.
+# with(): evaluates an expression using the named columns of a supplied data frame.
+# table(): counts observations for each category or combination of categories.
+# prop.table(): divides counts by their total; margin=1 uses row totals and margin=2 uses column totals.
+# matrix(): arranges values in rows and columns; byrow=TRUE fills rows rather than the default columns.
+# all(): returns TRUE only when every supplied logical value is TRUE.
+# sum(): adds vector entries; on logical values it counts TRUE entries.
+# abs(): returns absolute values; a small tolerance in an equality check permits floating-point rounding.
+# rowSums(): sums each row separately.
+# colSums(): sums each column separately.
 # Load the packages and teaching data used by the lesson, and define shared settings or helpers.
 # This setup chunk is hidden in the report; stopifnot() checks required data conditions where specified.
 library(ggplot2)
@@ -96,6 +118,8 @@ The same count can answer different questions:
 
 ```{r}
 #| label: restaurant-row-percentages
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# rowSums(): sums each row separately.
 # row_pct was calculated with prop.table(counts, margin = 1): divide by each row total.
 # cbind() adds the percentage totals; digits = 1 rounds only the displayed values.
 kable(cbind(row_pct, Total = rowSums(row_pct)), digits = 1,
@@ -111,6 +135,22 @@ The groups contain 84, 150, and 66 restaurants. Conditional percentages make the
 #| fig-height: 4.7
 #| fig-cap: "Original R chart from the checked Restaurant CSV. Every bar represents 100% of its quality group. Segment labels are percentages; n gives group size."
 #| fig-alt: "Percentage bars show low price bands dominate Good restaurants, while bands of at least 30 USD dominate Excellent restaurants. Group sizes are 84, 150, and 66."
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
+# ifelse(): chooses a value element by element according to a logical condition.
+# sprintf(): formats text using placeholders such as %.2f for two decimal places.
+# paste0(): joins text with no separator; collapse can combine a vector into one string.
+# rowSums(): sums each row separately.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_col(): draws bars at supplied heights; it does not count records.
+# geom_text(): draws labels from mapped data; position and hjust/vjust control placement.
+# scale_fill_manual(): assigns explicit fill colors to categories; named values preserve category-color mappings.
+# c(): combines values into a vector, converting them to a common type when needed.
+# scale_x_discrete(): controls category order, labels, and spacing on the x-axis.
+# scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.
+# seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
+# theme(): customizes non-data plot elements such as legends, grids, and axis text.
 # as.data.frame() reshapes the percentage table into one row per quality-price combination.
 # position_stack() places segments and labels within each 100% quality-group bar.
 bar_data <- as.data.frame(row_pct, responseName = "Percent")
@@ -137,6 +177,8 @@ Small segments are readable in the table even when too narrow for a label. Middl
 
 ```{r}
 #| label: restaurant-column-percentages
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# colSums(): sums each column separately.
 # column_pct uses prop.table(counts, margin = 2): divide by each column total.
 # rbind() adds a totals row so each price-band distribution can be checked against 100%.
 kable(rbind(column_pct, Total = colSums(column_pct)), digits = 1,
@@ -147,6 +189,8 @@ Among the **28 restaurants in the highest band**, **22 are Excellent**, or **78.
 
 ```{r}
 #| label: percentage-denominator-check
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# abs(): returns absolute values; a small tolerance in an equality check permits floating-point rounding.
 # Index counts and percentages by quality row and price-band column.
 # stopifnot() stops execution if the count or either conditioning denominator is incorrect.
 stopifnot(counts["Very Good",2] == 64,
@@ -172,6 +216,7 @@ A San Francisco electronics store records **10 weeks** of television-commercial 
 
 ```{r}
 #| label: electronics-paired-data
+# c(): combines values into a vector, converting them to a common type when needed.
 # kable() displays each week together with its commercials and sales observations.
 # col.names changes the visible headings, including the sales unit, without changing the data.
 kable(electronics, col.names = c("Week", "Commercials", "Sales (hundreds of USD)"))
@@ -185,6 +230,12 @@ A **scatterplot** places one numerical variable on each axis and one point for e
 #| label: fig-electronics-scatterplot
 #| fig-cap: "Original R scatterplot of the ten checked Electronics observations. Labels identify weeks. No fitted regression model is required for this descriptive display."
 #| fig-alt: "Ten weekly observations trend upward: weeks with one commercial have sales of 38 and 41 hundreds of USD, while weeks with five have 57 and 63."
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.
+# expansion(): sets extra axis space; mult is relative padding and add is padding in axis units.
+# c(): combines values into a vector, converting them to a common type when needed.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
 # geom_point() draws each paired week; geom_text() labels points with week identifiers.
 # nudge_y moves labels above points, and scale_x_continuous() sets the count-axis tick marks.
 ggplot(electronics, aes(commercials, sales_hundreds_usd)) +
@@ -215,6 +266,10 @@ When both observations are above their means, or both below, their product of de
 
 ```{r}
 #| label: electronics-covariance
+# data.frame(): builds a table whose named columns have compatible lengths.
+# mean(): computes an average; logical TRUE/FALSE values contribute 1/0, giving a proportion.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
 # Subtract each sample mean and multiply the paired deviations week by week.
 # sum() combines the cross-products; cov() divides their sum by n-1 for sample covariance.
 x <- electronics$commercials
@@ -248,6 +303,11 @@ It requires paired numerical observations with nonzero variation in both variabl
 
 ```{r}
 #| label: electronics-correlation
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# c(): combines values into a vector, converting them to a common type when needed.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# abs(): returns absolute values; a small tolerance in an equality check permits floating-point rounding.
 # cor() calculates Pearson linear correlation from the paired observations.
 # Dividing cov(x,y) by sd(x)*sd(y) checks the same unitless calculation explicitly.
 r <- cor(x,y)
@@ -264,6 +324,11 @@ stopifnot(abs(r-cov(x,y)/(sd(x)*sd(y))) < 1e-10,
 
 ```{r}
 #| label: association-unit-comparison
+# data.frame(): builds a table whose named columns have compatible lengths.
+# c(): combines values into a vector, converting them to a common type when needed.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# abs(): returns absolute values; a small tolerance in an equality check permits floating-point rounding.
 # Multiply recorded sales by 100 to convert hundreds of USD into USD.
 # cov() scales by the same factor; cor() is unchanged under this positive unit conversion.
 y_usd <- 100*y
@@ -286,6 +351,15 @@ The following are **artificial teaching patterns**, not Electronics data. The cu
 #| fig-height: 3.6
 #| fig-cap: "Original artificial examples. Pearson correlation captures straight-line direction but can be zero despite a clear curved relationship. Panel axes use arbitrary units."
 #| fig-alt: "Three panels show a positive straight line with r=1, a negative straight line with r=-1, and a U-shaped pattern with r=0."
+# data.frame(): builds a table whose named columns have compatible lengths.
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
+# c(): combines values into a vector, converting them to a common type when needed.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# abs(): returns absolute values; a small tolerance in an equality check permits floating-point rounding.
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_point(): draws a point for each row at its mapped x and y values.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
 # rbind() combines three explicitly artificial paired patterns: y=x, y=-x, and y=x^2.
 # facet_wrap() separates the plots; cor() verifies that a curve can have zero linear correlation.
 u <- -4:4

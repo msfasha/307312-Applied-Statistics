@@ -1,0 +1,13 @@
+---
+title: "Practice: Confidence Intervals for Means"
+subtitle: "Module 4 | Lesson 3 | Quantify uncertainty about a mean"
+css: ../../../assets/petra-brand.css
+---
+
+Use the [lesson](../03-confidence-intervals-for-means.qmd) for the checked case introductions and source limits. Submit a short Quarto report with calculations, units, assumptions, and interpretation.
+
+1. Reproduce the 95% Lloyd's interval and calculate a 99% interval using the same summaries. Compare widths.
+2. Explain why neither interval describes the range of individual customer spending.
+3. Reproduce the 95% household-balance t interval. Calculate a 90% interval; identify df, estimated SE, and margin.
+4. Explain why using z merely because n = 70 is inappropriate when population SD is unknown.
+5. Explain 95% confidence without assigning 95% probability to the fixed population mean. Name two assumptions that summaries alone cannot verify.

@@ -145,6 +145,8 @@ a & b
 The R language is case-sensitive, so typing the command as Print( ) or PRINT( ) will simply produce an error.
 
 ```{r error=T}
+# print(): displays the supplied value or object.
+# Print(): has intentionally incorrect capitalization in this error example; R requires print().
 # R is case sensitive: age, Age, and the function names print and Print are different names.
 # The mismatched names below intentionally demonstrate errors rather than a working calculation.
 age <- 25
@@ -156,6 +158,7 @@ Print(age) # P is capitalized in print
 ### Get Data Type of a Variable
 
 ```{r}
+# c(): combines values into a vector, converting them to a common type when needed.
 # data.frame() combines equally aligned vectors into a rectangular table.
 # Columns describe variables and rows describe observations; retain the meaning and units of each column.
 BMI <- data.frame(
@@ -167,6 +170,7 @@ Age = c(42,38,26)
 ```
 
 ```{r}
+# print(): displays the supplied value or object.
 # str() displays structure, including column types and example values.
 # class() reports the object class, while typeof() describes its underlying storage type.
 print("The class of BMI is:")
@@ -207,6 +211,7 @@ Vectors are one-dimensional arrays that can hold numeric, character, or logical 
 | 5911       | 167         | 82          | 115             | 78               |
 
 ```{r}
+# c(): combines values into a vector, converting them to a common type when needed.
 # Logical values record TRUE or FALSE; comparisons create logical results.
 # & requires both conditions, while | accepts either; prefer TRUE and FALSE over the reassignable T and F names.
 # Numeric vector
@@ -234,6 +239,8 @@ The colon operator is the simplest way to create a sequence of numbers in R. It 
 ##### Syntax:
 
 ``` r
+# The colon operator creates a sequence in steps of one from start toward end.
+# This is a syntax template; replace start and end with actual endpoint values.
 start:end
 ```
 
@@ -255,7 +262,9 @@ The `seq()` function is more versatile than the colon operator and can create se
 ##### Syntax:
 
 ``` r
-seq(from, to, by, length.out)`
+# seq() creates a sequence: from/to set endpoints, by sets spacing, and length.out sets the number of values.
+# This is a syntax template; normally specify by or length.out, not conflicting values for both.
+seq(from, to, by, length.out)
 ```
 
 ##### Examples:
@@ -263,6 +272,7 @@ seq(from, to, by, length.out)`
 -   Create a sequence from 1 to 10 with a step of 2:
 
 ```{r}
+# print(): displays the supplied value or object.
 # seq() creates evenly spaced values between the specified limits.
 # by sets the step size; length.out instead requests a chosen number of evenly spaced values.
 seq_by_2 <- seq(from = 1, to = 10, by = 2) 
@@ -273,6 +283,7 @@ print(seq_by_2)
 -   
 
 ```{r}
+# print(): displays the supplied value or object.
 # seq() creates evenly spaced values between the specified limits.
 # by sets the step size; length.out instead requests a chosen number of evenly spaced values.
 seq_length_out <- seq(from = 5, to = 10, length.out = 3) 
@@ -286,6 +297,8 @@ The `rep()` function is used to replicate the values in x. It is a powerful func
 ##### Syntax:
 
 ``` r
+# rep() repeats values: times repeats the vector, each repeats its elements, and length.out sets output length.
+# This is a syntax template; supply x and the repetition arguments needed for the task.
 rep(x, times, each, length.out)
 ```
 
@@ -294,6 +307,7 @@ rep(x, times, each, length.out)
 -   Repeat the sequence of numbers 1, 2, 3, three times:
 
 ```{r}
+# print(): displays the supplied value or object.
 # rep() repeats supplied values to construct a vector.
 # times repeats the entire sequence; each repeats individual elements before moving on.
 rep_times <- rep(x = 1:3, times = 3) 
@@ -303,6 +317,7 @@ print(rep_times)
 -   Repeat each number in the sequence 1, 2, 3, three times:
 
 ```{r}
+# print(): displays the supplied value or object.
 # rep() repeats supplied values to construct a vector.
 # times repeats the entire sequence; each repeats individual elements before moving on.
 rep_each <- rep(x = 1:3, each = 3) 
@@ -318,6 +333,8 @@ Sequences can be combined using the `c()` function to create longer and more com
 Combine two sequences into one.
 
 ```{r}
+# c(): combines values into a vector, converting them to a common type when needed.
+# print(): displays the supplied value or object.
 # seq() creates evenly spaced values between the specified limits.
 # by sets the step size; length.out instead requests a chosen number of evenly spaced values.
 combined_seq <- c(seq(1, 5), seq(8, 10)) 
@@ -357,6 +374,7 @@ You can specify the index or indices of the elements you want to extract. Rememb
 To access a single element from a vector, you provide its index within square brackets immediately following the vector name.
 
 ```{r}
+# print(): displays the supplied value or object.
 # [] selects vector values by position; R starts counting positions at 1.
 # c(1,3,5) selects several positions, while 2:4 selects a consecutive range.
 # Creating a numeric vector
@@ -372,6 +390,7 @@ print(third_number)  # Outputs 30
 To access multiple elements, you can pass a vector of indices inside the square brackets.
 
 ```{r}
+# print(): displays the supplied value or object.
 # [] selects vector values by position; R starts counting positions at 1.
 # c(1,3,5) selects several positions, while 2:4 selects a consecutive range.
 # Access the first, third, and fifth elements
@@ -384,6 +403,7 @@ print(selected_numbers)  # Outputs 10, 30, 50
 R allows you to use the colon `:` operator to create a sequence, which can be used for accessing a range of elements.
 
 ```{r}
+# print(): displays the supplied value or object.
 # [] selects vector values by position; R starts counting positions at 1.
 # c(1,3,5) selects several positions, while 2:4 selects a consecutive range.
 # Access the second to the fourth elements
@@ -396,6 +416,7 @@ print(range_numbers)  # Outputs 20, 30, 40
 You can also access elements based on conditions. This method is useful for filtering elements.
 
 ```{r}
+# print(): displays the supplied value or object.
 # A logical condition inside [] selects the entries for which it is TRUE.
 # The result contains matching values in their original order, rather than their integer positions.
 # Access elements greater than 25
@@ -416,6 +437,7 @@ which(numbers > 25)
 Adding a minus sign `-` before an index or a vector of indices tells R to exclude those elements.
 
 ```{r}
+# print(): displays the supplied value or object.
 # Negative indices inside [] exclude the specified positions from a vector.
 # Parentheses keep a multi-position exclusion together, as in -(2:4).
 # Exclude the second element
@@ -432,6 +454,7 @@ print(exclude_range)  # Outputs 10, 50
 For named vectors, you can access elements using their names in a similar manner.
 
 ```{r}
+# print(): displays the supplied value or object.
 # c() combines compatible values into a vector in the supplied order.
 # Assignments save the vector under a name; printing that name displays its current values.
 # Creating a named vector
@@ -485,6 +508,9 @@ b
 If you want to raise to a power, take the square root, find e raised to each number, the logarithm, etc., then the usual commands can be used:
 
 ```{r}
+# c(): combines values into a vector, converting them to a common type when needed.
+# exp(): computes e raised to each supplied value.
+# log(): computes natural logarithms by default; base selects another logarithm base.
 # sqrt() returns the square root of each input value.
 # Arithmetic on vectors is element by element; check domains before taking square roots or logarithms.
 a <- c(1,2,3,4)
@@ -499,6 +525,7 @@ exp(log(a))
 By combining operations and using parentheses you can make more complicated expressions:
 
 ```{r}
+# exp(): computes e raised to each supplied value.
 # sqrt() returns the square root of each input value.
 # Arithmetic on vectors is element by element; check domains before taking square roots or logarithms.
 c <- (a + sqrt(a))/(exp(2)+1)
@@ -544,6 +571,9 @@ a+b
 The following commands can be used to get the mean, median, quantiles, minimum, maximum, variance, and standard deviation of a set of numbers:
 
 ```{r}
+# quantile(): computes sample percentiles; probs gives probabilities and type selects the interpolation rule.
+# min(): returns the smallest supplied value.
+# max(): returns the largest supplied value.
 # mean() and median() describe center; var() and sd() summarize numerical spread.
 # var() uses the sample denominator n-1; sd() expresses that spread in the original units.
 a <- 1:10
@@ -581,6 +611,7 @@ The commands include the sort, min, max, and sum commands.
 First, the sort command can sort the given vector in either ascending or descending order:
 
 ```{r}
+# c(): combines values into a vector, converting them to a common type when needed.
 # sort() rearranges values into increasing order by default.
 # decreasing=TRUE reverses the order; this returns values rather than their original positions.
 a = c(2,4,6,3,1,5)
@@ -593,6 +624,8 @@ c = sort(a,decreasing = TRUE)
 Using vectorization to multiply numbers vs using for loop
 
 ```{r}
+# rnorm(): generates artificial normal draws; n is the draw count and sd is standard deviation.
+# rep(): repeats values; times repeats a vector and each repeats individual elements.
 # A for loop repeats its body once for each value in the supplied sequence.
 # The loop variable identifies the current value or position; vectorized arithmetic can often replace the loop.
 N <- 100
@@ -610,6 +643,10 @@ for(i in 1:N){
 ```
 
 ```{r}
+# rnorm(): generates artificial normal draws; n is the draw count and sd is standard deviation.
+# system.time(): measures the computing and elapsed time needed to evaluate an expression.
+# rep(): repeats values; times repeats a vector and each repeats individual elements.
+# print(): displays the supplied value or object.
 # A for loop repeats its body once for each value in the supplied sequence.
 # The loop variable identifies the current value or position; vectorized arithmetic can often replace the loop.
 N <- 100000000
@@ -654,6 +691,7 @@ matrix_data <- matrix(1:6, nrow = 3, ncol = 2)
 Arrays are similar to matrices but can have more than two dimensions.
 
 ```{r}
+# c(): combines values into a vector, converting them to a common type when needed.
 # array() arranges values into a multidimensional object of one underlying type.
 # dim specifies the size of each dimension, in the order used when indexing the array.
 # 3-dimensional array
@@ -665,6 +703,8 @@ array_data <- array(1:24, dim = c(3, 4, 2))
 Lists can hold elements of different types, including numbers, strings, vectors, and even other lists.
 
 ```{r}
+# c(): combines values into a vector, converting them to a common type when needed.
+# print(): displays the supplied value or object.
 # list() keeps several objects together even when their types or lengths differ.
 # Single brackets return a sublist; double brackets extract an element, and $ can select a named element.
 # List containing different types
@@ -678,6 +718,7 @@ print(list_data[1])
 Data frames are used to store tabular data. They are similar to matrices but can contain different types of variables.
 
 ```{r}
+# c(): combines values into a vector, converting them to a common type when needed.
 # data.frame() combines equally aligned vectors into a rectangular table.
 # Columns describe variables and rows describe observations; retain the meaning and units of each column.
 # Data frame
@@ -709,6 +750,7 @@ Use the data() command to examine these datasets.
 The **`$`** operator is used to access a column directly by its name, returning the column as a vector.
 
 ```{r}
+# print(): displays the supplied value or object.
 # mpg in mtcars measures miles per gallon, not miles per hour.
 # $ extracts a column vector; single-column ["mpg"] indexing retains a data frame.
 miles_per_hour <- mtcars$mpg
@@ -722,6 +764,7 @@ The **`[ ]`** operator allows for more flexible sub-setting, including selecting
 -   **Select a single column by name**:
 
 ```{r}
+# print(): displays the supplied value or object.
 # mpg in mtcars measures miles per gallon, not miles per hour.
 # $ extracts a column vector; single-column ["mpg"] indexing retains a data frame.
 miles_per_hour <- mtcars["mpg"]
@@ -731,6 +774,8 @@ print(miles_per_hour)
 **Select multiple columns by name**
 
 ```{r}
+# c(): combines values into a vector, converting them to a common type when needed.
+# print(): displays the supplied value or object.
 # A data frame uses [row, column] indexing to select records and variables.
 # A blank row or column position keeps all entries in that dimension.
 subset_df <- mtcars[c("mpg", "cyl")]
@@ -738,6 +783,13 @@ print(subset_df)
 ```
 
 ```{r}
+# print(): displays the supplied value or object.
+# head(): shows the first n entries or rows, six by default.
+# c(): combines values into a vector, converting them to a common type when needed.
+# length(): counts elements in a vector or list.
+# nrow(): returns the number of rows in a table or matrix.
+# ncol(): returns the number of columns in a table or matrix.
+# mean(): computes an average; logical TRUE/FALSE values contribute 1/0, giving a proportion.
 # mpg in mtcars measures miles per gallon, not miles per hour.
 # $ extracts a column vector; single-column ["mpg"] indexing retains a data frame.
 # In R, rownames is a function that retrieves or sets the row names of a matrix or # data frame. 
@@ -807,6 +859,7 @@ mtcars[mtcars$mpg < mean(mtcars$mpg),]
 Select a single row
 
 ```{r}
+# print(): displays the supplied value or object.
 # A data frame uses [row, column] indexing to select records and variables.
 # A blank row or column position keeps all entries in that dimension.
 first_row <- mtcars[1, ]
@@ -816,6 +869,7 @@ print(first_row)
 Select a specific element
 
 ```{r}
+# print(): displays the supplied value or object.
 # A data frame uses [row, column] indexing to select records and variables.
 # A blank row or column position keeps all entries in that dimension.
 # Accessing the Age of the second person
@@ -830,6 +884,7 @@ The **`subset()`** function can be used for more complex subsetting based on con
 -   **Select rows where Age is greater than 25**:
 
     ```{r}
+# print(): displays the supplied value or object.
     # subset() selects observations satisfying the supplied condition.
     # Conditions refer to column names within the selected data frame; check missing values separately.
     more_than_4_cyl <- subset(mtcars, cyl > 4)
@@ -839,6 +894,8 @@ The **`subset()`** function can be used for more complex subsetting based on con
 **Filtering data frames**
 
 ```{r}
+# c(): combines values into a vector, converting them to a common type when needed.
+# print(): displays the supplied value or object.
 # data.frame() combines equally aligned vectors into a rectangular table.
 # Columns describe variables and rows describe observations; retain the meaning and units of each column.
 # Example of creating a data.frame
@@ -916,6 +973,7 @@ cat(result, "\n")  # This will also print "Hello World", followed by a new line
 Test this command in the console window not in quarto.
 
 ```{r eval=FALSE}
+# readline(): reads one line of interactive console input as text; it is not suitable for unattended input.
 # cat() writes values together as console output without the usual vector labels.
 # Use "\n" to insert a new line; this displays text rather than returning a joined character vector.
 name <- readline("Please enter your name: ")
@@ -994,6 +1052,7 @@ for (variable in sequence) {
 Let's iterate over a vector of numbers and print each number squared.
 
 ```{r}
+# print(): displays the supplied value or object.
 # A for loop repeats its body once for each value in the supplied sequence.
 # The loop variable identifies the current value or position; vectorized arithmetic can often replace the loop.
 # Create a vector of numbers
@@ -1039,6 +1098,8 @@ while (condition) {
 We will use a `while` loop to simulate a countdown.
 
 ```{r}
+# print(): displays the supplied value or object.
+# paste(): joins text using sep between pieces; collapse combines a vector into one string.
 # while() repeats its body as long as its condition remains TRUE.
 # Update the value used in the condition so a running example can eventually stop.
 # Set the starting point of the countdown
@@ -1078,6 +1139,8 @@ repeat {
 Here's a `repeat` loop that finds the first number divisible by 13 greater than 100.
 
 ```{r}
+# print(): displays the supplied value or object.
+# paste(): joins text using sep between pieces; collapse combines a vector into one string.
 # repeat executes its body until an explicit break exits the loop.
 # The if condition decides when to stop; update the working value on each unsuccessful pass.
 # Initialize the number
@@ -1104,6 +1167,10 @@ Loops can be nested inside other loops, which is useful for iterating over multi
 ##### Example:
 
 ```{r}
+# matrix(): arranges values in rows and columns; byrow=TRUE fills rows rather than the default columns.
+# nrow(): returns the number of rows in a table or matrix.
+# ncol(): returns the number of columns in a table or matrix.
+# print(): displays the supplied value or object.
 # A for loop repeats its body once for each value in the supplied sequence.
 # The loop variable identifies the current value or position; vectorized arithmetic can often replace the loop.
 # Create a 3x3 matrix
@@ -1146,6 +1213,7 @@ if (condition) {
 Here, we check if a number is positive.
 
 ```{r}
+# print(): displays the supplied value or object.
 # if evaluates a condition and runs its body when the condition is TRUE.
 # else or else if handles alternative cases; replace placeholder conditions before running a template.
 number <- 5
@@ -1176,6 +1244,7 @@ if (condition) {
 Expanding on the previous example, we also handle the case when the number is not positive.
 
 ```{r}
+# print(): displays the supplied value or object.
 # if evaluates a condition and runs its body when the condition is TRUE.
 # else or else if handles alternative cases; replace placeholder conditions before running a template.
 number <- -3
@@ -1210,6 +1279,7 @@ if (condition1) {
 Here, we classify a number as positive, negative, or zero.
 
 ```{r}
+# print(): displays the supplied value or object.
 # if evaluates a condition and runs its body when the condition is TRUE.
 # else or else if handles alternative cases; replace placeholder conditions before running a template.
 number <- 0
@@ -1245,6 +1315,7 @@ switch(EXPR,
 The following example shows how `switch` can be used to print different messages based on the value of a character variable.
 
 ```{r}
+# print(): displays the supplied value or object.
 # switch() chooses a branch using the supplied expression or character label.
 # The final unnamed branch can provide a fallback when none of the named labels matches.
 day <- "Tue"
@@ -1272,6 +1343,8 @@ A function is defined using the `function` keyword, followed by parentheses cont
 #### Example: Simple Addition Function
 
 ```{r}
+# print(): displays the supplied value or object.
+# add_two_numbers(): calls the function defined in this lesson to return the sum of its two inputs.
 # function() defines a reusable calculation with named input arguments.
 # The body computes a result for those inputs; return() explicitly chooses the value passed back.
 add_two_numbers <- function(a, b) {
@@ -1290,6 +1363,9 @@ Functions can take arguments and return results. R functions return the result o
 #### Example: Greeting Function
 
 ```{r}
+# paste(): joins text using sep between pieces; collapse combines a vector into one string.
+# print(): displays the supplied value or object.
+# greet_person(): calls the locally defined function to format a greeting from a name.
 # function() defines a reusable calculation with named input arguments.
 # The body computes a result for those inputs; return() explicitly chooses the value passed back.
 greet_person <- function(name) {
@@ -1308,6 +1384,8 @@ You can specify default values for arguments, making them optional.
 #### Example: Power Function
 
 ```{r}
+# print(): displays the supplied value or object.
+# raise_to_power(): calls the locally defined function using its supplied or default exponent.
 # function() defines a reusable calculation with named input arguments.
 # The body computes a result for those inputs; return() explicitly chooses the value passed back.
 raise_to_power <- function(base, exponent = 2) {
@@ -1328,6 +1406,12 @@ Functions in R can return multiple values using a list.
 #### Example: Statistics Function
 
 ```{r}
+# mean(): computes an average; logical TRUE/FALSE values contribute 1/0, giving a proportion.
+# sum(): adds vector entries; on logical values it counts TRUE entries.
+# list(): stores named or unnamed objects that may have different types and lengths.
+# calculate_stats(): calls the locally defined function to return the summaries listed in its body.
+# c(): combines values into a vector, converting them to a common type when needed.
+# print(): displays the supplied value or object.
 # function() defines a reusable calculation with named input arguments.
 # The body computes a result for those inputs; return() explicitly chooses the value passed back.
 calculate_stats <- function(numbers) {
@@ -1348,8 +1432,9 @@ For short, one-time operations, anonymous functions can be used.
 #### Example: Doubling Numbers
 
 ```{r}
-# function() defines a reusable calculation with named input arguments.
-# The body computes a result for those inputs; return() explicitly chooses the value passed back.
+# print(): displays the supplied value or object.
+# sapply() applies a calculation to each input element and simplifies compatible results to a vector.
+# function(x) x * 2 defines the operation: double each element without changing the input vector.
 numbers <- 1:5
 doubled_numbers <- sapply(numbers, function(x) x * 2)
 print(doubled_numbers)
@@ -1362,6 +1447,8 @@ Variables defined inside a function are local to that function.
 #### Example: Increment Function
 
 ```{r}
+# increment(): calls the locally defined function to increase its input as specified in its body.
+# print(): displays the supplied value or object.
 # function() defines a reusable calculation with named input arguments.
 # The body computes a result for those inputs; return() explicitly chooses the value passed back.
 increment <- function(x) {

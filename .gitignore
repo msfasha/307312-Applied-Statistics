@@ -1,4 +1,4 @@
-books
+/books/
 *.docx
 *.pptx
 
@@ -67,6 +67,7 @@ rsconnect/
 20261/_freeze/
 20261/.quarto/
 20261/_output/
+20261/assets/pdf/svg/
 20261/_instructor/_output/
 
 /.quarto/

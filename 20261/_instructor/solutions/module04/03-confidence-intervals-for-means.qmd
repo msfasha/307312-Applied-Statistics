@@ -1,0 +1,28 @@
+---
+title: "Instructor Answers: Confidence Intervals for Means"
+subtitle: "Module 4 | Lesson 3 | Quantify uncertainty about a mean"
+css: ../../../assets/petra-brand.css
+---
+
+## Calculations and interpretation
+
+```{r}
+# c(): combines values into a vector, converting them to a common type when needed.
+# qnorm(): returns a normal lower-tail quantile; sd is standard deviation, not variance.
+# kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
+# data.frame(): builds a table whose named columns have compatible lengths.
+# qt(): returns a t lower-tail quantile; df sets degrees of freedom, n-1 for a one-sample mean interval.
+# sqrt(): returns the nonnegative square root of a nonnegative number.
+# Compare confidence levels with the same fixed summaries.
+# Each row gives its own lower-tail critical value and corresponding endpoints.
+level <- c(.95,.99)
+z <- qnorm(1-(1-level)/2)
+knitr::kable(data.frame(level=level, lower=82-z*2, upper=82+z*2, width=2*z*2),digits=3)
+level <- c(.95,.90)
+t <- qt(1-(1-level)/2,df=69)
+se <- 4007/sqrt(70)
+knitr::kable(data.frame(level=level, df=69, SE=se, margin=t*se,
+ lower=9312-t*se, upper=9312+t*se),digits=3)
+```
+
+Lloyd's 99% interval is approximately \$76.85 to \$87.15; it is wider than the 95% interval. The target is mean spending, not a customer's outcome. Household df = 69 and SE is about \$478.92. The 90% interval is narrower than the 95% interval; t accounts for estimating population SD. The confidence claim concerns long-run coverage under repeated sampling. Summaries alone cannot check outliers, population shape, or dependence; the actual sampling and nonresponse mechanisms require design information.

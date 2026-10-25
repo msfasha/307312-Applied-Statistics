@@ -13,6 +13,18 @@ execute:
 
 ```{r}
 #| include: false
+# library(): loads a package so its functions can be used in this session.
+# normalizePath(): resolves a path into a canonical absolute path.
+# getwd(): returns the current working-directory path.
+# file.exists(): checks whether each specified file path exists.
+# file.path(): joins path components with the platform-appropriate separator.
+# dirname(): returns the directory portion of a file path.
+# read.csv(): reads a comma-separated file into a data frame; its first row supplies column names by default.
+# read_data(): is a locally defined helper reading the specified course dataset; inspect its path and column mapping.
+# factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.
+# c(): combines values into a vector, converting them to a common type when needed.
+# theme_set(): sets the default theme for subsequent ggplot charts in this R session.
+# theme_minimal(): uses a minimal chart style; base_size controls the base text size in points.
 library(ggplot2)
 library(dplyr)
 project <- normalizePath(getwd())
@@ -28,6 +40,15 @@ theme_set(theme_minimal(base_size=14))
 ## Raw rows and summarized counts
 
 ```{r}
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_bar(): counts records by category by default; stat="identity" instead uses supplied heights.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
+# count(): counts rows for each combination of supplied categories.
+# geom_col(): draws bars at supplied heights; it does not count records.
+# stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.
+# all(): returns TRUE only when every supplied logical value is TRUE.
+# c(): combines values into a vector, converting them to a common type when needed.
 ggplot(restaurants,aes(quality_rating))+geom_bar(fill="#2878A5")+
  labs(title="Restaurant ratings in the teaching sample",x="Quality",y="Restaurants")
 counts <- restaurants |> count(quality_rating)
@@ -41,6 +62,10 @@ stopifnot(all(counts$n==c(84,150,66)))
 ## Numerical distribution
 
 ```{r}
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_histogram(): bins numeric observations; binwidth or breaks controls the intervals and boundary anchors them.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
 ggplot(audit,aes(audit_days))+
  geom_histogram(binwidth=5,boundary=10,closed="left",fill="#ACC9DA",colour="white")+
  labs(title="Distribution of audit completion times",x="Audit duration (days)",y="Audits")
@@ -51,6 +76,11 @@ Each bar counts audits in a five-day interval. The chosen boundaries include the
 ## Paired observations and units
 
 ```{r}
+# ggplot(): starts a plot from data; additional layers are joined with +.
+# aes(): maps variables to visual properties such as x, y, fill, color, or group.
+# geom_point(): draws a point for each row at its mapped x and y values.
+# geom_text(): draws labels from mapped data; position and hjust/vjust control placement.
+# labs(): sets axis titles, legend titles, plot titles, and captions.
 p <- ggplot(e,aes(commercials,sales_hundreds_usd))+
  geom_point(size=3,colour="#2878A5")+geom_text(aes(label=week),nudge_y=1)+
  labs(title="Commercials and sales across ten weeks",x="Television commercials",y="Sales (hundreds of USD)")
@@ -66,6 +96,8 @@ Multiplying sales by 100 changes vertical units and numerical labels, while pres
 
 ```{r}
 #| eval: false
+# dir.create(): creates an output folder; recursive=TRUE creates missing parents and showWarnings=FALSE silences existing-folder warnings.
+# ggsave(): saves a plot; width, height, and units define physical size and dpi defines raster resolution.
 dir.create("_output",showWarnings=FALSE)
 ggsave("_output/electronics-scatterplot.png",plot=p,width=8,height=4.5,dpi=150)
 ```

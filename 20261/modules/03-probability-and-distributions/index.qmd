@@ -1,15 +1,53 @@
 ---
-title: "Module 3: Probability and distributions"
-subtitle: "Planned"
+title: "Module 3: Probability and Distributions"
+subtitle: "Five lessons | From event rules to probability models"
 css: ../../assets/petra-brand.css
 ---
 
-## What this module covers
+## Learning sequence
 
-Probability, conditional probability, and discrete and continuous distributions.
+Module 2 described recorded data. This module defines uncertainty about a selection or future outcome, then calculates probabilities under explicit models. Finish the descriptive-statistics review first.
 
-## Development status
+1. **Probability rules:** outcomes, events, complements, intersections, and unions.
+2. **Conditional probability:** reference groups, independence, multiplication, and Bayes' theorem.
+3. **Discrete random variables:** a probability mass function, cumulative probabilities, expected value, and variance.
+4. **Binomial and Poisson models:** assumptions, count probabilities, exposure, and simulation.
+5. **Continuous distributions:** uniform areas, normal tails, standardization, and quantiles.
 
-**Planned — no lesson has been written for this module yet.** This page identifies its position in the course; it is not teaching content.
+## Lessons and practice
+
+| Lesson | Main question | Practice |
+|---|---|---|
+| [1. Probability rules](01-probability-rules.qmd) | What event and selection mechanism define the probability? | [Lesson 1 practice](exercises/01-probability-rules.qmd) |
+| [2. Conditional probability](02-conditional-probability.qmd) | How does new information change the reference group? | [Lesson 2 practice](exercises/02-conditional-probability.qmd) |
+| [3. Discrete random variables](03-discrete-random-variables.qmd) | What values can occur, with what probabilities? | [Lesson 3 practice](exercises/03-discrete-random-variables.qmd) |
+| [4. Binomial and Poisson models](04-binomial-and-poisson.qmd) | Which count mechanism and event apply? | [Lesson 4 practice](exercises/04-binomial-and-poisson.qmd) |
+| [5. Continuous distributions](05-continuous-distributions.qmd) | Which area or cutoff answers the question? | [Lesson 5 practice](exercises/05-continuous-distributions.qmd) |
+
+Finish with the [integrated probability and distributions review](06-probability-and-distributions-review.qmd). Separate instructor guides cover each practice and the review.
+
+## Cases, inputs, and readings
+
+Use this guide to connect each case to its input type and selected textbook reading.
+
+| Case | Input used | Main 8th-edition reference |
+|---|---|---|
+| Restaurant selection | Existing checked 300-row CSV | Tables 2.9–2.10, pp.65–66; probability rules in §§4.1–4.4 |
+| Two suppliers | Stated shares and good/bad probabilities | §4.5, pp.201–205 |
+| DiCarlo Motors | Six published daily-sales frequency cells | §§5.2–5.3, pp.222–228 |
+| Martin Clothing Store | Three customers, purchase probability 0.30 | §5.5, especially p.244 |
+| Arrivals | Mean 10 per 15 minutes and stated process assumptions | §5.6, pp.252–255 |
+| Flight duration | Uniform bounds 120–140 minutes | §6.1, pp.275–277 |
+| Grear tires | Normal mean 36,500 miles and SD 5,000 miles | §6.2, especially pp.286–290 |
+
+The [Restaurant CSV](../../data/module02/restaurant_ratings.csv) retains its [documented provenance and verification limits](../../data/module02/README.md). All other inputs are explicitly identified printed aggregate values or model parameters entered in the lesson code. They are not new individual-observation datasets. Artificial simulation is labeled as such.
+
+Read each case's English introduction followed by its equivalent Arabic narration. Statistical explanations and interpretation tasks remain in English.
+
+## Scope and next step
+
+The selected sequence includes five lessons, five practices, and an integrated review. It is not exhaustive coverage of Chapters 4–6: detailed permutation exercises, bivariate portfolio distributions, hypergeometric calculations, and the exponential distribution remain possible extensions.
+
+[Module 4: Sampling and estimation](../04-sampling-and-estimation/index.qmd) is the next topic; its four lessons, practice, and review are available. We will distinguish the distribution of an individual observation from the sampling distribution of a statistic.
 
 [Return to the course home](../../index.qmd).
