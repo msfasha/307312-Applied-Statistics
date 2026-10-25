@@ -1,6 +1,8 @@
 # Active course: 20261
 
-Open **20261.Rproj** in RStudio. Start with **index.qmd** to edit, or **_site/index.html** to read the rendered course.
+**Students:** [read the published website](https://msfasha.github.io/307312-Applied-Statistics/) or [download the HTML site, RStudio project, and PDFs](https://msfasha.github.io/307312-Applied-Statistics/resources/downloads.html). Extract the student project ZIP and open **20261.Rproj** in RStudio.
+
+**Maintainers:** open **20261.Rproj** to edit **index.qmd**. Local renders appear under **_site/**. See **../PUBLISHING.md** for publication policy; generated files are served from the **gh-pages** branch, not main.
 
 | Location | What belongs here |
 |---|---|
@@ -17,4 +19,4 @@ Use **NN-topic.qmd** with lowercase hyphenated words for lessons. Exercises and 
 
 Module 1 has four R lessons and practice. Module 2 has four completed descriptive-statistics lessons, practice, and an integrated review. Module 3 has five probability/distribution lessons, practice, and an integrated review. Module 4 has four sampling/estimation lessons, practice, and an integrated review. Other modules clearly state whether they are planned or contain retained material.
 
-Read `BUILD.md` before rendering. Instructor exports go to `_instructor/_output/`. Temporary Quarto state lives in `.quarto/` and can be regenerated. Syllabi are in `syllabi/`. Guides and reference slides are in `../docs/`; book PDFs and original publisher workbooks are in `../books/`.
+Read `BUILD.md` before rendering. Instructor exports go to `_instructor/_output/`. Temporary Quarto state lives in `.quarto/` and can be regenerated. Syllabi are in `syllabi/`. `../docs/` and `../books/` are instructor-local collections ignored by Git; they are not included in a clone or student download. The supplied CSVs are sufficient for active lessons.

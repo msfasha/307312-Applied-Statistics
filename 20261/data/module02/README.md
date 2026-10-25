@@ -43,7 +43,9 @@ If downloaded separately, adjust the path to the CSV location.
 
 ## Provenance and verification limits
 
-Source workbooks are in the course's `books/1-Modern Business Statistics-Organized-Data/7th-Data - Modern Business Statistics with Microsoft Excel Anderson Sweeney Williams/Chapter 02 Descriptive/` folder. That folder's older edition label is preserved. The selected data were checked against the main 8th-edition PDF:
+Original workbooks are maintained only in the instructor's local, Git-ignored `books/` collection, not in the student download or GitHub clone. Source paths below document provenance and are not student dependencies.
+
+Source workbooks are in the instructor's local course's `books/1-Modern Business Statistics-Organized-Data/7th-Data - Modern Business Statistics with Microsoft Excel Anderson Sweeney Williams/Chapter 02 Descriptive/` folder. That folder's older edition label is preserved. The selected data were checked against the main 8th-edition PDF:
 
 - Audit: all 20 printed values match (Table 2.4, p.47).
 - Restaurant: first 10 printed records and all 12 crosstab cells match (Tables 2.9–2.10, pp.65–66). The remaining individual records are not printed for comparison.

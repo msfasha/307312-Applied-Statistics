@@ -10,6 +10,10 @@ Work through the seven numbered **topic modules** below. The 8th-edition textboo
 
 **Start with [Module 1: Introduction to R](modules/01-introduction-to-r/index.qmd).** **Module 2** now begins with data types, measurement levels, and the descriptive statistics toolbox.
 
+## Study online or download
+
+[Student downloads](resources/downloads.qmd) provides the HTML website, a complete student RStudio project, and PDFs for offline reading, printing, or annotation.
+
 ## Course modules
 
 | Module | Topic | Current material |

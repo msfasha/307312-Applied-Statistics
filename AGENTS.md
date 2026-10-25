@@ -48,3 +48,11 @@ These instructions apply throughout this course workspace.
 ## Code explanations for students
 
 Add about two concise English comment lines inside each nonempty student-facing R chunk. State its purpose and explain unfamiliar functions and consequential arguments (for example cut boundaries and right=FALSE, percentile type, or percentage denominator). Explain every unfamiliar function at its point of use, including validation helpers such as `stopifnot()` and plotting defaults such as `theme_set()`; a minimum comment count alone does not establish adequate documentation. Explain consequential argument values, units, and assumptions. Use additional short comments when needed for accuracy. Keep chunk options first, leave blank practice scaffolds blank, and preserve existing calculations when documenting code.
+
+## Student distribution and publishing
+
+- Follow `PUBLISHING.md`, the user-approved policy for GitHub Pages and three student downloads (HTML website, complete RStudio project, and PDF bundle).
+- Editable sources stay on `main`; generated HTML/PDFs and downloadable ZIPs are published to `gh-pages` at https://msfasha.github.io/307312-Applied-Statistics/.
+- A local build or a push to `main` alone is not publication. Rebuild/package/publish with `20261/scripts/publish-course.py`, then verify the live website and downloads.
+- Exclude instructor answers, local textbook/publisher files, original measurement workbooks, and build caches/logs from student packages. Identify `books/` and `docs/` as local-only ignored folders.
+- Preserve a self-contained student RStudio project with all required lesson sources, CSVs, assets, setup instructions, and rendering scripts. Test it separately without instructor/local-only files.

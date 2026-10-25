@@ -47,3 +47,7 @@ The print profile is `_quarto-pdf.yml`; print styling is in `assets/pdf/petra-pr
 First-time setup on another computer: install Quarto and the R packages listed above, run `quarto install tinytex --no-prompt`, and install the fonts DejaVu Sans, DejaVu Sans Mono, and Noto Naskh Arabic. SVG diagrams require CairoSVG (`python3 -m pip install cairosvg` and its platform Cairo dependency). The script also recognizes the bundled Codex Python runtime when available. Generated vector diagram copies live under `assets/pdf/svg/`; do not edit these copies. Build logs are in `_output/pdf/build-logs/`.
 
 The documentation audit parses actual R function calls and requires each to be explained in comments within its chunk or script. It also checks the student comment minimum. This is a coverage check: review unfamiliar arguments, units, and statistical assumptions for meaning. Existing deliberately unfinished practice templates are reported separately.
+
+## Publish student access and downloads
+
+Follow `../PUBLISHING.md`. From this folder, `python3 scripts/publish-course.py` rebuilds HTML and PDFs and prepares the three student archives. After source changes are committed, `python3 scripts/publish-course.py --package-only --publish` uploads the generated site and downloads to gh-pages and configures GitHub Pages. Verify the deployed URL and archive hashes before reporting publication complete.

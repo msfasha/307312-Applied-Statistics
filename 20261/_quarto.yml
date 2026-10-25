@@ -13,6 +13,7 @@ project:
     - python3 scripts/validate-course.py
 
 website:
+  site-url: https://msfasha.github.io/307312-Applied-Statistics/
   title: "307312 Applied Statistics"
   sidebar:
     style: docked
@@ -122,6 +123,8 @@ website:
         contents:
           - text: "Overview"
             href: modules/07-forecasting-and-applications/index.qmd
+      - text: "Student downloads"
+        href: resources/downloads.qmd
       - text: "Data and course resources"
         href: resources/index.qmd
   page-navigation: true

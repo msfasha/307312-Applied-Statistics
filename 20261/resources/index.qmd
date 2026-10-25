@@ -3,6 +3,10 @@ title: "Data and Course Resources"
 css: ../assets/petra-brand.css
 ---
 
+## Student downloads
+
+[Download the HTML website, student RStudio project, or PDF bundle](downloads.qmd). The RStudio package includes the lesson sources, exercises, teaching CSVs, required assets, and setup instructions.
+
 ## Teaching datasets
 
 Use the [checked textbook CSV bundle](../data/module02/descriptive-statistics-data.zip) for the active descriptive-statistics lessons. The [data guide](../data/module02/README.md) explains columns, units, sources, and verification limits.
@@ -19,4 +23,4 @@ The [measure-limitations examples](../data/module02/measure_limitations_examples
 
 Follow the numbered modules from the [course home](../index.qmd). Lessons, practice, and the integrated review appear in their teaching order. Instructor answers stay separate.
 
-The local project README and BUILD guide explain editing and rendering. Syllabi are in this course project's `syllabi/` folder. Setup guidance and reference slides are in the parent course folder's `docs/` directory. The book PDFs and original publisher workbooks are in `books/`.
+The student project README explains setup and rendering. The full source repository also includes syllabi under `syllabi/`. The instructor maintains a local-only `books/` collection of textbook PDFs and original publisher workbooks, and local guidance under `docs/`; those folders are excluded from GitHub and are not needed to use the supplied teaching CSVs.

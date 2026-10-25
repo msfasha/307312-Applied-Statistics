@@ -1,0 +1,26 @@
+---
+title: "Student Downloads"
+css: ../assets/petra-brand.css
+---
+
+## Choose how to study
+
+[Read the published course in your browser](https://msfasha.github.io/307312-Applied-Statistics/), or download the format that fits your work. These downloads are hosted with the course on GitHub Pages.
+
+| Download | What it contains | How to open it |
+|---|---|---|
+| [HTML website ZIP](https://msfasha.github.io/307312-Applied-Statistics/downloads/applied-statistics-website.zip) | Rendered student lessons, exercises, navigation, figures, and datasets | Extract the whole ZIP, then open `index.html` in a browser. Reading works offline; browser security may limit search when opened as a local file. |
+| [RStudio project ZIP](https://msfasha.github.io/307312-Applied-Statistics/downloads/applied-statistics-rstudio-project.zip) | `20261.Rproj`, lesson and exercise sources, CSV datasets, required assets, configuration, setup instructions, and student rendering scripts | Extract the whole ZIP, open `20261.Rproj` in RStudio, and follow its README. Run `setup.R` once to install packages. |
+| [PDF bundle ZIP](https://msfasha.github.io/307312-Applied-Statistics/downloads/applied-statistics-student-pdfs.zip) | Ready-to-read PDFs of student pages, linked figures, and datasets | Extract the whole ZIP and open `index.pdf`. Keep the folder structure so links between PDFs continue to work. |
+
+You can also [open the PDF course home online](https://msfasha.github.io/307312-Applied-Statistics/pdf/index.pdf). From there, follow its links to individual lesson PDFs and save or print the pages you need.
+
+## Before you start
+
+Reading HTML or PDFs needs no R installation. Running and editing the R examples requires R, RStudio, and Quarto. Package installation needs internet access; the teaching CSVs are already included.
+
+The student project includes the files needed for the active lessons. Instructor answers, local textbook PDFs, original publisher workbooks, and original instructor measurement workbooks are excluded. References to these original sources document provenance; they are not missing student dependencies.
+
+Keep attribution and source notices with shared copies. Textbook excerpts and third-party data retain their original rights.
+
+[Return to the course home](../index.qmd).

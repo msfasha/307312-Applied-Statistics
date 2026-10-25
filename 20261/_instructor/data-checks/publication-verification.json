@@ -1,0 +1,16 @@
+{
+  "review_date": "2026-10-25",
+  "student_HTML_pages": 47,
+  "student_PDF_documents": 47,
+  "downloads": [
+    "applied-statistics-website.zip",
+    "applied-statistics-rstudio-project.zip",
+    "applied-statistics-student-pdfs.zip"
+  ],
+  "archive_integrity": "All three ZIP files passed CRC checks; no instructor/book/workbook/cache/log files found. PDF bundle contents match current exports byte-for-byte.",
+  "student_project": "Extracted into a separate temporary directory, with no books or instructor folders. All 47 student sources rendered successfully and their local HTML links passed. Student config omits maintainer Python pre/post-render hooks.",
+  "staged_links": "Relative links and absolute links to the Pages site, including all three downloads, resolved in publication staging.",
+  "visual_check": "New downloads PDF reviewed; readable table, links, and instructions.",
+  "publication_policy": "PUBLISHING.md, referenced from AGENTS.md, README.md, and 20261/BUILD.md.",
+  "remote_verification": "Verify deployed publication-manifest.json and live ZIP hashes after publishing; remote status is not inferred from these local checks."
+}
