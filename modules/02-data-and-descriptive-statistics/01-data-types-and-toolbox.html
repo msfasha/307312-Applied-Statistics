@@ -1,0 +1,1917 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Module 2: Data Types and the Descriptive Statistics Toolbox – 307312 Applied Statistics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../modules/02-data-and-descriptive-statistics/exercises/01-data-types-and-toolbox.html" rel="next">
+<link href="../../modules/02-data-and-descriptive-statistics/index.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-94ee87f2ffb576e218069c74cdfce9d9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/petra-brand.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/02-data-and-descriptive-statistics/index.html">Module 2: Data and descriptive statistics</a></li><li class="breadcrumb-item"><a href="../../modules/02-data-and-descriptive-statistics/01-data-types-and-toolbox.html">1. Data types and descriptive toolbox</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">307312 Applied Statistics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course home — start here</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 1: Introduction to R</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/01-introduction-to-r/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/01-introduction-to-r/01-r-and-rstudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. R and RStudio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/01-introduction-to-r/02-basic-concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Basic concepts in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/01-introduction-to-r/03-dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Data manipulation with dplyr</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/01-introduction-to-r/04-ggplot2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Visualization with ggplot2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/01-introduction-to-r/exercises/02-basic-concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: basic concepts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/01-introduction-to-r/exercises/03-dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: dplyr</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/01-introduction-to-r/exercises/04-ggplot2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: ggplot2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 2: Data and descriptive statistics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/01-data-types-and-toolbox.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">1. Data types and descriptive toolbox</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/exercises/01-data-types-and-toolbox.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: data types and toolbox</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/02-frequency-tables-and-charts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Frequency tables and charts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/exercises/02-frequency-tables-and-charts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: frequency tables and charts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/03-numerical-measures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Numerical measures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/exercises/03-numerical-measures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: numerical measures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/04-relationships-between-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Relationships between variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/exercises/04-relationships-between-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: relationships between variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/05-descriptive-statistics-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Integrated descriptive statistics review</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 3: Probability and distributions</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/01-probability-rules.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Probability rules</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/exercises/01-probability-rules.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: probability rules</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/02-conditional-probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Conditional probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/exercises/02-conditional-probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: conditional probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/03-discrete-random-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Discrete random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/exercises/03-discrete-random-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: discrete random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/04-binomial-and-poisson.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Binomial and Poisson models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/exercises/04-binomial-and-poisson.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: binomial and poisson models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/05-continuous-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Continuous distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/exercises/05-continuous-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: continuous distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/06-probability-and-distributions-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Integrated probability and distributions review</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 4: Sampling and estimation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/01-sampling-and-variability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Sampling and variability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/exercises/01-sampling-and-variability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: sampling and variability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/02-sampling-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Sampling distributions and standard errors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/exercises/02-sampling-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: sampling distributions and standard errors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/03-confidence-intervals-for-means.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Confidence intervals for means</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/exercises/03-confidence-intervals-for-means.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: confidence intervals for means</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/04-proportions-and-sample-size.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Proportions and sample-size planning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/exercises/04-proportions-and-sample-size.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: proportions and sample-size planning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/05-sampling-and-estimation-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Integrated sampling and estimation review</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 5: Hypothesis testing and group comparisons</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/05-hypothesis-testing/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/05-hypothesis-testing/01-hypothesis-testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Existing lesson: hypothesis testing</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 6: Regression</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/06-regression/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 7: Forecasting and applied analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/07-forecasting-and-applications/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/downloads.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Student downloads</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data and course resources</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-is-statistics" id="toc-what-is-statistics" class="nav-link active" data-scroll-target="#what-is-statistics">What is statistics?</a></li>
+  <li><a href="#our-starting-question" id="toc-our-starting-question" class="nav-link" data-scroll-target="#our-starting-question">Our starting question</a></li>
+  <li><a href="#first-identify-the-observation-and-the-variable" id="toc-first-identify-the-observation-and-the-variable" class="nav-link" data-scroll-target="#first-identify-the-observation-and-the-variable">First identify the observation and the variable</a></li>
+  <li><a href="#categorical-and-numerical-data" id="toc-categorical-and-numerical-data" class="nav-link" data-scroll-target="#categorical-and-numerical-data">Categorical and numerical data</a></li>
+  <li><a href="#discrete-and-continuous-numerical-variables" id="toc-discrete-and-continuous-numerical-variables" class="nav-link" data-scroll-target="#discrete-and-continuous-numerical-variables">Discrete and continuous numerical variables</a></li>
+  <li><a href="#levels-of-measurement" id="toc-levels-of-measurement" class="nav-link" data-scroll-target="#levels-of-measurement">Levels of measurement</a>
+  <ul class="collapse">
+  <li><a href="#nominal-labels-without-a-natural-ranking" id="toc-nominal-labels-without-a-natural-ranking" class="nav-link" data-scroll-target="#nominal-labels-without-a-natural-ranking">Nominal: labels without a natural ranking</a></li>
+  <li><a href="#ordinal-order-without-established-equal-gaps" id="toc-ordinal-order-without-established-equal-gaps" class="nav-link" data-scroll-target="#ordinal-order-without-established-equal-gaps">Ordinal: order without established equal gaps</a></li>
+  <li><a href="#interval-equal-differences-an-arbitrary-zero" id="toc-interval-equal-differences-an-arbitrary-zero" class="nav-link" data-scroll-target="#interval-equal-differences-an-arbitrary-zero">Interval: equal differences, an arbitrary zero</a></li>
+  <li><a href="#ratio-equal-differences-and-a-meaningful-zero" id="toc-ratio-equal-differences-and-a-meaningful-zero" class="nav-link" data-scroll-target="#ratio-equal-differences-and-a-meaningful-zero">Ratio: equal differences and a meaningful zero</a></li>
+  <li><a href="#summary-what-each-measurement-level-adds" id="toc-summary-what-each-measurement-level-adds" class="nav-link" data-scroll-target="#summary-what-each-measurement-level-adds">Summary: what each measurement level adds</a></li>
+  </ul></li>
+  <li><a href="#the-descriptive-statistics-toolbox" id="toc-the-descriptive-statistics-toolbox" class="nav-link" data-scroll-target="#the-descriptive-statistics-toolbox">The descriptive statistics toolbox</a></li>
+  <li><a href="#tables-organize-the-information" id="toc-tables-organize-the-information" class="nav-link" data-scroll-target="#tables-organize-the-information">Tables: organize the information</a>
+  <ul class="collapse">
+  <li><a href="#frequency-and-relative-frequency" id="toc-frequency-and-relative-frequency" class="nav-link" data-scroll-target="#frequency-and-relative-frequency">Frequency and relative frequency</a></li>
+  <li><a href="#grouped-frequency-tables" id="toc-grouped-frequency-tables" class="nav-link" data-scroll-target="#grouped-frequency-tables">Grouped frequency tables</a></li>
+  </ul></li>
+  <li><a href="#charts-choose-a-display-for-the-question" id="toc-charts-choose-a-display-for-the-question" class="nav-link" data-scroll-target="#charts-choose-a-display-for-the-question">Charts: choose a display for the question</a>
+  <ul class="collapse">
+  <li><a href="#see-the-observations-then-summarize-their-distribution" id="toc-see-the-observations-then-summarize-their-distribution" class="nav-link" data-scroll-target="#see-the-observations-then-summarize-their-distribution">See the observations, then summarize their distribution</a></li>
+  </ul></li>
+  <li><a href="#numerical-measures-quantify-the-pattern" id="toc-numerical-measures-quantify-the-pattern" class="nav-link" data-scroll-target="#numerical-measures-quantify-the-pattern">Numerical measures: quantify the pattern</a>
+  <ul class="collapse">
+  <li><a href="#location" id="toc-location" class="nav-link" data-scroll-target="#location">Location</a></li>
+  <li><a href="#spread-and-position" id="toc-spread-and-position" class="nav-link" data-scroll-target="#spread-and-position">Spread and position</a></li>
+  </ul></li>
+  <li><a href="#combine-the-tools-to-answer-the-business-question" id="toc-combine-the-tools-to-answer-the-business-question" class="nav-link" data-scroll-target="#combine-the-tools-to-answer-the-business-question">Combine the tools to answer the business question</a></li>
+  <li><a href="#choose-a-tool-a-short-checklist" id="toc-choose-a-tool-a-short-checklist" class="nav-link" data-scroll-target="#choose-a-tool-a-short-checklist">Choose a tool: a short checklist</a></li>
+  <li><a href="#data-for-this-lesson" id="toc-data-for-this-lesson" class="nav-link" data-scroll-target="#data-for-this-lesson">Data for this lesson</a></li>
+  <li><a href="#references-and-provenance" id="toc-references-and-provenance" class="nav-link" data-scroll-target="#references-and-provenance">References and provenance</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/02-data-and-descriptive-statistics/index.html">Module 2: Data and descriptive statistics</a></li><li class="breadcrumb-item"><a href="../../modules/02-data-and-descriptive-statistics/01-data-types-and-toolbox.html">1. Data types and descriptive toolbox</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Module 2: Data Types and the Descriptive Statistics Toolbox</h1>
+<p class="subtitle lead">Lesson 1 | Classify the data, then choose the summary</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="what-is-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-statistics">What is statistics?</h2>
+<p><strong>Statistics is the science of collecting, organizing, presenting, analyzing, and interpreting data to answer questions and support informed decisions.</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/module02/statistics-introduction.png" class="img-fluid figure-img" style="width:85.0%" alt="Conceptual illustration showing colorful bars, pie slices, and an area chart representing different ways to display data."></p>
+<figcaption>Conceptual illustration of statistical displays, supplied for this lesson.</figcaption>
+</figure>
+</div>
+</section>
+<section id="our-starting-question" class="level2">
+<h2 class="anchored" data-anchor-id="our-starting-question">Our starting question</h2>
+<p>A restaurant analyst asks: <strong>How do meal prices differ between restaurants with different quality ratings?</strong> Before choosing a formula or drawing a chart, we must understand what each variable means.</p>
+<p>This case gives the lesson a concrete purpose. We will return to the same question as we classify variables, select tables and charts, and interpret numerical summaries.</p>
+<div class="case-narration" lang="ar" dir="rtl">
+<p>يسأل محلّل يدرس بيانات المطاعم: <strong>كيف تختلف أسعار الوجبات بين المطاعم ذات تقييمات الجودة المختلفة؟</strong> قبل اختيار معادلة أو رسم بياني، علينا أن نفهم معنى كل متغيّر.</p>
+<p>تمنحنا هذه الحالة سؤالًا عمليًا يوجّه التعلّم. سنعود إلى السؤال نفسه عند تصنيف المتغيّرات، واختيار الجداول والرسوم البيانية، وتفسير المقاييس العددية.</p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/module02/restaurant-data-and-price-insights-verified.png" class="img-fluid figure-img" style="width:100.0%" alt="A restaurant storefront leads to one observation, with restaurant ID 1, quality rating Good, and meal price 18 USD. The analytical question asks how meal prices differ across quality ratings."></p>
+<figcaption>Restaurant case: one restaurant becomes one dataset record. Adapted instructor-supplied illustration; the values match the first checked CSV record.</figcaption>
+</figure>
+</div>
+<p>This lesson follows a deliberate sequence:</p>
+<ol type="1">
+<li>Define categorical and numerical data.</li>
+<li>Distinguish discrete and continuous numerical variables.</li>
+<li>Identify nominal, ordinal, interval, and ratio measurement levels.</li>
+<li>Choose from the descriptive statistics toolbox: <strong>tables, charts, and numerical measures</strong>.</li>
+</ol>
+<p>By the end, you should be able to classify a variable, justify a suitable summary, and interpret the result without making claims beyond the data.</p>
+<p><strong>Book reference:</strong> Section 1.2 (printed pp.5–8); the discrete/continuous distinction in Section 5.1 (pp.219–220); Chapter 2 for tables and charts; Chapter 3 for numerical measures. We introduce the distinction from Chapter 5 now, without requiring probability distributions.</p>
+</section>
+<section id="first-identify-the-observation-and-the-variable" class="level2">
+<h2 class="anchored" data-anchor-id="first-identify-the-observation-and-the-variable">First identify the observation and the variable</h2>
+<p>An <strong>element</strong>, or observational unit, is the entity being studied. A <strong>variable</strong> is a characteristic recorded for that entity. An <strong>observation</strong> is the collection of recorded values for one unit.</p>
+<p>In our restaurant dataset:</p>
+<ul>
+<li>The observational unit is <strong>one restaurant</strong>.</li>
+<li>The variables include an identifier, a quality rating, and a meal price.</li>
+<li>One row contains one restaurant’s recorded values; one column contains one variable.</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Restaurant ID</th>
+<th style="text-align: left;">Quality rating</th>
+<th style="text-align: right;">Meal price (USD)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Good</td>
+<td style="text-align: right;">18</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Very Good</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">Good</td>
+<td style="text-align: right;">28</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">Excellent</td>
+<td style="text-align: right;">38</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">Very Good</td>
+<td style="text-align: right;">33</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The same-looking number can play different roles. The value <code>101</code> could identify a restaurant, count orders, or measure a price. Its statistical meaning comes from the variable definition and units, not from its appearance in a spreadsheet.</p>
+</section>
+<section id="categorical-and-numerical-data" class="level2">
+<h2 class="anchored" data-anchor-id="categorical-and-numerical-data">Categorical and numerical data</h2>
+<p><strong>Categorical data</strong> identify a group, label, or ordered category. They tell us <strong>which category</strong> an observation belongs to.</p>
+<p><strong>Numerical data</strong>, also called <strong>quantitative data</strong>, represent a quantity. They tell us <strong>how many</strong> or <strong>how much</strong>. Numerical differences have a quantitative interpretation, although the measurement level determines which other operations are meaningful.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Example values</th>
+<th>Data type</th>
+<th>Why?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Payment method</td>
+<td>Cash, card, e-wallet</td>
+<td>Categorical</td>
+<td>The values identify groups</td>
+</tr>
+<tr class="even">
+<td>Restaurant quality</td>
+<td>Good, Very Good, Excellent</td>
+<td>Categorical</td>
+<td>The values identify ordered categories</td>
+</tr>
+<tr class="odd">
+<td>Restaurant ID</td>
+<td>101, 102, 103</td>
+<td>Categorical identifier</td>
+<td>The numbers are labels, not quantities</td>
+</tr>
+<tr class="even">
+<td>Orders received</td>
+<td>0, 1, 2, 3, …</td>
+<td>Numerical</td>
+<td>The values count orders</td>
+</tr>
+<tr class="odd">
+<td>Waiting duration</td>
+<td>2.4, 5.1, 8.7 minutes</td>
+<td>Numerical</td>
+<td>The values measure elapsed time</td>
+</tr>
+<tr class="even">
+<td>Meal price</td>
+<td>18, 22, 28 USD</td>
+<td>Numerical</td>
+<td>The values measure an amount of money</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled" title="A numerical code is not automatically a numerical variable">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>A numerical code is not automatically a numerical variable
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Coding Cash = 1, Card = 2, and E-wallet = 3 does not make payment method quantitative. An average code of 2.1 does not mean an average payment method. Likewise, a quality scale coded 1, 2, 3 remains ordinal unless equal spacing has been justified.</p>
+</div>
+</div>
+<p><strong>Check your understanding:</strong> Is a telephone number a numerical quantity? Would subtracting two telephone numbers answer a meaningful measurement question?</p>
+</section>
+<section id="discrete-and-continuous-numerical-variables" class="level2">
+<h2 class="anchored" data-anchor-id="discrete-and-continuous-numerical-variables">Discrete and continuous numerical variables</h2>
+<p>Once a variable represents a quantity, ask which values are possible.</p>
+<p>A <strong>discrete variable</strong> has a finite or countably infinite set of possible values. Values occur at separate points. Counts are common examples: a restaurant can receive 12 or 13 orders, but not 12.6 completed orders.</p>
+<p>A <strong>continuous variable</strong> is modeled as able to take any value within an interval. Measurements such as waiting duration, weight, distance, and temperature are common examples. Between 2 and 3 minutes, values such as 2.1, 2.14, and 2.145 minutes are possible.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Discrete</th>
+<th>Continuous</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Number of customers arriving in an hour</td>
+<td>Time between customer arrivals</td>
+</tr>
+<tr class="even">
+<td>Number of defective items in a batch</td>
+<td>Weight of an item</td>
+</tr>
+<tr class="odd">
+<td>Number of complaints in a day</td>
+<td>Duration of a service call</td>
+</tr>
+<tr class="even">
+<td>Number of advertising commercials</td>
+<td>Distance traveled</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The distinction concerns possible values, not whether the displayed data contain decimal points.</strong> A discrete variable can take fractional steps, such as package sizes restricted to 0.5, 1.0, and 1.5 liters. Conversely, a continuous measurement may be rounded to a whole number.</p>
+<p>Our audit times are recorded in whole days, but elapsed audit duration is an underlying continuous quantity. Money recorded to the nearest cent has discrete recording increments; business analyses often approximate monetary amounts using continuous models. State the recording precision and modeling choice when they matter.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/module02/data-types.svg" class="img-fluid figure-img" alt="Categorical variables lead to nominal and ordinal categories. Numerical variables lead to discrete and continuous possibilities. Measurement level is assessed separately."></p>
+<figcaption>Original course diagram: classify the meaning of a variable before deciding how to summarize it.</figcaption>
+</figure>
+</div>
+</section>
+<section id="levels-of-measurement" class="level2">
+<h2 class="anchored" data-anchor-id="levels-of-measurement">Levels of measurement</h2>
+<p>A measurement level describes what comparisons and operations make sense. The book distinguishes <strong>nominal, ordinal, interval, and ratio</strong> levels.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Level</th>
+<th>What the values tell us</th>
+<th>Meaningful comparisons</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Nominal</strong></td>
+<td>Category membership</td>
+<td>Same or different; category counts and proportions</td>
+<td>Payment method, restaurant ID</td>
+</tr>
+<tr class="even">
+<td><strong>Ordinal</strong></td>
+<td>Membership and meaningful order</td>
+<td>Higher/lower; ordered frequencies, mode, and median category</td>
+<td>Good, Very Good, Excellent</td>
+</tr>
+<tr class="odd">
+<td><strong>Interval</strong></td>
+<td>Order and equal measurement units</td>
+<td>Differences and averages; ratios of raw values are not meaningful</td>
+<td>Temperature in degrees Celsius</td>
+</tr>
+<tr class="even">
+<td><strong>Ratio</strong></td>
+<td>Equal units and a meaningful zero indicating absence of the measured quantity</td>
+<td>Differences and ratios, where defined</td>
+<td>Duration, distance, weight, number of orders</td>
+</tr>
+</tbody>
+</table>
+<section id="nominal-labels-without-a-natural-ranking" class="level3">
+<h3 class="anchored" data-anchor-id="nominal-labels-without-a-natural-ranking">Nominal: labels without a natural ranking</h3>
+<p>Cash is not inherently above or below card. Relabeling their category codes changes no substantive information. Use counts, percentages, and category comparisons.</p>
+</section>
+<section id="ordinal-order-without-established-equal-gaps" class="level3">
+<h3 class="anchored" data-anchor-id="ordinal-order-without-established-equal-gaps">Ordinal: order without established equal gaps</h3>
+<p>Excellent is above Very Good, and Very Good is above Good. That does not establish that the two gaps are equal. An ordered bar chart is meaningful; treating the category labels as equally spaced measurements is an additional assumption.</p>
+</section>
+<section id="interval-equal-differences-an-arbitrary-zero" class="level3">
+<h3 class="anchored" data-anchor-id="interval-equal-differences-an-arbitrary-zero">Interval: equal differences, an arbitrary zero</h3>
+<p>A change from 10°C to 20°C has the same size as a change from 20°C to 30°C. However, 20°C is not twice the temperature of 10°C: the zero is a conventional reference point. A mean in degrees Celsius is meaningful; a ratio of Celsius readings is not.</p>
+</section>
+<section id="ratio-equal-differences-and-a-meaningful-zero" class="level3">
+<h3 class="anchored" data-anchor-id="ratio-equal-differences-and-a-meaningful-zero">Ratio: equal differences and a meaningful zero</h3>
+<p>Zero minutes of waiting means no waiting time. A wait of 20 minutes is twice a wait of 10 minutes. A ratio such as 20/0 is still undefined: a meaningful zero does not permit division by zero.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Two classifications, two questions">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Two classifications, two questions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Discrete/continuous:</strong> which values are possible?</p>
+<p><strong>Measurement level:</strong> which comparisons are meaningful?</p>
+<p>For example, order count is <strong>discrete and ratio</strong>; waiting duration is <strong>continuous and ratio</strong>; Celsius temperature is usually <strong>continuous and interval</strong>. Calendar year recorded as a year number is <strong>discrete and interval</strong>. The two classifications are not interchangeable.</p>
+</div>
+</div>
+<p>In R, storage type is a separate issue again. <code>numeric</code> does not prove that a variable is quantitative. We converted restaurant ID to character and stored the ordered quality categories as an ordered factor to make their intended roles clearer.</p>
+</section>
+<section id="summary-what-each-measurement-level-adds" class="level3">
+<h3 class="anchored" data-anchor-id="summary-what-each-measurement-level-adds">Summary: what each measurement level adds</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/module02/measurement-scales-reference.png" class="img-fluid figure-img" style="width:100.0%" alt="Four measurement levels progress from nominal category membership, to ordinal ranking, interval differences, and ratio comparisons with a meaningful zero. The supplied diagram groups nominal and ordinal under categorical attributes and interval and ratio under quantitative attributes."></p>
+<figcaption>Measurement levels and their meaningful comparisons. Instructor-supplied summary diagram.</figcaption>
+</figure>
+</div>
+<p><a href="../../assets/module02/measurement-scales-reference.png">Open the diagram at full size</a>.</p>
+<p><strong>Read from left to right:</strong> nominal data distinguish categories; ordinal data also support ranking; interval data also support meaningful differences; ratio data additionally support meaningful ratios because they have a meaningful zero. Each step adds measurement information and permits additional summaries and comparisons. For ratios, the denominator must still be nonzero.</p>
+<p>This progression describes <strong>which operations are meaningful</strong>, rather than guaranteeing a better analysis. Categorical data also support substantial statistical analysis. The question, study design, and method assumptions still matter. Classify examples such as “grades” or “medical scores” from their actual definitions: ordered rating categories are ordinal, but not every numerical score automatically has that scale.</p>
+</section>
+</section>
+<section id="the-descriptive-statistics-toolbox" class="level2">
+<h2 class="anchored" data-anchor-id="the-descriptive-statistics-toolbox">The descriptive statistics toolbox</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/module02/statistics-toolbox-teacher.png" class="img-fluid figure-img" alt="A friendly illustrated teacher beside a toolbox containing charts, a calculator, and a list of descriptive measures including mean, median, mode, range, variance, and standard deviation." width="340"></p>
+<figcaption>Conceptual illustration of the descriptive statistics toolbox.</figcaption>
+</figure>
+</div>
+<p><strong>Descriptive statistics organize, display, and summarize the observations we have.</strong> They do not, by themselves, justify generalizing from a sample to every restaurant or explaining what caused a pattern.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/module02/descriptive-toolbox.svg" class="img-fluid figure-img" alt="Tables organize observations, charts reveal patterns, and numerical measures summarize center, spread, position and association. Interpretation connects all three to the question."></p>
+<figcaption>Original course illustration: tables, charts, and numerical measures describe complementary aspects of the same data.</figcaption>
+</figure>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>Main purpose</th>
+<th>Typical examples</th>
+<th>Book reference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Tables</strong></td>
+<td>Organize observations into an interpretable summary</td>
+<td>Frequency tables, relative frequencies, grouped distributions, crosstabs</td>
+<td>Chapter 2 §§2.1–2.3</td>
+</tr>
+<tr class="even">
+<td><strong>Charts</strong></td>
+<td>Reveal patterns and comparisons</td>
+<td>Bar charts, histograms, dot plots, boxplots, scatterplots</td>
+<td>Chapter 2 §§2.1–2.5; Chapter 3 §3.4</td>
+</tr>
+<tr class="odd">
+<td><strong>Numerical measures</strong></td>
+<td>Quantify important features</td>
+<td>Mean, median, standard deviation, quartiles, correlation</td>
+<td>Chapter 3 §§3.1–3.5</td>
+</tr>
+</tbody>
+</table>
+<p>We normally combine tools. A mean can hide an unusual observation; a graph can reveal it. A graph can suggest a difference; a numerical summary tells us its size.</p>
+</section>
+<section id="tables-organize-the-information" class="level2">
+<h2 class="anchored" data-anchor-id="tables-organize-the-information">Tables: organize the information</h2>
+<section id="frequency-and-relative-frequency" class="level3">
+<h3 class="anchored" data-anchor-id="frequency-and-relative-frequency">Frequency and relative frequency</h3>
+<p>A <strong>frequency</strong> is the number of observations in a category or class. A <strong>relative frequency</strong> is that count divided by the total. Multiply a relative frequency by 100 to express it as a percentage.</p>
+<p>For the 300 restaurants, keep the quality categories in their natural order.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as.data.frame(): converts an object to a rectangular data frame.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># names(): reads or assigns names to vector elements or table columns.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># table() counts restaurants in each ordered quality category.</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Divide counts by nrow(restaurants) to obtain proportions; kable() displays them.</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>quality_table <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">table</span>(restaurants<span class="sc">$</span>quality_rating))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(quality_table) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Quality"</span>, <span class="st">"Frequency"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>quality_table<span class="sc">$</span>Relative_frequency <span class="ot">&lt;-</span> quality_table<span class="sc">$</span>Frequency <span class="sc">/</span> <span class="fu">nrow</span>(restaurants)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>quality_table<span class="sc">$</span>Percent <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="sc">*</span> quality_table<span class="sc">$</span>Relative_frequency</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(quality_table, <span class="at">digits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>),</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Quality"</span>, <span class="st">"Frequency"</span>, <span class="st">"Relative frequency"</span>, <span class="st">"Percent"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Quality</th>
+<th style="text-align: right;">Frequency</th>
+<th style="text-align: right;">Relative frequency</th>
+<th style="text-align: right;">Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Good</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">0.28</td>
+<td style="text-align: right;">28</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Very Good</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Excellent</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">0.22</td>
+<td style="text-align: right;">22</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>Interpretation:</strong> 150 of the 300 restaurants, or 50%, are rated Very Good. This describes the observed restaurants; it does not establish the proportion among all restaurants in the city.</p>
+</section>
+<section id="grouped-frequency-tables" class="level3">
+<h3 class="anchored" data-anchor-id="grouped-frequency-tables">Grouped frequency tables</h3>
+<p>For numerical variables with many possible values, group observations into intervals. Classes must not overlap or leave unintended gaps.</p>
+<p>An audit manager wants to understand how long audits take and how much their durations vary. We use 20 recorded audit durations, measured in days, to describe their distribution.</p>
+<div class="case-narration" lang="ar" dir="rtl">
+<p>يريد مدير التدقيق معرفة المدة التي تستغرقها عمليات التدقيق ومدى تفاوت هذه المدد. نستخدم بيانات المدة المسجّلة لعشرين عملية تدقيق، مقيسة بالأيام، لوصف توزيعها.</p>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># names(): reads or assigns names to vector elements or table columns.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># identical(): requires exact equality of values, types, and attributes.</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># cut() groups days using boundaries 10, 15, ..., 35 from seq(10,35,5).</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># right = FALSE includes the lower endpoint: [10,15), [15,20), and so on.</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># table() counts each class; as.data.frame() makes the counts into columns.</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># stopifnot() checks the expected counts; kable() displays a readable table.</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>classes <span class="ot">&lt;-</span> <span class="fu">cut</span>(audit<span class="sc">$</span>audit_days, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">10</span>,<span class="dv">35</span>,<span class="dv">5</span>), <span class="at">right =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>audit_frequency <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">table</span>(classes))</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(audit_frequency) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Audit_days"</span>, <span class="st">"Frequency"</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">identical</span>(audit_frequency<span class="sc">$</span>Frequency, <span class="fu">c</span>(<span class="dv">4</span>L,<span class="dv">8</span>L,<span class="dv">5</span>L,<span class="dv">2</span>L,<span class="dv">1</span>L)))</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(audit_frequency, <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Audit duration class (days)"</span>, <span class="st">"Frequency"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Audit duration class (days)</th>
+<th style="text-align: right;">Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">[10,15)</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">[15,20)</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">[20,25)</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">[25,30)</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">[30,35)</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Here <code>[15,20)</code> means <strong>at least 15 but less than 20 days</strong>. An audit lasting 20 days belongs in <code>[20,25)</code>. For these whole-day records, the intervals correspond to the book’s 10–14, 15–19, and subsequent classes.</p>
+<p>A <strong>cumulative frequency</strong> adds the counts up to a given ordered class. It is useful for questions such as “How many audits finished in less than 25 days?” A <strong>crosstab</strong> summarizes two categorical variables, or a category and a grouped numerical variable, in a two-way table.</p>
+</section>
+</section>
+<section id="charts-choose-a-display-for-the-question" class="level2">
+<h2 class="anchored" data-anchor-id="charts-choose-a-display-for-the-question">Charts: choose a display for the question</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Data and question</th>
+<th>Suitable display</th>
+<th>What to look for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>One categorical variable: how common is each category?</td>
+<td>Bar chart; sometimes a pie chart for a simple part-to-whole comparison</td>
+<td>Counts or percentages; preserve order for ordinal categories</td>
+</tr>
+<tr class="even">
+<td>A numerical count with few possible values</td>
+<td>Frequency bar chart or dot plot</td>
+<td>Which counts occur and how often</td>
+</tr>
+<tr class="odd">
+<td>One numerical variable with many values</td>
+<td>Histogram or dot plot</td>
+<td>Center, spread, shape, gaps, and unusual values</td>
+</tr>
+<tr class="even">
+<td>Numerical values across several groups</td>
+<td>Side-by-side boxplots</td>
+<td>Medians, variability, overlap, and possible outliers</td>
+</tr>
+<tr class="odd">
+<td>Two numerical variables</td>
+<td>Scatterplot</td>
+<td>Direction, form, strength, and unusual observations</td>
+</tr>
+<tr class="even">
+<td>A quantity observed over time</td>
+<td>Time-series line chart</td>
+<td>Trend, seasonality, changes, and unusual periods</td>
+</tr>
+</tbody>
+</table>
+<p>A bar chart separates categories; a histogram groups values along a numerical axis. Equal-width histogram bars can show counts directly. A pie chart can communicate a small number of proportions, but bar charts usually make precise comparisons easier. Avoid 3D decoration that distorts the comparison.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(): starts a plot from data; additional layers are joined with +.</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># labs(): sets axis titles, legend titles, plot titles, and captions.</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_col() uses the frequencies already calculated in quality_table.</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># aes() maps categories and counts to axes; geom_text() adds the count labels.</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(quality_table, <span class="fu">aes</span>(Quality, Frequency)) <span class="sc">+</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#2878A5"</span>, <span class="at">width =</span> .<span class="dv">65</span>) <span class="sc">+</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> Frequency), <span class="at">vjust =</span> <span class="sc">-</span>.<span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">170</span>)) <span class="sc">+</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Very Good is the most common quality category"</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Quality rating"</span>, <span class="at">y =</span> <span class="st">"Number of restaurants"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-quality-bar" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An ordered bar chart shows Good 84, Very Good 150, and Excellent 66 restaurants.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-quality-bar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="01-data-types-and-toolbox_files/figure-html/fig-quality-bar-1.png" class="img-fluid figure-img" alt="An ordered bar chart shows Good 84, Very Good 150, and Excellent 66 restaurants." width="1200">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-quality-bar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Original R chart from the checked Restaurant workbook. Counts agree with the book’s Table 2.10 (printed p.66).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<section id="see-the-observations-then-summarize-their-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="see-the-observations-then-summarize-their-distribution">See the observations, then summarize their distribution</h3>
+<p>Each dot in the book’s audit plot represents one audit; stacked dots represent repeated values.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/module02/book-fig-2-11.png" class="img-fluid figure-img" alt="Textbook dot plot of twenty audit durations, with three observations at eighteen days and one at thirty-three days."></p>
+<figcaption>Book Figure 2.11: Dot Plot for the Audit Time Data. Anderson et al., Essentials of Modern Business Statistics with Microsoft Excel, 8th ed., printed p.52 (PDF p.84). Copyright 2020 Cengage Learning. Cropped excerpt from the local reference.</figcaption>
+</figure>
+</div>
+<p>The histogram below uses the same checked observations and the same class boundaries as our grouped table.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(): starts a plot from data; additional layers are joined with +.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># aes(): maps variables to visual properties such as x, y, fill, color, or group.</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># scale_x_continuous(): controls numeric x-axis breaks, labels, limits, and spacing.</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># labs(): sets axis titles, legend titles, plot titles, and captions.</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_histogram() counts raw audit durations within the supplied boundaries.</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># closed = "left" includes each lower endpoint and excludes its upper endpoint.</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(audit, <span class="fu">aes</span>(audit_days)) <span class="sc">+</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">10</span>,<span class="dv">35</span>,<span class="dv">5</span>), <span class="at">closed =</span> <span class="st">"left"</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> <span class="st">"#2878A5"</span>, <span class="at">colour =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">10</span>,<span class="dv">35</span>,<span class="dv">5</span>)) <span class="sc">+</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Most audits finish in the lower duration classes"</span>,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Audit duration (days)"</span>, <span class="at">y =</span> <span class="st">"Number of audits"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-audit-histogram" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A histogram of twenty audit durations has its tallest bar from fifteen to under twenty days, and a longer tail toward thirty-three days.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-audit-histogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="01-data-types-and-toolbox_files/figure-html/fig-audit-histogram-1.png" class="img-fluid figure-img" alt="A histogram of twenty audit durations has its tallest bar from fifteen to under twenty days, and a longer tail toward thirty-three days." width="1200">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-audit-histogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Original R histogram. The class frequencies are 4, 8, 5, 2, and 1, matching the book’s audit example.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Do not remove the 33-day audit just because it is separated from the main cluster. First check whether it is valid and whether its circumstances differ from those of other audits.</p>
+</section>
+</section>
+<section id="numerical-measures-quantify-the-pattern" class="level2">
+<h2 class="anchored" data-anchor-id="numerical-measures-quantify-the-pattern">Numerical measures: quantify the pattern</h2>
+<p>Numerical measures answer different questions. There is no single number that describes every important feature of a dataset.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Measures</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Location / center</strong></td>
+<td>Mean, median, mode</td>
+<td>What is typical or most frequent?</td>
+</tr>
+<tr class="even">
+<td><strong>Variability / spread</strong></td>
+<td>Range, interquartile range, variance, standard deviation</td>
+<td>How different are the observations from one another?</td>
+</tr>
+<tr class="odd">
+<td><strong>Position</strong></td>
+<td>Percentiles, quartiles, z-scores</td>
+<td>Where does an observation sit in the distribution?</td>
+</tr>
+<tr class="even">
+<td><strong>Shape and unusual values</strong></td>
+<td>Skewness, supported by plots and outlier checks</td>
+<td>Is the distribution asymmetric? Which observations need investigation?</td>
+</tr>
+<tr class="odd">
+<td><strong>Association</strong></td>
+<td>Covariance and Pearson correlation</td>
+<td>How do two numerical variables vary together, especially in a linear pattern?</td>
+</tr>
+</tbody>
+</table>
+<section id="location" class="level3">
+<h3 class="anchored" data-anchor-id="location">Location</h3>
+<p>The <strong>mean</strong> adds the numerical observations and divides by their count: <span class="math inline">\(\bar{x}=\sum x_i/n\)</span>. The <strong>median</strong> is the middle value after sorting, or the average of the two middle values when the numerical sample size is even. The <strong>mode</strong> is the most frequent value or category; a dataset can have more than one mode.</p>
+<p>Mean and standard deviation are not meaningful summaries of arbitrary category codes. For ordinal categories, an ordered median category can be meaningful, but subtracting two category labels is not.</p>
+</section>
+<section id="spread-and-position" class="level3">
+<h3 class="anchored" data-anchor-id="spread-and-position">Spread and position</h3>
+<p>The <strong>range</strong> is maximum minus minimum. The <strong>interquartile range (IQR)</strong> is <span class="math inline">\(Q_3-Q_1\)</span> and describes the width of the middle half of the observations. Quartiles are the 25th, 50th, and 75th percentiles.</p>
+<p>The <strong>sample variance</strong> is <span class="math inline">\(s^2=\sum(x_i-\bar{x})^2/(n-1)\)</span>. The <strong>sample standard deviation</strong>, <span class="math inline">\(s=\sqrt{s^2}\)</span>, expresses spread in the original measurement units. Variance has squared units. Population variance uses the population size in the denominator instead.</p>
+<p>The <strong>coefficient of variation</strong>, <span class="math inline">\(100s/\bar{x}\)</span>, expresses standard deviation relative to the mean. Reserve this comparison for suitable ratio-scale variables with a meaningful zero and a positive, nonzero mean; a Celsius-temperature CV is not meaningful.</p>
+<p>A <strong>z-score</strong> expresses distance from the mean in standard-deviation units: <span class="math inline">\((x-\bar{x})/s\)</span>. It requires a positive standard deviation, and does not by itself establish that the distribution is normal.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># length(): counts elements in a vector or list.</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># min(): returns the smallest supplied value.</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># max(): returns the largest supplied value.</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># diff(): subtracts each preceding value from the next by default; diff(range(x)) gives max minus min.</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># range(): returns the minimum and maximum as a two-element vector.</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># var(): computes sample variance using denominator n-1.</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># quantile(..., type = 6) calculates quartiles using our stated book convention.</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># mean(), median(), sd(), and the quartiles summarize different distribution features.</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> audit<span class="sc">$</span>audit_days</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>quartiles <span class="ot">&lt;-</span> <span class="fu">quantile</span>(x, <span class="fu">c</span>(.<span class="dv">25</span>,.<span class="dv">50</span>,.<span class="dv">75</span>), <span class="at">type =</span> <span class="dv">6</span>, <span class="at">names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>summary_table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">Measure =</span> <span class="fu">c</span>(<span class="st">"Observations"</span>, <span class="st">"Mean (days)"</span>, <span class="st">"Median (days)"</span>,</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>              <span class="st">"Minimum (days)"</span>, <span class="st">"Maximum (days)"</span>, <span class="st">"Range (days)"</span>,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>              <span class="st">"Q1 (days)"</span>, <span class="st">"Q3 (days)"</span>, <span class="st">"IQR (days)"</span>,</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>              <span class="st">"Sample variance (days squared)"</span>, <span class="st">"Sample SD (days)"</span>),</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">Value =</span> <span class="fu">c</span>(<span class="fu">length</span>(x), <span class="fu">mean</span>(x), <span class="fu">median</span>(x), <span class="fu">min</span>(x), <span class="fu">max</span>(x), <span class="fu">diff</span>(<span class="fu">range</span>(x)),</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>            quartiles[<span class="dv">1</span>], quartiles[<span class="dv">3</span>], <span class="fu">diff</span>(quartiles[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]), <span class="fu">var</span>(x), <span class="fu">sd</span>(x)))</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(summary_table, <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Measure</th>
+<th style="text-align: right;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Observations</td>
+<td style="text-align: right;">20.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mean (days)</td>
+<td style="text-align: right;">19.25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Median (days)</td>
+<td style="text-align: right;">18.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Minimum (days)</td>
+<td style="text-align: right;">12.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Maximum (days)</td>
+<td style="text-align: right;">33.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Range (days)</td>
+<td style="text-align: right;">21.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Q1 (days)</td>
+<td style="text-align: right;">15.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Q3 (days)</td>
+<td style="text-align: right;">22.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">IQR (days)</td>
+<td style="text-align: right;">7.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sample variance (days squared)</td>
+<td style="text-align: right;">29.57</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sample SD (days)</td>
+<td style="text-align: right;">5.44</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The mean is <strong>19.25 days</strong> and the median is <strong>18 days</strong>. The standard deviation is approximately <strong>5.44 days</strong>. The middle half of the observations lies between <strong>15 and 22 days</strong>. Longer audits pull the mean above the median; the graph gives that difference context.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Matching the book's percentile convention">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Matching the book’s percentile convention
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On printed pp.113–114, the book locates the pth percentile at <span class="math inline">\((n+1)p/100\)</span> and interpolates between adjacent observations. R’s <code>quantile(..., type = 6)</code> follows this convention for the interior percentiles used here. R’s default is <code>type = 7</code>, so specify the method when reproducing the book’s calculations. There are several legitimate percentile conventions.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="combine-the-tools-to-answer-the-business-question" class="level2">
+<h2 class="anchored" data-anchor-id="combine-the-tools-to-answer-the-business-question">Combine the tools to answer the business question</h2>
+<p>Return to the restaurants. Quality is ordinal and price is numerical, so an ordered table of group medians and spreads, together with side-by-side boxplots, is a useful descriptive starting point.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># names(): reads or assigns names to vector elements or table columns.</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># quantile(): computes sample percentiles; probs gives probabilities and type selects the interpolation rule.</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># length(): counts elements in a vector or list.</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># median(): returns the middle sorted value, averaging the middle pair for even sample sizes.</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># split() separates meal prices by rating while retaining the original values.</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># lapply() summarizes each group; do.call(rbind, ...) combines the summary rows.</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>price_by_quality <span class="ot">&lt;-</span> <span class="fu">split</span>(restaurants<span class="sc">$</span>meal_price_usd, restaurants<span class="sc">$</span>quality_rating)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>group_summary <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, <span class="fu">lapply</span>(<span class="fu">names</span>(price_by_quality), <span class="cf">function</span>(group) {</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  prices <span class="ot">&lt;-</span> price_by_quality[[group]]</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  q <span class="ot">&lt;-</span> <span class="fu">quantile</span>(prices, <span class="fu">c</span>(.<span class="dv">25</span>,.<span class="dv">75</span>), <span class="at">type =</span> <span class="dv">6</span>, <span class="at">names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">Quality =</span> group, <span class="at">Restaurants =</span> <span class="fu">length</span>(prices),</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>             <span class="at">Median_USD =</span> <span class="fu">median</span>(prices), <span class="at">Q1_USD =</span> q[<span class="dv">1</span>], <span class="at">Q3_USD =</span> q[<span class="dv">2</span>],</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">IQR_USD =</span> q[<span class="dv">2</span>]<span class="sc">-</span>q[<span class="dv">1</span>])</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>}))</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(group_summary, <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Quality</th>
+<th style="text-align: right;">Restaurants</th>
+<th style="text-align: right;">Median_USD</th>
+<th style="text-align: right;">Q1_USD</th>
+<th style="text-align: right;">Q3_USD</th>
+<th style="text-align: right;">IQR_USD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Good</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">19.5</td>
+<td style="text-align: right;">15.0</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">10.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Very Good</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">25.0</td>
+<td style="text-align: right;">20.0</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">12.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Excellent</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">34.5</td>
+<td style="text-align: right;">29.5</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">11.5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(): starts a plot from data; additional layers are joined with +.</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># aes(): maps variables to visual properties such as x, y, fill, color, or group.</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># labs(): sets axis titles, legend titles, plot titles, and captions.</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_boxplot() compares the price distributions within quality categories.</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># This overview uses ggplot2 defaults; Lesson 3 constructs explicit type-6 boxplots.</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(restaurants, <span class="fu">aes</span>(quality_rating, meal_price_usd)) <span class="sc">+</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"#9DC7DE"</span>, <span class="at">colour =</span> <span class="st">"#303030"</span>, <span class="at">width =</span> .<span class="dv">55</span>) <span class="sc">+</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Compare price distributions, not just averages"</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Quality rating"</span>, <span class="at">y =</span> <span class="st">"Meal price (USD)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-price-boxplot" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Side-by-side meal-price boxplots preserve the order Good, Very Good, Excellent and allow their medians and spreads to be compared.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-price-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="01-data-types-and-toolbox_files/figure-html/fig-price-boxplot-1.png" class="img-fluid figure-img" alt="Side-by-side meal-price boxplots preserve the order Good, Very Good, Excellent and allow their medians and spreads to be compared." width="1200">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-price-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Original R boxplots from the checked Restaurant data. Dots outside whiskers are potential outliers to investigate. The numerical quartiles above use the book’s type-6 convention; ggplot2 uses its own standard boxplot calculation, so small differences in hinges can occur.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Interpretation task:</strong> compare the group medians, the amount of overlap, and the variability. Describe an association, then name one reason why these observational data do not show that a higher rating causes a higher price.</p>
+<p>For <strong>two numerical variables</strong>, start with a scatterplot. Correlation can then summarize a linear association. It does not establish causation, and a near-zero Pearson correlation does not rule out a nonlinear relationship.</p>
+<p>An electronics retailer wants to examine whether weeks with more advertising commercials tend to have higher sales. We compare ten weeks of advertising counts and sales, measured in hundreds of US dollars. This describes an association; it does not show that advertising caused the sales differences.</p>
+<div class="case-narration" lang="ar" dir="rtl">
+<p>يريد متجر إلكترونيات أن يفحص ما إذا كانت الأسابيع التي تُعرض فيها إعلانات أكثر تميل إلى تحقيق مبيعات أعلى. نقارن بيانات عشرة أسابيع تشمل عدد الإعلانات والمبيعات، المقيسة بمئات الدولارات الأمريكية. يصف هذا التحليل ارتباطًا بين المتغيّرين، ولا يثبت أن الإعلانات سبّبت الفروق في المبيعات.</p>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(): starts a plot from data; additional layers are joined with +.</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># scale_x_continuous(): controls numeric x-axis breaks, labels, limits, and spacing.</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_point() draws one paired commercials-sales observation per week.</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># aes() maps the two numerical variables; labs() states sales in hundreds of USD.</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(electronics, <span class="fu">aes</span>(commercials, sales_hundreds_usd)) <span class="sc">+</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">colour =</span> <span class="st">"#2878A5"</span>) <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"More commercials tend to accompany higher sales"</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Number of commercials"</span>, <span class="at">y =</span> <span class="st">"Weekly sales (hundreds of USD)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-advertising-sales" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ten weekly observations show a positive relationship between the number of commercials and sales, with differing sales at the same number of commercials.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-advertising-sales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="01-data-types-and-toolbox_files/figure-html/fig-advertising-sales-1.png" class="img-fluid figure-img" alt="Ten weekly observations show a positive relationship between the number of commercials and sales, with differing sales at the same number of commercials." width="1200">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-advertising-sales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Original R scatterplot. The ten Electronics observations in book Table 2.14 (printed p.76) match the local Stereo workbook; sales are in hundreds of USD.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="choose-a-tool-a-short-checklist" class="level2">
+<h2 class="anchored" data-anchor-id="choose-a-tool-a-short-checklist">Choose a tool: a short checklist</h2>
+<ol type="1">
+<li><strong>Define:</strong> what does one row represent? What are the units and recording precision?</li>
+<li><strong>Classify:</strong> categorical or numerical? If numerical, discrete or continuous? What is the measurement level?</li>
+<li><strong>Ask:</strong> do we want frequencies, a distribution, a group comparison, a relationship, or a time pattern?</li>
+<li><strong>Summarize:</strong> choose an appropriate table, chart, and numerical measure where meaningful.</li>
+<li><strong>Interpret:</strong> explain the finding, its context, and its limitations.</li>
+</ol>
+<p>Do not calculate an average just because a column contains numbers. Do not choose a chart just because the software offers it.</p>
+<p><a href="../../modules/02-data-and-descriptive-statistics/exercises/01-data-types-and-toolbox.html">Open the student exercises</a> or <a href="../../modules/02-data-and-descriptive-statistics/index.html">return to the Module 2 overview</a>.</p>
+</section>
+<section id="data-for-this-lesson" class="level2">
+<h2 class="anchored" data-anchor-id="data-for-this-lesson">Data for this lesson</h2>
+<p><a href="../../data/module02/descriptive-statistics-data.zip">Download the CSV datasets and data guide</a>. The restaurant, audit, and electronics examples above read these CSVs directly. Soft-drink data are used in <a href="../../modules/02-data-and-descriptive-statistics/02-frequency-tables-and-charts.html">Lesson 2: Frequency tables and charts</a>.</p>
+</section>
+<section id="references-and-provenance" class="level2">
+<h2 class="anchored" data-anchor-id="references-and-provenance">References and provenance</h2>
+<ul>
+<li>Anderson, D. R., Sweeney, D. J., Williams, T. A., Camm, J. D., Cochran, J. J., Fry, M. J., and Ohlmann, J. W. (2020). <em>Essentials of Modern Business Statistics with Microsoft Excel</em>, 8th edition. Cengage Learning. Definitions and organization: §1.2, pp.5–8; §5.1, pp.219–220; descriptive tools: Chapter 2, pp.35–100, and Chapter 3, pp.103–169. Wording, teaching questions, and unlabelled illustrations in this lesson are original course material.</li>
+<li>The Audit data match all 20 values in book Table 2.4 (p.47). The Restaurant data match the first 10 printed rows in Table 2.9 (p.65) and all 12 crosstab cells in Table 2.10 (p.66); the remaining individual rows are not printed for comparison. The Electronics/Stereo data match all ten rows in Table 2.14 (p.76).</li>
+<li>These are historical teaching datasets. Their role is to teach statistical reasoning, not describe the current restaurant or advertising market. The book figure and original R charts are identified separately in their captions.</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/msfasha\.github\.io\/307312-Applied-Statistics\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../modules/02-data-and-descriptive-statistics/index.html" class="pagination-link" aria-label="Overview">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Overview</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../modules/02-data-and-descriptive-statistics/exercises/01-data-types-and-toolbox.html" class="pagination-link" aria-label="Practice: data types and toolbox">
+        <span class="nav-page-text">Practice: data types and toolbox</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

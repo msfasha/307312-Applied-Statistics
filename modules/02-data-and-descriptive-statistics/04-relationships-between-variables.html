@@ -1,0 +1,1863 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Module 2: Relationships Between Variables – 307312 Applied Statistics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../modules/02-data-and-descriptive-statistics/exercises/04-relationships-between-variables.html" rel="next">
+<link href="../../modules/02-data-and-descriptive-statistics/exercises/03-numerical-measures.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-94ee87f2ffb576e218069c74cdfce9d9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/petra-brand.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/02-data-and-descriptive-statistics/index.html">Module 2: Data and descriptive statistics</a></li><li class="breadcrumb-item"><a href="../../modules/02-data-and-descriptive-statistics/04-relationships-between-variables.html">4. Relationships between variables</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">307312 Applied Statistics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course home — start here</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 1: Introduction to R</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/01-introduction-to-r/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/01-introduction-to-r/01-r-and-rstudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. R and RStudio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/01-introduction-to-r/02-basic-concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Basic concepts in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/01-introduction-to-r/03-dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Data manipulation with dplyr</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/01-introduction-to-r/04-ggplot2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Visualization with ggplot2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/01-introduction-to-r/exercises/02-basic-concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: basic concepts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/01-introduction-to-r/exercises/03-dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: dplyr</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/01-introduction-to-r/exercises/04-ggplot2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: ggplot2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 2: Data and descriptive statistics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/01-data-types-and-toolbox.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Data types and descriptive toolbox</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/exercises/01-data-types-and-toolbox.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: data types and toolbox</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/02-frequency-tables-and-charts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Frequency tables and charts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/exercises/02-frequency-tables-and-charts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: frequency tables and charts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/03-numerical-measures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Numerical measures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/exercises/03-numerical-measures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: numerical measures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/04-relationships-between-variables.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">4. Relationships between variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/exercises/04-relationships-between-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: relationships between variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/05-descriptive-statistics-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Integrated descriptive statistics review</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 3: Probability and distributions</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/01-probability-rules.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Probability rules</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/exercises/01-probability-rules.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: probability rules</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/02-conditional-probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Conditional probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/exercises/02-conditional-probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: conditional probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/03-discrete-random-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Discrete random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/exercises/03-discrete-random-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: discrete random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/04-binomial-and-poisson.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Binomial and Poisson models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/exercises/04-binomial-and-poisson.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: binomial and poisson models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/05-continuous-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Continuous distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/exercises/05-continuous-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: continuous distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/06-probability-and-distributions-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Integrated probability and distributions review</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 4: Sampling and estimation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/01-sampling-and-variability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Sampling and variability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/exercises/01-sampling-and-variability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: sampling and variability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/02-sampling-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Sampling distributions and standard errors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/exercises/02-sampling-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: sampling distributions and standard errors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/03-confidence-intervals-for-means.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Confidence intervals for means</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/exercises/03-confidence-intervals-for-means.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: confidence intervals for means</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/04-proportions-and-sample-size.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Proportions and sample-size planning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/exercises/04-proportions-and-sample-size.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: proportions and sample-size planning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/05-sampling-and-estimation-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Integrated sampling and estimation review</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 5: Hypothesis testing and group comparisons</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/05-hypothesis-testing/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/05-hypothesis-testing/01-hypothesis-testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Existing lesson: hypothesis testing</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 6: Regression</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/06-regression/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 7: Forecasting and applied analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/07-forecasting-and-applications/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/downloads.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Student downloads</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data and course resources</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-we-will-learn" id="toc-what-we-will-learn" class="nav-link active" data-scroll-target="#what-we-will-learn">What we will learn</a></li>
+  <li><a href="#choose-tools-for-the-variable-pair" id="toc-choose-tools-for-the-variable-pair" class="nav-link" data-scroll-target="#choose-tools-for-the-variable-pair">Choose tools for the variable pair</a></li>
+  <li><a href="#business-case-quality-ratings-and-meal-price-bands" id="toc-business-case-quality-ratings-and-meal-price-bands" class="nav-link" data-scroll-target="#business-case-quality-ratings-and-meal-price-bands">Business case: quality ratings and meal-price bands</a></li>
+  <li><a href="#crosstabs-count-combinations" id="toc-crosstabs-count-combinations" class="nav-link" data-scroll-target="#crosstabs-count-combinations">Crosstabs: count combinations</a>
+  <ul class="collapse">
+  <li><a href="#joint-marginal-and-conditional-percentages" id="toc-joint-marginal-and-conditional-percentages" class="nav-link" data-scroll-target="#joint-marginal-and-conditional-percentages">Joint, marginal, and conditional percentages</a></li>
+  <li><a href="#row-percentages-price-distribution-within-quality" id="toc-row-percentages-price-distribution-within-quality" class="nav-link" data-scroll-target="#row-percentages-price-distribution-within-quality">Row percentages: price distribution within quality</a></li>
+  <li><a href="#column-percentages-quality-distribution-within-price" id="toc-column-percentages-quality-distribution-within-price" class="nav-link" data-scroll-target="#column-percentages-quality-distribution-within-price">Column percentages: quality distribution within price</a></li>
+  </ul></li>
+  <li><a href="#business-case-commercials-and-weekly-electronics-sales" id="toc-business-case-commercials-and-weekly-electronics-sales" class="nav-link" data-scroll-target="#business-case-commercials-and-weekly-electronics-sales">Business case: commercials and weekly electronics sales</a></li>
+  <li><a href="#scatterplots-inspect-the-paired-pattern" id="toc-scatterplots-inspect-the-paired-pattern" class="nav-link" data-scroll-target="#scatterplots-inspect-the-paired-pattern">Scatterplots: inspect the paired pattern</a></li>
+  <li><a href="#covariance-do-deviations-move-together" id="toc-covariance-do-deviations-move-together" class="nav-link" data-scroll-target="#covariance-do-deviations-move-together">Covariance: do deviations move together?</a></li>
+  <li><a href="#correlation-standardize-the-linear-association" id="toc-correlation-standardize-the-linear-association" class="nav-link" data-scroll-target="#correlation-standardize-the-linear-association">Correlation: standardize the linear association</a>
+  <ul class="collapse">
+  <li><a href="#changing-units-covariance-changes-correlation-stays" id="toc-changing-units-covariance-changes-correlation-stays" class="nav-link" data-scroll-target="#changing-units-covariance-changes-correlation-stays">Changing units: covariance changes, correlation stays</a></li>
+  </ul></li>
+  <li><a href="#why-a-correlation-coefficient-needs-its-plot" id="toc-why-a-correlation-coefficient-needs-its-plot" class="nav-link" data-scroll-target="#why-a-correlation-coefficient-needs-its-plot">Why a correlation coefficient needs its plot</a></li>
+  <li><a href="#summary-a-defensible-relationship-description" id="toc-summary-a-defensible-relationship-description" class="nav-link" data-scroll-target="#summary-a-defensible-relationship-description">Summary: a defensible relationship description</a></li>
+  <li><a href="#sources-and-data" id="toc-sources-and-data" class="nav-link" data-scroll-target="#sources-and-data">Sources and data</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/02-data-and-descriptive-statistics/index.html">Module 2: Data and descriptive statistics</a></li><li class="breadcrumb-item"><a href="../../modules/02-data-and-descriptive-statistics/04-relationships-between-variables.html">4. Relationships between variables</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Module 2: Relationships Between Variables</h1>
+<p class="subtitle lead">Lesson 4 | Compare proportions and describe association</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="what-we-will-learn" class="level2">
+<h2 class="anchored" data-anchor-id="what-we-will-learn">What we will learn</h2>
+<p>Lessons 1–3 describe variables individually and compare numerical distributions across groups. We now ask how <strong>two variables relate within the same observations</strong>.</p>
+<p>By the end, you should be able to:</p>
+<ul>
+<li>Construct a crosstab and distinguish joint, marginal, and conditional percentages.</li>
+<li>Choose a denominator that answers the stated question.</li>
+<li>Read a scatterplot for direction, form, strength, and unusual observations.</li>
+<li>Calculate sample covariance and Pearson correlation, with their units and limitations.</li>
+<li>Describe association without claiming causation.</li>
+</ul>
+<p><strong>Reading:</strong> main 8th-edition textbook, §2.3, pp.65–69 (crosstabs and percentages), §2.4, pp.75–80 (scatterplots and comparative charts), and §3.5, pp.144–152 (covariance and correlation). These are selected descriptive topics, rather than every procedure in those sections.</p>
+</section>
+<section id="choose-tools-for-the-variable-pair" class="level2">
+<h2 class="anchored" data-anchor-id="choose-tools-for-the-variable-pair">Choose tools for the variable pair</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable pair</th>
+<th>Useful display</th>
+<th>Numerical summary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Two categorical variables</td>
+<td>Crosstab, grouped bars, or percentage bars</td>
+<td>Counts and conditional percentages</td>
+</tr>
+<tr class="even">
+<td>Categorical and numerical</td>
+<td>Side-by-side boxplots or aligned distribution plots</td>
+<td>Group sizes, centers, and spreads</td>
+</tr>
+<tr class="odd">
+<td>Two numerical variables</td>
+<td>Scatterplot</td>
+<td>Covariance and correlation when appropriate</td>
+</tr>
+</tbody>
+</table>
+<p>A numerical variable can be grouped into classes for a crosstab. This simplifies comparisons but loses within-class detail. Keep the original values for numerical analysis. The Restaurant boxplots in <a href="../../modules/02-data-and-descriptive-statistics/03-numerical-measures.html">Lesson 3</a> and the price-band tables below answer related questions at different resolutions.</p>
+</section>
+<section id="business-case-quality-ratings-and-meal-price-bands" class="level2">
+<h2 class="anchored" data-anchor-id="business-case-quality-ratings-and-meal-price-bands">Business case: quality ratings and meal-price bands</h2>
+<p>An analyst studies <strong>300 Los Angeles restaurants</strong> from the book’s historical teaching dataset. Each restaurant has an ordered quality rating and a meal price in US dollars. The analyst asks: <strong>Within each quality category, how are restaurants distributed across price bands?</strong> A second question reverses the conditioning: <strong>Within a price band, how are quality ratings distributed?</strong> These questions use the same records but different denominators.</p>
+<div class="case-narration" lang="ar" dir="rtl">
+<p>يدرس محلّل بيانات <strong>ثلاثمئة مطعم في لوس أنجلوس</strong> من بيانات الكتاب التعليمية التاريخية. لكل مطعم تقييم جودة مرتب وسعر وجبة بالدولار الأمريكي. يسأل المحلّل: <strong>داخل كل فئة من فئات الجودة، كيف تتوزع المطاعم على فئات الأسعار؟</strong> ثم يعكس السؤال: <strong>داخل فئة سعرية محددة، كيف تتوزع تقييمات الجودة؟</strong> يستخدم السؤالان السجلات نفسها، لكن مقام حساب النسبة يختلف بينهما.</p>
+</div>
+<p><a href="../../data/module02/restaurant_ratings.csv">Download Restaurant CSV</a>. One row is one restaurant. The four bands are <strong>[10,20), [20,30), [30,40), [40,50)</strong> USD: include the lower boundary and exclude the upper one. A price of USD 20 belongs to the second band. For these whole-dollar observations, these correspond to the book’s USD 10–19, 20–29, 30–39, and 40–49 classes.</p>
+</section>
+<section id="crosstabs-count-combinations" class="level2">
+<h2 class="anchored" data-anchor-id="crosstabs-count-combinations">Crosstabs: count combinations</h2>
+<p>A <strong>crosstabulation</strong> counts observations classified by two variables. Each internal cell describes a combination. <strong>Marginal totals</strong> describe each variable separately.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># addmargins() adds row totals, column totals, and the grand total to the crosstab.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># kable() displays counts, not percentages; each internal cell counts one combination.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">addmargins</span>(counts), <span class="at">caption =</span> <span class="st">"Restaurants by quality and meal-price band (USD). Sum denotes totals."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Restaurants by quality and meal-price band (USD). Sum denotes totals.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">10–&lt;20</th>
+<th style="text-align: right;">20–&lt;30</th>
+<th style="text-align: right;">30–&lt;40</th>
+<th style="text-align: right;">40–&lt;50</th>
+<th style="text-align: right;">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Good</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">84</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Very Good</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">46</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">150</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Excellent</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">66</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sum</td>
+<td style="text-align: right;">78</td>
+<td style="text-align: right;">118</td>
+<td style="text-align: right;">76</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">300</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The cell <strong>64</strong> represents Very Good restaurants priced from USD 20 up to, but below, USD 30. The Very Good row total is <strong>150</strong>, the second price-band column total is <strong>118</strong>, and the grand total is <strong>300</strong>. A restaurant contributes to exactly one internal cell.</p>
+<section id="joint-marginal-and-conditional-percentages" class="level3">
+<h3 class="anchored" data-anchor-id="joint-marginal-and-conditional-percentages">Joint, marginal, and conditional percentages</h3>
+<p>The same count can answer different questions:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Question</th>
+<th>Denominator</th>
+<th>Calculation</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>What share of all restaurants are Very Good <strong>and</strong> in the second price band?</td>
+<td>All 300 restaurants</td>
+<td><span class="math inline">\(64/300\times100=21.33\%\)</span></td>
+<td>Joint percentage</td>
+</tr>
+<tr class="even">
+<td>What share of all restaurants are Very Good?</td>
+<td>All 300 restaurants</td>
+<td><span class="math inline">\(150/300\times100=50\%\)</span></td>
+<td>Marginal percentage</td>
+</tr>
+<tr class="odd">
+<td>Among Very Good restaurants, what share are in the second price band?</td>
+<td>The 150 Very Good restaurants</td>
+<td><span class="math inline">\(64/150\times100=42.67\%\)</span></td>
+<td>Conditional row percentage</td>
+</tr>
+<tr class="even">
+<td>Among restaurants in the second price band, what share are Very Good?</td>
+<td>The 118 restaurants in that band</td>
+<td><span class="math inline">\(64/118\times100=54.24\%\)</span></td>
+<td>Conditional column percentage</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Say “among whom?” before calculating a percentage.</strong> A percentage without its reference group can answer the wrong question even when the arithmetic is correct.</p>
+</section>
+<section id="row-percentages-price-distribution-within-quality" class="level3">
+<h3 class="anchored" data-anchor-id="row-percentages-price-distribution-within-quality">Row percentages: price distribution within quality</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># rowSums(): sums each row separately.</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># row_pct was calculated with prop.table(counts, margin = 1): divide by each row total.</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># cbind() adds the percentage totals; digits = 1 rounds only the displayed values.</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">cbind</span>(row_pct, <span class="at">Total =</span> <span class="fu">rowSums</span>(row_pct)), <span class="at">digits =</span> <span class="dv">1</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">"Within each quality category: percentage in each price band. Each row totals 100% before rounding."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Within each quality category: percentage in each price band. Each row totals 100% before rounding.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">10–&lt;20</th>
+<th style="text-align: right;">20–&lt;30</th>
+<th style="text-align: right;">30–&lt;40</th>
+<th style="text-align: right;">40–&lt;50</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Good</td>
+<td style="text-align: right;">50.0</td>
+<td style="text-align: right;">47.6</td>
+<td style="text-align: right;">2.4</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Very Good</td>
+<td style="text-align: right;">22.7</td>
+<td style="text-align: right;">42.7</td>
+<td style="text-align: right;">30.7</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Excellent</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">21.2</td>
+<td style="text-align: right;">42.4</td>
+<td style="text-align: right;">33.3</td>
+<td style="text-align: right;">100</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>For Good restaurants, <strong>50.0%</strong> fall in the lowest band. For Excellent restaurants, <strong>75.8%</strong> cost at least USD 30: <span class="math inline">\((28+22)/66\times100\)</span>. The comparable share for Good is <strong>2.4%</strong>: <span class="math inline">\((2+0)/84\times100\)</span>. These distributions differ substantially in this sample.</p>
+<p>The groups contain 84, 150, and 66 restaurants. Conditional percentages make their distributions comparable despite unequal group sizes. Counts should still accompany the comparison.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ifelse(): chooses a value element by element according to a logical condition.</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># sprintf(): formats text using placeholders such as %.2f for two decimal places.</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># paste0(): joins text with no separator; collapse can combine a vector into one string.</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># rowSums(): sums each row separately.</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(): starts a plot from data; additional layers are joined with +.</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># aes(): maps variables to visual properties such as x, y, fill, color, or group.</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_col(): draws bars at supplied heights; it does not count records.</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_text(): draws labels from mapped data; position and hjust/vjust control placement.</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># scale_fill_manual(): assigns explicit fill colors to categories; named values preserve category-color mappings.</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># scale_x_discrete(): controls category order, labels, and spacing on the x-axis.</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># labs(): sets axis titles, legend titles, plot titles, and captions.</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># theme(): customizes non-data plot elements such as legends, grids, and axis text.</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># as.data.frame() reshapes the percentage table into one row per quality-price combination.</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># position_stack() places segments and labels within each 100% quality-group bar.</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>bar_data <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(row_pct, <span class="at">responseName =</span> <span class="st">"Percent"</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>bar_data<span class="sc">$</span>Quality <span class="ot">&lt;-</span> <span class="fu">factor</span>(bar_data<span class="sc">$</span>Quality, <span class="at">levels =</span> quality_levels)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>bar_data<span class="sc">$</span>Price <span class="ot">&lt;-</span> <span class="fu">factor</span>(bar_data<span class="sc">$</span>Price, <span class="at">levels =</span> price_labels)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>bar_data<span class="sc">$</span>Label <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(bar_data<span class="sc">$</span>Percent <span class="sc">&gt;=</span> <span class="dv">8</span>, <span class="fu">sprintf</span>(<span class="st">"%.1f%%"</span>,bar_data<span class="sc">$</span>Percent), <span class="st">""</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>quality_axis <span class="ot">&lt;-</span> <span class="fu">paste0</span>(quality_levels, <span class="st">"</span><span class="sc">\n</span><span class="st">(n = "</span>, <span class="fu">rowSums</span>(counts), <span class="st">")"</span>)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bar_data, <span class="fu">aes</span>(Quality, Percent, <span class="at">fill =</span> Price)) <span class="sc">+</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">reverse =</span> <span class="cn">TRUE</span>), <span class="at">width =</span> .<span class="dv">62</span>,</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> <span class="st">"white"</span>, <span class="at">linewidth =</span> .<span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> Label), <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> .<span class="dv">5</span>, <span class="at">reverse =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>            <span class="at">colour =</span> <span class="st">"#22313C"</span>, <span class="at">size =</span> <span class="fl">3.8</span>) <span class="sc">+</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#DCE8EF"</span>, <span class="st">"#ACC9DA"</span>, <span class="st">"#E8CFA5"</span>, <span class="st">"#C9D8BD"</span>), <span class="at">drop =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> quality_axis) <span class="sc">+</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">25</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>)) <span class="sc">+</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Price distributions differ across quality categories"</span>,</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Quality rating"</span>, <span class="at">y =</span> <span class="st">"Within-group percentage"</span>, <span class="at">fill =</span> <span class="st">"Meal price (USD)"</span>) <span class="sc">+</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-restaurant-conditional-bars" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Percentage bars show low price bands dominate Good restaurants, while bands of at least 30 USD dominate Excellent restaurants. Group sizes are 84, 150, and 66.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-restaurant-conditional-bars-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-relationships-between-variables_files/figure-html/fig-restaurant-conditional-bars-1.png" class="img-fluid figure-img" alt="Percentage bars show low price bands dominate Good restaurants, while bands of at least 30 USD dominate Excellent restaurants. Group sizes are 84, 150, and 66." width="1200">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-restaurant-conditional-bars-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Original R chart from the checked Restaurant CSV. Every bar represents 100% of its quality group. Segment labels are percentages; n gives group size.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Small segments are readable in the table even when too narrow for a label. Middle segments in stacked bars have different baselines, so use the table for precise comparisons.</p>
+</section>
+<section id="column-percentages-quality-distribution-within-price" class="level3">
+<h3 class="anchored" data-anchor-id="column-percentages-quality-distribution-within-price">Column percentages: quality distribution within price</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># colSums(): sums each column separately.</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># column_pct uses prop.table(counts, margin = 2): divide by each column total.</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># rbind() adds a totals row so each price-band distribution can be checked against 100%.</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">rbind</span>(column_pct, <span class="at">Total =</span> <span class="fu">colSums</span>(column_pct)), <span class="at">digits =</span> <span class="dv">1</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">"Within each price band: percentage in each quality category. Each column totals 100% before rounding."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Within each price band: percentage in each quality category. Each column totals 100% before rounding.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">10–&lt;20</th>
+<th style="text-align: right;">20–&lt;30</th>
+<th style="text-align: right;">30–&lt;40</th>
+<th style="text-align: right;">40–&lt;50</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Good</td>
+<td style="text-align: right;">53.8</td>
+<td style="text-align: right;">33.9</td>
+<td style="text-align: right;">2.6</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Very Good</td>
+<td style="text-align: right;">43.6</td>
+<td style="text-align: right;">54.2</td>
+<td style="text-align: right;">60.5</td>
+<td style="text-align: right;">21.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Excellent</td>
+<td style="text-align: right;">2.6</td>
+<td style="text-align: right;">11.9</td>
+<td style="text-align: right;">36.8</td>
+<td style="text-align: right;">78.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Total</td>
+<td style="text-align: right;">100.0</td>
+<td style="text-align: right;">100.0</td>
+<td style="text-align: right;">100.0</td>
+<td style="text-align: right;">100.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Among the <strong>28 restaurants in the highest band</strong>, <strong>22 are Excellent</strong>, or <strong>78.6%</strong>. Among the <strong>66 Excellent restaurants</strong>, <strong>22 are in the highest band</strong>, or <strong>33.3%</strong>. Reversing the conditioning changes the denominator and the answer.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># abs(): returns absolute values; a small tolerance in an equality check permits floating-point rounding.</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Index counts and percentages by quality row and price-band column.</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># stopifnot() stops execution if the count or either conditioning denominator is incorrect.</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(counts[<span class="st">"Very Good"</span>,<span class="dv">2</span>] <span class="sc">==</span> <span class="dv">64</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>          <span class="fu">abs</span>(row_pct[<span class="st">"Very Good"</span>,<span class="dv">2</span>]<span class="sc">-</span><span class="dv">100</span><span class="sc">*</span><span class="dv">64</span><span class="sc">/</span><span class="dv">150</span>) <span class="sc">&lt;</span> <span class="fl">1e-10</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>          <span class="fu">abs</span>(column_pct[<span class="st">"Very Good"</span>,<span class="dv">2</span>]<span class="sc">-</span><span class="dv">100</span><span class="sc">*</span><span class="dv">64</span><span class="sc">/</span><span class="dv">118</span>) <span class="sc">&lt;</span> <span class="fl">1e-10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Calculate from counts, then round">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Calculate from counts, then round
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Our percentages come directly from the checked counts. Round only for display. Independently rounded cells may not total exactly 100%. The book’s Table 2.11 prints some cells differently (for example 33.4% for 22/66); our calculated value rounds to 33.3%. We retain the observations and reproducible arithmetic.</p>
+</div>
+</div>
+<p>Crosstabs show an association between quality and price bands here. They do not show that raising a price improves quality. Grouping boundaries can affect the display, and combining subgroups can hide or reverse patterns. The book develops this aggregation issue as Simpson’s paradox in §2.3. A full subgroup analysis would require relevant subgroup data, which this Restaurant file does not contain.</p>
+</section>
+</section>
+<section id="business-case-commercials-and-weekly-electronics-sales" class="level2">
+<h2 class="anchored" data-anchor-id="business-case-commercials-and-weekly-electronics-sales">Business case: commercials and weekly electronics sales</h2>
+<p>A San Francisco electronics store records <strong>10 weeks</strong> of television-commercial counts and sales. One row pairs the commercials and sales <strong>from the same week</strong>. Sales are recorded in <strong>hundreds of US dollars</strong>: a value of 50 means USD 5,000. The question is: <strong>Do weeks with more commercials tend to have higher sales?</strong> These historical observations can describe an association, but they do not isolate the effect of advertising.</p>
+<div class="case-narration" lang="ar" dir="rtl">
+<p>يسجّل متجر إلكترونيات في سان فرانسيسكو عدد الإعلانات التلفزيونية والمبيعات خلال <strong>عشرة أسابيع</strong>. يجمع كل صف عدد الإعلانات والمبيعات <strong>للأسبوع نفسه</strong>. سُجّلت المبيعات <strong>بمئات الدولارات الأمريكية</strong>؛ فالقيمة 50 تعني خمسة آلاف دولار. والسؤال هو: <strong>هل تميل الأسابيع التي تضم إعلانات أكثر إلى تسجيل مبيعات أعلى؟</strong> تصف هذه المشاهدات التاريخية ارتباطًا، لكنها لا تعزل أثر الإعلان في المبيعات.</p>
+</div>
+<p><a href="../../data/module02/electronics_sales.csv">Download Electronics CSV</a>. The original workbook is named Stereo.xls; all ten observations match the book’s Electronics table. <code>week</code> identifies the observation, while <code>commercials</code> and <code>sales_hundreds_usd</code> form our variable pair.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># kable() displays each week together with its commercials and sales observations.</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># col.names changes the visible headings, including the sales unit, without changing the data.</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(electronics, <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Week"</span>, <span class="st">"Commercials"</span>, <span class="st">"Sales (hundreds of USD)"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Week</th>
+<th style="text-align: right;">Commercials</th>
+<th style="text-align: right;">Sales (hundreds of USD)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">57</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">41</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">54</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">54</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">38</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">63</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">48</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">59</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">46</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="scatterplots-inspect-the-paired-pattern" class="level2">
+<h2 class="anchored" data-anchor-id="scatterplots-inspect-the-paired-pattern">Scatterplots: inspect the paired pattern</h2>
+<p>A <strong>scatterplot</strong> places one numerical variable on each axis and one point for each paired observation. Keep each week’s pair together. Sorting the two columns independently destroys the observed relationship.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(): starts a plot from data; additional layers are joined with +.</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># aes(): maps variables to visual properties such as x, y, fill, color, or group.</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># expansion(): sets extra axis space; mult is relative padding and add is padding in axis units.</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># labs(): sets axis titles, legend titles, plot titles, and captions.</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_point() draws each paired week; geom_text() labels points with week identifiers.</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># nudge_y moves labels above points, and scale_x_continuous() sets the count-axis tick marks.</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(electronics, <span class="fu">aes</span>(commercials, sales_hundreds_usd)) <span class="sc">+</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">3.2</span>, <span class="at">colour =</span> <span class="st">"#2878A5"</span>) <span class="sc">+</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> week), <span class="at">nudge_y =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="fl">3.5</span>, <span class="at">colour =</span> <span class="st">"#56616D"</span>) <span class="sc">+</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span> <span class="fu">c</span>(.<span class="dv">06</span>,.<span class="dv">12</span>))) <span class="sc">+</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"More commercials accompany higher weekly sales"</span>,</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Number of television commercials"</span>, <span class="at">y =</span> <span class="st">"Weekly sales (hundreds of USD)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-electronics-scatterplot" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ten weekly observations trend upward: weeks with one commercial have sales of 38 and 41 hundreds of USD, while weeks with five have 57 and 63.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-electronics-scatterplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-relationships-between-variables_files/figure-html/fig-electronics-scatterplot-1.png" class="img-fluid figure-img" alt="Ten weekly observations trend upward: weeks with one commercial have sales of 38 and 41 hundreds of USD, while weeks with five have 57 and 63." width="1200">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-electronics-scatterplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Original R scatterplot of the ten checked Electronics observations. Labels identify weeks. No fitted regression model is required for this descriptive display.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Read four features before calculating a coefficient:</p>
+<ul>
+<li><strong>Direction:</strong> as commercials increase, sales tend to increase. This is a positive association.</li>
+<li><strong>Form:</strong> the pattern is approximately straight rather than clearly curved.</li>
+<li><strong>Strength:</strong> points cluster fairly closely around an upward linear pattern, with variation at each commercial count.</li>
+<li><strong>Unusual observations:</strong> look for isolated points and values far from the overall pattern. The plot alone cannot establish whether a record is erroneous.</li>
+</ul>
+<p>The count is on the horizontal axis because it is the proposed explanatory variable for this question. That placement does not establish cause and effect. We leave connecting lines out because our immediate question concerns the paired relationship, rather than a chronological sales path.</p>
+</section>
+<section id="covariance-do-deviations-move-together" class="level2">
+<h2 class="anchored" data-anchor-id="covariance-do-deviations-move-together">Covariance: do deviations move together?</h2>
+<p>The <strong>sample covariance</strong> is</p>
+<p><span class="math display">\[s_{xy}=\frac{\sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})}{n-1}.\]</span></p>
+<p>When both observations are above their means, or both below, their product of deviations is positive. Opposite signs give a negative product. Summing these products describes whether deviations tend to move together.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># mean(): computes an average; logical TRUE/FALSE values contribute 1/0, giving a proportion.</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtract each sample mean and multiply the paired deviations week by week.</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># sum() combines the cross-products; cov() divides their sum by n-1 for sample covariance.</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> electronics<span class="sc">$</span>commercials</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> electronics<span class="sc">$</span>sales_hundreds_usd</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>products <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Week =</span> electronics<span class="sc">$</span>week, <span class="at">x =</span> x, <span class="at">y =</span> y,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>                       <span class="at">x_deviation =</span> x<span class="sc">-</span><span class="fu">mean</span>(x), <span class="at">y_deviation =</span> y<span class="sc">-</span><span class="fu">mean</span>(y),</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>                       <span class="at">Product =</span> (x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">*</span>(y<span class="sc">-</span><span class="fu">mean</span>(y)))</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(products, <span class="at">digits =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Week</th>
+<th style="text-align: right;">x</th>
+<th style="text-align: right;">y</th>
+<th style="text-align: right;">x_deviation</th>
+<th style="text-align: right;">y_deviation</th>
+<th style="text-align: right;">Product</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">-2</td>
+<td style="text-align: right;">-10</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">-2</td>
+<td style="text-align: right;">-13</td>
+<td style="text-align: right;">26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-3</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">46</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">-5</td>
+<td style="text-align: right;">5</td>
+</tr>
+</tbody>
+</table>
+</div>
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">mean</span>(x) <span class="sc">==</span> <span class="dv">3</span>, <span class="fu">mean</span>(y) <span class="sc">==</span> <span class="dv">51</span>, <span class="fu">sum</span>(products<span class="sc">$</span>Product) <span class="sc">==</span> <span class="dv">99</span>,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>          <span class="fu">cov</span>(x,y) <span class="sc">==</span> <span class="dv">11</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>Here <span class="math inline">\(\bar{x}=3\)</span>, <span class="math inline">\(\bar{y}=51\)</span>, and the sum of products is 99. Thus <strong><span class="math inline">\(s_{xy}=99/9=11\)</span></strong>, in <strong>commercials × hundreds of USD</strong>. Positive covariance agrees with the upward scatterplot.</p>
+<p>Covariance depends on measurement units. Its sign helps describe direction, but its magnitude alone cannot establish that an association is strong. For a complete population, the population covariance uses population means and denominator <span class="math inline">\(N\)</span>. R’s <code>cov()</code> uses the sample denominator <span class="math inline">\(n-1\)</span>.</p>
+</section>
+<section id="correlation-standardize-the-linear-association" class="level2">
+<h2 class="anchored" data-anchor-id="correlation-standardize-the-linear-association">Correlation: standardize the linear association</h2>
+<p>The <strong>Pearson sample correlation</strong> divides covariance by the sample standard deviations:</p>
+<p><span class="math display">\[r=\frac{s_{xy}}{s_xs_y}.\]</span></p>
+<p>It requires paired numerical observations with nonzero variation in both variables. It is <strong>unitless</strong>, ranges from <strong>−1 to +1</strong>, and describes <strong>linear</strong> association:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(r=+1\)</span></td>
+<td>All points lie on a straight line with positive slope</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(r=-1\)</span></td>
+<td>All points lie on a straight line with negative slope</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(r\)</span> near zero</td>
+<td>Little linear association; a nonlinear relationship may remain</td>
+</tr>
+<tr class="even">
+<td>Larger <span class="math inline">\(|r|\)</span></td>
+<td>Stronger linear association, interpreted with the plot and context</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># abs(): returns absolute values; a small tolerance in an equality check permits floating-point rounding.</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># cor() calculates Pearson linear correlation from the paired observations.</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Dividing cov(x,y) by sd(x)*sd(y) checks the same unitless calculation explicitly.</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">cor</span>(x,y)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">data.frame</span>(<span class="at">Quantity =</span> <span class="fu">c</span>(<span class="st">"Sample SD: commercials"</span>, <span class="st">"Sample SD: sales (hundreds of USD)"</span>,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Sample covariance"</span>, <span class="st">"Pearson correlation"</span>),</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>                 <span class="at">Value =</span> <span class="fu">c</span>(<span class="fu">sd</span>(x),<span class="fu">sd</span>(y),<span class="fu">cov</span>(x,y),r)), <span class="at">digits =</span> <span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Quantity</th>
+<th style="text-align: right;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Sample SD: commercials</td>
+<td style="text-align: right;">1.4907</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sample SD: sales (hundreds of USD)</td>
+<td style="text-align: right;">7.9303</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sample covariance</td>
+<td style="text-align: right;">11.0000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pearson correlation</td>
+<td style="text-align: right;">0.9305</td>
+</tr>
+</tbody>
+</table>
+</div>
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">abs</span>(r<span class="sc">-</span><span class="fu">cov</span>(x,y)<span class="sc">/</span>(<span class="fu">sd</span>(x)<span class="sc">*</span><span class="fu">sd</span>(y))) <span class="sc">&lt;</span> <span class="fl">1e-10</span>,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>          <span class="fu">abs</span>(r<span class="fl">-0.9304906</span>) <span class="sc">&lt;</span> <span class="fl">1e-7</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p><strong>Interpretation:</strong> across these ten weeks, commercials and sales have a strong positive linear association, <strong><span class="math inline">\(r\approx0.9305\)</span></strong>, consistent with the book’s rounded value 0.93. This does not mean “sales increase by 93%,” and correlation does not give a change in sales per additional commercial. Estimating such a change requires a model, developed later in regression.</p>
+<section id="changing-units-covariance-changes-correlation-stays" class="level3">
+<h3 class="anchored" data-anchor-id="changing-units-covariance-changes-correlation-stays">Changing units: covariance changes, correlation stays</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># abs(): returns absolute values; a small tolerance in an equality check permits floating-point rounding.</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiply recorded sales by 100 to convert hundreds of USD into USD.</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># cov() scales by the same factor; cor() is unchanged under this positive unit conversion.</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>y_usd <span class="ot">&lt;-</span> <span class="dv">100</span><span class="sc">*</span>y</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>units <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Sales_unit =</span> <span class="fu">c</span>(<span class="st">"Hundreds of USD"</span>, <span class="st">"USD"</span>),</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Sample_covariance =</span> <span class="fu">c</span>(<span class="fu">cov</span>(x,y),<span class="fu">cov</span>(x,y_usd)),</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Correlation =</span> <span class="fu">c</span>(<span class="fu">cor</span>(x,y),<span class="fu">cor</span>(x,y_usd)))</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(units, <span class="at">digits =</span> <span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Sales_unit</th>
+<th style="text-align: right;">Sample_covariance</th>
+<th style="text-align: right;">Correlation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Hundreds of USD</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0.9305</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">USD</td>
+<td style="text-align: right;">1100</td>
+<td style="text-align: right;">0.9305</td>
+</tr>
+</tbody>
+</table>
+</div>
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">abs</span>(<span class="fu">cov</span>(x,y_usd)<span class="sc">-</span><span class="dv">100</span><span class="sc">*</span><span class="fu">cov</span>(x,y)) <span class="sc">&lt;</span> <span class="fl">1e-10</span>,</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>          <span class="fu">abs</span>(<span class="fu">cor</span>(x,y_usd)<span class="sc">-</span><span class="fu">cor</span>(x,y)) <span class="sc">&lt;</span> <span class="fl">1e-10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>Converting sales to USD changes covariance from <strong>11 to 1100</strong>, but the correlation stays <strong>0.9305</strong>. The underlying relationship has not changed. Positive changes of measurement units and shifts of origin leave Pearson correlation unchanged. Correlation also treats <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> symmetrically: <code>cor(x,y)</code> equals <code>cor(y,x)</code>.</p>
+</section>
+</section>
+<section id="why-a-correlation-coefficient-needs-its-plot" class="level2">
+<h2 class="anchored" data-anchor-id="why-a-correlation-coefficient-needs-its-plot">Why a correlation coefficient needs its plot</h2>
+<p>The following are <strong>artificial teaching patterns</strong>, not Electronics data. The curved pattern uses <span class="math inline">\(y=x^2\)</span> for <span class="math inline">\(x=-4,-3,\ldots,4\)</span>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># abs(): returns absolute values; a small tolerance in an equality check permits floating-point rounding.</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(): starts a plot from data; additional layers are joined with +.</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># aes(): maps variables to visual properties such as x, y, fill, color, or group.</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_point(): draws a point for each row at its mapped x and y values.</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># labs(): sets axis titles, legend titles, plot titles, and captions.</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co"># rbind() combines three explicitly artificial paired patterns: y=x, y=-x, and y=x^2.</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># facet_wrap() separates the plots; cor() verifies that a curve can have zero linear correlation.</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">4</span><span class="sc">:</span><span class="dv">4</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>patterns <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">data.frame</span>(<span class="at">Pattern =</span> <span class="st">"Positive line: r = 1"</span>, <span class="at">x =</span> u, <span class="at">y =</span> u),</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">data.frame</span>(<span class="at">Pattern =</span> <span class="st">"Negative line: r = -1"</span>, <span class="at">x =</span> u, <span class="at">y =</span> <span class="sc">-</span>u),</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">data.frame</span>(<span class="at">Pattern =</span> <span class="st">"Curve: r = 0"</span>, <span class="at">x =</span> u, <span class="at">y =</span> u<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>patterns<span class="sc">$</span>Pattern <span class="ot">&lt;-</span> <span class="fu">factor</span>(patterns<span class="sc">$</span>Pattern,</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Positive line: r = 1"</span>, <span class="st">"Negative line: r = -1"</span>, <span class="st">"Curve: r = 0"</span>))</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">cor</span>(u,u) <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">cor</span>(u,<span class="sc">-</span>u) <span class="sc">==</span> <span class="sc">-</span><span class="dv">1</span>, <span class="fu">abs</span>(<span class="fu">cor</span>(u,u<span class="sc">^</span><span class="dv">2</span>)) <span class="sc">&lt;</span> <span class="fl">1e-10</span>)</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(patterns, <span class="fu">aes</span>(x,y)) <span class="sc">+</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.5</span>, <span class="at">colour =</span> <span class="st">"#2878A5"</span>) <span class="sc">+</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Pattern, <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Zero correlation can conceal a clear relationship"</span>,</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"x (arbitrary units)"</span>, <span class="at">y =</span> <span class="st">"y (arbitrary units)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-correlation-patterns" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three panels show a positive straight line with r=1, a negative straight line with r=-1, and a U-shaped pattern with r=0.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-correlation-patterns-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-relationships-between-variables_files/figure-html/fig-correlation-patterns-1.png" class="img-fluid figure-img" alt="Three panels show a positive straight line with r=1, a negative straight line with r=-1, and a U-shaped pattern with r=0." width="1200">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-correlation-patterns-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Original artificial examples. Pearson correlation captures straight-line direction but can be zero despite a clear curved relationship. Panel axes use arbitrary units.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Keep these limitations in view:</p>
+<ul>
+<li><strong>Nonlinearity:</strong> <span class="math inline">\(r=0\)</span> does not establish that variables are unrelated or independent.</li>
+<li><strong>Influential observations:</strong> an isolated observation can substantially change correlation. Investigate it and compare results transparently; preserve valid records.</li>
+<li><strong>Restricted range and mixed groups:</strong> a narrow observed range or a mixture of subgroups can change the apparent association. Inspect context and subgroup information when available.</li>
+<li><strong>Causation:</strong> seasonal demand, promotions, or other unmeasured factors might affect both advertising and sales. These are possible explanations to investigate, not recorded facts about this store.</li>
+<li><strong>Scope:</strong> ten observed weeks do not establish a stable relationship for all future weeks. Repeated weeks may also be dependent; calculation alone does not justify inferential claims.</li>
+</ul>
+<p>Computing Pearson correlation requires no normality assumption by itself. Hypothesis tests and confidence intervals for association require additional assumptions and belong to later modules.</p>
+</section>
+<section id="summary-a-defensible-relationship-description" class="level2">
+<h2 class="anchored" data-anchor-id="summary-a-defensible-relationship-description">Summary: a defensible relationship description</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>What to report</th>
+<th>Essential check</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Compare categorical distributions</td>
+<td>Counts, group sizes, and conditional percentages</td>
+<td>State the conditioning group and denominator</td>
+</tr>
+<tr class="even">
+<td>Compare numerical distributions by group</td>
+<td>Group centers, spreads, and aligned plots</td>
+<td>Use meaningful units and the same conventions</td>
+</tr>
+<tr class="odd">
+<td>Describe two numerical variables</td>
+<td>Scatterplot and, when suitable, covariance and correlation</td>
+<td>Keep pairs intact; check shape and influential observations</td>
+</tr>
+<tr class="even">
+<td>Explain the result</td>
+<td>An association in the observed context</td>
+<td>Separate descriptive evidence from causal claims</td>
+</tr>
+</tbody>
+</table>
+<p>For Restaurant, conditional price distributions differ across ratings. For Electronics, weekly commercials and sales show a strong positive linear association. Neither result establishes a causal effect.</p>
+<p><a href="../../modules/02-data-and-descriptive-statistics/exercises/04-relationships-between-variables.html">Complete Lesson 4 practice</a>, then <a href="../../modules/02-data-and-descriptive-statistics/05-descriptive-statistics-review.html">complete the integrated module review</a>.</p>
+</section>
+<section id="sources-and-data" class="level2">
+<h2 class="anchored" data-anchor-id="sources-and-data">Sources and data</h2>
+<ul>
+<li>Anderson et al.&nbsp;(2020), <em>Essentials of Modern Business Statistics with Microsoft Excel</em>, 8th ed.: §2.3, pp.65–69, Tables 2.9–2.11; §2.4, pp.75–80, Table 2.14; §3.5, pp.144–152, Table 3.6 and the covariance/correlation example.</li>
+<li>Restaurant CSV: first ten displayed records and all twelve cells of Table 2.10 match; remaining individual records are not printed for comparison.</li>
+<li>Electronics CSV: all ten paired observations match Table 2.14 and the repeated example in Table 3.6. R calculations reproduce covariance 11 and correlation rounded to 0.93.</li>
+<li>All charts and numerical tables here are original R outputs from these CSVs, except the explicitly artificial correlation-pattern illustration. <a href="../../data/module02/README.md">Data guide</a>.</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/msfasha\.github\.io\/307312-Applied-Statistics\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../modules/02-data-and-descriptive-statistics/exercises/03-numerical-measures.html" class="pagination-link" aria-label="Practice: numerical measures">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Practice: numerical measures</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../modules/02-data-and-descriptive-statistics/exercises/04-relationships-between-variables.html" class="pagination-link" aria-label="Practice: relationships between variables">
+        <span class="nav-page-text">Practice: relationships between variables</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

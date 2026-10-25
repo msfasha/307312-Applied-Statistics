@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Module 1: Basic Concepts — Practice – 307312 Applied Statistics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../modules/01-introduction-to-r/exercises/03-dplyr.html" rel="next">
+<link href="../../../modules/01-introduction-to-r/04-ggplot2.html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-94ee87f2ffb576e218069c74cdfce9d9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../../assets/petra-brand.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../modules/01-introduction-to-r/index.html">Module 1: Introduction to R</a></li><li class="breadcrumb-item"><a href="../../../modules/01-introduction-to-r/exercises/02-basic-concepts.html">Practice: basic concepts</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../../">307312 Applied Statistics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course home — start here</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 1: Introduction to R</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/01-introduction-to-r/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/01-introduction-to-r/01-r-and-rstudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. R and RStudio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/01-introduction-to-r/02-basic-concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Basic concepts in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/01-introduction-to-r/03-dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Data manipulation with dplyr</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/01-introduction-to-r/04-ggplot2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Visualization with ggplot2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/01-introduction-to-r/exercises/02-basic-concepts.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Practice: basic concepts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/01-introduction-to-r/exercises/03-dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: dplyr</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/01-introduction-to-r/exercises/04-ggplot2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: ggplot2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 2: Data and descriptive statistics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/02-data-and-descriptive-statistics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/02-data-and-descriptive-statistics/01-data-types-and-toolbox.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Data types and descriptive toolbox</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/02-data-and-descriptive-statistics/exercises/01-data-types-and-toolbox.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: data types and toolbox</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/02-data-and-descriptive-statistics/02-frequency-tables-and-charts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Frequency tables and charts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/02-data-and-descriptive-statistics/exercises/02-frequency-tables-and-charts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: frequency tables and charts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/02-data-and-descriptive-statistics/03-numerical-measures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Numerical measures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/02-data-and-descriptive-statistics/exercises/03-numerical-measures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: numerical measures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/02-data-and-descriptive-statistics/04-relationships-between-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Relationships between variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/02-data-and-descriptive-statistics/exercises/04-relationships-between-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: relationships between variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/02-data-and-descriptive-statistics/05-descriptive-statistics-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Integrated descriptive statistics review</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 3: Probability and distributions</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/03-probability-and-distributions/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/03-probability-and-distributions/01-probability-rules.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Probability rules</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/03-probability-and-distributions/exercises/01-probability-rules.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: probability rules</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/03-probability-and-distributions/02-conditional-probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Conditional probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/03-probability-and-distributions/exercises/02-conditional-probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: conditional probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/03-probability-and-distributions/03-discrete-random-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Discrete random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/03-probability-and-distributions/exercises/03-discrete-random-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: discrete random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/03-probability-and-distributions/04-binomial-and-poisson.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Binomial and Poisson models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/03-probability-and-distributions/exercises/04-binomial-and-poisson.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: binomial and poisson models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/03-probability-and-distributions/05-continuous-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Continuous distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/03-probability-and-distributions/exercises/05-continuous-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: continuous distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/03-probability-and-distributions/06-probability-and-distributions-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Integrated probability and distributions review</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 4: Sampling and estimation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/04-sampling-and-estimation/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/04-sampling-and-estimation/01-sampling-and-variability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Sampling and variability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/04-sampling-and-estimation/exercises/01-sampling-and-variability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: sampling and variability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/04-sampling-and-estimation/02-sampling-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Sampling distributions and standard errors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/04-sampling-and-estimation/exercises/02-sampling-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: sampling distributions and standard errors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/04-sampling-and-estimation/03-confidence-intervals-for-means.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Confidence intervals for means</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/04-sampling-and-estimation/exercises/03-confidence-intervals-for-means.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: confidence intervals for means</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/04-sampling-and-estimation/04-proportions-and-sample-size.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Proportions and sample-size planning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/04-sampling-and-estimation/exercises/04-proportions-and-sample-size.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: proportions and sample-size planning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/04-sampling-and-estimation/05-sampling-and-estimation-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Integrated sampling and estimation review</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 5: Hypothesis testing and group comparisons</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/05-hypothesis-testing/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/05-hypothesis-testing/01-hypothesis-testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Existing lesson: hypothesis testing</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 6: Regression</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/06-regression/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 7: Forecasting and applied analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../modules/07-forecasting-and-applications/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../resources/downloads.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Student downloads</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../resources/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data and course resources</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#exercise-1-greeting-script-in-r" id="toc-exercise-1-greeting-script-in-r" class="nav-link active" data-scroll-target="#exercise-1-greeting-script-in-r">Exercise 1: Greeting Script in R</a></li>
+  <li><a href="#exercise-2-storing-personal-favorites" id="toc-exercise-2-storing-personal-favorites" class="nav-link" data-scroll-target="#exercise-2-storing-personal-favorites">Exercise 2: Storing Personal Favorites</a></li>
+  <li><a href="#exercise-3-types-and-collections" id="toc-exercise-3-types-and-collections" class="nav-link" data-scroll-target="#exercise-3-types-and-collections">Exercise 3: Types and Collections</a></li>
+  <li><a href="#exercise-4-checking-number-sign" id="toc-exercise-4-checking-number-sign" class="nav-link" data-scroll-target="#exercise-4-checking-number-sign">Exercise 4: Checking Number Sign</a></li>
+  <li><a href="#exercise-5-iterative-loops" id="toc-exercise-5-iterative-loops" class="nav-link" data-scroll-target="#exercise-5-iterative-loops">Exercise 5: Iterative Loops</a></li>
+  <li><a href="#exercise-6-area-calculation-function" id="toc-exercise-6-area-calculation-function" class="nav-link" data-scroll-target="#exercise-6-area-calculation-function">Exercise 6: Area Calculation Function</a></li>
+  <li><a href="#exercise-7-vector-mathematics" id="toc-exercise-7-vector-mathematics" class="nav-link" data-scroll-target="#exercise-7-vector-mathematics">Exercise 7: Vector Mathematics</a></li>
+  <li><a href="#exercise-8-working-with-factors" id="toc-exercise-8-working-with-factors" class="nav-link" data-scroll-target="#exercise-8-working-with-factors">Exercise 8: Working with Factors</a></li>
+  <li><a href="#exercise-9-data-frame-adjustments" id="toc-exercise-9-data-frame-adjustments" class="nav-link" data-scroll-target="#exercise-9-data-frame-adjustments">Exercise 9: Data Frame Adjustments</a></li>
+  <li><a href="#exercise-10-interactive-user-query-optional" id="toc-exercise-10-interactive-user-query-optional" class="nav-link" data-scroll-target="#exercise-10-interactive-user-query-optional">Exercise 10: Interactive User Query (Optional)</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<div style="text-align: center;">
+  <img src="../../../assets/branding/department-logo.png" width="169">
+  <img src="../../../assets/branding/ioa-logo.png" width="122">
+  <img src="../../../assets/branding/petra-logo.png" width="52">
+</div>
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../modules/01-introduction-to-r/index.html">Module 1: Introduction to R</a></li><li class="breadcrumb-item"><a href="../../../modules/01-introduction-to-r/exercises/02-basic-concepts.html">Practice: basic concepts</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Module 1: Basic Concepts — Practice</h1>
+<p class="subtitle lead">Lesson 2 | Apply the R fundamentals</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="exercise-1-greeting-script-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-greeting-script-in-r">Exercise 1: Greeting Script in R</h3>
+<p><strong>Question A:</strong> Construct an R script that outputs the greeting “Hello, World!” Then, alter the script to replace “World” with your own name.</p>
+<p><strong>Solution A:</strong></p>
+<p><strong>Question B:</strong> Utilize the <code>cat()</code> function to display “Hello, World!” in the console. Observe and report any variations in the output compared to the <code>print()</code> function.</p>
+<p><strong>Solution B:</strong></p>
+</section>
+<section id="exercise-2-storing-personal-favorites" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-storing-personal-favorites">Exercise 2: Storing Personal Favorites</h3>
+<p>Store your preferred number, color, and a boolean value that signifies your liking for pizza. Display these stored values.</p>
+<p><strong>Solution:</strong></p>
+</section>
+<section id="exercise-3-types-and-collections" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3-types-and-collections">Exercise 3: Types and Collections</h3>
+<p><strong>Question A:</strong> Generate a vector with the numbers from 1 to 10. Determine and document the vector’s type as well as the types of the elements within it.</p>
+<p><strong>Solution A:</strong></p>
+<p><strong>Question B:</strong> Form a list holding a numeric value, a character string, and a boolean value. Ascertain the list’s type and the types of its individual elements.</p>
+<p><strong>Solution B:</strong></p>
+</section>
+<section id="exercise-4-checking-number-sign" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-4-checking-number-sign">Exercise 4: Checking Number Sign</h3>
+<p>Compose a script that discerns whether a given number (hard-coded in the script) is positive, negative, or zero, and relays an appropriate message.</p>
+<p><strong>Solution:</strong></p>
+</section>
+<section id="exercise-5-iterative-loops" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-5-iterative-loops">Exercise 5: Iterative Loops</h3>
+<p><strong>Question A:</strong> Write a <code>for</code> loop that computes and exhibits the squares of numbers from 1 to 10.</p>
+<p><strong>Solution A:</strong></p>
+<p><strong>Question B:</strong> Implement a <code>while</code> loop to effectuate a countdown from 10 to 1, displaying each countdown step.</p>
+<p><strong>Solution B:</strong></p>
+</section>
+<section id="exercise-6-area-calculation-function" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-6-area-calculation-function">Exercise 6: Area Calculation Function</h3>
+<p>Craft a function named <code>calculate_area</code> that accepts a circle’s radius and returns its area. Check the function’s accuracy with a variety of radii.</p>
+<p><strong>Solution:</strong></p>
+</section>
+<section id="exercise-7-vector-mathematics" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-7-vector-mathematics">Exercise 7: Vector Mathematics</h3>
+<p><strong>Question A:</strong> Form two vectors, <code>a</code> and <code>b</code>, each with 5 random numbers. Execute and print the results of element-wise addition, subtraction, multiplication, and division.</p>
+<p><strong>Solution A:</strong></p>
+<p><strong>Question B:</strong> Use comparison operators to compare the elements of <code>a</code> and <code>b</code> and communicate the outcomes.</p>
+<p><strong>Solution B:</strong></p>
+</section>
+<section id="exercise-8-working-with-factors" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-8-working-with-factors">Exercise 8: Working with Factors</h3>
+<p>Institute a factor variable that delineates three kinds of fruit. Illustrate the factor variable, its levels, and transmute it into numerical values.</p>
+<p><strong>Solution:</strong></p>
+</section>
+<section id="exercise-9-data-frame-adjustments" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-9-data-frame-adjustments">Exercise 9: Data Frame Adjustments</h3>
+<p>Forge a modest data frame that enlists student IDs, names, and scores. Accomplish these tasks:</p>
+<ul>
+<li>Select and unveil only the students’ names and scores.</li>
+<li>Incorporate a column indicating if the student passed (score &gt;= 50).</li>
+</ul>
+<p><strong>Solution:</strong></p>
+</section>
+<section id="exercise-10-interactive-user-query-optional" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-10-interactive-user-query-optional">Exercise 10: Interactive User Query (Optional)</h3>
+<p>Write code that asks the user to enter his name and age, then returns a message along with a mention of whether they are above the age of 18.</p>
+<p><strong>Solution:</strong></p>
+<section id="home-work" class="level4">
+<h4 class="anchored" data-anchor-id="home-work">Home Work</h4>
+<p><strong>Scenario:</strong> You are a Data Scientist working for a consulting firm. One of your colleagues from the Auditing department has asked you to help them assess the financial statement of organization X.</p>
+<p>You have been supplied with two vectors of data: monthly revenue and monthly expenses for the financial year in question. Your task is to calculate the following financial metrics:</p>
+<ol type="1">
+<li><p><strong>Profit for each month</strong>: Calculate the profit for each month by subtracting expenses from revenue.</p></li>
+<li><p><strong>Profit after tax for each month</strong>: The tax rate is 30%. Calculate the profit after tax for each month.</p></li>
+<li><p><strong>Profit margin for each month</strong>: The profit margin is equal to the profit after tax divided by revenue, expressed as a percentage.</p></li>
+<li><p><strong>Good months</strong>: Identify the months where the profit after tax was greater than the mean profit after tax for the year.</p></li>
+<li><p><strong>Bad months</strong>: Identify the months where the profit after tax was less than the mean profit after tax for the year.</p></li>
+<li><p><strong>The best month</strong>: Identify the month where the profit after tax was maximum for the year.</p></li>
+<li><p><strong>The worst month</strong>: Identify the month where the profit after tax was minimum for the year.</p></li>
+</ol>
+<p><strong>Additional Requirements:</strong></p>
+<ul>
+<li><p>All results need to be presented as vectors.</p></li>
+<li><p>Results for dollar values need to be calculated with $0.01 precision but presented in units of $1,000 (i.e., 1k) with no decimal points.</p></li>
+<li><p>Results for the profit margin ratio need to be presented in units of percentage with no decimal points.</p></li>
+<li><p>Note: It is okay for tax for any given month to be negative (in accounting terms, negative tax translates into a deferred tax asset).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># c() combines compatible values into a vector in the supplied order.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Assignments save the vector under a name; printing that name displays its current values.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Given data</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>revenue <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">14574.49</span>, <span class="fl">7606.46</span>, <span class="fl">8611.41</span>, <span class="fl">9175.41</span>, <span class="fl">8058.65</span>, <span class="fl">8105.44</span>, <span class="fl">11496.28</span>, <span class="fl">9766.09</span>, <span class="fl">10305.32</span>, <span class="fl">14379.96</span>, <span class="fl">10713.97</span>, <span class="fl">15433.50</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>expenses <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">12051.82</span>, <span class="fl">5695.07</span>, <span class="fl">12319.20</span>, <span class="fl">12089.72</span>, <span class="fl">8658.57</span>, <span class="fl">840.20</span>, <span class="fl">3285.73</span>, <span class="fl">5821.12</span>, <span class="fl">6976.93</span>, <span class="fl">16618.61</span>, <span class="fl">10054.37</span>, <span class="fl">3803.96</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/msfasha\.github\.io\/307312-Applied-Statistics\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../modules/01-introduction-to-r/04-ggplot2.html" class="pagination-link" aria-label="4. Visualization with ggplot2">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">4. Visualization with ggplot2</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../modules/01-introduction-to-r/exercises/03-dplyr.html" class="pagination-link" aria-label="Practice: dplyr">
+        <span class="nav-page-text">Practice: dplyr</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

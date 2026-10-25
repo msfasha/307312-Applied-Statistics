@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Module 3: Continuous Distributions – 307312 Applied Statistics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../modules/03-probability-and-distributions/exercises/05-continuous-distributions.html" rel="next">
+<link href="../../modules/03-probability-and-distributions/exercises/04-binomial-and-poisson.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-62e6625b6169047f1a4e994301008616.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/petra-brand.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/03-probability-and-distributions/index.html">Module 3: Probability and distributions</a></li><li class="breadcrumb-item"><a href="../../modules/03-probability-and-distributions/05-continuous-distributions.html">5. Continuous distributions</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">307312 Applied Statistics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course home — start here</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 1: Introduction to R</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/01-introduction-to-r/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/01-introduction-to-r/01-r-and-rstudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. R and RStudio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/01-introduction-to-r/02-basic-concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Basic concepts in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/01-introduction-to-r/03-dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Data manipulation with dplyr</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/01-introduction-to-r/04-ggplot2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Visualization with ggplot2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/01-introduction-to-r/exercises/02-basic-concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: basic concepts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/01-introduction-to-r/exercises/03-dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: dplyr</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/01-introduction-to-r/exercises/04-ggplot2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: ggplot2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 2: Data and descriptive statistics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/01-data-types-and-toolbox.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Data types and descriptive toolbox</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/exercises/01-data-types-and-toolbox.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: data types and toolbox</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/02-frequency-tables-and-charts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Frequency tables and charts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/exercises/02-frequency-tables-and-charts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: frequency tables and charts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/03-numerical-measures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Numerical measures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/exercises/03-numerical-measures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: numerical measures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/04-relationships-between-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Relationships between variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/exercises/04-relationships-between-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: relationships between variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-data-and-descriptive-statistics/05-descriptive-statistics-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Integrated descriptive statistics review</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 3: Probability and distributions</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/01-probability-rules.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Probability rules</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/exercises/01-probability-rules.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: probability rules</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/02-conditional-probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Conditional probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/exercises/02-conditional-probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: conditional probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/03-discrete-random-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Discrete random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/exercises/03-discrete-random-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: discrete random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/04-binomial-and-poisson.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Binomial and Poisson models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/exercises/04-binomial-and-poisson.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: binomial and poisson models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/05-continuous-distributions.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">5. Continuous distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/exercises/05-continuous-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: continuous distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-probability-and-distributions/06-probability-and-distributions-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Integrated probability and distributions review</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 4: Sampling and estimation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/01-sampling-and-variability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Sampling and variability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/exercises/01-sampling-and-variability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: sampling and variability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/02-sampling-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Sampling distributions and standard errors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/exercises/02-sampling-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: sampling distributions and standard errors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/03-confidence-intervals-for-means.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Confidence intervals for means</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/exercises/03-confidence-intervals-for-means.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: confidence intervals for means</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/04-proportions-and-sample-size.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Proportions and sample-size planning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/exercises/04-proportions-and-sample-size.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice: proportions and sample-size planning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-sampling-and-estimation/05-sampling-and-estimation-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Integrated sampling and estimation review</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 5: Hypothesis testing and group comparisons</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/05-hypothesis-testing/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/05-hypothesis-testing/01-hypothesis-testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Existing lesson: hypothesis testing</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 6: Regression</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/06-regression/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 7: Forecasting and applied analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/07-forecasting-and-applications/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/downloads.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Student downloads</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data and course resources</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-we-will-learn" id="toc-what-we-will-learn" class="nav-link active" data-scroll-target="#what-we-will-learn">What we will learn</a></li>
+  <li><a href="#business-case-a-flight-time-interval" id="toc-business-case-a-flight-time-interval" class="nav-link" data-scroll-target="#business-case-a-flight-time-interval">Business case: a flight-time interval</a></li>
+  <li><a href="#probability-is-area-not-height" id="toc-probability-is-area-not-height" class="nav-link" data-scroll-target="#probability-is-area-not-height">Probability is area, not height</a></li>
+  <li><a href="#the-normal-model-and-standardization" id="toc-the-normal-model-and-standardization" class="nav-link" data-scroll-target="#the-normal-model-and-standardization">The normal model and standardization</a></li>
+  <li><a href="#business-case-grear-tire-lifetimes" id="toc-business-case-grear-tire-lifetimes" class="nav-link" data-scroll-target="#business-case-grear-tire-lifetimes">Business case: Grear tire lifetimes</a></li>
+  <li><a href="#calculate-a-tail-or-an-interval" id="toc-calculate-a-tail-or-an-interval" class="nav-link" data-scroll-target="#calculate-a-tail-or-an-interval">Calculate a tail or an interval</a></li>
+  <li><a href="#invert-the-question-a-quantile" id="toc-invert-the-question-a-quantile" class="nav-link" data-scroll-target="#invert-the-question-a-quantile">Invert the question: a quantile</a></li>
+  <li><a href="#a-function-guide-after-the-concepts" id="toc-a-function-guide-after-the-concepts" class="nav-link" data-scroll-target="#a-function-guide-after-the-concepts">A function guide after the concepts</a></li>
+  <li><a href="#sources-and-limits" id="toc-sources-and-limits" class="nav-link" data-scroll-target="#sources-and-limits">Sources and limits</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/03-probability-and-distributions/index.html">Module 3: Probability and distributions</a></li><li class="breadcrumb-item"><a href="../../modules/03-probability-and-distributions/05-continuous-distributions.html">5. Continuous distributions</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Module 3: Continuous Distributions</h1>
+<p class="subtitle lead">Lesson 5 | Read areas, tails, and quantiles</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="what-we-will-learn" class="level2">
+<h2 class="anchored" data-anchor-id="what-we-will-learn">What we will learn</h2>
+<p>A continuous model assigns probabilities to <strong>intervals through area under a density curve</strong>. We use the uniform distribution to make area concrete, then the normal distribution to calculate tails and choose a cutoff.</p>
+<p>By the end, you should be able to distinguish density from probability, standardize a normal value, calculate interval and tail probabilities, and invert a cumulative probability to find a quantile.</p>
+<p><strong>Reading:</strong> main textbook, §6.1, printed pp.275–277, and §6.2, pp.279–290. The exponential distribution (§6.3, pp.293–298) is optional follow-up reading and is not developed in this selected sequence.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(): loads a package so its functions can be used in this session.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># theme_set(): sets the default theme for subsequent ggplot charts in this R session.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># theme_minimal(): uses a minimal chart style; base_size controls the base text size in points.</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load chart/table tools; the examples below use parameters stated in the textbook.</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># seq() creates plotting grids only; these grids are not observed flight or tire records.</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="business-case-a-flight-time-interval" class="level2">
+<h2 class="anchored" data-anchor-id="business-case-a-flight-time-interval">Business case: a flight-time interval</h2>
+<p>The textbook models a flight from <strong>Chicago to New York</strong> with duration between <strong>120 and 140 minutes</strong>, assigning equal probability to intervals of equal length within those bounds. If <span class="math inline">\(T\)</span> is the duration of one flight in minutes, what is the probability that <span class="math inline">\(128\leq T\leq136\)</span>? This is the book’s uniform model; individual flight measurements are not supplied here.</p>
+<div class="case-narration" lang="ar" dir="rtl">
+<p>يستخدم الكتاب نموذجًا لمدة رحلة جوية من <strong>شيكاغو إلى نيويورك</strong>، بحيث تقع المدة بين <strong>120 و140 دقيقة</strong>، وتتساوى احتمالات الفترات المتساوية في الطول داخل هذين الحدّين. إذا كان <span class="math inline">\(T\)</span> مدة رحلة واحدة بالدقائق، فما احتمال أن تكون المدة بين 128 و136 دقيقة؟ هذا هو النموذج المنتظم المعطى في الكتاب؛ ولا تتوافر هنا قياسات الرحلات الفردية.</p>
+</div>
+</section>
+<section id="probability-is-area-not-height" class="level2">
+<h2 class="anchored" data-anchor-id="probability-is-area-not-height">Probability is area, not height</h2>
+<p>For a continuous variable with density <span class="math inline">\(f(t)\)</span>:</p>
+<ul>
+<li>The density is nonnegative and its total area is 1.</li>
+<li><span class="math inline">\(P(a\leq T\leq b)\)</span> is the area under the density between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>.</li>
+<li><span class="math inline">\(P(T=t)=0\)</span> at any single exact point in a continuous model.</li>
+<li>Consequently, including or excluding an endpoint does not change a continuous interval probability.</li>
+</ul>
+<p>The density height can exceed 1 if the distribution is concentrated in a narrow interval. It has units inverse to the variable, such as <strong>per minute</strong>; the resulting area is a unit-free probability.</p>
+<p>For <span class="math inline">\(T\sim\operatorname{Uniform}(120,140)\)</span>, the density is <span class="math inline">\(1/(140-120)=0.05\)</span> per minute inside the bounds and zero outside them. Therefore,</p>
+<p><span class="math display">\[P(128\leq T\leq136)=(136-128)\times0.05=0.40.\]</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># punif(t,min,max) gives P(T&lt;=t); subtract cumulative areas for the requested interval.</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># dunif() returns density height, whereas an exact point has zero continuous probability.</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>flight_probability <span class="ot">&lt;-</span> <span class="fu">punif</span>(<span class="dv">136</span>, <span class="at">min =</span> <span class="dv">120</span>, <span class="at">max =</span> <span class="dv">140</span>) <span class="sc">-</span> <span class="fu">punif</span>(<span class="dv">128</span>, <span class="at">min =</span> <span class="dv">120</span>, <span class="at">max =</span> <span class="dv">140</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">data.frame</span>(<span class="at">Quantity =</span> <span class="fu">c</span>(<span class="st">"Density at 130 (per minute)"</span>, <span class="st">"Probability from 128 to 136"</span>, <span class="st">"Probability at exactly 130"</span>),</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">Value =</span> <span class="fu">c</span>(<span class="fu">dunif</span>(<span class="dv">130</span>, <span class="dv">120</span>, <span class="dv">140</span>), flight_probability, <span class="dv">0</span>)), <span class="at">digits =</span> <span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Quantity</th>
+<th style="text-align: right;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Density at 130 (per minute)</td>
+<td style="text-align: right;">0.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Probability from 128 to 136</td>
+<td style="text-align: right;">0.40</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Probability at exactly 130</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(): starts a plot from data; additional layers are joined with +.</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># aes(): maps variables to visual properties such as x, y, fill, color, or group.</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># annotate(): adds a fixed plot annotation rather than mapping one label per data row.</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># scale_x_continuous(): controls numeric x-axis breaks, labels, limits, and spacing.</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># labs(): sets axis titles, legend titles, plot titles, and captions.</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># The rectangle height is 1/20 per minute; its highlighted width is eight minutes.</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_rect() draws model areas, not histogram bars or recorded flights.</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> <span class="dv">120</span>, <span class="at">xmax =</span> <span class="dv">140</span>, <span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">ymax =</span> .<span class="dv">05</span>), <span class="at">fill =</span> <span class="st">"#EFF4F7"</span>, <span class="at">color =</span> <span class="st">"#56616D"</span>) <span class="sc">+</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> <span class="dv">128</span>, <span class="at">xmax =</span> <span class="dv">136</span>, <span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">ymax =</span> .<span class="dv">05</span>), <span class="at">fill =</span> <span class="st">"#B6D3E1"</span>, <span class="at">color =</span> <span class="st">"#56616D"</span>) <span class="sc">+</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">132</span>, <span class="at">y =</span> .<span class="dv">026</span>, <span class="at">label =</span> <span class="st">"Area = 0.40"</span>) <span class="sc">+</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">120</span>, <span class="dv">128</span>, <span class="dv">136</span>, <span class="dv">140</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">118</span>, <span class="dv">142</span>)) <span class="sc">+</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, .<span class="dv">06</span>)) <span class="sc">+</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flight duration (minutes)"</span>, <span class="at">y =</span> <span class="st">"Density (per minute)"</span>,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Width times height gives probability"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-continuous-distributions_files/figure-html/uniform-area-plot-1.png" class="img-fluid figure-img" alt="Uniform density of 0.05 per minute between 120 and 140 minutes, with the 128 to 136 interval shaded to show area 0.40." width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><em>Original R illustration calculated from the uniform flight-time model, textbook pp.275–277.</em></p>
+<p>A recorded duration of “130 minutes” may represent a <strong>rounded interval</strong>, not the exact mathematical point 130. For example, nearest-minute rounding could correspond to <span class="math inline">\(129.5\leq T&lt;130.5\)</span>, which has positive probability. Recording precision and the underlying continuous variable are different concepts.</p>
+</section>
+<section id="the-normal-model-and-standardization" class="level2">
+<h2 class="anchored" data-anchor-id="the-normal-model-and-standardization">The normal model and standardization</h2>
+<p>A normal distribution is symmetric and bell-shaped. Its parameters are the mean <span class="math inline">\(\mu\)</span> and SD <span class="math inline">\(\sigma&gt;0\)</span>. We write <span class="math inline">\(X\sim N(\mu,\sigma^2)\)</span>; the second quantity in this notation is <strong>variance</strong>, but R’s <code>sd</code> argument requires <strong>standard deviation</strong>.</p>
+<p>Standardization expresses a value in SD units:</p>
+<p><span class="math display">\[Z=\frac{X-\mu}{\sigma},\qquad Z\sim N(0,1).\]</span></p>
+<p>This connects to Module 2’s z-scores. A standardized score alone does not make an arbitrary variable normally distributed. Normal tail calculations require a normal model to be reasonable.</p>
+</section>
+<section id="business-case-grear-tire-lifetimes" class="level2">
+<h2 class="anchored" data-anchor-id="business-case-grear-tire-lifetimes">Business case: Grear tire lifetimes</h2>
+<p><strong>Grear Tire Company</strong> considers a mileage guarantee for a new steel-belted radial tire. The textbook reports an estimated mean lifetime of <strong>36,500 miles</strong> and SD <strong>5,000 miles</strong>, and treats a normal distribution as reasonable. What proportion lasts more than <strong>40,000 miles</strong>? What mileage cutoff places <strong>10% of lifetimes below it</strong>? The variable is lifetime in miles for one tire. The raw road-test observations are not available here, so we use the stated model rather than independently checking its fit.</p>
+<div class="case-narration" lang="ar" dir="rtl">
+<p>تدرس شركة <strong><span lang="en">Grear Tire Company</span></strong> ضمانًا لعدد الأميال لإطار شعاعي جديد مدعّم بالفولاذ. يذكر الكتاب متوسط عمر مقدّرًا قدره <strong>36,500 ميل</strong> وانحرافًا معياريًا قدره <strong>5,000 ميل</strong>، ويعدّ التوزيع الطبيعي نموذجًا معقولًا. ما نسبة الإطارات التي يتجاوز عمرها <strong>40,000 ميل</strong>؟ وما حدّ الأميال الذي يقع <strong>10% من الأعمار دونه</strong>؟ المتغير هو عمر إطار واحد بالأميال. لا تتوافر هنا مشاهدات اختبارات الطريق الأصلية، لذا نستخدم النموذج المعطى دون التحقق من ملاءمته بصورة مستقلة.</p>
+</div>
+</section>
+<section id="calculate-a-tail-or-an-interval" class="level2">
+<h2 class="anchored" data-anchor-id="calculate-a-tail-or-an-interval">Calculate a tail or an interval</h2>
+<p>For 40,000 miles,</p>
+<p><span class="math display">\[z=\frac{40{,}000-36{,}500}{5{,}000}=0.70.\]</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># names(): reads or assigns names to vector elements or table columns.</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># unname(): removes names or dimension names without changing the underlying values.</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># abs(): returns absolute values; a small tolerance in an equality check permits floating-point rounding.</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># pnorm() returns a lower-tail area; lower.tail=FALSE directly returns the upper-tail area.</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># sd=5000 supplies SD in miles, not variance; subtract two CDF values for an interval.</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">36500</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (<span class="dv">40000</span> <span class="sc">-</span> mu) <span class="sc">/</span> sigma</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>normal_answers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"More than 40,000 miles"</span> <span class="ot">=</span> <span class="fu">pnorm</span>(<span class="dv">40000</span>, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"20,000 to 40,000 miles"</span> <span class="ot">=</span> <span class="fu">pnorm</span>(<span class="dv">40000</span>, mu, sigma) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">20000</span>, mu, sigma))</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">data.frame</span>(<span class="at">Event =</span> <span class="fu">names</span>(normal_answers), <span class="at">Probability =</span> <span class="fu">unname</span>(normal_answers)), <span class="at">digits =</span> <span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Event</th>
+<th style="text-align: right;">Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">More than 40,000 miles</td>
+<td style="text-align: right;">0.2420</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">20,000 to 40,000 miles</td>
+<td style="text-align: right;">0.7576</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">abs</span>(<span class="fu">pnorm</span>(z, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>) <span class="sc">-</span> normal_answers[<span class="dv">1</span>]) <span class="sc">&lt;</span> <span class="fl">1e-12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>About <strong>24.20%</strong> exceed 40,000 miles under the stated model. The probability is an area; <code>dnorm(40000, ...)</code> would give a density height, not this tail probability.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sort(): sorts values; decreasing=TRUE reverses the default ascending order.</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># unique(): keeps distinct values or rows in first-occurrence order.</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(): starts a plot from data; additional layers are joined with +.</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># aes(): maps variables to visual properties such as x, y, fill, color, or group.</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_area(): fills the area between a curve and zero.</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># subset(): keeps entries or rows satisfying a condition; select can choose columns.</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_line(): joins observations in x order; group determines which observations form each line.</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_vline(): adds vertical references at xintercept; linetype selects solid or dashed lines.</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># annotate(): adds a fixed plot annotation rather than mapping one label per data row.</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># labs(): sets axis titles, legend titles, plot titles, and captions.</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co"># dnorm() evaluates density on a plotting grid; shading identifies the upper-tail event.</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co"># The plotted range is finite although the normal distribution extends indefinitely.</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>curve_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Miles =</span> <span class="fu">sort</span>(<span class="fu">unique</span>(<span class="fu">c</span>(<span class="dv">40000</span>,</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">seq</span>(mu <span class="sc">-</span> <span class="dv">4</span> <span class="sc">*</span> sigma, mu <span class="sc">+</span> <span class="dv">4</span> <span class="sc">*</span> sigma, <span class="at">length.out =</span> <span class="dv">1001</span>)))))</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>curve_data<span class="sc">$</span>Density <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(curve_data<span class="sc">$</span>Miles, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(curve_data, <span class="fu">aes</span>(Miles, Density)) <span class="sc">+</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_area</span>(<span class="at">data =</span> <span class="fu">subset</span>(curve_data, Miles <span class="sc">&gt;=</span> <span class="dv">40000</span>), <span class="at">fill =</span> <span class="st">"#B6D3E1"</span>) <span class="sc">+</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"#356B8C"</span>, <span class="at">linewidth =</span> .<span class="dv">8</span>) <span class="sc">+</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">40000</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">46500</span>, <span class="at">y =</span> .<span class="dv">000055</span>, <span class="at">label =</span> <span class="st">"Upper-tail area</span><span class="sc">\n</span><span class="st">about 0.2420"</span>) <span class="sc">+</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Tire lifetime (miles)"</span>, <span class="at">y =</span> <span class="st">"Density (per mile)"</span>,</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"A normal-model probability is an area"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-continuous-distributions_files/figure-html/normal-tail-plot-1.png" class="img-fluid figure-img" alt="Normal density with mean 36,500 miles and standard deviation 5,000 miles; the area above 40,000 is shaded and is approximately 0.2420." width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><em>Original R model plot using the Grear parameters checked on textbook p.286. It is not a histogram of raw tire lifetimes.</em></p>
+</section>
+<section id="invert-the-question-a-quantile" class="level2">
+<h2 class="anchored" data-anchor-id="invert-the-question-a-quantile">Invert the question: a quantile</h2>
+<p>Now the probability is given and the cutoff is unknown. A <strong>10th percentile</strong> <span class="math inline">\(c\)</span> satisfies <span class="math inline">\(P(X\leq c)=0.10\)</span>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># qnorm(p,...) returns the value whose lower-tail probability is p.</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify the result by putting the cutoff back into pnorm(); probability and miles are different outputs.</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>cutoff <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(.<span class="dv">10</span>, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>round_cutoff <span class="ot">&lt;-</span> <span class="dv">30000</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">data.frame</span>(<span class="at">Quantity =</span> <span class="fu">c</span>(<span class="st">"10th percentile (miles)"</span>, <span class="st">"Probability below exact cutoff"</span>, <span class="st">"Probability below 30,000 miles"</span>),</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">Value =</span> <span class="fu">c</span>(cutoff, <span class="fu">pnorm</span>(cutoff, mu, sigma), <span class="fu">pnorm</span>(round_cutoff, mu, sigma))), <span class="at">digits =</span> <span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Quantity</th>
+<th style="text-align: right;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">10th percentile (miles)</td>
+<td style="text-align: right;">30092.2422</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Probability below exact cutoff</td>
+<td style="text-align: right;">0.1000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Probability below 30,000 miles</td>
+<td style="text-align: right;">0.0968</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The unrounded 10th percentile is about <strong>30,092 miles</strong>. The book’s approximately <strong>30,100-mile</strong> result uses a rounded z-table value; R calculates the quantile more precisely. A practical cutoff of 30,000 miles implies a lower-tail probability of about <strong>9.68%</strong>, under this model. A lifetime probability does not by itself determine a business policy: costs and other relevant evidence would also be needed.</p>
+<p>The normal model permits negative values mathematically. For this particular parameter combination, the negative-lifetime tail is negligible, but a normal model is not automatically appropriate for nonnegative, strongly skewed measurements. Do not replace an empirical shape check with the claim that every numerical variable is normal.</p>
+</section>
+<section id="a-function-guide-after-the-concepts" class="level2">
+<h2 class="anchored" data-anchor-id="a-function-guide-after-the-concepts">A function guide after the concepts</h2>
+<p>The prefixes <code>d</code>, <code>p</code>, <code>q</code>, and <code>r</code> identify density or mass, cumulative probability, quantile, and random draws, respectively. Choose the output that answers the question.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Discrete binomial example</th>
+<th>Continuous normal example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mass at a count / density at a value</td>
+<td><code>dbinom(x, size, prob)</code> gives <span class="math inline">\(P(X=x)\)</span></td>
+<td><code>dnorm(x, mean, sd)</code> gives a height</td>
+</tr>
+<tr class="even">
+<td>Probability up to a value</td>
+<td><code>pbinom(k, size, prob)</code></td>
+<td><code>pnorm(t, mean, sd)</code></td>
+</tr>
+<tr class="odd">
+<td>Cutoff for a lower-tail probability</td>
+<td><code>qbinom(p, size, prob)</code></td>
+<td><code>qnorm(p, mean, sd)</code></td>
+</tr>
+<tr class="even">
+<td>Artificial model draws</td>
+<td><code>rbinom(n, size, prob)</code></td>
+<td><code>rnorm(n, mean, sd)</code></td>
+</tr>
+</tbody>
+</table>
+<p>A discrete quantile is the smallest supported value whose cumulative probability reaches or exceeds the requested probability; an exact probability match may not exist. For continuous normal quantiles, the CDF equals the requested probability apart from numerical precision.</p>
+<p>Complete <a href="../../modules/03-probability-and-distributions/exercises/05-continuous-distributions.html">Lesson 5 practice</a> and the <a href="../../modules/03-probability-and-distributions/06-probability-and-distributions-review.html">integrated review</a>. <a href="../../modules/04-sampling-and-estimation/index.html">Module 4</a> will distinguish an individual observation’s distribution from the sampling distribution of a statistic; its lessons and practice are available.</p>
+</section>
+<section id="sources-and-limits" class="level2">
+<h2 class="anchored" data-anchor-id="sources-and-limits">Sources and limits</h2>
+<p>Anderson et al.&nbsp;(2020), 8th ed., §6.1, pp.275–277, and §6.2, pp.279–290; Grear setting and parameters, pp.286–288. Bounds, units, mean, SD, tail question, and guarantee percentile were checked against the local PDF. All charts are computed model illustrations. No flight records or tire measurements were invented, and no new workbook-to-CSV conversion is implied.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/msfasha\.github\.io\/307312-Applied-Statistics\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../modules/03-probability-and-distributions/exercises/04-binomial-and-poisson.html" class="pagination-link" aria-label="Practice: binomial and poisson models">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Practice: binomial and poisson models</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../modules/03-probability-and-distributions/exercises/05-continuous-distributions.html" class="pagination-link" aria-label="Practice: continuous distributions">
+        <span class="nav-page-text">Practice: continuous distributions</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
