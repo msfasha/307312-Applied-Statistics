@@ -24,7 +24,8 @@ GitHub's branch selection in the repository UI lets maintainers inspect gh-pages
    browser security can limit JavaScript search. Download links point to the live site.
 2. `downloads/applied-statistics-rstudio-project.zip`: a single project folder with
    `20261.Rproj`, lesson/exercise sources, CSV data, assets, Quarto configuration,
-   student rendering scripts, README, and `setup.R`. It must render without the
+   README, and `setup.R`. Maintainer Python scripts are excluded; ordinary HTML
+   rendering must not require Python or LaTeX. It must render without the
    instructor's local files. R, RStudio, Quarto, and package installation are external
    software prerequisites, not applications bundled inside this ZIP.
 3. `downloads/applied-statistics-student-pdfs.zip`: student PDFs and linked assets/data.
@@ -79,3 +80,7 @@ this policy and verifying that the same downloads are published.
   teaching CSVs, without access to books or instructor files.
 - Check individual PDF links, internal site links, ZIP integrity, and archive contents.
 - Report the live URL and download links to the user. State any unverified limitation.
+
+To prepare only the student RStudio ZIP for an isolated render check, run
+`python3 scripts/publish-course.py --student-project-only` from `20261/`. This
+creates `_output/applied-statistics-rstudio-project.zip` without publishing.

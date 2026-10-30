@@ -7,10 +7,6 @@ project:
     - modules/**/*.qmd
     - resources/**/*.qmd
     - resources/**/*.Rmd
-  pre-render:
-    - python3 scripts/audit-code-documentation.py
-  post-render:
-    - python3 scripts/validate-course.py
 
 website:
   site-url: https://msfasha.github.io/307312-Applied-Statistics/

@@ -39,6 +39,62 @@ def zip_tree(folder, target, prefix=''):
                 archive.write(path, str(Path(prefix)/path.relative_to(folder)))
 
 
+def package_student_project(project_zip):
+    """Package R lessons without maintainer Python scripts or local-only sources."""
+    config = (ROOT/'_quarto.yml').read_text()
+    if 'pre-render:' in config or 'post-render:' in config:
+        raise SystemExit('Keep maintainer render hooks out of the student configuration.')
+    project_zip.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix='statistics-student-project-') as directory:
+        project = Path(directory)/'Applied-Statistics-20261'
+        project.mkdir()
+        for source in student_sources():
+            target = project/source.relative_to(ROOT)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source,target)
+        for name in ['data','assets']:
+            shutil.copytree(ROOT/name,project/name,ignore=shutil.ignore_patterns('*_files','*_cache','.DS_Store','*.ipynb','.quarto','.Rproj.user','__pycache__'))
+        for name in ['20261.Rproj','index.qmd','_quarto.yml','_quarto-pdf.yml','LICENSE']:
+            shutil.copy2(ROOT/name,project/name)
+        (project/'scripts').mkdir()
+        for name in ['pdf-layout.lua']:
+            shutil.copy2(ROOT/'scripts'/name,project/'scripts'/name)
+        (project/'README.md').write_text('''# Applied Statistics: student RStudio project
+
+1. Extract the entire ZIP to a writable folder.
+2. Install R (4.1 or newer), RStudio Desktop, and Quarto if they are not installed.
+3. Open `20261.Rproj` in RStudio. Keep it open while working with lesson files.
+4. Open `setup.R` and run it once to install the required R packages. This needs internet access.
+5. Open `index.qmd`, or a numbered lesson under `modules/`. Use Render to create its HTML page.
+6. Save your own exercises and reports in a new folder such as `my-work/`.
+
+HTML rendering does not require Python or LaTeX. Run individual R chunks while
+practicing, and click Render when you want an HTML page. Rebuilding the whole
+website is optional: run `quarto render` in RStudio's Terminal.
+
+The included CSVs are ready for lesson use. Local instructor textbook PDFs, publisher
+workbooks, original measurement workbooks, instructor answers, and instructor-only
+verification scripts are not required and are not included. Provenance notes identify
+those original sources; paths to them describe the instructor's local collection.
+
+Reading the website or supplied PDFs does not require R or RStudio. Individual PDF
+rendering additionally needs the LaTeX/fonts documented by your instructor; use the
+separate ready-made PDF download if you only want to read or print.
+
+Course website: https://msfasha.github.io/307312-Applied-Statistics/
+Student downloads: https://msfasha.github.io/307312-Applied-Statistics/resources/downloads.html
+
+Keep attribution and source notices with redistributed material. Third-party teaching
+data and textbook excerpts retain their original rights and are not relicensed by this project.
+''')
+        (project/'setup.R').write_text('''# c() combines package names into a character vector for the installation step.
+# install.packages() downloads these packages from the specified CRAN repository; run this once online.
+packages <- c("knitr", "rmarkdown", "ggplot2", "dplyr", "tidyr", "readr", "stringr")
+install.packages(packages, repos = "https://cloud.r-project.org")
+''')
+        zip_tree(project,project_zip,project.name)
+
+
 def package():
     # Source mtimes are a quick guard; manifest hashes identify the exact source content.
     sources = student_sources()
@@ -66,54 +122,7 @@ def package():
             if archive.read(relative) != (ROOT/'_output/pdf'/relative).read_bytes():
                 raise SystemExit(f'Stale PDF in archive: {relative}')
     shutil.copy2(pdf_zip,downloads/pdf_zip.name)
-    project_zip = downloads/'applied-statistics-rstudio-project.zip'
-    with tempfile.TemporaryDirectory(prefix='statistics-student-project-') as directory:
-        project = Path(directory)/'Applied-Statistics-20261'
-        project.mkdir()
-        for name in ['modules','resources','data','assets']:
-            shutil.copytree(ROOT/name,project/name,ignore=shutil.ignore_patterns('*_files','*_cache','.DS_Store'))
-        for name in ['20261.Rproj','index.qmd','_quarto.yml','_quarto-pdf.yml','LICENSE']:
-            shutil.copy2(ROOT/name,project/name)
-        # Student HTML rendering requires R/Quarto, without the maintainer's Python audit hooks.
-        config = project/'_quarto.yml'
-        config.write_text(config.read_text().replace(
-            '  pre-render:\n    - python3 scripts/audit-code-documentation.py\n', '').replace(
-            '  post-render:\n    - python3 scripts/validate-course.py\n', ''))
-        (project/'scripts').mkdir()
-        for name in ['audit-code-documentation.py','validate-course.py','build-pdfs.py','pdf-layout.lua']:
-            shutil.copy2(ROOT/'scripts'/name,project/'scripts'/name)
-        (project/'README.md').write_text('''# Applied Statistics: student RStudio project
-
-1. Extract the entire ZIP to a writable folder.
-2. Install R (4.1 or newer), RStudio Desktop, and Quarto if they are not installed.
-3. Open `20261.Rproj` in RStudio. Keep it open while working with lesson files.
-4. Open `setup.R` and run it once to install the required R packages. This needs internet access.
-5. Open `index.qmd`, or a numbered lesson under `modules/`. Use Render to create its HTML page.
-6. For the complete website, run `quarto render` in RStudio's Terminal; open `_site/index.html` afterward.
-7. Save your own exercises and reports in a new folder such as `my-work/`.
-
-The included CSVs are ready for lesson use. Local instructor textbook PDFs, publisher
-workbooks, original measurement workbooks, instructor answers, and instructor-only
-verification scripts are not required and are not included. Provenance notes identify
-those original sources; paths to them describe the instructor's local collection.
-
-Reading the website or supplied PDFs does not require R or RStudio. Individual PDF
-rendering additionally needs the LaTeX/fonts documented by your instructor; use the
-separate ready-made PDF download if you only want to read or print.
-
-Course website: https://msfasha.github.io/307312-Applied-Statistics/
-Student downloads: https://msfasha.github.io/307312-Applied-Statistics/resources/downloads.html
-
-Keep attribution and source notices with redistributed material. Third-party teaching
-data and textbook excerpts retain their original rights and are not relicensed by this project.
-''')
-        (project/'setup.R').write_text('''# c() combines package names into a character vector for the installation step.
-# install.packages() downloads these packages from the specified CRAN repository; run this once online.
-packages <- c("knitr", "rmarkdown", "ggplot2", "dplyr", "tidyr", "readr", "stringr")
-install.packages(packages, repos = "https://cloud.r-project.org")
-''')
-        run('python3','scripts/audit-code-documentation.py',cwd=project)
-        zip_tree(project,project_zip,project.name)
+    package_student_project(downloads/'applied-statistics-rstudio-project.zip')
     # Publish individual PDFs as well as the ZIP, preserving cross-document links.
     pdf_stage = stage/'pdf'
     with zipfile.ZipFile(pdf_zip) as archive: archive.extractall(pdf_stage)
@@ -192,11 +201,20 @@ def publish(stage):
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--package-only',action='store_true',help='Reuse existing exports after freshness checks')
+    parser.add_argument('--student-project-only',action='store_true',help='Create only the student project ZIP; no site/PDF build')
     parser.add_argument('--publish',action='store_true',help='Push generated gh-pages branch and enable Pages hosting')
     args=parser.parse_args()
+    if args.student_project_only:
+        if args.publish or args.package_only:
+            parser.error('--student-project-only cannot be combined with other options')
+        target = ROOT/'_output/applied-statistics-rstudio-project.zip'
+        package_student_project(target)
+        print(f'Prepared student RStudio project: {target}',flush=True)
+        return
     if args.publish and run('git','status','--porcelain',cwd=REPO,capture=True).strip():
         raise SystemExit('Commit source changes before publishing so the manifest identifies a clean source commit.')
     if not args.package_only:
+        run('python3','scripts/audit-code-documentation.py')
         run('python3','scripts/build-pdfs.py')
         run(QUARTO,'render')
     stage=package()

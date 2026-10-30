@@ -7,7 +7,9 @@ quarto render
 quarto preview
 ```
 
-The student site is generated in `_site/`. Render the entire project after renaming sources or changing navigation. The build checks internal file links with `scripts/validate-course.py`. Source calculations execute on rebuild rather than relying on old frozen results.
+The student site is generated in `_site/`. Render the entire project after renaming sources or changing navigation. Ordinary HTML rendering uses R and Quarto and does not require Python. Maintainer documentation and link checks run through `scripts/publish-course.py`; run `python3 scripts/validate-course.py` after a manual full-site build to check internal links. Source calculations execute on rebuild rather than relying on old frozen results.
+
+On Windows, extract the whole student project ZIP before opening `20261.Rproj`. Run the supplied `setup.R` once, then open a lesson and click Render. If an older copy reports that `python3` is missing, remove the `pre-render` and `post-render` entries (including their script lines) under `project:` in `_quarto.yml`, or download a fresh student project. Those entries invoke maintainer checks, not lesson calculations.
 
 Required R packages: `knitr`, `rmarkdown`, `ggplot2`, `dplyr`, `tidyr`, `readr`, and `stringr`. Data verification also uses `readxl`. Use the system R environment; the former broad package lock snapshot is preserved in the external recovery archive, not presented as a tested current environment.
 

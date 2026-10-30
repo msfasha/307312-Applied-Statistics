@@ -11,8 +11,10 @@
   required assets, configuration, and setup instructions. Extract it and open `20261.Rproj`.
 - A PDF bundle for offline reading, printing, and annotation. Extract it and open `index.pdf`.
 
-R/RStudio are needed only to run or edit code. The website and PDFs can be read
-without installing them. Keep source attribution and third-party rights notices.
+For practical work, download the student RStudio project rather than cloning this
+maintainer repository. Install R, RStudio, and Quarto, run the included `setup.R`
+once, then open a lesson or exercise and click Render. HTML rendering needs no
+Python or LaTeX. The website and supplied PDFs need none of these installations. Keep source attribution and third-party rights notices.
 
 ## For maintainers
 
