@@ -1,12 +1,12 @@
 {
-  "source_commit": "d1d2590b9e689be3620f0c4ad1abff642228febb",
+  "source_commit": "98b0bcbb4e53205f548230622bcfe45532001185",
   "source_worktree_dirty": false,
   "student_pages": 47,
   "website": "https://msfasha.github.io/307312-Applied-Statistics/",
   "source_sha256": {
     "index.qmd": "12bd22f632a799902b7a907e6fc504fda231a5f2c6444c602e247e450480e314",
     "modules/01-introduction-to-r/01-r-and-rstudio.qmd": "de8c51d0f5bcf2a8474a97ae75200ba54d8cd98d773628b34244c4fe7433a33e",
-    "modules/01-introduction-to-r/02-basic-concepts.qmd": "f71ea3f432d8e92224fa78fc0881683dbe11aea8f6b2a4a85be8f9c9b5e0f6ea",
+    "modules/01-introduction-to-r/02-basic-concepts.qmd": "42b7142f9ab645c563f691fde895a619f067634d87bd0278a0afb7bb6893a121",
     "modules/01-introduction-to-r/03-dplyr.qmd": "f453f741b9482451ca7a32f31adea1fc2fafea50e77b94aba9fe1181fb7725ff",
     "modules/01-introduction-to-r/04-ggplot2.qmd": "7c9b8dc7ad877e95a3fdc8ff8e55c56813673e8948fe18ce8e33068ece00fe12",
     "modules/01-introduction-to-r/exercises/02-basic-concepts.qmd": "f8d4818f2fdaf6dd69942605041c86051cf023e40c2081a1de12a5c1223340ff",
@@ -49,12 +49,12 @@
     "modules/05-hypothesis-testing/index.qmd": "a9d43503f6232ee910d400107f654217875236e2372e045325f8696a4ed63934",
     "modules/06-regression/index.qmd": "0663b093f0e1114b4ed04f5ef9fb436311a536f37db762ec86fafa382d46f101",
     "modules/07-forecasting-and-applications/index.qmd": "a33b609e5de2a02371cf2fad4e3078d6108e58387b637e6684bac0731389066a",
-    "resources/downloads.qmd": "209754c4d8645c0a2164adc8f6dd357cd85cea9d754bb0456ce44b826001e4fe",
+    "resources/downloads.qmd": "9ab192f6b04f37dd3aabb27368a199a32cdd8db1cbf2e79ecb472d07d9c3de4f",
     "resources/index.qmd": "03113db8ef4551a611dac9a5a47499ed3c26356dcf7b8912f5f08f37fe969687"
   },
   "downloads": {
-    "applied-statistics-student-pdfs.zip": "81704f3557c3f59019f1ec95653a53fc5d9041c428499eb794bfbaabb2c79b52",
-    "applied-statistics-rstudio-project.zip": "060a5785fcee004b18dd9e421d2132468874c46fe4d0bb6f6bac3d206c74ca7a",
-    "applied-statistics-website.zip": "a23da8ae2ab6c6658edd7a16efd32f19eef2fec11596e7187bf9418cd805db4e"
+    "applied-statistics-student-pdfs.zip": "2faf5a9c7381864d204f3d0bad3db1aae926fa33a14f7ccfb8372c35c97986a1",
+    "applied-statistics-website.zip": "c0a4dbb48bfb3024bdbf7e7879c4f7c4d30171bf2867f485a81f7309c4541780",
+    "applied-statistics-rstudio-project.zip": "b2b764768cdc701c6fa9e8f74ff157d4765ee06468414489d7ed2e693340b207"
   }
 }

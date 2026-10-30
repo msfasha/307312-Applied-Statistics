@@ -1410,33 +1410,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb117-4"><a href="#cb117-4" aria-hidden="true" tabindex="-1"></a><span class="co"># print(): displays the supplied value or object.</span></span>
 <span id="cb117-5"><a href="#cb117-5" aria-hidden="true" tabindex="-1"></a><span class="co"># A for loop repeats its body once for each value in the supplied sequence.</span></span>
 <span id="cb117-6"><a href="#cb117-6" aria-hidden="true" tabindex="-1"></a><span class="co"># The loop variable identifies the current value or position; vectorized arithmetic can often replace the loop.</span></span>
-<span id="cb117-7"><a href="#cb117-7" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100000000</span></span>
-<span id="cb117-8"><a href="#cb117-8" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N)</span>
-<span id="cb117-9"><a href="#cb117-9" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N)</span>
-<span id="cb117-10"><a href="#cb117-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb117-11"><a href="#cb117-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Measure the time for the vectorized approach</span></span>
-<span id="cb117-12"><a href="#cb117-12" aria-hidden="true" tabindex="-1"></a>vectorized_time <span class="ot">&lt;-</span> <span class="fu">system.time</span>({</span>
-<span id="cb117-13"><a href="#cb117-13" aria-hidden="true" tabindex="-1"></a>  c <span class="ot">&lt;-</span> a <span class="sc">*</span> b</span>
-<span id="cb117-14"><a href="#cb117-14" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb117-15"><a href="#cb117-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb117-16"><a href="#cb117-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Measure the time for the de-vectorized approach</span></span>
-<span id="cb117-17"><a href="#cb117-17" aria-hidden="true" tabindex="-1"></a>de_vectorized_time <span class="ot">&lt;-</span> <span class="fu">system.time</span>({</span>
-<span id="cb117-18"><a href="#cb117-18" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, N)</span>
-<span id="cb117-19"><a href="#cb117-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N){</span>
-<span id="cb117-20"><a href="#cb117-20" aria-hidden="true" tabindex="-1"></a>    d[i] <span class="ot">&lt;-</span> a[i] <span class="sc">*</span> b[i]</span>
-<span id="cb117-21"><a href="#cb117-21" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb117-22"><a href="#cb117-22" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb117-23"><a href="#cb117-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb117-24"><a href="#cb117-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the timings</span></span>
-<span id="cb117-25"><a href="#cb117-25" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(vectorized_time)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb117-7"><a href="#cb117-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Use 100,000 values to keep memory use modest on student computers.</span></span>
+<span id="cb117-8"><a href="#cb117-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Timings vary by computer and run; compare approaches rather than expecting fixed results.</span></span>
+<span id="cb117-9"><a href="#cb117-9" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100000</span></span>
+<span id="cb117-10"><a href="#cb117-10" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N)</span>
+<span id="cb117-11"><a href="#cb117-11" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N)</span>
+<span id="cb117-12"><a href="#cb117-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-13"><a href="#cb117-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Measure the time for the vectorized approach</span></span>
+<span id="cb117-14"><a href="#cb117-14" aria-hidden="true" tabindex="-1"></a>vectorized_time <span class="ot">&lt;-</span> <span class="fu">system.time</span>({</span>
+<span id="cb117-15"><a href="#cb117-15" aria-hidden="true" tabindex="-1"></a>  c <span class="ot">&lt;-</span> a <span class="sc">*</span> b</span>
+<span id="cb117-16"><a href="#cb117-16" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb117-17"><a href="#cb117-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-18"><a href="#cb117-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Measure the time for the de-vectorized approach</span></span>
+<span id="cb117-19"><a href="#cb117-19" aria-hidden="true" tabindex="-1"></a>de_vectorized_time <span class="ot">&lt;-</span> <span class="fu">system.time</span>({</span>
+<span id="cb117-20"><a href="#cb117-20" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, N)</span>
+<span id="cb117-21"><a href="#cb117-21" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N){</span>
+<span id="cb117-22"><a href="#cb117-22" aria-hidden="true" tabindex="-1"></a>    d[i] <span class="ot">&lt;-</span> a[i] <span class="sc">*</span> b[i]</span>
+<span id="cb117-23"><a href="#cb117-23" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb117-24"><a href="#cb117-24" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb117-25"><a href="#cb117-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-26"><a href="#cb117-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the timings</span></span>
+<span id="cb117-27"><a href="#cb117-27" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(vectorized_time)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-  0.089   0.107   0.196 </code></pre>
+      0       0       0 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(de_vectorized_time)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-  2.746   0.178   2.925 </code></pre>
+  0.004   0.000   0.004 </code></pre>
 </div>
 </div>
 </section>
