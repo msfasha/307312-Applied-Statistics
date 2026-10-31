@@ -534,7 +534,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#vectors" id="toc-vectors" class="nav-link" data-scroll-target="#vectors">Vectors</a></li>
   <li><a href="#creating-sequences-in-r" id="toc-creating-sequences-in-r" class="nav-link" data-scroll-target="#creating-sequences-in-r">Creating Sequences in R</a></li>
   <li><a href="#practice-vectors" id="toc-practice-vectors" class="nav-link" data-scroll-target="#practice-vectors">Practice Vectors</a></li>
-  <li><a href="#accessing-elements-in-a-sequence-data-type-e.g.-vector-data-frame" id="toc-accessing-elements-in-a-sequence-data-type-e.g.-vector-data-frame" class="nav-link" data-scroll-target="#accessing-elements-in-a-sequence-data-type-e.g.-vector-data-frame">Accessing Elements in a Sequence Data Type e.g.&nbsp;Vector, Data Frame</a></li>
   <li><a href="#access-vector-elements" id="toc-access-vector-elements" class="nav-link" data-scroll-target="#access-vector-elements">Access Vector Elements</a></li>
   <li><a href="#basic-operations-on-vectors" id="toc-basic-operations-on-vectors" class="nav-link" data-scroll-target="#basic-operations-on-vectors">Basic Operations on Vectors</a></li>
   <li><a href="#basic-numerical-descriptors" id="toc-basic-numerical-descriptors" class="nav-link" data-scroll-target="#basic-numerical-descriptors">Basic Numerical Descriptors</a></li>
@@ -962,7 +961,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <ul>
 <li>Create a sequence from 5 to 10, consisting of 3 equally spaced numbers:</li>
-<li></li>
 </ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print(): displays the supplied value or object.</span></span>
@@ -1051,14 +1049,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Create a vector that uses the <code>rep()</code> function to repeat the sequence 1, 2, 3, but the entire sequence should appear three times.</p></li>
 </ul>
 </section>
-<section id="accessing-elements-in-a-sequence-data-type-e.g.-vector-data-frame" class="level3">
-<h3 class="anchored" data-anchor-id="accessing-elements-in-a-sequence-data-type-e.g.-vector-data-frame">Accessing Elements in a Sequence Data Type e.g.&nbsp;Vector, Data Frame</h3>
-</section>
 <section id="access-vector-elements" class="level3">
 <h3 class="anchored" data-anchor-id="access-vector-elements">Access Vector Elements</h3>
 <p>Accessing elements from a vector in R is straightforward and can be achieved using indexing with square brackets <code>[ ]</code>.</p>
 <p>You can specify the index or indices of the elements you want to extract. Remember, R is 1-based indexing, meaning the first element of a vector has an index of 1.</p>
-<p><strong>Single Element Access</strong></p>
+<section id="single-element-access" class="level4">
+<h4 class="anchored" data-anchor-id="single-element-access">Single Element Access</h4>
 <p>To access a single element from a vector, you provide its index within square brackets immediately following the vector name.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print(): displays the supplied value or object.</span></span>
@@ -1074,7 +1070,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 30</code></pre>
 </div>
 </div>
-<p><strong>Multiple Elements Access</strong></p>
+</section>
+<section id="multiple-elements-access" class="level4">
+<h4 class="anchored" data-anchor-id="multiple-elements-access">Multiple Elements Access</h4>
 <p>To access multiple elements, you can pass a vector of indices inside the square brackets.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print(): displays the supplied value or object.</span></span>
@@ -1087,7 +1085,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 10 30 50</code></pre>
 </div>
 </div>
-<p><strong>Sequential Elements Access</strong></p>
+</section>
+<section id="sequential-elements-access" class="level4">
+<h4 class="anchored" data-anchor-id="sequential-elements-access">Sequential Elements Access</h4>
 <p>R allows you to use the colon <code>:</code> operator to create a sequence, which can be used for accessing a range of elements.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print(): displays the supplied value or object.</span></span>
@@ -1100,7 +1100,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 20 30 40</code></pre>
 </div>
 </div>
-<p><strong>Conditional Access</strong></p>
+</section>
+<section id="conditional-access" class="level4">
+<h4 class="anchored" data-anchor-id="conditional-access">Conditional Access</h4>
 <p>You can also access elements based on conditions. This method is useful for filtering elements.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print(): displays the supplied value or object.</span></span>
@@ -1113,7 +1115,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 30 40 50</code></pre>
 </div>
 </div>
-<p><strong>Find the Index of Matching Elements</strong></p>
+</section>
+<section id="find-the-index-of-matching-elements" class="level4">
+<h4 class="anchored" data-anchor-id="find-the-index-of-matching-elements">Find the Index of Matching Elements</h4>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># which() returns the positions where a logical condition is TRUE.</span></span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Use these integer positions to select matching entries without changing the original vector.</span></span>
@@ -1122,7 +1126,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 3 4 5</code></pre>
 </div>
 </div>
-<p><strong>Excluding Elements</strong></p>
+</section>
+<section id="excluding-elements" class="level4">
+<h4 class="anchored" data-anchor-id="excluding-elements">Excluding Elements</h4>
 <p>Adding a minus sign <code>-</code> before an index or a vector of indices tells R to exclude those elements.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print(): displays the supplied value or object.</span></span>
@@ -1141,7 +1147,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 10 50</code></pre>
 </div>
 </div>
-<p><strong>Named Vectors</strong></p>
+</section>
+<section id="named-vectors" class="level4">
+<h4 class="anchored" data-anchor-id="named-vectors">Named Vectors</h4>
 <p>For named vectors, you can access elements using their names in a similar manner.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print(): displays the supplied value or object.</span></span>
@@ -1165,6 +1173,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     10      8 </code></pre>
 </div>
 </div>
+</section>
 </section>
 <section id="basic-operations-on-vectors" class="level3">
 <h3 class="anchored" data-anchor-id="basic-operations-on-vectors">Basic Operations on Vectors</h3>
@@ -1433,7 +1442,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb117-27"><a href="#cb117-27" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(vectorized_time)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-      0       0       0 </code></pre>
+  0.001   0.000   0.000 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(de_vectorized_time)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
