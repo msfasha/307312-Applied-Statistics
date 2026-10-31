@@ -43,3 +43,7 @@ Business-case introductions appear in English followed immediately by equivalent
 ## Histogram interpretation expansion
 
 Lesson 2 now teaches Shape–Center–Spread–Unusual features, tail direction, modality, and sensitivity to bin width. Constructed model-quantile plots are explicitly labeled artificial. At the user's request, the local students worksheet supplies an additional age/height comparison, using a two-column CSV without identifiers; source metadata limits and the export script are documented separately. This is an authorized supplementary teaching example; the main worked sequence remains textbook-based. Lesson 2 practice and instructor answers include interpretation questions.
+
+## Mean and range discussion (2026-10-31)
+
+Lesson 3 explicitly discusses the mean as useful compression of numerical data, its sensitivity to extremes, and the information hidden by equal means. The instructor reference PDF was checked against the existing illustrative CSV. The seven-dollar example now also demonstrates the USD 99 range and a labelled hypothetical USD 999 range. These discussions explain uses and limitations rather than presenting each measure as a replacement for the previous one. Practice and separate instructor answers are aligned; Audit and Restaurant remain the main textbook cases.

@@ -265,7 +265,9 @@ stopifnot(all(ab_summary$Mean == 5), all(ab_summary$Range == 10),
 kable(ab_summary, digits = 2)
 ```
 
-The dollar mean is **16.14**, while the median is **3**. Six of seven values lie between 1 and 3. The median better describes the middle, while the mean remains relevant to the total of 113. Preserve a valid large observation.
+The dollar mean is **16.14**, while the median is **3**. Six of seven values lie between 1 and 3. The median better describes the middle, while the mean remains relevant to the total of 113. Preserve a valid large observation. The mean compresses the values into an average but loses their individual positions, frequencies, and spread. The mode is also 3 here, but describes frequency rather than the middle by rank.
+
+The dollar range is **100 - 1 = USD 99**, although six amounts lie between USD 1 and USD 3. If only 100 became 1000 in a hypothetical copy, the range would be **USD 999**; the six other values and their USD 2 span would stay unchanged. The full span is useful information but does not describe how tightly most amounts cluster.
 
 S1–S5 share mean **200** but ranges **200, 0, 600, 1200, 4500**. Center alone conceals their variation. A and B share mean **5** and range **10**, while mean absolute deviations are **2 and 4** and sample SDs are **3.54 and 5**. B places more observations at the endpoints.
 

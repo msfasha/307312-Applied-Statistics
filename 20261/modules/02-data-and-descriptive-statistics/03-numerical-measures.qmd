@@ -11,6 +11,7 @@ A table or chart reveals the distribution. Numerical measures describe selected 
 By the end, you should be able to:
 
 - Calculate and interpret the mean, median, and mode.
+- Discuss what the mean and range reveal, what they hide, and how extreme values affect them.
 - Distinguish range, variance, standard deviation, and interquartile range.
 - Calculate quartiles using a stated convention.
 - Read a five-number summary and a boxplot.
@@ -87,7 +88,9 @@ $$\bar{x}=\frac{\sum_{i=1}^{n}x_i}{n}.$$
 
 For these audits, the total is **385 days across 20 audits**, so $\bar{x}=385/20=19.25$ days. This is the average of recorded durations, not a statement that every audit took about 19 days.
 
-Every value contributes to the mean. Long durations can pull it upward; this sensitivity can be useful when total workload matters, but a mean alone may conceal an uneven distribution.
+The mean **compresses many numerical observations into one useful summary**. It gives an initial insight into the level of the data, preserves the original units, and connects directly to the total: mean × number of observations = total.
+
+Every value contributes to the mean. Long durations can pull it upward; this sensitivity can be useful when total workload matters. However, the mean does not show how observations are distributed, and an extreme value can make it a poor description of where most observations lie. Its usefulness depends on the question being asked.
 
 ### Median: locate the middle after sorting
 
@@ -166,7 +169,7 @@ ggplot(dots, aes(Days, Stack)) +
 
 ### When the mean conceals the typical value
 
-Your instructor's slide 38 uses seven dollar amounts: **1, 2, 3, 3, 3, 1, 100**. Six lie between USD 1 and USD 3, while one is USD 100. These are teaching values, with no business setting specified.
+The instructor-provided descriptive statistics PDF (p.51; original deck slide 38) uses seven dollar amounts: **1, 2, 3, 3, 3, 1, 100**. Six lie between USD 1 and USD 3, while one is USD 100. These are teaching values, with no business setting specified.
 
 ```{r}
 #| label: mean-limitation-example
@@ -185,11 +188,13 @@ stopifnot(sum(amounts) == 113, median(amounts) == 3, abs(mean(amounts)-113/7) < 
 
 The mean, **USD 16.14**, correctly divides the total by seven. Yet it is above six of the seven observations, so it poorly describes the typical amount in this example. The median, **USD 3**, better describes the middle. The mean remains useful when the total matters. A valid large value should remain in the data even when it makes the mean unrepresentative of most observations.
 
+Here the mode is also **USD 3**, but it answers a different question: which amount occurs most often? The median describes the middle by rank, while the mode describes frequency. Neither supplies the total or describes the spread. We choose and interpret these summaries according to their meaning; they are not automatic replacements for the mean.
+
 [Download the teaching comparisons as CSV](../../data/module02/measure_limitations_examples.csv). The source notes distinguish examples from your instructor's slides and original course illustrations.
 
 ## Variability: how different are the durations?
 
-A measure of center needs a measure of spread. Your instructor's slides 44–45 give five sets of three values. **Every set has mean 200**, despite very different variability. The numbers are conceptual teaching values in arbitrary units, not audit durations.
+**The mean is useful, but it is not enough on its own to describe data.** Even a correctly calculated, representative mean tells us nothing by itself about how far apart the observations are. The instructor-provided PDF (pp.60–61; original deck slides 44–45) gives five sets of three values. **Every set has mean 200**, despite very different variability. The numbers are conceptual teaching values in arbitrary units, not audit durations.
 
 ```{r}
 #| label: same-mean-different-spread
@@ -213,13 +218,31 @@ stopifnot(all(same_mean_table$Mean == 200))
 kable(same_mean_table, row.names = FALSE)
 ```
 
-S2 has no variation. S5 contains widely separated values. Reporting only “mean = 200” conceals this distinction.
+S2 has no variation: every observation is 200. S5 contains widely separated values, from -2000 to 2500. Reporting only “mean = 200” conceals this distinction. The mean has correctly summarized their common average, but it has compressed away information about their differences. **Describe center and dispersion together**, using a plot to see the distribution as well.
 
 ### Range: the full observed span
 
 The **range** is maximum minus minimum: $33-12=21$ days. It uses only two observations, so it can change markedly when a single extreme value changes. It does not describe how the values are distributed between those endpoints.
 
-For the five sets above, the ranges are **200, 0, 600, 1200, and 4500**, respectively. The range immediately reveals that their observed spans differ.
+For the five sets above, the ranges are **200, 0, 600, 1200, and 4500**, respectively. The range immediately reveals that their observed spans differ. It is useful when the full observed span matters, but it is not a description of the spread of most observations.
+
+### The range is sensitive to an extreme value
+
+Return to the seven dollar amounts: **1, 2, 3, 3, 3, 1, 100**. Their range is **USD 99**, although six of the seven amounts occupy the narrow interval from USD 1 to USD 3. Both statements are correct: the full span is wide, and most observations are close together.
+
+```{r}
+#| label: range-extreme-value
+# min() and max() find the endpoints; diff(range()) subtracts the minimum from the maximum.
+# data.frame() constructs the summary row, and kable() displays the dollar amounts to two decimals.
+# stopifnot() stops if the calculated range fails to match the slide's USD 99 result.
+kable(data.frame(Minimum_USD = min(amounts), Maximum_USD = max(amounts),
+                 Range_USD = diff(range(amounts))), digits = 2)
+stopifnot(diff(range(amounts)) == 99)
+```
+
+An extreme value directly changes the range when it changes an endpoint. For example, **if USD 100 were USD 1000 in a hypothetical version**, the range would rise from USD 99 to USD 999 while the other six observations stayed exactly the same. This is a sensitivity illustration, not a correction to the original values.
+
+The range therefore gives limited insight into the spread of the main cluster when an endpoint is extreme. Report it for what it measures, alongside the distribution and other suitable summaries. Measures using all observations can describe internal spread, but they can also be sensitive to extremes.
 
 ### The range misses the values between the endpoints
 
@@ -614,4 +637,4 @@ Do not compute arithmetic summaries of arbitrary category codes. Do not treat an
 - Anderson et al. (2020), *Essentials of Modern Business Statistics with Microsoft Excel*, 8th ed.: §3.1, pp.105–115; §3.2, pp.121–126; z-scores in §3.3, p.131; five-number summaries and boxplots, §3.4, pp.138–140.
 - Audit values match all 20 printed observations in Table 2.4. Restaurant matches the first ten printed rows and all twelve crosstab cells in Tables 2.9–2.10; remaining individual rows are not printed for comparison. The numerical summaries and figures here are original course calculations from these checked CSVs, not claims that each output is printed in Chapter 3.
 
-- Instructor-provided *Part 1 Descriptive Statistics* slides 38 and 44–47: extreme dollar value, equal means with different spreads, and the progression from range to absolute and squared deviations. Adapted explanations and tables; the A/B equal-range comparison is an original course illustration. [Example data and provenance](../../data/module02/measure-limitations-source-notes.md).
+- Instructor-provided *01-descriptive-statistics.pdf*, pp.51 and 60–63 (original *Part 1 Descriptive Statistics* deck slides 38 and 44–47): extreme dollar value, equal means with different spreads, range sensitivity, and absolute and squared deviations. Adapted explanations and tables; the A/B equal-range comparison is an original course illustration. [Example data and provenance](../../data/module02/measure-limitations-source-notes.md).
