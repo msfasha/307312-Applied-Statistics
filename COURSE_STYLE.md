@@ -10,7 +10,9 @@ The approved style uses soft surfaces and dark text. Avoid large saturated purpl
 | Main title surface | `#F5EDF4` | Pale lavender panel |
 | Main title and H2 text | `#493347` | Dark plum on pale surfaces |
 | Subtitle | `#655263` | Text inside the main title panel |
-| H2 surface | `#F7F3F7` | Very light lavender section panel |
+| H2 surface | `#E9DDE7` | Soft lavender section panel |
+| H3 surface | `#F5EDF4` | Lighter topic panel |
+| H4 surface | `#F7F3F7` | Lightest subtopic panel |
 | H2 left rule | `#C8ABC3` | Thin muted accent |
 | Body and H3/H4 text | `#2F343B` | Dark neutral text |
 | Secondary text | `#56616D` | Breadcrumb separators, metadata, captions |
@@ -28,8 +30,8 @@ Use the hex values as authoritative. `#A83296` is RGB **168, 50, 150**. White bo
 ## Palette and heading hierarchy
 
 - Main title background: **#F5EDF4**; title text: **#493347**.
-- Section (H2) background: **#F7F3F7**, with a thin **#C8ABC3** left rule.
-- Subheadings (H3 and below): plain dark text, without filled panels or shadows.
+- Section (H2) background: **#E9DDE7**, with a thin **#C8ABC3** left rule.
+- H3 topics use **#F5EDF4** backgrounds; H4 subtopics use **#F7F3F7** backgrounds. Both use dark neutral text and a thin muted left rule. H5/H6 labels remain plain.
 - Body text: **#2F343B** on white; secondary text: **#56616D**.
 - Links: **#356B8C**, with visible underlines in breadcrumbs.
 - University of Petra purple **#A83296** appears as a thin accent above the main title. The former bright **#D070D0** accent is no longer used for large decorative areas.
@@ -41,7 +43,8 @@ Use the hex values as authoritative. `#A83296` is RGB **168, 50, 150**. White bo
 - Place breadcrumbs on the white surface **above** the title panel. Use readable blue links and dark secondary text; do not place blue text over saturated purple.
 - Main title: 3 px brand-purple top rule, padding `1.5rem 1.75rem`, and 8 px lower corner rounding. No heavy shadow.
 - H2: 3 px muted left rule, padding `.75rem 1.1rem`, and a light fill. Leave about `2.3rem` of space before the section.
-- H3/H4: plain dark headings. Use size, weight, and spacing to show hierarchy; do not repeat the filled H2 treatment.
+- H3/H4: full-width topic bands with progressively lighter fills and smaller padding. Keep long headings and inline code readable on narrow screens. Retain real heading levels; bold body text is not automatically a heading.
+- Apply this hierarchy across all modules and chapters, including HTML and PDF exports. Keep headings with the following content; avoid heavy shadows.
 - Preserve the document's normal typeface and font size. The stylesheet changes color and hierarchy, not the underlying content typography. For other systems, use a readable sans-serif font and a comfortable body line height around 1.5–1.65.
 - Keep tables neutral and code readable. Color should support meaning rather than decorate every element.
 - Keep captions and navigation readable at smaller screen sizes. On narrow screens, reduce panel padding rather than shrink essential text excessively.

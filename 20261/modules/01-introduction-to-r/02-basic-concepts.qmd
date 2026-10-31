@@ -279,7 +279,6 @@ print(seq_by_2)
 ```
 
 - Create a sequence from 5 to 10, consisting of 3 equally spaced numbers:
-- 
 
 ```{r}
 # print(): displays the supplied value or object.
@@ -360,15 +359,13 @@ print(combined_seq)
 
 - Create a vector that uses the `rep()` function to repeat the sequence 1, 2, 3, but the entire sequence should appear three times.
 
-### Accessing Elements in a Sequence Data Type e.g. Vector, Data Frame
-
 ### Access Vector Elements
 
 Accessing elements from a vector in R is straightforward and can be achieved using indexing with square brackets `[ ]`.
 
 You can specify the index or indices of the elements you want to extract. Remember, R is 1-based indexing, meaning the first element of a vector has an index of 1.
 
-**Single Element Access**
+#### Single Element Access
 
 To access a single element from a vector, you provide its index within square brackets immediately following the vector name.
 
@@ -384,7 +381,7 @@ third_number <- numbers[3]
 print(third_number)  # Outputs 30
 ```
 
-**Multiple Elements Access**
+#### Multiple Elements Access
 
 To access multiple elements, you can pass a vector of indices inside the square brackets.
 
@@ -397,7 +394,7 @@ selected_numbers <- numbers[c(1, 3, 5)]
 print(selected_numbers)  # Outputs 10, 30, 50
 ```
 
-**Sequential Elements Access**
+#### Sequential Elements Access
 
 R allows you to use the colon `:` operator to create a sequence, which can be used for accessing a range of elements.
 
@@ -410,7 +407,7 @@ range_numbers <- numbers[2:4]
 print(range_numbers)  # Outputs 20, 30, 40
 ```
 
-**Conditional Access**
+#### Conditional Access
 
 You can also access elements based on conditions. This method is useful for filtering elements.
 
@@ -423,7 +420,7 @@ filtered_numbers <- numbers[numbers > 25]
 print(filtered_numbers)  # Outputs 30, 40, 50
 ```
 
-**Find the Index of Matching Elements**
+#### Find the Index of Matching Elements
 
 ```{r}
 # which() returns the positions where a logical condition is TRUE.
@@ -431,7 +428,7 @@ print(filtered_numbers)  # Outputs 30, 40, 50
 which(numbers > 25)
 ```
 
-**Excluding Elements**
+#### Excluding Elements
 
 Adding a minus sign `-` before an index or a vector of indices tells R to exclude those elements.
 
@@ -448,7 +445,7 @@ exclude_range <- numbers[-(2:4)]
 print(exclude_range)  # Outputs 10, 50
 ```
 
-**Named Vectors**
+#### Named Vectors
 
 For named vectors, you can access elements using their names in a similar manner.
 

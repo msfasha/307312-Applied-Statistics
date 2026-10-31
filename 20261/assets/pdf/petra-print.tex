@@ -13,3 +13,23 @@
 \RecustomVerbatimEnvironment{verbatim}{Verbatim}{breaklines=true,breakanywhere=true}
 \babelprovide[import]{arabic}
 \babelfont[arabic]{rm}[Script=Arabic]{Noto Naskh Arabic}
+
+% Topic bands follow the same progressively lighter hierarchy as the HTML theme.
+\definecolor{PetraSectionSurface}{HTML}{E9DDE7}
+\definecolor{PetraTopicSurface}{HTML}{F5EDF4}
+\definecolor{PetraSubtopicSurface}{HTML}{F7F3F7}
+\RedeclareSectionCommand[runin=false,beforeskip=1.5ex,afterskip=.7ex]{paragraph}
+\newcommand{\PetraHeadingBand}[3]{%
+  \begingroup
+  \setlength{\fboxsep}{6pt}%
+  \colorbox{#1}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+    \raggedright\color{PetraHeading}\strut #2#3\strut}}%
+  \endgroup
+}
+\renewcommand{\sectionlinesformat}[4]{%
+  \Ifstr{#1}{section}{\PetraHeadingBand{PetraSectionSurface}{#3}{#4}}{%
+  \Ifstr{#1}{subsection}{\PetraHeadingBand{PetraSectionSurface}{#3}{#4}}{%
+  \Ifstr{#1}{subsubsection}{\PetraHeadingBand{PetraTopicSurface}{#3}{#4}}{%
+  \Ifstr{#1}{paragraph}{\PetraHeadingBand{PetraSubtopicSurface}{#3}{#4}}{%
+    \hskip #2#3#4}}}}%
+}
