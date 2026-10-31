@@ -1,5 +1,5 @@
 {
-  "source_commit": "2b52faabeb10abcecc9c4c6fa8985cb680e9d636",
+  "source_commit": "c7ee3cd28f8c08a8cf1e0472a2d95028f4101324",
   "source_worktree_dirty": false,
   "student_pages": 47,
   "website": "https://msfasha.github.io/307312-Applied-Statistics/",
@@ -15,12 +15,12 @@
     "modules/01-introduction-to-r/index.qmd": "c9e7be6ac1c4edfd7716b7e06613f343e05c4c9137253cff87ad03979464c8bf",
     "modules/02-data-and-descriptive-statistics/01-data-types-and-toolbox.qmd": "c14e49c5930d6a3fbd4d94fe20efd95a057d1e2b06094aa2520fe8f7ea3981d0",
     "modules/02-data-and-descriptive-statistics/02-frequency-tables-and-charts.qmd": "5a2593a704c3569ced7bad5f32681295e314b2bc7878d149e482d8dc1c60ff12",
-    "modules/02-data-and-descriptive-statistics/03-numerical-measures.qmd": "e36ca607e51bb22e7cb443f13cb0ee7dd6b3df56e1bd96755fdc9a38d0a30353",
+    "modules/02-data-and-descriptive-statistics/03-numerical-measures.qmd": "79202e31613c3a7766939269687b6dd1d9328d1d73fba86bf6485838a41132b0",
     "modules/02-data-and-descriptive-statistics/04-relationships-between-variables.qmd": "5fd26ed47ffba54ffbef1d355f6e274b5796cdd694a381fa4658e08288cc9943",
     "modules/02-data-and-descriptive-statistics/05-descriptive-statistics-review.qmd": "4888dc67f24f7cd002cc69e1429b6fb071ad76d28eb528971f1b79ffe1907059",
     "modules/02-data-and-descriptive-statistics/exercises/01-data-types-and-toolbox.qmd": "5c74f5b9c669afb7d38d38958fb17aa0d06a8dd7bd55fbe7690579d4fb66d735",
     "modules/02-data-and-descriptive-statistics/exercises/02-frequency-tables-and-charts.qmd": "1b342d94e4c9fbb412b82a60f6a87bedf0a51a00e80be5bbac5175770c45fb69",
-    "modules/02-data-and-descriptive-statistics/exercises/03-numerical-measures.qmd": "5aa4d38d2d80a626e628bbb8e1fed73bc5184a1245034bc0c2d39ff9538181d0",
+    "modules/02-data-and-descriptive-statistics/exercises/03-numerical-measures.qmd": "223a7d885daf0a753641ef27564c144fb6b47c746817661e2e4bf162583e7e34",
     "modules/02-data-and-descriptive-statistics/exercises/04-relationships-between-variables.qmd": "d3fd1d790a4a84c242f020d09de303ce9061e13f55f3750fc63090af9fee9647",
     "modules/02-data-and-descriptive-statistics/index.qmd": "53953ec158158cbb95f2104b11ecb77ec47cbff3d8d573e10c2b16bcd88c0412",
     "modules/03-probability-and-distributions/01-probability-rules.qmd": "5fb989b41d5f72b0199c3aea74a6931f6ec89bf47ed7b39f4735c6b8e33f4556",
@@ -53,8 +53,8 @@
     "resources/index.qmd": "03113db8ef4551a611dac9a5a47499ed3c26356dcf7b8912f5f08f37fe969687"
   },
   "downloads": {
-    "applied-statistics-student-pdfs.zip": "17cc2c5e2e67a153e460918530dbe5f79079f4e4c7633774d20c6d42fb7a5e66",
-    "applied-statistics-website.zip": "41e39bcec7a881641787d82d22c7b6167030ed16d59a0bd1e734b57977bbcac5",
-    "applied-statistics-rstudio-project.zip": "3c23e8fbb4060604fbbf7e187bee5cf02fc6e1c587138aa134b646f6a44a8e61"
+    "applied-statistics-student-pdfs.zip": "43e6eec3feea4438f74378cbe65720c74e4bc5073575447d5dfe54eb319190ab",
+    "applied-statistics-rstudio-project.zip": "c0191014428884ebfcb52006a42b894aadfcd6321e2060bd4b9621d5bbb33b89",
+    "applied-statistics-website.zip": "57db2407f03fb616ff0caed2dedcf7b77968d900f7be6955393cba7147ae06a4"
   }
 }

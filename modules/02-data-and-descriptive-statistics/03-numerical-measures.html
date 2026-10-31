@@ -559,6 +559,7 @@ window.Quarto = {
   <li><a href="#variability-how-different-are-the-durations" id="toc-variability-how-different-are-the-durations" class="nav-link" data-scroll-target="#variability-how-different-are-the-durations">Variability: how different are the durations?</a>
   <ul class="collapse">
   <li><a href="#range-the-full-observed-span" id="toc-range-the-full-observed-span" class="nav-link" data-scroll-target="#range-the-full-observed-span">Range: the full observed span</a></li>
+  <li><a href="#the-range-is-sensitive-to-an-extreme-value" id="toc-the-range-is-sensitive-to-an-extreme-value" class="nav-link" data-scroll-target="#the-range-is-sensitive-to-an-extreme-value">The range is sensitive to an extreme value</a></li>
   <li><a href="#the-range-misses-the-values-between-the-endpoints" id="toc-the-range-misses-the-values-between-the-endpoints" class="nav-link" data-scroll-target="#the-range-misses-the-values-between-the-endpoints">The range misses the values between the endpoints</a></li>
   <li><a href="#mean-absolute-deviation-every-distance-contributes" id="toc-mean-absolute-deviation-every-distance-contributes" class="nav-link" data-scroll-target="#mean-absolute-deviation-every-distance-contributes">Mean absolute deviation: every distance contributes</a></li>
   <li><a href="#sample-variance-average-squared-variation-with-an-adjustment" id="toc-sample-variance-average-squared-variation-with-an-adjustment" class="nav-link" data-scroll-target="#sample-variance-average-squared-variation-with-an-adjustment">Sample variance: average squared variation, with an adjustment</a></li>
@@ -610,6 +611,7 @@ window.Quarto = {
 <p>By the end, you should be able to:</p>
 <ul>
 <li>Calculate and interpret the mean, median, and mode.</li>
+<li>Discuss what the mean and range reveal, what they hide, and how extreme values affect them.</li>
 <li>Distinguish range, variance, standard deviation, and interquartile range.</li>
 <li>Calculate quartiles using a stated convention.</li>
 <li>Read a five-number summary and a boxplot.</li>
@@ -633,7 +635,8 @@ window.Quarto = {
 <p>The <strong>sample mean</strong> adds the observations and divides by their number:</p>
 <p><span class="math display">\[\bar{x}=\frac{\sum_{i=1}^{n}x_i}{n}.\]</span></p>
 <p>For these audits, the total is <strong>385 days across 20 audits</strong>, so <span class="math inline">\(\bar{x}=385/20=19.25\)</span> days. This is the average of recorded durations, not a statement that every audit took about 19 days.</p>
-<p>Every value contributes to the mean. Long durations can pull it upward; this sensitivity can be useful when total workload matters, but a mean alone may conceal an uneven distribution.</p>
+<p>The mean <strong>compresses many numerical observations into one useful summary</strong>. It gives an initial insight into the level of the data, preserves the original units, and connects directly to the total: mean × number of observations = total.</p>
+<p>Every value contributes to the mean. Long durations can pull it upward; this sensitivity can be useful when total workload matters. However, the mean does not show how observations are distributed, and an extreme value can make it a poor description of where most observations lie. Its usefulness depends on the question being asked.</p>
 </section>
 <section id="median-locate-the-middle-after-sorting" class="level3">
 <h3 class="anchored" data-anchor-id="median-locate-the-middle-after-sorting">Median: locate the middle after sorting</h3>
@@ -838,7 +841,7 @@ Figure&nbsp;1: Original R display of the checked Audit observations. Each dot is
 </section>
 <section id="when-the-mean-conceals-the-typical-value" class="level3">
 <h3 class="anchored" data-anchor-id="when-the-mean-conceals-the-typical-value">When the mean conceals the typical value</h3>
-<p>Your instructor’s slide 38 uses seven dollar amounts: <strong>1, 2, 3, 3, 3, 1, 100</strong>. Six lie between USD 1 and USD 3, while one is USD 100. These are teaching values, with no business setting specified.</p>
+<p>The instructor-provided descriptive statistics PDF (p.51; original deck slide 38) uses seven dollar amounts: <strong>1, 2, 3, 3, 3, 1, 100</strong>. Six lie between USD 1 and USD 3, while one is USD 100. These are teaching values, with no business setting specified.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show R code</summary>
@@ -887,12 +890,13 @@ Figure&nbsp;1: Original R display of the checked Audit observations. Each dot is
 </details>
 </div>
 <p>The mean, <strong>USD 16.14</strong>, correctly divides the total by seven. Yet it is above six of the seven observations, so it poorly describes the typical amount in this example. The median, <strong>USD 3</strong>, better describes the middle. The mean remains useful when the total matters. A valid large value should remain in the data even when it makes the mean unrepresentative of most observations.</p>
+<p>Here the mode is also <strong>USD 3</strong>, but it answers a different question: which amount occurs most often? The median describes the middle by rank, while the mode describes frequency. Neither supplies the total or describes the spread. We choose and interpret these summaries according to their meaning; they are not automatic replacements for the mean.</p>
 <p><a href="../../data/module02/measure_limitations_examples.csv">Download the teaching comparisons as CSV</a>. The source notes distinguish examples from your instructor’s slides and original course illustrations.</p>
 </section>
 </section>
 <section id="variability-how-different-are-the-durations" class="level2">
 <h2 class="anchored" data-anchor-id="variability-how-different-are-the-durations">Variability: how different are the durations?</h2>
-<p>A measure of center needs a measure of spread. Your instructor’s slides 44–45 give five sets of three values. <strong>Every set has mean 200</strong>, despite very different variability. The numbers are conceptual teaching values in arbitrary units, not audit durations.</p>
+<p><strong>The mean is useful, but it is not enough on its own to describe data.</strong> Even a correctly calculated, representative mean tells us nothing by itself about how far apart the observations are. The instructor-provided PDF (pp.60–61; original deck slides 44–45) gives five sets of three values. <strong>Every set has mean 200</strong>, despite very different variability. The numbers are conceptual teaching values in arbitrary units, not audit durations.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show R code</summary>
@@ -954,11 +958,49 @@ Figure&nbsp;1: Original R display of the checked Audit observations. Each dot is
 </table>
 </div>
 </div>
-<p>S2 has no variation. S5 contains widely separated values. Reporting only “mean = 200” conceals this distinction.</p>
+<p>S2 has no variation: every observation is 200. S5 contains widely separated values, from -2000 to 2500. Reporting only “mean = 200” conceals this distinction. The mean has correctly summarized their common average, but it has compressed away information about their differences. <strong>Describe center and dispersion together</strong>, using a plot to see the distribution as well.</p>
 <section id="range-the-full-observed-span" class="level3">
 <h3 class="anchored" data-anchor-id="range-the-full-observed-span">Range: the full observed span</h3>
 <p>The <strong>range</strong> is maximum minus minimum: <span class="math inline">\(33-12=21\)</span> days. It uses only two observations, so it can change markedly when a single extreme value changes. It does not describe how the values are distributed between those endpoints.</p>
-<p>For the five sets above, the ranges are <strong>200, 0, 600, 1200, and 4500</strong>, respectively. The range immediately reveals that their observed spans differ.</p>
+<p>For the five sets above, the ranges are <strong>200, 0, 600, 1200, and 4500</strong>, respectively. The range immediately reveals that their observed spans differ. It is useful when the full observed span matters, but it is not a description of the spread of most observations.</p>
+</section>
+<section id="the-range-is-sensitive-to-an-extreme-value" class="level3">
+<h3 class="anchored" data-anchor-id="the-range-is-sensitive-to-an-extreme-value">The range is sensitive to an extreme value</h3>
+<p>Return to the seven dollar amounts: <strong>1, 2, 3, 3, 3, 1, 100</strong>. Their range is <strong>USD 99</strong>, although six of the seven amounts occupy the narrow interval from USD 1 to USD 3. Both statements are correct: the full span is wide, and most observations are close together.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># min() and max() find the endpoints; diff(range()) subtracts the minimum from the maximum.</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame() constructs the summary row, and kable() displays the dollar amounts to two decimals.</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># stopifnot() stops if the calculated range fails to match the slide's USD 99 result.</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">data.frame</span>(<span class="at">Minimum_USD =</span> <span class="fu">min</span>(amounts), <span class="at">Maximum_USD =</span> <span class="fu">max</span>(amounts),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">Range_USD =</span> <span class="fu">diff</span>(<span class="fu">range</span>(amounts))), <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Minimum_USD</th>
+<th style="text-align: right;">Maximum_USD</th>
+<th style="text-align: right;">Range_USD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">99</td>
+</tr>
+</tbody>
+</table>
+</div>
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">diff</span>(<span class="fu">range</span>(amounts)) <span class="sc">==</span> <span class="dv">99</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>An extreme value directly changes the range when it changes an endpoint. For example, <strong>if USD 100 were USD 1000 in a hypothetical version</strong>, the range would rise from USD 99 to USD 999 while the other six observations stayed exactly the same. This is a sensitivity illustration, not a correction to the original values.</p>
+<p>The range therefore gives limited insight into the spread of the main cluster when an endpoint is extreme. Report it for what it measures, alongside the distribution and other suitable summaries. Measures using all observations can describe internal spread, but they can also be sensitive to extremes.</p>
 </section>
 <section id="the-range-misses-the-values-between-the-endpoints" class="level3">
 <h3 class="anchored" data-anchor-id="the-range-misses-the-values-between-the-endpoints">The range misses the values between the endpoints</h3>
@@ -971,27 +1013,27 @@ Figure&nbsp;1: Original R display of the checked Audit observations. Each dot is
 <div class="cell">
 <details class="code-fold">
 <summary>Show R code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># subset(): keeps entries or rows satisfying a condition; select can choose columns.</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(): starts a plot from data; additional layers are joined with +.</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># aes(): maps variables to visual properties such as x, y, fill, color, or group.</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_vline(): adds vertical references at xintercept; linetype selects solid or dashed lines.</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_point(): draws a point for each row at its mapped x and y values.</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># scale_x_continuous(): controls numeric x-axis breaks, labels, limits, and spacing.</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># labs(): sets axis titles, legend titles, plot titles, and captions.</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ave() gives repeated values stacking positions within each set.</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># facet_wrap() separates A and B while the dashed line marks their common mean.</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>same_range <span class="ot">&lt;-</span> <span class="fu">subset</span>(limitations, example <span class="sc">==</span> <span class="st">"same_range"</span>)</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>same_range<span class="sc">$</span>Stack <span class="ot">&lt;-</span> <span class="fu">ave</span>(same_range<span class="sc">$</span>value, same_range<span class="sc">$</span>series, same_range<span class="sc">$</span>value, <span class="at">FUN =</span> seq_along)</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(same_range, <span class="fu">aes</span>(value, Stack)) <span class="sc">+</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">5</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> <span class="st">"#7B858D"</span>) <span class="sc">+</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>, <span class="at">colour =</span> <span class="st">"#2878A5"</span>) <span class="sc">+</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>series, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">11</span>)) <span class="sc">+</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">limits =</span> <span class="fu">c</span>(.<span class="dv">5</span>, <span class="fl">3.5</span>)) <span class="sc">+</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Equal ranges can conceal different internal spread"</span>,</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Value (arbitrary units)"</span>, <span class="at">y =</span> <span class="st">"Stacked observations"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># subset(): keeps entries or rows satisfying a condition; select can choose columns.</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(): starts a plot from data; additional layers are joined with +.</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># aes(): maps variables to visual properties such as x, y, fill, color, or group.</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_vline(): adds vertical references at xintercept; linetype selects solid or dashed lines.</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_point(): draws a point for each row at its mapped x and y values.</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># scale_x_continuous(): controls numeric x-axis breaks, labels, limits, and spacing.</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># labs(): sets axis titles, legend titles, plot titles, and captions.</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ave() gives repeated values stacking positions within each set.</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># facet_wrap() separates A and B while the dashed line marks their common mean.</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>same_range <span class="ot">&lt;-</span> <span class="fu">subset</span>(limitations, example <span class="sc">==</span> <span class="st">"same_range"</span>)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>same_range<span class="sc">$</span>Stack <span class="ot">&lt;-</span> <span class="fu">ave</span>(same_range<span class="sc">$</span>value, same_range<span class="sc">$</span>series, same_range<span class="sc">$</span>value, <span class="at">FUN =</span> seq_along)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(same_range, <span class="fu">aes</span>(value, Stack)) <span class="sc">+</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">5</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> <span class="st">"#7B858D"</span>) <span class="sc">+</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>, <span class="at">colour =</span> <span class="st">"#2878A5"</span>) <span class="sc">+</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>series, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">11</span>)) <span class="sc">+</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">limits =</span> <span class="fu">c</span>(.<span class="dv">5</span>, <span class="fl">3.5</span>)) <span class="sc">+</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Equal ranges can conceal different internal spread"</span>,</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Value (arbitrary units)"</span>, <span class="at">y =</span> <span class="st">"Stacked observations"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-same-range-different-spread" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Set A has three observations at 5 and one at each endpoint 0 and 10. Set B has one at 5 and two at each endpoint.">
@@ -1029,25 +1071,25 @@ Figure&nbsp;2: Original course illustration. Each dot is one observation; stacke
 <div class="cell">
 <details class="code-fold">
 <summary>Show R code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sum(): adds vector entries; on logical values it counts TRUE entries.</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># diff(): subtracts each preceding value from the next by default; diff(range(x)) gives max minus min.</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># range(): returns the minimum and maximum as a two-element vector.</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># abs(): returns absolute values; a small tolerance in an equality check permits floating-point rounding.</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># length(): counts elements in a vector or list.</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtract mean(x), square the deviations, and sum them to measure total squared variation.</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># var() divides by n-1; sd() returns its square root in the original units.</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>squared_deviations <span class="ot">&lt;-</span> <span class="fu">sum</span>((x <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>variability <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">Measure =</span> <span class="fu">c</span>(<span class="st">"Range (days)"</span>, <span class="st">"Sum of squared deviations (days squared)"</span>,</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>              <span class="st">"Sample variance (days squared)"</span>, <span class="st">"Sample standard deviation (days)"</span>),</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">Value =</span> <span class="fu">c</span>(<span class="fu">diff</span>(<span class="fu">range</span>(x)), squared_deviations, <span class="fu">var</span>(x), <span class="fu">sd</span>(x)))</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">abs</span>(squared_deviations <span class="sc">/</span> (<span class="fu">length</span>(x)<span class="sc">-</span><span class="dv">1</span>) <span class="sc">-</span> <span class="fu">var</span>(x)) <span class="sc">&lt;</span> <span class="fl">1e-10</span>,</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>          <span class="fu">abs</span>(<span class="fu">sd</span>(x)<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fu">var</span>(x)) <span class="sc">&lt;</span> <span class="fl">1e-10</span>)</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(variability, <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sum(): adds vector entries; on logical values it counts TRUE entries.</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># diff(): subtracts each preceding value from the next by default; diff(range(x)) gives max minus min.</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># range(): returns the minimum and maximum as a two-element vector.</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># abs(): returns absolute values; a small tolerance in an equality check permits floating-point rounding.</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># length(): counts elements in a vector or list.</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtract mean(x), square the deviations, and sum them to measure total squared variation.</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co"># var() divides by n-1; sd() returns its square root in the original units.</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>squared_deviations <span class="ot">&lt;-</span> <span class="fu">sum</span>((x <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>variability <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">Measure =</span> <span class="fu">c</span>(<span class="st">"Range (days)"</span>, <span class="st">"Sum of squared deviations (days squared)"</span>,</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>              <span class="st">"Sample variance (days squared)"</span>, <span class="st">"Sample standard deviation (days)"</span>),</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">Value =</span> <span class="fu">c</span>(<span class="fu">diff</span>(<span class="fu">range</span>(x)), squared_deviations, <span class="fu">var</span>(x), <span class="fu">sd</span>(x)))</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">abs</span>(squared_deviations <span class="sc">/</span> (<span class="fu">length</span>(x)<span class="sc">-</span><span class="dv">1</span>) <span class="sc">-</span> <span class="fu">var</span>(x)) <span class="sc">&lt;</span> <span class="fl">1e-10</span>,</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>          <span class="fu">abs</span>(<span class="fu">sd</span>(x)<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fu">var</span>(x)) <span class="sc">&lt;</span> <span class="fl">1e-10</span>)</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(variability, <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -1082,27 +1124,27 @@ Figure&nbsp;2: Original course illustration. Each dot is one observation; stacke
 <div class="cell">
 <details class="code-fold">
 <summary>Show R code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># do.call(): calls a function using a list of arguments, e.g. rbind to combine a list of tables.</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lapply(): applies a function separately to each element and returns a list.</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># length(): counts elements in a vector or list.</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># all(): returns TRUE only when every supplied logical value is TRUE.</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># sqrt(): returns the nonnegative square root of a nonnegative number.</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># split() processes sets A and B separately; diff(range(v)) calculates maximum minus minimum.</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># mean(abs(v-mean(v))) averages absolute distances; sd(v) calculates sample SD.</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>spread_comparison <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, <span class="fu">lapply</span>(<span class="fu">split</span>(same_range<span class="sc">$</span>value, same_range<span class="sc">$</span>series), <span class="cf">function</span>(v) {</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">N =</span> <span class="fu">length</span>(v), <span class="at">Mean =</span> <span class="fu">mean</span>(v), <span class="at">Range =</span> <span class="fu">diff</span>(<span class="fu">range</span>(v)),</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>             <span class="at">Mean_absolute_deviation =</span> <span class="fu">mean</span>(<span class="fu">abs</span>(v<span class="sc">-</span><span class="fu">mean</span>(v))), <span class="at">Sample_SD =</span> <span class="fu">sd</span>(v))</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>}))</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">all</span>(spread_comparison<span class="sc">$</span>Mean <span class="sc">==</span> <span class="dv">5</span>), <span class="fu">all</span>(spread_comparison<span class="sc">$</span>Range <span class="sc">==</span> <span class="dv">10</span>),</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>          <span class="fu">all</span>(spread_comparison<span class="sc">$</span>Mean_absolute_deviation <span class="sc">==</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>)),</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>          <span class="fu">abs</span>(spread_comparison<span class="sc">$</span>Sample_SD[<span class="dv">1</span>]<span class="sc">-</span><span class="fu">sqrt</span>(<span class="fl">12.5</span>)) <span class="sc">&lt;</span> <span class="fl">1e-10</span>,</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>          spread_comparison<span class="sc">$</span>Sample_SD[<span class="dv">2</span>] <span class="sc">==</span> <span class="dv">5</span>)</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(spread_comparison, <span class="at">digits =</span> <span class="dv">2</span>,</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"n"</span>, <span class="st">"Mean"</span>, <span class="st">"Range"</span>, <span class="st">"Mean absolute deviation"</span>, <span class="st">"Sample SD"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># do.call(): calls a function using a list of arguments, e.g. rbind to combine a list of tables.</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lapply(): applies a function separately to each element and returns a list.</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># length(): counts elements in a vector or list.</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># all(): returns TRUE only when every supplied logical value is TRUE.</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># sqrt(): returns the nonnegative square root of a nonnegative number.</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># split() processes sets A and B separately; diff(range(v)) calculates maximum minus minimum.</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co"># mean(abs(v-mean(v))) averages absolute distances; sd(v) calculates sample SD.</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>spread_comparison <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, <span class="fu">lapply</span>(<span class="fu">split</span>(same_range<span class="sc">$</span>value, same_range<span class="sc">$</span>series), <span class="cf">function</span>(v) {</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">N =</span> <span class="fu">length</span>(v), <span class="at">Mean =</span> <span class="fu">mean</span>(v), <span class="at">Range =</span> <span class="fu">diff</span>(<span class="fu">range</span>(v)),</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>             <span class="at">Mean_absolute_deviation =</span> <span class="fu">mean</span>(<span class="fu">abs</span>(v<span class="sc">-</span><span class="fu">mean</span>(v))), <span class="at">Sample_SD =</span> <span class="fu">sd</span>(v))</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>}))</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">all</span>(spread_comparison<span class="sc">$</span>Mean <span class="sc">==</span> <span class="dv">5</span>), <span class="fu">all</span>(spread_comparison<span class="sc">$</span>Range <span class="sc">==</span> <span class="dv">10</span>),</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>          <span class="fu">all</span>(spread_comparison<span class="sc">$</span>Mean_absolute_deviation <span class="sc">==</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>)),</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>          <span class="fu">abs</span>(spread_comparison<span class="sc">$</span>Sample_SD[<span class="dv">1</span>]<span class="sc">-</span><span class="fu">sqrt</span>(<span class="fl">12.5</span>)) <span class="sc">&lt;</span> <span class="fl">1e-10</span>,</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>          spread_comparison<span class="sc">$</span>Sample_SD[<span class="dv">2</span>] <span class="sc">==</span> <span class="dv">5</span>)</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(spread_comparison, <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"n"</span>, <span class="st">"Mean"</span>, <span class="st">"Range"</span>, <span class="st">"Mean absolute deviation"</span>, <span class="st">"Sample SD"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -1155,16 +1197,16 @@ Figure&nbsp;2: Original course illustration. Each dot is one observation; stacke
 <div class="cell">
 <details class="code-fold">
 <summary>Show R code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># identical(): requires exact equality of values, types, and attributes.</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># quantile() finds the requested percentiles; type = 6 follows our book convention.</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># unname() removes percentile labels for the display; the numerical quartiles are unchanged.</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>quartiles <span class="ot">&lt;-</span> <span class="fu">quantile</span>(x, <span class="fu">c</span>(.<span class="dv">25</span>,.<span class="dv">50</span>,.<span class="dv">75</span>), <span class="at">type =</span> <span class="dv">6</span>)</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">data.frame</span>(<span class="at">Quartile =</span> <span class="fu">c</span>(<span class="st">"Q1: 25th percentile"</span>, <span class="st">"Q2: median"</span>, <span class="st">"Q3: 75th percentile"</span>),</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>                 <span class="at">Days =</span> <span class="fu">unname</span>(quartiles)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># identical(): requires exact equality of values, types, and attributes.</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># quantile() finds the requested percentiles; type = 6 follows our book convention.</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># unname() removes percentile labels for the display; the numerical quartiles are unchanged.</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>quartiles <span class="ot">&lt;-</span> <span class="fu">quantile</span>(x, <span class="fu">c</span>(.<span class="dv">25</span>,.<span class="dv">50</span>,.<span class="dv">75</span>), <span class="at">type =</span> <span class="dv">6</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">data.frame</span>(<span class="at">Quartile =</span> <span class="fu">c</span>(<span class="st">"Q1: 25th percentile"</span>, <span class="st">"Q2: median"</span>, <span class="st">"Q3: 75th percentile"</span>),</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>                 <span class="at">Days =</span> <span class="fu">unname</span>(quartiles)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -1192,7 +1234,7 @@ Figure&nbsp;2: Original course illustration. Each dot is one observation; stacke
 </div>
 <details class="code-fold">
 <summary>Show R code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">identical</span>(<span class="fu">unname</span>(quartiles), <span class="fu">c</span>(<span class="dv">15</span>,<span class="dv">18</span>,<span class="dv">22</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">identical</span>(<span class="fu">unname</span>(quartiles), <span class="fu">c</span>(<span class="dv">15</span>,<span class="dv">18</span>,<span class="dv">22</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="State the software convention">
@@ -1220,17 +1262,17 @@ Figure&nbsp;2: Original course illustration. Each dot is one observation; stacke
 <div class="cell">
 <details class="code-fold">
 <summary>Show R code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># min(): returns the smallest supplied value.</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># median(): returns the middle sorted value, averaging the middle pair for even sample sizes.</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># max(): returns the largest supplied value.</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># c() combines the minimum, quartiles, median, and maximum into a named vector.</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># unname() supplies its values to the table without duplicating the vector labels.</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>five <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">Minimum =</span> <span class="fu">min</span>(x), <span class="at">Q1 =</span> quartiles[<span class="dv">1</span>], <span class="at">Median =</span> <span class="fu">median</span>(x),</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">Q3 =</span> quartiles[<span class="dv">3</span>], <span class="at">Maximum =</span> <span class="fu">max</span>(x))</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">data.frame</span>(<span class="at">Measure =</span> <span class="fu">c</span>(<span class="st">"Minimum"</span>, <span class="st">"Q1"</span>, <span class="st">"Median"</span>, <span class="st">"Q3"</span>, <span class="st">"Maximum"</span>),</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>                 <span class="at">Days =</span> <span class="fu">unname</span>(five)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># min(): returns the smallest supplied value.</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># median(): returns the middle sorted value, averaging the middle pair for even sample sizes.</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># max(): returns the largest supplied value.</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># c() combines the minimum, quartiles, median, and maximum into a named vector.</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># unname() supplies its values to the table without duplicating the vector labels.</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>five <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">Minimum =</span> <span class="fu">min</span>(x), <span class="at">Q1 =</span> quartiles[<span class="dv">1</span>], <span class="at">Median =</span> <span class="fu">median</span>(x),</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">Q3 =</span> quartiles[<span class="dv">3</span>], <span class="at">Maximum =</span> <span class="fu">max</span>(x))</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">data.frame</span>(<span class="at">Measure =</span> <span class="fu">c</span>(<span class="st">"Minimum"</span>, <span class="st">"Q1"</span>, <span class="st">"Median"</span>, <span class="st">"Q3"</span>, <span class="st">"Maximum"</span>),</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>                 <span class="at">Days =</span> <span class="fu">unname</span>(five)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -1293,29 +1335,29 @@ Figure&nbsp;2: Original course illustration. Each dot is one observation; stacke
 <div class="cell">
 <details class="code-fold">
 <summary>Show R code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># identical(): requires exact equality of values, types, and attributes.</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># as.integer(): converts to integers by truncating numeric fractional parts; it does not round to nearest.</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(): starts a plot from data; additional layers are joined with +.</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># aes(): maps variables to visual properties such as x, y, fill, color, or group.</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_boxplot(): draws quartiles, whiskers, and flagged points; a flagged value is not automatically an error.</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_point(): draws a point for each row at its mapped x and y values.</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_hline(): adds horizontal references at yintercept.</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co"># labs(): sets axis titles, legend titles, plot titles, and captions.</span></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co"># box_record() is our helper for type-6 quartiles, fences, and observed whisker endpoints.</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co"># stat = "identity" draws those supplied statistics instead of recomputing ggplot2 defaults.</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>audit_box <span class="ot">&lt;-</span> <span class="fu">box_record</span>(x, <span class="st">"Audit"</span>)</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>audit_flagged <span class="ot">&lt;-</span> x[x <span class="sc">&lt;</span> audit_box<span class="sc">$</span>Lower_fence <span class="sc">|</span> x <span class="sc">&gt;</span> audit_box<span class="sc">$</span>Upper_fence]</span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">identical</span>(<span class="fu">as.integer</span>(audit_flagged), <span class="dv">33</span>L), audit_box<span class="sc">$</span>ymin <span class="sc">==</span> <span class="dv">12</span>, audit_box<span class="sc">$</span>ymax <span class="sc">==</span> <span class="dv">28</span>)</span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(audit_box, <span class="fu">aes</span>(<span class="at">x =</span> Group, <span class="at">ymin =</span> ymin, <span class="at">lower =</span> Q1, <span class="at">middle =</span> Median,</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>                      <span class="at">upper =</span> Q3, <span class="at">ymax =</span> ymax)) <span class="sc">+</span></span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">width =</span> .<span class="dv">35</span>, <span class="at">fill =</span> <span class="st">"#B6D2E2"</span>, <span class="at">colour =</span> <span class="st">"#394B58"</span>) <span class="sc">+</span></span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">Group =</span> <span class="st">"Audit"</span>, <span class="at">Days =</span> audit_flagged),</span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> Group, <span class="at">y =</span> Days), <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">3</span>, <span class="at">colour =</span> <span class="st">"#B47816"</span>) <span class="sc">+</span></span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> audit_box<span class="sc">$</span>Upper_fence, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> <span class="st">"#7B858D"</span>) <span class="sc">+</span></span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"A flag is a prompt to investigate"</span>, <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Audit duration (days)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># identical(): requires exact equality of values, types, and attributes.</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># as.integer(): converts to integers by truncating numeric fractional parts; it does not round to nearest.</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(): starts a plot from data; additional layers are joined with +.</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># aes(): maps variables to visual properties such as x, y, fill, color, or group.</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_boxplot(): draws quartiles, whiskers, and flagged points; a flagged value is not automatically an error.</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_point(): draws a point for each row at its mapped x and y values.</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_hline(): adds horizontal references at yintercept.</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># labs(): sets axis titles, legend titles, plot titles, and captions.</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co"># box_record() is our helper for type-6 quartiles, fences, and observed whisker endpoints.</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co"># stat = "identity" draws those supplied statistics instead of recomputing ggplot2 defaults.</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>audit_box <span class="ot">&lt;-</span> <span class="fu">box_record</span>(x, <span class="st">"Audit"</span>)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>audit_flagged <span class="ot">&lt;-</span> x[x <span class="sc">&lt;</span> audit_box<span class="sc">$</span>Lower_fence <span class="sc">|</span> x <span class="sc">&gt;</span> audit_box<span class="sc">$</span>Upper_fence]</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">identical</span>(<span class="fu">as.integer</span>(audit_flagged), <span class="dv">33</span>L), audit_box<span class="sc">$</span>ymin <span class="sc">==</span> <span class="dv">12</span>, audit_box<span class="sc">$</span>ymax <span class="sc">==</span> <span class="dv">28</span>)</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(audit_box, <span class="fu">aes</span>(<span class="at">x =</span> Group, <span class="at">ymin =</span> ymin, <span class="at">lower =</span> Q1, <span class="at">middle =</span> Median,</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>                      <span class="at">upper =</span> Q3, <span class="at">ymax =</span> ymax)) <span class="sc">+</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">width =</span> .<span class="dv">35</span>, <span class="at">fill =</span> <span class="st">"#B6D2E2"</span>, <span class="at">colour =</span> <span class="st">"#394B58"</span>) <span class="sc">+</span></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">Group =</span> <span class="st">"Audit"</span>, <span class="at">Days =</span> audit_flagged),</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> Group, <span class="at">y =</span> Days), <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">3</span>, <span class="at">colour =</span> <span class="st">"#B47816"</span>) <span class="sc">+</span></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> audit_box<span class="sc">$</span>Upper_fence, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> <span class="st">"#7B858D"</span>) <span class="sc">+</span></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"A flag is a prompt to investigate"</span>, <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Audit duration (days)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-audit-book-boxplot" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Audit box spans 15 to 22 days with median 18, whiskers at 12 and 28, and an outlier flag at 33 days. A dashed upper fence lies at 32.5.">
@@ -1338,27 +1380,27 @@ Figure&nbsp;3: Original R boxplot using explicit type-6 quartiles and 1.5-IQR fe
 <div class="cell">
 <details class="code-fold">
 <summary>Show R code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># mean(): computes an average; logical TRUE/FALSE values contribute 1/0, giving a proportion.</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># median(): returns the middle sorted value, averaging the middle pair for even sample sizes.</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># sd(): computes sample standard deviation using denominator n-1.</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># diff(): subtracts each preceding value from the next by default; diff(range(x)) gives max minus min.</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># q6(): is a locally defined helper computing type-6 sample quartiles for textbook consistency.</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a separate copy, then which.max() locates the largest duration to replace.</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Recalculate both sets of summaries while preserving the original audit vector x.</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>hypothetical <span class="ot">&lt;-</span> x</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>hypothetical[<span class="fu">which.max</span>(hypothetical)] <span class="ot">&lt;-</span> <span class="dv">60</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>sensitivity <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">Dataset =</span> <span class="fu">c</span>(<span class="st">"Original observations"</span>, <span class="st">"Hypothetical: 33 replaced by 60"</span>),</span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">Mean_days =</span> <span class="fu">c</span>(<span class="fu">mean</span>(x), <span class="fu">mean</span>(hypothetical)),</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">Median_days =</span> <span class="fu">c</span>(<span class="fu">median</span>(x), <span class="fu">median</span>(hypothetical)),</span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">SD_days =</span> <span class="fu">c</span>(<span class="fu">sd</span>(x), <span class="fu">sd</span>(hypothetical)),</span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">IQR_days =</span> <span class="fu">c</span>(<span class="fu">diff</span>(<span class="fu">q6</span>(x, <span class="fu">c</span>(.<span class="dv">25</span>,.<span class="dv">75</span>))), <span class="fu">diff</span>(<span class="fu">q6</span>(hypothetical, <span class="fu">c</span>(.<span class="dv">25</span>,.<span class="dv">75</span>)))))</span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(sensitivity, <span class="at">digits =</span> <span class="dv">2</span>,</span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Dataset"</span>, <span class="st">"Mean (days)"</span>, <span class="st">"Median (days)"</span>, <span class="st">"SD (days)"</span>, <span class="st">"IQR (days)"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># mean(): computes an average; logical TRUE/FALSE values contribute 1/0, giving a proportion.</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># median(): returns the middle sorted value, averaging the middle pair for even sample sizes.</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># sd(): computes sample standard deviation using denominator n-1.</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co"># diff(): subtracts each preceding value from the next by default; diff(range(x)) gives max minus min.</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># q6(): is a locally defined helper computing type-6 sample quartiles for textbook consistency.</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a separate copy, then which.max() locates the largest duration to replace.</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Recalculate both sets of summaries while preserving the original audit vector x.</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>hypothetical <span class="ot">&lt;-</span> x</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>hypothetical[<span class="fu">which.max</span>(hypothetical)] <span class="ot">&lt;-</span> <span class="dv">60</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>sensitivity <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">Dataset =</span> <span class="fu">c</span>(<span class="st">"Original observations"</span>, <span class="st">"Hypothetical: 33 replaced by 60"</span>),</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">Mean_days =</span> <span class="fu">c</span>(<span class="fu">mean</span>(x), <span class="fu">mean</span>(hypothetical)),</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">Median_days =</span> <span class="fu">c</span>(<span class="fu">median</span>(x), <span class="fu">median</span>(hypothetical)),</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">SD_days =</span> <span class="fu">c</span>(<span class="fu">sd</span>(x), <span class="fu">sd</span>(hypothetical)),</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">IQR_days =</span> <span class="fu">c</span>(<span class="fu">diff</span>(<span class="fu">q6</span>(x, <span class="fu">c</span>(.<span class="dv">25</span>,.<span class="dv">75</span>))), <span class="fu">diff</span>(<span class="fu">q6</span>(hypothetical, <span class="fu">c</span>(.<span class="dv">25</span>,.<span class="dv">75</span>)))))</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(sensitivity, <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Dataset"</span>, <span class="st">"Mean (days)"</span>, <span class="st">"Median (days)"</span>, <span class="st">"SD (days)"</span>, <span class="st">"IQR (days)"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -1398,8 +1440,8 @@ Figure&nbsp;3: Original R boxplot using explicit type-6 quartiles and 1.5-IQR fe
 </div>
 <details class="code-fold">
 <summary>Show R code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">mean</span>(x) <span class="sc">==</span> <span class="fl">19.25</span>, <span class="fu">max</span>(x) <span class="sc">==</span> <span class="dv">33</span>, <span class="fu">mean</span>(hypothetical) <span class="sc">==</span> <span class="fl">20.6</span>,</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>          <span class="fu">median</span>(hypothetical) <span class="sc">==</span> <span class="dv">18</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">mean</span>(x) <span class="sc">==</span> <span class="fl">19.25</span>, <span class="fu">max</span>(x) <span class="sc">==</span> <span class="dv">33</span>, <span class="fu">mean</span>(hypothetical) <span class="sc">==</span> <span class="fl">20.6</span>,</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>          <span class="fu">median</span>(hypothetical) <span class="sc">==</span> <span class="dv">18</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>The mean rises to <strong>20.60 days</strong> and the standard deviation to <strong>10.25 days</strong>. The median and IQR are unchanged in this particular exercise. This demonstrates resistance to one tail change, not immunity to every possible change in the data.</p>
@@ -1420,13 +1462,13 @@ Figure&nbsp;3: Original R boxplot using explicit type-6 quartiles and 1.5-IQR fe
 <div class="cell">
 <details class="code-fold">
 <summary>Show R code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 100*sd(x)/mean(x) expresses sample spread as a percentage of the mean (CV).</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># (33-mean(x))/sd(x) places the 33-day audit in sample-standard-deviation units.</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">data.frame</span>(<span class="at">Measure =</span> <span class="fu">c</span>(<span class="st">"Coefficient of variation (%)"</span>, <span class="st">"Z-score of the 33-day audit"</span>),</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">Value =</span> <span class="fu">c</span>(<span class="dv">100</span> <span class="sc">*</span> <span class="fu">sd</span>(x) <span class="sc">/</span> <span class="fu">mean</span>(x), (<span class="dv">33</span> <span class="sc">-</span> <span class="fu">mean</span>(x)) <span class="sc">/</span> <span class="fu">sd</span>(x))), <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 100*sd(x)/mean(x) expresses sample spread as a percentage of the mean (CV).</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># (33-mean(x))/sd(x) places the 33-day audit in sample-standard-deviation units.</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">data.frame</span>(<span class="at">Measure =</span> <span class="fu">c</span>(<span class="st">"Coefficient of variation (%)"</span>, <span class="st">"Z-score of the 33-day audit"</span>),</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">Value =</span> <span class="fu">c</span>(<span class="dv">100</span> <span class="sc">*</span> <span class="fu">sd</span>(x) <span class="sc">/</span> <span class="fu">mean</span>(x), (<span class="dv">33</span> <span class="sc">-</span> <span class="fu">mean</span>(x)) <span class="sc">/</span> <span class="fu">sd</span>(x))), <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -1461,30 +1503,30 @@ Figure&nbsp;3: Original R boxplot using explicit type-6 quartiles and 1.5-IQR fe
 <div class="cell">
 <details class="code-fold">
 <summary>Show R code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># names(): reads or assigns names to vector elements or table columns.</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># length(): counts elements in a vector or list.</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># mean(): computes an average; logical TRUE/FALSE values contribute 1/0, giving a proportion.</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co"># median(): returns the middle sorted value, averaging the middle pair for even sample sizes.</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># sd(): computes sample standard deviation using denominator n-1.</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># diff(): subtracts each preceding value from the next by default; diff(range(x)) gives max minus min.</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co"># stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co"># sum(): adds vector entries; on logical values it counts TRUE entries.</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co"># identical(): requires exact equality of values, types, and attributes.</span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co"># split() separates prices by ordered rating; q6() is our type-6 quantile helper.</span></span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="co"># lapply() calculates each group summary and do.call(rbind, ...) joins the rows.</span></span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>groups <span class="ot">&lt;-</span> <span class="fu">split</span>(restaurants<span class="sc">$</span>meal_price_usd, restaurants<span class="sc">$</span>quality_rating)</span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>group_summary <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, <span class="fu">lapply</span>(<span class="fu">names</span>(groups), <span class="cf">function</span>(g) {</span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  v <span class="ot">&lt;-</span> groups[[g]]; q <span class="ot">&lt;-</span> <span class="fu">q6</span>(v, <span class="fu">c</span>(.<span class="dv">25</span>,.<span class="dv">75</span>))</span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">Quality =</span> g, <span class="at">N =</span> <span class="fu">length</span>(v), <span class="at">Mean =</span> <span class="fu">mean</span>(v), <span class="at">Median =</span> <span class="fu">median</span>(v),</span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>             <span class="at">SD =</span> <span class="fu">sd</span>(v), <span class="at">Q1 =</span> q[<span class="dv">1</span>], <span class="at">Q3 =</span> q[<span class="dv">2</span>], <span class="at">IQR =</span> <span class="fu">diff</span>(q))</span>
-<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>}))</span>
-<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">sum</span>(group_summary<span class="sc">$</span>N) <span class="sc">==</span> <span class="dv">300</span>,</span>
-<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>          <span class="fu">identical</span>(group_summary<span class="sc">$</span>N, <span class="fu">c</span>(<span class="dv">84</span>L,<span class="dv">150</span>L,<span class="dv">66</span>L)))</span>
-<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(group_summary[<span class="fu">c</span>(<span class="st">"Quality"</span>,<span class="st">"N"</span>,<span class="st">"Mean"</span>,<span class="st">"Median"</span>,<span class="st">"SD"</span>)], <span class="at">digits =</span> <span class="dv">2</span>,</span>
-<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Quality"</span>, <span class="st">"n"</span>, <span class="st">"Mean (USD)"</span>, <span class="st">"Median (USD)"</span>, <span class="st">"SD (USD)"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># names(): reads or assigns names to vector elements or table columns.</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># length(): counts elements in a vector or list.</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># mean(): computes an average; logical TRUE/FALSE values contribute 1/0, giving a proportion.</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co"># median(): returns the middle sorted value, averaging the middle pair for even sample sizes.</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># sd(): computes sample standard deviation using denominator n-1.</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co"># diff(): subtracts each preceding value from the next by default; diff(range(x)) gives max minus min.</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co"># stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co"># sum(): adds vector entries; on logical values it counts TRUE entries.</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co"># identical(): requires exact equality of values, types, and attributes.</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="co"># split() separates prices by ordered rating; q6() is our type-6 quantile helper.</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="co"># lapply() calculates each group summary and do.call(rbind, ...) joins the rows.</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>groups <span class="ot">&lt;-</span> <span class="fu">split</span>(restaurants<span class="sc">$</span>meal_price_usd, restaurants<span class="sc">$</span>quality_rating)</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>group_summary <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, <span class="fu">lapply</span>(<span class="fu">names</span>(groups), <span class="cf">function</span>(g) {</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>  v <span class="ot">&lt;-</span> groups[[g]]; q <span class="ot">&lt;-</span> <span class="fu">q6</span>(v, <span class="fu">c</span>(.<span class="dv">25</span>,.<span class="dv">75</span>))</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">Quality =</span> g, <span class="at">N =</span> <span class="fu">length</span>(v), <span class="at">Mean =</span> <span class="fu">mean</span>(v), <span class="at">Median =</span> <span class="fu">median</span>(v),</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>             <span class="at">SD =</span> <span class="fu">sd</span>(v), <span class="at">Q1 =</span> q[<span class="dv">1</span>], <span class="at">Q3 =</span> q[<span class="dv">2</span>], <span class="at">IQR =</span> <span class="fu">diff</span>(q))</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>}))</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">sum</span>(group_summary<span class="sc">$</span>N) <span class="sc">==</span> <span class="dv">300</span>,</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>          <span class="fu">identical</span>(group_summary<span class="sc">$</span>N, <span class="fu">c</span>(<span class="dv">84</span>L,<span class="dv">150</span>L,<span class="dv">66</span>L)))</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(group_summary[<span class="fu">c</span>(<span class="st">"Quality"</span>,<span class="st">"N"</span>,<span class="st">"Mean"</span>,<span class="st">"Median"</span>,<span class="st">"SD"</span>)], <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Quality"</span>, <span class="st">"n"</span>, <span class="st">"Mean (USD)"</span>, <span class="st">"Median (USD)"</span>, <span class="st">"SD (USD)"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -1524,8 +1566,8 @@ Figure&nbsp;3: Original R boxplot using explicit type-6 quartiles and 1.5-IQR fe
 </div>
 <details class="code-fold">
 <summary>Show R code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(group_summary[<span class="fu">c</span>(<span class="st">"Quality"</span>,<span class="st">"Q1"</span>,<span class="st">"Q3"</span>,<span class="st">"IQR"</span>)], <span class="at">digits =</span> <span class="dv">2</span>,</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Quality"</span>, <span class="st">"Q1 (USD)"</span>, <span class="st">"Q3 (USD)"</span>, <span class="st">"IQR (USD)"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(group_summary[<span class="fu">c</span>(<span class="st">"Quality"</span>,<span class="st">"Q1"</span>,<span class="st">"Q3"</span>,<span class="st">"IQR"</span>)], <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Quality"</span>, <span class="st">"Q1 (USD)"</span>, <span class="st">"Q3 (USD)"</span>, <span class="st">"IQR (USD)"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -1563,33 +1605,33 @@ Figure&nbsp;3: Original R boxplot using explicit type-6 quartiles and 1.5-IQR fe
 <div class="cell">
 <details class="code-fold">
 <summary>Show R code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># do.call(): calls a function using a list of arguments, e.g. rbind to combine a list of tables.</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lapply(): applies a function separately to each element and returns a list.</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># names(): reads or assigns names to vector elements or table columns.</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co"># rep(): repeats values; times repeats a vector and each repeats individual elements.</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># length(): counts elements in a vector or list.</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(): starts a plot from data; additional layers are joined with +.</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co"># aes(): maps variables to visual properties such as x, y, fill, color, or group.</span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_point(): draws a point for each row at its mapped x and y values.</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co"># labs(): sets axis titles, legend titles, plot titles, and captions.</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co"># box_record() supplies matching quartiles and whisker endpoints for every quality group.</span></span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_boxplot(stat = "identity") draws them; separate points mark values beyond the fences.</span></span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>restaurant_boxes <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, <span class="fu">lapply</span>(<span class="fu">names</span>(groups), <span class="cf">function</span>(g) <span class="fu">box_record</span>(groups[[g]], g)))</span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>restaurant_boxes<span class="sc">$</span>Group <span class="ot">&lt;-</span> <span class="fu">factor</span>(restaurant_boxes<span class="sc">$</span>Group, <span class="at">levels =</span> quality_levels, <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>flagged <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, <span class="fu">lapply</span>(<span class="fu">names</span>(groups), <span class="cf">function</span>(g) {</span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>  r <span class="ot">&lt;-</span> <span class="fu">box_record</span>(groups[[g]], g); v <span class="ot">&lt;-</span> groups[[g]]</span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> v[v <span class="sc">&lt;</span> r<span class="sc">$</span>Lower_fence <span class="sc">|</span> v <span class="sc">&gt;</span> r<span class="sc">$</span>Upper_fence]</span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">Group =</span> <span class="fu">rep</span>(g, <span class="fu">length</span>(out)), <span class="at">Price =</span> out)</span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>}))</span>
-<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>flagged<span class="sc">$</span>Group <span class="ot">&lt;-</span> <span class="fu">factor</span>(flagged<span class="sc">$</span>Group, <span class="at">levels =</span> quality_levels, <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(restaurant_boxes, <span class="fu">aes</span>(<span class="at">x =</span> Group, <span class="at">ymin =</span> ymin, <span class="at">lower =</span> Q1, <span class="at">middle =</span> Median,</span>
-<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>                             <span class="at">upper =</span> Q3, <span class="at">ymax =</span> ymax)) <span class="sc">+</span></span>
-<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">width =</span> .<span class="dv">5</span>, <span class="at">fill =</span> <span class="st">"#B6D2E2"</span>, <span class="at">colour =</span> <span class="st">"#394B58"</span>) <span class="sc">+</span></span>
-<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> flagged, <span class="fu">aes</span>(<span class="at">x =</span> Group, <span class="at">y =</span> Price), <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>             <span class="at">colour =</span> <span class="st">"#B47816"</span>, <span class="at">size =</span> <span class="fl">2.4</span>) <span class="sc">+</span></span>
-<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Compare center and spread together"</span>, <span class="at">x =</span> <span class="st">"Quality rating"</span>, <span class="at">y =</span> <span class="st">"Meal price (USD)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># do.call(): calls a function using a list of arguments, e.g. rbind to combine a list of tables.</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lapply(): applies a function separately to each element and returns a list.</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># names(): reads or assigns names to vector elements or table columns.</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># factor(): stores categorical values; levels fixes their permitted order and labels can rename their display.</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># rep(): repeats values; times repeats a vector and each repeats individual elements.</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co"># length(): counts elements in a vector or list.</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(): starts a plot from data; additional layers are joined with +.</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co"># aes(): maps variables to visual properties such as x, y, fill, color, or group.</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_point(): draws a point for each row at its mapped x and y values.</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="co"># labs(): sets axis titles, legend titles, plot titles, and captions.</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="co"># box_record() supplies matching quartiles and whisker endpoints for every quality group.</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_boxplot(stat = "identity") draws them; separate points mark values beyond the fences.</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>restaurant_boxes <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, <span class="fu">lapply</span>(<span class="fu">names</span>(groups), <span class="cf">function</span>(g) <span class="fu">box_record</span>(groups[[g]], g)))</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>restaurant_boxes<span class="sc">$</span>Group <span class="ot">&lt;-</span> <span class="fu">factor</span>(restaurant_boxes<span class="sc">$</span>Group, <span class="at">levels =</span> quality_levels, <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>flagged <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, <span class="fu">lapply</span>(<span class="fu">names</span>(groups), <span class="cf">function</span>(g) {</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>  r <span class="ot">&lt;-</span> <span class="fu">box_record</span>(groups[[g]], g); v <span class="ot">&lt;-</span> groups[[g]]</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> v[v <span class="sc">&lt;</span> r<span class="sc">$</span>Lower_fence <span class="sc">|</span> v <span class="sc">&gt;</span> r<span class="sc">$</span>Upper_fence]</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">Group =</span> <span class="fu">rep</span>(g, <span class="fu">length</span>(out)), <span class="at">Price =</span> out)</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>}))</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>flagged<span class="sc">$</span>Group <span class="ot">&lt;-</span> <span class="fu">factor</span>(flagged<span class="sc">$</span>Group, <span class="at">levels =</span> quality_levels, <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(restaurant_boxes, <span class="fu">aes</span>(<span class="at">x =</span> Group, <span class="at">ymin =</span> ymin, <span class="at">lower =</span> Q1, <span class="at">middle =</span> Median,</span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>                             <span class="at">upper =</span> Q3, <span class="at">ymax =</span> ymax)) <span class="sc">+</span></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">width =</span> .<span class="dv">5</span>, <span class="at">fill =</span> <span class="st">"#B6D2E2"</span>, <span class="at">colour =</span> <span class="st">"#394B58"</span>) <span class="sc">+</span></span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> flagged, <span class="fu">aes</span>(<span class="at">x =</span> Group, <span class="at">y =</span> Price), <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>             <span class="at">colour =</span> <span class="st">"#B47816"</span>, <span class="at">size =</span> <span class="fl">2.4</span>) <span class="sc">+</span></span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Compare center and spread together"</span>, <span class="at">x =</span> <span class="st">"Quality rating"</span>, <span class="at">y =</span> <span class="st">"Meal price (USD)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-restaurant-consistent-boxplots" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Restaurant price boxplots show increasing median prices from Good to Very Good to Excellent, with overlapping price distributions.">
@@ -1705,7 +1747,7 @@ Figure&nbsp;4: Original R boxplots. Quartiles and fences are explicitly calculat
 <li><p><a href="../../data/module02/descriptive-statistics-data.zip">CSV bundle and data guide</a>.</p></li>
 <li><p>Anderson et al.&nbsp;(2020), <em>Essentials of Modern Business Statistics with Microsoft Excel</em>, 8th ed.: §3.1, pp.105–115; §3.2, pp.121–126; z-scores in §3.3, p.131; five-number summaries and boxplots, §3.4, pp.138–140.</p></li>
 <li><p>Audit values match all 20 printed observations in Table 2.4. Restaurant matches the first ten printed rows and all twelve crosstab cells in Tables 2.9–2.10; remaining individual rows are not printed for comparison. The numerical summaries and figures here are original course calculations from these checked CSVs, not claims that each output is printed in Chapter 3.</p></li>
-<li><p>Instructor-provided <em>Part 1 Descriptive Statistics</em> slides 38 and 44–47: extreme dollar value, equal means with different spreads, and the progression from range to absolute and squared deviations. Adapted explanations and tables; the A/B equal-range comparison is an original course illustration. <a href="../../data/module02/measure-limitations-source-notes.md">Example data and provenance</a>.</p></li>
+<li><p>Instructor-provided <em>01-descriptive-statistics.pdf</em>, pp.51 and 60–63 (original <em>Part 1 Descriptive Statistics</em> deck slides 38 and 44–47): extreme dollar value, equal means with different spreads, range sensitivity, and absolute and squared deviations. Adapted explanations and tables; the A/B equal-range comparison is an original course illustration. <a href="../../data/module02/measure-limitations-source-notes.md">Example data and provenance</a>.</p></li>
 </ul>
 
 
