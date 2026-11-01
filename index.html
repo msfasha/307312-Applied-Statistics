@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Applied Statistics – 307312 Applied Statistics</title>
+<title>307312 Applied Statistics – 307312 Applied Statistics - Masters Level</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,7 +36,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./modules/01-introduction-to-r/index.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -46,13 +45,13 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-62e6625b6169047f1a4e994301008616.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-c7a393886973d9d6f2e7b6f56bf6c419.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -77,423 +76,61 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="assets/petra-brand.css">
+<link rel="stylesheet" href="assets/source-slides.css">
 </head>
 
-<body class="nav-sidebar docked quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Student home — all materials</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">307312 Applied Statistics - Masters Level</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Course</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./modules/01-introduction-to-r/index.html"> 
+<span class="menu-text">Part 1: Introduction to R</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./02-descriptive-statistics.html"> 
+<span class="menu-text">Part 2: Descriptive statistics</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./03-inferential-statistics.html"> 
+<span class="menu-text">Part 3: Inferential statistics</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">307312 Applied Statistics</a> 
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Student home — all materials</span></a>
-  </div>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Module 1: Introduction to R</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/01-introduction-to-r/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Overview</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/01-introduction-to-r/01-r-and-rstudio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">1. R and RStudio</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/01-introduction-to-r/02-basic-concepts.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2. Basic concepts in R</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/01-introduction-to-r/03-dplyr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">3. Data manipulation with dplyr</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/01-introduction-to-r/04-ggplot2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">4. Visualization with ggplot2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/01-introduction-to-r/exercises/02-basic-concepts.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice: basic concepts</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/01-introduction-to-r/exercises/03-dplyr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice: dplyr</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/01-introduction-to-r/exercises/04-ggplot2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice: ggplot2</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Module 2: Data and descriptive statistics</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/02-data-and-descriptive-statistics/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Overview</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/02-data-and-descriptive-statistics/01-data-types-and-toolbox.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">1. Data types and descriptive toolbox</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/02-data-and-descriptive-statistics/exercises/01-data-types-and-toolbox.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice: data types and toolbox</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/02-data-and-descriptive-statistics/02-frequency-tables-and-charts.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2. Frequency tables and charts</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/02-data-and-descriptive-statistics/exercises/02-frequency-tables-and-charts.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice: frequency tables and charts</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/02-data-and-descriptive-statistics/03-numerical-measures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">3. Numerical measures</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/02-data-and-descriptive-statistics/exercises/03-numerical-measures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice: numerical measures</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/02-data-and-descriptive-statistics/04-relationships-between-variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">4. Relationships between variables</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/02-data-and-descriptive-statistics/exercises/04-relationships-between-variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice: relationships between variables</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/02-data-and-descriptive-statistics/05-descriptive-statistics-review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Integrated descriptive statistics review</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Module 3: Probability and distributions</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/03-probability-and-distributions/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Overview</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/03-probability-and-distributions/01-probability-rules.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">1. Probability rules</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/03-probability-and-distributions/exercises/01-probability-rules.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice: probability rules</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/03-probability-and-distributions/02-conditional-probability.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2. Conditional probability</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/03-probability-and-distributions/exercises/02-conditional-probability.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice: conditional probability</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/03-probability-and-distributions/03-discrete-random-variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">3. Discrete random variables</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/03-probability-and-distributions/exercises/03-discrete-random-variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice: discrete random variables</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/03-probability-and-distributions/04-binomial-and-poisson.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">4. Binomial and Poisson models</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/03-probability-and-distributions/exercises/04-binomial-and-poisson.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice: binomial and poisson models</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/03-probability-and-distributions/05-continuous-distributions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">5. Continuous distributions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/03-probability-and-distributions/exercises/05-continuous-distributions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice: continuous distributions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/03-probability-and-distributions/06-probability-and-distributions-review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Integrated probability and distributions review</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Module 4: Sampling and estimation</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/04-sampling-and-estimation/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Overview</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/04-sampling-and-estimation/01-sampling-and-variability.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">1. Sampling and variability</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/04-sampling-and-estimation/exercises/01-sampling-and-variability.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice: sampling and variability</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/04-sampling-and-estimation/02-sampling-distributions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2. Sampling distributions and standard errors</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/04-sampling-and-estimation/exercises/02-sampling-distributions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice: sampling distributions and standard errors</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/04-sampling-and-estimation/03-confidence-intervals-for-means.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">3. Confidence intervals for means</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/04-sampling-and-estimation/exercises/03-confidence-intervals-for-means.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice: confidence intervals for means</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/04-sampling-and-estimation/04-proportions-and-sample-size.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">4. Proportions and sample-size planning</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/04-sampling-and-estimation/exercises/04-proportions-and-sample-size.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice: proportions and sample-size planning</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/04-sampling-and-estimation/05-sampling-and-estimation-review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Integrated sampling and estimation review</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Module 5: Hypothesis testing and group comparisons</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/05-hypothesis-testing/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Overview</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/05-hypothesis-testing/01-hypothesis-testing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Existing lesson: hypothesis testing</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">Module 6: Regression</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/06-regression/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Overview</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
- <span class="menu-text">Module 7: Forecasting and applied analysis</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modules/07-forecasting-and-applications/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Overview</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./resources/book-chapters/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Book chapters</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./resources/downloads.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">PDFs and reduced review</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./resources/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data and course resources</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#start-here" id="toc-start-here" class="nav-link active" data-scroll-target="#start-here">Start here</a></li>
-  <li><a href="#browse-or-download" id="toc-browse-or-download" class="nav-link" data-scroll-target="#browse-or-download">Browse or download</a></li>
-  <li><a href="#earlier-lecture-slides" id="toc-earlier-lecture-slides" class="nav-link" data-scroll-target="#earlier-lecture-slides">Earlier lecture slides</a></li>
-  <li><a href="#course-modules" id="toc-course-modules" class="nav-link" data-scroll-target="#course-modules">Course modules</a></li>
-  <li><a href="#how-each-module-works" id="toc-how-each-module-works" class="nav-link" data-scroll-target="#how-each-module-works">How each module works</a></li>
-  <li><a href="#reference-and-supporting-material" id="toc-reference-and-supporting-material" class="nav-link" data-scroll-target="#reference-and-supporting-material">Reference and supporting material</a></li>
+  <li><a href="#part-1-introduction-to-r" id="toc-part-1-introduction-to-r" class="nav-link active" data-scroll-target="#part-1-introduction-to-r">Part 1: Introduction to R</a></li>
+  <li><a href="#part-2-descriptive-statistics" id="toc-part-2-descriptive-statistics" class="nav-link" data-scroll-target="#part-2-descriptive-statistics">Part 2: Descriptive Statistics</a></li>
+  <li><a href="#part-3-inferential-statistics" id="toc-part-3-inferential-statistics" class="nav-link" data-scroll-target="#part-3-inferential-statistics">Part 3: Inferential Statistics</a></li>
   </ul>
 </nav>
     </div>
@@ -502,8 +139,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Applied Statistics</h1>
-<p class="subtitle lead">307312 | University of Petra</p>
+<h1 class="title">307312 Applied Statistics</h1>
+<p class="subtitle lead">Masters Level</p>
 </div>
 
 
@@ -520,135 +157,18 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="start-here" class="level2">
-<h2 class="anchored" data-anchor-id="start-here">Start here</h2>
-<p>Work through the seven numbered <strong>topic modules</strong> below. The 8th-edition textbook supports the statistical topics, with reproducible R analyses in Quarto.</p>
-<p><strong>Start with <a href="./modules/01-introduction-to-r/index.html">Module 1: Introduction to R</a>.</strong> <strong>Module 2</strong> now begins with data types, measurement levels, and the descriptive statistics toolbox.</p>
+<section id="part-1-introduction-to-r" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-introduction-to-r">Part 1: Introduction to R</h2>
+<p><a href="./modules/01-introduction-to-r/index.html">Open the R introduction</a></p>
 </section>
-<section id="browse-or-download" class="level2">
-<h2 class="anchored" data-anchor-id="browse-or-download">Browse or download</h2>
-<p>Choose a format below, or start a module in the table. HTML and PDF contain the same course lessons; Quarto is their editable source. Reduced review materials and supplied book guides are supplementary.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Material</th>
-<th>Browse</th>
-<th>Download ZIP</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Site / HTML lessons</strong></td>
-<td>Choose a module below</td>
-<td><a href="https://msfasha.github.io/307312-Applied-Statistics/downloads/applied-statistics-website.zip">HTML website</a></td>
-</tr>
-<tr class="even">
-<td><strong>PDF versions</strong></td>
-<td><a href="./resources/downloads.html">PDFs by module</a></td>
-<td><a href="https://msfasha.github.io/307312-Applied-Statistics/downloads/applied-statistics-student-pdfs.zip">Complete PDF bundle</a></td>
-</tr>
-<tr class="odd">
-<td><strong>Quarto / RStudio project</strong></td>
-<td>—</td>
-<td><a href="https://msfasha.github.io/307312-Applied-Statistics/downloads/applied-statistics-rstudio-project.zip">Sources, CSVs and setup instructions</a></td>
-</tr>
-<tr class="even">
-<td><strong>Flashcards — Reduced Version</strong></td>
-<td><a href="./resources/downloads.html">Reduced slides and recall cards</a></td>
-<td><a href="https://msfasha.github.io/307312-Applied-Statistics/downloads/applied-statistics-reduced-review.zip">Reduced review PDFs</a></td>
-</tr>
-<tr class="odd">
-<td><strong>Book Chapters</strong></td>
-<td><a href="./resources/book-chapters/index.html">Supplied chapter guides</a></td>
-<td><a href="https://msfasha.github.io/307312-Applied-Statistics/downloads/applied-statistics-book-chapters.zip">Chapter guides</a></td>
-</tr>
-</tbody>
-</table>
-<p><a href="./resources/index.html#teaching-datasets">Teaching data and source notes</a> are also available separately and included in the course downloads.</p>
+<section id="part-2-descriptive-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-descriptive-statistics">Part 2: Descriptive Statistics</h2>
+<p><a href="./02-descriptive-statistics.html">Open descriptive statistics</a></p>
 </section>
-<section id="earlier-lecture-slides" class="level2">
-<h2 class="anchored" data-anchor-id="earlier-lecture-slides">Earlier lecture slides</h2>
-<p>These earlier lecture decks are supplementary references, with their original Excel examples and the descriptive deck’s R examples.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Topic</th>
-<th>PDF</th>
-<th>PowerPoint</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Descriptive statistics</td>
-<td><a href="https://msfasha.github.io/307312-Applied-Statistics/reference-slides/01-descriptive-statistics.pdf">View PDF</a></td>
-<td><a href="https://msfasha.github.io/307312-Applied-Statistics/reference-slides/01-descriptive-statistics.pptx">Download PowerPoint</a></td>
-</tr>
-<tr class="even">
-<td>Inferential statistics</td>
-<td><a href="https://msfasha.github.io/307312-Applied-Statistics/reference-slides/02-inferential-statistics.pdf">View PDF</a></td>
-<td><a href="https://msfasha.github.io/307312-Applied-Statistics/reference-slides/02-inferential-statistics.pptx">Download PowerPoint</a></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="course-modules" class="level2">
-<h2 class="anchored" data-anchor-id="course-modules">Course modules</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Module</th>
-<th>Topic</th>
-<th>Current material</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td><a href="./modules/01-introduction-to-r/index.html">Introduction to R</a></td>
-<td>Four lessons and practice</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td><a href="./modules/02-data-and-descriptive-statistics/index.html">Data and descriptive statistics</a></td>
-<td>Lessons 1–4, practice, and integrated review available</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td><a href="./modules/03-probability-and-distributions/index.html">Probability and distributions</a></td>
-<td>Five lessons, practice, and integrated review available</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td><a href="./modules/04-sampling-and-estimation/index.html">Sampling and estimation</a></td>
-<td>Four lessons, practice, and integrated review available</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td><a href="./modules/05-hypothesis-testing/index.html">Hypothesis testing and group comparisons</a></td>
-<td>Existing lesson; expansion planned</td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td><a href="./modules/06-regression/index.html">Regression</a></td>
-<td>Planned</td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td><a href="./modules/07-forecasting-and-applications/index.html">Forecasting and applied analysis</a></td>
-<td>Planned</td>
-</tr>
-</tbody>
-</table>
-<p>“Existing” means carried over from the previous course materials. “Planned” means a topic has been reserved in the course sequence, but its lessons have not yet been written.</p>
-</section>
-<section id="how-each-module-works" class="level2">
-<h2 class="anchored" data-anchor-id="how-each-module-works">How each module works</h2>
-<p>Each module has a clear starting page, lessons, and student exercises where available. Instructor solutions and course-planning notes are stored separately. Readings and data sources appear inside the relevant lesson.</p>
-</section>
-<section id="reference-and-supporting-material" class="level2">
-<h2 class="anchored" data-anchor-id="reference-and-supporting-material">Reference and supporting material</h2>
-<p>Our main statistical reference is <em>Essentials of Modern Business Statistics with Microsoft Excel</em>, <strong>8th edition</strong> (2020). We analyze data in <strong>R</strong> and write reproducible reports in <strong>Quarto</strong>.</p>
-<p><a href="./resources/index.html">Data and course resources</a> provides dataset downloads and provenance guidance.</p>
+<section id="part-3-inferential-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="part-3-inferential-statistics">Part 3: Inferential Statistics</h2>
+<p><a href="./03-inferential-statistics.html">Open inferential statistics</a></p>
+<p>Probability distributions, estimation, hypothesis testing, and regression.</p>
 
 
 </section>
@@ -1054,15 +574,6 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./modules/01-introduction-to-r/index.html" class="pagination-link" aria-label="Overview">
-        <span class="nav-page-text">Overview</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 
