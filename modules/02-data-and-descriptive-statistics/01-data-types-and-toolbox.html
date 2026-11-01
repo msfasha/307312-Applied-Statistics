@@ -656,39 +656,53 @@ window.Quarto = {
 <li>The variables include an identifier, a quality rating, and a meal price.</li>
 <li>One row contains one restaurant’s recorded values; one column contains one variable.</li>
 </ul>
+<p><a href="../../data/module02/restaurant_ratings.csv">Download the Restaurant CSV</a>. Run from the course RStudio project; each row is one restaurant.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library() loads ggplot2 for charts and knitr for table formatting.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># read.csv() reads the checked Restaurant teaching CSV.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># factor()/c() retain the ordered ratings; levels fixes the category order.</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>restaurants <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/module02/restaurant_ratings.csv"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>restaurants<span class="sc">$</span>quality_rating <span class="ot">&lt;-</span> <span class="fu">factor</span>(restaurants<span class="sc">$</span>quality_rating,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Good"</span>, <span class="st">"Very Good"</span>, <span class="st">"Excellent"</span>), <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
-<th style="text-align: left;">Restaurant ID</th>
+<th style="text-align: right;">Restaurant ID</th>
 <th style="text-align: left;">Quality rating</th>
 <th style="text-align: right;">Meal price (USD)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">1</td>
+<td style="text-align: right;">1</td>
 <td style="text-align: left;">Good</td>
 <td style="text-align: right;">18</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">2</td>
+<td style="text-align: right;">2</td>
 <td style="text-align: left;">Very Good</td>
 <td style="text-align: right;">22</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">3</td>
+<td style="text-align: right;">3</td>
 <td style="text-align: left;">Good</td>
 <td style="text-align: right;">28</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">4</td>
+<td style="text-align: right;">4</td>
 <td style="text-align: left;">Excellent</td>
 <td style="text-align: right;">38</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">5</td>
+<td style="text-align: right;">5</td>
 <td style="text-align: left;">Very Good</td>
 <td style="text-align: right;">33</td>
 </tr>
@@ -967,17 +981,15 @@ window.Quarto = {
 <div class="cell">
 <details class="code-fold">
 <summary>Show R code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as.data.frame(): converts an object to a rectangular data frame.</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># names(): reads or assigns names to vector elements or table columns.</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># table() counts restaurants in each ordered quality category.</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Divide counts by nrow(restaurants) to obtain proportions; kable() displays them.</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>quality_table <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">table</span>(restaurants<span class="sc">$</span>quality_rating))</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(quality_table) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Quality"</span>, <span class="st">"Frequency"</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>quality_table<span class="sc">$</span>Relative_frequency <span class="ot">&lt;-</span> quality_table<span class="sc">$</span>Frequency <span class="sc">/</span> <span class="fu">nrow</span>(restaurants)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>quality_table<span class="sc">$</span>Percent <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="sc">*</span> quality_table<span class="sc">$</span>Relative_frequency</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(quality_table, <span class="at">digits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>),</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Quality"</span>, <span class="st">"Frequency"</span>, <span class="st">"Relative frequency"</span>, <span class="st">"Percent"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># table() counts the ordered ratings; as.data.frame() creates a table.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># names()/c() label columns; nrow() gives the 300-restaurant percentage denominator.</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># kable() displays the frequencies, proportions, and percentages; digits sets precision.</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>quality_table <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">table</span>(restaurants<span class="sc">$</span>quality_rating))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(quality_table) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Quality"</span>, <span class="st">"Frequency"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>quality_table<span class="sc">$</span>Relative_frequency <span class="ot">&lt;-</span> quality_table<span class="sc">$</span>Frequency <span class="sc">/</span> <span class="fu">nrow</span>(restaurants)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>quality_table<span class="sc">$</span>Percent <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="sc">*</span> quality_table<span class="sc">$</span>Relative_frequency</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(quality_table, <span class="at">digits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>),</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Quality"</span>, <span class="st">"Frequency"</span>, <span class="st">"Relative frequency"</span>, <span class="st">"Percent"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -1021,22 +1033,35 @@ window.Quarto = {
 <div class="case-narration" lang="ar" dir="rtl">
 <p>يريد مدير التدقيق معرفة المدة التي تستغرقها عمليات التدقيق ومدى تفاوت هذه المدد. نستخدم بيانات المدة المسجّلة لعشرين عملية تدقيق، مقيسة بالأيام، لوصف توزيعها.</p>
 </div>
+<p><a href="../../data/module02/audit_times.csv">Download the Audit CSV</a>. Its 20 durations match the book’s Table 2.4.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show R code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># names(): reads or assigns names to vector elements or table columns.</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># identical(): requires exact equality of values, types, and attributes.</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># cut() groups days using boundaries 10, 15, ..., 35 from seq(10,35,5).</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># right = FALSE includes the lower endpoint: [10,15), [15,20), and so on.</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># table() counts each class; as.data.frame() makes the counts into columns.</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># stopifnot() checks the expected counts; kable() displays a readable table.</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>classes <span class="ot">&lt;-</span> <span class="fu">cut</span>(audit<span class="sc">$</span>audit_days, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">10</span>,<span class="dv">35</span>,<span class="dv">5</span>), <span class="at">right =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>audit_frequency <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">table</span>(classes))</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(audit_frequency) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Audit_days"</span>, <span class="st">"Frequency"</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">identical</span>(audit_frequency<span class="sc">$</span>Frequency, <span class="fu">c</span>(<span class="dv">4</span>L,<span class="dv">8</span>L,<span class="dv">5</span>L,<span class="dv">2</span>L,<span class="dv">1</span>L)))</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(audit_frequency, <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Audit duration class (days)"</span>, <span class="st">"Frequency"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library() loads ggplot2 for charts and knitr for table formatting.</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># read.csv() loads the checked Audit CSV; $ selects its audit_days column.</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># x is the vector of 20 durations in days, not class midpoints.</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>audit <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/module02/audit_times.csv"</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> audit<span class="sc">$</span>audit_days</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># names(): reads or assigns names to vector elements or table columns.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># stopifnot(): stops execution if any supplied condition is FALSE; successful checks produce no output.</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># identical(): requires exact equality of values, types, and attributes.</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># cut() groups days using boundaries 10, 15, ..., 35 from seq(10,35,5).</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># right = FALSE includes the lower endpoint: [10,15), [15,20), and so on.</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># table() counts each class; as.data.frame() makes the counts into columns.</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># stopifnot() checks the expected counts; kable() displays a readable table.</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>classes <span class="ot">&lt;-</span> <span class="fu">cut</span>(audit<span class="sc">$</span>audit_days, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">10</span>,<span class="dv">35</span>,<span class="dv">5</span>), <span class="at">right =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>audit_frequency <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">table</span>(classes))</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(audit_frequency) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Audit_days"</span>, <span class="st">"Frequency"</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">identical</span>(audit_frequency<span class="sc">$</span>Frequency, <span class="fu">c</span>(<span class="dv">4</span>L,<span class="dv">8</span>L,<span class="dv">5</span>L,<span class="dv">2</span>L,<span class="dv">1</span>L)))</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(audit_frequency, <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Audit duration class (days)"</span>, <span class="st">"Frequency"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -1127,18 +1152,15 @@ window.Quarto = {
 <div class="cell">
 <details class="code-fold">
 <summary>Show R code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(): starts a plot from data; additional layers are joined with +.</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># labs(): sets axis titles, legend titles, plot titles, and captions.</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_col() uses the frequencies already calculated in quality_table.</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># aes() maps categories and counts to axes; geom_text() adds the count labels.</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(quality_table, <span class="fu">aes</span>(Quality, Frequency)) <span class="sc">+</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#2878A5"</span>, <span class="at">width =</span> .<span class="dv">65</span>) <span class="sc">+</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> Frequency), <span class="at">vjust =</span> <span class="sc">-</span>.<span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">170</span>)) <span class="sc">+</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Very Good is the most common quality category"</span>,</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Quality rating"</span>, <span class="at">y =</span> <span class="st">"Number of restaurants"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot()/aes() map categories and existing counts; geom_col() draws their heights.</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_text() labels counts; vjust moves labels and width controls bar width.</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># scale_y_continuous()/c() set a zero baseline; labs() labels the axes and title.</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(quality_table, <span class="fu">aes</span>(Quality, Frequency)) <span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#2878A5"</span>, <span class="at">width =</span> .<span class="dv">65</span>) <span class="sc">+</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> Frequency), <span class="at">vjust =</span> <span class="sc">-</span>.<span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">170</span>)) <span class="sc">+</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Very Good is the most common quality category"</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Quality rating"</span>, <span class="at">y =</span> <span class="st">"Number of restaurants"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-quality-bar" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An ordered bar chart shows Good 84, Very Good 150, and Excellent 66 restaurants.">
@@ -1166,19 +1188,15 @@ Figure&nbsp;1: Original R chart from the checked Restaurant workbook. Counts agr
 <div class="cell">
 <details class="code-fold">
 <summary>Show R code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(): starts a plot from data; additional layers are joined with +.</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># aes(): maps variables to visual properties such as x, y, fill, color, or group.</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># scale_x_continuous(): controls numeric x-axis breaks, labels, limits, and spacing.</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># labs(): sets axis titles, legend titles, plot titles, and captions.</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_histogram() counts raw audit durations within the supplied boundaries.</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># closed = "left" includes each lower endpoint and excludes its upper endpoint.</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(audit, <span class="fu">aes</span>(audit_days)) <span class="sc">+</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">10</span>,<span class="dv">35</span>,<span class="dv">5</span>), <span class="at">closed =</span> <span class="st">"left"</span>,</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> <span class="st">"#2878A5"</span>, <span class="at">colour =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">10</span>,<span class="dv">35</span>,<span class="dv">5</span>)) <span class="sc">+</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Most audits finish in the lower duration classes"</span>,</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Audit duration (days)"</span>, <span class="at">y =</span> <span class="st">"Number of audits"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot()/aes() map raw days; geom_histogram() counts them into seq() boundaries.</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># closed = "left" includes lower endpoints; scale_x_continuous() marks boundaries.</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># labs() labels the days and counts; fill/colour distinguish adjacent bars.</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(audit, <span class="fu">aes</span>(audit_days)) <span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">10</span>,<span class="dv">35</span>,<span class="dv">5</span>), <span class="at">closed =</span> <span class="st">"left"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> <span class="st">"#2878A5"</span>, <span class="at">colour =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">10</span>,<span class="dv">35</span>,<span class="dv">5</span>)) <span class="sc">+</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Most audits finish in the lower duration classes"</span>,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Audit duration (days)"</span>, <span class="at">y =</span> <span class="st">"Number of audits"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-audit-histogram" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A histogram of twenty audit durations has its tallest bar from fifteen to under twenty days, and a longer tail toward thirty-three days.">
@@ -1254,27 +1272,27 @@ Figure&nbsp;2: Original R histogram. The class frequencies are 4, 8, 5, 2, and 1
 <div class="cell">
 <details class="code-fold">
 <summary>Show R code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># length(): counts elements in a vector or list.</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># min(): returns the smallest supplied value.</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># max(): returns the largest supplied value.</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># diff(): subtracts each preceding value from the next by default; diff(range(x)) gives max minus min.</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># range(): returns the minimum and maximum as a two-element vector.</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># var(): computes sample variance using denominator n-1.</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># quantile(..., type = 6) calculates quartiles using our stated book convention.</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># mean(), median(), sd(), and the quartiles summarize different distribution features.</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> audit<span class="sc">$</span>audit_days</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>quartiles <span class="ot">&lt;-</span> <span class="fu">quantile</span>(x, <span class="fu">c</span>(.<span class="dv">25</span>,.<span class="dv">50</span>,.<span class="dv">75</span>), <span class="at">type =</span> <span class="dv">6</span>, <span class="at">names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>summary_table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">Measure =</span> <span class="fu">c</span>(<span class="st">"Observations"</span>, <span class="st">"Mean (days)"</span>, <span class="st">"Median (days)"</span>,</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>              <span class="st">"Minimum (days)"</span>, <span class="st">"Maximum (days)"</span>, <span class="st">"Range (days)"</span>,</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>              <span class="st">"Q1 (days)"</span>, <span class="st">"Q3 (days)"</span>, <span class="st">"IQR (days)"</span>,</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>              <span class="st">"Sample variance (days squared)"</span>, <span class="st">"Sample SD (days)"</span>),</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">Value =</span> <span class="fu">c</span>(<span class="fu">length</span>(x), <span class="fu">mean</span>(x), <span class="fu">median</span>(x), <span class="fu">min</span>(x), <span class="fu">max</span>(x), <span class="fu">diff</span>(<span class="fu">range</span>(x)),</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>            quartiles[<span class="dv">1</span>], quartiles[<span class="dv">3</span>], <span class="fu">diff</span>(quartiles[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]), <span class="fu">var</span>(x), <span class="fu">sd</span>(x)))</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(summary_table, <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># length(): counts elements in a vector or list.</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># min(): returns the smallest supplied value.</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># max(): returns the largest supplied value.</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># diff(): subtracts each preceding value from the next by default; diff(range(x)) gives max minus min.</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># range(): returns the minimum and maximum as a two-element vector.</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># var(): computes sample variance using denominator n-1.</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># quantile(..., type = 6) calculates quartiles using our stated book convention.</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># mean(), median(), sd(), and the quartiles summarize different distribution features.</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> audit<span class="sc">$</span>audit_days</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>quartiles <span class="ot">&lt;-</span> <span class="fu">quantile</span>(x, <span class="fu">c</span>(.<span class="dv">25</span>,.<span class="dv">50</span>,.<span class="dv">75</span>), <span class="at">type =</span> <span class="dv">6</span>, <span class="at">names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>summary_table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">Measure =</span> <span class="fu">c</span>(<span class="st">"Observations"</span>, <span class="st">"Mean (days)"</span>, <span class="st">"Median (days)"</span>,</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>              <span class="st">"Minimum (days)"</span>, <span class="st">"Maximum (days)"</span>, <span class="st">"Range (days)"</span>,</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>              <span class="st">"Q1 (days)"</span>, <span class="st">"Q3 (days)"</span>, <span class="st">"IQR (days)"</span>,</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>              <span class="st">"Sample variance (days squared)"</span>, <span class="st">"Sample SD (days)"</span>),</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">Value =</span> <span class="fu">c</span>(<span class="fu">length</span>(x), <span class="fu">mean</span>(x), <span class="fu">median</span>(x), <span class="fu">min</span>(x), <span class="fu">max</span>(x), <span class="fu">diff</span>(<span class="fu">range</span>(x)),</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>            quartiles[<span class="dv">1</span>], quartiles[<span class="dv">3</span>], <span class="fu">diff</span>(quartiles[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]), <span class="fu">var</span>(x), <span class="fu">sd</span>(x)))</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(summary_table, <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -1350,6 +1368,17 @@ Figure&nbsp;2: Original R histogram. The class frequencies are 4, 8, 5, 2, and 1
 </div>
 </div>
 </div>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># quantile() calculates the probabilities supplied by c() from audit-day vector x.</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># type = 6 matches the book here; names = FALSE omits percentile labels.</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(x, <span class="fu">c</span>(.<span class="dv">25</span>, .<span class="dv">50</span>, .<span class="dv">75</span>), <span class="at">type =</span> <span class="dv">6</span>, <span class="at">names =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15 18 22</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="combine-the-tools-to-answer-the-business-question" class="level2">
@@ -1358,24 +1387,24 @@ Figure&nbsp;2: Original R histogram. The class frequencies are 4, 8, 5, 2, and 1
 <div class="cell">
 <details class="code-fold">
 <summary>Show R code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># names(): reads or assigns names to vector elements or table columns.</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># quantile(): computes sample percentiles; probs gives probabilities and type selects the interpolation rule.</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># length(): counts elements in a vector or list.</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># median(): returns the middle sorted value, averaging the middle pair for even sample sizes.</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># split() separates meal prices by rating while retaining the original values.</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># lapply() summarizes each group; do.call(rbind, ...) combines the summary rows.</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>price_by_quality <span class="ot">&lt;-</span> <span class="fu">split</span>(restaurants<span class="sc">$</span>meal_price_usd, restaurants<span class="sc">$</span>quality_rating)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>group_summary <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, <span class="fu">lapply</span>(<span class="fu">names</span>(price_by_quality), <span class="cf">function</span>(group) {</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  prices <span class="ot">&lt;-</span> price_by_quality[[group]]</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  q <span class="ot">&lt;-</span> <span class="fu">quantile</span>(prices, <span class="fu">c</span>(.<span class="dv">25</span>,.<span class="dv">75</span>), <span class="at">type =</span> <span class="dv">6</span>, <span class="at">names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">Quality =</span> group, <span class="at">Restaurants =</span> <span class="fu">length</span>(prices),</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>             <span class="at">Median_USD =</span> <span class="fu">median</span>(prices), <span class="at">Q1_USD =</span> q[<span class="dv">1</span>], <span class="at">Q3_USD =</span> q[<span class="dv">2</span>],</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">IQR_USD =</span> q[<span class="dv">2</span>]<span class="sc">-</span>q[<span class="dv">1</span>])</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>}))</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(group_summary, <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># names(): reads or assigns names to vector elements or table columns.</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># quantile(): computes sample percentiles; probs gives probabilities and type selects the interpolation rule.</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># c(): combines values into a vector, converting them to a common type when needed.</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># data.frame(): builds a table whose named columns have compatible lengths.</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># length(): counts elements in a vector or list.</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># median(): returns the middle sorted value, averaging the middle pair for even sample sizes.</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># split() separates meal prices by rating while retaining the original values.</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># lapply() summarizes each group; do.call(rbind, ...) combines the summary rows.</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>price_by_quality <span class="ot">&lt;-</span> <span class="fu">split</span>(restaurants<span class="sc">$</span>meal_price_usd, restaurants<span class="sc">$</span>quality_rating)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>group_summary <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, <span class="fu">lapply</span>(<span class="fu">names</span>(price_by_quality), <span class="cf">function</span>(group) {</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  prices <span class="ot">&lt;-</span> price_by_quality[[group]]</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  q <span class="ot">&lt;-</span> <span class="fu">quantile</span>(prices, <span class="fu">c</span>(.<span class="dv">25</span>,.<span class="dv">75</span>), <span class="at">type =</span> <span class="dv">6</span>, <span class="at">names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">Quality =</span> group, <span class="at">Restaurants =</span> <span class="fu">length</span>(prices),</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>             <span class="at">Median_USD =</span> <span class="fu">median</span>(prices), <span class="at">Q1_USD =</span> q[<span class="dv">1</span>], <span class="at">Q3_USD =</span> q[<span class="dv">2</span>],</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">IQR_USD =</span> q[<span class="dv">2</span>]<span class="sc">-</span>q[<span class="dv">1</span>])</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>}))</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(group_summary, <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -1421,15 +1450,15 @@ Figure&nbsp;2: Original R histogram. The class frequencies are 4, 8, 5, 2, and 1
 <div class="cell">
 <details class="code-fold">
 <summary>Show R code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(): starts a plot from data; additional layers are joined with +.</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># aes(): maps variables to visual properties such as x, y, fill, color, or group.</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># labs(): sets axis titles, legend titles, plot titles, and captions.</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_boxplot() compares the price distributions within quality categories.</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># This overview uses ggplot2 defaults; Lesson 3 constructs explicit type-6 boxplots.</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(restaurants, <span class="fu">aes</span>(quality_rating, meal_price_usd)) <span class="sc">+</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"#9DC7DE"</span>, <span class="at">colour =</span> <span class="st">"#303030"</span>, <span class="at">width =</span> .<span class="dv">55</span>) <span class="sc">+</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Compare price distributions, not just averages"</span>,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Quality rating"</span>, <span class="at">y =</span> <span class="st">"Meal price (USD)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(): starts a plot from data; additional layers are joined with +.</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># aes(): maps variables to visual properties such as x, y, fill, color, or group.</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># labs(): sets axis titles, legend titles, plot titles, and captions.</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_boxplot() compares the price distributions within quality categories.</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># This overview uses ggplot2 defaults; Lesson 3 constructs explicit type-6 boxplots.</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(restaurants, <span class="fu">aes</span>(quality_rating, meal_price_usd)) <span class="sc">+</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"#9DC7DE"</span>, <span class="at">colour =</span> <span class="st">"#303030"</span>, <span class="at">width =</span> .<span class="dv">55</span>) <span class="sc">+</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Compare price distributions, not just averages"</span>,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Quality rating"</span>, <span class="at">y =</span> <span class="st">"Meal price (USD)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-price-boxplot" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Side-by-side meal-price boxplots preserve the order Good, Very Good, Excellent and allow their medians and spreads to be compared.">
@@ -1453,15 +1482,25 @@ Figure&nbsp;3: Original R boxplots from the checked Restaurant data. Dots outsid
 <div class="cell">
 <details class="code-fold">
 <summary>Show R code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(): starts a plot from data; additional layers are joined with +.</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># scale_x_continuous(): controls numeric x-axis breaks, labels, limits, and spacing.</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_point() draws one paired commercials-sales observation per week.</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># aes() maps the two numerical variables; labs() states sales in hundreds of USD.</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(electronics, <span class="fu">aes</span>(commercials, sales_hundreds_usd)) <span class="sc">+</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">colour =</span> <span class="st">"#2878A5"</span>) <span class="sc">+</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">+</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"More commercials tend to accompany higher sales"</span>,</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Number of commercials"</span>, <span class="at">y =</span> <span class="st">"Weekly sales (hundreds of USD)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library() loads ggplot2 for charts.</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># read.csv() loads the checked Electronics CSV, matched to the Stereo workbook.</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Keep each week's pair together; sales_hundreds_usd is measured in hundreds of USD.</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>electronics <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/module02/electronics_sales.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(): starts a plot from data; additional layers are joined with +.</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># scale_x_continuous(): controls numeric x-axis breaks, labels, limits, and spacing.</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_point() draws one paired commercials-sales observation per week.</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># aes() maps the two numerical variables; labs() states sales in hundreds of USD.</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(electronics, <span class="fu">aes</span>(commercials, sales_hundreds_usd)) <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">colour =</span> <span class="st">"#2878A5"</span>) <span class="sc">+</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"More commercials tend to accompany higher sales"</span>,</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Number of commercials"</span>, <span class="at">y =</span> <span class="st">"Weekly sales (hundreds of USD)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-advertising-sales" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ten weekly observations show a positive relationship between the number of commercials and sales, with differing sales at the same number of commercials.">

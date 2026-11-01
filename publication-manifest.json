@@ -1,5 +1,5 @@
 {
-  "source_commit": "765c3c33b73318b53409343735f01ca99fb62513",
+  "source_commit": "9346cb4c496b8ce3d765d37e61e97f56a0370f80",
   "source_worktree_dirty": false,
   "student_pages": 48,
   "website": "https://msfasha.github.io/307312-Applied-Statistics/",
@@ -13,10 +13,10 @@
     "modules/01-introduction-to-r/exercises/03-dplyr.qmd": "b9526a84f64111dfb4070a41bc60c8a06f5b2b354e22d6369c1dc0b7d2f44a7d",
     "modules/01-introduction-to-r/exercises/04-ggplot2.qmd": "13fa34bdc2b104ab935c4eccc79c01bb0086774ce4999c4011b0a31d438fe57d",
     "modules/01-introduction-to-r/index.qmd": "16758c120887abb547690ff7ed724c7ec613256c472a9bc70065eb5ab9ae35c0",
-    "modules/02-data-and-descriptive-statistics/01-data-types-and-toolbox.qmd": "d9710b501378b14e820c336954e8d100bc36dc30daac16e360db549e4f8de459",
-    "modules/02-data-and-descriptive-statistics/02-frequency-tables-and-charts.qmd": "532483a0c3842137b7eb7e55e51acdeb73af4a53b6d0e6a960bf65326b7187e5",
-    "modules/02-data-and-descriptive-statistics/03-numerical-measures.qmd": "50cb9b4ad9f09738223ac7499a131868fa9fd453dde161ebb5c3bf39ee1aa42e",
-    "modules/02-data-and-descriptive-statistics/04-relationships-between-variables.qmd": "e672e4c575bdaa5bc672d9147d6d97a3cc740fec309f5c9819796772201e7770",
+    "modules/02-data-and-descriptive-statistics/01-data-types-and-toolbox.qmd": "aadd4fc81110f0d57371cde0108972fb82df3cb32459bd7d2f13a8b8b0291a5a",
+    "modules/02-data-and-descriptive-statistics/02-frequency-tables-and-charts.qmd": "e087313eaa6ab9af9934a7827ab25e59aa0e750ec5b1b8bde06991ab87328c51",
+    "modules/02-data-and-descriptive-statistics/03-numerical-measures.qmd": "e077b516722e90daa6cde30ccb385da5983e72476e7e48382691c765f29613fe",
+    "modules/02-data-and-descriptive-statistics/04-relationships-between-variables.qmd": "0d4eac2338599531af01bb5184111304f019e777c0ab597682959683a98a07ad",
     "modules/02-data-and-descriptive-statistics/05-descriptive-statistics-review.qmd": "b84f3868d1242929842430cb488b3d32628822be48a730c9bfdaee47bf597f34",
     "modules/02-data-and-descriptive-statistics/exercises/01-data-types-and-toolbox.qmd": "5c74f5b9c669afb7d38d38958fb17aa0d06a8dd7bd55fbe7690579d4fb66d735",
     "modules/02-data-and-descriptive-statistics/exercises/02-frequency-tables-and-charts.qmd": "1b342d94e4c9fbb412b82a60f6a87bedf0a51a00e80be5bbac5175770c45fb69",
@@ -54,9 +54,9 @@
     "resources/index.qmd": "2ed1e164569e289c6d76f9a31e191d4a4b2fc597be63dd562aaa313457e4a614"
   },
   "downloads": {
-    "applied-statistics-student-pdfs.zip": "5f1a53572bce5e6b2f662dbe03267670bd58929c151e57ae44ae55584c9acbb5",
-    "applied-statistics-rstudio-project.zip": "41d40386e3fe6e94750620a94e3088839902fb90e7d4cce6ed5c15977d7f082c",
-    "applied-statistics-website.zip": "df203f9fc30ac0b57e80b249c4b943bb8f693e88014cf595875b62cf881ae291"
+    "applied-statistics-student-pdfs.zip": "e51a72acd43dfa19223b0f10bc1efda290c125aa623fee5016260e31c64d6570",
+    "applied-statistics-rstudio-project.zip": "af2b18c139e0a339c657778c66c44068281c202b00fb65084990a13ba56de10b",
+    "applied-statistics-website.zip": "5b81bfda4dd249b96c267306f224d990cbe529399dbe38a65b5b14e8b58b9aa2"
   },
   "chapter_materials": {
     "book-chapters/basic-business-statistics-13e/chapter01-cards.json": "46c1d55f353db00cb8f1964407b31f98e506d08f6d6a52031973f58d215eab5d",
@@ -68,7 +68,7 @@
   "teaching_materials": {
     "module01-introduction-to-r.pdf": "c5185093472c99bc624b5e066d3cd0bd5751b412eec14bd6d94628acad67b8b4",
     "module01-introduction-to-r.pptx": "dafad7adc662d4d5fbbdc3002099b97c587230992a0d2a1d5e1ddfbbc949e185",
-    "module02-descriptive-statistics.pdf": "c3cbb11f7632e84cf7f21a9f22aa91ab6a01ee8b2ad901f979ced9df19dc04ae",
-    "module02-descriptive-statistics.pptx": "a2ef9b6f74cd0266d9c9c1fe6e6cabacdb18974d8cdd750567649cea3cb57dfb"
+    "module02-descriptive-statistics.pdf": "2ac36a8799d45293f88fee5ed53ef604e6365d1c717cce2a8492654d0e14d552",
+    "module02-descriptive-statistics.pptx": "4343c9339029e30c19ba2894c85991935834340205579a239ed674627743d796"
   }
 }
