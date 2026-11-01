@@ -9,6 +9,9 @@ def validate(site):
     required=['index.html','02-descriptive-statistics.html','03-inferential-statistics.html','modules/01-introduction-to-r/index.html']
     for name in required:
         if not (site/name).exists():raise RuntimeError('Missing generated page: '+name)
+    for name in ['paired_scores.csv','graduate_salaries.csv','female_major_salaries.csv','teaching_methods.csv','teaching_gender.csv','houses.csv']:
+        if not (site/'data/inferential-statistics'/name).exists():raise RuntimeError('Missing teaching CSV: '+name)
+    if not (site/'data/307102/students.csv').exists():raise RuntimeError('Missing descriptive teaching CSV')
     forbidden=[p for p in site.rglob('*') if p.is_file() and (any(t in p.relative_to(site).parts for t in ['_instructor','archived','books']) or p.suffix.lower() in ['.xlsx','.xls'])]
     if forbidden:raise RuntimeError('Local-only files in generated site: '+str(forbidden[:5]))
     infer=(site/'03-inferential-statistics.html').read_text()

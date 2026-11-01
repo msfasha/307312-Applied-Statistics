@@ -2,6 +2,10 @@ project:
   type: website
   output-dir: _preview
   execute-dir: project
+  resources:
+    - data/**/*.csv
+    - data/**/README.md
+    - data/**/provenance.json
   post-render:
     - python3 scripts/finalize-preview.py
   render:
