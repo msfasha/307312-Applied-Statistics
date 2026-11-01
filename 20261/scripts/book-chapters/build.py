@@ -16,7 +16,7 @@ for name,file in [('Sans','DejaVuSans.ttf'),('Bold','DejaVuSans-Bold.ttf')]:
  pdfmetrics.registerFont(TTFont(name,'/usr/share/fonts/truetype/dejavu/'+file))
 cards=json.loads((source/'chapter01-cards.json').read_text())
 c=canvas.Canvas(str(out/'chapter01-flashcards.pdf'),pagesize=(960,540))
-c.setTitle('Defining and Collecting Data: 50 Flashcards')
+c.setTitle(f'Chapter 1: {len(cards)} recall cards / {1+2*len(cards)} pages')
 def text(value,top,size=36,color='#2F343B',font='Sans'):
  c.setFillColor(HexColor(color)); c.setFont(font,size*.75)
  for i,line in enumerate(value.splitlines()):
@@ -27,7 +27,8 @@ def text(value,top,size=36,color='#2F343B',font='Sans'):
 def bg(color):
  c.setFillColor(HexColor(color)); c.rect(0,0,960,540,fill=1,stroke=0)
 bg('#F5EDF4');text('BASIC BUSINESS STATISTICS / 13TH EDITION',65,25)
-text('Defining and Collecting Data',170,50,'#493347','Bold');text('Chapter 1 / 50 flashcards',290,36)
+text('Defining and Collecting Data',170,50,'#493347','Bold');text(f'Chapter 1: {len(cards)} recall cards',290,36)
+text(f'{1+2*len(cards)} pages: cover + question and answer pages',350,24)
 text('Recall the answer, then advance one page.\nCompanion to the supplied chapter guide.',400,28);c.showPage()
 for i,card in enumerate(cards,1):
  for side in ['question','answer']:

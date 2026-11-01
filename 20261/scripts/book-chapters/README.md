@@ -21,7 +21,9 @@ Case introductions appear bilingually on the Book chapters page. Review cards re
 English conceptual content and case takeaways. Separate questionnaires/datasets were
 not attached and edition-specific page claims have not been independently verified.
 
-`materials.py` copies the original text, card data, PDF guide, flashcard PDF, and PPTX
+`materials.py` copies the original text, card data, PDF guide and flashcard PDF
 into the site, PDF bundle, and RStudio project. The publication manifest records their
 hashes and the packager verifies the PDF archive's copies against these current files.
 Follow `PUBLISHING.md` to rebuild the site, commit sources, and deploy `gh-pages`.
+
+Editable PPTX outputs are instructor-only and stay local.

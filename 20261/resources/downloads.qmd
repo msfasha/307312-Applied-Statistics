@@ -3,17 +3,11 @@ title: "Student Downloads"
 css: ../assets/petra-brand.css
 ---
 
-## Choose how to study
+All formats and ZIP downloads are listed on the **[student home page](../index.qmd)**.
 
-[Read the published course in your browser](https://msfasha.github.io/307312-Applied-Statistics/), or download the format that fits your work. These downloads are hosted with the course on GitHub Pages.
+## PDF versions
 
-| Download | What it contains | How to open it |
-|---|---|---|
-| [HTML website ZIP](https://msfasha.github.io/307312-Applied-Statistics/downloads/applied-statistics-website.zip) | Rendered student lessons, exercises, navigation, figures, and datasets | Extract the whole ZIP, then open `index.html` in a browser. Reading works offline; browser security may limit search when opened as a local file. |
-| [RStudio project ZIP](https://msfasha.github.io/307312-Applied-Statistics/downloads/applied-statistics-rstudio-project.zip) | `20261.Rproj`, lesson and exercise sources, CSV datasets, required assets, configuration, and setup instructions | Extract the whole ZIP, open `20261.Rproj` in RStudio, and follow its README. Run `setup.R` once to install packages. |
-| [PDF bundle ZIP](https://msfasha.github.io/307312-Applied-Statistics/downloads/applied-statistics-student-pdfs.zip) | One complete PDF per module, with clickable contents, bookmarks, lessons, and student exercises; linked datasets and supplementary materials | Extract the whole ZIP and open `index.pdf`, or open a module PDF from `modules/`. Keep the folders together for links to datasets and supplementary files. |
-
-You can also [open the PDF course home online](https://msfasha.github.io/307312-Applied-Statistics/pdf/index.pdf). Each module is a single document: jump through its clickable contents or bookmarks, and use **Contents**, **Previous topic**, and **Next topic** at the bottom of its pages. Topic links within a module stay in the same PDF. The footer shows the page position in the complete module and **Topic p.** for the page numbers used in each topic's own contents.
+Complete module PDFs contain the extended lessons and available exercises. Use the clickable contents and bookmarks to move between topics. Modules 6 and 7 currently contain planned overviews only.
 
 | Module | Complete PDF |
 |---|---|
@@ -25,16 +19,17 @@ You can also [open the PDF course home online](https://msfasha.github.io/307312-
 | 6. Regression (planned overview) | [Open Module 6](https://msfasha.github.io/307312-Applied-Statistics/pdf/modules/06-regression.pdf) |
 | 7. Forecasting and applied analysis (planned overview) | [Open Module 7](https://msfasha.github.io/307312-Applied-Statistics/pdf/modules/07-forecasting-and-applications.pdf) |
 
-## Reduced teaching slides and extended lessons
+## Flashcards — Reduced Version {#reduced-version}
 
-The slides keep the lesson sequence with shorter text for class use. Use the extended Quarto lessons for explanations, code, and practice.
+Reduced teaching slides summarize Modules 1 and 2 in lesson order. They contain explanations, examples, and R practice; their page counts are slide counts. The separate book chapter flashcards use a question page followed by an answer page.
 
-| Module | Reduced PDF | Editable PowerPoint | Extended lessons |
-|---|---|---|---|
-| Introduction to R | [PDF](../teaching-slides/module01-introduction-to-r.pdf) | [PowerPoint](../teaching-slides/module01-introduction-to-r.pptx) | [Module 1](../modules/01-introduction-to-r/index.qmd) |
-| Descriptive statistics | [PDF](../teaching-slides/module02-descriptive-statistics.pdf) | [PowerPoint](../teaching-slides/module02-descriptive-statistics.pptx) | [Module 2](../modules/02-data-and-descriptive-statistics/index.qmd) |
+| Review material | Browse PDF |
+|---|---|
+| Module 1: Introduction to R — reduced slides | [Open PDF](../teaching-slides/module01-introduction-to-r.pdf) |
+| Module 2: Descriptive statistics — reduced slides | [Open PDF](../teaching-slides/module02-descriptive-statistics.pdf) |
+| Basic Business Statistics, 13th edition, Chapter 1 — 50 recall cards / 101 pages | [Open PDF](../book-chapters/basic-business-statistics-13e/chapter01-flashcards.pdf) |
 
-The offline downloads also include these linked files.
+[Download all reduced review PDFs](https://msfasha.github.io/307312-Applied-Statistics/downloads/applied-statistics-reduced-review.zip). [Book chapter guides and source limitations](book-chapters/index.qmd) are listed separately. Editable PowerPoints stay with the instructor.
 
 ## Before you start
 

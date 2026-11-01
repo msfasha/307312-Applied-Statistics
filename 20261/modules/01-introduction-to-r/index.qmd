@@ -9,7 +9,6 @@ css: ../../assets/petra-brand.css
 Use the concise slides during class and the extended lessons below for full explanations, worked R code, and practice. Both follow the same lesson sequence.
 
 - [Reduced teaching slides (PDF)](../../teaching-slides/module01-introduction-to-r.pdf)
-- [Editable PowerPoint](../../teaching-slides/module01-introduction-to-r.pptx)
 
 ## What this module covers
 

@@ -15,7 +15,7 @@ website:
     style: docked
     search: true
     contents:
-      - text: "Course home — start here"
+      - text: "Student home — all materials"
         href: index.qmd
       - section: "Module 1: Introduction to R"
         contents:
@@ -121,7 +121,7 @@ website:
             href: modules/07-forecasting-and-applications/index.qmd
       - text: "Book chapters"
         href: resources/book-chapters/index.qmd
-      - text: "Student downloads"
+      - text: "PDFs and reduced review"
         href: resources/downloads.qmd
       - text: "Data and course resources"
         href: resources/index.qmd

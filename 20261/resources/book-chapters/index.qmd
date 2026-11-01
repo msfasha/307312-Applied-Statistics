@@ -2,17 +2,18 @@
 title: "Book chapters"
 ---
 
+Your supplied Markdown chapter summary is preserved as a PDF, with a separate, shorter question-and-answer flashcard PDF for recall practice. [Download both PDFs and the original text](https://msfasha.github.io/307312-Applied-Statistics/downloads/applied-statistics-book-chapters.zip).
+
 Supplementary chapter companions for review alongside the extended course lessons. Each book has its own folder. The main course reference and sequence remain unchanged.
 
 ## Basic Business Statistics: Concepts and Applications, 13th edition
 
 ### Chapter 1: Defining and Collecting Data
 
-The 50 flashcards use the earlier quick-review format: recall the answer to a question, then advance one page to check it. They cover definitions, measurement scales, collection and cleaning, sampling, survey errors, ethics, and the supplied guide's case takeaways.
+**Chapter 1 contains 50 question-and-answer cards: 101 PDF pages (one cover, 50 question pages, and 50 answer pages).** The cards use the earlier quick-review format: recall the answer to a question, then advance one page to check it. They cover definitions, measurement scales, collection and cleaning, sampling, survey errors, ethics, and the supplied guide's case takeaways.
 
-- [Flashcards PDF](../../book-chapters/basic-business-statistics-13e/chapter01-flashcards.pdf)
-- [Editable PowerPoint](../../book-chapters/basic-business-statistics-13e/chapter01-flashcards.pptx)
-- [Original attached guide, converted to PDF](../../book-chapters/basic-business-statistics-13e/chapter01-original.pdf)
+- [Summary of the summary — flashcards PDF](../../book-chapters/basic-business-statistics-13e/chapter01-flashcards.pdf)
+- [Original Markdown summary — PDF](../../book-chapters/basic-business-statistics-13e/chapter01-original.pdf)
 - [Original text attachment](../../book-chapters/basic-business-statistics-13e/chapter01-original.txt)
 
 The supplied file is a comprehensive chapter summary and teaching guide attributed to the 13th edition, rather than a publisher chapter scan. Its PDF preserves the original wording and Markdown notation. Textbook page references and edition-specific case details are reproduced from that guide and have not been independently checked against the publisher chapter. Separate case datasets and questionnaires were not attached. Proposed analyses are teaching extensions, not computed findings.

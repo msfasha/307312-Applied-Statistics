@@ -17,7 +17,7 @@ Each build uses a unique final filename, validates editable text/tables and pack
 python3 20261/scripts/teaching-slides/materials.py --stamp
 ```
 
-The manifest binds the outputs to lesson sources, scripts, assets, data, and shared style. Packaging rejects missing or stale downloads. All three student packages include the four stable teaching files; HTML lesson and module links point to them. Student packages include the finished presentations and ordinary Quarto sources, without requiring these maintainer scripts. Follow `PUBLISHING.md` to build, package and publish.
+The manifest binds the outputs to lesson sources, scripts, assets, data, and shared style. Packaging rejects missing or stale downloads. All three student packages include only the two stable teaching PDFs; HTML lesson and module links point to them. Student packages include the finished PDFs and ordinary Quarto sources, without requiring these maintainer scripts. Follow `PUBLISHING.md` to build, package and publish.
 
 Module 2 retains the supplied measurement-level, boxplot, statistical toolbox, and summary images. The seven-dollar example, five equal-mean sets, equal-range comparison, mean/median limitations, variance versus absolute deviation, sample denominator, and range/IQR limitations remain explicit. Caveats correct misleading fence labels and distinguish a population-style variance diagram from sample variance. Generated R plots retain the source observations and conventions. Source notes in each slide support access to the extended explanation.
 

@@ -125,3 +125,17 @@ and `scripts/book-chapters/build.mjs`. The publishing and PDF packaging scripts 
 these companions into all three student downloads; the publication manifest records
 their hashes. Chapter 1's unchanged original attachment remains available as text and
 as a PDF preserving the wording and Markdown notation.
+
+## Student interface update — 2026-11-01
+
+The student entry is the site root. Its format table links to HTML, full module
+PDFs, the Quarto/RStudio source ZIP, reduced review PDFs, and supplied book guides.
+The repository README exposes one student link. Data remains a supporting resource.
+This update supersedes earlier references above to distributing editable PPTXs:
+PowerPoints are retained locally only and excluded from every student output.
+The three complete downloads remain, supplemented by
+`downloads/applied-statistics-reduced-review.zip` (reduced module PDFs and chapter
+recall cards) and `downloads/applied-statistics-book-chapters.zip` (supplied Markdown guides as PDF, original text, and their flashcard PDFs).
+These two focused ZIPs are also hashed in the publication manifest.
+Chapter 1 has 50 recall cards, each with separate question and answer pages,
+plus a cover: 101 pages. Reduced module slides are separate materials.

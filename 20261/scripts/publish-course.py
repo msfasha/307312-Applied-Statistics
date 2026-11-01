@@ -155,9 +155,27 @@ def package():
                 raise SystemExit(f'Stale chapter material in PDF archive: {name}')
     shutil.copy2(pdf_zip,downloads/pdf_zip.name)
     package_student_project(downloads/'applied-statistics-rstudio-project.zip')
+    # Separate, focused downloads for the two supplementary categories.
+    with zipfile.ZipFile(downloads/'applied-statistics-reduced-review.zip', 'w', zipfile.ZIP_DEFLATED) as archive:
+        for p in sorted((stage/'teaching-slides').glob('*.pdf')):
+            archive.write(p, p.relative_to(stage))
+        for p in sorted((stage/'book-chapters').rglob('*-flashcards.pdf')):
+            archive.write(p, p.relative_to(stage))
+    with zipfile.ZipFile(downloads/'applied-statistics-book-chapters.zip', 'w', zipfile.ZIP_DEFLATED) as archive:
+        for p in sorted((stage/'book-chapters').rglob('*')):
+            if p.is_file() and p.suffix in {'.pdf', '.txt'}:
+                archive.write(p, p.relative_to(stage))
+
     # Publish the module PDFs and resource pages, with the same paths as the ZIP.
     pdf_stage = stage/'pdf'
     with zipfile.ZipFile(pdf_zip) as archive: archive.extractall(pdf_stage)
+    # Enforce the instructor-only PowerPoint policy on every distribution.
+    if list(stage.rglob('*.pptx')):
+        raise SystemExit('Editable PowerPoints must remain local.')
+    for bundle in downloads.glob('*.zip'):
+        with zipfile.ZipFile(bundle) as archive:
+            if archive.testzip() or any(name.lower().endswith('.pptx') for name in archive.namelist()):
+                raise SystemExit(f'Damaged archive or public PowerPoint: {bundle.name}')
     manifest = {
         'source_commit':run('git','rev-parse','HEAD',cwd=REPO,capture=True).strip(),
         'source_worktree_dirty':bool(run('git','status','--porcelain',cwd=REPO,capture=True).strip()),
@@ -170,7 +188,7 @@ def package():
     }
     (stage/'publication-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
     (stage/'.nojekyll').touch()
-    print(f'Prepared {len(sources)} HTML pages, PDFs, and three student downloads in {stage}',flush=True)
+    print(f'Prepared {len(sources)} HTML pages, PDFs, and five student downloads in {stage}',flush=True)
     return stage
 
 
@@ -198,7 +216,7 @@ def validate_stage(stage):
                 continue
             if not target.exists():errors.append(f'{page.relative_to(stage)} -> {value}')
     if errors:raise SystemExit('Broken publication links:\n'+'\n'.join(errors))
-    print('Published-site links, including the three download targets, passed local validation.',flush=True)
+    print('Published-site links, including all five download targets, passed local validation.',flush=True)
 
 
 def publish(stage):

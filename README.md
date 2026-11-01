@@ -2,14 +2,11 @@
 
 ## For students
 
-**[Read the course website](https://msfasha.github.io/307312-Applied-Statistics/)**
+**[Open student site](https://msfasha.github.io/307312-Applied-Statistics/)**
 
-**[Open student downloads](https://msfasha.github.io/307312-Applied-Statistics/resources/downloads.html)** for:
-
-- An HTML website ZIP for offline browser reading.
-- A complete student RStudio project ZIP with lessons, exercises, CSV datasets,
-  required assets, configuration, and setup instructions. Extract it and open `20261.Rproj`.
-- A PDF bundle for offline reading, printing, and annotation. Extract it and open `index.pdf`.
+The home page provides all modules, online reading, PDF versions, Quarto/RStudio
+sources, reduced review slides and flashcards, book chapter guides, and data.
+Browse available materials or download the corresponding ZIP from that page.
 
 For practical work, download the student RStudio project rather than cloning this
 maintainer repository. Install R, RStudio, and Quarto, run the included `setup.R`

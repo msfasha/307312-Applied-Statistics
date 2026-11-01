@@ -4,7 +4,7 @@ subtitle: "Lesson 3 | Prepare and summarize the textbook data"
 css: ../../assets/petra-brand.css
 ---
 
-[Reduced teaching slides (PDF)](../../teaching-slides/module01-introduction-to-r.pdf) · [PowerPoint](../../teaching-slides/module01-introduction-to-r.pptx) · [Module overview](index.qmd)
+[Reduced teaching slides (PDF)](../../teaching-slides/module01-introduction-to-r.pdf) · [Module overview](index.qmd)
 
 This extended lesson provides the full explanation and reproducible examples behind the slides.
 

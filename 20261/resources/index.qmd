@@ -27,4 +27,4 @@ The student project README explains setup and rendering. The full source reposit
 
 ## Book chapters
 
-[Book chapters](book-chapters/index.qmd) provides supplementary flashcards, editable PowerPoints, and the supplied chapter guides, organized by book and edition.
+[Book chapters](book-chapters/index.qmd) provides the supplied chapter guides and their recall cards, organized by book and edition.

@@ -4,7 +4,7 @@ subtitle: "Bring the question, data, tools, and interpretation together"
 css: ../../assets/petra-brand.css
 ---
 
-[Reduced teaching slides (PDF)](../../teaching-slides/module02-descriptive-statistics.pdf) · [PowerPoint](../../teaching-slides/module02-descriptive-statistics.pptx) · [Module overview](index.qmd)
+[Reduced teaching slides (PDF)](../../teaching-slides/module02-descriptive-statistics.pdf) · [Module overview](index.qmd)
 
 This extended lesson provides the full explanation and reproducible examples behind the slides.
 

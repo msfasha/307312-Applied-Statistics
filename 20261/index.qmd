@@ -10,9 +10,19 @@ Work through the seven numbered **topic modules** below. The 8th-edition textboo
 
 **Start with [Module 1: Introduction to R](modules/01-introduction-to-r/index.qmd).** **Module 2** now begins with data types, measurement levels, and the descriptive statistics toolbox.
 
-## Study online or download
+## Browse or download
 
-[Student downloads](resources/downloads.qmd) provides the HTML website, a complete student RStudio project, and PDFs for offline reading, printing, or annotation.
+Choose a format below, or start a module in the table. HTML and PDF contain the same course lessons; Quarto is their editable source. Reduced review materials and supplied book guides are supplementary.
+
+| Material | Browse | Download ZIP |
+|---|---|---|
+| **Site / HTML lessons** | Choose a module below | [HTML website](https://msfasha.github.io/307312-Applied-Statistics/downloads/applied-statistics-website.zip) |
+| **PDF versions** | [PDFs by module](resources/downloads.qmd) | [Complete PDF bundle](https://msfasha.github.io/307312-Applied-Statistics/downloads/applied-statistics-student-pdfs.zip) |
+| **Quarto / RStudio project** | — | [Sources, CSVs and setup instructions](https://msfasha.github.io/307312-Applied-Statistics/downloads/applied-statistics-rstudio-project.zip) |
+| **Flashcards — Reduced Version** | [Reduced slides and recall cards](resources/downloads.qmd) | [Reduced review PDFs](https://msfasha.github.io/307312-Applied-Statistics/downloads/applied-statistics-reduced-review.zip) |
+| **Book Chapters** | [Supplied chapter guides](resources/book-chapters/index.qmd) | [Chapter guides](https://msfasha.github.io/307312-Applied-Statistics/downloads/applied-statistics-book-chapters.zip) |
+
+[Teaching data and source notes](resources/index.qmd#teaching-datasets) are also available separately and included in the course downloads. No editable PowerPoint files are distributed.
 
 ## Course modules
 

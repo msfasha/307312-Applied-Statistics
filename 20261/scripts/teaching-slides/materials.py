@@ -48,7 +48,9 @@ def checked():
 
 def copy_to(folder):
     records=checked()
+    records={stem:{**record,'outputs':{name:digest for name,digest in record['outputs'].items() if name.endswith('.pdf')}} for stem,record in records.items()}
     dest=Path(folder)/'teaching-slides';dest.mkdir(parents=True,exist_ok=True)
+    for old in dest.glob('*.pptx'): old.unlink()
     for record in records.values():
         for name in record['outputs']:
             shutil.copy2(ROOT/'_output/teaching-slides'/name,dest/name)
