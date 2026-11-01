@@ -1,5 +1,5 @@
 {
-  "source_commit": "9346cb4c496b8ce3d765d37e61e97f56a0370f80",
+  "source_commit": "a4edce78527cb6e6cb006ce3ba5a615ab8103f40",
   "source_worktree_dirty": false,
   "student_pages": 48,
   "website": "https://msfasha.github.io/307312-Applied-Statistics/",
@@ -50,13 +50,13 @@
     "modules/06-regression/index.qmd": "0663b093f0e1114b4ed04f5ef9fb436311a536f37db762ec86fafa382d46f101",
     "modules/07-forecasting-and-applications/index.qmd": "a33b609e5de2a02371cf2fad4e3078d6108e58387b637e6684bac0731389066a",
     "resources/book-chapters/index.qmd": "7c5bca726a0ae9648c8626398357fe07058fac83b037c248d49dfb6941e66858",
-    "resources/downloads.qmd": "84bc8556c488bd668eb2d959b1d6eac3b005a3f077714ea6a13452ba73f2357a",
+    "resources/downloads.qmd": "54556ee705ac0c92090d8a056523c90cc43797920972e3cc23f4c2a32d8170c7",
     "resources/index.qmd": "2ed1e164569e289c6d76f9a31e191d4a4b2fc597be63dd562aaa313457e4a614"
   },
   "downloads": {
-    "applied-statistics-student-pdfs.zip": "e51a72acd43dfa19223b0f10bc1efda290c125aa623fee5016260e31c64d6570",
-    "applied-statistics-rstudio-project.zip": "af2b18c139e0a339c657778c66c44068281c202b00fb65084990a13ba56de10b",
-    "applied-statistics-website.zip": "5b81bfda4dd249b96c267306f224d990cbe529399dbe38a65b5b14e8b58b9aa2"
+    "applied-statistics-student-pdfs.zip": "98d6fe54f3aaae225b5aec5d74f4c4e6727173f3516e50c7b0bf3d21d80b5ff9",
+    "applied-statistics-rstudio-project.zip": "46306a00f40cec8fddb97b9b8bb75d977d793223094108a240e0af53ea25b90d",
+    "applied-statistics-website.zip": "d5678fb01eeae5323ed022070a813115a872bd00be214ebb090ade7815192c0e"
   },
   "chapter_materials": {
     "book-chapters/basic-business-statistics-13e/chapter01-cards.json": "46c1d55f353db00cb8f1964407b31f98e506d08f6d6a52031973f58d215eab5d",
@@ -64,6 +64,19 @@
     "book-chapters/basic-business-statistics-13e/chapter01-flashcards.pdf": "747ffaec3796f0e8ab8a0cc0ec0a065909cfb9911f1d754043e8e619e46abcbc",
     "book-chapters/basic-business-statistics-13e/chapter01-flashcards.pptx": "4fd8f6ec0d2ce7e20eeb4dcfa4bf204bce726a0dfd30272d0934328b8c3761d7",
     "book-chapters/basic-business-statistics-13e/chapter01-original.pdf": "a7db902a95f51f5380df71f1ee36a241030d45c2b0481ca2be314d915d9b8246"
+  },
+  "module_pdfs": {
+    "index.pdf": "9d055af2751e028ce9bd3d3c459f4e8b8d689bbbb14b82a2e2d7a27ddad3cabf",
+    "modules/01-introduction-to-r.pdf": "7431986211397686027664f73ec47ec4ebc69603523e44ff11eb8f976629d628",
+    "modules/02-data-and-descriptive-statistics.pdf": "5267f202c6ed9bc07dd5b508ffa42386b7f7a1fe380a13d0a167b5b43709d414",
+    "modules/03-probability-and-distributions.pdf": "3bece3064499cdfe802ebb7e1bbbf3be785296ab9a5db4dba43d569b55da47fd",
+    "modules/04-sampling-and-estimation.pdf": "52aa7f99b8de45804eab5eb9b9a36faf02c25aafda0680abbbb7ef84e50d1ad4",
+    "modules/05-hypothesis-testing.pdf": "17613b3778bf7cd3ee3965ca6574f56951e20bc2a131a3ecf4ad755d12f1aa82",
+    "modules/06-regression.pdf": "08e834f7033a4e6aca04e8ccd4f50f55ab3edc683e4ec7dee15f7e1b4eac8f25",
+    "modules/07-forecasting-and-applications.pdf": "4c336a31d86bdec852541a21bc47127153666e3c23dadfac41daeefd0afbe345",
+    "resources/book-chapters/index.pdf": "5a461a95869922041e4c89353a85ea2e59e5ec5d1934d43e2bb2d7ecbaed048d",
+    "resources/downloads.pdf": "3db97b8ce1208dea87ed0f813e312c9b8bcf0b721bd8537812a87261c35ee676",
+    "resources/index.pdf": "1efed979da2a4c4feb92f759701f13fb46ad2193be7c00c5dfee0977d42b5f19"
   },
   "teaching_materials": {
     "module01-introduction-to-r.pdf": "c5185093472c99bc624b5e066d3cd0bd5751b412eec14bd6d94628acad67b8b4",

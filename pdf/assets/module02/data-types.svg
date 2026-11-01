@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="535" viewBox="0 0 1000 535" role="img" aria-labelledby="title desc">
+<title id="title">Classify the meaning of a variable</title><desc id="desc">Variables divide into categorical labels and numerical quantities. Categorical variables may be nominal or ordinal. Numerical variables may have discrete possible values or be modeled as continuous. Measurement level is a separate classification.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#596775"/></marker></defs>
+<rect width="1000" height="535" rx="16" fill="#F8FAFC"/>
+<g font-family="Arial,sans-serif" text-anchor="middle" fill="#202A33">
+<rect x="275" y="22" width="450" height="62" rx="10" fill="#E8EDF2"/>
+<text x="500" y="62" font-size="25" font-weight="bold">What does the variable mean?</text>
+<g fill="none" stroke="#596775" stroke-width="2.5" marker-end="url(#arrow)"><path d="M500 84V104H250V130"/><path d="M500 104H750V130"/><path d="M250 235V258H132V286"/><path d="M250 258H370V286"/><path d="M750 235V258H630V286"/><path d="M750 258H868V286"/></g>
+<rect x="40" y="135" width="420" height="100" rx="10" fill="#DFEEF7" stroke="#2878A5"/>
+<rect x="540" y="135" width="420" height="100" rx="10" fill="#FFF1D9" stroke="#B47816"/>
+<g font-size="25" font-weight="bold"><text x="250" y="173">Categorical</text><text x="750" y="173">Numerical / quantitative</text></g>
+<g font-size="20"><text x="250" y="207">Labels, groups, or ordered categories</text><text x="750" y="207">A quantity: how many or how much</text></g>
+<g fill="white" stroke="#BDC8D0"><rect x="25" y="290" width="215" height="125" rx="9"/><rect x="260" y="290" width="215" height="125" rx="9"/><rect x="525" y="290" width="215" height="125" rx="9"/><rect x="760" y="290" width="215" height="125" rx="9"/></g>
+<g font-size="23" font-weight="bold"><text x="132" y="328">Nominal</text><text x="368" y="328">Ordinal</text><text x="632" y="328">Discrete</text><text x="868" y="328">Continuous</text></g>
+<g font-size="18"><text x="132" y="360">No natural order</text><text x="132" y="390">Payment method</text><text x="368" y="360">Meaningful order</text><text x="368" y="390">Quality category</text><text x="632" y="360">Separate possible values</text><text x="632" y="390">Number of orders</text><text x="868" y="360">Any value in an interval</text><text x="868" y="390">Waiting duration</text></g>
+<text x="500" y="466" font-size="20" font-weight="bold">Then identify the measurement level separately.</text>
+<text x="500" y="499" font-size="19">Numerical variables can be interval or ratio; either can be discrete or continuous.</text>
+</g></svg>
