@@ -18,6 +18,8 @@ def validate(site):
     if sum(f'id="part3-{k:02d}-slide-{i:02d}"' in infer for k,n in enumerate([37,26,57,21],1) for i in range(1,n+1))!=141:raise RuntimeError('Incomplete Part 3')
 parser=argparse.ArgumentParser();parser.add_argument('--skip-render',action='store_true');args=parser.parse_args()
 if not args.skip_render:
+    previous=ROOT/'_preview'
+    if previous.exists():shutil.rmtree(previous)
     quarto=shutil.which('quarto') or '/usr/lib/rstudio/resources/app/bin/quarto/bin/quarto'
     subprocess.run([quarto,'render','--quiet'],cwd=ROOT,check=True)
 site=ROOT/'_preview';validate(site)

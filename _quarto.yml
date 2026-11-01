@@ -3,9 +3,27 @@ project:
   output-dir: _preview
   execute-dir: project
   resources:
-    - data/**/*.csv
-    - data/**/README.md
-    - data/**/provenance.json
+    - data/307102/README.md
+    - data/307102/provenance.json
+    - data/307102/students.csv
+    - data/inferential-statistics/README.md
+    - data/inferential-statistics/female_major_salaries.csv
+    - data/inferential-statistics/graduate_salaries.csv
+    - data/inferential-statistics/houses.csv
+    - data/inferential-statistics/paired_scores.csv
+    - data/inferential-statistics/provenance.json
+    - data/inferential-statistics/teaching_gender.csv
+    - data/inferential-statistics/teaching_methods.csv
+    - data/module02/README.md
+    - data/module02/audit_times.csv
+    - data/module02/electronics_sales.csv
+    - data/module02/measure_limitations_examples.csv
+    - data/module02/restaurant_ratings.csv
+    - data/module02/soft_drinks.csv
+    - data/module02/student_age_height.csv
+    - "!archived/**"
+    - "!_instructor/**"
+    - "!books/**"
   post-render:
     - python3 scripts/finalize-preview.py
   render:
