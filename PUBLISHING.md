@@ -97,3 +97,16 @@ this policy and verifying that the same downloads are published.
 To prepare only the student RStudio ZIP for an isolated render check, run
 `python3 scripts/publish-course.py --student-project-only` from `20261/`. This
 creates `_output/applied-statistics-rstudio-project.zip` without publishing.
+
+## Supplementary book chapters
+
+The student-facing Book chapters page is `resources/book-chapters/index.qmd`.
+Maintained supplied text and card data live under `20261/book-chapters/`, with a
+separate folder for each book and edition. These user-supplied summaries are distinct
+from the local-only publisher files in `books/`. Generated chapter PDFs and PPTXs
+live under `_output/book-chapters/` and publish only on `gh-pages`.
+Build with the bundled Python and Node runtimes using `scripts/book-chapters/build.py`
+and `scripts/book-chapters/build.mjs`. The publishing and PDF packaging scripts copy
+these companions into all three student downloads; the publication manifest records
+their hashes. Chapter 1's unchanged original attachment remains available as text and
+as a PDF preserving the wording and Markdown notation.

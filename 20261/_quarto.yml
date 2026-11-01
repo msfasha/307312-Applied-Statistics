@@ -119,6 +119,8 @@ website:
         contents:
           - text: "Overview"
             href: modules/07-forecasting-and-applications/index.qmd
+      - text: "Book chapters"
+        href: resources/book-chapters/index.qmd
       - text: "Student downloads"
         href: resources/downloads.qmd
       - text: "Data and course resources"

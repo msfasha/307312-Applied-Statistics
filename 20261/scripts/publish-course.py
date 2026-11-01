@@ -24,6 +24,11 @@ URL = 'https://msfasha.github.io/307312-Applied-Statistics/'
 QUARTO = shutil.which('quarto') or '/usr/lib/rstudio/resources/app/bin/quarto/bin/quarto'
 sys.path.insert(0,str(ROOT/'scripts/teaching-slides'))
 from materials import copy_to as copy_teaching_materials
+import importlib.util
+_chapter_spec=importlib.util.spec_from_file_location('chapter_materials', ROOT/'scripts/book-chapters/materials.py')
+_chapter_module=importlib.util.module_from_spec(_chapter_spec)
+_chapter_spec.loader.exec_module(_chapter_module)
+copy_chapter_materials=_chapter_module.copy_to
 
 
 def run(*args, cwd=ROOT, capture=False, input=None):
@@ -58,6 +63,7 @@ def package_student_project(project_zip):
         for name in ['data','assets']:
             shutil.copytree(ROOT/name,project/name,ignore=shutil.ignore_patterns('*_files','*_cache','.DS_Store','*.ipynb','.quarto','.Rproj.user','__pycache__'))
         copy_teaching_materials(project)
+        copy_chapter_materials(project)
         for name in ['20261.Rproj','index.qmd','_quarto.yml','_quarto-pdf.yml','LICENSE']:
             shutil.copy2(ROOT/name,project/name)
         (project/'scripts').mkdir()
@@ -108,6 +114,7 @@ def package():
             if not output.exists() or output.stat().st_mtime < source.stat().st_mtime:
                 raise SystemExit(f'Missing or older export: {output}. Run without --package-only.')
     teaching_materials=copy_teaching_materials(ROOT/'_site')
+    chapter_materials=copy_chapter_materials(ROOT/'_site')
     run('python3','scripts/validate-course.py')
     run('python3','scripts/audit-code-documentation.py')
     stage = ROOT/'_output/publish-site'
@@ -130,6 +137,9 @@ def package():
             for name,digest in record['outputs'].items():
                 if hashlib.sha256(archive.read('teaching-slides/'+name)).hexdigest()!=digest:
                     raise SystemExit(f'Stale teaching material in PDF archive: {name}')
+        for name,digest in chapter_materials.items():
+            if hashlib.sha256(archive.read(name)).hexdigest()!=digest:
+                raise SystemExit(f'Stale chapter material in PDF archive: {name}')
     shutil.copy2(pdf_zip,downloads/pdf_zip.name)
     package_student_project(downloads/'applied-statistics-rstudio-project.zip')
     # Publish individual PDFs as well as the ZIP, preserving cross-document links.
@@ -141,6 +151,7 @@ def package():
         'student_pages':len(sources),'website':URL,
         'source_sha256':{str(s.relative_to(ROOT)):hashlib.sha256(s.read_bytes()).hexdigest() for s in sources},
         'downloads':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in downloads.glob('*.zip')},
+        'chapter_materials':chapter_materials,
         'teaching_materials':{name:digest for record in teaching_materials.values() for name,digest in record['outputs'].items()},
     }
     (stage/'publication-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')

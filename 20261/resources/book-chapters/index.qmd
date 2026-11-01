@@ -1,0 +1,54 @@
+---
+title: "Book chapters"
+---
+
+Supplementary chapter companions for review alongside the extended course lessons. Each book has its own folder. The main course reference and sequence remain unchanged.
+
+## Basic Business Statistics: Concepts and Applications, 13th edition
+
+### Chapter 1: Defining and Collecting Data
+
+The 50 flashcards use the earlier quick-review format: recall the answer to a question, then advance one page to check it. They cover definitions, measurement scales, collection and cleaning, sampling, survey errors, ethics, and the supplied guide's case takeaways.
+
+- [Flashcards PDF](../../book-chapters/basic-business-statistics-13e/chapter01-flashcards.pdf)
+- [Editable PowerPoint](../../book-chapters/basic-business-statistics-13e/chapter01-flashcards.pptx)
+- [Original attached guide, converted to PDF](../../book-chapters/basic-business-statistics-13e/chapter01-original.pdf)
+- [Original text attachment](../../book-chapters/basic-business-statistics-13e/chapter01-original.txt)
+
+The supplied file is a comprehensive chapter summary and teaching guide attributed to the 13th edition, rather than a publisher chapter scan. Its PDF preserves the original wording and Markdown notation. Textbook page references and edition-specific case details are reproduced from that guide and have not been independently checked against the publisher chapter. Separate case datasets and questionnaires were not attached. Proposed analyses are teaching extensions, not computed findings.
+
+### Case context for the review cards
+
+GT&M considers acquiring Whitney Wireless and needs evidence for a purchase decision. Whitney Wireless's best-sales-year claim also needs consistent definitions and comparable reporting periods.
+
+::: {.case-narration lang="ar" dir="rtl"}
+تدرس شركة [GT&M]{lang="en"} الاستحواذ على [Whitney Wireless]{lang="en"}، وتحتاج إلى أدلة تدعم قرار الشراء. كما يتطلب التحقق من ادعاء [Whitney Wireless]{lang="en"} بأن العام كان الأفضل من حيث المبيعات تعريفات متسقة وفترات تقرير قابلة للمقارنة.
+:::
+
+Ashland MultiComm Services wants to understand declining subscriptions and renewals before choosing a business response. The observed decline alone does not establish its cause.
+
+::: {.case-narration lang="ar" dir="rtl"}
+تريد شركة [Ashland MultiComm Services]{lang="en"} فهم انخفاض الاشتراكات وتجديدها قبل اختيار إجراء تجاري مناسب. ولا يكفي الانخفاض الملحوظ وحده لإثبات سببه.
+:::
+
+CardioGood Fitness wants to identify customer differences across treadmill models to guide advertising. The review classifies variables without inventing customer observations.
+
+::: {.case-narration lang="ar" dir="rtl"}
+تريد شركة [CardioGood Fitness]{lang="en"} تحديد الفروق بين عملاء طرازات أجهزة المشي لتوجيه الإعلانات. وتُصنّف المراجعة المتغيرات دون اختلاق مشاهدات عن العملاء.
+:::
+
+Clear Mountain State University's surveys received 62 undergraduate and 44 graduate responses. The questionnaires and datasets were supplied separately in the textbook materials and are absent from this attachment.
+
+::: {.case-narration lang="ar" dir="rtl"}
+تلقت استطلاعات جامعة [Clear Mountain State University]{lang="en"} إجابات من 62 طالبًا في مرحلة البكالوريوس و44 طالبًا في الدراسات العليا. وتَرِد الاستبانات ومجموعات البيانات بصورة منفصلة ضمن مواد الكتاب، وهي غير موجودة في هذا المرفق.
+:::
+
+The Literary Digest poll illustrates why a large response count does not guarantee a representative sample. The guide discusses coverage and nonresponse as explanations of its failure.
+
+::: {.case-narration lang="ar" dir="rtl"}
+يوضح استطلاع [Literary Digest]{lang="en"} أن العدد الكبير من الإجابات لا يضمن عينة ممثلة للمجتمع. ويناقش الدليل خطأ التغطية وعدم الاستجابة بوصفهما تفسيرين لفشل الاستطلاع.
+:::
+
+## Study routine
+
+Answer each question aloud before viewing its answer. Mark uncertain cards, review the corresponding passage in the guide, and try those cards again later. The PDF uses sequential pages for screen review rather than a duplex printing layout.

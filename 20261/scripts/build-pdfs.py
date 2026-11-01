@@ -12,12 +12,18 @@ ROOT = Path(__file__).resolve().parents[1]
 QUARTO = shutil.which("quarto") or "/usr/lib/rstudio/resources/app/bin/quarto/bin/quarto"
 sys.path.insert(0,str(ROOT/'scripts/teaching-slides'))
 from materials import copy_to as copy_teaching_materials
+import importlib.util
+_chapter_spec=importlib.util.spec_from_file_location('chapter_materials', ROOT/'scripts/book-chapters/materials.py')
+_chapter_module=importlib.util.module_from_spec(_chapter_spec)
+_chapter_spec.loader.exec_module(_chapter_module)
+copy_chapter_materials=_chapter_module.copy_to
 
 
 def package_outputs(output):
     """Keep download links usable and provide a clean, portable student bundle."""
     shutil.copytree(ROOT / "data", output / "data", dirs_exist_ok=True)
     copy_teaching_materials(output)
+    copy_chapter_materials(output)
     (output / "README.txt").write_text(
         "Applied Statistics - student PDF edition\n\n"
         "Extract the entire ZIP, then open index.pdf in a desktop PDF reader.\n"
