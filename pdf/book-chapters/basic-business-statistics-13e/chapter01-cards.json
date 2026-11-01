@@ -1,0 +1,402 @@
+[
+  {
+    "topic": "Foundations",
+    "question": "Why does data quality come first?",
+    "answer": "Poor definitions, biased samples, and inaccurate\nmeasurements undermine conclusions, even with\nadvanced analysis.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "DCOVA",
+    "question": "What are the five DCOVA tasks?",
+    "answer": "Define, Collect, Organize, Visualize, Analyze.\nEstablish the business objective before applying\nthese tasks.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Operational definitions",
+    "question": "What makes a variable operationally defined?",
+    "answer": "Specify exactly what it measures, the observational\nunit, units, time period, and inclusion rules.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Variables",
+    "question": "What is a variable?",
+    "answer": "A characteristic that takes different values across\nobservations. An observational unit is the person or\nitem measured.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Variable types",
+    "question": "How do categorical and numerical variables\ndiffer?",
+    "answer": "Categorical values identify groups. Numerical values\nexpress quantities for which arithmetic has a\nmeaningful interpretation.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Discrete and continuous",
+    "question": "Counts or measurements?",
+    "answer": "Discrete variables have countable values, such as\npurchases. Continuous variables can take any value in\nan interval, such as elapsed time.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Recording choices",
+    "question": "Can the same concept have different variable\ntypes?",
+    "answer": "Yes. Age in years is numerical. Age groups are\ncategorical. Classification depends on the\noperational definition.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Nominal scale",
+    "question": "What information does a nominal scale provide?",
+    "answer": "Categories without an inherent order. Examples:\npayment method and product category. Numeric codes\nremain labels.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Ordinal scale",
+    "question": "Why are satisfaction ratings ordinal?",
+    "answer": "Categories have an order, but equal distances between\nadjacent categories are not established.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Interval scale",
+    "question": "What distinguishes an interval scale?",
+    "answer": "Equal differences are meaningful, but zero is\narbitrary. A 30 C temperature is 10 C above 20 C,\nwithout being 1.5 times as hot.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Ratio scale",
+    "question": "When are ratios meaningful?",
+    "answer": "With equal intervals and a meaningful zero. A\n20-minute duration is twice a 10-minute duration.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Measurement overview",
+    "question": "How do the four scales build on one another?",
+    "answer": "Nominal: categories. Ordinal: order too. Interval:\nmeaningful differences too. Ratio: meaningful ratios\ntoo.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Method choice",
+    "question": "Does measurement scale alone determine the\nanalysis?",
+    "answer": "No. Also consider the objective, research design,\nsampling structure, distribution, and assumptions.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Primary and secondary",
+    "question": "What distinguishes primary from secondary data?",
+    "answer": "Primary data are collected for the current purpose.\nSecondary data were collected previously for another\npurpose. The distinction depends on the user and\npurpose.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Data sources",
+    "question": "What five data sources does the guide identify?",
+    "answer": "Distributed sources, designed experiments, surveys,\nobservational studies, and ongoing business\nactivities.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Experiments",
+    "question": "Why does random assignment matter?",
+    "answer": "It helps create comparable treatment groups and\nsupports causal inference when the experiment is\nproperly designed.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Observation and surveys",
+    "question": "What can observation and surveys establish?",
+    "answer": "Observation records behavior without assigned\ntreatments. Surveys collect reported responses.\nAssociation alone does not establish causation.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Population and sample",
+    "question": "How do a population and sample differ?",
+    "answer": "The population is the full group of interest. A\nsample is a selected subset used to learn about that\ngroup.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Parameter and statistic",
+    "question": "Which describes a population, and which a\nsample?",
+    "answer": "A parameter describes the population. A statistic\nsummarizes the sample and may estimate a parameter\nunder suitable design and assumptions.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Census",
+    "question": "Does a census eliminate every source of error?",
+    "answer": "A complete census has no sampling error. Coverage,\nnonresponse, and measurement errors may still occur.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Data structure",
+    "question": "What are structured, unstructured, and\nsemistructured data?",
+    "answer": "Structured: fixed rows and fields. Unstructured:\nfree-form text or media. Semistructured: some\norganization with flexible content.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Data cleaning",
+    "question": "What should an analyst check before analysis?",
+    "answer": "Missing values, impossible values, invalid\ncategories, inconsistent formats, duplicate records,\nand unusual observations. Document decisions.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Outliers",
+    "question": "Should an unusual observation always be deleted?",
+    "answer": "No. Investigate whether it is an error or a valid\nextreme value. Preserve the raw record and document\nany correction or exclusion.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Recoding",
+    "question": "What makes grouped categories valid?",
+    "answer": "Mutually exclusive: no overlap. Collectively\nexhaustive: every eligible value fits. State\nboundaries and missing-value handling.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Sampling frame",
+    "question": "What is a sampling frame?",
+    "answer": "The list or mechanism from which units are selected.\nCompare it with the target population to detect\nomissions or ineligible entries.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Probability sampling",
+    "question": "What defines a probability sample?",
+    "answer": "Each population unit has a known, positive selection\nprobability under the design. Probabilities need not\nbe equal.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Nonprobability sampling",
+    "question": "How do convenience and judgment samples differ?",
+    "answer": "Convenience uses accessible participants. Judgment\nuses researcher expertise. Unknown selection\nprobabilities limit design-based population\ninference.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Simple random sampling",
+    "question": "What defines a simple random sample of fixed\nsize?",
+    "answer": "Every possible sample of that size has the same\nselection probability. A complete frame is usually\nneeded.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Replacement",
+    "question": "What changes when sampling with replacement?",
+    "answer": "A selected unit can appear again. Without\nreplacement, selected units cannot be selected a\nsecond time.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Systematic sampling",
+    "question": "How would you sample 200 of 10,000 items?",
+    "answer": "For this divisible frame, k = N/n = 50. Choose a\nrandom start from 1 to 50, then select every 50th\nitem.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Systematic limitations",
+    "question": "What threatens a systematic sample?",
+    "answer": "Periodicity aligned with the sampling interval can\nproduce an unrepresentative sample. Check the\nordering before selection.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Stratified sampling",
+    "question": "How does stratified sampling select units?",
+    "answer": "Divide the population into nonoverlapping strata and\nrandomly sample within every stratum. This supports\nsubgroup representation.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Sampling allocation",
+    "question": "What if a small stratum is oversampled?",
+    "answer": "Its sample share exceeds its population share. Use\ndesign-appropriate weights when estimating overall\npopulation quantities.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Cluster sampling",
+    "question": "How does one-stage cluster sampling work?",
+    "answer": "Randomly select some natural groups, then observe all\neligible units in those groups. It can reduce travel\nand fieldwork costs.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Two-stage sampling",
+    "question": "What is two-stage cluster sampling?",
+    "answer": "First randomly select clusters. Then randomly sample\nunits within the selected clusters.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Strata and clusters",
+    "question": "What is the central distinction?",
+    "answer": "Stratified: sample units from every group. Cluster:\nselect some groups. Similar units within clusters can\nreduce precision.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Survey errors",
+    "question": "What four survey errors should you assess?",
+    "answer": "Coverage, nonresponse, sampling, and measurement.\nSeveral can occur in the same survey.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Coverage",
+    "question": "What is coverage error?",
+    "answer": "The frame fails to match the target population, for\nexample when a survey of all students uses a full-\ntime-only list.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Nonresponse",
+    "question": "When can nonresponse create bias?",
+    "answer": "When missing respondents differ systematically on the\nquantity of interest. A response rate alone does not\ndetermine the size of the bias.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Sampling error",
+    "question": "Will increasing sample size remove bias?",
+    "answer": "Larger well-designed samples usually reduce random\nsampling variation. They do not automatically remove\ncoverage, nonresponse, or measurement bias.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Measurement error",
+    "question": "What question features can distort responses?",
+    "answer": "Leading wording, ambiguity, double-barreled\nquestions, unclear reference periods, recall\ndifficulties, and interviewer influence.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Neutral wording",
+    "question": "How can a leading satisfaction question be\nimproved?",
+    "answer": "Ask how satisfied or dissatisfied the respondent was\nwith the service during the most recent visit. Avoid\npraising the service in the question.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Survey ethics",
+    "question": "What does honest survey reporting require?",
+    "answer": "Disclose the target population, frame, selection\nmethod, sample size, response limitations, wording,\nand uncertainty. Avoid manipulating selection or\ninterpretation.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Literary Digest",
+    "question": "What is the key lesson of the 1936 poll example?",
+    "answer": "A very large response count cannot guarantee\nrepresentativeness. Frame coverage and differential\nnonresponse both matter.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "GT&M acquisition",
+    "question": "What evidence supports an acquisition decision?",
+    "answer": "Consistently defined sales and expenses, economic\ncontext, and relevant customer data. Extra\nprofitability and risk measures are teaching\nextensions, not a calculated valuation.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Whitney Wireless",
+    "question": "How should a best-sales-year claim be checked?",
+    "answer": "Request comparable annual revenue and unit sales\nacross all relevant years, with clear scales,\naccounting definitions, and reporting periods.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Ashland MultiComm",
+    "question": "Does falling renewal prove prices are too high?",
+    "answer": "No. Examine subscriber counts, revenue, and renewal\nrates. Price, competition, service, and streaming are\npossible explanations to investigate.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "CardioGood Fitness",
+    "question": "How should its customer variables be classified?",
+    "answer": "Model: nominal. Self-rated fitness 1-5: ordinal.\nIncome and age: numerical. Weekly sessions: discrete\ncounts. Distance: continuous measurement.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Clear Mountain surveys",
+    "question": "Can 62 undergraduate and 44 graduate responses\nprove representativeness?",
+    "answer": "No. Assess selection, frame, and nonresponse. The\nseparate questionnaires and datasets were not\nsupplied, so their exact variables cannot be\nconfirmed.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  },
+  {
+    "topic": "Integrated review",
+    "question": "A frame omits part-time students, 400 of 1,000\nreply, and wording is leading. Which errors\napply?",
+    "answer": "Coverage from omitted students. Potential nonresponse\nbias from missing replies. Sampling variation from\nselection. Measurement error from leading wording.",
+    "cue": "Recall the distinction and explain why it matters.",
+    "lesson": "1",
+    "source": "chapter01-original.txt"
+  }
+]
