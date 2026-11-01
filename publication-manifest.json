@@ -1,5 +1,5 @@
 {
-  "source_commit": "eb75b13a5edc57f64cf77626f9d58459cd525343",
+  "source_commit": "e1e59a5aba92c4783c28cf4bb3b60afc34221481",
   "source_worktree_dirty": false,
   "student_pages": 48,
   "website": "https://msfasha.github.io/307312-Applied-Statistics/",
@@ -49,22 +49,22 @@
     "modules/05-hypothesis-testing/index.qmd": "a9d43503f6232ee910d400107f654217875236e2372e045325f8696a4ed63934",
     "modules/06-regression/index.qmd": "0663b093f0e1114b4ed04f5ef9fb436311a536f37db762ec86fafa382d46f101",
     "modules/07-forecasting-and-applications/index.qmd": "a33b609e5de2a02371cf2fad4e3078d6108e58387b637e6684bac0731389066a",
-    "resources/book-chapters/index.qmd": "28a2008551d5036a3858a0d0d1f65e30ebc869a78130c366321e5bf27010d3f4",
+    "resources/book-chapters/index.qmd": "e6408de868ea4a876507852ffb940d823dadd29d4cd007d7c0caaefc13ccf68b",
     "resources/downloads.qmd": "30c6083b5bb703fe52aae1ee5f56353e2248fd55fec2de312c09c72b1a89f9c7",
     "resources/index.qmd": "9cfe0a505776ce946455ebaf316b1e626af07d0db5044054dcf04333146f53f6"
   },
   "downloads": {
-    "applied-statistics-reduced-review.zip": "e00bcb36a2af78c681d202f9536ed3c239ce45010cbbe7e35d03c4ac92fedc11",
-    "applied-statistics-book-chapters.zip": "31e2aec96364c239c6d17e253c4c1d2ff0c00a5f156910f47fe1f8afa954ff6d",
-    "applied-statistics-student-pdfs.zip": "7f3340260dce330c8fe1431dc7421e4abc0acb627b66f31de30efa41e08aac9a",
-    "applied-statistics-rstudio-project.zip": "50d92e12b0a912a1152fc8c3f99edb8aa46ac45d1c7767ff9fc97a064e935d73",
-    "applied-statistics-website.zip": "c4178f671855faf7c0c847744507aa1666440e763f8632c0fbd620610f66d4f4"
+    "applied-statistics-reduced-review.zip": "c90a693e1a394af43856b556605b7981885f8913c4f8ffcbbd0d97307dfaf680",
+    "applied-statistics-book-chapters.zip": "b6b3d91014e68b33b2a325a5c4ce05f74db86ff00ea0c412030c63a74cd6f176",
+    "applied-statistics-student-pdfs.zip": "33d5e65462026d836f6d3d232f2190470df14a3ec82690bdf3800a508239bd66",
+    "applied-statistics-rstudio-project.zip": "d3d9c62a644334b71a389a868754bdb9d75f51ca064833de358a8d4c63141110",
+    "applied-statistics-website.zip": "efd2563b416584691471a4d060020326d777e72acf00d141f5ac17de924c6df7"
   },
   "chapter_materials": {
     "book-chapters/basic-business-statistics-13e/chapter01-cards.json": "46c1d55f353db00cb8f1964407b31f98e506d08f6d6a52031973f58d215eab5d",
     "book-chapters/basic-business-statistics-13e/chapter01-original.txt": "c897ccab40e953db14824d4559b8ec0ac90de251a6d0d3d50abb30fd7595baae",
-    "book-chapters/basic-business-statistics-13e/chapter01-flashcards.pdf": "6bc11f08a033185cb7286a5cb44b99b65b32a710d0af42b1a6d3a8d797e0ed69",
-    "book-chapters/basic-business-statistics-13e/chapter01-original.pdf": "28fcd9b0c297575c02c0362b9116bfde9c9d98839862b85d649b254d3dd166e5"
+    "book-chapters/basic-business-statistics-13e/chapter01-flashcards.pdf": "8cf8bb911fffca78bc9bb5b09b13e527de6ca2c4725fde9ed33555b1ee527600",
+    "book-chapters/basic-business-statistics-13e/chapter01-original.pdf": "61d09bb97e1fce904f2e7e76245d5a5ff809ce04dfc2a3ef163c5b7bf648ef1f"
   },
   "module_pdfs": {
     "index.pdf": "f6874f8c024b3c7dc273598224227d5c9cec827b16a6dba9ccefadb0e5026511",
@@ -75,7 +75,7 @@
     "modules/05-hypothesis-testing.pdf": "17613b3778bf7cd3ee3965ca6574f56951e20bc2a131a3ecf4ad755d12f1aa82",
     "modules/06-regression.pdf": "08e834f7033a4e6aca04e8ccd4f50f55ab3edc683e4ec7dee15f7e1b4eac8f25",
     "modules/07-forecasting-and-applications.pdf": "4c336a31d86bdec852541a21bc47127153666e3c23dadfac41daeefd0afbe345",
-    "resources/book-chapters/index.pdf": "4106b76280d395f90c54f6c3d4623dc7b2d70f4b4fe5def22d894cadfd6a906a",
+    "resources/book-chapters/index.pdf": "f9d34ab22052cb19170b05bbfb7c59a373fa534743d4535a2e3edcced495906e",
     "resources/downloads.pdf": "1ff2b54c23d9f17029cf2a4b268421f9a44b2f645ec120af0409135cb08c26c8",
     "resources/index.pdf": "171f84c0b357c6693885946eb263e4cfeae741781c38d508e5bf46ee6b5fc679"
   },
