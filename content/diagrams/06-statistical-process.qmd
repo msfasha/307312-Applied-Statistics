@@ -1,0 +1,13 @@
+```{=html}
+<figure class="petra-diagram" aria-label="The six stages of the statistical process, repeated as needed">
+<ol class="statistical-cycle">
+<li><span class="step-number">1</span><span>Define Problem – Question</span></li>
+<li><span class="step-number">2</span><span>Collect Data</span></li>
+<li><span class="step-number">3</span><span>Prepare Data</span></li>
+<li><span class="step-number">4</span><span>Analyze Data</span></li>
+<li><span class="step-number">5</span><span>Find Insights</span></li>
+<li><span class="step-number">6</span><span>Make Decisions</span></li>
+</ol>
+<figcaption>The process returns to the question as needed.</figcaption>
+</figure>
+```

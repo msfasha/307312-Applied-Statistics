@@ -1,0 +1,29 @@
+::: {.petra-diagram .formula-diagram}
+
+#### Sample
+
+For **sample** values $x_1, x_2, \ldots, x_n$, the sample variance $s^2$ and the sample standard deviation $s$ are computed as
+
+$$
+s^2 = \frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}
+\qquad\text{and}\qquad
+s = \sqrt{s^2}.
+$$
+
+#### Population
+
+For **population** values $x_1, x_2, \ldots, x_N$, the population variance $\sigma^2$ (the Greek letter sigma, squared) and the population standard deviation $\sigma$ are computed as
+
+$$
+\sigma^2 = \frac{\sum_{i=1}^{N}(x_i-\mu)^2}{N}
+\qquad\text{and}\qquad
+\sigma = \sqrt{\sigma^2}.
+$$
+
+::: {.formula-note}
+
+**Note:** The sample variance uses $n-1$ rather than $n$ in the denominator to ensure that the sample variance is an unbiased estimator for the population variance, a topic discussed in Chapter 8.
+
+:::
+
+:::

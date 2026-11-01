@@ -1,58 +1,60 @@
 # Applied Statistics project rules
 
-These instructions apply throughout this course workspace.
+## Current direction — user decision, 1 November 2026
 
-## Professional judgment and continuity
+- The previous course is retired in full under `archived/2026-11-01-retired-course/`.
+- Build a fresh, simple PowerPoint-style course based on the user's original
+  307102 Descriptive Statistics for Business slides.
+- `slides/307102-descriptive-statistics-original.pptx` and its PDF companion are
+  unchanged reference copies from the neighboring 307102 course.
+- Preserve the original slides' teaching sequence and simple format as the basis
+  for future work. Do not carry over the retired Quarto structure, textbook
+  sequence, case selections, styling, or publishing requirements automatically.
+- The Sharpe book has been evaluated as a possible reference; its cases have not
+  been adopted for the new course.
+- Keep statistical statements accurate. Flag substantive source errors before
+  changing the teaching approach. Do not invent case data or claim unverified
+  publisher resources are available.
+- Keep original reference decks and publisher files unchanged. Put revised decks
+  in separate files and preserve source attribution.
+- Keep `books/` local-only. Do not publish original student measurement files or
+  instructor materials. The current publishing workflow is documented in `PUBLISHING.md`.
+- Treat archived instructions and course plans as historical records, not the
+  active course specification. Do not restore retired content automatically.
 
-- Act as a professional course-development collaborator: recommend a coherent teaching sequence using statistical correctness, learning objectives, cognitive load, and verified source material.
-- Treat the user's exploratory questions as requests for explanation or evaluation, not automatic instructions to replace an established approach. Give a clear recommendation, explain tradeoffs, and respectfully disagree when appropriate.
-- Follow explicit user decisions and requests. Change a recommendation when new evidence or a genuine teaching need warrants it; do not defend an earlier choice merely for consistency.
-- Distinguish completed work, planned work, checked facts, and unresolved source/data issues. State limitations plainly. Never imply a reviewed example is the only option in a book.
-- Preserve one course sequence and consistent terminology. Do not introduce competing tracks or restructure the course in response to a question alone.
+## Accepted structure and conversion — 1 November 2026
 
-## Textbooks and cases
+- Part 1: Introduction to R, restored from the archive with its assets and CSV dependencies.
+- Part 2: Descriptive Statistics, `02-descriptive-statistics.qmd`.
+- Part 3: Inferential Statistics, `03-inferential-statistics.qmd`, authorized and developed from the four original 307102 inferential decks.
+- Use Quarto with the shared Petra theme to give the lessons a slide-like sense.
+- Preserve the original slide text and images exactly; do not silently correct or rewrite them.
+- Convert existing code examples into executable Quarto cells. Original Excel instructions remain unchanged unless the user explicitly authorizes adaptation.
+- Record statistical source issues separately under `_instructor/`.
+- `assets/petra-brand.css` is the active shared stylesheet; the archived copy is historical.
+- `_preview/` contains generated local previews, not a published website.
 
-- Main reference: Essentials of Modern Business Statistics with Microsoft Excel, 8th edition (2020).
-- Basic Business Statistics: Concepts and Applications, 9th edition, is a supplementary reference. Its cases are candidates, not automatically adopted content.
-- Use textbook examples for the active statistics lessons. Superstore is excluded from the current teaching sequence and navigation; retain older material for reference without assigning it.
-- For descriptive statistics, retain the Restaurant example for classification and integrated group comparisons; use SoftDrink for categorical frequencies, Audit for distributions and numerical measures, and Electronics/Stereo for two-variable association.
-- Keep recurring cases where they aid continuity, but select a suitable example for each concept. Do not force one dataset to illustrate every measurement scale or statistical method.
-- Add a larger case such as Pelican Stores only after locating its data and checking alignment with the chosen edition. Do not substitute invented observations or silently change the business setting.
-- See `20261/_instructor/descriptive-statistics-plan.md` for the current teaching and data decisions.
+## Course identity and diagrams — 1 November 2026
 
-## Data provenance and presentation
+- The active course is **307312 Applied Statistics — Masters Level**. The 307102
+  identifier is source provenance only, not the current course title.
+- The user authorized replacing the inconsistent statistical process, data-types,
+  measurement-level, scale-comparison, and variance/SD diagrams with a standard
+  Petra theme. Editable replacements live under `content/diagrams/`, with shared
+  styles in `assets/source-slides.css`; the converter includes them reproducibly.
+- Preserve other original material and executable R cells. The untouched source
+  PPTX/PDF remain the reference for the historical diagrams.
 
-- Preserve raw book files. Teaching CSVs must be reproducible from the local workbooks, with documented labels, units, and transformations.
-- Follow `20261/scripts/verify-data.R` and `_instructor/data-checks/dataset-checks.csv`. A filename or edition folder is not proof of compatibility; document the scope of every match.
-- Use R and Quarto for reproducible analyses. Keep student exercises and instructor answers separate.
-- Follow `COURSE_STYLE.md` and the shared stylesheet. Use the approved soft palette; charts use purposeful analytical colors. Label conceptual illustrations and attribute book figures.
+## Part 3 sources and conversion
 
-## Bilingual case introductions and teaching file format
+- The four original inferential decks contain 37, 26, 57, and 21 slides (141 total).
+- Keep their sequence: probability distributions, estimation, hypothesis testing, regression.
+- `scripts/convert-inferential-slides.py` reproducibly converts the source decks and exports selected native slide tables as CSV.
+- Added R equivalents are labeled; original Python listings are preserved as source examples.
+- Source errors and interpretation issues are documented separately in `_instructor/inferential-source-review.md`. Do not describe uncorrected source claims as validated.
 
-- Use Arabic only for business-case introductions: introduce each business case in English, followed immediately by equivalent Arabic narration before its illustration, data preview, or analysis. Keep definitions, conceptual explanations, diagrams, summaries, and other lesson content in English unless explicitly requested otherwise. Apply this scope to future lessons too.
-- Use clear Modern Standard Arabic and preserve the same business question, observational unit, quantities, units, and limitations. Do not add unsupported facts in translation.
-- Mark Arabic narration with `lang="ar"` and `dir="rtl"` and the shared `case-narration` class. Keep code, variable names, filenames, and dataset values unchanged unless a separately documented translation is needed.
-- Student lessons and exercises read CSV teaching files, not XLS/XLSX. Raw publisher workbooks remain unchanged as provenance sources. Maintain reproducible source-to-CSV conversions and a data dictionary; verify row counts, values, and mappings before use.
+## Publication authorization — 1 November 2026
 
-- Place summary diagrams after the concepts they summarize; explain measurement levels before showing their overview diagram.
-
-## Workspace organization
-
-- Active course sources belong in `20261/modules/`; use `NN-topic.qmd` with lowercase hyphenated words. Exercises and instructor answers use their corresponding lesson number. Module overview files are `index.qmd`.
-- Keep instructor-only sources and original nonpublisher measurement data in `20261/_instructor/`. Render instructor answers with `20261/scripts/render-instructor.sh` into `_instructor/_output/`.
-- `20261/assets/petra-brand.css` is the single maintained stylesheet. Keep used images under `assets/branding`, `assets/module01`, or `assets/module02`.
-- Syllabi belong under `20261/syllabi/`; setup guidance and reference slides belong under `docs/`. Preserve publisher PDFs and raw workbooks in `books/` under their existing source names.
-- Keep legacy drafts and unrelated resources outside the active course; see `docs/maintenance/cleanup-report.md` for recovery. Rebuild `_site/` from active sources; do not restore old exported pages or broad legacy redirect maps.
-- Superstore lessons, exercises, and datasets have been retired from the working course. Use checked textbook CSVs for the active R practical exercises.
-
-## Code explanations for students
-
-Add about two concise English comment lines inside each nonempty student-facing R chunk. State its purpose and explain unfamiliar functions and consequential arguments (for example cut boundaries and right=FALSE, percentile type, or percentage denominator). Explain every unfamiliar function at its point of use, including validation helpers such as `stopifnot()` and plotting defaults such as `theme_set()`; a minimum comment count alone does not establish adequate documentation. Explain consequential argument values, units, and assumptions. Use additional short comments when needed for accuracy. Keep chunk options first, leave blank practice scaffolds blank, and preserve existing calculations when documenting code.
-
-## Student distribution and publishing
-
-- Follow `PUBLISHING.md`, the user-approved policy for GitHub Pages and three student downloads (HTML website, complete RStudio project, and PDF bundle).
-- Editable sources stay on `main`; generated HTML/PDFs and downloadable ZIPs are published to `gh-pages` at https://msfasha.github.io/307312-Applied-Statistics/.
-- A local build or a push to `main` alone is not publication. Rebuild/package/publish with `20261/scripts/publish-course.py`, then verify the live website and downloads.
-- Exclude instructor answers, local textbook/publisher files, original measurement workbooks, and build caches/logs from student packages. Identify `books/` and `docs/` as local-only ignored folders.
-- Preserve a self-contained student RStudio project with all required lesson sources, CSVs, assets, setup instructions, and rendering scripts. Test it separately without instructor/local-only files.
+- The user explicitly requested committing, pushing, and publishing the restarted
+  course after Part 3 is complete. Use the root `PUBLISHING.md` and
+  `scripts/publish-course.py`, and verify the live website.

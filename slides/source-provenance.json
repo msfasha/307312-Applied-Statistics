@@ -1,0 +1,12 @@
+[
+  {
+    "source": "/mnt/mywork/active/3_education/university_courses/307102-Descriptive-Statistics-for-Business/Part 1 - Descriptive Statistics/Part 1 Descriptive Statistics.pptx",
+    "copy": "slides/307102-descriptive-statistics-original.pptx",
+    "sha256": "2647198d880380ea181e22e8ab62b4a969ea150670dbc750c6d7640aa986cfbc"
+  },
+  {
+    "source": "/mnt/mywork/active/3_education/university_courses/307102-Descriptive-Statistics-for-Business/Part 1 - Descriptive Statistics/Part 1 Descriptive Statistics.pdf",
+    "copy": "slides/307102-descriptive-statistics-original.pdf",
+    "sha256": "d8a59c6a71b41ddffcb64bcce38dd0f8593c6c5aacb2741ce0c5964b4c348c74"
+  }
+]

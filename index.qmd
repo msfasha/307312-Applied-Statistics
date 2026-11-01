@@ -1,0 +1,18 @@
+---
+title: "307312 Applied Statistics"
+subtitle: "Masters Level"
+---
+
+## Part 1: Introduction to R
+
+[Open the R introduction](modules/01-introduction-to-r/index.qmd)
+
+## Part 2: Descriptive Statistics
+
+[Open descriptive statistics](02-descriptive-statistics.qmd)
+
+## Part 3: Inferential Statistics
+
+[Open inferential statistics](03-inferential-statistics.qmd)
+
+Probability distributions, estimation, hypothesis testing, and regression.

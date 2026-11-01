@@ -1,0 +1,1154 @@
+{
+  "sources": [
+    {
+      "part": 1,
+      "source": "/mnt/mywork/active/3_education/university_courses/307102-Descriptive-Statistics-for-Business/Part 2 - Inferential Statisitcs/Part 2.1 - Introduction to Probability Distributions/Part 2.1 - Introduction to Probability Distributions.pptx",
+      "copy": "307102-inferential-01-original",
+      "slides": 37,
+      "sha256": "563e8b1abcb56cfa751095a98382b653347644606c95c5025ab3af31eb2d63b7",
+      "graphic_source": "Embedded pictures extracted directly; other figures use a fresh LibreOffice render. Historical companion PDF is not used."
+    },
+    {
+      "part": 2,
+      "source": "/mnt/mywork/active/3_education/university_courses/307102-Descriptive-Statistics-for-Business/Part 2 - Inferential Statisitcs/Part 2.2 - Introduction to Estimation in Statistics/Part 2.2 - Introduction to Estimation in Statistics.pptx",
+      "copy": "307102-inferential-02-original",
+      "slides": 26,
+      "sha256": "e5f9c87cd98ca110428aa201a3ea9cb105066dda4bb5d0bf657df617cb6b872d",
+      "graphic_source": "Embedded pictures extracted directly; other figures use a fresh LibreOffice render. Historical companion PDF is not used."
+    },
+    {
+      "part": 3,
+      "source": "/mnt/mywork/active/3_education/university_courses/307102-Descriptive-Statistics-for-Business/Part 2 - Inferential Statisitcs/Part 2.3 - Introduction to Hypothesis Testing/Part 2.3 - Introduction to Hypthesis Testing.pptx",
+      "copy": "307102-inferential-03-original",
+      "slides": 57,
+      "sha256": "65a62f1456d967e67093d4f72abc934465ab369d14b6ca9a9409f52b67480de5",
+      "graphic_source": "Embedded pictures extracted directly; other figures use a fresh LibreOffice render. Historical companion PDF is not used."
+    },
+    {
+      "part": 4,
+      "source": "/mnt/mywork/active/3_education/university_courses/307102-Descriptive-Statistics-for-Business/Part 2 - Inferential Statisitcs/Part 2.4 - Introduction to Linear Regression/Part 2.4 - Introduction to Linear Regression.pptx",
+      "copy": "307102-inferential-04-original",
+      "slides": 21,
+      "sha256": "7def7abc1607a8fc20d78af97cc77163f8c6712df1e1b4e0ca8e8e6c9175ae27",
+      "graphic_source": "Embedded pictures extracted directly; other figures use a fresh LibreOffice render. Historical companion PDF is not used."
+    }
+  ],
+  "slides": [
+    {
+      "part": 1,
+      "slide": 1,
+      "authorized_change": "Source cover replaced by current course identity and subsection title."
+    },
+    {
+      "part": 1,
+      "slide": 2,
+      "native_text_runs": 9,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 3,
+      "native_text_runs": 5,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 4,
+      "native_text_runs": 22,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 5,
+      "native_text_runs": 14,
+      "graphic_text_runs": 0,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 6,
+      "native_text_runs": 8,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 7,
+      "native_text_runs": 2,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 8,
+      "native_text_runs": 18,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 9,
+      "native_text_runs": 10,
+      "graphic_text_runs": 0,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 10,
+      "native_text_runs": 11,
+      "graphic_text_runs": 0,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 11,
+      "native_text_runs": 2,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 12,
+      "native_text_runs": 1,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 13,
+      "native_text_runs": 23,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 14,
+      "native_text_runs": 2,
+      "graphic_text_runs": 0,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 15,
+      "native_text_runs": 11,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 16,
+      "native_text_runs": 7,
+      "graphic_text_runs": 6,
+      "graphics": 3,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 17,
+      "native_text_runs": 5,
+      "graphic_text_runs": 0,
+      "graphics": 4,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 18,
+      "native_text_runs": 9,
+      "graphic_text_runs": 0,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 19,
+      "native_text_runs": 6,
+      "graphic_text_runs": 0,
+      "graphics": 4,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 20,
+      "native_text_runs": 1,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 21,
+      "native_text_runs": 1,
+      "graphic_text_runs": 0,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 22,
+      "native_text_runs": 6,
+      "graphic_text_runs": 0,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 23,
+      "native_text_runs": 18,
+      "graphic_text_runs": 0,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 24,
+      "native_text_runs": 7,
+      "graphic_text_runs": 0,
+      "graphics": 3,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 25,
+      "native_text_runs": 9,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 26,
+      "native_text_runs": 5,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 27,
+      "native_text_runs": 6,
+      "graphic_text_runs": 3,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 28,
+      "native_text_runs": 13,
+      "graphic_text_runs": 0,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 29,
+      "native_text_runs": 9,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 30,
+      "native_text_runs": 22,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 31,
+      "native_text_runs": 56,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 32,
+      "native_text_runs": 1,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 33,
+      "native_text_runs": 9,
+      "graphic_text_runs": 0,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 34,
+      "native_text_runs": 12,
+      "graphic_text_runs": 0,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 35,
+      "native_text_runs": 2,
+      "graphic_text_runs": 0,
+      "graphics": 4,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 36,
+      "native_text_runs": 10,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 1,
+      "slide": 37,
+      "native_text_runs": 6,
+      "graphic_text_runs": 0,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 2,
+      "slide": 1,
+      "authorized_change": "Source cover replaced by current course identity and subsection title."
+    },
+    {
+      "part": 2,
+      "slide": 2,
+      "native_text_runs": 6,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 2,
+      "slide": 3,
+      "native_text_runs": 15,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 2,
+      "slide": 4,
+      "native_text_runs": 4,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 2,
+      "slide": 5,
+      "native_text_runs": 11,
+      "graphic_text_runs": 0,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 2,
+      "slide": 6,
+      "native_text_runs": 11,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 2,
+      "slide": 7,
+      "native_text_runs": 2,
+      "graphic_text_runs": 1,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 2,
+      "slide": 8,
+      "native_text_runs": 19,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 2,
+      "slide": 9,
+      "native_text_runs": 3,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 2,
+      "slide": 10,
+      "native_text_runs": 26,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 2,
+      "slide": 11,
+      "native_text_runs": 2,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 2,
+      "slide": 12,
+      "native_text_runs": 11,
+      "graphic_text_runs": 0,
+      "graphics": 3,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 2,
+      "slide": 13,
+      "native_text_runs": 1,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 2,
+      "slide": 14,
+      "native_text_runs": 1,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 2,
+      "slide": 15,
+      "native_text_runs": 1,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 2,
+      "slide": 16,
+      "native_text_runs": 78,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 2,
+      "slide": 17,
+      "native_text_runs": 12,
+      "graphic_text_runs": 0,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 2,
+      "slide": 18,
+      "native_text_runs": 4,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 2,
+      "slide": 19,
+      "native_text_runs": 10,
+      "graphic_text_runs": 0,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 2,
+      "slide": 20,
+      "native_text_runs": 8,
+      "graphic_text_runs": 0,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 2,
+      "slide": 21,
+      "native_text_runs": 9,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 2,
+      "slide": 22,
+      "native_text_runs": 11,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 2,
+      "slide": 23,
+      "native_text_runs": 1,
+      "graphic_text_runs": 1,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 2,
+      "slide": 24,
+      "native_text_runs": 21,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 2,
+      "slide": 25,
+      "native_text_runs": 10,
+      "graphic_text_runs": 0,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 2,
+      "slide": 26,
+      "native_text_runs": 15,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 1,
+      "authorized_change": "Source cover replaced by current course identity and subsection title."
+    },
+    {
+      "part": 3,
+      "slide": 2,
+      "native_text_runs": 17,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 3,
+      "native_text_runs": 18,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 4,
+      "native_text_runs": 43,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 5,
+      "native_text_runs": 43,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 6,
+      "native_text_runs": 11,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 7,
+      "native_text_runs": 18,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 8,
+      "native_text_runs": 11,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 9,
+      "native_text_runs": 39,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 10,
+      "native_text_runs": 18,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 11,
+      "native_text_runs": 2,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 12,
+      "native_text_runs": 7,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 13,
+      "native_text_runs": 6,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 14,
+      "native_text_runs": 1,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 15,
+      "native_text_runs": 11,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 16,
+      "native_text_runs": 1,
+      "graphic_text_runs": 8,
+      "graphics": 3,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 17,
+      "native_text_runs": 9,
+      "graphic_text_runs": 0,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 18,
+      "native_text_runs": 5,
+      "graphic_text_runs": 7,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 19,
+      "native_text_runs": 1,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 20,
+      "native_text_runs": 10,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 21,
+      "native_text_runs": 12,
+      "graphic_text_runs": 0,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 22,
+      "native_text_runs": 70,
+      "graphic_text_runs": 2,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 23,
+      "native_text_runs": 10,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 24,
+      "native_text_runs": 63,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 25,
+      "native_text_runs": 4,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 26,
+      "native_text_runs": 8,
+      "graphic_text_runs": 0,
+      "graphics": 3,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 27,
+      "native_text_runs": 112,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 28,
+      "native_text_runs": 6,
+      "graphic_text_runs": 0,
+      "graphics": 4,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 29,
+      "native_text_runs": 103,
+      "graphic_text_runs": 0,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 30,
+      "native_text_runs": 7,
+      "graphic_text_runs": 0,
+      "graphics": 4,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 31,
+      "native_text_runs": 102,
+      "graphic_text_runs": 0,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 32,
+      "native_text_runs": 7,
+      "graphic_text_runs": 0,
+      "graphics": 4,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 33,
+      "native_text_runs": 1,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 34,
+      "native_text_runs": 23,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 35,
+      "native_text_runs": 1,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 36,
+      "native_text_runs": 1,
+      "graphic_text_runs": 0,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 37,
+      "native_text_runs": 1,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 38,
+      "native_text_runs": 4,
+      "graphic_text_runs": 0,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 39,
+      "native_text_runs": 2,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 40,
+      "native_text_runs": 5,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 41,
+      "native_text_runs": 12,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 42,
+      "native_text_runs": 5,
+      "graphic_text_runs": 0,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 43,
+      "native_text_runs": 2,
+      "graphic_text_runs": 0,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 44,
+      "native_text_runs": 29,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 45,
+      "native_text_runs": 20,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 46,
+      "native_text_runs": 1,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 47,
+      "native_text_runs": 47,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 48,
+      "native_text_runs": 3,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 49,
+      "native_text_runs": 1,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 50,
+      "native_text_runs": 2,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 51,
+      "native_text_runs": 10,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 52,
+      "native_text_runs": 15,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 53,
+      "native_text_runs": 55,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 54,
+      "native_text_runs": 6,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 55,
+      "native_text_runs": 16,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 56,
+      "native_text_runs": 44,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 3,
+      "slide": 57,
+      "native_text_runs": 1,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 4,
+      "slide": 1,
+      "authorized_change": "Source cover replaced by current course identity and subsection title."
+    },
+    {
+      "part": 4,
+      "slide": 2,
+      "native_text_runs": 3,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 4,
+      "slide": 3,
+      "native_text_runs": 4,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 4,
+      "slide": 4,
+      "native_text_runs": 1,
+      "graphic_text_runs": 0,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 4,
+      "slide": 5,
+      "native_text_runs": 8,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 4,
+      "slide": 6,
+      "native_text_runs": 1,
+      "graphic_text_runs": 0,
+      "graphics": 3,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 4,
+      "slide": 7,
+      "native_text_runs": 5,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 4,
+      "slide": 8,
+      "native_text_runs": 8,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 4,
+      "slide": 9,
+      "native_text_runs": 37,
+      "graphic_text_runs": 0,
+      "graphics": 3,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 4,
+      "slide": 10,
+      "native_text_runs": 25,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 4,
+      "slide": 11,
+      "native_text_runs": 41,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 4,
+      "slide": 12,
+      "native_text_runs": 28,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 4,
+      "slide": 13,
+      "native_text_runs": 18,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 4,
+      "slide": 14,
+      "native_text_runs": 76,
+      "graphic_text_runs": 0,
+      "graphics": 3,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 4,
+      "slide": 15,
+      "native_text_runs": 6,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 4,
+      "slide": 16,
+      "native_text_runs": 4,
+      "graphic_text_runs": 0,
+      "graphics": 2,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 4,
+      "slide": 17,
+      "native_text_runs": 6,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 4,
+      "slide": 18,
+      "native_text_runs": 6,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 4,
+      "slide": 19,
+      "native_text_runs": 10,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 4,
+      "slide": 20,
+      "native_text_runs": 59,
+      "graphic_text_runs": 0,
+      "graphics": 1,
+      "source_text_accounted_for": true
+    },
+    {
+      "part": 4,
+      "slide": 21,
+      "native_text_runs": 6,
+      "graphic_text_runs": 0,
+      "graphics": 0,
+      "source_text_accounted_for": true
+    }
+  ]
+}

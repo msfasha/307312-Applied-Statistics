@@ -75,3 +75,22 @@ rsconnect/
 
 # Python maintainer build caches
 __pycache__/
+
+# Retired local reference and generated files
+/archived/**/docs/
+/archived/**/_site/
+/archived/**/_freeze/
+/archived/**/.quarto/
+/archived/**/_output/
+# Retain the editable starting deck for the new course
+!/slides/*.pptx
+
+/_preview/
+/.Rproj.user/
+
+/_instructor/.slide-render-cache/
+
+/_instructor/.inferential-render-cache/
+
+# Original measurement workbooks remain local in the retired course
+/archived/**/_instructor/source-data/

@@ -1,0 +1,21 @@
+### Types of data
+
+```{=html}
+<figure class="petra-diagram diagram-tree" aria-label="Types of data: categorical and numerical; numerical data may be discrete or continuous">
+<div class="diagram-root">Types of data</div>
+<div class="diagram-branches">
+<section class="diagram-branch">
+<div class="diagram-node">Categorical</div>
+<p>Categorical data represents groups or categories.</p>
+<p><strong>Examples:</strong></p>
+<ol><li>Car brands: Audi, BMW and Mercedes.</li><li>Answers to yes/no questions: yes and no</li></ol>
+</section>
+<section class="diagram-branch">
+<div class="diagram-node">Numerical</div>
+<div class="diagram-leaves"><div>Discrete</div><div>Continuous</div></div>
+<p>Numerical data represents numbers. It is divided into two groups: discrete and continuous. Discrete data can be usually counted in a finite matter, while continuous is infinite and impossible to count.</p>
+<p><strong>Examples:</strong><br>Discrete: # children you want to have, SAT score<br>Continuous: weight, height</p>
+</section>
+</div>
+</figure>
+```

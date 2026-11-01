@@ -1,0 +1,21 @@
+### Levels of measurement
+
+```{=html}
+<figure class="petra-diagram diagram-tree" aria-label="Levels of measurement: nominal, ordinal, interval and ratio">
+<div class="diagram-root">Levels of measurement</div>
+<div class="diagram-branches">
+<section class="diagram-branch">
+<div class="diagram-node">Qualitative</div>
+<div class="diagram-leaves"><div>Nominal</div><div>Ordinal</div></div>
+<p>There are two qualitative levels: nominal and ordinal. The nominal level represents categories that cannot be put in any order, while ordinal represents categories that can be ordered.</p>
+<p><strong>Examples:</strong><br>Nominal: four seasons (winter, spring, summer, autumn)<br>Ordinal: rating your meal (disgusting, unappetizing, neutral, tasty, and delicious)</p>
+</section>
+<section class="diagram-branch">
+<div class="diagram-node">Quantitative</div>
+<div class="diagram-leaves"><div>Interval</div><div>Ratio</div></div>
+<p>There are two quantitative levels: interval and ratio. They both represent “numbers”, however, ratios have a true zero, while intervals don’t.</p>
+<p><strong>Examples:</strong><br>Interval: degrees Celsius and Fahrenheit<br>Ratio: degrees Kelvin, length</p>
+</section>
+</div>
+</figure>
+```

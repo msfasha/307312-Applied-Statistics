@@ -1,0 +1,709 @@
+{
+  "source_sha256": "2647198d880380ea181e22e8ab62b4a969ea150670dbc750c6d7640aa986cfbc",
+  "slides": [
+    {
+      "slide": 1,
+      "title": "307102 Descriptive Statistics for Business Part 1: Descriptive Statistics",
+      "text_runs": 3,
+      "graphics": 1,
+      "all_native_text_preserved": false,
+      "authorized_changes": "Course identity updated to 307312 Applied Statistics \u2014 Masters Level"
+    },
+    {
+      "slide": 2,
+      "title": "What is Statistics?",
+      "text_runs": 11,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 3,
+      "title": "Statistics Branches",
+      "text_runs": 8,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 4,
+      "title": "Example of Useful Descriptive Statistics",
+      "text_runs": 10,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 5,
+      "title": "Examples of Useful Inferential Statistics",
+      "text_runs": 10,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 6,
+      "title": "Statistical Process Life Cycle",
+      "text_runs": 1,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": "Diagram rebuilt in standard Petra theme"
+    },
+    {
+      "slide": 7,
+      "title": "Types of Data & Levels of Measurements",
+      "text_runs": 2,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 8,
+      "title": "Categorical Data vs Numerical Data",
+      "text_runs": 17,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 9,
+      "title": "",
+      "text_runs": 0,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": "Diagram rebuilt in standard Petra theme"
+    },
+    {
+      "slide": 10,
+      "title": "",
+      "text_runs": 0,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": "Diagram rebuilt in standard Petra theme"
+    },
+    {
+      "slide": 11,
+      "title": "Why Types of Data and Levels of Measurements Matter?",
+      "text_runs": 11,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 12,
+      "title": "",
+      "text_runs": 1,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": "Diagram rebuilt in standard Petra theme"
+    },
+    {
+      "slide": 13,
+      "title": "Descriptive Statistics Tools",
+      "text_runs": 1,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 14,
+      "title": "Statistical Tools  Used in Descriptive Statistics",
+      "text_runs": 4,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 15,
+      "title": "Tables in Descriptive Statistics",
+      "text_runs": 11,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 16,
+      "title": "Introducing Students Dataset",
+      "text_runs": 1,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 17,
+      "title": "Frequency Distribution Tables ",
+      "text_runs": 8,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 18,
+      "title": "Converting Numerical Values into Categorical",
+      "text_runs": 3,
+      "graphics": 2,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 19,
+      "title": "Cross-tabulation or Contingency Tables",
+      "text_runs": 5,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 20,
+      "title": "Data Visualization",
+      "text_runs": 1,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 21,
+      "title": "",
+      "text_runs": 0,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 22,
+      "title": "Visualizing Qualitative Data",
+      "text_runs": 2,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 23,
+      "title": "Bar Charts",
+      "text_runs": 4,
+      "graphics": 2,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 24,
+      "title": "Pie Chart: Visualizing Proportions",
+      "text_runs": 4,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 25,
+      "title": "Pareto Charts: Two Graphs in a Single Chart",
+      "text_runs": 5,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 26,
+      "title": "Side by Side Bar Charts: : Visualizing Two Variables",
+      "text_runs": 4,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 27,
+      "title": "Visualizing Quantitative Data, Frequency Distributions and Histograms",
+      "text_runs": 1,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 28,
+      "title": "Histograms",
+      "text_runs": 4,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 29,
+      "title": "Histograms",
+      "text_runs": 8,
+      "graphics": 2,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 30,
+      "title": "Number of Modes",
+      "text_runs": 3,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 31,
+      "title": "Skewness",
+      "text_runs": 8,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 32,
+      "title": "Outliers",
+      "text_runs": 4,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 33,
+      "title": "Scotter Plots",
+      "text_runs": 9,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 34,
+      "title": "Relations between Two Variables",
+      "text_runs": 1,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 35,
+      "title": "Numerical Measures in Descriptive Statistics",
+      "text_runs": 1,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 36,
+      "title": "Numerical Measures in Descriptive Statistics",
+      "text_runs": 7,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 37,
+      "title": "Measures of Central Location",
+      "text_runs": 3,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 38,
+      "title": "The Mean",
+      "text_runs": 17,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 39,
+      "title": "The Median",
+      "text_runs": 1,
+      "graphics": 3,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 40,
+      "title": "The Mode",
+      "text_runs": 1,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 41,
+      "title": "Excel Functions for Measuring Central Location",
+      "text_runs": 1,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 42,
+      "title": "Practical Exercise",
+      "text_runs": 5,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 43,
+      "title": "Measures of Dispersion",
+      "text_runs": 2,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 44,
+      "title": "Measures of Dispersion",
+      "text_runs": 30,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 45,
+      "title": "Measures of Dispersion \u2013 The Range",
+      "text_runs": 49,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 46,
+      "title": "Measures of Dispersion - The Mean Absolute Deviation",
+      "text_runs": 8,
+      "graphics": 2,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 47,
+      "title": "Measures of Dispersion - The Variance and the Standard Deviation",
+      "text_runs": 13,
+      "graphics": 2,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 48,
+      "title": "Measures of Dispersion - The Variance and the Standard Deviation",
+      "text_runs": 1,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": "Diagram rebuilt in standard Petra theme"
+    },
+    {
+      "slide": 49,
+      "title": "Excel Functions for Measuring Dispersion",
+      "text_runs": 1,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 50,
+      "title": "Practical Exercise",
+      "text_runs": 3,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 51,
+      "title": "Practical Exercise: using Excel\u2019s data analysis tools option",
+      "text_runs": 3,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 52,
+      "title": "The Coefficient of Variation",
+      "text_runs": 1,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 53,
+      "title": "The Coefficient of Variation",
+      "text_runs": 24,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 54,
+      "title": "The Coefficient of Variation",
+      "text_runs": 6,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 55,
+      "title": "The Coefficient of Variation",
+      "text_runs": 24,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 56,
+      "title": "Coefficient of Variation Uses in Finance",
+      "text_runs": 7,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 57,
+      "title": "Measures of Association",
+      "text_runs": 2,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 58,
+      "title": "Measures of Association",
+      "text_runs": 11,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 59,
+      "title": "Covariance",
+      "text_runs": 6,
+      "graphics": 4,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 60,
+      "title": "Limitations of Covariance",
+      "text_runs": 22,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 61,
+      "title": "The Correlation Coefficient",
+      "text_runs": 9,
+      "graphics": 4,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 62,
+      "title": "Differences between Covariance and Correlation",
+      "text_runs": 9,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 63,
+      "title": "Practical Exercise",
+      "text_runs": 4,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 64,
+      "title": "Practical Exercise",
+      "text_runs": 2,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 65,
+      "title": "Measures of Distribution",
+      "text_runs": 2,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 66,
+      "title": "Skewness",
+      "text_runs": 10,
+      "graphics": 2,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 67,
+      "title": "Skewness Coefficient",
+      "text_runs": 11,
+      "graphics": 2,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 68,
+      "title": "Practical Example",
+      "text_runs": 3,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 69,
+      "title": "Practical Exercise: using Excel\u2019s data analysis tools option",
+      "text_runs": 3,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 70,
+      "title": "Percentiles, Quartiles and Boxplots",
+      "text_runs": 1,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 71,
+      "title": "Percentiles",
+      "text_runs": 10,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 72,
+      "title": "Practical Exercise",
+      "text_runs": 3,
+      "graphics": 2,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 73,
+      "title": "Quartiles",
+      "text_runs": 4,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 74,
+      "title": "Practical Exercise",
+      "text_runs": 7,
+      "graphics": 2,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 75,
+      "title": "Boxplots \u2013 Box and Whiskers Plots",
+      "text_runs": 4,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 76,
+      "title": "Practical Exercise",
+      "text_runs": 4,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 77,
+      "title": "Outliers",
+      "text_runs": 3,
+      "graphics": 3,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 78,
+      "title": "The Interquartile Range (IQR)",
+      "text_runs": 9,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 79,
+      "title": "Using the IQR to Find Outliers",
+      "text_runs": 8,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 80,
+      "title": "Outliers",
+      "text_runs": 1,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 81,
+      "title": "Impacts of Outliers",
+      "text_runs": 10,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 82,
+      "title": "Methods to screen for outliers in a dataset",
+      "text_runs": 4,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 83,
+      "title": "Methods to screen for outliers in a dataset",
+      "text_runs": 4,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 84,
+      "title": "Methods to screen for outliers in a dataset",
+      "text_runs": 5,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 85,
+      "title": "Methods to screen for outliers in a dataset",
+      "text_runs": 3,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 86,
+      "title": "Handling Outliers in Datasets",
+      "text_runs": 18,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 87,
+      "title": "Handling Outliers in Datasets",
+      "text_runs": 15,
+      "graphics": 0,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    },
+    {
+      "slide": 88,
+      "title": "Practice Datasets",
+      "text_runs": 7,
+      "graphics": 1,
+      "all_native_text_preserved": true,
+      "authorized_changes": null
+    }
+  ]
+}

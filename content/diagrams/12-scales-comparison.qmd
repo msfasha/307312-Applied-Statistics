@@ -1,0 +1,18 @@
+### Types of attributes and scales of measurement
+
+```{=html}
+<figure class="petra-diagram">
+<div class="diagram-table-scroll" role="region" aria-label="Comparison of the four measurement scales" tabindex="0">
+<table class="diagram-comparison">
+<thead><tr><th scope="col">Scale of measurement</th><th scope="col">Type of attribute</th><th scope="col">Examples</th><th scope="col">Notes</th><th scope="col">Operations</th></tr></thead>
+<tbody>
+<tr><th scope="row">Nominal scale</th><td>Qualitative / Categorical</td><td>Gender, blood group, rhesus factor</td><td>Lowest level</td><td>A = B<br>A ≠ B</td></tr>
+<tr><th scope="row">Ordinal scale</th><td>Qualitative / Categorical</td><td>Grades, medical scores</td><td>Order is defined</td><td>A = B<br>A ≠ B<br>A &lt; B<br>A &gt; B</td></tr>
+<tr><th scope="row">Interval scale</th><td>Quantitative / Metric</td><td>Temperature in °C, intelligence quotient</td><td>Arbitrary zero, distance is defined</td><td>A = B<br>A ≠ B<br>A &lt; B<br>A &gt; B<br>d = A − B</td></tr>
+<tr><th scope="row">Ratio scale</th><td>Quantitative / Metric</td><td>Temperature in Kelvin, body height</td><td>Highest level, natural zero, ratio is defined</td><td>A = B<br>A ≠ B<br>A &lt; B<br>A &gt; B<br>d = A − B<br>r = A:B</td></tr>
+</tbody>
+</table>
+</div>
+<figcaption>Figure 2.2: Types of attributes and scales of measurement.</figcaption>
+</figure>
+```

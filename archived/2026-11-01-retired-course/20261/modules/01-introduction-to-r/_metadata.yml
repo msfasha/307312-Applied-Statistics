@@ -1,0 +1,8 @@
+format:
+  html:
+    code-copy: true
+execute:
+  warning: false
+  message: false
+  fig-width: 8
+  fig-height: 4.5

@@ -1,0 +1,36 @@
+project:
+  type: website
+  output-dir: _preview
+  execute-dir: project
+  post-render:
+    - python3 scripts/finalize-preview.py
+  render:
+    - index.qmd
+    - 02-descriptive-statistics.qmd
+    - 03-inferential-statistics.qmd
+    - modules/01-introduction-to-r/**/*.qmd
+    - "!archived/**"
+    - "!_instructor/**"
+website:
+  site-url: https://msfasha.github.io/307312-Applied-Statistics/
+  title: "307312 Applied Statistics - Masters Level"
+  navbar:
+    left:
+      - text: "Course"
+        href: index.qmd
+      - text: "Part 1: Introduction to R"
+        href: modules/01-introduction-to-r/index.qmd
+      - text: "Part 2: Descriptive statistics"
+        href: 02-descriptive-statistics.qmd
+      - text: "Part 3: Inferential statistics"
+        href: 03-inferential-statistics.qmd
+format:
+  html:
+    theme: cosmo
+    css:
+      - assets/petra-brand.css
+      - assets/source-slides.css
+    toc: true
+    code-copy: true
+execute:
+  freeze: false
