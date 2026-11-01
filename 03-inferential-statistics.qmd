@@ -791,6 +791,7 @@ print("Parameters:", fitter.model['params'])
 # MASS::fitdistr() fits three candidate families by maximum likelihood; this is a limited R comparison.
 set.seed(307312)
 y <- rnorm(2000, mean=25, sd=8)
+# lapply() passes each family name to the anonymous function and collects its fitted model.
 fits <- lapply(c("normal","logistic","cauchy"), function(family) MASS::fitdistr(y, family))
 # AIC() trades fit against parameter count; lower AIC only compares these candidates, not all distributions.
 # sapply() applies AIC to each fitted object; names label the results for interpretation.
@@ -1274,6 +1275,7 @@ plt.show()
 # replicate() repeats sampling with replacement; each column returns a mean and a sample-based SE.
 set.seed(307312)
 population <- rnorm(1000000, mean=50, sd=10)
+# sample(replace=TRUE) draws independently with replacement; sqrt(30) is the SE denominator.
 results <- replicate(1000, {
   x <- sample(population, size=30, replace=TRUE)
   c(sample_mean=mean(x), estimated_SE=sd(x)/sqrt(30))

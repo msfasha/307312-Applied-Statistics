@@ -46,3 +46,6 @@ Part 3 uses `scripts/convert-inferential-slides.py` and
 `scripts/inferential-r-examples.json`. Its six teaching CSVs reproduce exact slide
 tables; data dictionaries and provenance are under `data/inferential-statistics/`.
 The R distribution-fitting comparison uses the recommended MASS package.
+
+Rebuilding Part 3 figures from the reference decks requires LibreOffice, Poppler,
+and Python with Pillow; rendering the prepared Quarto lesson requires R and Quarto.
