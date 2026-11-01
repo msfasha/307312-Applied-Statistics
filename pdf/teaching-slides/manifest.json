@@ -41,27 +41,26 @@
       "20261/data/module02/restaurant_ratings.csv": "f6ef62331ca8df3d6d32e730900372efdd57a9ec9f217feb90c39416cc4ff32c",
       "20261/data/module02/soft_drinks.csv": "01777971bae6ebfac12734d51b1d6f6f24d00291e5e4d6ddee912a7866123a50",
       "20261/data/module02/student_age_height.csv": "19fcfb8b62072e7b73505b25482b1cf352201dfa168db5e057e88281424b3b95",
-      "20261/modules/01-introduction-to-r/01-r-and-rstudio.qmd": "dc821a89707feda512b4f17f7117cf3799ee94e6110ec5ffd040b1b20768199a",
-      "20261/modules/01-introduction-to-r/02-basic-concepts.qmd": "a541eb0b1198e6d8027fcc0f8887002ccd150d4848f9f4f4bc3fff744106f32b",
-      "20261/modules/01-introduction-to-r/03-dplyr.qmd": "94d79464e7809fdc2d28032031b22e0731be07da31d5fc59031c9a9c13d502eb",
-      "20261/modules/01-introduction-to-r/04-ggplot2.qmd": "9733e1f81da46c137e4a8388b3cee297b41d3af48305a9ee14ce6babc938d049",
-      "20261/modules/01-introduction-to-r/index.qmd": "16758c120887abb547690ff7ed724c7ec613256c472a9bc70065eb5ab9ae35c0",
-      "20261/scripts/teaching-slides/README.md": "558b30edd19a146eff12110de85255ecf0109abb86d15d135c157bb5da8eeb0a",
+      "20261/modules/01-introduction-to-r/01-r-and-rstudio.qmd": "649b1825fd8ea3f3da8ff9f9673f39b97d0cc6570cbc8c25a29afe390d8e4f90",
+      "20261/modules/01-introduction-to-r/02-basic-concepts.qmd": "65d826ed1bf94b988d7829bc7a4ea3aaba796dfda7c570dc3a6461563c358eed",
+      "20261/modules/01-introduction-to-r/03-dplyr.qmd": "05aead6a03cb8fc8056070f3dd60e3f64419c16e8b7ce74a37a49d0e02495700",
+      "20261/modules/01-introduction-to-r/04-ggplot2.qmd": "4e42a500198c54cf871bac3ab5ce70e5e0a5f7ba15e4b8e32365a161c7455e0f",
+      "20261/modules/01-introduction-to-r/index.qmd": "991e03546914c29f7c2efe082bf39269bb2cf9e4b8a5c30a5304e37a97b5c140",
+      "20261/scripts/teaching-slides/README.md": "8ac3795d5a5aae876f56e067dcc4495e1cec2e124146f6eff541aeb4a4bbb975",
       "20261/scripts/teaching-slides/author-module01.py": "d46d587cc93ae50b53a3f3480b48effaa26463c6b528e871c5d95961374bf667",
       "20261/scripts/teaching-slides/author-module02.py": "cfdffb4dce8f71f2c54882c8b7bfead17703e998831a1829c6b958e5632b1474",
       "20261/scripts/teaching-slides/build.mjs": "211ecf717c53edb39778951692596ae8185916d21b0f6c8cdb54c05f44c35aea",
       "20261/scripts/teaching-slides/build.py": "7c08bffeb7b80dd69f787cd97b0ce0702e880fe02e7afe99752b1fa55657854b",
       "20261/scripts/teaching-slides/finish.py": "1df24d5f96bbbb813483a55f8c7e289c8094bd20f5ad2500f0956c66bf013fd5",
       "20261/scripts/teaching-slides/layout.py": "0b378933238ca0c23321eb1e1fa391b53c8eca08c10a40eaffd6b550ca337c2c",
-      "20261/scripts/teaching-slides/materials.py": "30e9c5028cab17756a67321ad34bb27a0b82d9e89b853eaa617330cd3528461b",
+      "20261/scripts/teaching-slides/materials.py": "66b89ae4311406ba1f74e464413581e22bf74c6bea1a2cad75a16439dbbcfc30",
       "20261/scripts/teaching-slides/render-module01.R": "7fda55716aae70a7b8d718f96b3f1795ba30567e5d234f820278d80d2ff7b33e",
       "20261/scripts/teaching-slides/render-module02.R": "cdc6e34cbb9add6181052f44256cb7bb6583cdd5ffde814d0b88ee663479804b",
       "20261/scripts/teaching-slides/rtl.py": "99f14976104d30ac752acfcfd1ea634149c6f4a3734e32bd7be07cefa772ac2c",
       "COURSE_STYLE.md": "8bab6f6d6e0b788971f7474cb9e451acd5c2af11aa5287856f0515373de6fe95"
     },
     "outputs": {
-      "module01-introduction-to-r.pdf": "c5185093472c99bc624b5e066d3cd0bd5751b412eec14bd6d94628acad67b8b4",
-      "module01-introduction-to-r.pptx": "dafad7adc662d4d5fbbdc3002099b97c587230992a0d2a1d5e1ddfbbc949e185"
+      "module01-introduction-to-r.pdf": "c5185093472c99bc624b5e066d3cd0bd5751b412eec14bd6d94628acad67b8b4"
     }
   },
   "module02-descriptive-statistics": {
@@ -89,28 +88,27 @@
       "20261/data/module02/restaurant_ratings.csv": "f6ef62331ca8df3d6d32e730900372efdd57a9ec9f217feb90c39416cc4ff32c",
       "20261/data/module02/soft_drinks.csv": "01777971bae6ebfac12734d51b1d6f6f24d00291e5e4d6ddee912a7866123a50",
       "20261/data/module02/student_age_height.csv": "19fcfb8b62072e7b73505b25482b1cf352201dfa168db5e057e88281424b3b95",
-      "20261/modules/02-data-and-descriptive-statistics/01-data-types-and-toolbox.qmd": "aadd4fc81110f0d57371cde0108972fb82df3cb32459bd7d2f13a8b8b0291a5a",
-      "20261/modules/02-data-and-descriptive-statistics/02-frequency-tables-and-charts.qmd": "e087313eaa6ab9af9934a7827ab25e59aa0e750ec5b1b8bde06991ab87328c51",
-      "20261/modules/02-data-and-descriptive-statistics/03-numerical-measures.qmd": "e077b516722e90daa6cde30ccb385da5983e72476e7e48382691c765f29613fe",
-      "20261/modules/02-data-and-descriptive-statistics/04-relationships-between-variables.qmd": "0d4eac2338599531af01bb5184111304f019e777c0ab597682959683a98a07ad",
-      "20261/modules/02-data-and-descriptive-statistics/05-descriptive-statistics-review.qmd": "b84f3868d1242929842430cb488b3d32628822be48a730c9bfdaee47bf597f34",
-      "20261/modules/02-data-and-descriptive-statistics/index.qmd": "f619a065c880aa1a3197112cab36972f833b5039465e278331f2401b79a13561",
-      "20261/scripts/teaching-slides/README.md": "558b30edd19a146eff12110de85255ecf0109abb86d15d135c157bb5da8eeb0a",
+      "20261/modules/02-data-and-descriptive-statistics/01-data-types-and-toolbox.qmd": "a8e93e1649f9f2d10f7ffe215582fb60632e2af20951093ea4e4a50e4e4ac2ea",
+      "20261/modules/02-data-and-descriptive-statistics/02-frequency-tables-and-charts.qmd": "422be2e8db7f9b63afec360da10c2f1d22eca5dd1fda3b1e210e586eb17f0d60",
+      "20261/modules/02-data-and-descriptive-statistics/03-numerical-measures.qmd": "267f0c18aa23d6a12ee3df2975b39026212f42b64812e9139a68d9e512659c57",
+      "20261/modules/02-data-and-descriptive-statistics/04-relationships-between-variables.qmd": "5ec35a3edbdcaaae148e0d10f528c2c014d9d487e3ade23eabc9c5824e784fb0",
+      "20261/modules/02-data-and-descriptive-statistics/05-descriptive-statistics-review.qmd": "c02f736e75e22872f867b53fe07c6ed184f711a03ae0e9ea23baae60a06ec09c",
+      "20261/modules/02-data-and-descriptive-statistics/index.qmd": "535037e042f8e26540d26db521316af3b6f32831e7d427351e86725e04073881",
+      "20261/scripts/teaching-slides/README.md": "8ac3795d5a5aae876f56e067dcc4495e1cec2e124146f6eff541aeb4a4bbb975",
       "20261/scripts/teaching-slides/author-module01.py": "d46d587cc93ae50b53a3f3480b48effaa26463c6b528e871c5d95961374bf667",
       "20261/scripts/teaching-slides/author-module02.py": "cfdffb4dce8f71f2c54882c8b7bfead17703e998831a1829c6b958e5632b1474",
       "20261/scripts/teaching-slides/build.mjs": "211ecf717c53edb39778951692596ae8185916d21b0f6c8cdb54c05f44c35aea",
       "20261/scripts/teaching-slides/build.py": "7c08bffeb7b80dd69f787cd97b0ce0702e880fe02e7afe99752b1fa55657854b",
       "20261/scripts/teaching-slides/finish.py": "1df24d5f96bbbb813483a55f8c7e289c8094bd20f5ad2500f0956c66bf013fd5",
       "20261/scripts/teaching-slides/layout.py": "0b378933238ca0c23321eb1e1fa391b53c8eca08c10a40eaffd6b550ca337c2c",
-      "20261/scripts/teaching-slides/materials.py": "30e9c5028cab17756a67321ad34bb27a0b82d9e89b853eaa617330cd3528461b",
+      "20261/scripts/teaching-slides/materials.py": "66b89ae4311406ba1f74e464413581e22bf74c6bea1a2cad75a16439dbbcfc30",
       "20261/scripts/teaching-slides/render-module01.R": "7fda55716aae70a7b8d718f96b3f1795ba30567e5d234f820278d80d2ff7b33e",
       "20261/scripts/teaching-slides/render-module02.R": "cdc6e34cbb9add6181052f44256cb7bb6583cdd5ffde814d0b88ee663479804b",
       "20261/scripts/teaching-slides/rtl.py": "99f14976104d30ac752acfcfd1ea634149c6f4a3734e32bd7be07cefa772ac2c",
       "COURSE_STYLE.md": "8bab6f6d6e0b788971f7474cb9e451acd5c2af11aa5287856f0515373de6fe95"
     },
     "outputs": {
-      "module02-descriptive-statistics.pdf": "2ac36a8799d45293f88fee5ed53ef604e6365d1c717cce2a8492654d0e14d552",
-      "module02-descriptive-statistics.pptx": "4343c9339029e30c19ba2894c85991935834340205579a239ed674627743d796"
+      "module02-descriptive-statistics.pdf": "2ac36a8799d45293f88fee5ed53ef604e6365d1c717cce2a8492654d0e14d552"
     }
   }
 }
