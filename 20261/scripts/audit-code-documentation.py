@@ -23,6 +23,10 @@ def main():
             continue
         if any(part in {'_site', '_output', '.quarto', '_freeze'} for part in source.parts):
             continue
+        # Deck renderers are maintainer tooling, excluded from student distributions.
+        # Student-facing examples remain checked in their original lessons.
+        if source.is_relative_to(ROOT / 'scripts/teaching-slides'):
+            continue
         text = source.read_text()
         snippets = [text] if source.suffix == '.R' else re.findall(
             r'```(?:\{r[^\n]*\}|[ \t]*r[ \t]*)\n(.*?)```', text, re.S)

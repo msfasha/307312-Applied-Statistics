@@ -15,6 +15,17 @@ css: ../assets/petra-brand.css
 
 You can also [open the PDF course home online](https://msfasha.github.io/307312-Applied-Statistics/pdf/index.pdf). From there, follow its links to individual lesson PDFs and save or print the pages you need.
 
+## Reduced teaching slides and extended lessons
+
+The slides keep the lesson sequence with shorter text for class use. Use the extended Quarto lessons for explanations, code, and practice.
+
+| Module | Reduced PDF | Editable PowerPoint | Extended lessons |
+|---|---|---|---|
+| Introduction to R | [PDF](../teaching-slides/module01-introduction-to-r.pdf) | [PowerPoint](../teaching-slides/module01-introduction-to-r.pptx) | [Module 1](../modules/01-introduction-to-r/index.qmd) |
+| Descriptive statistics | [PDF](../teaching-slides/module02-descriptive-statistics.pdf) | [PowerPoint](../teaching-slides/module02-descriptive-statistics.pptx) | [Module 2](../modules/02-data-and-descriptive-statistics/index.qmd) |
+
+The offline downloads also include these linked files.
+
 ## Before you start
 
 Reading HTML or PDFs needs no R installation. Running and editing the R examples requires R, RStudio, and Quarto. Package installation needs internet access; the teaching CSVs are already included. HTML rendering does not require Python or LaTeX. Open the project, run `setup.R` once, then open a lesson or exercise and click **Render**.

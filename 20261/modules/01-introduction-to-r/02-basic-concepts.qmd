@@ -12,6 +12,11 @@ include-before: |
 css: ../../assets/petra-brand.css
 ---
 
+[Reduced teaching slides (PDF)](../../teaching-slides/module01-introduction-to-r.pdf) · [PowerPoint](../../teaching-slides/module01-introduction-to-r.pptx) · [Module overview](index.qmd)
+
+This extended lesson provides the full explanation and reproducible examples behind the slides.
+
+
 ## Hello World Program
 
 Write the "Hello World" program using both (1) R command prompt and (2) writing a script.

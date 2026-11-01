@@ -10,11 +10,14 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 QUARTO = shutil.which("quarto") or "/usr/lib/rstudio/resources/app/bin/quarto/bin/quarto"
+sys.path.insert(0,str(ROOT/'scripts/teaching-slides'))
+from materials import copy_to as copy_teaching_materials
 
 
 def package_outputs(output):
     """Keep download links usable and provide a clean, portable student bundle."""
     shutil.copytree(ROOT / "data", output / "data", dirs_exist_ok=True)
+    copy_teaching_materials(output)
     (output / "README.txt").write_text(
         "Applied Statistics - student PDF edition\n\n"
         "Extract the entire ZIP, then open index.pdf in a desktop PDF reader.\n"

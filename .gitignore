@@ -72,3 +72,6 @@ rsconnect/
 
 /.quarto/
 **/*.quarto_ipynb
+
+# Python maintainer build caches
+__pycache__/

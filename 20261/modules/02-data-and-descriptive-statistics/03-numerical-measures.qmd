@@ -4,6 +4,11 @@ subtitle: "Lesson 3 | Describe center, variability, and position"
 css: ../../assets/petra-brand.css
 ---
 
+[Reduced teaching slides (PDF)](../../teaching-slides/module02-descriptive-statistics.pdf) · [PowerPoint](../../teaching-slides/module02-descriptive-statistics.pptx) · [Module overview](index.qmd)
+
+This extended lesson provides the full explanation and reproducible examples behind the slides.
+
+
 ## What we will learn
 
 A table or chart reveals the distribution. Numerical measures describe selected features of that distribution precisely. In [Lesson 2](02-frequency-tables-and-charts.qmd), most audits fell below 25 days. We now ask: **What is typical, how much do durations vary, and which values deserve attention?**

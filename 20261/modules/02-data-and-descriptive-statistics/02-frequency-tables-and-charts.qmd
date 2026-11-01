@@ -4,6 +4,11 @@ subtitle: "Lesson 2 | Turn observations into a clear description"
 css: ../../assets/petra-brand.css
 ---
 
+[Reduced teaching slides (PDF)](../../teaching-slides/module02-descriptive-statistics.pdf) · [PowerPoint](../../teaching-slides/module02-descriptive-statistics.pptx) · [Module overview](index.qmd)
+
+This extended lesson provides the full explanation and reproducible examples behind the slides.
+
+
 ## What we will learn
 
 [Lesson 1](01-data-types-and-toolbox.qmd) introduced the toolbox. Here we use its first two tools in detail: **tables organize the observations; charts help us see their pattern**.

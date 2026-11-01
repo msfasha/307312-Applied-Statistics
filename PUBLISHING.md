@@ -40,6 +40,19 @@ Preserve source attribution and the original rights of third-party materials.
 
 ## Publish an update
 
+Reduced teaching PDFs and editable PowerPoints for Modules 1 and 2 are served under
+`teaching-slides/`, with links beside the extended Quarto lessons. They are included
+in all three student downloads so the links also work offline. Their maintained
+authoring and R rendering scripts are under `20261/scripts/teaching-slides/`;
+generated PDFs/PPTXs and their source/output hash manifest stay in
+`20261/_output/teaching-slides/` and are published only to `gh-pages`.
+
+After changing a reduced deck or one of its inputs, rebuild and visually check it
+using `scripts/teaching-slides/README.md`. The packager rejects changed source or
+output hashes until the checked teaching-material manifest has been refreshed.
+The source manifest tracks lesson sources, teaching CSVs, styles, authoring scripts,
+and figures. It does not expand the documented textbook data-match scope.
+
 From `20261/`:
 
 ```sh

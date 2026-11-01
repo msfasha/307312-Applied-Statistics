@@ -4,6 +4,13 @@ subtitle: "Lessons 1–4 | Foundations for the course"
 css: ../../assets/petra-brand.css
 ---
 
+## Reduced teaching material
+
+Use the concise slides during class and the extended lessons below for full explanations, worked R code, and practice. Both follow the same lesson sequence.
+
+- [Reduced teaching slides (PDF)](../../teaching-slides/module01-introduction-to-r.pdf)
+- [Editable PowerPoint](../../teaching-slides/module01-introduction-to-r.pptx)
+
 ## What this module covers
 
 R setup, basic concepts, data manipulation, and ggplot2. The dplyr lesson and practical exercises use the checked textbook CSVs. Lesson, exercise, and solution numbers match.

@@ -4,6 +4,11 @@ subtitle: "Bring the question, data, tools, and interpretation together"
 css: ../../assets/petra-brand.css
 ---
 
+[Reduced teaching slides (PDF)](../../teaching-slides/module02-descriptive-statistics.pdf) · [PowerPoint](../../teaching-slides/module02-descriptive-statistics.pptx) · [Module overview](index.qmd)
+
+This extended lesson provides the full explanation and reproducible examples behind the slides.
+
+
 ## Purpose and submission
 
 Prepare a **short Quarto report** using the checked textbook CSVs. This review brings Lessons 1–4 together. You should demonstrate that you can choose and interpret a tool, rather than simply produce every available statistic.

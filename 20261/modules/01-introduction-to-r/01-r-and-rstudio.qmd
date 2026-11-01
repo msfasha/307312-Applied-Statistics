@@ -12,6 +12,11 @@ include-before: |
 css: ../../assets/petra-brand.css
 ---
 
+[Reduced teaching slides (PDF)](../../teaching-slides/module01-introduction-to-r.pdf) · [PowerPoint](../../teaching-slides/module01-introduction-to-r.pptx) · [Module overview](index.qmd)
+
+This extended lesson provides the full explanation and reproducible examples behind the slides.
+
+
 R is a powerful language and environment for statistical computing and graphics.
 
 - It is widely used among statisticians and data analysts for developing statistical software and data analysis.

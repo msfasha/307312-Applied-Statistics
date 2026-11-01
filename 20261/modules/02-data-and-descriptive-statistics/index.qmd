@@ -4,6 +4,13 @@ subtitle: "Start with the variables, then choose the tools"
 css: ../../assets/petra-brand.css
 ---
 
+## Reduced teaching material
+
+Use the concise slides during class and the extended lessons below for full explanations, worked R code, and practice. Both follow the same lesson sequence.
+
+- [Reduced teaching slides (PDF)](../../teaching-slides/module02-descriptive-statistics.pdf)
+- [Editable PowerPoint](../../teaching-slides/module02-descriptive-statistics.pptx)
+
 ## Learning sequence
 
 1. **Understand the data:** observational units, categorical and numerical variables, discrete and continuous quantities, and the four measurement levels.
