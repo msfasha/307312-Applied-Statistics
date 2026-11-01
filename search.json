@@ -1643,7 +1643,7 @@
     "href": "index.html#browse-or-download",
     "title": "Applied Statistics",
     "section": "Browse or download",
-    "text": "Browse or download\nChoose a format below, or start a module in the table. HTML and PDF contain the same course lessons; Quarto is their editable source. Reduced review materials and supplied book guides are supplementary.\n\n\n\nMaterial\nBrowse\nDownload ZIP\n\n\n\n\nSite / HTML lessons\nChoose a module below\nHTML website\n\n\nPDF versions\nPDFs by module\nComplete PDF bundle\n\n\nQuarto / RStudio project\n—\nSources, CSVs and setup instructions\n\n\nFlashcards — Reduced Version\nReduced slides and recall cards\nReduced review PDFs\n\n\nBook Chapters\nSupplied chapter guides\nChapter guides\n\n\n\nTeaching data and source notes are also available separately and included in the course downloads. No editable PowerPoint files are distributed.",
+    "text": "Browse or download\nChoose a format below, or start a module in the table. HTML and PDF contain the same course lessons; Quarto is their editable source. Reduced review materials and supplied book guides are supplementary.\n\n\n\nMaterial\nBrowse\nDownload ZIP\n\n\n\n\nSite / HTML lessons\nChoose a module below\nHTML website\n\n\nPDF versions\nPDFs by module\nComplete PDF bundle\n\n\nQuarto / RStudio project\n—\nSources, CSVs and setup instructions\n\n\nFlashcards — Reduced Version\nReduced slides and recall cards\nReduced review PDFs\n\n\nBook Chapters\nSupplied chapter guides\nChapter guides\n\n\n\nTeaching data and source notes are also available separately and included in the course downloads.",
     "crumbs": [
       "Student home — all materials"
     ]
@@ -3289,6 +3289,16 @@
     "text": "Before you start\nReading HTML or PDFs needs no R installation. Running and editing the R examples requires R, RStudio, and Quarto. Package installation needs internet access; the teaching CSVs are already included. HTML rendering does not require Python or LaTeX. Open the project, run setup.R once, then open a lesson or exercise and click Render.\nThe student project includes the files needed for the active lessons. Instructor answers, local textbook PDFs, original publisher workbooks, and original instructor measurement workbooks are excluded. References to these original sources document provenance; they are not missing student dependencies.\nKeep attribution and source notices with shared copies. Textbook excerpts and third-party data retain their original rights.\nReturn to the course home.",
     "crumbs": [
       "PDFs and reduced review"
+    ]
+  },
+  {
+    "objectID": "index.html#earlier-lecture-slides",
+    "href": "index.html#earlier-lecture-slides",
+    "title": "Applied Statistics",
+    "section": "Earlier lecture slides",
+    "text": "Earlier lecture slides\nThese earlier lecture decks are supplementary references, with their original Excel examples and the descriptive deck’s R examples.\n\n\n\nTopic\nPDF\nPowerPoint\n\n\n\n\nDescriptive statistics\nView PDF\nDownload PowerPoint\n\n\nInferential statistics\nView PDF\nDownload PowerPoint",
+    "crumbs": [
+      "Student home — all materials"
     ]
   }
 ]

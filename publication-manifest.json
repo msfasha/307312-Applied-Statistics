@@ -1,10 +1,10 @@
 {
-  "source_commit": "e1e59a5aba92c4783c28cf4bb3b60afc34221481",
+  "source_commit": "5509a63efb1a2ce39280300477a216fb66f6183d",
   "source_worktree_dirty": false,
   "student_pages": 48,
   "website": "https://msfasha.github.io/307312-Applied-Statistics/",
   "source_sha256": {
-    "index.qmd": "a71681c3ea2d5dafeb3fb7b21cc75ff6c37d897a4700c119bfe814c1e6c5fbf0",
+    "index.qmd": "12b7d08a62b2b8da88d6b96091a494c9ab6858c30d2147652ad71bf3925d2bad",
     "modules/01-introduction-to-r/01-r-and-rstudio.qmd": "649b1825fd8ea3f3da8ff9f9673f39b97d0cc6570cbc8c25a29afe390d8e4f90",
     "modules/01-introduction-to-r/02-basic-concepts.qmd": "65d826ed1bf94b988d7829bc7a4ea3aaba796dfda7c570dc3a6461563c358eed",
     "modules/01-introduction-to-r/03-dplyr.qmd": "05aead6a03cb8fc8056070f3dd60e3f64419c16e8b7ce74a37a49d0e02495700",
@@ -56,9 +56,15 @@
   "downloads": {
     "applied-statistics-reduced-review.zip": "c90a693e1a394af43856b556605b7981885f8913c4f8ffcbbd0d97307dfaf680",
     "applied-statistics-book-chapters.zip": "b6b3d91014e68b33b2a325a5c4ce05f74db86ff00ea0c412030c63a74cd6f176",
-    "applied-statistics-student-pdfs.zip": "33d5e65462026d836f6d3d232f2190470df14a3ec82690bdf3800a508239bd66",
-    "applied-statistics-rstudio-project.zip": "d3d9c62a644334b71a389a868754bdb9d75f51ca064833de358a8d4c63141110",
-    "applied-statistics-website.zip": "efd2563b416584691471a4d060020326d777e72acf00d141f5ac17de924c6df7"
+    "applied-statistics-student-pdfs.zip": "75ccf629f502bb08e5a1afd7b50a01f2f36c57929c150f6db825a6e91e5a5fd0",
+    "applied-statistics-rstudio-project.zip": "ed75469f8a2684e82432830a5c1dee7727f85c21d4b6f4c48be3b54f9f9fba0b",
+    "applied-statistics-website.zip": "96a78c9edafc9d9e3606ddb7c8c38a47c789d95ce4a048c8c8e252623b814fcc"
+  },
+  "reference_materials": {
+    "reference-slides/01-descriptive-statistics.pdf": "60f70392cccb11adacce46421fefebb041923e86c24b4385609cf97a41f8e3f5",
+    "reference-slides/01-descriptive-statistics.pptx": "e6927c6fa4514d0a008de1b56a1d3d12e8dc96a44ce636cb2fc6ce373a57c648",
+    "reference-slides/02-inferential-statistics.pdf": "dfe88952590100a0c7c31cee4b8ac17af39b0dc5feebdbe67cdb9ad9d95fcbd2",
+    "reference-slides/02-inferential-statistics.pptx": "31ca7055cab72128268a013dd77811c08178412391f74484da708b1eb5f8ecc5"
   },
   "chapter_materials": {
     "book-chapters/basic-business-statistics-13e/chapter01-cards.json": "46c1d55f353db00cb8f1964407b31f98e506d08f6d6a52031973f58d215eab5d",
@@ -67,7 +73,7 @@
     "book-chapters/basic-business-statistics-13e/chapter01-original.pdf": "61d09bb97e1fce904f2e7e76245d5a5ff809ce04dfc2a3ef163c5b7bf648ef1f"
   },
   "module_pdfs": {
-    "index.pdf": "f6874f8c024b3c7dc273598224227d5c9cec827b16a6dba9ccefadb0e5026511",
+    "index.pdf": "bb3204372bffa3084b08bf578b92fed15d63a4c05039b34f9252d2dc931641b5",
     "modules/01-introduction-to-r.pdf": "f14a15448079443a012bc5e1657c100dfc9ce69570c81a04eb6f32922975f8e7",
     "modules/02-data-and-descriptive-statistics.pdf": "3b97c86ae9bdc1785049fca55cc2b0c6b1da2e31ae2f41d637d0f66bba4e743d",
     "modules/03-probability-and-distributions.pdf": "3bece3064499cdfe802ebb7e1bbbf3be785296ab9a5db4dba43d569b55da47fd",

@@ -1,6 +1,6 @@
 {
   "inputs": {
-    "index.qmd": "a71681c3ea2d5dafeb3fb7b21cc75ff6c37d897a4700c119bfe814c1e6c5fbf0",
+    "index.qmd": "12b7d08a62b2b8da88d6b96091a494c9ab6858c30d2147652ad71bf3925d2bad",
     "modules/01-introduction-to-r/index.qmd": "991e03546914c29f7c2efe082bf39269bb2cf9e4b8a5c30a5304e37a97b5c140",
     "modules/01-introduction-to-r/01-r-and-rstudio.qmd": "649b1825fd8ea3f3da8ff9f9673f39b97d0cc6570cbc8c25a29afe390d8e4f90",
     "modules/01-introduction-to-r/02-basic-concepts.qmd": "65d826ed1bf94b988d7829bc7a4ea3aaba796dfda7c570dc3a6461563c358eed",
@@ -57,7 +57,7 @@
     "assets/pdf/petra-print.tex": "3889bdb847e4591a07c9baeca8054e121c374d10f2d60ed660723de391ff01fb"
   },
   "topic_exports": {
-    "index.pdf": "252f94a0ea3fae171b8fc07871121c287c4d27151128aa153d77a919e0623e64",
+    "index.pdf": "cb371bd6eb7cf108eb20f4d557c34c0b50cd942d6b5e1a8ab428d3096ebf349e",
     "modules/01-introduction-to-r/index.pdf": "a825ad7fecf130c9324d4f65736164347d2e44ff8656c93f0269a2894f4985a8",
     "modules/01-introduction-to-r/01-r-and-rstudio.pdf": "3bb0f1e9546154e81773807c04268d7d62478d6baf0e084efbdc04b9536ddd25",
     "modules/01-introduction-to-r/02-basic-concepts.pdf": "869edc3228b591e05f068e18ec0344e7e7de0a1b492cc300893a0bb09dbd0e27",
@@ -107,7 +107,7 @@
     "resources/index.pdf": "44411fc885d520540cb701ea78f24cdd9726ded05ce20ac460292268624f7856"
   },
   "outputs": {
-    "index.pdf": "f6874f8c024b3c7dc273598224227d5c9cec827b16a6dba9ccefadb0e5026511",
+    "index.pdf": "bb3204372bffa3084b08bf578b92fed15d63a4c05039b34f9252d2dc931641b5",
     "modules/01-introduction-to-r.pdf": "f14a15448079443a012bc5e1657c100dfc9ce69570c81a04eb6f32922975f8e7",
     "modules/02-data-and-descriptive-statistics.pdf": "3b97c86ae9bdc1785049fca55cc2b0c6b1da2e31ae2f41d637d0f66bba4e743d",
     "modules/03-probability-and-distributions.pdf": "3bece3064499cdfe802ebb7e1bbbf3be785296ab9a5db4dba43d569b55da47fd",
