@@ -22,7 +22,16 @@ Choose a format below, or start a module in the table. HTML and PDF contain the 
 | **Flashcards — Reduced Version** | [Reduced slides and recall cards](resources/downloads.qmd) | [Reduced review PDFs](https://msfasha.github.io/307312-Applied-Statistics/downloads/applied-statistics-reduced-review.zip) |
 | **Book Chapters** | [Supplied chapter guides](resources/book-chapters/index.qmd) | [Chapter guides](https://msfasha.github.io/307312-Applied-Statistics/downloads/applied-statistics-book-chapters.zip) |
 
-[Teaching data and source notes](resources/index.qmd#teaching-datasets) are also available separately and included in the course downloads. No editable PowerPoint files are distributed.
+[Teaching data and source notes](resources/index.qmd#teaching-datasets) are also available separately and included in the course downloads.
+
+## Earlier lecture slides
+
+These earlier lecture decks are supplementary references, with their original Excel examples and the descriptive deck’s R examples.
+
+| Topic | PDF | PowerPoint |
+|---|---|---|
+| Descriptive statistics | [View PDF](https://msfasha.github.io/307312-Applied-Statistics/reference-slides/01-descriptive-statistics.pdf) | [Download PowerPoint](https://msfasha.github.io/307312-Applied-Statistics/reference-slides/01-descriptive-statistics.pptx) |
+| Inferential statistics | [View PDF](https://msfasha.github.io/307312-Applied-Statistics/reference-slides/02-inferential-statistics.pdf) | [Download PowerPoint](https://msfasha.github.io/307312-Applied-Statistics/reference-slides/02-inferential-statistics.pptx) |
 
 ## Course modules
 

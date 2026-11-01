@@ -169,9 +169,20 @@ def package():
     # Publish the module PDFs and resource pages, with the same paths as the ZIP.
     pdf_stage = stage/'pdf'
     with zipfile.ZipFile(pdf_zip) as archive: archive.extractall(pdf_stage)
-    # Enforce the instructor-only PowerPoint policy on every distribution.
-    if list(stage.rglob('*.pptx')):
-        raise SystemExit('Editable PowerPoints must remain local.')
+    # Publish only the explicitly approved earlier decks as standalone downloads.
+    # Student ZIPs and the remainder of the local reference collection stay separate.
+    reference_materials = {}
+    for stem in ['01-descriptive-statistics', '02-inferential-statistics']:
+        for suffix in ['pdf', 'pptx']:
+            name = f'{stem}.{suffix}'
+            source = REPO/'docs/reference-slides'/name
+            target = stage/'reference-slides'/name
+            target.parent.mkdir(exist_ok=True)
+            shutil.copy2(source, target)
+            reference_materials[str(target.relative_to(stage))] = hashlib.sha256(target.read_bytes()).hexdigest()
+    allowed_pptx = {stage/name for name in reference_materials if name.endswith('.pptx')}
+    if set(stage.rglob('*.pptx')) != allowed_pptx:
+        raise SystemExit('Only the two approved earlier PowerPoints may be published.')
     for bundle in downloads.glob('*.zip'):
         with zipfile.ZipFile(bundle) as archive:
             if archive.testzip() or any(name.lower().endswith('.pptx') for name in archive.namelist()):
@@ -182,6 +193,7 @@ def package():
         'student_pages':len(sources),'website':URL,
         'source_sha256':{str(s.relative_to(ROOT)):hashlib.sha256(s.read_bytes()).hexdigest() for s in sources},
         'downloads':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in downloads.glob('*.zip')},
+        'reference_materials':reference_materials,
         'chapter_materials':chapter_materials,
         'module_pdfs':pdf_manifest['outputs'],
         'teaching_materials':{name:digest for record in teaching_materials.values() for name,digest in record['outputs'].items()},

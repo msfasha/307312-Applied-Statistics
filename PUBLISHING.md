@@ -139,3 +139,16 @@ recall cards) and `downloads/applied-statistics-book-chapters.zip` (supplied Mar
 These two focused ZIPs are also hashed in the publication manifest.
 Chapter 1 has 50 recall cards, each with separate question and answer pages,
 plus a cover: 101 pages. Reduced module slides are separate materials.
+
+
+## Earlier lecture decks — approved 2026-11-01
+
+The user explicitly approved publishing the two earlier descriptive and inferential
+lecture decks and linking them from the home page. This is a narrow exception to
+the local-only PowerPoint policy: publish unchanged PDF and PPTX copies from
+`docs/reference-slides/01-descriptive-statistics.*` and
+`docs/reference-slides/02-inferential-statistics.*` under `reference-slides/` on
+`gh-pages`. Their hashes are recorded under `reference_materials` in the publication
+manifest. These are standalone online references; home-page links in offline
+bundles point to the live files. Other PowerPoints remain local, and student ZIPs
+continue to exclude PowerPoints. The rest of `docs/` stays local-only.
