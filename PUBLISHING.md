@@ -124,7 +124,7 @@ Build with the bundled Python and Node runtimes using `scripts/book-chapters/bui
 and `scripts/book-chapters/build.mjs`. The publishing and PDF packaging scripts copy
 these companions into all three student downloads; the publication manifest records
 their hashes. Chapter 1's unchanged original attachment remains available as text and
-as a PDF preserving the wording and Markdown notation.
+as a formatted PDF preserving its wording, with Markdown rendered as headings, lists, tables, and emphasis. The original text retains the raw notation.
 
 ## Student interface update — 2026-11-01
 

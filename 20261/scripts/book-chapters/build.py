@@ -1,13 +1,10 @@
 """Build PDFs and prepare the shared editable flashcard deck authoring script."""
 from pathlib import Path
-import json, textwrap, re
-from xml.sax.saxutils import escape
+import json, shutil, subprocess, tempfile
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.colors import HexColor
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
-from reportlab.lib.styles import getSampleStyleSheet
 ROOT=Path(__file__).resolve().parents[2]
 source=ROOT/'book-chapters/basic-business-statistics-13e'
 out=ROOT/'_output/book-chapters/basic-business-statistics-13e'; out.mkdir(parents=True,exist_ok=True)
@@ -38,15 +35,50 @@ for i,card in enumerate(cards,1):
   text(card[side],210,36)
   text('Recall your answer, then advance.' if side=='question' else card['cue'],638,20,'#56616D'); c.showPage()
 c.save()
-# Verbatim source text, with typography and wrapping only. Markdown notation remains visible.
-styles=getSampleStyleSheet();style=styles['BodyText'];style.fontName='Sans';style.fontSize=9;style.leading=13
-style.spaceAfter=4
-story=[]
-for line in (source/'chapter01-original.txt').read_text().splitlines():
- if not line.strip():story.append(Spacer(1,5));continue
- # Keep the source's exact wording, including Markdown markers and tables.
- story.append(Paragraph(escape(line),style))
-def footer(c,d):
- c.setFont('Sans',8);c.drawString(42,24,'Supplied chapter guide / original text');c.drawRightString(550,24,str(d.page))
-SimpleDocTemplate(str(out/'chapter01-original.pdf'),rightMargin=42,leftMargin=42,topMargin=40,bottomMargin=42,title='Chapter 1: supplied original teaching guide').build(story,onFirstPage=footer,onLaterPages=footer)
+# Render Markdown semantically; the supplied text remains unchanged on disk.
+# Use an isolated project so no student website configuration affects this PDF.
+quarto=shutil.which('quarto') or '/usr/lib/rstudio/resources/app/bin/quarto/bin/quarto'
+with tempfile.TemporaryDirectory(prefix='chapter-summary-') as directory:
+ draft=Path(directory)/'summary.qmd'
+ # Explicit column widths let long Markdown table cells wrap within the page.
+ (Path(directory)/'tables.lua').write_text('''function Table(tbl)
+  local width = 1 / #tbl.colspecs
+  for i, spec in ipairs(tbl.colspecs) do
+    tbl.colspecs[i] = {spec[1], width}
+  end
+  return tbl
+end
+''')
+ header="""---
+filters:
+  - tables.lua
+format:
+  pdf:
+    pdf-engine: xelatex
+    lang: en
+    dir: ltr
+    papersize: a4
+    geometry: margin=20mm
+    mainfont: DejaVu Sans
+    sansfont: DejaVu Sans
+    monofont: DejaVu Sans Mono
+    fontsize: 10pt
+    toc: true
+    toc-depth: 2
+    colorlinks: true
+    linkcolor: PetraLink
+    urlcolor: PetraLink
+    include-in-header: HEADER_PATH
+---
+
+""".replace('HEADER_PATH', json.dumps(str(ROOT/'assets/pdf/petra-print.tex')))
+ markdown=(source/'chapter01-original.txt').read_text()
+ for delimiter in ['[', ']', '(', ')']:
+  markdown=markdown.replace('\\'*2+delimiter, '\\'+delimiter)
+ # Normalize standard LaTeX math delimiters for Pandoc in the build copy only.
+ markdown=markdown.replace(r'\[', '$$').replace(r'\]', '$$')
+ markdown=markdown.replace(r'\(', '$').replace(r'\)', '$')
+ draft.write_text(header+markdown)
+ subprocess.run([quarto,'render',str(draft),'--to','pdf'],check=True,cwd=directory)
+ shutil.copy2(draft.with_suffix('.pdf'),out/'chapter01-original.pdf')
 print(out)
