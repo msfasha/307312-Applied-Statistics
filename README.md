@@ -1,51 +1,54 @@
 # 307312 Applied Statistics — Masters Level
 
-## Course structure
+**Students: [open the course website](https://msfasha.github.io/307312-Applied-Statistics/).**
+Read the lessons online or download each part as PDF, all PDFs together, or the
+student RStudio project from the home page.
 
-1. **Introduction to R** — retained lessons, practice, assets, and CSV dependencies.
-2. **Descriptive Statistics** — `02-descriptive-statistics.qmd`, based on all 88
-   original 307102 slides, using the shared Petra theme. Original text and
-   graphics are retained except for the updated course identity and five
-   user-authorized diagrams rebuilt in the standard Petra theme; clearly labeled R equivalents are added alongside
-   the original Excel instructions.
-3. **Inferential Statistics** — `03-inferential-statistics.qmd`, covering the
-   141 original slides in four subsections, with 29 executable R equivalents.
+## The active course: three notebooks
 
-Open `Applied-Statistics.Rproj` in RStudio. Render the descriptive QMD to see the
-first preview, or run `quarto render` from this folder to build the local course.
-Quarto and R with knitr/rmarkdown are required; Part 1 also uses dplyr and ggplot2.
+| Part | Editable source | Content |
+|---|---|---|
+| 1 | `01-introduction-to-r.qmd` | Essential R, dplyr, and ggplot2 |
+| 2 | `02-descriptive-statistics.qmd` | Descriptive statistics, original slides plus R equivalents |
+| 3 | `03-inferential-statistics.qmd` | Probability, estimation, tests, and regression plus R equivalents |
 
-Generated HTML is stored in `_preview/`. The descriptive HTML embeds its assets
-for convenient sharing. The source QMD uses files in `assets/` and `data/`; keep
-those folders with it when editing or rerendering. Code runs during rendering
-or from the QMD in RStudio; the HTML is a rendered lesson, not an in-browser R kernel.
+All three sit together at the root. There is no separate active module folder.
+Open `Applied-Statistics.Rproj` in RStudio to edit or execute the notebooks.
+The website and PDFs show executed results; use RStudio to run or change code.
 
-## Sources and preservation
+## What the other files are for
 
-Original reference decks are under `slides/` and remain unchanged.
-`scripts/convert-descriptive-slides.py` rebuilds the descriptive QMD from the
-original PPTX/PDF plus `scripts/descriptive-r-examples.json`. It requires Python
-with Pillow and Poppler. `scripts/export-original-students.py` reproduces the
-CSV from the original workbook and requires openpyxl. See `data/307102/` for
-the dictionary and provenance.
+This GitHub repository is the **maintainer workspace**. For a compact student
+folder, use the **student RStudio project download** on the course website.
 
-`_instructor/` holds the conversion audit and source issues for later review.
-The conversion preserves wording rather than silently correcting source errors.
-It uses a responsive reading layout rather than the original slide coordinates.
-Text remains editable; original graphics, diagrams, and formula pictures remain images.
+| Item | Purpose |
+|---|---|
+| `index.qmd` | Student home page and downloads |
+| `assets/`, `content/`, `data/` | Styling, diagrams, pictures, and teaching CSVs required by the lessons |
+| `scripts/` | Reproducible conversion, PDF export, packaging, and publication |
+| `slides/` | Unchanged original reference decks; not assigned separately |
+| `_instructor/` | Conversion audits and source issues; excluded from student downloads |
+| `archived/` | Retired course and expanded R notes; excluded from student downloads |
+| `_quarto.yml` | Website configuration |
+| `PUBLISHING.md` | Required build, PDF, packaging, and live verification instructions |
+| `AGENTS.md` | Course development instructions |
 
-The former course remains under `archived/2026-11-01-retired-course/`.
-`books/` remains a local reference library. The active three-part course is published at
-https://msfasha.github.io/307312-Applied-Statistics/. See `PUBLISHING.md` for the
-source and generated-site branch workflow.
+Instructor and archived files on this public source branch are publicly visible
+on GitHub, although excluded from the student website and packages.
 
-The five editable diagram replacements live under `content/diagrams/`. Formula
-notation uses native MathML, so the rendered equations need no remote math service.
+## Building and maintaining
 
-Part 3 uses `scripts/convert-inferential-slides.py` and
-`scripts/inferential-r-examples.json`. Its six teaching CSVs reproduce exact slide
-tables; data dictionaries and provenance are under `data/inferential-statistics/`.
-The R distribution-fitting comparison uses the recommended MASS package.
+Run `quarto render` to build the HTML lessons in `_preview/`. Quarto and R with
+knitr/rmarkdown, dplyr, ggplot2, and MASS are required. See `PUBLISHING.md` to
+create the PDFs and downloads and publish the website.
 
-Rebuilding Part 3 figures from the reference decks requires LibreOffice, Poppler,
-and Python with Pillow; rendering the prepared Quarto lesson requires R and Quarto.
+The condensed Part 1 replaces the expanded notes retained in
+`archived/2026-11-01-r-introduction-expanded/`. The former full course is retained
+in `archived/2026-11-01-retired-course/`. Books and local documents stay ignored.
+
+Parts 2 and 3 preserve original slide text and images, apart from authorized
+course identity updates and five standardized diagrams. Clearly labeled R
+examples supplement the original examples. Source errors are recorded separately
+under `_instructor/`; preserving the text does not validate every original claim.
+The converters and their R-example files under `scripts/` reproduce the lessons.
+The CSV dictionaries and provenance records are under `data/`.

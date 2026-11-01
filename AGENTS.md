@@ -24,7 +24,7 @@
 
 ## Accepted structure and conversion — 1 November 2026
 
-- Part 1: Introduction to R, restored from the archive with its assets and CSV dependencies.
+- Part 1: Introduction to R, `01-introduction-to-r.qmd`, condensed from the four expanded R lessons.
 - Part 2: Descriptive Statistics, `02-descriptive-statistics.qmd`.
 - Part 3: Inferential Statistics, `03-inferential-statistics.qmd`, authorized and developed from the four original 307102 inferential decks.
 - Use Quarto with the shared Petra theme to give the lessons a slide-like sense.
@@ -58,3 +58,17 @@
 - The user explicitly requested committing, pushing, and publishing the restarted
   course after Part 3 is complete. Use the root `PUBLISHING.md` and
   `scripts/publish-course.py`, and verify the live website.
+
+## Condensed Part 1 — 1 November 2026
+
+- The user authorized skimming and combining the R introduction into one root-level Quarto notebook beside Parts 2 and 3.
+- Retain setup, basic R objects/data frames/missing values, essential dplyr, and introductory ggplot2.
+- Use the same original student CSV as Part 2 for continuity.
+- The expanded R lessons and exercises are preserved under `archived/2026-11-01-r-introduction-expanded/`; do not render or navigate to them in the active course.
+
+## Required student downloads
+
+- Publish a PDF for each of the three root notebooks on every deployment.
+- Use `scripts/build-student-downloads.py` through the publisher to preserve HTML diagrams and executed results.
+- The home page links each PDF plus the complete student RStudio project and PDF bundle.
+- Follow `PUBLISHING.md`; a source push alone is not publication. Verify live downloads.

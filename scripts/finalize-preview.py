@@ -3,7 +3,7 @@
 from pathlib import Path
 import re
 root=Path(__file__).resolve().parents[1]
-for page in [root/'_preview/02-descriptive-statistics.html', root/'_preview/03-inferential-statistics.html']:
+for page in [root/'_preview/01-introduction-to-r.html', root/'_preview/02-descriptive-statistics.html', root/'_preview/03-inferential-statistics.html']:
     if not page.exists(): continue
     content=page.read_text()
     pattern=re.compile(r'(<a\b[^>]*\bhref=")([^"]+)("[^>]*class="[^"]*lightbox[^>]*>\s*<img\b[^>]*\bsrc=")(data:image/[^\"]+)(")')

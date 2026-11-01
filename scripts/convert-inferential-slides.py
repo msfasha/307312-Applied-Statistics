@@ -34,6 +34,8 @@ execute:
   fig-height: 4.5
 ---
 
+[Download this part as PDF](pdf/03-inferential-statistics.pdf){.pdf-download}
+
 <div class="original-branding"><img src="assets/descriptive-statistics/original-branding.png" alt="Institute of Analytics and University of Petra" width="230"></div>
 
 ''']

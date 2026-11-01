@@ -39,7 +39,7 @@ execute:
 ---
 
 ''']
-q.append('<div class="original-branding"><img src="assets/descriptive-statistics/original-branding.png" alt="Institute of Analytics and University of Petra" width="230"></div>\n\n')
+q.append('[Download this part as PDF](pdf/02-descriptive-statistics.pdf){.pdf-download}\n\n<div class="original-branding"><img src="assets/descriptive-statistics/original-branding.png" alt="Institute of Analytics and University of Petra" width="230"></div>\n\n')
 overrides = {
     6: '06-statistical-process.qmd',
     9: '09-types-of-data.qmd',

@@ -17,6 +17,8 @@ execute:
   message: false
 ---
 
+[Download this part as PDF](pdf/02-descriptive-statistics.pdf){.pdf-download}
+
 <div class="original-branding"><img src="assets/descriptive-statistics/original-branding.png" alt="Institute of Analytics and University of Petra" width="230"></div>
 
 <!-- Original slide 01 -->

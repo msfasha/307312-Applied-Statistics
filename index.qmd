@@ -3,16 +3,17 @@ title: "307312 Applied Statistics"
 subtitle: "Masters Level"
 ---
 
-## Part 1: Introduction to R
+Study the three parts in order. Read online, or download the PDFs for offline reading.
 
-[Open the R introduction](modules/01-introduction-to-r/index.qmd)
+| Course part | Read online | Download |
+|---|---|---|
+| 1. Introduction to R | [Open lesson](01-introduction-to-r.qmd) | [PDF](pdf/01-introduction-to-r.pdf) |
+| 2. Descriptive Statistics | [Open lesson](02-descriptive-statistics.qmd) | [PDF](pdf/02-descriptive-statistics.pdf) |
+| 3. Inferential Statistics | [Open lesson](03-inferential-statistics.qmd) | [PDF](pdf/03-inferential-statistics.pdf) |
 
-## Part 2: Descriptive Statistics
+## Work with R or study offline
 
-[Open descriptive statistics](02-descriptive-statistics.qmd)
+- [Download the complete student RStudio project](downloads/applied-statistics-rstudio.zip): editable lessons, teaching CSVs, images, and setup instructions. Extract the ZIP, then open `Applied-Statistics.Rproj` in RStudio.
+- [Download all three PDFs](downloads/applied-statistics-pdfs.zip).
 
-## Part 3: Inferential Statistics
-
-[Open inferential statistics](03-inferential-statistics.qmd)
-
-Probability distributions, estimation, hypothesis testing, and regression.
+The online lessons and PDFs show the code and its results. To run or change R code, use the RStudio project.

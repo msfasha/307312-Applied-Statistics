@@ -6,7 +6,9 @@ ROOT=Path(__file__).resolve().parents[1]
 def run(*args,cwd=ROOT):
     return subprocess.run(args,cwd=cwd,check=True,text=True,capture_output=True).stdout.strip()
 def validate(site):
-    required=['index.html','02-descriptive-statistics.html','03-inferential-statistics.html','modules/01-introduction-to-r/index.html']
+    required=['index.html','02-descriptive-statistics.html','03-inferential-statistics.html','01-introduction-to-r.html']
+    required += ['pdf/'+p+'.pdf' for p in ['01-introduction-to-r','02-descriptive-statistics','03-inferential-statistics']]
+    required += ['downloads/applied-statistics-rstudio.zip','downloads/applied-statistics-pdfs.zip']
     for name in required:
         if not (site/name).exists():raise RuntimeError('Missing generated page: '+name)
     for name in ['paired_scores.csv','graduate_salaries.csv','female_major_salaries.csv','teaching_methods.csv','teaching_gender.csv','houses.csv']:
@@ -22,7 +24,9 @@ if not args.skip_render:
     if previous.exists():shutil.rmtree(previous)
     quarto=shutil.which('quarto') or '/usr/lib/rstudio/resources/app/bin/quarto/bin/quarto'
     subprocess.run([quarto,'render','--quiet'],cwd=ROOT,check=True)
-site=ROOT/'_preview';validate(site)
+site=ROOT/'_preview'
+subprocess.run(['python3',str(ROOT/'scripts/build-student-downloads.py')],cwd=ROOT,check=True)
+validate(site)
 source=run('git','rev-parse','HEAD')
 (site/'deployment.json').write_text(json.dumps({'source_commit':source,'course':'307312 Applied Statistics - Masters Level','published_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat()},indent=2)+'\n')
 (site/'.nojekyll').touch()
@@ -37,7 +41,7 @@ with tempfile.TemporaryDirectory(prefix='307312-pages-') as temp:
             else:p.unlink()
         shutil.copytree(site,checkout,dirs_exist_ok=True)
         run('git','add','--all',cwd=checkout)
-        run('git','commit','-m','Publish three-part Masters course with inferential statistics',cwd=checkout)
+        run('git','commit','-m','Publish compact three-part course and student downloads',cwd=checkout)
         print(run('git','push','origin','HEAD:gh-pages',cwd=checkout))
         print('Published source commit:',source)
         print('Website: https://msfasha.github.io/307312-Applied-Statistics/')

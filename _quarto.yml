@@ -28,9 +28,9 @@ project:
     - python3 scripts/finalize-preview.py
   render:
     - index.qmd
+    - 01-introduction-to-r.qmd
     - 02-descriptive-statistics.qmd
     - 03-inferential-statistics.qmd
-    - modules/01-introduction-to-r/**/*.qmd
     - "!archived/**"
     - "!_instructor/**"
 website:
@@ -41,7 +41,7 @@ website:
       - text: "Course"
         href: index.qmd
       - text: "Part 1: Introduction to R"
-        href: modules/01-introduction-to-r/index.qmd
+        href: 01-introduction-to-r.qmd
       - text: "Part 2: Descriptive statistics"
         href: 02-descriptive-statistics.qmd
       - text: "Part 3: Inferential statistics"
