@@ -115,6 +115,17 @@ def package():
                 raise SystemExit(f'Missing or older export: {output}. Run without --package-only.')
     teaching_materials=copy_teaching_materials(ROOT/'_site')
     chapter_materials=copy_chapter_materials(ROOT/'_site')
+    pdf_root = ROOT/'_output/pdf-modules'
+    pdf_manifest = json.loads((pdf_root/'module-pdf-manifest.json').read_text())
+    for name, digest in pdf_manifest['inputs'].items():
+        if hashlib.sha256((ROOT/name).read_bytes()).hexdigest() != digest:
+            raise SystemExit(f'Stale module PDF input: {name}. Rebuild the PDFs.')
+    for name, digest in pdf_manifest['outputs'].items():
+        if hashlib.sha256((pdf_root/name).read_bytes()).hexdigest() != digest:
+            raise SystemExit(f'Module PDF differs from its checked build: {name}')
+    for name, digest in pdf_manifest['topic_exports'].items():
+        if hashlib.sha256((ROOT/'_output/pdf'/name).read_bytes()).hexdigest() != digest:
+            raise SystemExit(f'Topic export changed after module assembly: {name}. Reassemble the PDFs.')
     run('python3','scripts/validate-course.py')
     run('python3','scripts/audit-code-documentation.py')
     stage = ROOT/'_output/publish-site'
@@ -129,9 +140,11 @@ def package():
     pdf_zip = ROOT/'_output/applied-statistics-student-pdfs.zip'
     with zipfile.ZipFile(pdf_zip) as archive:
         if archive.testzip(): raise SystemExit('Damaged PDF archive')
-        for source in sources:
-            relative = str(source.relative_to(ROOT).with_suffix('.pdf'))
-            if archive.read(relative) != (ROOT/'_output/pdf'/relative).read_bytes():
+        archive_pdfs = {name for name in archive.namelist() if name.endswith('.pdf') and (name.startswith('modules/') or name.startswith('resources/') or name == 'index.pdf')}
+        if archive_pdfs != set(pdf_manifest['outputs']):
+            raise SystemExit('PDF archive must contain exactly one PDF per module plus course/resource pages.')
+        for relative in pdf_manifest['outputs']:
+            if archive.read(relative) != (pdf_root/relative).read_bytes():
                 raise SystemExit(f'Stale PDF in archive: {relative}')
         for record in teaching_materials.values():
             for name,digest in record['outputs'].items():
@@ -142,7 +155,7 @@ def package():
                 raise SystemExit(f'Stale chapter material in PDF archive: {name}')
     shutil.copy2(pdf_zip,downloads/pdf_zip.name)
     package_student_project(downloads/'applied-statistics-rstudio-project.zip')
-    # Publish individual PDFs as well as the ZIP, preserving cross-document links.
+    # Publish the module PDFs and resource pages, with the same paths as the ZIP.
     pdf_stage = stage/'pdf'
     with zipfile.ZipFile(pdf_zip) as archive: archive.extractall(pdf_stage)
     manifest = {
@@ -152,6 +165,7 @@ def package():
         'source_sha256':{str(s.relative_to(ROOT)):hashlib.sha256(s.read_bytes()).hexdigest() for s in sources},
         'downloads':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in downloads.glob('*.zip')},
         'chapter_materials':chapter_materials,
+        'module_pdfs':pdf_manifest['outputs'],
         'teaching_materials':{name:digest for record in teaching_materials.values() for name,digest in record['outputs'].items()},
     }
     (stage/'publication-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')

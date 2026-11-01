@@ -19,15 +19,19 @@ _chapter_spec.loader.exec_module(_chapter_module)
 copy_chapter_materials=_chapter_module.copy_to
 
 
-def package_outputs(output):
+def package_outputs(output, python):
     """Keep download links usable and provide a clean, portable student bundle."""
     shutil.copytree(ROOT / "data", output / "data", dirs_exist_ok=True)
+    shutil.copytree(ROOT/'assets', output/'assets', dirs_exist_ok=True,
+                    ignore=shutil.ignore_patterns('*_files', '*_cache', '.DS_Store'))
     copy_teaching_materials(output)
     copy_chapter_materials(output)
+    subprocess.run([python, str(ROOT/'scripts/verify-module-pdfs.py')], cwd=ROOT, check=True)
     (output / "README.txt").write_text(
         "Applied Statistics - student PDF edition\n\n"
         "Extract the entire ZIP, then open index.pdf in a desktop PDF reader.\n"
-        "Keep the folders together so lesson and dataset links work.\n"
+        "Each module is one PDF under modules/, with clickable contents, bookmarks,\n"
+        "and links to the previous/next topic. Keep folders together for data links.\n"
         "Modules marked Planned contain an overview only. Instructor answers are excluded.\n",
         encoding="utf-8",
     )
@@ -41,6 +45,18 @@ def package_outputs(output):
                 continue
             archive.write(path, relative)
     print(f"Student bundle: {bundle}")
+
+
+def assemble_modules():
+    python = sys.executable
+    if importlib.util.find_spec('pypdf') is None or importlib.util.find_spec('reportlab') is None:
+        bundled = Path.home()/'.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3'
+        if bundled.exists():
+            python = str(bundled)
+        else:
+            raise SystemExit('Module PDF assembly needs pypdf and reportlab: install with python3 -m pip install pypdf reportlab.')
+    subprocess.run([python, str(ROOT/'scripts/module-pdfs.py')], cwd=ROOT, check=True)
+    package_outputs(ROOT/'_output/pdf-modules', python)
 
 
 def prepare_diagrams():
@@ -81,7 +97,14 @@ def main():
         raise SystemExit("Install Quarto first, then run this command again.")
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("sources", nargs="*", type=Path, help="Optional project-relative lesson paths; default: all student pages")
-    sources = parser.parse_args().sources
+    parser.add_argument('--assemble-only', action='store_true', help='Assemble and package existing topic exports; no Quarto rendering')
+    args = parser.parse_args()
+    if args.assemble_only:
+        if args.sources:
+            parser.error('--assemble-only cannot be combined with sources')
+        assemble_modules()
+        return
+    sources = args.sources
     if not sources:
         sources = [Path("index.qmd")]
         sources += sorted(p.relative_to(ROOT) for p in (ROOT / "modules").rglob("*.qmd"))
@@ -109,7 +132,7 @@ def main():
         if not (output / source.with_suffix(".pdf")).is_file():
             raise SystemExit(f"Expected PDF was not produced for {source}.")
     print(f"Built {len(sources)} PDFs in {output}")
-    package_outputs(output)
+    assemble_modules()
 
 
 if __name__ == "__main__":

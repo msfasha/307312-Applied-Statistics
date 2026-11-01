@@ -9,7 +9,8 @@ its student materials through the existing GitHub repository.
 - Generated student website and downloads: `gh-pages`, served from its root by GitHub Pages.
 - Course URL: https://msfasha.github.io/307312-Applied-Statistics/
 - Student downloads page: https://msfasha.github.io/307312-Applied-Statistics/resources/downloads.html
-- Local generated HTML: `20261/_site/`; PDFs: `20261/_output/pdf/`.
+- Local generated HTML: `20261/_site/`; private per-page PDF build inputs:
+  `20261/_output/pdf/`; distributed PDFs: `20261/_output/pdf-modules/`.
 - Local publication staging: `20261/_output/publish-site/`.
 
 Generated outputs stay excluded from the source branch. They **must be uploaded
@@ -28,9 +29,17 @@ GitHub's branch selection in the repository UI lets maintainers inspect gh-pages
    rendering must not require Python or LaTeX. It must render without the
    instructor's local files. R, RStudio, Quarto, and package installation are external
    software prerequisites, not applications bundled inside this ZIP.
-3. `downloads/applied-statistics-student-pdfs.zip`: student PDFs and linked assets/data.
-   Extract it and open `index.pdf`; preserve folders for cross-document links.
-   Also serve the same PDF tree under `pdf/` for individual viewing/downloading.
+3. `downloads/applied-statistics-student-pdfs.zip`: one complete PDF per module,
+   plus course/resource pages and linked assets/data. Extract it and open `index.pdf`
+   or a module under `modules/`; preserve folders for dataset/companion links.
+   Also serve the same PDF tree under `pdf/` for module viewing/downloading.
+   Module PDFs follow the website sidebar order and include the overview, lessons,
+   student exercises, and reviews. They provide clickable contents, nested PDF
+   bookmarks, and Contents/Previous topic/Next topic links on content pages. Footer
+   page positions cover the whole module; a separate Topic p. label matches each
+   topic's own contents page numbers.
+   Planned modules contain only their existing overview, preceded by contents.
+   Per-topic PDFs are intermediate build files and are excluded from publication.
 
 Do not include `_instructor/`, instructor answers, raw measurement workbooks,
 local publisher workbooks, textbook PDFs, credentials, caches, or build logs in
@@ -62,6 +71,12 @@ python3 scripts/publish-course.py
 This builds all PDFs and the full HTML site, checks links and local function
 documentation, creates the three downloads, validates the PDF archive against
 current exports, and stages the publication. Inspect it before publishing.
+
+PDF assembly uses `scripts/module-pdfs.py` with `pypdf` and `reportlab` (the bundled
+Python runtime is used when these are unavailable in the default Python). The
+module manifest checks source/sidebar/assembly hashes and the exact distributed
+PDFs. `python3 scripts/build-pdfs.py --assemble-only` can reassemble existing topic
+exports, but does not refresh stale topic content; use the full build after edits.
 
 Commit source changes on main, then run:
 

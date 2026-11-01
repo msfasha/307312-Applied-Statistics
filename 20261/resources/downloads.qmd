@@ -11,9 +11,19 @@ css: ../assets/petra-brand.css
 |---|---|---|
 | [HTML website ZIP](https://msfasha.github.io/307312-Applied-Statistics/downloads/applied-statistics-website.zip) | Rendered student lessons, exercises, navigation, figures, and datasets | Extract the whole ZIP, then open `index.html` in a browser. Reading works offline; browser security may limit search when opened as a local file. |
 | [RStudio project ZIP](https://msfasha.github.io/307312-Applied-Statistics/downloads/applied-statistics-rstudio-project.zip) | `20261.Rproj`, lesson and exercise sources, CSV datasets, required assets, configuration, and setup instructions | Extract the whole ZIP, open `20261.Rproj` in RStudio, and follow its README. Run `setup.R` once to install packages. |
-| [PDF bundle ZIP](https://msfasha.github.io/307312-Applied-Statistics/downloads/applied-statistics-student-pdfs.zip) | Ready-to-read PDFs of student pages, linked figures, and datasets | Extract the whole ZIP and open `index.pdf`. Keep the folder structure so links between PDFs continue to work. |
+| [PDF bundle ZIP](https://msfasha.github.io/307312-Applied-Statistics/downloads/applied-statistics-student-pdfs.zip) | One complete PDF per module, with clickable contents, bookmarks, lessons, and student exercises; linked datasets and supplementary materials | Extract the whole ZIP and open `index.pdf`, or open a module PDF from `modules/`. Keep the folders together for links to datasets and supplementary files. |
 
-You can also [open the PDF course home online](https://msfasha.github.io/307312-Applied-Statistics/pdf/index.pdf). From there, follow its links to individual lesson PDFs and save or print the pages you need.
+You can also [open the PDF course home online](https://msfasha.github.io/307312-Applied-Statistics/pdf/index.pdf). Each module is a single document: jump through its clickable contents or bookmarks, and use **Contents**, **Previous topic**, and **Next topic** at the bottom of its pages. Topic links within a module stay in the same PDF. The footer shows the page position in the complete module and **Topic p.** for the page numbers used in each topic's own contents.
+
+| Module | Complete PDF |
+|---|---|
+| 1. Introduction to R | [Open Module 1](https://msfasha.github.io/307312-Applied-Statistics/pdf/modules/01-introduction-to-r.pdf) |
+| 2. Data and descriptive statistics | [Open Module 2](https://msfasha.github.io/307312-Applied-Statistics/pdf/modules/02-data-and-descriptive-statistics.pdf) |
+| 3. Probability and distributions | [Open Module 3](https://msfasha.github.io/307312-Applied-Statistics/pdf/modules/03-probability-and-distributions.pdf) |
+| 4. Sampling and estimation | [Open Module 4](https://msfasha.github.io/307312-Applied-Statistics/pdf/modules/04-sampling-and-estimation.pdf) |
+| 5. Hypothesis testing and group comparisons | [Open Module 5](https://msfasha.github.io/307312-Applied-Statistics/pdf/modules/05-hypothesis-testing.pdf) |
+| 6. Regression (planned overview) | [Open Module 6](https://msfasha.github.io/307312-Applied-Statistics/pdf/modules/06-regression.pdf) |
+| 7. Forecasting and applied analysis (planned overview) | [Open Module 7](https://msfasha.github.io/307312-Applied-Statistics/pdf/modules/07-forecasting-and-applications.pdf) |
 
 ## Reduced teaching slides and extended lessons
 
