@@ -67,12 +67,15 @@ A manager wants a clear description of the brands selected in **50 soft-drink pu
 
 ```{r}
 #| label: soft-drink-import-example
-#| eval: false
-# read.csv() imports the teaching file as a data frame with named columns.
-# The $ operator selects brand_book_label, the documented textbook-label column.
+# library() loads ggplot2 for charts and knitr for table formatting.
+# read.csv() loads purchases; factor()/c() retain the documented textbook labels.
+# levels fixes category order; head() previews the first six recorded purchases.
+library(ggplot2)
+library(knitr)
 soft <- read.csv("data/module02/soft_drinks.csv")
-# Use this column for the textbook's category labels:
-soft$brand_book_label
+brand_levels <- c("Coca-Cola", "Diet Coke", "Dr. Pepper", "Pepsi", "Sprite")
+soft$brand <- factor(soft$brand_book_label, levels = brand_levels)
+head(soft["brand_book_label"])
 ```
 
 ## From observations to a frequency table
@@ -89,6 +92,17 @@ $$
 $$
 
 A relative frequency is a proportion, such as 0.38. Its percentage equivalent is 38%, not 0.38%.
+
+
+```{r}
+#| label: r-example-softdrink-frequency
+# table()/as.data.frame() count purchases; names()/c() label the table columns.
+# nrow() supplies the 50-purchase denominator; multiply proportions by 100 for percent.
+brand_table <- as.data.frame(table(soft$brand))
+names(brand_table) <- c("Brand", "Frequency")
+brand_table$Relative_frequency <- brand_table$Frequency / nrow(soft)
+brand_table$Percent <- 100 * brand_table$Relative_frequency
+```
 
 ```{r}
 #| label: soft-drink-frequency-table
@@ -125,22 +139,23 @@ A **bar chart** places categories on one axis and their counts or percentages on
 
 Nominal brands have no inherent ranking. Alphabetical order is reasonable for lookup; descending frequency makes a popularity comparison easier. For **ordinal** categories, retain their meaningful order rather than sorting them by frequency.
 
+
+```{r}
+#| label: r-example-order-brands
+# order() ranks descending counts; as.character() breaks ties alphabetically.
+# factor()/rev() set top-to-bottom bar order from the character category labels.
+ranked <- brand_table[order(-brand_table$Frequency,
+  as.character(brand_table$Brand)), ]
+ranked$Brand <- factor(ranked$Brand, levels = rev(as.character(ranked$Brand)))
+```
+
 ```{r}
 #| label: fig-soft-drink-bars
 #| fig-cap: "Original R chart from the checked SoftDrink CSV. Counts match book Table 2.2, printed p.38."
 #| fig-alt: "Horizontal bars ordered by frequency show Coca-Cola 19, Pepsi 13, Diet Coke 8, Dr. Pepper 5, and Sprite 5 purchases."
-# as.character(): converts values to character text; for a factor it returns displayed category labels.
-# rev(): reverses the order of a vector.
-# ggplot(): starts a plot from data; additional layers are joined with +.
-# aes(): maps variables to visual properties such as x, y, fill, color, or group.
-# scale_x_continuous(): controls numeric x-axis breaks, labels, limits, and spacing.
-# c(): combines values into a vector, converting them to a common type when needed.
-# seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.
-# labs(): sets axis titles, legend titles, plot titles, and captions.
-# order() ranks the frequency rows; factor() fixes the displayed category order.
-# geom_col() plots the supplied counts and geom_text() places their labels.
-ranked <- brand_table[order(-brand_table$Frequency, as.character(brand_table$Brand)), ]
-ranked$Brand <- factor(ranked$Brand, levels = rev(as.character(ranked$Brand)))
+# ggplot()/aes() map the ranked table; geom_col() uses its already computed counts.
+# geom_text() adds counts; hjust positions them and width controls bar thickness.
+# scale_x_continuous()/c()/seq() set count limits/ticks; labs() supplies labels.
 ggplot(ranked, aes(Frequency, Brand)) +
   geom_col(fill = "#2878A5", width = .65) +
   geom_text(aes(label = Frequency), hjust = -.35) +
@@ -201,6 +216,18 @@ An accounting firm wants to describe the completion times of **20 year-end audit
 
 [Download the Audit CSV](../../data/module02/audit_times.csv). The variable `audit_days` contains all 20 values printed in book Table 2.4, p.47.
 
+
+```{r}
+#| label: r-example-audit-import
+# library() loads ggplot2 for charts and knitr for table formatting.
+# read.csv() loads the checked Audit CSV; $ selects its audit_days column.
+# x is the vector of 20 durations in days, not class midpoints.
+library(ggplot2)
+library(knitr)
+audit <- read.csv("data/module02/audit_times.csv")
+x <- audit$audit_days
+```
+
 ```{r}
 #| label: audit-observations
 # c(): combines values into a vector, converting them to a common type when needed.
@@ -221,6 +248,17 @@ Our intervals are **[10,15), [15,20), [20,25), [25,30), [30,35)**. A square brac
 ::: {.callout-note title="Class rules"}
 Every value must fall into exactly one class. Avoid gaps, overlap, or an uncovered maximum. Retain empty classes when they are part of the chosen numerical scale. There is no universally best number of classes: check that your choice reveals rather than hides the distribution.
 :::
+
+
+```{r}
+#| label: r-example-audit-classes
+# seq() supplies 5-day boundaries; cut() assigns each raw duration to a class.
+# right = FALSE means [lower, upper); table() counts the resulting classes.
+boundaries <- seq(10, 35, 5)
+audit$class <- cut(audit$audit_days,
+  breaks = boundaries, right = FALSE)
+table(audit$class)
+```
 
 ```{r}
 #| label: audit-grouped-table
@@ -258,13 +296,9 @@ A **histogram** places numerical intervals on the horizontal axis. With equal-wi
 #| label: fig-audit-frequency-histogram
 #| fig-cap: "Original R histogram using the same five classes as the table; frequencies match book Table 2.5, printed p.49."
 #| fig-alt: "Five adjacent 5-day bars show counts 4, 8, 5, 2, and 1 from 10 to under 35 days."
-# ggplot(): starts a plot from data; additional layers are joined with +.
-# aes(): maps variables to visual properties such as x, y, fill, color, or group.
-# scale_x_continuous(): controls numeric x-axis breaks, labels, limits, and spacing.
-# scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.
-# labs(): sets axis titles, legend titles, plot titles, and captions.
-# geom_histogram() counts the raw days using the same boundaries as the table.
-# closed = "left" keeps the histogram and cut(..., right = FALSE) consistent.
+# ggplot()/aes() map raw audit days; geom_histogram() counts into boundaries.
+# closed = "left" agrees with cut(..., right = FALSE), so 20 enters [20,25).
+# scale_x_continuous()/scale_y_continuous() set ticks; labs() labels units and counts.
 ggplot(audit, aes(audit_days)) +
   geom_histogram(breaks = boundaries, closed = "left",
                  fill = "#2878A5", colour = "white") +

@@ -9,6 +9,7 @@ dir.create(file.path(out, 'tables'), recursive = TRUE, showWarnings = FALSE)
 lessons <- sort(list.files('modules/02-data-and-descriptive-statistics',
   pattern = '^0[1-4].*[.]qmd$', full.names = TRUE))
 results <- list()
+example_results <- list()
 for (lesson in seq_along(lessons)) {
   lines <- readLines(lessons[lesson], warn = FALSE)
   env <- new.env(parent = globalenv())
@@ -21,6 +22,7 @@ for (lesson in seq_along(lessons)) {
       if (!evaluate) { inside <- FALSE; next }
       expressions <- parse(text = code)
       plot_count <- 0
+      example_output <- character()
       for (expr in expressions) {
         value <- withVisible(eval(expr, env))
         if (value$visible && inherits(value$value, 'ggplot')) {
@@ -31,12 +33,16 @@ for (lesson in seq_along(lessons)) {
           p <- value$value + theme(text = element_text(size = 17, family = 'DejaVu Sans'))
           ggsave(file,p,width=12,height=6.2,units='in',dpi=150,bg='white')
         }
+        if (value$visible && !inherits(value$value, 'ggplot') && !inherits(value$value, 'knitr_kable')) {
+          example_output <- c(example_output, capture.output(print(value$value)))
+        }
         if (value$visible && inherits(value$value, 'knitr_kable')) {
           file <- file.path(out,'tables',paste0('lesson',lesson,'-',label,'.md'))
           cat(as.character(value$value),file=file,sep='\n',append=file.exists(file))
           cat('\n\n',file=file,append=TRUE)
         }
       }
+      example_results[[paste0('lesson',lesson,'-',label)]] <- list(output=example_output,plots=plot_count)
       results[[length(results)+1]] <- list(lesson=lesson,label=label,expressions=length(expressions),plots=plot_count)
       inside <- FALSE
       next
@@ -62,4 +68,5 @@ for (lesson in seq_along(lessons)) {
   }
 }
 write_json(results,file.path(out,'executed-chunks.json'),auto_unbox=TRUE,pretty=TRUE)
+write_json(example_results,file.path(out,'r-example-results.json'),auto_unbox=FALSE,pretty=TRUE)
 cat('Checked',length(results),'original R chunks and rendered all visible lesson graphics.\n')

@@ -97,10 +97,39 @@ An analyst studies **300 Los Angeles restaurants** from the book's historical te
 
 A **crosstabulation** counts observations classified by two variables. Each internal cell describes a combination. **Marginal totals** describe each variable separately.
 
+
+```{r}
+#| label: r-example-restaurant-import
+# library() loads ggplot2 for charts and knitr for table formatting.
+# read.csv() reads the checked Restaurant teaching CSV.
+# factor()/c() retain the ordered ratings; levels fixes the category order.
+library(ggplot2)
+library(knitr)
+restaurants <- read.csv("data/module02/restaurant_ratings.csv")
+restaurants$quality_rating <- factor(restaurants$quality_rating,
+  levels = c("Good", "Very Good", "Excellent"), ordered = TRUE)
+```
+
+
+```{r}
+#| label: r-example-restaurant-crosstab
+# c() supplies band labels; seq()/cut() form the corresponding 10-USD intervals.
+# right = FALSE means [lower, upper); labels changes display text, not boundaries.
+# table() counts quality/band pairs; addmargins() adds row and column totals.
+price_labels <- c("10–<20", "20–<30", "30–<40", "40–<50")
+restaurants$price_band <- cut(restaurants$meal_price_usd,
+  breaks = seq(10, 50, 10), right = FALSE, labels = price_labels)
+counts <- table(Quality = restaurants$quality_rating,
+  Price = restaurants$price_band)
+addmargins(counts)
+```
+
 ```{r}
 #| label: restaurant-crosstab
 # addmargins() adds row totals, column totals, and the grand total to the crosstab.
 # kable() displays counts, not percentages; each internal cell counts one combination.
+# stopifnot()/all() check every cell against the book counts; sum() checks the total.
+stopifnot(all(counts == expected_counts), sum(counts) == 300)
 kable(addmargins(counts), caption = "Restaurants by quality and meal-price band (USD). Sum denotes totals.")
 ```
 
@@ -120,6 +149,15 @@ The same count can answer different questions:
 **Say “among whom?” before calculating a percentage.** A percentage without its reference group can answer the wrong question even when the arithmetic is correct.
 
 ### Row percentages: price distribution within quality
+
+
+```{r}
+#| label: r-example-restaurant-row-percent
+# prop.table() divides each cell by the indicated margin total.
+# margin = 1 uses each quality row; multiply by 100 to give row percentages.
+row_pct <- 100 * prop.table(counts, margin = 1)
+row_pct
+```
 
 ```{r}
 #| label: restaurant-row-percentages
@@ -180,6 +218,15 @@ Small segments are readable in the table even when too narrow for a label. Middl
 
 ### Column percentages: quality distribution within price
 
+
+```{r}
+#| label: r-example-restaurant-column-percent
+# prop.table() expresses cells relative to a specified margin total.
+# margin = 2 uses each price-band column; multiply by 100 for percentages.
+column_pct <- 100 * prop.table(counts, margin = 2)
+column_pct
+```
+
 ```{r}
 #| label: restaurant-column-percentages
 # kable(): formats a data frame or matrix as a readable report table; digits sets displayed precision.
@@ -219,6 +266,16 @@ A San Francisco electronics store records **10 weeks** of television-commercial 
 
 [Download Electronics CSV](../../data/module02/electronics_sales.csv). The original workbook is named Stereo.xls; all ten observations match the book's Electronics table. `week` identifies the observation, while `commercials` and `sales_hundreds_usd` form our variable pair.
 
+
+```{r}
+#| label: r-example-electronics-import
+# library() loads ggplot2 for charts.
+# read.csv() loads ten paired weeks from the checked Electronics teaching CSV.
+# The sales_hundreds_usd column is in hundreds of USD; keep the weekly pairs intact.
+library(ggplot2)
+electronics <- read.csv("data/module02/electronics_sales.csv")
+```
+
 ```{r}
 #| label: electronics-paired-data
 # c(): combines values into a vector, converting them to a common type when needed.
@@ -235,21 +292,17 @@ A **scatterplot** places one numerical variable on each axis and one point for e
 #| label: fig-electronics-scatterplot
 #| fig-cap: "Original R scatterplot of the ten checked Electronics observations. Labels identify weeks. No fitted regression model is required for this descriptive display."
 #| fig-alt: "Ten weekly observations trend upward: weeks with one commercial have sales of 38 and 41 hundreds of USD, while weeks with five have 57 and 63."
-# ggplot(): starts a plot from data; additional layers are joined with +.
-# aes(): maps variables to visual properties such as x, y, fill, color, or group.
-# scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.
-# expansion(): sets extra axis space; mult is relative padding and add is padding in axis units.
-# c(): combines values into a vector, converting them to a common type when needed.
-# labs(): sets axis titles, legend titles, plot titles, and captions.
-# geom_point() draws each paired week; geom_text() labels points with week identifiers.
-# nudge_y moves labels above points, and scale_x_continuous() sets the count-axis tick marks.
+# ggplot()/aes() map paired variables; geom_point() draws weeks and geom_text() labels them.
+# nudge_y moves labels; scale_x_continuous() marks integer commercial counts.
+# scale_y_continuous()/expansion()/c() add proportional space; labs() labels sales units.
 ggplot(electronics, aes(commercials, sales_hundreds_usd)) +
   geom_point(size = 3.2, colour = "#2878A5") +
   geom_text(aes(label = week), nudge_y = 1, size = 3.5, colour = "#56616D") +
   scale_x_continuous(breaks = 1:5) +
   scale_y_continuous(expand = expansion(mult = c(.06,.12))) +
   labs(title = "More commercials accompany higher weekly sales",
-       x = "Number of television commercials", y = "Weekly sales (hundreds of USD)")
+       x = "Number of television commercials",
+       y = "Weekly sales (hundreds of USD)")
 ```
 
 Read four features before calculating a coefficient:
@@ -268,6 +321,16 @@ The **sample covariance** is
 $$s_{xy}=\frac{\sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})}{n-1}.$$
 
 When both observations are above their means, or both below, their product of deviations is positive. Opposite signs give a negative product. Summing these products describes whether deviations tend to move together.
+
+
+```{r}
+#| label: r-example-electronics-covariance
+# $ selects paired columns; x is commercials and y is sales in hundreds of USD.
+# cov() uses the sample denominator n - 1; preserve each week's pairing.
+x <- electronics$commercials
+y <- electronics$sales_hundreds_usd
+cov(x, y)
+```
 
 ```{r}
 #| label: electronics-covariance
@@ -305,6 +368,14 @@ It requires paired numerical observations with nonzero variation in both variabl
 | $r=-1$ | All points lie on a straight line with negative slope |
 | $r$ near zero | Little linear association; a nonlinear relationship may remain |
 | Larger $|r|$ | Stronger linear association, interpreted with the plot and context |
+
+
+```{r}
+#| label: r-example-electronics-correlation
+# cor() defaults to Pearson's linear correlation for the paired vectors x and y.
+# The result is unitless; both vectors require nonzero variation.
+cor(x, y)
+```
 
 ```{r}
 #| label: electronics-correlation

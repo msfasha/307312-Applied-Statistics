@@ -73,7 +73,7 @@ add(1,'Numerical measures: quantify the pattern','What does a number summarize?'
 add(1,'Location','Location summaries','Mean: add all values and divide by their count.\nMedian: middle value or middle-pair average after sorting.\nMode: most frequent value or category, possibly tied.',hint='Arbitrary category codes do not support meaningful means or standard deviations.')
 add(1,'Spread and position','Spread and position summaries','Range = maximum − minimum. IQR = Q3 − Q1.\nSample variance divides squared deviations by n − 1.\nSample SD is its square root, in original units.\nCV expresses SD relative to a suitable positive ratio-scale mean.\nA z-score expresses distance from the mean in SD units.')
 add(1,'Spread and position','The Audit numerical overview','These measures describe different features of the same 20 audits.',table=csvtable('lesson1-summary_table.csv'),hint='Quartiles use type = 6. Center 19.25/18 days; SD ≈ 5.44 days; Q1/Q3 = 15/22 days.')
-add(1,'Spread and position','State the percentile convention','The book uses position (n + 1)p / 100 and interpolation.\nR’s type = 6 follows this convention for the interior percentiles here.\nR defaults to type = 7, so specify the method.',code='quantile(x, c(.25, .50, .75), type = 6, names = FALSE)',comments=['quantile() calculates percentiles; c() supplies the requested probabilities.','type = 6 follows the book convention; names = FALSE omits percentile labels.'])
+add(1,'Spread and position','State the percentile convention','The book uses position (n + 1)p / 100 and interpolation.\nR’s type = 6 follows this convention for the interior percentiles here.\nR defaults to type = 7, so specify the method.')
 plot(1,'Combine the tools to answer the business question','Return to the Restaurant question','fig-price-boxplot','Compare medians, spreads, overlap, and group sizes.',hint='Overview plot uses ggplot2 boxplot defaults. Lesson 3 aligns plots with explicit type-6 quartiles.')
 add(1,'Combine the tools to answer the business question','Electronics case','Do weeks with more commercials tend to have higher sales?\nEach of ten rows pairs one week’s commercials and sales.\nSales are recorded in hundreds of USD.',arabic='هل تميل الأسابيع ذات الإعلانات الأكثر إلى تسجيل مبيعات أعلى؟\nيجمع كل صف من الصفوف العشرة عدد الإعلانات ومبيعات الأسبوع نفسه.\nسُجّلت المبيعات بمئات الدولارات الأمريكية.')
 plot(1,'Combine the tools to answer the business question','Paired numerical observations','fig-advertising-sales','Describe association, then state what the data cannot establish.',hint='A near-zero linear correlation can coexist with a nonlinear relationship. Association does not establish causation.')
@@ -87,7 +87,7 @@ add(2,'What we will learn','From observations to interpretation','Count categori
 add(2,'Business case: which soft drinks were purchased?','SoftDrink case','Which brands were selected in 50 recorded purchases?\nOne observation is one purchase, not necessarily one distinct customer.',arabic='ما العلامات التجارية المختارة في خمسين عملية شراء مسجّلة؟\nتمثّل كل مشاهدة عملية شراء واحدة، وليس بالضرورة عميلًا مختلفًا.',hint='Use brand_book_label. Documented name mapping preserves the original purchase counts.')
 add(2,'From observations to a frequency table','A valid frequency distribution','Each observation belongs to exactly one category.\nUse consistent labels and handle missing values explicitly.\nDo not count a record twice. Relevant zero-count categories may remain.')
 add(2,'From observations to a frequency table','Count, proportion, and percentage','Relative frequency = f / n. Percentage = 100f / n.\n0.38 is 38%, not 0.38%.\nThe totals here are 50, 1, and 100%.',table=csvtable('lesson2-brand_table.csv',headers=['Brand','Frequency','Relative frequency','Percent']),hint='Coca-Cola: 19/50 = 38%. Compute Pepsi’s share from 13 purchases before checking Quarto.')
-add(2,'From observations to a frequency table','Frequency calculations in R','Counts become proportions only after choosing the denominator.',code='brand_table <- as.data.frame(table(soft$brand))\nnames(brand_table) <- c("Brand", "Frequency")\nbrand_table$Relative_frequency <- brand_table$Frequency / nrow(soft)\nbrand_table$Percent <- 100 * brand_table$Relative_frequency',comments=['table() counts labels; as.data.frame() makes columns; names()/c() label them.','nrow(soft) is the 50-purchase denominator; multiplying proportions by 100 gives percentages.'],hint='Calculate from unrounded values; round the display only.')
+add(2,'From observations to a frequency table','Frequency calculations in R','Counts become proportions only after choosing the denominator.',hint='Calculate from unrounded values; round the display only.')
 plot(2,'Bar charts: compare categories','Bar charts compare categories','fig-soft-drink-bars','Descending frequency aids comparison of these nominal brands.',hint='Start the quantity axis at zero. Retain meaningful order for ordinal categories.')
 add(2,'Bar charts: compare categories','Ordering and interpretation','Alphabetical order helps lookup; descending counts help comparison.\nCounts and percentages from one sample are rescalings of the same finding.\nObserved purchase shares do not establish market share or profit.')
 plot(2,'Pie charts: show shares of one whole','Pie charts describe one whole','fig-soft-drink-pie','Categories must be nonoverlapping parts of a named total.',hint='Coca-Cola’s 38% is 136.8°. Discuss the tied shares and long labels; bars often make them easier to compare.')
@@ -96,7 +96,7 @@ add(2,'Business case: how long do audits take?','Audit-duration case','Describe 
 add(2,'Group numerical values into classes','Numerical classes','The observed minimum and maximum are 12 and 33 days.\nFive classes suggest width (33 − 12)/5 = 4.2 days.\nUse convenient 5-day classes starting at 10.\nGrouping reveals patterns but loses individual detail.')
 add(2,'Group numerical values into classes','Boundary rules','Use [10,15), [15,20), [20,25), [25,30), [30,35).\nInclude lower endpoints and exclude upper endpoints.\n15 belongs to the second class; 20 belongs to the third.\nEvery value must enter exactly one class, including the maximum.')
 add(2,'Group numerical values into classes','Audit grouped frequencies','The modal class is 15–<20 days: 8 audits, or 40%.\nA modal class does not identify an exact modal duration.',table=csvtable('lesson2-audit_table.csv',headers=['Days','Frequency','Relative frequency','Percent']),hint='For whole-day records, these reproduce the book’s 10–14, 15–19, and subsequent classes.')
-add(2,'Group numerical values into classes','Class construction in R','Choose boundaries deliberately before counting.',code='boundaries <- seq(10, 35, 5)\naudit$class <- cut(audit$audit_days,\n  breaks = boundaries, right = FALSE)\ntable(audit$class)',comments=['seq() creates the 5-day boundaries; cut() assigns each duration to a class.','right = FALSE gives [lower,upper) intervals; table() counts the resulting classes.'])
+add(2,'Group numerical values into classes','Class construction in R','Choose boundaries deliberately before counting.')
 plot(2,'Histograms: reveal the numerical distribution','Audit histogram','fig-audit-frequency-histogram','Equal-width rectangles count observations in neighboring numerical intervals.',hint='Most audits lie below 25 days. A longer observation warrants context, not automatic deletion.')
 add(2,'What does a distribution tell us?','What does a distribution describe?','Where observations concentrate, spread out, or leave gaps.\nThe x-axis shows measured values. The y-axis shows its labeled quantity.\nA histogram is not a time trend unless time itself is the measured variable.')
 add(2,'What does a distribution tell us?','Four questions for a histogram','Shape: balance, tail direction, and prominent peaks?\nCenter: where is a typical region?\nSpread: how far do values extend and concentrate?\nUnusual features: gaps, isolated values, or small separated groups?',hint='Read horizontal units and scale before comparing apparent widths.')
@@ -140,7 +140,7 @@ add(3,'The range is sensitive to an extreme value','A hypothetical endpoint chan
 add(3,'The range misses the values between the endpoints','Range misses internal differences','Original course illustration, arbitrary units:\nA = 0, 5, 5, 5, 10.\nB = 0, 0, 5, 10, 10.\nBoth have mean 5 and range 10. Their internal patterns differ.')
 plot(3,'The range misses the values between the endpoints','Equal range, different internal spread','fig-same-range-different-spread','A concentrates at the center; B concentrates at the endpoints.',hint='Original course illustration. Stacks preserve repeated observations; the dashed line is the shared mean.')
 add(3,'Mean absolute deviation: every distance contributes','Why use every deviation?','To describe internal spread, consider each distance from the mean.\nSigned deviations sum to zero, so they cancel.\nAbsolute values prevent this cancellation.\nMean absolute deviation = Σ|xᵢ − x̄| / n.')
-add(3,'Mean absolute deviation: every distance contributes','Mean absolute deviation for A and B','A’s distances: 5, 0, 0, 0, 5. Average = 2 units.\nB’s distances: 5, 5, 0, 5, 5. Average = 4 units.\nEvery observation contributes, so the measure distinguishes internal spread.',code='mean(abs(v - mean(v)))',comments=['mean(v) is the reference center; subtraction gives every signed deviation.','abs() takes magnitudes; the outer mean() averages those absolute distances.'],hint='R’s mad() defaults to a scaled median absolute deviation, a different measure.')
+add(3,'Mean absolute deviation: every distance contributes','Mean absolute deviation for A and B','A’s distances: 5, 0, 0, 0, 5. Average = 2 units.\nB’s distances: 5, 5, 0, 5, 5. Average = 4 units.\nEvery observation contributes, so the measure distinguishes internal spread.',hint='R’s mad() defaults to a scaled median absolute deviation, a different measure.')
 add(3,'Mean absolute deviation: every distance contributes','Absolute and squared distances','Absolute contributions grow linearly with distance.\nSquared contributions emphasize larger distances more strongly.\nThis choice serves different purposes.\nNeither approach is automatically resistant to extremes or universally better.')
 asset(3,'Sample variance: average squared variation, with an adjustment','Your variance illustrations','teaching-slides/instructor-variance-diagrams.png','Conceptual illustrations from your supplied variance/SD slide.',hint='Original slide 47 / PDF p.63. The displayed 1/n formula is a population-style average; sample variance uses n − 1.')
 add(3,'Sample variance: average squared variation, with an adjustment','Sample variance','s² = Σ(xᵢ − x̄)² / (n − 1), for n > 1.\nSquaring prevents positive and negative deviations from cancelling.\nVariance uses squared measurement units.\nEstimating the mean uses one degree of freedom.')
@@ -150,7 +150,7 @@ add(3,'Standard deviation: spread in the original units','Standard deviation','s
 add(3,'Standard deviation: spread in the original units','What SD does not mean','SD is not the standard error.\nIt is not the maximum possible deviation.\nIt does not guarantee that every observation lies within one SD of the mean.',table=[(['Set']+r if i==0 else [['A','B'][i-1]]+r) for i,r in enumerate(csvtable('lesson3-spread_comparison.csv',headers=['n','Mean','Range','Mean abs. deviation','Sample SD']))],hint='A and B share n, mean, and range. Mean absolute deviation and SD distinguish their internal spread.')
 add(3,'Standard deviation: spread in the original units','What improved, and what remains?','Using all values addresses the internal spread that range misses.\nMean absolute deviation and SD still respond to extreme values.\nNext, quartiles and IQR describe the distribution’s central portion.')
 add(3,'Percentiles and quartiles: locate values by rank','Percentiles and quartiles','Percentiles locate values in an ordered distribution.\nQ1, Q2, Q3 correspond to the 25th, 50th, 75th percentiles.\nQ2 is the median. Ties and interpolation matter in small samples.\nState the convention used to compute sample percentiles.')
-add(3,'Percentiles and quartiles: locate values by rank','The book’s percentile positions','Lp = (n + 1)p / 100, with interpolation between adjacent values.\nFor n = 20: L25 = 5.25, L50 = 10.5, L75 = 15.75.\nThe adjacent Audit values give Q1 = 15, Q2 = 18, Q3 = 22 days.',code='quartiles <- quantile(x, c(.25, .50, .75), type = 6)',comments=['quantile() locates the probabilities supplied by c().','type = 6 follows the book’s interior-position rule; R defaults to type = 7.'])
+add(3,'Percentiles and quartiles: locate values by rank','The book’s percentile positions','Lp = (n + 1)p / 100, with interpolation between adjacent values.\nFor n = 20: L25 = 5.25, L50 = 10.5, L75 = 15.75.\nThe adjacent Audit values give Q1 = 15, Q2 = 18, Q3 = 22 days.')
 add(3,'Percentiles and quartiles: locate values by rank','Consistent software conventions','R’s IQR() and ordinary ggplot2 boxplots have their own defaults.\nCalculate IQR from the stated quartiles.\nUse explicitly supplied boxplot statistics when matching type 6.\nAgreement for Audit does not make methods interchangeable in every dataset.',hint='Do not extrapolate the book’s interior-position rule beyond the available ordered values.')
 add(3,'Interquartile range: the width of the middle half','Interquartile range','IQR = Q3 − Q1 = 22 − 15 = 7 days.\nIt describes the width of the central portion.\nWith ties, an inclusive Q1–Q3 interval need not contain exactly half the records.\nIQR is less sensitive to extremes, while leaving tail detail out.')
 add(3,'Five-number summaries and boxplots','Five-number summary','Minimum, Q1, median, Q3, maximum.\nFor Audit: 12, 15, 18, 22, 33 days.')
@@ -187,7 +187,7 @@ add(4,'Business case: commercials and weekly electronics sales','The ten observe
 add(4,'Scatterplots: inspect the paired pattern','Keep each week’s pair together','Place commercials on x and sales on y.\nSorting the columns independently destroys the pairs.\nDo not connect points as a time path when describing this relationship.')
 plot(4,'Scatterplots: inspect the paired pattern','Read the paired pattern','fig-electronics-scatterplot','Positive direction; approximately linear form; fairly close clustering.',hint='Describe variation and unusual observations as well as the overall direction.')
 add(4,'Covariance: do deviations move together?','Covariance starts with deviations','Compare each value with its own variable’s mean.\nSame-sign deviations give a positive product.\nOpposite-sign deviations give a negative product.\nSample covariance = Σ[(x − x̄)(y − ȳ)] / (n − 1).')
-add(4,'Covariance: do deviations move together?','Covariance for Electronics','x̄ = 3 commercials; ȳ = 51 hundreds of USD.\nSum of deviation products = 99.\nSample covariance = 99 / 9 = 11.\nUnits: commercials × hundreds of USD.\nIts magnitude depends on units, so it is not a standardized strength score.',code='cov(electronics$commercials, electronics$sales_hundreds_usd)',comments=['cov() computes sample covariance using the paired numerical columns.','Its denominator is n − 1; preserve week pairing and the documented sales units.'])
+add(4,'Covariance: do deviations move together?','Covariance for Electronics','x̄ = 3 commercials; ȳ = 51 hundreds of USD.\nSum of deviation products = 99.\nSample covariance = 99 / 9 = 11.\nUnits: commercials × hundreds of USD.\nIts magnitude depends on units, so it is not a standardized strength score.')
 add(4,'Correlation: standardize the linear association','Pearson correlation','r = sample covariance / (sₓsᵧ).\nBoth variables must have nonzero variation.\nUnitless, from −1 to +1; sign gives linear direction.\nMagnitude describes linear association, not every possible pattern.')
 add(4,'Correlation: standardize the linear association','Interpret the Electronics correlation','r ≈ 0.9305: a strong positive linear association in these ten weeks.\nIt is not a sales slope or “93% of sales.”\nRead the scatterplot before describing the coefficient.\nCalculation alone does not require normally distributed variables.',hint='Inference and prediction need additional assumptions, addressed later in the course.')
 add(4,'Changing units: covariance changes, correlation stays','Change sales units','Convert hundreds of USD to USD by multiplying by 100.',table=csvtable('lesson4-units.csv',headers=['Sales unit','Sample covariance','Correlation'],digits=4),hint='Positive unit rescaling changes covariance and SD proportionally; correlation stays the same.')
@@ -204,6 +204,138 @@ add(5,'3. Describe a numerical distribution','3. Audit durations','Show the dist
 add(5,'4. Compare groups and percentages','4. Restaurant comparisons','Compare group n, medians, IQRs, and aligned boxplots.\nConstruct the four-band price crosstab.\nCompare “at least USD 30” within quality using the correct denominators.\nSeparate an observed association from a causal claim.')
 add(5,'5. Describe numerical association','5. Electronics association','Inspect the scatterplot, then calculate covariance and correlation.\nExplain the units and the effect of changing sales units.\nDescribe linear direction and strength with the plot.\nState what these ten weekly pairs cannot establish.')
 add(5,'Review checklist','Before submitting','Meaning: are variables, units, and denominators clear?\nTools: do the displays and measures answer the question?\nReproducibility: are data paths and conventions stated?\nInterpretation: does each number have a contextual explanation?\nLimitations: what does the summary leave out?',hint='The extended Quarto lessons remain the working material for code, practice, and full explanations.')
+
+
+# Practical code comes from the evaluated Quarto source, never a second handwritten copy.
+def chunk_code(lesson,label):
+    matches=[]
+    for m in re.finditer(r'```\{r[^\n]*\}\n(.*?)\n```',SOURCES[lesson],re.S):
+        if re.search(r'^#\| label: '+re.escape(label)+r'\s*$',m[1],re.M):matches.append(m[1])
+    assert len(matches)==1,(lesson,label,len(matches))
+    value='\n'.join(line for line in matches[0].splitlines() if not line.startswith('#|')).strip()
+    assert len([line for line in value.splitlines() if line.startswith('# ')])>=2,(lesson,label)
+    assert not re.search(r'#\| (include|eval): false',matches[0]),(lesson,label,'hidden or unevaluated example')
+    return value
+
+def chunk_heading(lesson,label):
+    inside=False;heading=None
+    for line in SOURCES[lesson].splitlines():
+        if line.lstrip().startswith('```'):inside=not inside
+        if line.strip()=='#| label: '+label:return heading
+        if not inside and re.match(r'^#{1,6} ',line):heading=re.sub(r'^#+ ','',line)
+    raise ValueError((lesson,label))
+
+def rslide(lesson,anchor,title,label,body,hint='',after=False):
+    target=next(s for s in SLIDES if s['lesson']==lesson and s['title']==anchor)
+    add(lesson,chunk_heading(lesson,label),title,body,hint=hint)
+    slide=SLIDES.pop();slide['code']=chunk_code(lesson,label);slide['code_chunk']=label
+    index=SLIDES.index(target)+(1 if after else 0)
+    SLIDES.insert(index,slide)
+
+# Keep the existing frequency/class slides, now using the exact Quarto examples.
+for title,label in [('Frequency calculations in R','r-example-softdrink-frequency'),('Class construction in R','r-example-audit-classes')]:
+    slide=next(s for s in SLIDES if s['title']==title)
+    slide['code']=chunk_code(slide['lesson'],label);slide['code_chunk']=label
+
+rslide(1,'One restaurant becomes one record','R example: load Restaurant data','r-example-restaurant-import',
+       'Restaurant CSV: 300 restaurants; meal price in USD.',
+       'Download the CSV from the Module 2 overview. Run inside the course RStudio project.')
+rslide(1,'An ordered categorical display','R example: count quality ratings','quality-frequency',
+       'Count the ordered categories before drawing the bars.',
+       'Result: Good 84, Very Good 150, Excellent 66; percentages use all 300 restaurants.')
+rslide(1,'An ordered categorical display','R example: Restaurant bar chart','fig-quality-bar',
+       'Use the quality_table counts from the preceding example.',
+       'geom_col() plots existing counts; the next slide shows this exact chart.')
+rslide(1,'Grouped numerical frequencies','R example: load Audit data','r-example-audit-import',
+       'Audit, book Table 2.4: 20 recorded durations in days.',
+       'x names the raw audit-day vector used for numerical summaries.')
+rslide(1,'The same audits, grouped','R example: Audit histogram','fig-audit-histogram',
+       'Count raw durations using 5-day bins.',
+       'Counts: 4, 8, 5, 2, 1. The next slide is the chart produced by this code.')
+rslide(1,'State the percentile convention','R example: Audit quartiles','r-example-overview-quartiles',
+       'x contains the 20 Audit durations in days.',
+       'R output: 15, 18, 22 days. These are Q1, the median, and Q3.',after=True)
+rslide(1,'Paired numerical observations','R example: load Electronics data','r-example-electronics-import',
+       'Ten weekly pairs; sales are in hundreds of USD.',
+       'Read the paired pattern now; Lesson 4 develops the plotting and association code.')
+
+rslide(2,'A valid frequency distribution','R example: load SoftDrink data','soft-drink-import-example',
+       'SoftDrink: 50 purchases; use the documented textbook labels.',
+       'Run inside the course project. The preview shows the first six purchases.')
+rslide(2,'Bar charts compare categories','R example: order the bars','r-example-order-brands',
+       'Prepare the already counted brand_table.',
+       'Descending counts put frequent brands first; the alphabetical rule resolves ties.')
+rslide(2,'Bar charts compare categories','R example: SoftDrink bar chart','fig-soft-drink-bars',
+       'Plot existing frequencies from the ranked table.',
+       'The next slide shows the resulting chart of the 50 recorded purchases.')
+rslide(2,'Numerical classes','R example: load Audit data','r-example-audit-import',
+       'Audit: 20 recorded durations in days.',
+       'The CSV contains raw observations; cut() and the histogram will use the same boundaries.')
+rslide(2,'Audit histogram','R example: histogram boundaries','fig-audit-frequency-histogram',
+       'Use the boundaries created with seq(10, 35, 5).',
+       'A 20-day duration enters [20,25), matching the grouped table. The next slide shows the result.')
+
+rslide(3,'Three meanings of typical','R example: load the audit durations','r-example-audit-import',
+       'Book Table 2.4: 20 durations, recorded in days.',
+       'Use this x throughout the numerical examples. The full CSV link is in the Quarto case introduction.')
+rslide(3,'What the mean leaves out','R example: arithmetic mean','r-example-audit-mean',
+       'Audit: x contains the 20 raw durations in days.',
+       'R output: 19.25 days. Multiplying by 20 recovers the 385-day total.')
+rslide(3,'Median: the middle by rank','R example: median','r-example-audit-median',
+       'Use the same raw Audit durations.',
+       'R output: 18 days, agreeing with the two middle ordered observations.',after=True)
+rslide(3,'Two centers in the Audit data','R example: statistical mode','r-example-audit-mode',
+       'Find the most frequent exact duration rather than using mode().',
+       'R output: 18 days. The code retains all labels tied for the largest count.')
+rslide(3,'Range: the observed endpoints','R example: endpoints and range','r-example-audit-range',
+       'The range() function returns endpoints; the measure needs their difference.',
+       'R output: 12 and 33 days, then 21 days. Internal positions do not enter this difference.',after=True)
+rslide(3,'Absolute and squared distances','R example: mean absolute deviation','r-example-audit-absolute-deviation',
+       'Apply the same distance idea to the textbook Audit data.',
+       'R output: 4.2 days. Every absolute distance contributes; this is different from mad().')
+rslide(3,'Standard deviation','R example: sample variance','r-example-audit-variance',
+       'Audit: all 20 durations contribute squared deviations.',
+       'R output: 29.56579 days squared, or 29.57 after rounding.')
+rslide(3,'Standard deviation','R example: sample standard deviation','r-example-audit-sd',
+       'Return the variability measure to the original unit.',
+       'R output: 5.437443 days, or 5.44 after rounding.',after=True)
+rslide(3,'Consistent software conventions','R example: type-6 quartiles','r-example-audit-quartiles',
+       'Use raw Audit durations and state the book convention.',
+       'R output: Q1 = 15, Q2 = 18, Q3 = 22 days.')
+rslide(3,'Interquartile range','R example: IQR from our quartiles','r-example-audit-iqr',
+       'Reuse the type-6 quartiles stored by the preceding example.',
+       'R output: 7 days. This keeps the percentile convention consistent.',after=True)
+rslide(3,'Coefficient of variation','R example: coefficient of variation','r-example-audit-cv',
+       'Audit: compare sample SD with the positive mean duration.',
+       'R output: 28.24646%, or 28.25%. This describes relative spread.',after=True)
+rslide(3,'Z-scores','R example: the 33-day audit','r-example-audit-z',
+       'Express the longest duration as distance from the mean in SD units.',
+       'R output: 2.528762. The duration is about 2.53 sample SDs above the mean.',after=True)
+
+rslide(4,'Build a crosstab','R example: load Restaurant data','r-example-restaurant-import',
+       'Restaurant: quality is ordered; meal price is in USD.',
+       'Run inside the course project; the CSV link is beside the case introduction in Quarto.')
+rslide(4,'Build a crosstab','R example: count category pairs','r-example-restaurant-crosstab',
+       'Create four 10-USD price bands and count each quality/band combination.',
+       'The next table shows the 12 checked cell counts and their marginal totals.')
+rslide(4,'Within a quality group','R example: row percentages','r-example-restaurant-row-percent',
+       'Among restaurants in each quality row, how are price bands distributed?',
+       'Each row sums to 100%. The next slide shows the calculated percentages.')
+rslide(4,'Within a price band','R example: column percentages','r-example-restaurant-column-percent',
+       'Among restaurants in each price band, how is quality distributed?',
+       'Each column sums to 100%. Changing the margin changes the question.')
+rslide(4,'The ten observed weekly pairs','R example: load Electronics data','r-example-electronics-import',
+       'Ten weekly pairs; sales are in hundreds of USD.',
+       'The next table displays the observations from this CSV.')
+rslide(4,'Read the paired pattern','R example: Electronics scatterplot','fig-electronics-scatterplot',
+       'Map commercials and sales from the same week; label each week.',
+       'The next slide shows this exact chart; sales remain in hundreds of USD.')
+rslide(4,'Pearson correlation','R example: sample covariance','r-example-electronics-covariance',
+       'Define x and y from the two columns of the weekly table.',
+       'R output: 11, in commercials × hundreds of USD. Its magnitude depends on units.')
+rslide(4,'Interpret the Electronics correlation','R example: Pearson correlation','r-example-electronics-correlation',
+       'Use the x and y vectors defined in the covariance example.',
+       'R output: 0.9304906. Interpret the positive linear association with the scatterplot.')
 
 # Put the parent overview before its two measures.
 i=next(i for i,s in enumerate(SLIDES) if s['title']=='Relative spread and standardized position')
@@ -223,8 +355,9 @@ for l,source in SOURCES.items():
 missing=[r for r in rows if not r['slides']]
 assert not missing,missing
 BUILD.mkdir(parents=True,exist_ok=True)
+(BUILD/'r-code-coverage.json').write_text(json.dumps([dict(lesson=s['lesson'],slide=s['number'],title=s['title'],source=s['source'],chunk=s['code_chunk']) for s in SLIDES if s.get('code_chunk')],ensure_ascii=False,indent=2))
 (BUILD/'slides.json').write_text(json.dumps(SLIDES,ensure_ascii=False,indent=2))
 (BUILD/'coverage.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2))
-manifest=dict(slide_count=len(SLIDES),lesson_counts={l:sum(s['lesson']==l for s in SLIDES) for l in FILES},headings_checked=len(rows),unmapped_headings=missing)
+manifest=dict(slide_count=len(SLIDES),lesson_counts={l:sum(s['lesson']==l for s in SLIDES) for l in FILES},headings_checked=len(rows),unmapped_headings=missing,r_code_slides=sum(bool(s['code']) for s in SLIDES))
 (BUILD/'content-manifest.json').write_text(json.dumps(manifest,indent=2))
 print(json.dumps(manifest))

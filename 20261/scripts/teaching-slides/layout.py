@@ -47,18 +47,21 @@ for slide in slides:
         if slide['code']:
             y+=24
             code=[]
+            code_size=28 if MODULE==2 and slide.get('code_chunk') else 25
             for line in slide['code'].splitlines():
                 if line.startswith('# '):
-                    parts=wrap(line[2:],25,'mono',1390)
+                    parts=wrap(line[2:],code_size,'mono',1390)
                     code.extend('# '+p for p in parts)
-                else: code.append(line)
-            step=32
+                else:
+                    assert font(code_size,'mono').getlength(line)<=1440,(slide['number'],'wrap the Quarto code line',line)
+                    code.append(line)
+            step=36 if code_size==28 else 32
             if y+len(code)*step>799:
                 # Give code more vertical room by keeping prose light, not by shrinking it.
-                step=30
+                step=34 if code_size==28 else 30
             assert y+len(code)*step<=802,(slide['number'],slide['title'],y,len(code),step)
             for line in code:
-                y=put(line,80,y,1440,25,'mono','muted' if line.startswith('#') else 'blue',leading=step)
+                y=put(line,80,y,1440,code_size,'mono','muted' if line.startswith('#') else 'blue',leading=step)
         if slide['hint'] and not slide['plot'] and not slide['image']:
             hintlines=wrap(slide['hint'],23,'sans',1440)
             # Cues occupy a separate readable band above the source footer.

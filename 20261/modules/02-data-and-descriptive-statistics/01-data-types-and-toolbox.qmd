@@ -85,6 +85,20 @@ In our restaurant dataset:
 - The variables include an identifier, a quality rating, and a meal price.
 - One row contains one restaurant's recorded values; one column contains one variable.
 
+[Download the Restaurant CSV](../../data/module02/restaurant_ratings.csv). Run from the course RStudio project; each row is one restaurant.
+
+```{r}
+#| label: r-example-restaurant-import
+# library() loads ggplot2 for charts and knitr for table formatting.
+# read.csv() reads the checked Restaurant teaching CSV.
+# factor()/c() retain the ordered ratings; levels fixes the category order.
+library(ggplot2)
+library(knitr)
+restaurants <- read.csv("data/module02/restaurant_ratings.csv")
+restaurants$quality_rating <- factor(restaurants$quality_rating,
+  levels = c("Good", "Very Good", "Excellent"), ordered = TRUE)
+```
+
 ```{r}
 #| label: restaurant-preview
 #| echo: false
@@ -211,11 +225,9 @@ For the 300 restaurants, keep the quality categories in their natural order.
 
 ```{r}
 #| label: quality-frequency
-# as.data.frame(): converts an object to a rectangular data frame.
-# names(): reads or assigns names to vector elements or table columns.
-# c(): combines values into a vector, converting them to a common type when needed.
-# table() counts restaurants in each ordered quality category.
-# Divide counts by nrow(restaurants) to obtain proportions; kable() displays them.
+# table() counts the ordered ratings; as.data.frame() creates a table.
+# names()/c() label columns; nrow() gives the 300-restaurant percentage denominator.
+# kable() displays the frequencies, proportions, and percentages; digits sets precision.
 quality_table <- as.data.frame(table(restaurants$quality_rating))
 names(quality_table) <- c("Quality", "Frequency")
 quality_table$Relative_frequency <- quality_table$Frequency / nrow(restaurants)
@@ -236,6 +248,19 @@ An audit manager wants to understand how long audits take and how much their dur
 يريد مدير التدقيق معرفة المدة التي تستغرقها عمليات التدقيق ومدى تفاوت هذه المدد. نستخدم بيانات المدة المسجّلة لعشرين عملية تدقيق، مقيسة بالأيام، لوصف توزيعها.
 :::
 
+
+[Download the Audit CSV](../../data/module02/audit_times.csv). Its 20 durations match the book's Table 2.4.
+
+```{r}
+#| label: r-example-audit-import
+# library() loads ggplot2 for charts and knitr for table formatting.
+# read.csv() loads the checked Audit CSV; $ selects its audit_days column.
+# x is the vector of 20 durations in days, not class midpoints.
+library(ggplot2)
+library(knitr)
+audit <- read.csv("data/module02/audit_times.csv")
+x <- audit$audit_days
+```
 
 ```{r}
 #| label: audit-frequency
@@ -275,12 +300,9 @@ A bar chart separates categories; a histogram groups values along a numerical ax
 #| label: fig-quality-bar
 #| fig-cap: "Original R chart from the checked Restaurant workbook. Counts agree with the book's Table 2.10 (printed p.66)."
 #| fig-alt: "An ordered bar chart shows Good 84, Very Good 150, and Excellent 66 restaurants."
-# ggplot(): starts a plot from data; additional layers are joined with +.
-# scale_y_continuous(): controls numeric y-axis breaks, labels, limits, and spacing.
-# c(): combines values into a vector, converting them to a common type when needed.
-# labs(): sets axis titles, legend titles, plot titles, and captions.
-# geom_col() uses the frequencies already calculated in quality_table.
-# aes() maps categories and counts to axes; geom_text() adds the count labels.
+# ggplot()/aes() map categories and existing counts; geom_col() draws their heights.
+# geom_text() labels counts; vjust moves labels and width controls bar width.
+# scale_y_continuous()/c() set a zero baseline; labs() labels the axes and title.
 ggplot(quality_table, aes(Quality, Frequency)) +
   geom_col(fill = "#2878A5", width = .65) +
   geom_text(aes(label = Frequency), vjust = -.4) +
@@ -301,13 +323,9 @@ The histogram below uses the same checked observations and the same class bounda
 #| label: fig-audit-histogram
 #| fig-cap: "Original R histogram. The class frequencies are 4, 8, 5, 2, and 1, matching the book's audit example."
 #| fig-alt: "A histogram of twenty audit durations has its tallest bar from fifteen to under twenty days, and a longer tail toward thirty-three days."
-# ggplot(): starts a plot from data; additional layers are joined with +.
-# aes(): maps variables to visual properties such as x, y, fill, color, or group.
-# seq(): creates an equally spaced sequence; by sets spacing and length.out sets the number of values.
-# scale_x_continuous(): controls numeric x-axis breaks, labels, limits, and spacing.
-# labs(): sets axis titles, legend titles, plot titles, and captions.
-# geom_histogram() counts raw audit durations within the supplied boundaries.
-# closed = "left" includes each lower endpoint and excludes its upper endpoint.
+# ggplot()/aes() map raw days; geom_histogram() counts them into seq() boundaries.
+# closed = "left" includes lower endpoints; scale_x_continuous() marks boundaries.
+# labs() labels the days and counts; fill/colour distinguish adjacent bars.
 ggplot(audit, aes(audit_days)) +
   geom_histogram(breaks = seq(10,35,5), closed = "left",
                  fill = "#2878A5", colour = "white") +
@@ -377,6 +395,14 @@ The mean is **19.25 days** and the median is **18 days**. The standard deviation
 On printed pp.113–114, the book locates the pth percentile at $(n+1)p/100$ and interpolates between adjacent observations. R's `quantile(..., type = 6)` follows this convention for the interior percentiles used here. R's default is `type = 7`, so specify the method when reproducing the book's calculations. There are several legitimate percentile conventions.
 :::
 
+```{r}
+#| label: r-example-overview-quartiles
+# quantile() calculates the probabilities supplied by c() from audit-day vector x.
+# type = 6 matches the book here; names = FALSE omits percentile labels.
+quantile(x, c(.25, .50, .75), type = 6, names = FALSE)
+```
+
+
 ## Combine the tools to answer the business question
 
 Return to the restaurants. Quality is ordinal and price is numerical, so an ordered table of group medians and spreads, together with side-by-side boxplots, is a useful descriptive starting point.
@@ -428,6 +454,16 @@ An electronics retailer wants to examine whether weeks with more advertising com
 يريد متجر إلكترونيات أن يفحص ما إذا كانت الأسابيع التي تُعرض فيها إعلانات أكثر تميل إلى تحقيق مبيعات أعلى. نقارن بيانات عشرة أسابيع تشمل عدد الإعلانات والمبيعات، المقيسة بمئات الدولارات الأمريكية. يصف هذا التحليل ارتباطًا بين المتغيّرين، ولا يثبت أن الإعلانات سبّبت الفروق في المبيعات.
 :::
 
+
+
+```{r}
+#| label: r-example-electronics-import
+# library() loads ggplot2 for charts.
+# read.csv() loads the checked Electronics CSV, matched to the Stereo workbook.
+# Keep each week's pair together; sales_hundreds_usd is measured in hundreds of USD.
+library(ggplot2)
+electronics <- read.csv("data/module02/electronics_sales.csv")
+```
 
 ```{r}
 #| label: fig-advertising-sales

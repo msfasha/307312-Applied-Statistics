@@ -44,7 +44,7 @@ for(const s of data){
       cell.text.style={typeface:'DejaVu Sans',fontSize:s.table?26:(r===0?26:30),color:'#2F343B',bold:r===0,insets:10,alignment:'left',wrap:'square'};
     }
   }
-  slide.speakerNotes.text=`Source: 20261/modules/${moduleName}/${s.source}, lines ${s.start}-${s.end}, section ${s.heading}.\n${s.refs.length?'Checked references: '+s.refs.join(' ; '):''}\nFull companion source passage:\n${s.original}\n\nTeaching deck: concise wording, original section sequence. Generated plots retain source data and geometries; axis labels clarify units. Random illustrations use documented fixed seeds. See the deck source notes for corrections and provenance limits.`;
+  slide.speakerNotes.text=`Source: 20261/modules/${moduleName}/${s.source}, lines ${s.start}-${s.end}, section ${s.heading}.\n${s.code_chunk?"R example source chunk: "+s.code_chunk+".\n":""}${s.refs.length?'Checked references: '+s.refs.join(' ; '):''}\nFull companion source passage:\n${s.original}\n\nTeaching deck: concise wording, original section sequence. Generated plots retain source data and geometries; axis labels clarify units. Random illustrations use documented fixed seeds. See the deck source notes for corrections and provenance limits.`;
 }
 const raw=path.join(build,'draft.pptx');
 await (await PresentationFile.exportPptx(deck)).save(raw);

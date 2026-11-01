@@ -83,6 +83,18 @@ An accounting manager has completion times for **20 year-end audits**, recorded 
 
 [Download the Audit CSV](../../data/module02/audit_times.csv). We use the original recorded values, not histogram class midpoints. The 20 values match book Table 2.4, p.47.
 
+```{r}
+#| label: r-example-audit-import
+# library() loads ggplot2 for charts and knitr for table formatting.
+# read.csv() loads the checked Audit CSV; $ selects its audit_days column.
+# x is the vector of 20 durations in days, not class midpoints.
+library(ggplot2)
+library(knitr)
+audit <- read.csv("data/module02/audit_times.csv")
+x <- audit$audit_days
+```
+
+
 ## Mean, median, and mode: three meanings of typical
 
 ### Mean: balance all the numerical values
@@ -97,6 +109,15 @@ The mean **compresses many numerical observations into one useful summary**. It 
 
 Every value contributes to the mean. Long durations can pull it upward; this sensitivity can be useful when total workload matters. However, the mean does not show how observations are distributed, and an extreme value can make it a poor description of where most observations lie. Its usefulness depends on the question being asked.
 
+
+```{r}
+#| label: r-example-audit-mean
+# mean() averages the 20 raw audit-day values stored in x.
+# The result is in days; use the complete vector, not histogram class midpoints.
+mean(x)
+```
+
+The R result is **19.25 days**. The mean times 20 recovers the recorded total of 385 days.
 ### Median: locate the middle after sorting
 
 The **median** is the middle ordered value. With an odd number of observations, take the central observation; with an even number of numerical observations, average the two central values.
@@ -113,11 +134,30 @@ kable(ordered_audits, col.names = c("Sorted position", "Audit duration (days)"))
 
 There are 20 observations. Positions 10 and 11 are both 18, so the median is $(18+18)/2=18$ days. It describes the center by rank and is less sensitive than the mean to a very large observation. Ties mean that “half below and half above” should not be interpreted as exactly half *strictly* below and above the median.
 
+
+```{r}
+#| label: r-example-audit-median
+# median() locates the center by rank after sorting the numerical values.
+# With 20 durations, it averages the two middle observations.
+median(x)
+```
+
+The R result is **18 days**, agreeing with the two middle ordered observations.
 ### Mode: identify the most frequent value
 
 The **mode** is the value or category occurring most frequently. Here **18 days** occurs three times, more than any other exact duration. A dataset can have several modes or no single most frequent value.
 
 R's `mode()` describes an object's storage mode; it does **not** calculate the statistical mode. Count values instead.
+
+
+```{r}
+#| label: r-example-audit-mode
+# table() counts exact days; max() identifies the largest count.
+# names() retrieves all matching labels; as.numeric() converts them back to days.
+value_counts <- table(x)
+mode_days <- as.numeric(names(value_counts)[value_counts == max(value_counts)])
+mode_days
+```
 
 ```{r}
 #| label: audit-center
@@ -231,6 +271,16 @@ The **range** is maximum minus minimum: $33-12=21$ days. It uses only two observ
 
 For the five sets above, the ranges are **200, 0, 600, 1200, and 4500**, respectively. The range immediately reveals that their observed spans differ. It is useful when the full observed span matters, but it is not a description of the spread of most observations.
 
+
+```{r}
+#| label: r-example-audit-range
+# range() returns the two endpoints, not their difference.
+# diff() subtracts successive endpoints: maximum minus minimum, in days.
+range(x)
+diff(range(x))
+```
+
+R returns endpoints **12 and 33 days**, then the range **21 days**.
 ### The range is sensitive to an extreme value
 
 Return to the seven dollar amounts: **1, 2, 3, 3, 3, 1, 100**. Their range is **USD 99**, although six of the seven amounts occupy the narrow interval from USD 1 to USD 3. Both statements are correct: the full span is wide, and most observations are close together.
@@ -298,6 +348,15 @@ In R, use `mean(abs(v - mean(v)))`. R's `mad()` calculates a scaled **median** a
 
 The next approach squares distances. Absolute deviations grow linearly with distance, while squared deviations give increasingly large contributions to distant observations. This choice serves a different purpose; it does not make variance or standard deviation universally better or resistant to extremes.
 
+
+```{r}
+#| label: r-example-audit-absolute-deviation
+# mean(x) supplies the reference center; abs() takes every deviation's magnitude.
+# The outer mean() averages all absolute distances, retaining days as the unit.
+mean(abs(x - mean(x)))
+```
+
+This applies the same definition to the textbook Audit observations. It differs from R's `mad()`, which defaults to a scaled median absolute deviation.
 ### Sample variance: average squared variation, with an adjustment
 
 For a sample of size $n>1$, the sample variance is
@@ -308,12 +367,30 @@ The deviations describe distances from the mean. Squaring prevents negative and 
 
 For a complete population, its descriptive variance uses its population mean and denominator $N$. Whether data constitute a population or a sample depends on the question, not whether the file contains “all the rows available.” Here we treat the 20 audits as a sample, and R's `var()` follows the $n-1$ convention.
 
+
+```{r}
+#| label: r-example-audit-variance
+# var() calculates sample variance using denominator n - 1.
+# Its unit is days squared; all 20 original observations contribute.
+var(x)
+```
+
+R returns approximately **29.57 days squared**.
 ### Standard deviation: spread in the original units
 
 The **sample standard deviation** is $s=\sqrt{s^2}$. Variance has squared units; standard deviation has the original units. For Audit, variance is approximately **29.57 days²** and standard deviation is **5.44 days**.
 
 Standard deviation summarizes spread around the mean. It is not the standard error, a maximum possible deviation, or a guarantee that every observation lies within one standard deviation of the mean. No normal-distribution assumption is required merely to calculate it.
 
+
+```{r}
+#| label: r-example-audit-sd
+# sd() is the square root of sample variance, using the n - 1 convention.
+# It returns spread in the original unit, days; it is not the standard error.
+sd(x)
+```
+
+R returns approximately **5.44 days**.
 ```{r}
 #| label: audit-variability
 # sum(): adds vector entries; on logical values it counts TRUE entries.
@@ -382,6 +459,15 @@ For 20 audits:
 - $L_{50}=10.5$: halfway from the 10th value (18) to the 11th (18), giving $Q_2=18$.
 - $L_{75}=15.75$: three-quarters of the way from the 15th value (22) to the 16th (22), giving $Q_3=22$.
 
+
+```{r}
+#| label: r-example-audit-quartiles
+# quantile() computes probabilities supplied by c(); x contains raw audit days.
+# type = 6 follows the stated book convention; R's default is type = 7.
+quartiles <- quantile(x, c(.25,.50,.75), type = 6)
+quartiles
+```
+
 ```{r}
 #| label: audit-quartiles
 # c(): combines values into a vector, converting them to a common type when needed.
@@ -391,7 +477,6 @@ For 20 audits:
 # identical(): requires exact equality of values, types, and attributes.
 # quantile() finds the requested percentiles; type = 6 follows our book convention.
 # unname() removes percentile labels for the display; the numerical quartiles are unchanged.
-quartiles <- quantile(x, c(.25,.50,.75), type = 6)
 kable(data.frame(Quartile = c("Q1: 25th percentile", "Q2: median", "Q3: 75th percentile"),
                  Days = unname(quartiles)))
 stopifnot(identical(unname(quartiles), c(15,18,22)))
@@ -407,6 +492,15 @@ The **interquartile range** is $IQR=Q_3-Q_1=22-15=7$ days. The quartiles describ
 
 Median and IQR emphasize the central part of the distribution. Mean and standard deviation use the magnitudes of all observations. Choose them according to the question and the observed distribution, not from a rule that one pair is always superior.
 
+
+```{r}
+#| label: r-example-audit-iqr
+# c() selects Q1/Q3 from our type-6 quartiles; diff() subtracts Q1 from Q3.
+# unname() removes the resulting label, leaving the IQR in days.
+unname(diff(quartiles[c(1, 3)]))
+```
+
+R returns **7 days**. Using our stored quartiles keeps the convention explicit.
 ## Five-number summaries and boxplots
 
 A **five-number summary** contains the minimum, $Q_1$, median, $Q_3$, and maximum.
@@ -518,6 +612,14 @@ $$CV=100\frac{s}{\bar{x}}.$$
 
 For Audit, it is approximately **28.25%**. It can help compare relative variability for suitable positive ratio-scale quantities, but it is unstable when the mean is near zero and is not meaningful for arbitrary-zero scales such as Celsius. Comparing CVs alone does not establish that one business process is better.
 
+
+```{r}
+#| label: r-example-audit-cv
+# sd()/mean() compare sample spread with the average; multiply by 100 for percent.
+# Audit duration has a meaningful zero and a positive mean; this use of CV is suitable.
+100 * sd(x) / mean(x)
+```
+
 ### Z-score
 
 A **sample z-score** measures how far a value is from the sample mean in standard-deviation units:
@@ -525,6 +627,14 @@ A **sample z-score** measures how far a value is from the sample mean in standar
 $$z_i=\frac{x_i-\bar{x}}{s},\qquad s>0.$$
 
 The 33-day audit has $z\approx2.53$: it is about 2.53 sample standard deviations above the mean. This calculation does not require a normal distribution, but it does not automatically supply a probability. The 1.5-IQR boxplot rule and a $|z|>3$ screening rule can flag different observations; neither is an automatic deletion rule.
+
+
+```{r}
+#| label: r-example-audit-z
+# mean()/sd() provide the reference center and sample spread in days.
+# Subtract and divide to locate the 33-day audit in SD units; this is not a normality test.
+(33 - mean(x)) / sd(x)
+```
 
 ```{r}
 #| label: audit-relative-measures
