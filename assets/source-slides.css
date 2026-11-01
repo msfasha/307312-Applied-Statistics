@@ -54,3 +54,26 @@
   .diagram-branches::after { display: none; }
   .diagram-branch::before { top: -1rem; height: 1rem; }
 }
+
+/* The PDF exporter prints the same rendered lessons, preserving HTML diagrams. */
+@media print {
+  @page { size: A4; margin: 16mm 14mm; }
+  html, body { font-size: 10pt !important; background: white !important; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  #quarto-header, #quarto-sidebar, #quarto-margin-sidebar, .quarto-navigation,
+  .code-copy-button, .code-tools-button, .quarto-title-meta, .pdf-download,
+  .anchorjs-link, .quarto-code-tools { display: none !important; }
+  #quarto-content { display: block !important; padding: 0 !important; }
+  main.content { width: 100% !important; max-width: none !important; margin: 0 !important; padding: 0 !important; }
+  .page-columns, .page-full, .column-body { display: block !important; }
+  .source-slide { break-inside: auto; padding-bottom: 1rem; margin-bottom: 1rem; }
+  h1, h2, h3, h4 { break-after: avoid; }
+  figure, .cell-output-display, .petra-diagram, tr { break-inside: avoid; }
+  img { max-height: 220mm; max-width: 100% !important; object-fit: contain; }
+  pre, code { white-space: pre-wrap !important; overflow-wrap: anywhere; font-size: 8pt !important; }
+  pre, .source-table, .diagram-table-scroll { overflow: visible !important; }
+  .diagram-comparison { min-width: 0; font-size: 8pt; }
+  .diagram-comparison td:last-child { white-space: normal; }
+  .diagram-comparison td, .diagram-comparison th { padding: .4rem; }
+  a { text-decoration: none !important; }
+}

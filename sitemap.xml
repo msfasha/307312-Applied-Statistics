@@ -1,47 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://msfasha.github.io/307312-Applied-Statistics/modules/01-introduction-to-r/index.html</loc>
-    <lastmod>2026-11-01T19:30:28.491Z</lastmod>
-  </url>
-  <url>
-    <loc>https://msfasha.github.io/307312-Applied-Statistics/modules/01-introduction-to-r/exercises/03-dplyr.html</loc>
-    <lastmod>2026-11-01T19:30:28.492Z</lastmod>
-  </url>
-  <url>
-    <loc>https://msfasha.github.io/307312-Applied-Statistics/modules/01-introduction-to-r/04-ggplot2.html</loc>
-    <lastmod>2026-11-01T19:30:28.491Z</lastmod>
-  </url>
-  <url>
-    <loc>https://msfasha.github.io/307312-Applied-Statistics/modules/01-introduction-to-r/02-basic-concepts.html</loc>
-    <lastmod>2026-11-01T19:30:28.491Z</lastmod>
-  </url>
-  <url>
     <loc>https://msfasha.github.io/307312-Applied-Statistics/03-inferential-statistics.html</loc>
-    <lastmod>2026-11-01T20:03:37.761Z</lastmod>
+    <lastmod>2026-11-01T20:27:33.155Z</lastmod>
+  </url>
+  <url>
+    <loc>https://msfasha.github.io/307312-Applied-Statistics/01-introduction-to-r.html</loc>
+    <lastmod>2026-11-01T20:27:33.155Z</lastmod>
   </url>
   <url>
     <loc>https://msfasha.github.io/307312-Applied-Statistics/index.html</loc>
-    <lastmod>2026-11-01T19:50:51.869Z</lastmod>
+    <lastmod>2026-11-01T20:27:33.156Z</lastmod>
   </url>
   <url>
     <loc>https://msfasha.github.io/307312-Applied-Statistics/02-descriptive-statistics.html</loc>
-    <lastmod>2026-11-01T19:43:25.402Z</lastmod>
-  </url>
-  <url>
-    <loc>https://msfasha.github.io/307312-Applied-Statistics/modules/01-introduction-to-r/01-r-and-rstudio.html</loc>
-    <lastmod>2026-11-01T19:30:28.491Z</lastmod>
-  </url>
-  <url>
-    <loc>https://msfasha.github.io/307312-Applied-Statistics/modules/01-introduction-to-r/03-dplyr.html</loc>
-    <lastmod>2026-11-01T19:30:28.491Z</lastmod>
-  </url>
-  <url>
-    <loc>https://msfasha.github.io/307312-Applied-Statistics/modules/01-introduction-to-r/exercises/02-basic-concepts.html</loc>
-    <lastmod>2026-11-01T19:30:28.492Z</lastmod>
-  </url>
-  <url>
-    <loc>https://msfasha.github.io/307312-Applied-Statistics/modules/01-introduction-to-r/exercises/04-ggplot2.html</loc>
-    <lastmod>2026-11-01T19:30:28.492Z</lastmod>
+    <lastmod>2026-11-01T20:27:33.155Z</lastmod>
   </url>
 </urlset>
