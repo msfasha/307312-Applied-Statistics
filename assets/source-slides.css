@@ -77,3 +77,6 @@
   .diagram-comparison td, .diagram-comparison th { padding: .4rem; }
   a { text-decoration: none !important; }
 }
+
+/* Keep each concise added collection/survey slide together in student PDFs. */
+@media print { .source-slide.collection-slide { break-inside: avoid; } }
