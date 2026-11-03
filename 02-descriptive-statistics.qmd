@@ -197,6 +197,8 @@ execute:
 
 :::
 
+{{< include content/data-collection-and-surveys.qmd >}}
+
 <!-- Original slide 13 -->
 
 ::: {.source-slide #slide-13}

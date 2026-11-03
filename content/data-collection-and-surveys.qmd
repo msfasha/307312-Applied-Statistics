@@ -1,0 +1,286 @@
+<!-- Added teaching material, 3 November 2026. Original slide numbers are unchanged. -->
+
+::: {.source-slide .collection-slide #collection-introduction}
+
+## Data collection and survey quality
+
+Before summarizing data, ask how they were obtained.
+
+- **Source:** Are suitable data already available, or must we collect them?
+- **Selection:** Who or what should be included?
+- **Measurement:** How will we obtain comparable, trustworthy answers?
+
+By the end of this section, you should be able to select a collection approach, justify a survey mode and sampling method, and identify likely survey errors.
+
+:::
+
+::: {.source-slide .collection-slide #collection-definitions}
+
+### Define what the study will measure
+
+- **Target population:** The people or items to which the conclusion should apply; specify place and time.
+- **Observational unit:** The person, transaction, branch or other item described by one observation.
+- **Operational definition:** The exact rule used to measure a variable.
+
+**Illustration:** “Service speed” could mean minutes from joining a queue to reaching a teller, or minutes from reaching the teller to completing a transaction. These are different variables.
+
+State the rule and unit before collecting values. A clear variable name alone is insufficient.
+
+:::
+
+::: {.source-slide .collection-slide #collection-sources}
+
+### Primary and secondary data
+
+**Primary data** are collected for the current study. A new customer survey can ask exactly what management needs, but requires time, access and resources.
+
+**Secondary data** already exist for another purpose. Sales records, administrative records and published statistics may be faster to obtain, but their definitions, dates and coverage may not fit the question.
+
+Check who collected the data, why, when, how and for whom. Internal business records can be secondary data for a new analysis; “secondary” does not mean “external.”
+
+:::
+
+::: {.source-slide .collection-slide #collection-approaches}
+
+### Which collection approach fits the question?
+
+| Approach | Useful when we need to know… | Main limitation |
+|---|---|---|
+| Survey | What people report, prefer or believe | Reports may differ from actual behavior |
+| Direct observation | What people do or how a process operates | Motives may remain unknown; privacy matters |
+| Business or administrative records | What was recorded during operations | Missing events and changing definitions can mislead |
+| Designed experiment | Whether an assigned intervention changes an outcome | Requires feasible, ethical treatment assignment and control |
+
+Random assignment in a well-designed experiment supports causal comparisons. An association in routine observational data alone does not establish causation.
+
+:::
+
+::: {.source-slide .collection-slide #collection-frame}
+
+### Census, sample and sampling frame
+
+A **census** attempts to collect data from every population unit. A **sample** includes a selected subset. Sampling can reduce cost and time; a census may be feasible for a small workforce.
+
+The **sampling frame** identifies the units available for selection, such as a current employee list.
+
+Distinguish **eligible population → frame → selected sample → respondents**. They need not contain the same people.
+
+Inviting everyone is an attempted census; receiving replies from only some people does not eliminate nonresponse concerns.
+
+Reference: [ABS: Census and sample](https://www.abs.gov.au/statistics/understanding-statistics/statistical-terms-and-concepts/census-and-sample).
+
+:::
+
+::: {.source-slide .collection-slide #collection-probability-sampling}
+
+### Probability sampling: who is selected?
+
+Each population unit has a known, positive selection probability; probabilities need not be equal.
+
+| Method | How it works | Useful setting and caution |
+|---|---|---|
+| Simple random | Randomly select units from a complete frame | An up-to-date customer list; small groups may be missed by chance |
+| Systematic | Choose a random start, then every *k*th unit | An ordered transaction list; avoid a repeating pattern aligned with *k* |
+| Stratified | Divide into groups; randomly sample within every group | Comparing departments or regions; unequal sampling fractions need weights for overall estimates |
+| Cluster | Randomly select groups, then study all or a sample of units within them | Dispersed branches or locations; similar units within clusters can reduce precision |
+
+Strata contribute sampled units from **every** group; cluster sampling selects **some** groups. Neither design guarantees error-free results.
+
+:::
+
+::: {.source-slide .collection-slide #collection-nonprobability}
+
+### Nonprobability samples: useful, with limits
+
+- **Convenience:** Ask people who are easy to reach. Useful for testing a questionnaire quickly.
+- **Voluntary response:** Invite anyone interested to reply. Useful for gathering suggestions; strongly motivated people may dominate.
+- **Purposive:** Select people for relevant expertise. Useful for exploring a specialist problem.
+
+These approaches can support exploration, but selection probabilities are unknown. A large response count alone does not justify population-wide percentages or a conventional probability-sampling margin of error.
+
+An online questionnaire can use a probability sample or an opt-in sample. The communication channel does not determine the sampling design.
+
+:::
+
+::: {.source-slide .collection-slide #collection-remote-modes}
+
+### Survey modes: online and telephone
+
+| Mode | Why and where we might use it | What to watch |
+|---|---|---|
+| Online / email invitation | Fast repeated feedback from customers with reliable digital access; automated routing and visual response options | Digital exclusion, ignored invitations and self-selection if a link is openly posted |
+| Telephone interview | Short interviews when telephone contact details are available; an interviewer can clarify instructions | Unanswered calls, interviewer effects and difficulty presenting long visual lists |
+
+For either mode, specify how invitees are selected. An accessible survey is of little use if the contact list omits the population of interest.
+
+Reference: [AAPOR: Survey research practices](https://aapor.org/standards-and-ethics/best-practices/).
+
+:::
+
+::: {.source-slide .collection-slide #collection-person-paper-modes}
+
+### Survey modes: face-to-face and paper
+
+| Mode | Why and where we might use it | What to watch |
+|---|---|---|
+| Face-to-face interview | Complex questions, physical demonstrations or populations difficult to reach remotely; interviewers can assist | Travel and staffing cost, interviewer influence and privacy during the interview |
+| Paper questionnaire | Respondents with limited internet access, or settings where paper is practical; postal return permits private completion | Slow returns, manual entry errors and reading or language barriers |
+
+An interviewer may improve comprehension but also increase socially desirable answers. Private self-completion can help with sensitive questions when respondents can use it comfortably.
+
+References: [AAPOR](https://aapor.org/standards-and-ethics/best-practices/); [Pew: Mode effects](https://www.pewresearch.org/short-reads/2019/02/07/phone-vs-online-surveys-why-do-respondents-answers-sometimes-differ-by-mode/).
+
+:::
+
+::: {.source-slide .collection-slide #collection-mode-choice}
+
+### Choosing a mode and combining modes
+
+Choose using **population access, question complexity, sensitivity, cost and available time**.
+
+**Illustrative decision:** A bank studying all retail customers could invite a selected sample online, then offer telephone or paper completion to people who cannot respond online.
+
+Mixed modes can improve access, but require consistent meaning and response options, controlled follow-up, and checks for duplicate submissions.
+
+Changing mode can change answers even if opinions have not changed. Record the mode and examine comparability when tracking trends.
+
+References: [AAPOR](https://aapor.org/standards-and-ethics/best-practices/); [Pew: Mode effects](https://www.pewresearch.org/short-reads/2019/02/07/phone-vs-online-surveys-why-do-respondents-answers-sometimes-differ-by-mode/).
+
+:::
+
+::: {.source-slide .collection-slide #collection-questions}
+
+### Questionnaire design and a small pilot
+
+| Problem | Better approach |
+|---|---|
+| “How excellent was our fast, friendly service?” | Use neutral wording; ask about speed and friendliness separately |
+| “Do you shop here regularly?” | Specify a recall period: “How many purchases did you make here in the past seven days?” |
+| Overlapping numerical categories | Use non-overlapping, complete ranges; include zero where relevant |
+
+Offer “not applicable” or “don't know” when meaningful. Do not force an opinion that the respondent does not have.
+
+**Pretest** interpretation with potential respondents. **Pilot** the full process—invitation, routing, completion, recording and export—before launching it widely.
+
+Reference: [Pew: Writing survey questions](https://www.pewresearch.org/writing-survey-questions/).
+
+:::
+
+::: {.source-slide .collection-slide #collection-errors-overview}
+
+### Four sources of survey error
+
+| Error | Diagnostic question |
+|---|---|
+| Coverage | Could the intended population enter the sampling frame correctly? |
+| Nonresponse | Did selected people provide the requested answers? |
+| Sampling | How much might the estimate vary across repeated probability samples? |
+| Measurement | Do recorded answers measure the intended characteristic? |
+
+Coverage, nonresponse and measurement errors are **non-sampling errors**. They can also affect a census. Processing mistakes, such as coding errors, are another source of non-sampling error.
+
+Reference: [ABS: Types of error](https://www.abs.gov.au/statistics/understanding-statistics/statistical-terms-and-concepts/types-error).
+
+:::
+
+::: {.source-slide .collection-slide #collection-coverage-error}
+
+### Coverage error: who cannot enter?
+
+The frame may omit eligible units, include ineligible units or list units more than once.
+
+**Illustration:** A bank wants all customers' views, but selects only from its mobile-app user list. Customers who do not use the app cannot be selected.
+
+**Improve it:** Compare the frame with the target population; update contact information, remove duplicates and add missing groups through suitable sources.
+
+Sending more invitations from the same incomplete frame does not correct the omission.
+
+:::
+
+::: {.source-slide .collection-slide #collection-nonresponse-error}
+
+### Nonresponse error: who does not answer?
+
+**Unit nonresponse:** No questionnaire is returned. **Item nonresponse:** Some answers are missing.
+
+**Illustration:** Selected dissatisfied customers may ignore a bank's invitation. The resulting satisfaction estimate could be too high if respondents and nonrespondents differ on satisfaction.
+
+**Improve it:** Use clear invitations, reasonable length, reminders and alternative modes. Compare available characteristics of respondents and nonrespondents.
+
+A response rate alone does not establish the size or direction of bias. Weighting may help with observed differences; it cannot guarantee that all bias is removed.
+
+:::
+
+::: {.source-slide .collection-slide #collection-sampling-error}
+
+### Sampling error: variation without a mistake
+
+Repeated probability samples can give different estimates even when the same correct procedure is followed.
+
+Larger samples usually reduce sampling variability under comparable designs. They do not automatically remove systematic coverage, nonresponse or measurement problems.
+
+A confidence interval or margin of error describes specified sampling uncertainty under its assumptions; it does not normally include every source of survey error.
+
+**Precision** concerns variability. **Bias** concerns systematic deviation. An estimate can be precise and biased.
+
+:::
+
+::: {.source-slide .collection-slide #collection-measurement-error}
+
+### Measurement error: what answer was obtained?
+
+Recorded values may differ from the characteristic we intended to measure because of unclear wording, faulty recall, interviewer influence or a faulty instrument.
+
+**Illustration:** A customer reports an approximate queue time from memory; the study needs elapsed time measured by timestamps. These measurements may differ systematically.
+
+**Improve it:** Define units and recall periods, use neutral wording, check translations, train interviewers and pretest questions. Use an appropriate direct measure when available.
+
+Correctly entering an answer does not prove that the underlying measurement is valid.
+
+:::
+
+::: {.source-slide .collection-slide #collection-quality-ethics}
+
+### Before analysis: quality checks and responsible collection
+
+- Explain purpose, voluntary participation and data use; collect only necessary identifiers and protect access.
+- Promise anonymity only when responses cannot be linked to individuals; otherwise explain confidentiality accurately.
+- Check duplicates, impossible values, units, missing-value codes and routing errors. Preserve raw records and document changes.
+- Report the population, frame, selection method, modes, collection dates, achieved responses and known limitations.
+
+Do not replace a missing answer with zero unless zero is its true meaning. Cleaning cannot recover people excluded by the study design.
+
+Reference: [AAPOR: Survey research practices](https://aapor.org/standards-and-ethics/best-practices/).
+
+:::
+
+::: {.source-slide .collection-slide #collection-activity}
+
+### Discussion: design and diagnose a customer survey
+
+**Hypothetical scenario; no observed data:** A bank wants to describe service satisfaction among all current retail customers. It posts a questionnaire inside its app. The first question asks, “How satisfied are you with our excellent service?”
+
+1. Define the population, observational unit and satisfaction measure.
+2. Is the app a survey mode, a sampling frame, or both in this design? Who might be absent?
+3. Propose a selection method and a response mode; explain why each fits.
+4. Identify potential coverage, nonresponse and measurement problems. Could a larger response count fix them?
+5. Rewrite the opening question and describe one pilot check.
+
+After these design checks, we can organize the collected data using tables, charts and numerical summaries.
+
+:::
+
+::: {.source-slide .collection-slide #collection-references}
+
+### References for the added material
+
+- Chapter 1 summary and teaching guide, *Defining and Collecting Data*, supplied in the earlier course. Used as a planning reference; textbook page claims and publisher datasets were not independently verified.
+- [Australian Bureau of Statistics: Census and sample](https://www.abs.gov.au/statistics/understanding-statistics/statistical-terms-and-concepts/census-and-sample).
+- [Australian Bureau of Statistics: Types of error](https://www.abs.gov.au/statistics/understanding-statistics/statistical-terms-and-concepts/types-error).
+- [AAPOR: Best practices for survey research](https://aapor.org/standards-and-ethics/best-practices/).
+- [Pew Research Center: Writing survey questions](https://www.pewresearch.org/writing-survey-questions/).
+- [Pew Research Center: Phone versus online mode effects](https://www.pewresearch.org/short-reads/2019/02/07/phone-vs-online-surveys-why-do-respondents-answers-sometimes-differ-by-mode/).
+
+Added course explanations and hypothetical illustrations, 3 November 2026. No original slide text or case observations were replaced.
+
+:::

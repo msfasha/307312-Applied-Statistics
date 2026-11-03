@@ -118,6 +118,10 @@ with ZipFile(PPT) as z, tempfile.TemporaryDirectory() as temp:
         if str(i) in examples:
             q.append('#### R equivalent (added)\n\n```{r}\n#| label: r-slide-'+str(i)+'\n'+examples[str(i)]+'\n```\n\n')
         q.append(':::\n\n')
+        if i == 12:
+            # Keep the authorized collection/survey supplement after measurement
+            # levels and before the original descriptive tools, on every rebuild.
+            q.append('{{< include content/data-collection-and-surveys.qmd >}}\n\n')
         source=[t.text or '' for t in tree.findall('.//a:t',NS)]
         assert sorted(t for t in source if t.strip())==sorted(t for t in native if t.strip()), f'Unpreserved native text on slide {i}'
         audit.append({'slide':i,'title':titletext,'text_runs':len(source),'graphics':imagecount,'all_native_text_preserved': i != 1, 'authorized_changes': ('Course identity updated to 307312 Applied Statistics — Masters Level' if i == 1 else ('Diagram rebuilt in standard Petra theme' if i in overrides else None))})
