@@ -8,7 +8,7 @@ and survey errors. The supplement is included after original descriptive slide 1
 converter inserts the same include on regeneration. Original slide blocks, their
 order, source files, images and R cells are unchanged.
 
-`content/data-collection-and-surveys.qmd` contains 19 slide-style blocks, including
+`content/data-collection-and-surveys.qmd` contains 21 slide-style blocks, including
 learning objectives, a discussion activity and references. It distinguishes
 collection approaches, sample selection and survey communication modes. No new
 dataset is needed; examples are conceptual or explicitly hypothetical.
@@ -64,3 +64,14 @@ Use the discussion activity before the original tables section. An additional
 chapter-wide business case is unnecessary for this request. A future practical
 exercise could ask students to write a short collection plan; do not invent
 results for the source student dataset or claim its collection design is known.
+
+## Clarified business examples — 3 November 2026
+
+The bank comparison originally appeared only in the chat. At the user's request,
+it is now included after the two sampling introductions, followed by a short
+explanation of segments, strata, weights and branch clusters. All bank design
+choices are explicitly hypothetical, with no fabricated survey results. Age
+groups refer to adult retail customers and partition that example population.
+The cluster example uses one designated branch per customer to avoid overlapping
+selection units. Explain that stratification supports group comparisons but does
+not guarantee achieved response numbers or adequate precision by itself.

@@ -102,6 +102,38 @@ An online questionnaire can use a probability sample or an opt-in sample. The co
 
 :::
 
+::: {.source-slide .collection-slide #collection-bank-sampling}
+
+### Choosing a sampling method: a bank example
+
+**Hypothetical planning example; no observed data.** A bank wants to describe service satisfaction among all its current adult retail customers.
+
+| Method | What the bank would do | Why choose it? |
+|---|---|---|
+| **Simple random** | Randomly draw customers from the complete customer list | Suitable for an overall estimate when precise comparisons between customer groups are not the main objective. Small groups can receive few selections by chance. |
+| **Stratified random** | Divide customers into age groups—18–29, 30–59 and 60+—then randomly select customers within **every** group | Suitable when management needs to compare age groups. Their service needs or digital experiences may differ, and a small group could otherwise have too few responses for a useful comparison. |
+| **Systematic** | Choose a random starting position among the first 20 names, then select every 20th customer | Convenient for working through a long list. Check that the ordering has no repeating pattern aligned with the selection interval. |
+| **Cluster** | Randomly select some branches, then randomly sample customers assigned to those branches | Suitable when interviews require branch visits: fewer locations reduce travel. Customers within a branch may be similar, so precision can be lower than with a similarly sized simple random sample. |
+| **Nonprobability** | Ask available branch visitors to test a draft questionnaire, or deliberately interview customers with relevant experience | Suitable for piloting questions or exploring a problem. These people can provide useful feedback, but their satisfaction percentage should not be treated as representative of all customers. |
+
+:::
+
+::: {.source-slide .collection-slide #collection-segments-and-clusters}
+
+### Customer segments, strata and clusters
+
+**Customer segments** are groups defined by a characteristic relevant to the business question, such as age, region or account type. For stratified sampling, use groups that do not overlap and together cover the target population.
+
+In the bank example, the age groups are **strata**. Sampling within every age group ensures each enters the selected sample; this helps management study each group's experience. It does not mean surveying every customer, taking equal numbers from every group, or guaranteeing that everyone selected responds.
+
+If a small group is deliberately sampled more heavily, use appropriate **weights** when combining results: its sample responses should not count as though that group makes up an equally large share of all customers.
+
+The branches in the cluster example are **clusters**. Assign each customer to one designated branch for selection, so customers using several branches are not counted repeatedly. Visit only the randomly selected branches; the purpose is to reduce collection cost, rather than obtain a separate estimate for every branch.
+
+**Remember:** stratified sampling selects customers from **every group**; cluster sampling selects **some groups**, then studies customers within them.
+
+:::
+
 ::: {.source-slide .collection-slide #collection-remote-modes}
 
 ### Survey modes: online and telephone
