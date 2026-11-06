@@ -3,6 +3,9 @@
 .source-slide :is(h2, h3, h4) { scroll-margin-top: 5rem; }
 .source-slide .quarto-figure { margin: 1.3rem auto; text-align: center; }
 .source-slide img { max-width: 100%; height: auto; object-fit: contain; }
+/* Captionless source images and R plots also need explicit horizontal centering. */
+.source-slide img, .cell-output-display img { display: block; margin-inline: auto; }
+.source-slide a.lightbox, .cell-output-display a.lightbox { display: block; }
 .source-text { margin: 1rem 0; }
 .source-text p { margin-bottom: .85rem; line-height: 1.65; }
 .source-bullet { padding-left: 1.2rem; position: relative; }
