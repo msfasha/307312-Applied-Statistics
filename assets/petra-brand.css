@@ -26,7 +26,7 @@ body { color: var(--course-dark); }
   color: var(--course-title-text); margin-top: 0; border: 0;
   line-height: 1.25; padding-bottom: 0;
 }
-#title-block-header .subtitle { color: #666666; margin-bottom: 0; }
+#title-block-header .subtitle { color: #595959; margin-bottom: 0; }
 #title-block-header .quarto-title-meta,
 #title-block-header .quarto-title-meta-contents { color: var(--course-muted); }
 #title-block-header .quarto-title-meta:empty { display: none; }
