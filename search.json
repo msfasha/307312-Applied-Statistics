@@ -1,91 +1,91 @@
 [
   {
-    "objectID": "03-inferential-statistics.html",
-    "href": "03-inferential-statistics.html",
+    "objectID": "lessons/03-inferential-statistics.html",
+    "href": "lessons/03-inferential-statistics.html",
     "title": "Part 3: Inferential Statistics",
     "section": "",
     "text": "Download this part as PDF"
   },
   {
-    "objectID": "03-inferential-statistics.html#part3-01",
-    "href": "03-inferential-statistics.html#part3-01",
+    "objectID": "lessons/03-inferential-statistics.html#part3-01",
+    "href": "lessons/03-inferential-statistics.html#part3-01",
     "title": "Part 3: Inferential Statistics",
     "section": "3.1 Introduction to Probability Distributions",
     "text": "3.1 Introduction to Probability Distributions"
   },
   {
-    "objectID": "03-inferential-statistics.html#part3-02",
-    "href": "03-inferential-statistics.html#part3-02",
+    "objectID": "lessons/03-inferential-statistics.html#part3-02",
+    "href": "lessons/03-inferential-statistics.html#part3-02",
     "title": "Part 3: Inferential Statistics",
     "section": "3.2 Introduction to Estimation in Statistics",
     "text": "3.2 Introduction to Estimation in Statistics"
   },
   {
-    "objectID": "03-inferential-statistics.html#part3-03",
-    "href": "03-inferential-statistics.html#part3-03",
+    "objectID": "lessons/03-inferential-statistics.html#part3-03",
+    "href": "lessons/03-inferential-statistics.html#part3-03",
     "title": "Part 3: Inferential Statistics",
     "section": "3.3 Introduction to Hypothesis Testing",
     "text": "3.3 Introduction to Hypothesis Testing"
   },
   {
-    "objectID": "03-inferential-statistics.html#part3-04",
-    "href": "03-inferential-statistics.html#part3-04",
+    "objectID": "lessons/03-inferential-statistics.html#part3-04",
+    "href": "lessons/03-inferential-statistics.html#part3-04",
     "title": "Part 3: Inferential Statistics",
     "section": "3.4 Introduction to Linear Regression",
     "text": "3.4 Introduction to Linear Regression"
   },
   {
-    "objectID": "01-introduction-to-r.html",
-    "href": "01-introduction-to-r.html",
+    "objectID": "lessons/01-introduction-to-r.html",
+    "href": "lessons/01-introduction-to-r.html",
     "title": "Part 1: Introduction to R",
     "section": "",
     "text": "Download this part as PDF\nR performs calculations and statistical analysis. RStudio is an interface for writing code, inspecting data, and viewing plots. Quarto combines explanations, executable code, and results in one document.\nBy the end of this notebook, you should be able to import a CSV, inspect its variables, prepare and summarize data with dplyr, and create clear charts with ggplot2."
   },
   {
-    "objectID": "01-introduction-to-r.html#getting-started",
-    "href": "01-introduction-to-r.html#getting-started",
+    "objectID": "lessons/01-introduction-to-r.html#getting-started",
+    "href": "lessons/01-introduction-to-r.html#getting-started",
     "title": "Part 1: Introduction to R",
     "section": "1.1 Getting started",
-    "text": "1.1 Getting started\n\nInstall and open the course project\n\nInstall R and RStudio on your computer.\nKeep the notebook together with the course’s data/ and assets/ folders.\nOpen Applied-Statistics.Rproj in RStudio. This makes the course folder the working directory.\nOpen this .qmd file. Run individual code cells to explore, or choose Render to rebuild the complete lesson. Rendering also requires Quarto.\n\nThe Console runs commands immediately. The source editor saves your work. The Environment lists saved objects, and Plots displays charts. Keep useful commands in the notebook rather than only in Console history.\n\n\nInstall packages once; load them each session\nA package adds functions to R. Install the two packages below once on your computer. This cell is provided for manual setup and does not run during rendering.\n\n# install.packages() downloads packages and their dependencies; run this once with an internet connection.\n# c() combines the two package names into a character vector.\ninstall.packages(c(\"dplyr\", \"ggplot2\"))\n\nLoad the packages whenever you start a new R session or render the notebook.\n\n# library() loads an installed package so its functions are available in the current session.\n# dplyr prepares tables; ggplot2 builds plots from data and visual mappings.\nlibrary(dplyr)\nlibrary(ggplot2)"
+    "text": "1.1 Getting started\n\nInstall and open the course project\n\nInstall R and RStudio on your computer.\nKeep the full course folder structure: notebooks in lessons/, with data/ and assets/ in the course root.\nOpen Applied-Statistics.Rproj in RStudio. This makes the course folder the working directory.\nOpen this .qmd file. Run individual code cells to explore, or choose Render to rebuild the complete lesson. Rendering also requires Quarto.\n\nThe Console runs commands immediately. The source editor saves your work. The Environment lists saved objects, and Plots displays charts. Keep useful commands in the notebook rather than only in Console history.\n\n\nInstall packages once; load them each session\nA package adds functions to R. Install the two packages below once on your computer. This cell is provided for manual setup and does not run during rendering.\n\n# install.packages() downloads packages and their dependencies; run this once with an internet connection.\n# c() combines the two package names into a character vector.\ninstall.packages(c(\"dplyr\", \"ggplot2\"))\n\nLoad the packages whenever you start a new R session or render the notebook.\n\n# library() loads an installed package so its functions are available in the current session.\n# dplyr prepares tables; ggplot2 builds plots from data and visual mappings.\nlibrary(dplyr)\nlibrary(ggplot2)"
   },
   {
-    "objectID": "01-introduction-to-r.html#essential-r-concepts",
-    "href": "01-introduction-to-r.html#essential-r-concepts",
+    "objectID": "lessons/01-introduction-to-r.html#essential-r-concepts",
+    "href": "lessons/01-introduction-to-r.html#essential-r-concepts",
     "title": "Part 1: Introduction to R",
     "section": "1.2 Essential R concepts",
     "text": "1.2 Essential R concepts\n\nObjects, assignment, and data types\nUse &lt;- to save a value under a name. R distinguishes uppercase and lowercase: height_cm and Height_cm are different names. Text goes inside quotes; logical values are TRUE or FALSE. A line beginning with # is a comment.\n\n# &lt;- assigns values to names; arithmetic uses the saved values on the right-hand side.\n# These practice values demonstrate numeric, character, and logical objects, rather than a new dataset.\nheight_cm &lt;- 172\nheight_m &lt;- height_cm / 100\ncourse_name &lt;- \"Applied Statistics\"\nis_introductory &lt;- TRUE\nheight_m\n\n[1] 1.72\n\n\n\n\nVectors and selecting values\nA vector holds several values of one basic type. Most arithmetic and comparisons work on every element without a loop. R starts counting positions at 1.\n\n# c() combines these practice scores into a vector; [] selects values by position or a logical condition.\n# &gt; compares each score with 75; only entries satisfying that condition are retained.\nscores &lt;- c(70, 80, 90)\nscores + 5\n\n[1] 75 85 95\n\nscores[1]\n\n[1] 70\n\nscores[scores &gt; 75]\n\n[1] 80 90\n\n\n== tests equality, != means not equal, & means AND, and | means OR. %in% tests membership in a set. Use &lt;- for assignment and == when comparing values.\n\n\nBasic summaries and missing values\n\n# mean() and median() summarize center; sd() uses the sample denominator n-1 to measure spread.\n# c() collects named results; scores are practice values, not observations added to the teaching CSV.\nc(mean = mean(scores), median = median(scores), sample_sd = sd(scores))\n\n     mean    median sample_sd \n       80        80        10 \n\n\nNA represents a missing value. It is different from zero and from an empty string. Do not replace missing values with zero automatically.\n\n# is.na() marks missing entries; mean() returns NA by default when any input is missing.\n# na.rm=TRUE omits missing entries, so this mean uses only the two recorded scores, 70 and 90.\nscores_with_missing &lt;- c(70, NA, 90)\nis.na(scores_with_missing)\n\n[1] FALSE  TRUE FALSE\n\nmean(scores_with_missing)\n\n[1] NA\n\nmean(scores_with_missing, na.rm = TRUE)\n\n[1] 80\n\n\n\n\nReading function calls and getting help\nA function call has a name followed by arguments in parentheses: mean(scores, na.rm = TRUE). Here scores is the input and na.rm changes how missing values are handled. Naming consequential arguments makes code easier to understand.\nTo open R’s help, type ?mean or ?read.csv in the Console. Read error messages from the first failing line; check spelling, package loading, column names, and file paths before changing the data.\n\n\nA small reusable function\nA function saves a calculation that you want to reuse. R returns the final expression when there is no explicit return().\n\n# function() defines a reusable calculation; x is the input supplied when the function is called.\n# Dividing by 100 converts centimetres to metres and works on a whole numeric vector.\ncm_to_m &lt;- function(x) {\n  x / 100\n}\ncm_to_m(c(160, 172, 168))\n\n[1] 1.60 1.72 1.68"
   },
   {
-    "objectID": "01-introduction-to-r.html#importing-and-checking-a-dataset",
-    "href": "01-introduction-to-r.html#importing-and-checking-a-dataset",
+    "objectID": "lessons/01-introduction-to-r.html#importing-and-checking-a-dataset",
+    "href": "lessons/01-introduction-to-r.html#importing-and-checking-a-dataset",
     "title": "Part 1: Introduction to R",
     "section": "1.3 Importing and checking a dataset",
-    "text": "1.3 Importing and checking a dataset\n\nThe course example\nWe will use the same teaching CSV as Part 2. Each row represents one student record in the original 307102 teaching example. The selected columns are gender, age, height, weight, country, and major. Age is in years, height in cm, and weight in kg.\nThe original collection provenance is not established; do not describe these as verified records of actual university students. The CSV retains the source values and omits names and identifiers. See the data guide.\n\n\nRead a CSV into a data frame\nA data frame is a table: rows are observations, and columns are variables. CSV files are plain-text tables with values separated by commas.\n\n# read.csv() reads column names from the first row; stringsAsFactors=FALSE keeps text columns as text.\n# The path is relative to the course project folder, not an absolute path on the instructor's computer.\nstudents &lt;- read.csv(\"data/307102/students.csv\", stringsAsFactors = FALSE)\n\n\n\nInspect before analyzing\n\n# head() previews six rows; dim() reports row and column counts, and names() lists the column names.\n# str() shows column types and example values, helping detect numbers imported as text.\nhead(students)\n\n  gender age height weight country                  major\n1 Female  19    160   64.8  Turkey      Political Science\n2 Female  19    172   73.0   Other        Social Sciences\n3 Female  22    168   70.6      UK        Social Sciences\n4   Male  19    183   79.7   Other Environmental Sciences\n5 Female  21    175   71.4   Italy Environmental Sciences\n6   Male  19    189   85.8   Italy      Political Science\n\ndim(students)\n\n[1] 8239    6\n\nnames(students)\n\n[1] \"gender\"  \"age\"     \"height\"  \"weight\"  \"country\" \"major\"  \n\nstr(students)\n\n'data.frame':   8239 obs. of  6 variables:\n $ gender : chr  \"Female\" \"Female\" \"Female\" \"Male\" ...\n $ age    : int  19 19 22 19 21 19 21 21 18 18 ...\n $ height : int  160 172 168 183 175 189 156 167 195 165 ...\n $ weight : num  64.8 73 70.6 79.7 71.4 85.8 65.9 65.7 94.4 66 ...\n $ country: chr  \"Turkey\" \"Other\" \"UK\" \"Other\" ...\n $ major  : chr  \"Political Science\" \"Social Sciences\" \"Social Sciences\" \"Environmental Sciences\" ...\n\n\n\n# is.na() identifies missing cells and colSums() counts them separately for each column.\n# summary() gives an overview appropriate to each column's type; it does not verify data provenance.\ncolSums(is.na(students))\n\n gender     age  height  weight country   major \n      0       0       0       0       0       0 \n\nsummary(students[c(\"age\", \"height\", \"weight\")])\n\n      age            height          weight     \n Min.   :18.00   Min.   :135.0   Min.   : 51.4  \n 1st Qu.:20.00   1st Qu.:163.0   1st Qu.: 66.5  \n Median :21.00   Median :171.0   Median : 71.8  \n Mean   :22.54   Mean   :171.4   Mean   : 73.0  \n 3rd Qu.:23.00   3rd Qu.:180.0   3rd Qu.: 78.5  \n Max.   :64.00   Max.   :206.0   Max.   :116.0  \n\n\nUse $ to select a column, such as students$height. Use students[1:5, ] to select the first five rows; the blank position after the comma keeps every column. Use students[c(\"age\", \"height\")] to select named columns.\n\n\nCategories and factors\nThe |&gt; pipe passes a table into the next operation. In the example below, mutate() changes a column; Section 1.4 develops these operations further.\nA factor tells R that values represent categories. Category labels should not be averaged as though they were numerical measurements. The source spells Russia as Russa; retain that label when filtering the unchanged data.\n\n# factor() records gender as a categorical variable; mutate() creates an updated table without editing the CSV.\n# This assignment changes the in-memory students object; the original file on disk stays unchanged.\nstudents &lt;- students |&gt;\n  mutate(gender = factor(gender))"
+    "text": "1.3 Importing and checking a dataset\n\nThe course example\nWe will use the same teaching CSV as Part 2. Each row represents one student record in the original 307102 teaching example. The selected columns are gender, age, height, weight, country, and major. Age is in years, height in cm, and weight in kg.\nThe original collection provenance is not established; do not describe these as verified records of actual university students. The CSV retains the source values and omits names and identifiers. See the data guide.\n\n\nRead a CSV into a data frame\nA data frame is a table: rows are observations, and columns are variables. CSV files are plain-text tables with values separated by commas.\n\n# read.csv() reads column names from the first row; stringsAsFactors=FALSE keeps text columns as text.\n# The path is relative to the course project folder, not an absolute path on the instructor's computer.\n# Find the shared data folder from either the course root or this notebook folder.\ndata_dir &lt;- if (dir.exists(\"data\")) \"data\" else file.path(\"..\", \"data\")\nstudents &lt;- read.csv(file.path(data_dir, \"descriptive-statistics/students.csv\"), stringsAsFactors = FALSE)\n\n\n\nInspect before analyzing\n\n# head() previews six rows; dim() reports row and column counts, and names() lists the column names.\n# str() shows column types and example values, helping detect numbers imported as text.\nhead(students)\n\n  gender age height weight country                  major\n1 Female  19    160   64.8  Turkey      Political Science\n2 Female  19    172   73.0   Other        Social Sciences\n3 Female  22    168   70.6      UK        Social Sciences\n4   Male  19    183   79.7   Other Environmental Sciences\n5 Female  21    175   71.4   Italy Environmental Sciences\n6   Male  19    189   85.8   Italy      Political Science\n\ndim(students)\n\n[1] 8239    6\n\nnames(students)\n\n[1] \"gender\"  \"age\"     \"height\"  \"weight\"  \"country\" \"major\"  \n\nstr(students)\n\n'data.frame':   8239 obs. of  6 variables:\n $ gender : chr  \"Female\" \"Female\" \"Female\" \"Male\" ...\n $ age    : int  19 19 22 19 21 19 21 21 18 18 ...\n $ height : int  160 172 168 183 175 189 156 167 195 165 ...\n $ weight : num  64.8 73 70.6 79.7 71.4 85.8 65.9 65.7 94.4 66 ...\n $ country: chr  \"Turkey\" \"Other\" \"UK\" \"Other\" ...\n $ major  : chr  \"Political Science\" \"Social Sciences\" \"Social Sciences\" \"Environmental Sciences\" ...\n\n\n\n# is.na() identifies missing cells and colSums() counts them separately for each column.\n# summary() gives an overview appropriate to each column's type; it does not verify data provenance.\ncolSums(is.na(students))\n\n gender     age  height  weight country   major \n      0       0       0       0       0       0 \n\nsummary(students[c(\"age\", \"height\", \"weight\")])\n\n      age            height          weight     \n Min.   :18.00   Min.   :135.0   Min.   : 51.4  \n 1st Qu.:20.00   1st Qu.:163.0   1st Qu.: 66.5  \n Median :21.00   Median :171.0   Median : 71.8  \n Mean   :22.54   Mean   :171.4   Mean   : 73.0  \n 3rd Qu.:23.00   3rd Qu.:180.0   3rd Qu.: 78.5  \n Max.   :64.00   Max.   :206.0   Max.   :116.0  \n\n\nUse $ to select a column, such as students$height. Use students[1:5, ] to select the first five rows; the blank position after the comma keeps every column. Use students[c(\"age\", \"height\")] to select named columns.\n\n\nCategories and factors\nThe |&gt; pipe passes a table into the next operation. In the example below, mutate() changes a column; Section 1.4 develops these operations further.\nA factor tells R that values represent categories. Category labels should not be averaged as though they were numerical measurements. The source spells Russia as Russa; retain that label when filtering the unchanged data.\n\n# factor() records gender as a categorical variable; mutate() creates an updated table without editing the CSV.\n# This assignment changes the in-memory students object; the original file on disk stays unchanged.\nstudents &lt;- students |&gt;\n  mutate(gender = factor(gender))"
   },
   {
-    "objectID": "01-introduction-to-r.html#preparing-and-summarizing-data-with-dplyr",
-    "href": "01-introduction-to-r.html#preparing-and-summarizing-data-with-dplyr",
+    "objectID": "lessons/01-introduction-to-r.html#preparing-and-summarizing-data-with-dplyr",
+    "href": "lessons/01-introduction-to-r.html#preparing-and-summarizing-data-with-dplyr",
     "title": "Part 1: Introduction to R",
     "section": "1.4 Preparing and summarizing data with dplyr",
     "text": "1.4 Preparing and summarizing data with dplyr\n\nRead a pipe from left to right\nThe native pipe |&gt; sends the result on its left into the next function. Read a chain as a sequence of steps: start with this table, then perform this operation. It requires R 4.1 or later.\n\n\n\nFunction\nPurpose\n\n\n\n\nselect()\nChoose columns\n\n\nfilter()\nKeep rows meeting conditions\n\n\narrange()\nSort rows\n\n\nmutate()\nCreate or change columns\n\n\ncount()\nCount rows by category\n\n\ngroup_by() and summarise()\nCalculate summaries within groups\n\n\n\n\n\nSelect, filter, and sort\n\n# select() chooses columns; filter() keeps rows satisfying both conditions separated by a comma.\n# arrange(desc()) sorts height from largest to smallest; head(6) limits the displayed output to six rows.\nstudents |&gt;\n  select(gender, age, height, country) |&gt;\n  filter(age &gt;= 20, country == \"Turkey\") |&gt;\n  arrange(desc(height)) |&gt;\n  head(6)\n\n  gender age height country\n1   Male  23    206  Turkey\n2   Male  21    198  Turkey\n3   Male  23    196  Turkey\n4   Male  21    195  Turkey\n5   Male  22    194  Turkey\n6   Male  20    193  Turkey\n\n\nA comparison involving NA does not pass filter(). Investigate missing values before interpreting the rows that remain.\n\n\nCreate a derived variable\n\n# mutate() adds height_m while keeping existing columns; cm_to_m() is the conversion function defined above.\n# select() and head() display the original and converted heights together, with their units explicit in the names.\nstudents_prepared &lt;- students |&gt;\n  mutate(height_m = cm_to_m(height))\nstudents_prepared |&gt;\n  select(height, height_m) |&gt;\n  head(6)\n\n  height height_m\n1    160     1.60\n2    172     1.72\n3    168     1.68\n4    183     1.83\n5    175     1.75\n6    189     1.89\n\n\n\n\nCount categories and calculate percentages\n\n# count() returns one row per country and sorts by frequency when sort=TRUE; n is its default count column.\n# mutate() adds percentages using sum(n): the denominator is all records counted across the country categories.\ncountry_counts &lt;- students |&gt;\n  count(country, sort = TRUE) |&gt;\n  mutate(percent = 100 * n / sum(n))\ncountry_counts\n\n  country    n   percent\n1   Italy 2797 33.948295\n2   Other 2688 32.625319\n3      UK 1839 22.320670\n4   Russa  585  7.100376\n5  Turkey  330  4.005340\n\n\n\n\nSummarize within groups\n\n# group_by() defines gender groups; summarise() calculates one row of statistics per group.\n# n() counts rows, mean() and sd() summarize height in cm, and .groups=\"drop\" removes grouping afterward.\nheight_summary &lt;- students |&gt;\n  group_by(gender) |&gt;\n  summarise(n = n(), mean_height_cm = mean(height), sd_height_cm = sd(height),\n            .groups = \"drop\")\nheight_summary\n\n# A tibble: 2 × 4\n  gender     n mean_height_cm sd_height_cm\n  &lt;fct&gt;  &lt;int&gt;          &lt;dbl&gt;        &lt;dbl&gt;\n1 Female  4110           164.         7.92\n2 Male    4129           179.         7.99\n\n\nIf a variable has missing observations, check how many values contribute to each statistic. Adding na.rm = TRUE changes the denominator; n() still counts all rows, including rows missing that variable.\n\n\nSave a derived result\nKeep input files unchanged. This optional cell writes a new result to _output/; run it manually when you want to save the summary.\n\n# dir.create() prepares an output folder; showWarnings=FALSE suppresses a message if it already exists.\n# write.csv(row.names=FALSE) saves the summary without adding a column of row numbers.\ndir.create(\"_output\", showWarnings = FALSE)\nwrite.csv(height_summary, \"_output/height-summary-by-gender.csv\", row.names = FALSE)"
   },
   {
-    "objectID": "01-introduction-to-r.html#visualizing-data-with-ggplot2",
-    "href": "01-introduction-to-r.html#visualizing-data-with-ggplot2",
+    "objectID": "lessons/01-introduction-to-r.html#visualizing-data-with-ggplot2",
+    "href": "lessons/01-introduction-to-r.html#visualizing-data-with-ggplot2",
     "title": "Part 1: Introduction to R",
     "section": "1.5 Visualizing data with ggplot2",
     "text": "1.5 Visualizing data with ggplot2\n\nData, mappings, and layers\nA ggplot starts with a table and a mapping, then adds a geometry with +:\nggplot(data, aes(x = variable_x, y = variable_y)) +\n  geom_point()\nThis is a syntax template. The examples below supply actual column names. aes() maps variables to visual properties. Put a fixed color outside aes(); put a variable inside aes() when color should distinguish groups.\n\n# theme_set() changes the default ggplot theme for the current R session, including later plots in this notebook.\n# theme_minimal(base_size=12) uses a simple background and sets the base text size to 12 points.\ntheme_set(theme_minimal(base_size = 12))\n\n\n\nBar chart: count categories\n\n# ggplot() supplies the table; aes(x=country) maps the country column to the horizontal axis.\n# geom_bar() counts rows by default; fill is a fixed color, and labs() gives axes meaningful labels.\nggplot(students, aes(x = country)) +\n  geom_bar(fill = \"#356B8C\") +\n  labs(x = \"Country (source labels)\", y = \"Number of records\")\n\n\n\n\n\n\n\n\ngeom_bar() counts raw rows. If you already have a table of calculated values, use geom_col() instead; it plots the supplied heights rather than counting again.\n\n\nHistogram: display a numerical distribution\n\n# geom_histogram() counts heights within intervals; binwidth=5 means bins span 5 cm.\n# boundary=0 anchors bin edges at multiples of 5 cm; closed=\"left\" includes the lower edge of each bin.\nggplot(students, aes(x = height)) +\n  geom_histogram(binwidth = 5, boundary = 0, closed = \"left\", fill = \"#356B8C\", color = \"white\") +\n  labs(x = \"Height (cm)\", y = \"Number of records\")\n\n\n\n\n\n\n\n\nChanging the bin width can change the apparent shape. Parts 2 and 3 develop the statistical interpretation; here the aim is to construct and label the plot correctly.\n\n\nBoxplot: compare groups\n\n# geom_boxplot() displays each gender group's distribution of height; its whiskers extend to observations within 1.5 IQR of the hinges.\n# Values beyond the whiskers are plotted separately as potential outliers, not automatically as errors.\nggplot(students, aes(x = gender, y = height)) +\n  geom_boxplot(fill = \"#E9DDE7\") +\n  labs(x = \"Gender\", y = \"Height (cm)\")\n\n\n\n\n\n\n\n\n\n\nScatterplot: examine two numerical variables\n\n# aes(color=gender) maps categories to point colors; geom_point(alpha=0.3) makes overlapping records more visible.\n# scale_color_manual() assigns fixed analytical colors to named groups; labs() labels axes and the legend.\nggplot(students, aes(x = height, y = weight, color = gender)) +\n  geom_point(alpha = 0.3) +\n  scale_color_manual(values = c(Female = \"#356B8C\", Male = \"#C47735\")) +\n  labs(x = \"Height (cm)\", y = \"Weight (kg)\", color = \"Gender\")\n\n\n\n\n\n\n\n\nA scatterplot shows association, not proof that changing one variable causes the other to change."
   },
   {
-    "objectID": "01-introduction-to-r.html#a-short-practice",
-    "href": "01-introduction-to-r.html#a-short-practice",
+    "objectID": "lessons/01-introduction-to-r.html#a-short-practice",
+    "href": "lessons/01-introduction-to-r.html#a-short-practice",
     "title": "Part 1: Introduction to R",
     "section": "1.6 A short practice",
     "text": "1.6 A short practice\nUsing the supplied CSV and the examples above:\n\nSelect students from Turkey or Russa using %in%, then display their age, height, and country.\nCount records by major. Identify the major with the largest count.\nCalculate the mean weight in kg for each gender and report the group sizes.\nMake a histogram of age with a bin width of one year. Label both axes.\nMake a scatterplot of height and weight using a fixed point color. Explain how this differs from mapping gender to color.\n\nKeep your code and results together. Check variable types, missing values, units, and the meaning of each row before interpreting a result."
   },
   {
-    "objectID": "01-introduction-to-r.html#what-to-remember",
-    "href": "01-introduction-to-r.html#what-to-remember",
+    "objectID": "lessons/01-introduction-to-r.html#what-to-remember",
+    "href": "lessons/01-introduction-to-r.html#what-to-remember",
     "title": "Part 1: Introduction to R",
     "section": "1.7 What to remember",
     "text": "1.7 What to remember\n\nUse meaningful object names and save reusable code in the notebook.\nInspect a CSV before analyzing it; a successful import does not establish data quality.\nUse dplyr to select, filter, transform, count, and summarize.\nBuild ggplot2 charts from data, mappings, and geometry, with explicit units and labels.\n\nContinue to Part 2: Descriptive Statistics · Course home"
@@ -98,78 +98,85 @@
     "text": "Study the three parts in order. Read online, or download the PDFs for offline reading."
   },
   {
+    "objectID": "index.html#part-2-practicals",
+    "href": "index.html#part-2-practicals",
+    "title": "307312 Applied Statistics",
+    "section": "Part 2 practicals",
+    "text": "Part 2 practicals\nApply the descriptive methods in order. Each practical includes explained R code, executed results, charts and independent tasks.\n\n\n\nPractical\nRead online\nDownload\n\n\n\n\n1. Categorical business data — mutual funds\nOpen practical\nPDF\n\n\n2. Numerical business data — cereals\nOpen practical\nPDF\n\n\n3. Association and group comparisons — mutual funds\nOpen practical\nPDF"
+  },
+  {
     "objectID": "index.html#work-with-r-or-study-offline",
     "href": "index.html#work-with-r-or-study-offline",
     "title": "307312 Applied Statistics",
     "section": "Work with R or study offline",
-    "text": "Work with R or study offline\n\nDownload the complete student RStudio project: editable lessons, teaching CSVs, images, and setup instructions. Extract the ZIP, then open Applied-Statistics.Rproj in RStudio.\nDownload all three PDFs.\n\nThe online lessons and PDFs show the code and its results. To run or change R code, use the RStudio project."
+    "text": "Work with R or study offline\n\nDownload the complete student RStudio project: editable lessons and practicals, teaching CSVs, images, and setup instructions. Extract the ZIP, then open Applied-Statistics.Rproj in RStudio.\nDownload all lesson and practical PDFs.\n\nThe online lessons and PDFs show the code and its results. To run or change R code, use the RStudio project."
   },
   {
-    "objectID": "02-descriptive-statistics.html",
-    "href": "02-descriptive-statistics.html",
+    "objectID": "lessons/02-descriptive-statistics.html",
+    "href": "lessons/02-descriptive-statistics.html",
     "title": "Part 2: Descriptive Statistics",
     "section": "",
     "text": "Download this part as PDF"
   },
   {
-    "objectID": "02-descriptive-statistics.html#source-title-01",
-    "href": "02-descriptive-statistics.html#source-title-01",
+    "objectID": "lessons/02-descriptive-statistics.html#source-title-01",
+    "href": "lessons/02-descriptive-statistics.html#source-title-01",
     "title": "Part 2: Descriptive Statistics",
     "section": "307312 Applied Statistics — Masters Level",
     "text": "307312 Applied Statistics — Masters Level"
   },
   {
-    "objectID": "02-descriptive-statistics.html#source-title-07",
-    "href": "02-descriptive-statistics.html#source-title-07",
+    "objectID": "lessons/02-descriptive-statistics.html#source-title-07",
+    "href": "lessons/02-descriptive-statistics.html#source-title-07",
     "title": "Part 2: Descriptive Statistics",
     "section": "Types of Data & Levels of Measurements",
     "text": "Types of Data & Levels of Measurements"
   },
   {
-    "objectID": "02-descriptive-statistics.html#data-collection-and-survey-quality",
-    "href": "02-descriptive-statistics.html#data-collection-and-survey-quality",
+    "objectID": "lessons/02-descriptive-statistics.html#data-collection-and-survey-quality",
+    "href": "lessons/02-descriptive-statistics.html#data-collection-and-survey-quality",
     "title": "Part 2: Descriptive Statistics",
     "section": "Data collection and survey quality",
     "text": "Data collection and survey quality\nBefore summarizing data, ask how they were obtained.\n\nSource: Are suitable data already available, or must we collect them?\nSelection: Who or what should be included?\nMeasurement: How will we obtain comparable, trustworthy answers?\n\nBy the end of this section, you should be able to select a collection approach, justify a survey mode and sampling method, and identify likely survey errors."
   },
   {
-    "objectID": "02-descriptive-statistics.html#source-title-13",
-    "href": "02-descriptive-statistics.html#source-title-13",
+    "objectID": "lessons/02-descriptive-statistics.html#source-title-13",
+    "href": "lessons/02-descriptive-statistics.html#source-title-13",
     "title": "Part 2: Descriptive Statistics",
     "section": "Descriptive Statistics Tools",
     "text": "Descriptive Statistics Tools"
   },
   {
-    "objectID": "02-descriptive-statistics.html#source-title-20",
-    "href": "02-descriptive-statistics.html#source-title-20",
+    "objectID": "lessons/02-descriptive-statistics.html#source-title-20",
+    "href": "lessons/02-descriptive-statistics.html#source-title-20",
     "title": "Part 2: Descriptive Statistics",
     "section": "Data Visualization",
     "text": "Data Visualization"
   },
   {
-    "objectID": "02-descriptive-statistics.html#source-title-35",
-    "href": "02-descriptive-statistics.html#source-title-35",
+    "objectID": "lessons/02-descriptive-statistics.html#source-title-35",
+    "href": "lessons/02-descriptive-statistics.html#source-title-35",
     "title": "Part 2: Descriptive Statistics",
     "section": "Numerical Measures in Descriptive Statistics",
     "text": "Numerical Measures in Descriptive Statistics"
   },
   {
-    "objectID": "02-descriptive-statistics.html#source-title-57",
-    "href": "02-descriptive-statistics.html#source-title-57",
+    "objectID": "lessons/02-descriptive-statistics.html#source-title-57",
+    "href": "lessons/02-descriptive-statistics.html#source-title-57",
     "title": "Part 2: Descriptive Statistics",
     "section": "Measures of Association",
     "text": "Measures of Association\n\nCovariance and Coefficient of Correlation"
   },
   {
-    "objectID": "02-descriptive-statistics.html#source-title-65",
-    "href": "02-descriptive-statistics.html#source-title-65",
+    "objectID": "lessons/02-descriptive-statistics.html#source-title-65",
+    "href": "lessons/02-descriptive-statistics.html#source-title-65",
     "title": "Part 2: Descriptive Statistics",
     "section": "Measures of Distribution",
     "text": "Measures of Distribution\n\nSymmetry and Skewness"
   },
   {
-    "objectID": "02-descriptive-statistics.html#source-title-70",
-    "href": "02-descriptive-statistics.html#source-title-70",
+    "objectID": "lessons/02-descriptive-statistics.html#source-title-70",
+    "href": "lessons/02-descriptive-statistics.html#source-title-70",
     "title": "Part 2: Descriptive Statistics",
     "section": "Percentiles, Quartiles and Boxplots",
     "text": "Percentiles, Quartiles and Boxplots"
