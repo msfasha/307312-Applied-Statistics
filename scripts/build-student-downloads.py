@@ -3,7 +3,7 @@
 from pathlib import Path
 import shutil, subprocess, tempfile, zipfile
 ROOT=Path(__file__).resolve().parents[1]
-SITE=ROOT/'_preview'
+SITE=ROOT/'_build/website'
 PARTS=['01-introduction-to-r','02-descriptive-statistics','03-inferential-statistics']
 chrome=shutil.which('google-chrome') or shutil.which('chromium')
 if not chrome: raise RuntimeError('Google Chrome or Chromium is required to export the lesson PDFs.')
@@ -15,7 +15,7 @@ for part in PARTS:
             '--disable-gpu','--no-pdf-header-footer','--allow-file-access-from-files',
             '--run-all-compositor-stages-before-draw','--virtual-time-budget=5000',
             '--user-data-dir='+profile,'--print-to-pdf='+str(output),
-            (SITE/(part+'.html')).as_uri()],check=True,capture_output=True,timeout=180)
+            (SITE/'lessons'/(part+'.html')).as_uri()],check=True,capture_output=True,timeout=180)
     # Keep downloads compact; text remains vector, screenshots use 180 dpi.
     if shutil.which('gs'):
         compact=output.with_suffix('.compact.pdf')
@@ -34,8 +34,8 @@ with zipfile.ZipFile(SITE/'downloads/applied-statistics-pdfs.zip','w',zipfile.ZI
     for part in PARTS:z.write(SITE/'pdf'/(part+'.pdf'),part+'.pdf')
 with zipfile.ZipFile(SITE/'downloads/applied-statistics-rstudio.zip','w',zipfile.ZIP_DEFLATED) as z:
     # No instructor files, archives, original slides, books, or build caches.
-    names=['assets/petra-brand.css','assets/source-slides.css','Applied-Statistics.Rproj','_quarto.yml','index.qmd']+[p+'.qmd' for p in PARTS]+['scripts/finalize-preview.py']
-    for folder in ['assets/descriptive-statistics','assets/inferential-statistics','content','data']:
+    names=['assets/petra-brand.css','assets/source-slides.css','Applied-Statistics.Rproj','_quarto.yml','index.qmd']+['lessons/'+p+'.qmd' for p in PARTS]+['scripts/finalize-preview.py']
+    for folder in ['assets/descriptive-statistics','assets/inferential-statistics','lessons/_includes','data']:
         names.extend(str(p.relative_to(ROOT)) for p in (ROOT/folder).rglob('*') if p.is_file() and p.suffix.lower() in ['.png','.jpg','.jpeg','.svg','.css','.qmd','.csv','.json','.md'])
     # Resources must be restricted to the same explicit teaching files as the site.
     import re
@@ -44,6 +44,8 @@ with zipfile.ZipFile(SITE/'downloads/applied-statistics-rstudio.zip','w',zipfile
     for name in sorted(set(names)):
         if name.endswith('.qmd'):
             text=(ROOT/name).read_text()
+            text=text.replace('](../pdf/','](https://msfasha.github.io/307312-Applied-Statistics/pdf/')
+            text=text.replace('](../downloads/','](https://msfasha.github.io/307312-Applied-Statistics/downloads/')
             text=text.replace('](pdf/','](https://msfasha.github.io/307312-Applied-Statistics/pdf/')
             text=text.replace('](downloads/','](https://msfasha.github.io/307312-Applied-Statistics/downloads/')
             z.writestr(name,text)
@@ -54,13 +56,14 @@ with zipfile.ZipFile(SITE/'downloads/applied-statistics-rstudio.zip','w',zipfile
 2. Extract this whole ZIP to a folder and open Applied-Statistics.Rproj.
 3. Run this once in the R console:
    install.packages(c("knitr", "rmarkdown", "dplyr", "ggplot2"))
-4. Open 01-introduction-to-r.qmd, then Parts 2 and 3. Run code chunks in order.
+4. Open lessons/01-introduction-to-r.qmd, then Parts 2 and 3. Run code chunks in order.
 5. Choose Render to view a lesson. Run `quarto render` to build the website.
 
 MASS is a recommended R package used in Part 3; install it if absent.
 Python 3 is needed for the small HTML post-render step.
 PDF and ZIP download links point to the published website; local rendering creates HTML.
-Keep assets/, content/, and data/ beside the notebooks. All teaching data is CSV.
+Keep the complete folder structure. Import cells locate the shared data/ folder
+from either the course root or the notebook folder. All teaching data is CSV.
 Website: https://msfasha.github.io/307312-Applied-Statistics/
 ''')
 print('Created student RStudio project and PDF bundle.',flush=True)

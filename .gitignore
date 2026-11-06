@@ -68,7 +68,7 @@ rsconnect/
 20261/.quarto/
 20261/_output/
 20261/assets/pdf/svg/
-20261/_instructor/_output/
+20261/instructor/_output/
 
 /.quarto/
 **/*.quarto_ipynb
@@ -83,14 +83,18 @@ __pycache__/
 /archived/**/.quarto/
 /archived/**/_output/
 # Retain the editable starting deck for the new course
-!/slides/*.pptx
+!/sources/slides/*.pptx
 
-/_preview/
+/_build/
 /.Rproj.user/
 
-/_instructor/.slide-render-cache/
+/_build/cache/descriptive-slides/
 
-/_instructor/.inferential-render-cache/
+/_build/cache/inferential-slides/
 
 # Original measurement workbooks remain local in the retired course
+/archived/**/instructor/source-data/
+
+# Original private source data and generated rendering dependencies
 /archived/**/_instructor/source-data/
+/site_libs/

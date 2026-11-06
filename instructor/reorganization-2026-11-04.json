@@ -1,0 +1,35 @@
+{
+  "original_slide_sha256": {
+    "307102-descriptive-statistics-original.pdf": "d8a59c6a71b41ddffcb64bcce38dd0f8593c6c5aacb2741ce0c5964b4c348c74",
+    "307102-inferential-03-original.pptx": "65a62f1456d967e67093d4f72abc934465ab369d14b6ca9a9409f52b67480de5",
+    "307102-inferential-04-original.pptx": "7def7abc1607a8fc20d78af97cc77163f8c6712df1e1b4e0ca8e8e6c9175ae27",
+    "307102-inferential-02-original.pptx": "e5f9c87cd98ca110428aa201a3ea9cb105066dda4bb5d0bf657df617cb6b872d",
+    "307102-inferential-03-original.pdf": "5531880cf45d49470555a3dfcd20d906b59b05ed09ffb3560bc4453a0d48a2e3",
+    "307102-descriptive-statistics-original.pptx": "2647198d880380ea181e22e8ab62b4a969ea150670dbc750c6d7640aa986cfbc",
+    "307102-inferential-02-original.pdf": "62d6a443726816babf854709f84c56d51cfb9830f4b19a0308171b94ca796a82",
+    "307102-inferential-01-original.pptx": "563e8b1abcb56cfa751095a98382b653347644606c95c5025ab3af31eb2d63b7",
+    "307102-inferential-04-original.pdf": "55913dc6e4a1ceb46b450218e6246b1bca6218cd10474e0a507bb340909b808f",
+    "307102-inferential-01-original.pdf": "b1cde51fab78f3c31312c74c5590a38a38bed54d9b858526d25bcbb6daa90d1e"
+  },
+  "original_slide_files_unchanged": true,
+  "unused_support": "archived/2026-11-04-unused-support",
+  "old_to_new": {
+    "root course notebooks": "lessons/",
+    "practical-01-cereals.qmd": "practicals/practical-01-cereals.qmd",
+    "content/": "lessons/_includes/",
+    "slides/": "sources/slides/",
+    "_instructor/": "instructor/",
+    "_preview/": "_build/website/",
+    "data/307102/": "data/descriptive-statistics/"
+  },
+  "verification": {
+    "lesson_content": "unchanged apart from paths",
+    "all_three_lessons_rendered": true,
+    "pilot_rendered": true,
+    "all_three_pdfs_and_both_zips_built": true,
+    "extracted_student_project_rendered": true,
+    "local_links_checked": true,
+    "publication_validation_passed": true,
+    "published": false
+  }
+}

@@ -19,9 +19,9 @@ execute:
   fig-height: 4.5
 ---
 
-[Download this part as PDF](pdf/03-inferential-statistics.pdf){.pdf-download}
+[Download this part as PDF](../pdf/03-inferential-statistics.pdf){.pdf-download}
 
-<div class="original-branding"><img src="assets/descriptive-statistics/original-branding.png" alt="Institute of Analytics and University of Petra" width="230"></div>
+<div class="original-branding"><img src="../assets/descriptive-statistics/original-branding.png" alt="Institute of Analytics and University of Petra" width="230"></div>
 
 <!-- Original deck 1, slide 1 -->
 
@@ -65,7 +65,7 @@ execute:
 </div>
 ```
 
-![](assets/inferential-statistics/part-01-slide-03-graphic-02.png){width="68%" fig-alt="Original graphic, section 3.1, slide 3"}
+![](../assets/inferential-statistics/part-01-slide-03-graphic-02.png){width="68%" fig-alt="Original graphic, section 3.1, slide 3"}
 
 :::
 
@@ -97,7 +97,7 @@ execute:
 
 ### Introduction to Inferential Statistics {#part3-title-01-05}
 
-![](assets/inferential-statistics/part-01-slide-05-graphic-01.png){width="54%" fig-alt="Original graphic, section 3.1, slide 5"}
+![](../assets/inferential-statistics/part-01-slide-05-graphic-01.png){width="54%" fig-alt="Original graphic, section 3.1, slide 5"}
 
 ```{=html}
 <div class="source-text">
@@ -115,7 +115,7 @@ execute:
 </div>
 ```
 
-![](assets/inferential-statistics/part-01-slide-05-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.1, slide 5"}
+![](../assets/inferential-statistics/part-01-slide-05-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.1, slide 5"}
 
 :::
 
@@ -151,7 +151,7 @@ execute:
 </div>
 ```
 
-![](assets/inferential-statistics/part-01-slide-07-graphic-02.png){width="30%" fig-alt="Original graphic, section 3.1, slide 7"}
+![](../assets/inferential-statistics/part-01-slide-07-graphic-02.png){width="30%" fig-alt="Original graphic, section 3.1, slide 7"}
 
 :::
 
@@ -161,7 +161,7 @@ execute:
 
 ### What is a Random Variable?  {#part3-title-01-08}
 
-![](assets/inferential-statistics/part-01-slide-08-graphic-01.png){width="30%" fig-alt="Original graphic, section 3.1, slide 8"}
+![](../assets/inferential-statistics/part-01-slide-08-graphic-01.png){width="30%" fig-alt="Original graphic, section 3.1, slide 8"}
 
 ```{=html}
 <div class="source-text">
@@ -198,9 +198,9 @@ execute:
 </div>
 ```
 
-![](assets/inferential-statistics/part-01-slide-09-graphic-02.png){width="34%" fig-alt="Original graphic, section 3.1, slide 9"}
+![](../assets/inferential-statistics/part-01-slide-09-graphic-02.png){width="34%" fig-alt="Original graphic, section 3.1, slide 9"}
 
-![](assets/inferential-statistics/part-01-slide-09-graphic-03.png){width="34%" fig-alt="Original graphic, section 3.1, slide 9"}
+![](../assets/inferential-statistics/part-01-slide-09-graphic-03.png){width="34%" fig-alt="Original graphic, section 3.1, slide 9"}
 
 :::
 
@@ -210,7 +210,7 @@ execute:
 
 ### Continuous Random Variables {#part3-title-01-10}
 
-![](assets/inferential-statistics/part-01-slide-10-graphic-01.png){width="30%" fig-alt="Original graphic, section 3.1, slide 10"}
+![](../assets/inferential-statistics/part-01-slide-10-graphic-01.png){width="30%" fig-alt="Original graphic, section 3.1, slide 10"}
 
 ```{=html}
 <div class="source-text">
@@ -225,7 +225,7 @@ execute:
 </div>
 ```
 
-![](assets/inferential-statistics/part-01-slide-10-graphic-03.png){width="30%" fig-alt="Original graphic, section 3.1, slide 10"}
+![](../assets/inferential-statistics/part-01-slide-10-graphic-03.png){width="30%" fig-alt="Original graphic, section 3.1, slide 10"}
 
 :::
 
@@ -241,7 +241,7 @@ execute:
 </div>
 ```
 
-![](assets/inferential-statistics/part-01-slide-11-graphic-02.png){width="58%" fig-alt="Original graphic, section 3.1, slide 11"}
+![](../assets/inferential-statistics/part-01-slide-11-graphic-02.png){width="58%" fig-alt="Original graphic, section 3.1, slide 11"}
 
 :::
 
@@ -280,9 +280,9 @@ execute:
 
 ### Discrete Probability Distributions The Discrete Uniform Distribution {#part3-title-01-14}
 
-![](assets/inferential-statistics/part-01-slide-14-graphic-01.png){width="54%" fig-alt="Original graphic, section 3.1, slide 14"}
+![](../assets/inferential-statistics/part-01-slide-14-graphic-01.png){width="54%" fig-alt="Original graphic, section 3.1, slide 14"}
 
-![](assets/inferential-statistics/part-01-slide-14-graphic-02.png){width="45%" fig-alt="Original graphic, section 3.1, slide 14"}
+![](../assets/inferential-statistics/part-01-slide-14-graphic-02.png){width="45%" fig-alt="Original graphic, section 3.1, slide 14"}
 
 :::
 
@@ -327,9 +327,9 @@ c(three = probability[3], even = sum(probability[outcomes %in% c(2,4,6)]),
 
 ### Discrete Probability Distributions The Binomial Distribution {#part3-title-01-16}
 
-![](assets/inferential-statistics/part-01-slide-16-graphic-01.png){width="64%" fig-alt="Original graphic, section 3.1, slide 16"}
+![](../assets/inferential-statistics/part-01-slide-16-graphic-01.png){width="64%" fig-alt="Original graphic, section 3.1, slide 16"}
 
-![](assets/inferential-statistics/part-01-slide-16-graphic-02.png){width="44%" fig-alt="Original graphic, section 3.1, slide 16"}
+![](../assets/inferential-statistics/part-01-slide-16-graphic-02.png){width="44%" fig-alt="Original graphic, section 3.1, slide 16"}
 
 ```{=html}
 <div class="source-text">
@@ -341,7 +341,7 @@ c(three = probability[3], even = sum(probability[outcomes %in% c(2,4,6)]),
 </div>
 ```
 
-![](assets/inferential-statistics/part-01-slide-16-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.1, slide 16"}
+![](../assets/inferential-statistics/part-01-slide-16-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.1, slide 16"}
 
 #### R equivalent (added)
 
@@ -361,9 +361,9 @@ c(exactly_2 = dbinom(2, size=80, prob=0.02), less_than_2 = pbinom(1,80,0.02),
 
 ### The Binomial Distribution {#part3-title-01-17}
 
-![](assets/inferential-statistics/part-01-slide-17-graphic-01.png){width="45%" fig-alt="Original graphic, section 3.1, slide 17"}
+![](../assets/inferential-statistics/part-01-slide-17-graphic-01.png){width="45%" fig-alt="Original graphic, section 3.1, slide 17"}
 
-![](assets/inferential-statistics/part-01-slide-17-graphic-02.png){width="30%" fig-alt="Original graphic, section 3.1, slide 17"}
+![](../assets/inferential-statistics/part-01-slide-17-graphic-02.png){width="30%" fig-alt="Original graphic, section 3.1, slide 17"}
 
 ```{=html}
 <div class="source-text">
@@ -371,9 +371,9 @@ c(exactly_2 = dbinom(2, size=80, prob=0.02), less_than_2 = pbinom(1,80,0.02),
 </div>
 ```
 
-![](assets/inferential-statistics/part-01-slide-17-graphic-04.png){width="49%" fig-alt="Original graphic, section 3.1, slide 17"}
+![](../assets/inferential-statistics/part-01-slide-17-graphic-04.png){width="49%" fig-alt="Original graphic, section 3.1, slide 17"}
 
-![](assets/inferential-statistics/part-01-slide-17-graphic-05.png){width="30%" fig-alt="Original graphic, section 3.1, slide 17"}
+![](../assets/inferential-statistics/part-01-slide-17-graphic-05.png){width="30%" fig-alt="Original graphic, section 3.1, slide 17"}
 
 ```{=html}
 <div class="source-text">
@@ -414,7 +414,7 @@ dbinom(2,10,0.5)
 </div>
 ```
 
-![](assets/inferential-statistics/part-01-slide-18-graphic-02.png){width="42%" fig-alt="Original graphic, section 3.1, slide 18"}
+![](../assets/inferential-statistics/part-01-slide-18-graphic-02.png){width="42%" fig-alt="Original graphic, section 3.1, slide 18"}
 
 ```{=html}
 <div class="source-text">
@@ -423,7 +423,7 @@ dbinom(2,10,0.5)
 </div>
 ```
 
-![](assets/inferential-statistics/part-01-slide-18-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.1, slide 18"}
+![](../assets/inferential-statistics/part-01-slide-18-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.1, slide 18"}
 
 #### R equivalent (added)
 
@@ -442,13 +442,13 @@ ppois(1100, lambda=1000, lower.tail=FALSE)
 
 ### Poisson Distribution {#part3-title-01-19}
 
-![](assets/inferential-statistics/part-01-slide-19-graphic-01.png){width="45%" fig-alt="Original graphic, section 3.1, slide 19"}
+![](../assets/inferential-statistics/part-01-slide-19-graphic-01.png){width="45%" fig-alt="Original graphic, section 3.1, slide 19"}
 
-![](assets/inferential-statistics/part-01-slide-19-graphic-02.png){width="30%" fig-alt="Original graphic, section 3.1, slide 19"}
+![](../assets/inferential-statistics/part-01-slide-19-graphic-02.png){width="30%" fig-alt="Original graphic, section 3.1, slide 19"}
 
-![](assets/inferential-statistics/part-01-slide-19-graphic-03.png){width="43%" fig-alt="Original graphic, section 3.1, slide 19"}
+![](../assets/inferential-statistics/part-01-slide-19-graphic-03.png){width="43%" fig-alt="Original graphic, section 3.1, slide 19"}
 
-![](assets/inferential-statistics/part-01-slide-19-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.1, slide 19"}
+![](../assets/inferential-statistics/part-01-slide-19-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.1, slide 19"}
 
 ```{=html}
 <div class="source-text">
@@ -487,9 +487,9 @@ dpois(15, lambda=20)
 
 ### The Continuous Uniform Distribution {#part3-title-01-21}
 
-![](assets/inferential-statistics/part-01-slide-21-graphic-01.png){width="65%" fig-alt="Original graphic, section 3.1, slide 21"}
+![](../assets/inferential-statistics/part-01-slide-21-graphic-01.png){width="65%" fig-alt="Original graphic, section 3.1, slide 21"}
 
-![](assets/inferential-statistics/part-01-slide-21-graphic-02.png){width="47%" fig-alt="Original graphic, section 3.1, slide 21"}
+![](../assets/inferential-statistics/part-01-slide-21-graphic-02.png){width="47%" fig-alt="Original graphic, section 3.1, slide 21"}
 
 :::
 
@@ -513,9 +513,9 @@ dpois(15, lambda=20)
 </div>
 ```
 
-![](assets/inferential-statistics/part-01-slide-22-graphic-03.png){width="41%" fig-alt="Original graphic, section 3.1, slide 22"}
+![](../assets/inferential-statistics/part-01-slide-22-graphic-03.png){width="41%" fig-alt="Original graphic, section 3.1, slide 22"}
 
-![](assets/inferential-statistics/part-01-slide-22-graphic-04.png){width="49%" fig-alt="Original graphic, section 3.1, slide 22"}
+![](../assets/inferential-statistics/part-01-slide-22-graphic-04.png){width="49%" fig-alt="Original graphic, section 3.1, slide 22"}
 
 :::
 
@@ -525,7 +525,7 @@ dpois(15, lambda=20)
 
 ### The Normal Distribution {#part3-title-01-23}
 
-![](assets/inferential-statistics/part-01-slide-23-graphic-01.png){width="44%" fig-alt="Original graphic, section 3.1, slide 23"}
+![](../assets/inferential-statistics/part-01-slide-23-graphic-01.png){width="44%" fig-alt="Original graphic, section 3.1, slide 23"}
 
 ```{=html}
 <div class="source-text">
@@ -542,7 +542,7 @@ dpois(15, lambda=20)
 </div>
 ```
 
-![](assets/inferential-statistics/part-01-slide-23-graphic-04.png){width="32%" fig-alt="Original graphic, section 3.1, slide 23"}
+![](../assets/inferential-statistics/part-01-slide-23-graphic-04.png){width="32%" fig-alt="Original graphic, section 3.1, slide 23"}
 
 :::
 
@@ -552,7 +552,7 @@ dpois(15, lambda=20)
 
 ### Parameters of the Normal Distribution {#part3-title-01-24}
 
-![](assets/inferential-statistics/part-01-slide-24-graphic-01.png){width="38%" fig-alt="Original graphic, section 3.1, slide 24"}
+![](../assets/inferential-statistics/part-01-slide-24-graphic-01.png){width="38%" fig-alt="Original graphic, section 3.1, slide 24"}
 
 ```{=html}
 <div class="source-text">
@@ -565,9 +565,9 @@ dpois(15, lambda=20)
 </div>
 ```
 
-![](assets/inferential-statistics/part-01-slide-24-graphic-03.png){width="35%" fig-alt="Original graphic, section 3.1, slide 24"}
+![](../assets/inferential-statistics/part-01-slide-24-graphic-03.png){width="35%" fig-alt="Original graphic, section 3.1, slide 24"}
 
-![](assets/inferential-statistics/part-01-slide-24-graphic-04.png){width="38%" fig-alt="Original graphic, section 3.1, slide 24"}
+![](../assets/inferential-statistics/part-01-slide-24-graphic-04.png){width="38%" fig-alt="Original graphic, section 3.1, slide 24"}
 
 :::
 
@@ -577,7 +577,7 @@ dpois(15, lambda=20)
 
 ### The Empirical Rule for the Normal Distribution {#part3-title-01-25}
 
-![](assets/inferential-statistics/part-01-slide-25-graphic-01.png){width="44%" fig-alt="Original graphic, section 3.1, slide 25"}
+![](../assets/inferential-statistics/part-01-slide-25-graphic-01.png){width="44%" fig-alt="Original graphic, section 3.1, slide 25"}
 
 ```{=html}
 <div class="source-text">
@@ -612,7 +612,7 @@ dpois(15, lambda=20)
 </div>
 ```
 
-![](assets/inferential-statistics/part-01-slide-26-graphic-02.png){width="41%" fig-alt="Original graphic, section 3.1, slide 26"}
+![](../assets/inferential-statistics/part-01-slide-26-graphic-02.png){width="41%" fig-alt="Original graphic, section 3.1, slide 26"}
 
 :::
 
@@ -622,9 +622,9 @@ dpois(15, lambda=20)
 
 ### The Z - Score {#part3-title-01-27}
 
-![](assets/inferential-statistics/part-01-slide-27-graphic-01.png){width="53%" fig-alt="Original graphic, section 3.1, slide 27"}
+![](../assets/inferential-statistics/part-01-slide-27-graphic-01.png){width="53%" fig-alt="Original graphic, section 3.1, slide 27"}
 
-![](assets/inferential-statistics/part-01-slide-27-graphic-02.png){width="59%" fig-alt="Original graphic, section 3.1, slide 27"}
+![](../assets/inferential-statistics/part-01-slide-27-graphic-02.png){width="59%" fig-alt="Original graphic, section 3.1, slide 27"}
 
 ```{=html}
 <div class="source-text">
@@ -658,7 +658,7 @@ dpois(15, lambda=20)
 </div>
 ```
 
-![](assets/inferential-statistics/part-01-slide-28-graphic-02.png){width="41%" fig-alt="Original graphic, section 3.1, slide 28"}
+![](../assets/inferential-statistics/part-01-slide-28-graphic-02.png){width="41%" fig-alt="Original graphic, section 3.1, slide 28"}
 
 ```{=html}
 <div class="source-text">
@@ -669,7 +669,7 @@ dpois(15, lambda=20)
 </div>
 ```
 
-![](assets/inferential-statistics/part-01-slide-28-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.1, slide 28"}
+![](../assets/inferential-statistics/part-01-slide-28-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.1, slide 28"}
 
 ```{=html}
 <div class="source-text">
@@ -706,7 +706,7 @@ c(between_58_and_90 = 280*0.95, above_90 = 280*0.025)
 </div>
 ```
 
-![](assets/inferential-statistics/part-01-slide-29-graphic-02.png){width="61%" fig-alt="Original graphic, section 3.1, slide 29"}
+![](../assets/inferential-statistics/part-01-slide-29-graphic-02.png){width="61%" fig-alt="Original graphic, section 3.1, slide 29"}
 
 :::
 
@@ -723,7 +723,7 @@ c(between_58_and_90 = 280*0.95, above_90 = 280*0.025)
 </div>
 ```
 
-![](assets/inferential-statistics/part-01-slide-30-graphic-02.png){width="40%" fig-alt="Original graphic, section 3.1, slide 30"}
+![](../assets/inferential-statistics/part-01-slide-30-graphic-02.png){width="40%" fig-alt="Original graphic, section 3.1, slide 30"}
 
 ```{=html}
 <div class="source-text">
@@ -833,9 +833,9 @@ aic
 </div>
 ```
 
-![](assets/inferential-statistics/part-01-slide-33-graphic-02.png){width="45%" fig-alt="Original graphic, section 3.1, slide 33"}
+![](../assets/inferential-statistics/part-01-slide-33-graphic-02.png){width="45%" fig-alt="Original graphic, section 3.1, slide 33"}
 
-![](assets/inferential-statistics/part-01-slide-33-graphic-03.png){width="33%" fig-alt="Original graphic, section 3.1, slide 33"}
+![](../assets/inferential-statistics/part-01-slide-33-graphic-03.png){width="33%" fig-alt="Original graphic, section 3.1, slide 33"}
 
 :::
 
@@ -845,7 +845,7 @@ aic
 
 ### Standard Normal Distribution and Standard Z Scores {#part3-title-01-34}
 
-![](assets/inferential-statistics/part-01-slide-34-graphic-01.png){width="36%" fig-alt="Original graphic, section 3.1, slide 34"}
+![](../assets/inferential-statistics/part-01-slide-34-graphic-01.png){width="36%" fig-alt="Original graphic, section 3.1, slide 34"}
 
 ```{=html}
 <div class="source-text">
@@ -859,7 +859,7 @@ aic
 </div>
 ```
 
-![](assets/inferential-statistics/part-01-slide-34-graphic-03.png){width="30%" fig-alt="Original graphic, section 3.1, slide 34"}
+![](../assets/inferential-statistics/part-01-slide-34-graphic-03.png){width="30%" fig-alt="Original graphic, section 3.1, slide 34"}
 
 ```{=html}
 <div class="source-text">
@@ -881,13 +881,13 @@ aic
 </div>
 ```
 
-![](assets/inferential-statistics/part-01-slide-35-graphic-02.png){width="45%" fig-alt="Original graphic, section 3.1, slide 35"}
+![](../assets/inferential-statistics/part-01-slide-35-graphic-02.png){width="45%" fig-alt="Original graphic, section 3.1, slide 35"}
 
-![](assets/inferential-statistics/part-01-slide-35-graphic-03.png){width="44%" fig-alt="Original graphic, section 3.1, slide 35"}
+![](../assets/inferential-statistics/part-01-slide-35-graphic-03.png){width="44%" fig-alt="Original graphic, section 3.1, slide 35"}
 
-![](assets/inferential-statistics/part-01-slide-35-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.1, slide 35"}
+![](../assets/inferential-statistics/part-01-slide-35-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.1, slide 35"}
 
-![](assets/inferential-statistics/part-01-slide-35-graphic-05.png){width="30%" fig-alt="Original graphic, section 3.1, slide 35"}
+![](../assets/inferential-statistics/part-01-slide-35-graphic-05.png){width="30%" fig-alt="Original graphic, section 3.1, slide 35"}
 
 :::
 
@@ -904,7 +904,7 @@ aic
 </div>
 ```
 
-![](assets/inferential-statistics/part-01-slide-36-graphic-03.png){width="45%" fig-alt="Original graphic, section 3.1, slide 36"}
+![](../assets/inferential-statistics/part-01-slide-36-graphic-03.png){width="45%" fig-alt="Original graphic, section 3.1, slide 36"}
 
 ```{=html}
 <div class="source-text">
@@ -943,9 +943,9 @@ pnorm(75, mean=70, sd=6, lower.tail=FALSE)
 </div>
 ```
 
-![](assets/inferential-statistics/part-01-slide-37-graphic-02.png){width="50%" fig-alt="Original graphic, section 3.1, slide 37"}
+![](../assets/inferential-statistics/part-01-slide-37-graphic-02.png){width="50%" fig-alt="Original graphic, section 3.1, slide 37"}
 
-![](assets/inferential-statistics/part-01-slide-37-graphic-03.png){width="47%" fig-alt="Original graphic, section 3.1, slide 37"}
+![](../assets/inferential-statistics/part-01-slide-37-graphic-03.png){width="47%" fig-alt="Original graphic, section 3.1, slide 37"}
 
 #### R equivalent (added)
 
@@ -1017,7 +1017,7 @@ c(above_90 = pnorm(90,70,6,lower.tail=FALSE), above_75 = pnorm(75,70,6,lower.tai
 </div>
 ```
 
-![](assets/inferential-statistics/part-02-slide-04-graphic-02.png){width="42%" fig-alt="Original graphic, section 3.2, slide 4"}
+![](../assets/inferential-statistics/part-02-slide-04-graphic-02.png){width="42%" fig-alt="Original graphic, section 3.2, slide 4"}
 
 :::
 
@@ -1035,9 +1035,9 @@ c(above_90 = pnorm(90,70,6,lower.tail=FALSE), above_75 = pnorm(75,70,6,lower.tai
 </div>
 ```
 
-![](assets/inferential-statistics/part-02-slide-05-graphic-02.png){width="49%" fig-alt="Original graphic, section 3.2, slide 5"}
+![](../assets/inferential-statistics/part-02-slide-05-graphic-02.png){width="49%" fig-alt="Original graphic, section 3.2, slide 5"}
 
-![](assets/inferential-statistics/part-02-slide-05-graphic-03.png){width="30%" fig-alt="Original graphic, section 3.2, slide 5"}
+![](../assets/inferential-statistics/part-02-slide-05-graphic-03.png){width="30%" fig-alt="Original graphic, section 3.2, slide 5"}
 
 ```{=html}
 <div class="source-text">
@@ -1061,7 +1061,7 @@ c(above_90 = pnorm(90,70,6,lower.tail=FALSE), above_75 = pnorm(75,70,6,lower.tai
 </div>
 ```
 
-![](assets/inferential-statistics/part-02-slide-06-graphic-02.png){width="60%" fig-alt="Original graphic, section 3.2, slide 6"}
+![](../assets/inferential-statistics/part-02-slide-06-graphic-02.png){width="60%" fig-alt="Original graphic, section 3.2, slide 6"}
 
 ```{=html}
 <div class="source-text">
@@ -1077,9 +1077,9 @@ c(above_90 = pnorm(90,70,6,lower.tail=FALSE), above_75 = pnorm(75,70,6,lower.tai
 
 ### Computing Confidence Intervals {#part3-title-02-07}
 
-![](assets/inferential-statistics/part-02-slide-07-graphic-01.png){width="47%" fig-alt="Original graphic, section 3.2, slide 7"}
+![](../assets/inferential-statistics/part-02-slide-07-graphic-01.png){width="47%" fig-alt="Original graphic, section 3.2, slide 7"}
 
-![](assets/inferential-statistics/part-02-slide-07-graphic-02.png){width="52%" fig-alt="Original graphic, section 3.2, slide 7"}
+![](../assets/inferential-statistics/part-02-slide-07-graphic-02.png){width="52%" fig-alt="Original graphic, section 3.2, slide 7"}
 
 ```{=html}
 <div class="source-text">
@@ -1123,7 +1123,7 @@ c(above_90 = pnorm(90,70,6,lower.tail=FALSE), above_75 = pnorm(75,70,6,lower.tai
 </div>
 ```
 
-![](assets/inferential-statistics/part-02-slide-09-graphic-02.png){width="47%" fig-alt="Original graphic, section 3.2, slide 9"}
+![](../assets/inferential-statistics/part-02-slide-09-graphic-02.png){width="47%" fig-alt="Original graphic, section 3.2, slide 9"}
 
 :::
 
@@ -1133,7 +1133,7 @@ c(above_90 = pnorm(90,70,6,lower.tail=FALSE), above_75 = pnorm(75,70,6,lower.tai
 
 ### Relationship Between Confidence Level and Significance Level in Statistics {#part3-title-02-10}
 
-![](assets/inferential-statistics/part-02-slide-10-graphic-01.png){width="40%" fig-alt="Original graphic, section 3.2, slide 10"}
+![](../assets/inferential-statistics/part-02-slide-10-graphic-01.png){width="40%" fig-alt="Original graphic, section 3.2, slide 10"}
 
 ```{=html}
 <div class="source-text">
@@ -1176,11 +1176,11 @@ c(above_90 = pnorm(90,70,6,lower.tail=FALSE), above_75 = pnorm(75,70,6,lower.tai
 </div>
 ```
 
-![](assets/inferential-statistics/part-02-slide-12-graphic-02.png){width="47%" fig-alt="Original graphic, section 3.2, slide 12"}
+![](../assets/inferential-statistics/part-02-slide-12-graphic-02.png){width="47%" fig-alt="Original graphic, section 3.2, slide 12"}
 
-![](assets/inferential-statistics/part-02-slide-12-graphic-03.png){width="30%" fig-alt="Original graphic, section 3.2, slide 12"}
+![](../assets/inferential-statistics/part-02-slide-12-graphic-03.png){width="30%" fig-alt="Original graphic, section 3.2, slide 12"}
 
-![](assets/inferential-statistics/part-02-slide-12-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.2, slide 12"}
+![](../assets/inferential-statistics/part-02-slide-12-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.2, slide 12"}
 
 ```{=html}
 <div class="source-text">
@@ -1196,7 +1196,7 @@ c(above_90 = pnorm(90,70,6,lower.tail=FALSE), above_75 = pnorm(75,70,6,lower.tai
 
 ### Inference: Turning the Sampling Model Around {#part3-title-02-13}
 
-![](assets/inferential-statistics/part-02-slide-13-graphic-01.png){width="71%" fig-alt="Original graphic, section 3.2, slide 13"}
+![](../assets/inferential-statistics/part-02-slide-13-graphic-01.png){width="71%" fig-alt="Original graphic, section 3.2, slide 13"}
 
 :::
 
@@ -1206,7 +1206,7 @@ c(above_90 = pnorm(90,70,6,lower.tail=FALSE), above_75 = pnorm(75,70,6,lower.tai
 
 ### The Symmetry IThe Symmetry Idea Behind Confidence Intervalsdea Behind Confidence Intervals {#part3-title-02-14}
 
-![](assets/inferential-statistics/part-02-slide-14-graphic-01.png){width="50%" fig-alt="Original graphic, section 3.2, slide 14"}
+![](../assets/inferential-statistics/part-02-slide-14-graphic-01.png){width="50%" fig-alt="Original graphic, section 3.2, slide 14"}
 
 :::
 
@@ -1216,7 +1216,7 @@ c(above_90 = pnorm(90,70,6,lower.tail=FALSE), above_75 = pnorm(75,70,6,lower.tai
 
 ### From CLT to Confidence Intervals {#part3-title-02-15}
 
-![](assets/inferential-statistics/part-02-slide-15-graphic-01.png){width="70%" fig-alt="Original graphic, section 3.2, slide 15"}
+![](../assets/inferential-statistics/part-02-slide-15-graphic-01.png){width="70%" fig-alt="Original graphic, section 3.2, slide 15"}
 
 :::
 
@@ -1267,7 +1267,7 @@ plt.show()
 
 ```
 
-![](assets/inferential-statistics/part-02-slide-16-graphic-02.png){width="48%" fig-alt="Original graphic, section 3.2, slide 16"}
+![](../assets/inferential-statistics/part-02-slide-16-graphic-02.png){width="48%" fig-alt="Original graphic, section 3.2, slide 16"}
 
 #### R equivalent (added)
 
@@ -1306,9 +1306,9 @@ hist(results[1,], breaks=30, col="#E9DDE7", main="Distribution of Sample Means",
 </div>
 ```
 
-![](assets/inferential-statistics/part-02-slide-17-graphic-02.png){width="30%" fig-alt="Original graphic, section 3.2, slide 17"}
+![](../assets/inferential-statistics/part-02-slide-17-graphic-02.png){width="30%" fig-alt="Original graphic, section 3.2, slide 17"}
 
-![](assets/inferential-statistics/part-02-slide-17-graphic-03.png){width="35%" fig-alt="Original graphic, section 3.2, slide 17"}
+![](../assets/inferential-statistics/part-02-slide-17-graphic-03.png){width="35%" fig-alt="Original graphic, section 3.2, slide 17"}
 
 ```{=html}
 <div class="source-text">
@@ -1337,7 +1337,7 @@ xbar + c(-1,1)*qnorm(0.95)*sigma/sqrt(n)
 
 ### Confidence Intervals Example {#part3-title-02-18}
 
-![](assets/inferential-statistics/part-02-slide-18-graphic-01.png){width="46%" fig-alt="Original graphic, section 3.2, slide 18"}
+![](../assets/inferential-statistics/part-02-slide-18-graphic-01.png){width="46%" fig-alt="Original graphic, section 3.2, slide 18"}
 
 ```{=html}
 <div class="source-text">
@@ -1365,9 +1365,9 @@ xbar + c(-1,1)*qnorm(0.95)*sigma/sqrt(n)
 </div>
 ```
 
-![](assets/inferential-statistics/part-02-slide-19-graphic-02.png){width="48%" fig-alt="Original graphic, section 3.2, slide 19"}
+![](../assets/inferential-statistics/part-02-slide-19-graphic-02.png){width="48%" fig-alt="Original graphic, section 3.2, slide 19"}
 
-![](assets/inferential-statistics/part-02-slide-19-graphic-03.png){width="36%" fig-alt="Original graphic, section 3.2, slide 19"}
+![](../assets/inferential-statistics/part-02-slide-19-graphic-03.png){width="36%" fig-alt="Original graphic, section 3.2, slide 19"}
 
 ```{=html}
 <div class="source-text">
@@ -1406,9 +1406,9 @@ xbar + c(-1,1)*qnorm(0.95)*sigma/sqrt(n)
 </div>
 ```
 
-![](assets/inferential-statistics/part-02-slide-20-graphic-02.png){width="43%" fig-alt="Original graphic, section 3.2, slide 20"}
+![](../assets/inferential-statistics/part-02-slide-20-graphic-02.png){width="43%" fig-alt="Original graphic, section 3.2, slide 20"}
 
-![](assets/inferential-statistics/part-02-slide-20-graphic-03.png){width="39%" fig-alt="Original graphic, section 3.2, slide 20"}
+![](../assets/inferential-statistics/part-02-slide-20-graphic-03.png){width="39%" fig-alt="Original graphic, section 3.2, slide 20"}
 
 ```{=html}
 <div class="source-text">
@@ -1442,7 +1442,7 @@ xbar + c(-1,1)*qnorm(0.95)*sigma/sqrt(n)
 
 ### The T Table {#part3-title-02-22}
 
-![](assets/inferential-statistics/part-02-slide-22-graphic-01.png){width="42%" fig-alt="Original graphic, section 3.2, slide 22"}
+![](../assets/inferential-statistics/part-02-slide-22-graphic-01.png){width="42%" fig-alt="Original graphic, section 3.2, slide 22"}
 
 ```{=html}
 <div class="source-text">
@@ -1464,9 +1464,9 @@ xbar + c(-1,1)*qnorm(0.95)*sigma/sqrt(n)
 
 ### Confidence Intervals Using T-Distribution {#part3-title-02-23}
 
-![](assets/inferential-statistics/part-02-slide-23-graphic-01.png){width="100%" fig-alt="Original graphic, section 3.2, slide 23"}
+![](../assets/inferential-statistics/part-02-slide-23-graphic-01.png){width="100%" fig-alt="Original graphic, section 3.2, slide 23"}
 
-![](assets/inferential-statistics/part-02-slide-23-graphic-02.png){width="30%" fig-alt="Original graphic, section 3.2, slide 23"}
+![](../assets/inferential-statistics/part-02-slide-23-graphic-02.png){width="30%" fig-alt="Original graphic, section 3.2, slide 23"}
 
 :::
 
@@ -1476,7 +1476,7 @@ xbar + c(-1,1)*qnorm(0.95)*sigma/sqrt(n)
 
 ### Interval Estimates - Confidence Intervals {#part3-title-02-24}
 
-![](assets/inferential-statistics/part-02-slide-24-graphic-01.png){width="40%" fig-alt="Original graphic, section 3.2, slide 24"}
+![](../assets/inferential-statistics/part-02-slide-24-graphic-01.png){width="40%" fig-alt="Original graphic, section 3.2, slide 24"}
 
 ```{=html}
 <div class="source-text">
@@ -1530,7 +1530,7 @@ xbar + c(-1,1)*qnorm(0.95)*sigma/sqrt(n)
 </div>
 ```
 
-![](assets/inferential-statistics/part-02-slide-25-graphic-02.png){width="30%" fig-alt="Original graphic, section 3.2, slide 25"}
+![](../assets/inferential-statistics/part-02-slide-25-graphic-02.png){width="30%" fig-alt="Original graphic, section 3.2, slide 25"}
 
 ```{=html}
 <div class="source-text">
@@ -1541,7 +1541,7 @@ xbar + c(-1,1)*qnorm(0.95)*sigma/sqrt(n)
 </div>
 ```
 
-![](assets/inferential-statistics/part-02-slide-25-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.2, slide 25"}
+![](../assets/inferential-statistics/part-02-slide-25-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.2, slide 25"}
 
 :::
 
@@ -1551,7 +1551,7 @@ xbar + c(-1,1)*qnorm(0.95)*sigma/sqrt(n)
 
 ### Steps to Calculate the Needed Sample Size {#part3-title-02-26}
 
-![](assets/inferential-statistics/part-02-slide-26-graphic-01.png){width="55%" fig-alt="Original graphic, section 3.2, slide 26"}
+![](../assets/inferential-statistics/part-02-slide-26-graphic-01.png){width="55%" fig-alt="Original graphic, section 3.2, slide 26"}
 
 ```{=html}
 <div class="source-text">
@@ -1845,7 +1845,7 @@ xbar + c(-1,1)*qnorm(0.95)*sigma/sqrt(n)
 </div>
 ```
 
-![](assets/inferential-statistics/part-03-slide-12-graphic-02.png){width="44%" fig-alt="Original graphic, section 3.3, slide 12"}
+![](../assets/inferential-statistics/part-03-slide-12-graphic-02.png){width="44%" fig-alt="Original graphic, section 3.3, slide 12"}
 
 ```{=html}
 <div class="source-text">
@@ -1880,7 +1880,7 @@ xbar + c(-1,1)*qnorm(0.95)*sigma/sqrt(n)
 
 ### Computing the Test Statistic Dependence on our Knowledge about Variance {#part3-title-03-14}
 
-![](assets/inferential-statistics/part-03-slide-14-graphic-01.png){width="100%" fig-alt="Original graphic, section 3.3, slide 14"}
+![](../assets/inferential-statistics/part-03-slide-14-graphic-01.png){width="100%" fig-alt="Original graphic, section 3.3, slide 14"}
 
 :::
 
@@ -1905,7 +1905,7 @@ xbar + c(-1,1)*qnorm(0.95)*sigma/sqrt(n)
 </div>
 ```
 
-![](assets/inferential-statistics/part-03-slide-15-graphic-02.png){width="30%" fig-alt="Original graphic, section 3.3, slide 15"}
+![](../assets/inferential-statistics/part-03-slide-15-graphic-02.png){width="30%" fig-alt="Original graphic, section 3.3, slide 15"}
 
 :::
 
@@ -1915,11 +1915,11 @@ xbar + c(-1,1)*qnorm(0.95)*sigma/sqrt(n)
 
 ### The Critical Value Approach to Hypothesis Testing {#part3-title-03-16}
 
-![](assets/inferential-statistics/part-03-slide-16-graphic-01.png){width="100%" fig-alt="Original graphic, section 3.3, slide 16"}
+![](../assets/inferential-statistics/part-03-slide-16-graphic-01.png){width="100%" fig-alt="Original graphic, section 3.3, slide 16"}
 
-![](assets/inferential-statistics/part-03-slide-16-graphic-02.png){width="78%" fig-alt="Original graphic, section 3.3, slide 16"}
+![](../assets/inferential-statistics/part-03-slide-16-graphic-02.png){width="78%" fig-alt="Original graphic, section 3.3, slide 16"}
 
-![](assets/inferential-statistics/part-03-slide-16-graphic-03.png){width="30%" fig-alt="Original graphic, section 3.3, slide 16"}
+![](../assets/inferential-statistics/part-03-slide-16-graphic-03.png){width="30%" fig-alt="Original graphic, section 3.3, slide 16"}
 
 :::
 
@@ -1938,9 +1938,9 @@ xbar + c(-1,1)*qnorm(0.95)*sigma/sqrt(n)
 </div>
 ```
 
-![](assets/inferential-statistics/part-03-slide-17-graphic-02.png){width="65%" fig-alt="Original graphic, section 3.3, slide 17"}
+![](../assets/inferential-statistics/part-03-slide-17-graphic-02.png){width="65%" fig-alt="Original graphic, section 3.3, slide 17"}
 
-![](assets/inferential-statistics/part-03-slide-17-graphic-03.png){width="30%" fig-alt="Original graphic, section 3.3, slide 17"}
+![](../assets/inferential-statistics/part-03-slide-17-graphic-03.png){width="30%" fig-alt="Original graphic, section 3.3, slide 17"}
 
 :::
 
@@ -1950,9 +1950,9 @@ xbar + c(-1,1)*qnorm(0.95)*sigma/sqrt(n)
 
 ### Type I and Type II Errors {#part3-title-03-18}
 
-![](assets/inferential-statistics/part-03-slide-18-graphic-01.png){width="50%" fig-alt="Original graphic, section 3.3, slide 18"}
+![](../assets/inferential-statistics/part-03-slide-18-graphic-01.png){width="50%" fig-alt="Original graphic, section 3.3, slide 18"}
 
-![](assets/inferential-statistics/part-03-slide-18-graphic-02.png){width="57%" fig-alt="Original graphic, section 3.3, slide 18"}
+![](../assets/inferential-statistics/part-03-slide-18-graphic-02.png){width="57%" fig-alt="Original graphic, section 3.3, slide 18"}
 
 ```{=html}
 <div class="source-text">
@@ -1987,7 +1987,7 @@ xbar + c(-1,1)*qnorm(0.95)*sigma/sqrt(n)
 </div>
 ```
 
-![](assets/inferential-statistics/part-03-slide-20-graphic-02.png){width="50%" fig-alt="Original graphic, section 3.3, slide 20"}
+![](../assets/inferential-statistics/part-03-slide-20-graphic-02.png){width="50%" fig-alt="Original graphic, section 3.3, slide 20"}
 
 :::
 
@@ -2008,9 +2008,9 @@ xbar + c(-1,1)*qnorm(0.95)*sigma/sqrt(n)
 </div>
 ```
 
-![](assets/inferential-statistics/part-03-slide-21-graphic-02.png){width="34%" fig-alt="Original graphic, section 3.3, slide 21"}
+![](../assets/inferential-statistics/part-03-slide-21-graphic-02.png){width="34%" fig-alt="Original graphic, section 3.3, slide 21"}
 
-![](assets/inferential-statistics/part-03-slide-21-graphic-03.png){width="30%" fig-alt="Original graphic, section 3.3, slide 21"}
+![](../assets/inferential-statistics/part-03-slide-21-graphic-03.png){width="30%" fig-alt="Original graphic, section 3.3, slide 21"}
 
 :::
 
@@ -2020,7 +2020,7 @@ xbar + c(-1,1)*qnorm(0.95)*sigma/sqrt(n)
 
 ### Implement the Test Using Excel Data Analysis Add In {#part3-title-03-22}
 
-![](assets/inferential-statistics/part-03-slide-22-graphic-01.png){width="42%" fig-alt="Original graphic, section 3.3, slide 22"}
+![](../assets/inferential-statistics/part-03-slide-22-graphic-01.png){width="42%" fig-alt="Original graphic, section 3.3, slide 22"}
 
 ```{=html}
 <div class="source-table"><table><tr><td><p>Delivery Times for 40 Days Sample – In Days</p></td><td></td><td></td><td></td></tr><tr><td><p>1</p></td><td><p>4</p></td><td><p>1</p></td><td><p>4</p></td></tr><tr><td><p>3</p></td><td><p>3</p></td><td><p>4</p></td><td><p>2</p></td></tr><tr><td><p>5</p></td><td><p>1</p></td><td><p>6</p></td><td><p>3</p></td></tr><tr><td><p>3</p></td><td><p>4</p></td><td><p>4</p></td><td><p>3</p></td></tr><tr><td><p>3</p></td><td><p>2</p></td><td><p>4</p></td><td><p>4</p></td></tr><tr><td><p>4</p></td><td><p>2</p></td><td><p>1</p></td><td><p>3</p></td></tr><tr><td><p>2</p></td><td><p>3</p></td><td><p>3</p></td><td><p>3</p></td></tr><tr><td><p>5</p></td><td><p>4</p></td><td><p>6</p></td><td><p>5</p></td></tr><tr><td><p>3</p></td><td><p>5</p></td><td><p>2</p></td><td><p>4</p></td></tr><tr><td><p>6</p></td><td><p>2</p></td><td><p>4</p></td><td><p>5</p></td></tr></table></div>
@@ -2069,7 +2069,7 @@ c(t=t_stat, df=n-1, p_value=2*pt(abs(t_stat),df=n-1,lower.tail=FALSE))
 </div>
 ```
 
-![](assets/inferential-statistics/part-03-slide-23-graphic-02.png){width="40%" fig-alt="Original graphic, section 3.3, slide 23"}
+![](../assets/inferential-statistics/part-03-slide-23-graphic-02.png){width="40%" fig-alt="Original graphic, section 3.3, slide 23"}
 
 :::
 
@@ -2079,7 +2079,7 @@ c(t=t_stat, df=n-1, p_value=2*pt(abs(t_stat),df=n-1,lower.tail=FALSE))
 
 ### Implement the Test Using Excel Data Analysis Add In {#part3-title-03-24}
 
-![](assets/inferential-statistics/part-03-slide-24-graphic-01.png){width="44%" fig-alt="Original graphic, section 3.3, slide 24"}
+![](../assets/inferential-statistics/part-03-slide-24-graphic-01.png){width="44%" fig-alt="Original graphic, section 3.3, slide 24"}
 
 ```{=html}
 <div class="source-table"><table><tr><td><p>Collect Daily Output Data</p></td><td></td></tr><tr><td><p>517</p></td><td><p>534</p></td></tr><tr><td><p>528</p></td><td><p>483</p></td></tr><tr><td><p>517</p></td><td><p>520</p></td></tr><tr><td><p>494</p></td><td><p>539</p></td></tr><tr><td><p>537</p></td><td><p>530</p></td></tr><tr><td><p>486</p></td><td><p>509</p></td></tr><tr><td><p>515</p></td><td><p>547</p></td></tr><tr><td><p>528</p></td><td><p>526</p></td></tr><tr><td><p>500</p></td><td><p>538</p></td></tr><tr><td><p>564</p></td><td><p>531</p></td></tr><tr><td><p>521</p></td><td><p>509</p></td></tr><tr><td><p>510</p></td><td><p>538</p></td></tr><tr><td><p>512</p></td><td><p>491</p></td></tr><tr><td><p>519</p></td><td><p>505</p></td></tr><tr><td><p>518</p></td><td><p>534</p></td></tr></table></div>
@@ -2151,11 +2151,11 @@ c(t=t_stat, p_value=pt(t_stat,df=29,lower.tail=FALSE))
 </div>
 ```
 
-![](assets/inferential-statistics/part-03-slide-26-graphic-02.png){width="30%" fig-alt="Original graphic, section 3.3, slide 26"}
+![](../assets/inferential-statistics/part-03-slide-26-graphic-02.png){width="30%" fig-alt="Original graphic, section 3.3, slide 26"}
 
-![](assets/inferential-statistics/part-03-slide-26-graphic-03.png){width="43%" fig-alt="Original graphic, section 3.3, slide 26"}
+![](../assets/inferential-statistics/part-03-slide-26-graphic-03.png){width="43%" fig-alt="Original graphic, section 3.3, slide 26"}
 
-![](assets/inferential-statistics/part-03-slide-26-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.3, slide 26"}
+![](../assets/inferential-statistics/part-03-slide-26-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.3, slide 26"}
 
 :::
 
@@ -2185,7 +2185,7 @@ c(t=t_stat, p_value=pt(t_stat,df=29,lower.tail=FALSE))
 <div class="source-table"><table><tr><td></td><td><p><em>Null Hypothesis states that there is no effect for the intervention</em></p></td></tr><tr><td></td><td><p><em>Alternative Hypothesis claims that the intervention caused an effect</em></p></td></tr></table></div>
 ```
 
-![](assets/inferential-statistics/part-03-slide-27-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.3, slide 27"}
+![](../assets/inferential-statistics/part-03-slide-27-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.3, slide 27"}
 
 #### R equivalent (added)
 
@@ -2193,7 +2193,9 @@ c(t=t_stat, p_value=pt(t_stat,df=29,lower.tail=FALSE))
 #| label: inferential-3-27
 # read.csv() loads the exact 30 paired observations printed in the source slide.
 # paired=TRUE tests within-student changes; greater tests whether score2 exceeds score1.
-paired <- read.csv("data/inferential-statistics/paired_scores.csv")
+# Find the shared data folder from either the course root or this notebook folder.
+data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
+paired <- read.csv(file.path(data_dir, "inferential-statistics/paired_scores.csv"))
 t.test(paired$score2, paired$score1, paired=TRUE, alternative="greater")
 ```
 
@@ -2217,9 +2219,9 @@ t.test(paired$score2, paired$score1, paired=TRUE, alternative="greater")
 </div>
 ```
 
-![](assets/inferential-statistics/part-03-slide-28-graphic-03.png){width="47%" fig-alt="Original graphic, section 3.3, slide 28"}
+![](../assets/inferential-statistics/part-03-slide-28-graphic-03.png){width="47%" fig-alt="Original graphic, section 3.3, slide 28"}
 
-![](assets/inferential-statistics/part-03-slide-28-graphic-04.png){width="37%" fig-alt="Original graphic, section 3.3, slide 28"}
+![](../assets/inferential-statistics/part-03-slide-28-graphic-04.png){width="37%" fig-alt="Original graphic, section 3.3, slide 28"}
 
 ```{=html}
 <div class="source-text">
@@ -2227,7 +2229,7 @@ t.test(paired$score2, paired$score1, paired=TRUE, alternative="greater")
 </div>
 ```
 
-![](assets/inferential-statistics/part-03-slide-28-graphic-06.png){width="34%" fig-alt="Original graphic, section 3.3, slide 28"}
+![](../assets/inferential-statistics/part-03-slide-28-graphic-06.png){width="34%" fig-alt="Original graphic, section 3.3, slide 28"}
 
 ```{=html}
 <div class="source-text">
@@ -2236,7 +2238,7 @@ t.test(paired$score2, paired$score1, paired=TRUE, alternative="greater")
 </div>
 ```
 
-![](assets/inferential-statistics/part-03-slide-28-graphic-08.png){width="30%" fig-alt="Original graphic, section 3.3, slide 28"}
+![](../assets/inferential-statistics/part-03-slide-28-graphic-08.png){width="30%" fig-alt="Original graphic, section 3.3, slide 28"}
 
 :::
 
@@ -2260,13 +2262,13 @@ t.test(paired$score2, paired$score1, paired=TRUE, alternative="greater")
 </div>
 ```
 
-![](assets/inferential-statistics/part-03-slide-29-graphic-03.png){width="30%" fig-alt="Original graphic, section 3.3, slide 29"}
+![](../assets/inferential-statistics/part-03-slide-29-graphic-03.png){width="30%" fig-alt="Original graphic, section 3.3, slide 29"}
 
 ```{=html}
 <div class="source-table"><table><tr><td></td><td><p><em>Null Hypothesis states that there is no difference</em></p></td></tr><tr><td></td><td><p><em>Alternative Hypothesis claims that there is a difference</em></p></td></tr></table></div>
 ```
 
-![](assets/inferential-statistics/part-03-slide-29-graphic-05.png){width="30%" fig-alt="Original graphic, section 3.3, slide 29"}
+![](../assets/inferential-statistics/part-03-slide-29-graphic-05.png){width="30%" fig-alt="Original graphic, section 3.3, slide 29"}
 
 #### R equivalent (added)
 
@@ -2274,7 +2276,9 @@ t.test(paired$score2, paired$score1, paired=TRUE, alternative="greater")
 #| label: inferential-3-29
 # read.csv() loads the exact printed salary samples; the source currency labels conflict (Euro narrative, dollar table).
 # var.equal=TRUE uses the source's pooled-variance assumption; the default alternative is two-sided.
-salaries <- read.csv("data/inferential-statistics/graduate_salaries.csv")
+# Find the shared data folder from either the course root or this notebook folder.
+data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
+salaries <- read.csv(file.path(data_dir, "inferential-statistics/graduate_salaries.csv"))
 t.test(salaries$male, salaries$female, var.equal=TRUE)
 ```
 
@@ -2292,9 +2296,9 @@ t.test(salaries$male, salaries$female, var.equal=TRUE)
 </div>
 ```
 
-![](assets/inferential-statistics/part-03-slide-30-graphic-03.png){width="55%" fig-alt="Original graphic, section 3.3, slide 30"}
+![](../assets/inferential-statistics/part-03-slide-30-graphic-03.png){width="55%" fig-alt="Original graphic, section 3.3, slide 30"}
 
-![](assets/inferential-statistics/part-03-slide-30-graphic-04.png){width="39%" fig-alt="Original graphic, section 3.3, slide 30"}
+![](../assets/inferential-statistics/part-03-slide-30-graphic-04.png){width="39%" fig-alt="Original graphic, section 3.3, slide 30"}
 
 ```{=html}
 <div class="source-text">
@@ -2308,7 +2312,7 @@ t.test(salaries$male, salaries$female, var.equal=TRUE)
 </div>
 ```
 
-![](assets/inferential-statistics/part-03-slide-30-graphic-07.png){width="30%" fig-alt="Original graphic, section 3.3, slide 30"}
+![](../assets/inferential-statistics/part-03-slide-30-graphic-07.png){width="30%" fig-alt="Original graphic, section 3.3, slide 30"}
 
 ```{=html}
 <div class="source-text">
@@ -2317,7 +2321,7 @@ t.test(salaries$male, salaries$female, var.equal=TRUE)
 </div>
 ```
 
-![](assets/inferential-statistics/part-03-slide-30-graphic-09.png){width="30%" fig-alt="Original graphic, section 3.3, slide 30"}
+![](../assets/inferential-statistics/part-03-slide-30-graphic-09.png){width="30%" fig-alt="Original graphic, section 3.3, slide 30"}
 
 :::
 
@@ -2340,13 +2344,13 @@ t.test(salaries$male, salaries$female, var.equal=TRUE)
 <div class="source-table"><table><tr><td></td><td><p>Political Science Random Sample</p></td><td><p>Social Science Random Sample</p></td></tr><tr><td><p>1</p></td><td><p>$30,796.16</p></td><td><p>$33,641.73</p></td></tr><tr><td><p>2</p></td><td><p>$32,038.41</p></td><td><p>$29,635.67</p></td></tr><tr><td><p>3</p></td><td><p>$32,038.41</p></td><td><p>$38,738.01</p></td></tr><tr><td><p>4</p></td><td><p>$32,996.39</p></td><td><p>$21,453.99</p></td></tr><tr><td><p>5</p></td><td><p>$33,648.38</p></td><td><p>$31,484.80</p></td></tr><tr><td><p>6</p></td><td><p>$41,430.16</p></td><td><p>$34,287.96</p></td></tr><tr><td><p>7</p></td><td><p>$40,032.78</p></td><td><p>$35,583.43</p></td></tr><tr><td><p>8</p></td><td><p>$39,710.80</p></td><td><p>$28,672.85</p></td></tr><tr><td><p>9</p></td><td><p>$36,911.26</p></td><td><p>$30,062.71</p></td></tr><tr><td><p>10</p></td><td><p>$45,900.13</p></td><td><p>$34,420.48</p></td></tr><tr><td><p>11</p></td><td><p>$35,270.19</p></td><td><p>$33,641.73</p></td></tr><tr><td><p>12</p></td><td><p>$43,318.41</p></td><td><p>$26,291.32</p></td></tr><tr><td><p>13</p></td><td><p>$41,282.13</p></td><td><p>$31,151.42</p></td></tr><tr><td><p>14</p></td><td><p>$41,430.16</p></td><td><p>$38,738.01</p></td></tr><tr><td><p>15</p></td><td><p>$21,485.62</p></td><td><p>$33,565.74</p></td></tr><tr><td><p>16</p></td><td><p>$29,195.50</p></td><td><p>$31,484.80</p></td></tr><tr><td><p>17</p></td><td><p>$45,141.81</p></td><td><p>$32,194.59</p></td></tr><tr><td><p>18</p></td><td><p>$34,492.08</p></td><td><p>$35,746.22</p></td></tr><tr><td><p>19</p></td><td><p>$27,893.26</p></td><td><p>$28,281.25</p></td></tr><tr><td><p>20</p></td><td><p>$38,591.54</p></td><td><p>$31,405.48</p></td></tr><tr><td><p>21</p></td><td><p>$33,726.58</p></td><td><p>$32,194.59</p></td></tr><tr><td><p>22</p></td><td><p>$29,832.22</p></td><td><p>$35,987.41</p></td></tr><tr><td><p>23</p></td><td><p>$32,154.94</p></td><td><p>$35,583.43</p></td></tr><tr><td><p>24</p></td><td><p>$34,686.49</p></td><td><p>$34,227.49</p></td></tr><tr><td><p>25</p></td><td><p>$25,607.82</p></td><td><p>$25,758.88</p></td></tr><tr><td><p>26</p></td><td><p>$33,726.58</p></td><td><p>$34,373.99</p></td></tr><tr><td><p>27</p></td><td><p>$37,782.86</p></td><td><p>$25,658.83</p></td></tr><tr><td><p>28</p></td><td><p>$35,507.83</p></td><td><p>$34,201.58</p></td></tr><tr><td><p>29</p></td><td><p>$33,955.21</p></td><td><p>$31,151.42</p></td></tr><tr><td><p>30</p></td><td><p>$25,883.03</p></td><td><p>$33,641.73</p></td></tr></table></div>
 ```
 
-![](assets/inferential-statistics/part-03-slide-31-graphic-03.png){width="30%" fig-alt="Original graphic, section 3.3, slide 31"}
+![](../assets/inferential-statistics/part-03-slide-31-graphic-03.png){width="30%" fig-alt="Original graphic, section 3.3, slide 31"}
 
 ```{=html}
 <div class="source-table"><table><tr><td></td><td><p><em>Null Hypothesis states that the salaries are equal</em></p></td></tr><tr><td></td><td><p><em>Alternative Hypothesis claims that political science is higher</em></p></td></tr></table></div>
 ```
 
-![](assets/inferential-statistics/part-03-slide-31-graphic-05.png){width="30%" fig-alt="Original graphic, section 3.3, slide 31"}
+![](../assets/inferential-statistics/part-03-slide-31-graphic-05.png){width="30%" fig-alt="Original graphic, section 3.3, slide 31"}
 
 #### R equivalent (added)
 
@@ -2354,7 +2358,9 @@ t.test(salaries$male, salaries$female, var.equal=TRUE)
 #| label: inferential-3-31
 # read.csv() preserves the two exact printed female-graduate salary samples.
 # var.equal=FALSE uses Welch's test; greater tests Political Science > Social Science, with 99% confidence.
-majors <- read.csv("data/inferential-statistics/female_major_salaries.csv")
+# Find the shared data folder from either the course root or this notebook folder.
+data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
+majors <- read.csv(file.path(data_dir, "inferential-statistics/female_major_salaries.csv"))
 t.test(majors$political_science, majors$social_science,
        alternative="greater", var.equal=FALSE, conf.level=0.99)
 ```
@@ -2379,9 +2385,9 @@ t.test(majors$political_science, majors$social_science,
 </div>
 ```
 
-![](assets/inferential-statistics/part-03-slide-32-graphic-03.png){width="49%" fig-alt="Original graphic, section 3.3, slide 32"}
+![](../assets/inferential-statistics/part-03-slide-32-graphic-03.png){width="49%" fig-alt="Original graphic, section 3.3, slide 32"}
 
-![](assets/inferential-statistics/part-03-slide-32-graphic-04.png){width="44%" fig-alt="Original graphic, section 3.3, slide 32"}
+![](../assets/inferential-statistics/part-03-slide-32-graphic-04.png){width="44%" fig-alt="Original graphic, section 3.3, slide 32"}
 
 ```{=html}
 <div class="source-text">
@@ -2389,7 +2395,7 @@ t.test(majors$political_science, majors$social_science,
 </div>
 ```
 
-![](assets/inferential-statistics/part-03-slide-32-graphic-06.png){width="32%" fig-alt="Original graphic, section 3.3, slide 32"}
+![](../assets/inferential-statistics/part-03-slide-32-graphic-06.png){width="32%" fig-alt="Original graphic, section 3.3, slide 32"}
 
 ```{=html}
 <div class="source-text">
@@ -2398,7 +2404,7 @@ t.test(majors$political_science, majors$social_science,
 </div>
 ```
 
-![](assets/inferential-statistics/part-03-slide-32-graphic-08.png){width="30%" fig-alt="Original graphic, section 3.3, slide 32"}
+![](../assets/inferential-statistics/part-03-slide-32-graphic-08.png){width="30%" fig-alt="Original graphic, section 3.3, slide 32"}
 
 :::
 
@@ -2440,7 +2446,7 @@ t.test(majors$political_science, majors$social_science,
 
 ### One-Sample Proportion Test {#part3-title-03-35}
 
-![](assets/inferential-statistics/part-03-slide-35-graphic-01.png){width="57%" fig-alt="Original graphic, section 3.3, slide 35"}
+![](../assets/inferential-statistics/part-03-slide-35-graphic-01.png){width="57%" fig-alt="Original graphic, section 3.3, slide 35"}
 
 :::
 
@@ -2450,9 +2456,9 @@ t.test(majors$political_science, majors$social_science,
 
 ### Example {#part3-title-03-36}
 
-![](assets/inferential-statistics/part-03-slide-36-graphic-01.png){width="86%" fig-alt="Original graphic, section 3.3, slide 36"}
+![](../assets/inferential-statistics/part-03-slide-36-graphic-01.png){width="86%" fig-alt="Original graphic, section 3.3, slide 36"}
 
-![](assets/inferential-statistics/part-03-slide-36-graphic-02.png){width="69%" fig-alt="Original graphic, section 3.3, slide 36"}
+![](../assets/inferential-statistics/part-03-slide-36-graphic-02.png){width="69%" fig-alt="Original graphic, section 3.3, slide 36"}
 
 #### R equivalent (added)
 
@@ -2471,7 +2477,7 @@ prop.test(140,200,p=0.75,alternative="two.sided",correct=FALSE)
 
 ### Two-Samples Proportion Test {#part3-title-03-37}
 
-![](assets/inferential-statistics/part-03-slide-37-graphic-01.png){width="57%" fig-alt="Original graphic, section 3.3, slide 37"}
+![](../assets/inferential-statistics/part-03-slide-37-graphic-01.png){width="57%" fig-alt="Original graphic, section 3.3, slide 37"}
 
 :::
 
@@ -2481,7 +2487,7 @@ prop.test(140,200,p=0.75,alternative="two.sided",correct=FALSE)
 
 ### Example: Does the New Treatment Work? {#part3-title-03-38}
 
-![](assets/inferential-statistics/part-03-slide-38-graphic-01.png){width="67%" fig-alt="Original graphic, section 3.3, slide 38"}
+![](../assets/inferential-statistics/part-03-slide-38-graphic-01.png){width="67%" fig-alt="Original graphic, section 3.3, slide 38"}
 
 ```{=html}
 <div class="source-text">
@@ -2489,7 +2495,7 @@ prop.test(140,200,p=0.75,alternative="two.sided",correct=FALSE)
 </div>
 ```
 
-![](assets/inferential-statistics/part-03-slide-38-graphic-03.png){width="43%" fig-alt="Original graphic, section 3.3, slide 38"}
+![](../assets/inferential-statistics/part-03-slide-38-graphic-03.png){width="43%" fig-alt="Original graphic, section 3.3, slide 38"}
 
 #### R equivalent (added)
 
@@ -2566,7 +2572,7 @@ prop.test(c(65,50),c(100,100),alternative="greater",correct=FALSE)
 </div>
 ```
 
-![](assets/inferential-statistics/part-03-slide-42-graphic-02.png){width="34%" fig-alt="Original graphic, section 3.3, slide 42"}
+![](../assets/inferential-statistics/part-03-slide-42-graphic-02.png){width="34%" fig-alt="Original graphic, section 3.3, slide 42"}
 
 ```{=html}
 <div class="source-text">
@@ -2574,7 +2580,7 @@ prop.test(c(65,50),c(100,100),alternative="greater",correct=FALSE)
 </div>
 ```
 
-![](assets/inferential-statistics/part-03-slide-42-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.3, slide 42"}
+![](../assets/inferential-statistics/part-03-slide-42-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.3, slide 42"}
 
 :::
 
@@ -2590,9 +2596,9 @@ prop.test(c(65,50),c(100,100),alternative="greater",correct=FALSE)
 </div>
 ```
 
-![](assets/inferential-statistics/part-03-slide-43-graphic-02.png){width="47%" fig-alt="Original graphic, section 3.3, slide 43"}
+![](../assets/inferential-statistics/part-03-slide-43-graphic-02.png){width="47%" fig-alt="Original graphic, section 3.3, slide 43"}
 
-![](assets/inferential-statistics/part-03-slide-43-graphic-03.png){width="100%" fig-alt="Original graphic, section 3.3, slide 43"}
+![](../assets/inferential-statistics/part-03-slide-43-graphic-03.png){width="100%" fig-alt="Original graphic, section 3.3, slide 43"}
 
 :::
 
@@ -2658,7 +2664,7 @@ chi$expected
 
 ### Steps to Solve in Excel {#part3-title-03-46}
 
-![](assets/inferential-statistics/part-03-slide-46-graphic-01.png){width="86%" fig-alt="Original graphic, section 3.3, slide 46"}
+![](../assets/inferential-statistics/part-03-slide-46-graphic-01.png){width="86%" fig-alt="Original graphic, section 3.3, slide 46"}
 
 :::
 
@@ -2668,7 +2674,7 @@ chi$expected
 
 ### Calculate Chi-Square Value {#part3-title-03-47}
 
-![](assets/inferential-statistics/part-03-slide-47-graphic-01.png){width="30%" fig-alt="Original graphic, section 3.3, slide 47"}
+![](../assets/inferential-statistics/part-03-slide-47-graphic-01.png){width="30%" fig-alt="Original graphic, section 3.3, slide 47"}
 
 ```{=html}
 <div class="source-table"><table><tr><td><p><strong>Category (Age Group, Product)</strong></p></td><td><p><strong>Observed (O)</strong></p></td><td><p><strong>Expected (E)</strong></p></td><td><p><strong>O−E</strong></p></td><td><p><strong>(O−E)^2</strong></p></td><td><p><strong>E(O−E)^2​</strong></p></td></tr><tr><td><p>Under 30, Product A</p></td><td><p>30</p></td><td><p>35</p></td><td><p>-5</p></td><td><p>25</p></td><td><p>25/35≈0.714</p></td></tr><tr><td><p>Under 30, Product B</p></td><td><p>40</p></td><td><p>35</p></td><td><p>5</p></td><td><p>25</p></td><td><p>25/35≈0.714</p></td></tr><tr><td><p>30 to 50, Product A</p></td><td><p>50</p></td><td><p>40</p></td><td><p>10</p></td><td><p>100</p></td><td><p>100/40=2.500</p></td></tr><tr><td><p>30 to 50, Product B</p></td><td><p>30</p></td><td><p>40</p></td><td><p>-10</p></td><td><p>100</p></td><td><p>100/40=2.500</p></td></tr><tr><td><p>Over 50, Product A</p></td><td><p>20</p></td><td><p>25</p></td><td><p>-5</p></td><td><p>25</p></td><td><p>25/25=1.000</p></td></tr><tr><td><p>Over 50, Product B</p></td><td><p>30</p></td><td><p>25</p></td><td><p>5</p></td><td><p>25</p></td><td><p>25/25=1.000</p></td></tr><tr><td><p>Total</p></td><td><p>200</p></td><td><p>200</p></td><td></td><td></td><td><p>χ2≈8.428</p></td></tr></table></div>
@@ -2682,7 +2688,7 @@ chi$expected
 
 ### Steps to Solve in Excel {#part3-title-03-48}
 
-![](assets/inferential-statistics/part-03-slide-48-graphic-01.png){width="100%" fig-alt="Original graphic, section 3.3, slide 48"}
+![](../assets/inferential-statistics/part-03-slide-48-graphic-01.png){width="100%" fig-alt="Original graphic, section 3.3, slide 48"}
 
 ```{=html}
 <div class="source-text">
@@ -2699,7 +2705,7 @@ chi$expected
 
 ### Check the Solution in The Excel File {#part3-title-03-49}
 
-![](assets/inferential-statistics/part-03-slide-49-graphic-01.png){width="91%" fig-alt="Original graphic, section 3.3, slide 49"}
+![](../assets/inferential-statistics/part-03-slide-49-graphic-01.png){width="91%" fig-alt="Original graphic, section 3.3, slide 49"}
 
 :::
 
@@ -2791,7 +2797,9 @@ chi$expected
 #| label: inferential-3-53
 # read.csv() loads the exact 15 scores printed for the three teaching methods.
 # aov(score~group) fits one-way ANOVA; summary() reports its F test under independent normal errors and equal variances.
-methods <- read.csv("data/inferential-statistics/teaching_methods.csv")
+# Find the shared data folder from either the course root or this notebook folder.
+data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
+methods <- read.csv(file.path(data_dir, "inferential-statistics/teaching_methods.csv"))
 summary(aov(score~group,data=methods))
 ```
 
@@ -2803,7 +2811,7 @@ summary(aov(score~group,data=methods))
 
 ### Interpreting Results {#part3-title-03-54}
 
-![](assets/inferential-statistics/part-03-slide-54-graphic-01.png){width="57%" fig-alt="Original graphic, section 3.3, slide 54"}
+![](../assets/inferential-statistics/part-03-slide-54-graphic-01.png){width="57%" fig-alt="Original graphic, section 3.3, slide 54"}
 
 ```{=html}
 <div class="source-text">
@@ -2858,7 +2866,9 @@ summary(aov(score~group,data=methods))
 #| label: inferential-3-56
 # factor() treats gender and method as categories in the exact eight printed observations.
 # gender*method includes both main effects and their interaction; aov() assumes independent, equal-variance normal errors.
-teaching <- read.csv("data/inferential-statistics/teaching_gender.csv")
+# Find the shared data folder from either the course root or this notebook folder.
+data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
+teaching <- read.csv(file.path(data_dir, "inferential-statistics/teaching_gender.csv"))
 teaching$gender <- factor(teaching$gender)
 teaching$method <- factor(teaching$method)
 summary(aov(score~gender*method,data=teaching))
@@ -2872,7 +2882,7 @@ summary(aov(score~gender*method,data=teaching))
 
 ### How to Select Test Type {#part3-title-03-57}
 
-![](assets/inferential-statistics/part-03-slide-57-graphic-00.png){width="47%" fig-alt="Original graphic, section 3.3, slide 57"}
+![](../assets/inferential-statistics/part-03-slide-57-graphic-00.png){width="47%" fig-alt="Original graphic, section 3.3, slide 57"}
 
 :::
 
@@ -2921,9 +2931,9 @@ summary(aov(score~gender*method,data=teaching))
 
 ### The Regression Equation {#part3-title-04-04}
 
-![](assets/inferential-statistics/part-04-slide-04-graphic-01.png){width="94%" fig-alt="Original graphic, section 3.4, slide 4"}
+![](../assets/inferential-statistics/part-04-slide-04-graphic-01.png){width="94%" fig-alt="Original graphic, section 3.4, slide 4"}
 
-![](assets/inferential-statistics/part-04-slide-04-graphic-02.png){width="38%" fig-alt="Original graphic, section 3.4, slide 4"}
+![](../assets/inferential-statistics/part-04-slide-04-graphic-02.png){width="38%" fig-alt="Original graphic, section 3.4, slide 4"}
 
 :::
 
@@ -2933,7 +2943,7 @@ summary(aov(score~gender*method,data=teaching))
 
 ### Finding the Best Fit Line {#part3-title-04-05}
 
-![](assets/inferential-statistics/part-04-slide-05-graphic-01.png){width="53%" fig-alt="Original graphic, section 3.4, slide 5"}
+![](../assets/inferential-statistics/part-04-slide-05-graphic-01.png){width="53%" fig-alt="Original graphic, section 3.4, slide 5"}
 
 ```{=html}
 <div class="source-text">
@@ -2959,11 +2969,11 @@ summary(aov(score~gender*method,data=teaching))
 
 ### Finding the Best Fit Line {#part3-title-04-06}
 
-![](assets/inferential-statistics/part-04-slide-06-graphic-01.png){width="57%" fig-alt="Original graphic, section 3.4, slide 6"}
+![](../assets/inferential-statistics/part-04-slide-06-graphic-01.png){width="57%" fig-alt="Original graphic, section 3.4, slide 6"}
 
-![](assets/inferential-statistics/part-04-slide-06-graphic-02.png){width="30%" fig-alt="Original graphic, section 3.4, slide 6"}
+![](../assets/inferential-statistics/part-04-slide-06-graphic-02.png){width="30%" fig-alt="Original graphic, section 3.4, slide 6"}
 
-![](assets/inferential-statistics/part-04-slide-06-graphic-03.png){width="43%" fig-alt="Original graphic, section 3.4, slide 6"}
+![](../assets/inferential-statistics/part-04-slide-06-graphic-03.png){width="43%" fig-alt="Original graphic, section 3.4, slide 6"}
 
 :::
 
@@ -3016,9 +3026,9 @@ summary(aov(score~gender*method,data=teaching))
 </div>
 ```
 
-![](assets/inferential-statistics/part-04-slide-09-graphic-02.png){width="55%" fig-alt="Original graphic, section 3.4, slide 9"}
+![](../assets/inferential-statistics/part-04-slide-09-graphic-02.png){width="55%" fig-alt="Original graphic, section 3.4, slide 9"}
 
-![](assets/inferential-statistics/part-04-slide-09-graphic-03.png){width="45%" fig-alt="Original graphic, section 3.4, slide 9"}
+![](../assets/inferential-statistics/part-04-slide-09-graphic-03.png){width="45%" fig-alt="Original graphic, section 3.4, slide 9"}
 
 ```{=html}
 <div class="source-text">
@@ -3032,7 +3042,7 @@ summary(aov(score~gender*method,data=teaching))
 </div>
 ```
 
-![](assets/inferential-statistics/part-04-slide-09-graphic-06.png){width="30%" fig-alt="Original graphic, section 3.4, slide 9"}
+![](../assets/inferential-statistics/part-04-slide-09-graphic-06.png){width="30%" fig-alt="Original graphic, section 3.4, slide 9"}
 
 ```{=html}
 <div class="source-table"><table><tr><td><p><strong>House ID</strong></p></td><td><p><strong>Price</strong></p></td><td><p><strong>Size</strong></p></td></tr><tr><td><p>1</p></td><td><p>250</p></td><td><p>1500</p></td></tr><tr><td><p>2</p></td><td><p>315</p></td><td><p>1800</p></td></tr><tr><td><p>3</p></td><td><p>270</p></td><td><p>1650</p></td></tr><tr><td><p>4</p></td><td><p>230</p></td><td><p>1400</p></td></tr><tr><td><p>5</p></td><td><p>450</p></td><td><p>2000</p></td></tr><tr><td><p>6</p></td><td><p>190</p></td><td><p>1300</p></td></tr><tr><td><p>7</p></td><td><p>350</p></td><td><p>1850</p></td></tr><tr><td><p>8</p></td><td><p>300</p></td><td><p>1600</p></td></tr><tr><td><p>9</p></td><td><p>280</p></td><td><p>1500</p></td></tr><tr><td><p>10</p></td><td><p>310</p></td><td><p>1700</p></td></tr></table></div>
@@ -3044,7 +3054,9 @@ summary(aov(score~gender*method,data=teaching))
 #| label: inferential-4-9
 # read.csv() imports the ten houses printed in the source; price is in thousands of dollars and size in square feet.
 # lm(price~size) fits least squares with an intercept; summary() reports coefficients, R-squared, and inference.
-houses <- read.csv("data/inferential-statistics/houses.csv")
+# Find the shared data folder from either the course root or this notebook folder.
+data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
+houses <- read.csv(file.path(data_dir, "inferential-statistics/houses.csv"))
 simple <- lm(price~size,data=houses)
 summary(simple)
 ```
@@ -3182,7 +3194,7 @@ anova(simple)
 </div>
 ```
 
-![](assets/inferential-statistics/part-04-slide-14-graphic-03.png){width="52%" fig-alt="Original graphic, section 3.4, slide 14"}
+![](../assets/inferential-statistics/part-04-slide-14-graphic-03.png){width="52%" fig-alt="Original graphic, section 3.4, slide 14"}
 
 ```{=html}
 <div class="source-text">
@@ -3190,7 +3202,7 @@ anova(simple)
 </div>
 ```
 
-![](assets/inferential-statistics/part-04-slide-14-graphic-05.png){width="57%" fig-alt="Original graphic, section 3.4, slide 14"}
+![](../assets/inferential-statistics/part-04-slide-14-graphic-05.png){width="57%" fig-alt="Original graphic, section 3.4, slide 14"}
 
 ```{=html}
 <div class="source-text">
@@ -3198,7 +3210,7 @@ anova(simple)
 </div>
 ```
 
-![](assets/inferential-statistics/part-04-slide-14-graphic-08.png){width="30%" fig-alt="Original graphic, section 3.4, slide 14"}
+![](../assets/inferential-statistics/part-04-slide-14-graphic-08.png){width="30%" fig-alt="Original graphic, section 3.4, slide 14"}
 
 ```{=html}
 <div class="source-text">
@@ -3258,9 +3270,9 @@ summary(multiple)
 </div>
 ```
 
-![](assets/inferential-statistics/part-04-slide-16-graphic-02.png){width="46%" fig-alt="Original graphic, section 3.4, slide 16"}
+![](../assets/inferential-statistics/part-04-slide-16-graphic-02.png){width="46%" fig-alt="Original graphic, section 3.4, slide 16"}
 
-![](assets/inferential-statistics/part-04-slide-16-graphic-03.png){width="48%" fig-alt="Original graphic, section 3.4, slide 16"}
+![](../assets/inferential-statistics/part-04-slide-16-graphic-03.png){width="48%" fig-alt="Original graphic, section 3.4, slide 16"}
 
 ```{=html}
 <div class="source-text">
@@ -3326,7 +3338,7 @@ abline(h=0,lty=2)
 </div>
 ```
 
-![](assets/inferential-statistics/part-04-slide-19-graphic-02.png){width="66%" fig-alt="Original graphic, section 3.4, slide 19"}
+![](../assets/inferential-statistics/part-04-slide-19-graphic-02.png){width="66%" fig-alt="Original graphic, section 3.4, slide 19"}
 
 ```{=html}
 <div class="source-text">
@@ -3371,7 +3383,7 @@ abline(h=0,lty=2)
 </div>
 ```
 
-![](assets/inferential-statistics/part-04-slide-20-graphic-02.png){width="45%" fig-alt="Original graphic, section 3.4, slide 20"}
+![](../assets/inferential-statistics/part-04-slide-20-graphic-02.png){width="45%" fig-alt="Original graphic, section 3.4, slide 20"}
 
 ```{=html}
 <div class="source-table"><table><tr><td><p>Residuals</p></td><td><p>Standard Residuals</p></td><td><p>Rank</p></td><td><p>Percentiles</p></td><td><p>Theoritical Residuals</p></td></tr><tr><td><p>-32.890625</p></td><td><p>-1.425656831</p></td><td><p>1</p></td><td><p>0.05</p></td><td><p>-1.644853627</p></td></tr><tr><td><p>-30.78125</p></td><td><p>-1.334225158</p></td><td><p>2</p></td><td><p>0.15</p></td><td><p>-1.036433389</p></td></tr><tr><td><p>-13.59375</p></td><td><p>-0.589226339</p></td><td><p>3</p></td><td><p>0.25</p></td><td><p>-0.67448975</p></td></tr><tr><td><p>-6.484375</p></td><td><p>-0.281067736</p></td><td><p>4</p></td><td><p>0.35</p></td><td><p>-0.385320466</p></td></tr><tr><td><p>-3.671875</p></td><td><p>-0.159158839</p></td><td><p>5</p></td><td><p>0.45</p></td><td><p>-0.125661347</p></td></tr><tr><td><p>-0.859375</p></td><td><p>-0.037249941</p></td><td><p>6</p></td><td><p>0.55</p></td><td><p>0.125661347</p></td></tr><tr><td><p>7.734375</p></td><td><p>0.335249469</p></td><td><p>7</p></td><td><p>0.65</p></td><td><p>0.385320466</p></td></tr><tr><td><p>14.921875</p></td><td><p>0.646794429</p></td><td><p>8</p></td><td><p>0.75</p></td><td><p>0.67448975</p></td></tr><tr><td><p>26.328125</p></td><td><p>1.141202737</p></td><td><p>9</p></td><td><p>0.85</p></td><td><p>1.036433389</p></td></tr><tr><td><p>39.296875</p></td><td><p>1.703338209</p></td><td><p>10</p></td><td><p>0.95</p></td><td><p>1.644853627</p></td></tr></table></div>

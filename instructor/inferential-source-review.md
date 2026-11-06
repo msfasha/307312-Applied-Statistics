@@ -69,7 +69,7 @@ Original text is retained; these observations are not silent edits to the source
 
 ## Conversion and data checks
 
-Original source files remain unchanged in slides/. Existing PDF exports remain historical companions, without assuming positional
+Original source files remain unchanged in sources/slides/. Existing PDF exports remain historical companions, without assuming positional
 compatibility. Embedded pictures are extracted directly, preserving source crop
 and rotation. Composite figure crops come from fresh LibreOffice renders of the
 actual PPTX, kept in the ignored instructor render cache. A tiny hidden ink

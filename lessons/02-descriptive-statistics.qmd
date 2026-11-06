@@ -17,9 +17,9 @@ execute:
   message: false
 ---
 
-[Download this part as PDF](pdf/02-descriptive-statistics.pdf){.pdf-download}
+[Download this part as PDF](../pdf/02-descriptive-statistics.pdf){.pdf-download}
 
-<div class="original-branding"><img src="assets/descriptive-statistics/original-branding.png" alt="Institute of Analytics and University of Petra" width="230"></div>
+<div class="original-branding"><img src="../assets/descriptive-statistics/original-branding.png" alt="Institute of Analytics and University of Petra" width="230"></div>
 
 <!-- Original slide 01 -->
 
@@ -27,7 +27,7 @@ execute:
 
 ## 307312 Applied Statistics — Masters Level {#source-title-01}
 
-![](assets/descriptive-statistics/slide-01-graphic-00.png){width="18%" fig-alt="Original graphic from slide 1"}
+![](../assets/descriptive-statistics/slide-01-graphic-00.png){width="18%" fig-alt="Original graphic from slide 1"}
 
 :::
 
@@ -46,7 +46,7 @@ execute:
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-02-graphic-02.png){width="44%" fig-alt="Original graphic from slide 2"}
+![](../assets/descriptive-statistics/slide-02-graphic-02.png){width="44%" fig-alt="Original graphic from slide 2"}
 
 :::
 
@@ -120,7 +120,7 @@ execute:
 
 ### Statistical Process Life Cycle {#source-title-06}
 
-{{< include content/diagrams/06-statistical-process.qmd >}}
+{{< include _includes/diagrams/06-statistical-process.qmd >}}
 
 :::
 
@@ -153,7 +153,7 @@ execute:
 
 ::: {.source-slide #slide-09}
 
-{{< include content/diagrams/09-types-of-data.qmd >}}
+{{< include _includes/diagrams/09-types-of-data.qmd >}}
 
 :::
 
@@ -161,7 +161,7 @@ execute:
 
 ::: {.source-slide #slide-10}
 
-{{< include content/diagrams/10-levels-of-measurement.qmd >}}
+{{< include _includes/diagrams/10-levels-of-measurement.qmd >}}
 
 :::
 
@@ -187,7 +187,7 @@ execute:
 
 ::: {.source-slide #slide-12}
 
-{{< include content/diagrams/12-scales-comparison.qmd >}}
+{{< include _includes/diagrams/12-scales-comparison.qmd >}}
 
 ```{=html}
 <div class="source-text">
@@ -197,7 +197,7 @@ execute:
 
 :::
 
-{{< include content/data-collection-and-surveys.qmd >}}
+{{< include _includes/data-collection-and-surveys.qmd >}}
 
 <!-- Original slide 13 -->
 
@@ -221,7 +221,7 @@ execute:
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-14-graphic-02.png){width="24%" fig-alt="Original graphic from slide 14"}
+![](../assets/descriptive-statistics/slide-14-graphic-02.png){width="24%" fig-alt="Original graphic from slide 14"}
 
 :::
 
@@ -251,7 +251,7 @@ execute:
 
 ### Introducing Students Dataset {#source-title-16}
 
-![](assets/descriptive-statistics/slide-16-graphic-01.png){width="100%" fig-alt="Original graphic from slide 16"}
+![](../assets/descriptive-statistics/slide-16-graphic-01.png){width="100%" fig-alt="Original graphic from slide 16"}
 
 #### R equivalent (added)
 
@@ -259,7 +259,9 @@ execute:
 #| label: r-slide-16
 # read.csv() imports the supplied CSV; stringsAsFactors=FALSE keeps category labels as text.
 # head() previews six rows; height is in cm, weight in kg, and age in years.
-students <- read.csv("data/307102/students.csv", stringsAsFactors = FALSE)
+# Find the shared data folder from either the course root or this notebook folder.
+data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
+students <- read.csv(file.path(data_dir, "descriptive-statistics/students.csv"), stringsAsFactors = FALSE)
 head(students)
 ```
 
@@ -281,7 +283,7 @@ head(students)
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-17-graphic-02.png){width="60%" fig-alt="Original graphic from slide 17"}
+![](../assets/descriptive-statistics/slide-17-graphic-02.png){width="60%" fig-alt="Original graphic from slide 17"}
 
 ```{=html}
 <div class="source-text">
@@ -308,9 +310,9 @@ country_counts
 
 ### Converting Numerical Values into Categorical {#source-title-18}
 
-![](assets/descriptive-statistics/slide-18-graphic-01.png){width="27%" fig-alt="Original graphic from slide 18"}
+![](../assets/descriptive-statistics/slide-18-graphic-01.png){width="27%" fig-alt="Original graphic from slide 18"}
 
-![](assets/descriptive-statistics/slide-18-graphic-02.png){width="62%" fig-alt="Original graphic from slide 18"}
+![](../assets/descriptive-statistics/slide-18-graphic-02.png){width="62%" fig-alt="Original graphic from slide 18"}
 
 ```{=html}
 <div class="source-text">
@@ -342,7 +344,7 @@ table(age_groups)
 
 ### Cross-tabulation or Contingency Tables {#source-title-19}
 
-![](assets/descriptive-statistics/slide-19-graphic-01.png){width="74%" fig-alt="Original graphic from slide 19"}
+![](../assets/descriptive-statistics/slide-19-graphic-01.png){width="74%" fig-alt="Original graphic from slide 19"}
 
 ```{=html}
 <div class="source-text">
@@ -377,7 +379,7 @@ addmargins(major_gender)
 
 <span class="source-slide-number">21</span>
 
-![](assets/descriptive-statistics/slide-21-graphic-00.png){width="83%" fig-alt="Original graphic from slide 21"}
+![](../assets/descriptive-statistics/slide-21-graphic-00.png){width="83%" fig-alt="Original graphic from slide 21"}
 
 :::
 
@@ -401,7 +403,7 @@ addmargins(major_gender)
 
 ### Bar Charts {#source-title-23}
 
-![](assets/descriptive-statistics/slide-23-graphic-01.png){width="49%" fig-alt="Original graphic from slide 23"}
+![](../assets/descriptive-statistics/slide-23-graphic-01.png){width="49%" fig-alt="Original graphic from slide 23"}
 
 ```{=html}
 <div class="source-text">
@@ -410,7 +412,7 @@ addmargins(major_gender)
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-23-graphic-03.png){width="23%" fig-alt="Original graphic from slide 23"}
+![](../assets/descriptive-statistics/slide-23-graphic-03.png){width="23%" fig-alt="Original graphic from slide 23"}
 
 ```{=html}
 <div class="source-text">
@@ -443,7 +445,7 @@ barplot(table(students$country), las = 2, col = "#356B8C", ylab = "Number of stu
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-24-graphic-02.png){width="51%" fig-alt="Original graphic from slide 24"}
+![](../assets/descriptive-statistics/slide-24-graphic-02.png){width="51%" fig-alt="Original graphic from slide 24"}
 
 #### R equivalent (added)
 
@@ -462,7 +464,7 @@ pie(table(students$country))
 
 ### Pareto Charts: Two Graphs in a Single Chart {#source-title-25}
 
-![](assets/descriptive-statistics/slide-25-graphic-01.png){width="61%" fig-alt="Original graphic from slide 25"}
+![](../assets/descriptive-statistics/slide-25-graphic-01.png){width="61%" fig-alt="Original graphic from slide 25"}
 
 ```{=html}
 <div class="source-text">
@@ -479,7 +481,7 @@ pie(table(students$country))
 
 ### Side by Side Bar Charts: : Visualizing Two Variables {#source-title-26}
 
-![](assets/descriptive-statistics/slide-26-graphic-01.png){width="62%" fig-alt="Original graphic from slide 26"}
+![](../assets/descriptive-statistics/slide-26-graphic-01.png){width="62%" fig-alt="Original graphic from slide 26"}
 
 ```{=html}
 <div class="source-text">
@@ -551,9 +553,9 @@ hist(students$age, breaks = seq(min(students$age) - 0.5, max(students$age) + 0.5
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-29-graphic-02.png){width="46%" fig-alt="Original graphic from slide 29"}
+![](../assets/descriptive-statistics/slide-29-graphic-02.png){width="46%" fig-alt="Original graphic from slide 29"}
 
-![](assets/descriptive-statistics/slide-29-graphic-03.png){width="46%" fig-alt="Original graphic from slide 29"}
+![](../assets/descriptive-statistics/slide-29-graphic-03.png){width="46%" fig-alt="Original graphic from slide 29"}
 
 :::
 
@@ -570,7 +572,7 @@ hist(students$age, breaks = seq(min(students$age) - 0.5, max(students$age) + 0.5
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-30-graphic-02.png){width="100%" fig-alt="Original graphic from slide 30"}
+![](../assets/descriptive-statistics/slide-30-graphic-02.png){width="100%" fig-alt="Original graphic from slide 30"}
 
 :::
 
@@ -588,7 +590,7 @@ hist(students$age, breaks = seq(min(students$age) - 0.5, max(students$age) + 0.5
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-31-graphic-02.png){width="79%" fig-alt="Original graphic from slide 31"}
+![](../assets/descriptive-statistics/slide-31-graphic-02.png){width="79%" fig-alt="Original graphic from slide 31"}
 
 :::
 
@@ -606,7 +608,7 @@ hist(students$age, breaks = seq(min(students$age) - 0.5, max(students$age) + 0.5
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-32-graphic-02.png){width="56%" fig-alt="Original graphic from slide 32"}
+![](../assets/descriptive-statistics/slide-32-graphic-02.png){width="56%" fig-alt="Original graphic from slide 32"}
 
 :::
 
@@ -629,7 +631,7 @@ hist(students$age, breaks = seq(min(students$age) - 0.5, max(students$age) + 0.5
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-33-graphic-02.png){width="56%" fig-alt="Original graphic from slide 33"}
+![](../assets/descriptive-statistics/slide-33-graphic-02.png){width="56%" fig-alt="Original graphic from slide 33"}
 
 #### R equivalent (added)
 
@@ -649,7 +651,7 @@ plot(students$height, students$weight, pch = 16, col = "#356B8C",
 
 ### Relations between Two Variables {#source-title-34}
 
-![](assets/descriptive-statistics/slide-34-graphic-01.png){width="100%" fig-alt="Original graphic from slide 34"}
+![](../assets/descriptive-statistics/slide-34-graphic-01.png){width="100%" fig-alt="Original graphic from slide 34"}
 
 :::
 
@@ -719,11 +721,11 @@ plot(students$height, students$weight, pch = 16, col = "#356B8C",
 
 ### The Median {#source-title-39}
 
-![](assets/descriptive-statistics/slide-39-graphic-01.png){width="84%" fig-alt="Original graphic from slide 39"}
+![](../assets/descriptive-statistics/slide-39-graphic-01.png){width="84%" fig-alt="Original graphic from slide 39"}
 
-![](assets/descriptive-statistics/slide-39-graphic-02.png){width="30%" fig-alt="Original graphic from slide 39"}
+![](../assets/descriptive-statistics/slide-39-graphic-02.png){width="30%" fig-alt="Original graphic from slide 39"}
 
-![](assets/descriptive-statistics/slide-39-graphic-03.png){width="44%" fig-alt="Original graphic from slide 39"}
+![](../assets/descriptive-statistics/slide-39-graphic-03.png){width="44%" fig-alt="Original graphic from slide 39"}
 
 :::
 
@@ -733,7 +735,7 @@ plot(students$height, students$weight, pch = 16, col = "#356B8C",
 
 ### The Mode {#source-title-40}
 
-![](assets/descriptive-statistics/slide-40-graphic-01.png){width="97%" fig-alt="Original graphic from slide 40"}
+![](../assets/descriptive-statistics/slide-40-graphic-01.png){width="97%" fig-alt="Original graphic from slide 40"}
 
 :::
 
@@ -743,7 +745,7 @@ plot(students$height, students$weight, pch = 16, col = "#356B8C",
 
 ### Excel Functions for Measuring Central Location {#source-title-41}
 
-![](assets/descriptive-statistics/slide-41-graphic-02.png){width="63%" fig-alt="Original graphic from slide 41"}
+![](../assets/descriptive-statistics/slide-41-graphic-02.png){width="63%" fig-alt="Original graphic from slide 41"}
 
 :::
 
@@ -762,7 +764,7 @@ plot(students$height, students$weight, pch = 16, col = "#356B8C",
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-42-graphic-02.png){width="43%" fig-alt="Original graphic from slide 42"}
+![](../assets/descriptive-statistics/slide-42-graphic-02.png){width="43%" fig-alt="Original graphic from slide 42"}
 
 #### R equivalent (added)
 
@@ -855,9 +857,9 @@ names(age_counts)[age_counts == max(age_counts)]
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-46-graphic-02.png){width="70%" fig-alt="Original graphic from slide 46"}
+![](../assets/descriptive-statistics/slide-46-graphic-02.png){width="70%" fig-alt="Original graphic from slide 46"}
 
-![](assets/descriptive-statistics/slide-46-graphic-03.png){width="32%" fig-alt="Original graphic from slide 46"}
+![](../assets/descriptive-statistics/slide-46-graphic-03.png){width="32%" fig-alt="Original graphic from slide 46"}
 
 :::
 
@@ -867,7 +869,7 @@ names(age_counts)[age_counts == max(age_counts)]
 
 ### Measures of Dispersion - The Variance and the Standard Deviation {#source-title-47}
 
-![](assets/descriptive-statistics/slide-47-graphic-01.png){width="34%" fig-alt="Original graphic from slide 47"}
+![](../assets/descriptive-statistics/slide-47-graphic-01.png){width="34%" fig-alt="Original graphic from slide 47"}
 
 ```{=html}
 <div class="source-text">
@@ -884,7 +886,7 @@ names(age_counts)[age_counts == max(age_counts)]
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-47-graphic-04.png){width="32%" fig-alt="Original graphic from slide 47"}
+![](../assets/descriptive-statistics/slide-47-graphic-04.png){width="32%" fig-alt="Original graphic from slide 47"}
 
 :::
 
@@ -894,7 +896,7 @@ names(age_counts)[age_counts == max(age_counts)]
 
 ### Measures of Dispersion - The Variance and the Standard Deviation {#source-title-48}
 
-{{< include content/diagrams/48-variance-standard-deviation.qmd >}}
+{{< include _includes/diagrams/48-variance-standard-deviation.qmd >}}
 
 :::
 
@@ -904,7 +906,7 @@ names(age_counts)[age_counts == max(age_counts)]
 
 ### Excel Functions for Measuring Dispersion {#source-title-49}
 
-![](assets/descriptive-statistics/slide-49-graphic-02.png){width="67%" fig-alt="Original graphic from slide 49"}
+![](../assets/descriptive-statistics/slide-49-graphic-02.png){width="67%" fig-alt="Original graphic from slide 49"}
 
 :::
 
@@ -921,7 +923,7 @@ names(age_counts)[age_counts == max(age_counts)]
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-50-graphic-02.png){width="43%" fig-alt="Original graphic from slide 50"}
+![](../assets/descriptive-statistics/slide-50-graphic-02.png){width="43%" fig-alt="Original graphic from slide 50"}
 
 #### R equivalent (added)
 
@@ -948,7 +950,7 @@ c(range = diff(range(age)), mean_absolute_deviation = mean(abs(age - mean(age)))
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-51-graphic-02.png){width="56%" fig-alt="Original graphic from slide 51"}
+![](../assets/descriptive-statistics/slide-51-graphic-02.png){width="56%" fig-alt="Original graphic from slide 51"}
 
 :::
 
@@ -994,7 +996,7 @@ c(range = diff(range(age)), mean_absolute_deviation = mean(abs(age - mean(age)))
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-54-graphic-02.png){width="19%" fig-alt="Original graphic from slide 54"}
+![](../assets/descriptive-statistics/slide-54-graphic-02.png){width="19%" fig-alt="Original graphic from slide 54"}
 
 :::
 
@@ -1042,7 +1044,7 @@ c(DS1 = sd(DS1) / mean(DS1), DS2 = sd(DS2) / mean(DS2))
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-56-graphic-02.png){width="29%" fig-alt="Original graphic from slide 56"}
+![](../assets/descriptive-statistics/slide-56-graphic-02.png){width="29%" fig-alt="Original graphic from slide 56"}
 
 :::
 
@@ -1074,7 +1076,7 @@ c(DS1 = sd(DS1) / mean(DS1), DS2 = sd(DS2) / mean(DS2))
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-58-graphic-02.png){width="37%" fig-alt="Original graphic from slide 58"}
+![](../assets/descriptive-statistics/slide-58-graphic-02.png){width="37%" fig-alt="Original graphic from slide 58"}
 
 ```{=html}
 <div class="source-text">
@@ -1097,7 +1099,7 @@ c(DS1 = sd(DS1) / mean(DS1), DS2 = sd(DS2) / mean(DS2))
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-59-graphic-02.png){width="37%" fig-alt="Original graphic from slide 59"}
+![](../assets/descriptive-statistics/slide-59-graphic-02.png){width="37%" fig-alt="Original graphic from slide 59"}
 
 ```{=html}
 <div class="source-text">
@@ -1107,11 +1109,11 @@ c(DS1 = sd(DS1) / mean(DS1), DS2 = sd(DS2) / mean(DS2))
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-59-graphic-04.png){width="18%" fig-alt="Original graphic from slide 59"}
+![](../assets/descriptive-statistics/slide-59-graphic-04.png){width="18%" fig-alt="Original graphic from slide 59"}
 
-![](assets/descriptive-statistics/slide-59-graphic-05.png){width="18%" fig-alt="Original graphic from slide 59"}
+![](../assets/descriptive-statistics/slide-59-graphic-05.png){width="18%" fig-alt="Original graphic from slide 59"}
 
-![](assets/descriptive-statistics/slide-59-graphic-06.png){width="18%" fig-alt="Original graphic from slide 59"}
+![](../assets/descriptive-statistics/slide-59-graphic-06.png){width="18%" fig-alt="Original graphic from slide 59"}
 
 :::
 
@@ -1148,7 +1150,7 @@ c(DS1 = sd(DS1) / mean(DS1), DS2 = sd(DS2) / mean(DS2))
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-61-graphic-02.png){width="18%" fig-alt="Original graphic from slide 61"}
+![](../assets/descriptive-statistics/slide-61-graphic-02.png){width="18%" fig-alt="Original graphic from slide 61"}
 
 ```{=html}
 <div class="source-text">
@@ -1156,11 +1158,11 @@ c(DS1 = sd(DS1) / mean(DS1), DS2 = sd(DS2) / mean(DS2))
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-61-graphic-04.png){width="46%" fig-alt="Original graphic from slide 61"}
+![](../assets/descriptive-statistics/slide-61-graphic-04.png){width="46%" fig-alt="Original graphic from slide 61"}
 
-![](assets/descriptive-statistics/slide-61-graphic-05.png){width="48%" fig-alt="Original graphic from slide 61"}
+![](../assets/descriptive-statistics/slide-61-graphic-05.png){width="48%" fig-alt="Original graphic from slide 61"}
 
-![](assets/descriptive-statistics/slide-61-graphic-06.png){width="18%" fig-alt="Original graphic from slide 61"}
+![](../assets/descriptive-statistics/slide-61-graphic-06.png){width="18%" fig-alt="Original graphic from slide 61"}
 
 :::
 
@@ -1190,7 +1192,7 @@ c(DS1 = sd(DS1) / mean(DS1), DS2 = sd(DS2) / mean(DS2))
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-63-graphic-02.png){width="100%" fig-alt="Original graphic from slide 63"}
+![](../assets/descriptive-statistics/slide-63-graphic-02.png){width="100%" fig-alt="Original graphic from slide 63"}
 
 #### R equivalent (added)
 
@@ -1218,7 +1220,7 @@ cor(students$height, students$age, use = "complete.obs")
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-64-graphic-02.png){width="100%" fig-alt="Original graphic from slide 64"}
+![](../assets/descriptive-statistics/slide-64-graphic-02.png){width="100%" fig-alt="Original graphic from slide 64"}
 
 :::
 
@@ -1242,7 +1244,7 @@ cor(students$height, students$age, use = "complete.obs")
 
 ### Skewness {#source-title-66}
 
-![](assets/descriptive-statistics/slide-66-graphic-01.png){width="50%" fig-alt="Original graphic from slide 66"}
+![](../assets/descriptive-statistics/slide-66-graphic-01.png){width="50%" fig-alt="Original graphic from slide 66"}
 
 ```{=html}
 <div class="source-text">
@@ -1255,7 +1257,7 @@ cor(students$height, students$age, use = "complete.obs")
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-66-graphic-03.png){width="49%" fig-alt="Original graphic from slide 66"}
+![](../assets/descriptive-statistics/slide-66-graphic-03.png){width="49%" fig-alt="Original graphic from slide 66"}
 
 :::
 
@@ -1272,9 +1274,9 @@ cor(students$height, students$age, use = "complete.obs")
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-67-graphic-02.png){width="39%" fig-alt="Original graphic from slide 67"}
+![](../assets/descriptive-statistics/slide-67-graphic-02.png){width="39%" fig-alt="Original graphic from slide 67"}
 
-![](assets/descriptive-statistics/slide-67-graphic-03.png){width="64%" fig-alt="Original graphic from slide 67"}
+![](../assets/descriptive-statistics/slide-67-graphic-03.png){width="64%" fig-alt="Original graphic from slide 67"}
 
 ```{=html}
 <div class="source-text">
@@ -1300,7 +1302,7 @@ cor(students$height, students$age, use = "complete.obs")
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-68-graphic-02.png){width="51%" fig-alt="Original graphic from slide 68"}
+![](../assets/descriptive-statistics/slide-68-graphic-02.png){width="51%" fig-alt="Original graphic from slide 68"}
 
 #### R equivalent (added)
 
@@ -1327,7 +1329,7 @@ n / ((n - 1) * (n - 2)) * sum(((age - mean(age)) / sd(age))^3)
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-69-graphic-02.png){width="56%" fig-alt="Original graphic from slide 69"}
+![](../assets/descriptive-statistics/slide-69-graphic-02.png){width="56%" fig-alt="Original graphic from slide 69"}
 
 :::
 
@@ -1345,7 +1347,7 @@ n / ((n - 1) * (n - 2)) * sum(((age - mean(age)) / sd(age))^3)
 
 ### Percentiles {#source-title-71}
 
-![](assets/descriptive-statistics/slide-71-graphic-01.png){width="50%" fig-alt="Original graphic from slide 71"}
+![](../assets/descriptive-statistics/slide-71-graphic-01.png){width="50%" fig-alt="Original graphic from slide 71"}
 
 ```{=html}
 <div class="source-text">
@@ -1372,9 +1374,9 @@ n / ((n - 1) * (n - 2)) * sum(((age - mean(age)) / sd(age))^3)
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-72-graphic-02.png){width="43%" fig-alt="Original graphic from slide 72"}
+![](../assets/descriptive-statistics/slide-72-graphic-02.png){width="43%" fig-alt="Original graphic from slide 72"}
 
-![](assets/descriptive-statistics/slide-72-graphic-03.png){width="69%" fig-alt="Original graphic from slide 72"}
+![](../assets/descriptive-statistics/slide-72-graphic-03.png){width="69%" fig-alt="Original graphic from slide 72"}
 
 #### R equivalent (added)
 
@@ -1400,7 +1402,7 @@ quantile(students$height, probs = 0.90, type = 6)
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-73-graphic-02.png){width="73%" fig-alt="Original graphic from slide 73"}
+![](../assets/descriptive-statistics/slide-73-graphic-02.png){width="73%" fig-alt="Original graphic from slide 73"}
 
 :::
 
@@ -1417,9 +1419,9 @@ quantile(students$height, probs = 0.90, type = 6)
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-74-graphic-02.png){width="67%" fig-alt="Original graphic from slide 74"}
+![](../assets/descriptive-statistics/slide-74-graphic-02.png){width="67%" fig-alt="Original graphic from slide 74"}
 
-![](assets/descriptive-statistics/slide-74-graphic-03.png){width="43%" fig-alt="Original graphic from slide 74"}
+![](../assets/descriptive-statistics/slide-74-graphic-03.png){width="43%" fig-alt="Original graphic from slide 74"}
 
 #### R equivalent (added)
 
@@ -1447,7 +1449,7 @@ quantile(students$height, probs = c(0.25, 0.50), type = 6)
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-75-graphic-02.png){width="79%" fig-alt="Original graphic from slide 75"}
+![](../assets/descriptive-statistics/slide-75-graphic-02.png){width="79%" fig-alt="Original graphic from slide 75"}
 
 :::
 
@@ -1465,7 +1467,7 @@ quantile(students$height, probs = c(0.25, 0.50), type = 6)
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-76-graphic-02.png){width="49%" fig-alt="Original graphic from slide 76"}
+![](../assets/descriptive-statistics/slide-76-graphic-02.png){width="49%" fig-alt="Original graphic from slide 76"}
 
 #### R equivalent (added)
 
@@ -1494,11 +1496,11 @@ boxplot(height ~ country, data = males, ylab = "Height (cm)", col = "#E9DDE7")
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-77-graphic-02.png){width="43%" fig-alt="Original graphic from slide 77"}
+![](../assets/descriptive-statistics/slide-77-graphic-02.png){width="43%" fig-alt="Original graphic from slide 77"}
 
-![](assets/descriptive-statistics/slide-77-graphic-03.png){width="38%" fig-alt="Original graphic from slide 77"}
+![](../assets/descriptive-statistics/slide-77-graphic-03.png){width="38%" fig-alt="Original graphic from slide 77"}
 
-![](assets/descriptive-statistics/slide-77-graphic-04.png){width="28%" fig-alt="Original graphic from slide 77"}
+![](../assets/descriptive-statistics/slide-77-graphic-04.png){width="28%" fig-alt="Original graphic from slide 77"}
 
 :::
 
@@ -1537,7 +1539,7 @@ boxplot(height ~ country, data = males, ylab = "Height (cm)", col = "#E9DDE7")
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-79-graphic-02.png){width="84%" fig-alt="Original graphic from slide 79"}
+![](../assets/descriptive-statistics/slide-79-graphic-02.png){width="84%" fig-alt="Original graphic from slide 79"}
 
 #### R equivalent (added)
 
@@ -1591,7 +1593,7 @@ sum(students$age < lower | students$age > upper)
 
 ### Methods to screen for outliers in a dataset {#source-title-82}
 
-![](assets/descriptive-statistics/slide-82-graphic-01.png){width="50%" fig-alt="Original graphic from slide 82"}
+![](../assets/descriptive-statistics/slide-82-graphic-01.png){width="50%" fig-alt="Original graphic from slide 82"}
 
 ```{=html}
 <div class="source-text">
@@ -1608,7 +1610,7 @@ sum(students$age < lower | students$age > upper)
 
 ### Methods to screen for outliers in a dataset {#source-title-83}
 
-![](assets/descriptive-statistics/slide-83-graphic-01.png){width="41%" fig-alt="Original graphic from slide 83"}
+![](../assets/descriptive-statistics/slide-83-graphic-01.png){width="41%" fig-alt="Original graphic from slide 83"}
 
 ```{=html}
 <div class="source-text">
@@ -1648,7 +1650,7 @@ sum(students$age < lower | students$age > upper)
 </div>
 ```
 
-![](assets/descriptive-statistics/slide-85-graphic-02.png){width="45%" fig-alt="Original graphic from slide 85"}
+![](../assets/descriptive-statistics/slide-85-graphic-02.png){width="45%" fig-alt="Original graphic from slide 85"}
 
 :::
 
@@ -1715,7 +1717,7 @@ sum(students$age < lower | students$age > upper)
 
 ### Practice Datasets {#source-title-88}
 
-![](assets/descriptive-statistics/slide-88-graphic-01.png){width="21%" fig-alt="Original graphic from slide 88"}
+![](../assets/descriptive-statistics/slide-88-graphic-01.png){width="21%" fig-alt="Original graphic from slide 88"}
 
 ```{=html}
 <div class="source-text">

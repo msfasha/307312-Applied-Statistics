@@ -4,11 +4,11 @@ Students use https://msfasha.github.io/307312-Applied-Statistics/.
 The home page must offer three lessons, a PDF for **each** lesson, a complete
 student RStudio project ZIP, and an all-PDF ZIP.
 
-The three active notebooks sit together at the project root:
+The three active notebooks sit together under `lessons/`:
 
-1. `01-introduction-to-r.qmd`
-2. `02-descriptive-statistics.qmd`
-3. `03-inferential-statistics.qmd`
+1. `lessons/01-introduction-to-r.qmd`
+2. `lessons/02-descriptive-statistics.qmd`
+3. `lessons/03-inferential-statistics.qmd`
 
 ## Build and publish
 
@@ -47,7 +47,7 @@ from the maintainer workspace.
 ## Source and student website
 
 `main` is the maintainer workspace, with support scripts and historical sources.
-`gh-pages` contains only the generated active student website from `_preview/`.
+`gh-pages` contains only the generated active student website from `_build/website/`.
 Books and local reference documents remain ignored. Never copy instructor files,
 archives, publisher books, raw measurement workbooks, caches, or logs to the site.
 
@@ -56,3 +56,7 @@ page, all three lessons, all three PDF downloads, both ZIPs, and the source comm
 in `deployment.json`. Check PDF text and sample rendered pages, and confirm that
 executable R results appear. The publisher preserves branch history and never
 force pushes. The existing user authorization covers this course publication.
+
+Rendered lesson pages live under `lessons/` on the website. Root-level legacy
+lesson URLs redirect to those pages. Draft practicals are built separately under
+`_build/practicals/` and must not enter the publication or student ZIP.

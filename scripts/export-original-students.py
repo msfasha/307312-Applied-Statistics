@@ -9,7 +9,7 @@ rows=iter(wb['students'].values); header=next(rows)
 columns=['gender','age','height','weight','country','major']
 indexes=[header.index(c) for c in columns]
 values=[[row[i] for i in indexes] for row in rows if any(v is not None for v in row)]
-out=ROOT/'data/307102';out.mkdir(exist_ok=True)
+out=ROOT/'data/descriptive-statistics';out.mkdir(exist_ok=True)
 with (out/'students.csv').open('w',newline='') as f:
  w=csv.writer(f);w.writerow(columns);w.writerows(values)
 with (out/'students.csv').open() as f:

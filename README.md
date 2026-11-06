@@ -1,54 +1,64 @@
 # 307312 Applied Statistics — Masters Level
 
-**Students: [open the course website](https://msfasha.github.io/307312-Applied-Statistics/).**
-Read the lessons online or download each part as PDF, all PDFs together, or the
-student RStudio project from the home page.
+Students: [open the course website](https://msfasha.github.io/307312-Applied-Statistics/).
+For a compact working copy, download the student RStudio project from that website.
 
-## The active course: three notebooks
+## Start here
 
-| Part | Editable source | Content |
-|---|---|---|
-| 1 | `01-introduction-to-r.qmd` | Essential R, dplyr, and ggplot2 |
-| 2 | `02-descriptive-statistics.qmd` | Descriptive statistics, original slides plus R equivalents |
-| 3 | `03-inferential-statistics.qmd` | Probability, estimation, tests, and regression plus R equivalents |
+Open `Applied-Statistics.Rproj` in RStudio. The three teaching notebooks are in
+**lessons/**, in teaching order. **practicals/** contains the separate CEREALS
+pilot, which has not yet been adopted into the published course.
 
-All three sit together at the root. There is no separate active module folder.
-Open `Applied-Statistics.Rproj` in RStudio to edit or execute the notebooks.
-The website and PDFs show executed results; use RStudio to run or change code.
-
-## What the other files are for
-
-This GitHub repository is the **maintainer workspace**. For a compact student
-folder, use the **student RStudio project download** on the course website.
-
-| Item | Purpose |
+| Folder | What belongs here |
 |---|---|
-| `index.qmd` | Student home page and downloads |
-| `assets/`, `content/`, `data/` | Styling, diagrams, pictures, and teaching CSVs required by the lessons |
-| `scripts/` | Reproducible conversion, PDF export, packaging, and publication |
-| `slides/` | Unchanged original reference decks; not assigned separately |
-| `_instructor/` | Conversion audits and source issues; excluded from student downloads |
-| `archived/` | Retired course and expanded R notes; excluded from student downloads |
-| `_quarto.yml` | Website configuration |
-| `PUBLISHING.md` | Required build, PDF, packaging, and live verification instructions |
-| `AGENTS.md` | Course development instructions |
+| **lessons/** | The three active lessons; `_includes/` holds their shared diagrams and survey section |
+| **practicals/** | Draft practical R activities, starting with CEREALS |
+| **data/** | CSVs and data guides; grouped as descriptive-statistics, inferential-statistics, and practicals |
+| **assets/** | Images and shared Petra styling used by the lessons |
+| **sources/slides/** | Untouched original PPTX/PDF reference decks, with a guide to their contents |
+| **instructor/** | Source reviews, conversion audits, teaching notes and practical answers |
+| **books/** | Local textbook/reference collection; never published |
+| **archived/** | Retired material; excluded from the active course |
+| **scripts/** | Conversion, preview, packaging and publication tools |
+| **_build/** | Generated output: `website/`, `practicals/`, and conversion `cache/`; not editable course sources |
 
-Instructor and archived files on this public source branch are publicly visible
-on GitHub, although excluded from the student website and packages.
+The root contains only the course home page (`index.qmd`), RStudio/Quarto
+configuration, project instructions, licence and this guide. All dataset files
+belong under **data/**; there are no root-level dataset files.
 
-## Building and maintaining
+## Lessons
 
-Run `quarto render` to build the HTML lessons in `_preview/`. Quarto and R with
-knitr/rmarkdown, dplyr, ggplot2, and MASS are required. See `PUBLISHING.md` to
-create the PDFs and downloads and publish the website.
+1. `lessons/01-introduction-to-r.qmd` — essential R, dplyr and ggplot2.
+2. `lessons/02-descriptive-statistics.qmd` — descriptive statistics.
+3. `lessons/03-inferential-statistics.qmd` — probability, estimation, tests and regression.
 
-The condensed Part 1 replaces the expanded notes retained in
-`archived/2026-11-01-r-introduction-expanded/`. The former full course is retained
-in `archived/2026-11-01-retired-course/`. Books and local documents stay ignored.
+Data import cells locate the shared **course-level `data/`** folder whether R is working from the course root or from the notebook folder. Keep the complete
+folder structure when moving or downloading the project.
 
-Parts 2 and 3 preserve original slide text and images, apart from authorized
-course identity updates and five standardized diagrams. Clearly labeled R
-examples supplement the original examples. Source errors are recorded separately
-under `_instructor/`; preserving the text does not validate every original claim.
-The converters and their R-example files under `scripts/` reproduce the lessons.
-The CSV dictionaries and provenance records are under `data/`.
+## Local previews
+
+Run `quarto render` from the project root for the course website. Output is
+`_build/website/index.html`. Quarto and R with knitr, rmarkdown, dplyr, ggplot2 and
+MASS are required. On this workstation Quarto is also bundled with RStudio.
+
+For the standalone pilot, run `python3 scripts/preview-cereals-pilot.py`.
+Its output is `_build/practicals/practical-01-cereals.html`; its editable source
+stays in `practicals/`. This preview is separate from the published course.
+
+See [PUBLISHING.md](PUBLISHING.md) for the required PDF/ZIP builds and publication.
+A local render does not publish anything.
+
+## Historical material and source accuracy
+
+The original 307102 slides are provenance for the current 307312 course, not a
+second active course. Original slide text and images are preserved except for
+previously authorized identity and diagram changes. Source issues are documented
+in `instructor/`; preservation does not validate every source claim.
+
+`archived/2026-11-01-retired-course/` holds the previous course;
+`archived/2026-11-01-r-introduction-expanded/` holds the expanded R lessons.
+`archived/2026-11-04-unused-support/` holds unused textbook CSVs and old R images
+removed from the active folders during reorganization. Nothing there is adopted
+automatically. Original publisher files and original student measurements remain
+local-only. Instructor notes tracked on a public source branch are publicly
+visible there even though excluded from the student website and ZIPs.

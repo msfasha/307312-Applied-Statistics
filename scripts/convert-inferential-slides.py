@@ -11,7 +11,7 @@ DEST=ROOT/'assets/inferential-statistics';DEST.mkdir(exist_ok=True)
 DATA=ROOT/'data/inferential-statistics';DATA.mkdir(exist_ok=True)
 for p in DEST.glob('part-*-graphic-*.png'):p.unlink()
 examples=json.loads((ROOT/'scripts/inferential-r-examples.json').read_text())
-manifest=json.loads((ROOT/'slides/inferential-source-provenance.json').read_text())
+manifest=json.loads((ROOT/'sources/slides/inferential-source-provenance.json').read_text())
 titles=['Introduction to Probability Distributions','Introduction to Estimation in Statistics','Introduction to Hypothesis Testing','Introduction to Linear Regression']
 q=['''---
 title: "Part 3: Inferential Statistics"
@@ -39,6 +39,12 @@ execute:
 <div class="original-branding"><img src="assets/descriptive-statistics/original-branding.png" alt="Institute of Analytics and University of Petra" width="230"></div>
 
 ''']
+
+def lesson_markup(s):
+    return (s.replace('src="assets/', 'src="../assets/').replace('![](assets/', '![](../assets/')
+            .replace('](pdf/', '](../pdf/').replace('](data/', '](../data/')
+            .replace('include lessons/_includes/', 'include _includes/'))
+
 audit=[];table_records={};csv_provenance=[]
 def bounds(e):
     nodes=e.findall('.//p:spPr/a:xfrm',NS)+e.findall('.//p:xfrm',NS)+e.findall('.//p:grpSpPr/a:xfrm',NS)
@@ -53,9 +59,9 @@ def bounds(e):
     x=min(b[0] for b in boxes);y=min(b[1] for b in boxes)
     return x,y,max(b[0]+b[2] for b in boxes)-x,max(b[1]+b[3] for b in boxes)-y
 for m in manifest:
-    k=m['part'];ppt=ROOT/'slides'/(m['copy']+'.pptx');pdf=ppt.with_suffix('.pdf')
+    k=m['part'];ppt=ROOT/'sources/slides'/(m['copy']+'.pptx');pdf=ppt.with_suffix('.pdf')
     m['sha256']=hashlib.sha256(ppt.read_bytes()).hexdigest()
-    render_dir=ROOT/'_instructor/.inferential-render-cache/fresh-pdf'
+    render_dir=ROOT/'_build/cache/inferential-slides/fresh-pdf'
     render_dir.mkdir(parents=True,exist_ok=True)
     pdf=render_dir/(m['copy']+'.pdf')
     marker=pdf.with_suffix('.source-sha256')
@@ -64,7 +70,7 @@ for m in manifest:
                         '--headless','--convert-to','pdf','--outdir',str(render_dir),str(ppt)],check=True)
         marker.write_text(m['sha256'])
     m['graphic_source']='Embedded pictures extracted directly; other figures use a fresh LibreOffice render. Historical companion PDF is not used.'
-    cache=ROOT/f'_instructor/.inferential-render-cache/{k}';cache.mkdir(parents=True,exist_ok=True)
+    cache=ROOT/f'_build/cache/inferential-slides/{k}';cache.mkdir(parents=True,exist_ok=True)
     fingerprint=hashlib.sha256(pdf.read_bytes()).hexdigest()
     if not (cache/'sha256').exists() or (cache/'sha256').read_text()!=fingerprint:
         subprocess.run(['pdftoppm','-scale-to','1600','-png',str(pdf),str(cache/'slide')],check=True)
@@ -161,7 +167,7 @@ for key,index,start,name,header in exports:
         writer=csv.writer(f);writer.writerow(header);writer.writerows(clean)
     with (DATA/name).open() as f:assert list(csv.reader(f))[1:]==clean
     csv_provenance.append({'file':name,'source_part_slide':key,'table_index':index,'rows':len(rows),'columns':header,'transformations':'Header labels simplified; dollar symbols and thousands separators removed. Row order and numeric precision retained. Salary currency conflict retained for instructor review.'})
-(ROOT/'03-inferential-statistics.qmd').write_text(''.join(q))
+(ROOT/'lessons/03-inferential-statistics.qmd').write_text(lesson_markup(''.join(q)))
 (DATA/'provenance.json').write_text(json.dumps(csv_provenance,indent=2)+'\n')
-(ROOT/'_instructor/inferential-conversion-audit.json').write_text(json.dumps({'sources':manifest,'slides':audit},indent=2)+'\n')
+(ROOT/'instructor/inferential-conversion-audit.json').write_text(json.dumps({'sources':manifest,'slides':audit},indent=2)+'\n')
 print(f'Converted {len(audit)} source slides, {sum(x.get("graphics",0) for x in audit)} graphics, {len(examples)} executable R cells; exported six checked CSVs.')

@@ -1,0 +1,29 @@
+{
+  "dataset": "CEREALS",
+  "source_file": "/run/user/1000/gvfs/smb-share:server=192.168.1.11,share=onedrive/Book Library/0-Statistics/0-Business Statistics/1-Basic business statistics  concepts and applications-mine-With Data/Data-9th e/browse/Data_Files/Excel/CEREALS.xls",
+  "source_sha256": "3a0d2642c1b925d8a49fa1786013decd28cd1cb80f54e287a6c5a26758f5067e",
+  "source_sheet": "Data",
+  "rows": 33,
+  "field_mapping": {
+    "Product": "product",
+    "Cost (per ounce)": "cost_per_ounce",
+    "Calories": "calories",
+    "Fiber (grams)": "fiber_g",
+    "Sugar (grams)": "sugar_g"
+  },
+  "transformations": [
+    "Renamed five column headers for R use.",
+    "Preserved all 33 source rows, product labels and numerical values in source order.",
+    "No filtering, imputation, currency conversion or inflation adjustment."
+  ],
+  "verification": "Reopened CSV and compared every product label and numerical value against the source worksheet.",
+  "book_reference": "Berenson, Levine and Krehbiel, Basic Business Statistics: Concepts and Applications, ninth edition, exercise 3.68, pp. 127\u2013128.",
+  "underlying_attribution": "Book credits Consumers Union of U.S., Inc.; Consumer Reports, October 1999, pp. 33\u201334. Attribution taken from book, not independently verified against the magazine.",
+  "limitations": [
+    "Historical product observations; not current prices or a random sample of all cereals.",
+    "Cost is dollars per ounce as reported; no unsupported ISO currency code assigned.",
+    "Nutrition columns do not establish a common serving mass.",
+    "Labels and measurements are source records, not newly collected or simulated values."
+  ],
+  "csv_sha256": "4cec6dfc543e5b5f03edaac50bcdcf0e9e859364d88f9e86229fd600ca6589b8"
+}

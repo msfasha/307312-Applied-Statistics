@@ -11,7 +11,7 @@ import html, re, json, subprocess, tempfile, hashlib
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
-PPT = ROOT/'slides/307102-descriptive-statistics-original.pptx'
+PPT = ROOT/'sources/slides/307102-descriptive-statistics-original.pptx'
 PDF = PPT.with_suffix('.pdf')
 DEST = ROOT/'assets/descriptive-statistics'
 DEST.mkdir(parents=True, exist_ok=True)
@@ -47,14 +47,20 @@ overrides = {
     12: '12-scales-comparison.qmd',
     48: '48-variance-standard-deviation.qmd',
 }
+
+def lesson_markup(s):
+    return (s.replace('src="assets/', 'src="../assets/').replace('![](assets/', '![](../assets/')
+            .replace('](pdf/', '](../pdf/').replace('](data/', '](../data/')
+            .replace('include lessons/_includes/', 'include _includes/'))
+
 audit=[]
 examples=json.loads((ROOT/'scripts/descriptive-r-examples.json').read_text())
 with ZipFile(PPT) as z, tempfile.TemporaryDirectory() as temp:
     pres=ET.fromstring(z.read('ppt/presentation.xml'))
     size=pres.find('p:sldSz',NS); sw=int(size.get('cx')); sh=int(size.get('cy'))
-    cache=ROOT/'_instructor/.slide-render-cache'
+    cache=ROOT/'_build/cache/descriptive-slides'
     fingerprint=hashlib.sha256(PDF.read_bytes()).hexdigest()
-    cache.mkdir(exist_ok=True)
+    cache.mkdir(parents=True, exist_ok=True)
     if not (cache/'sha256').exists() or (cache/'sha256').read_text()!=fingerprint:
         subprocess.run(['pdftoppm','-scale-to','1600','-png',str(PDF),str(cache/'slide')],check=True)
         (cache/'sha256').write_text(fingerprint)
@@ -102,7 +108,7 @@ with ZipFile(PPT) as z, tempfile.TemporaryDirectory() as temp:
                 q.append('```{=html}\n<div class="source-table"><table>'+''.join(rows)+'</table></div>\n```\n\n')
             elif kind in ['pic','graphicFrame'] or (kind=='sp' and e.find('.//a:blip',NS) is not None):
                 if i in overrides:
-                    q.append('{{< include content/diagrams/' + overrides[i] + ' >}}\n\n')
+                    q.append('{{< include lessons/_includes/diagrams/' + overrides[i] + ' >}}\n\n')
                     continue
                 x,y,w,h=rect(e)
                 if w<=0 or h<=0: continue
@@ -121,10 +127,10 @@ with ZipFile(PPT) as z, tempfile.TemporaryDirectory() as temp:
         if i == 12:
             # Keep the authorized collection/survey supplement after measurement
             # levels and before the original descriptive tools, on every rebuild.
-            q.append('{{< include content/data-collection-and-surveys.qmd >}}\n\n')
+            q.append('{{< include lessons/_includes/data-collection-and-surveys.qmd >}}\n\n')
         source=[t.text or '' for t in tree.findall('.//a:t',NS)]
         assert sorted(t for t in source if t.strip())==sorted(t for t in native if t.strip()), f'Unpreserved native text on slide {i}'
         audit.append({'slide':i,'title':titletext,'text_runs':len(source),'graphics':imagecount,'all_native_text_preserved': i != 1, 'authorized_changes': ('Course identity updated to 307312 Applied Statistics — Masters Level' if i == 1 else ('Diagram rebuilt in standard Petra theme' if i in overrides else None))})
-(ROOT/'02-descriptive-statistics.qmd').write_text(''.join(q),encoding='utf-8')
-(ROOT/'_instructor/descriptive-conversion-audit.json').write_text(json.dumps({'source_sha256':hashlib.sha256(PPT.read_bytes()).hexdigest(),'slides':audit},indent=2),encoding='utf-8')
+(ROOT/'lessons/02-descriptive-statistics.qmd').write_text(lesson_markup(''.join(q)),encoding='utf-8')
+(ROOT/'instructor/descriptive-conversion-audit.json').write_text(json.dumps({'source_sha256':hashlib.sha256(PPT.read_bytes()).hexdigest(),'slides':audit},indent=2),encoding='utf-8')
 print(f'Converted {len(audit)} slides; {sum(x["text_runs"] for x in audit)} native text runs preserved; {sum(x["graphics"] for x in audit)} graphics.')

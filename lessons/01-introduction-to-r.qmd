@@ -18,9 +18,9 @@ execute:
   fig-height: 4.5
 ---
 
-[Download this part as PDF](pdf/01-introduction-to-r.pdf){.pdf-download}
+[Download this part as PDF](../pdf/01-introduction-to-r.pdf){.pdf-download}
 
-<div class="original-branding"><img src="assets/descriptive-statistics/original-branding.png" alt="Institute of Analytics and University of Petra" width="230"></div>
+<div class="original-branding"><img src="../assets/descriptive-statistics/original-branding.png" alt="Institute of Analytics and University of Petra" width="230"></div>
 
 R performs calculations and statistical analysis. **RStudio** is an interface for writing code, inspecting data, and viewing plots. **Quarto** combines explanations, executable code, and results in one document.
 
@@ -31,7 +31,7 @@ By the end of this notebook, you should be able to import a CSV, inspect its var
 ### Install and open the course project
 
 1. Install R and RStudio on your computer.
-2. Keep the notebook together with the course's `data/` and `assets/` folders.
+2. Keep the full course folder structure: notebooks in `lessons/`, with `data/` and `assets/` in the course root.
 3. Open `Applied-Statistics.Rproj` in RStudio. This makes the course folder the working directory.
 4. Open this `.qmd` file. Run individual code cells to explore, or choose **Render** to rebuild the complete lesson. Rendering also requires Quarto.
 
@@ -132,7 +132,7 @@ cm_to_m(c(160, 172, 168))
 
 We will use the same teaching CSV as Part 2. Each row represents one student record in the original 307102 teaching example. The selected columns are `gender`, `age`, `height`, `weight`, `country`, and `major`. Age is in **years**, height in **cm**, and weight in **kg**.
 
-The original collection provenance is not established; do not describe these as verified records of actual university students. The CSV retains the source values and omits names and identifiers. See the [data guide](data/307102/README.md).
+The original collection provenance is not established; do not describe these as verified records of actual university students. The CSV retains the source values and omits names and identifiers. See the [data guide](../data/descriptive-statistics/README.md).
 
 ### Read a CSV into a data frame
 
@@ -141,7 +141,9 @@ A **data frame** is a table: rows are observations, and columns are variables. C
 ```{r}
 # read.csv() reads column names from the first row; stringsAsFactors=FALSE keeps text columns as text.
 # The path is relative to the course project folder, not an absolute path on the instructor's computer.
-students <- read.csv("data/307102/students.csv", stringsAsFactors = FALSE)
+# Find the shared data folder from either the course root or this notebook folder.
+data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
+students <- read.csv(file.path(data_dir, "descriptive-statistics/students.csv"), stringsAsFactors = FALSE)
 ```
 
 ### Inspect before analyzing
@@ -340,4 +342,4 @@ Keep your code and results together. Check variable types, missing values, units
 - Use dplyr to select, filter, transform, count, and summarize.
 - Build ggplot2 charts from data, mappings, and geometry, with explicit units and labels.
 
-[Continue to Part 2: Descriptive Statistics](02-descriptive-statistics.qmd) · [Course home](index.qmd)
+[Continue to Part 2: Descriptive Statistics](02-descriptive-statistics.qmd) · [Course home](../index.qmd)

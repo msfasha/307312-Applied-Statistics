@@ -1,0 +1,13 @@
+# Independent draft project: RStudio Preview works without publishing the pilot.
+project:
+  type: default
+  output-dir: ../_build/practicals
+  execute-dir: file
+  post-render:
+    - python3 ../scripts/finalize-practical-preview.py
+  render:
+    - practical-01-cereals.qmd
+format:
+  html:
+    theme: cosmo
+    css: ../assets/petra-brand.css

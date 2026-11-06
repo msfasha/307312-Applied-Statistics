@@ -7,9 +7,9 @@ Study the three parts in order. Read online, or download the PDFs for offline re
 
 | Course part | Read online | Download |
 |---|---|---|
-| 1. Introduction to R | [Open lesson](01-introduction-to-r.qmd) | [PDF](pdf/01-introduction-to-r.pdf) |
-| 2. Descriptive Statistics | [Open lesson](02-descriptive-statistics.qmd) | [PDF](pdf/02-descriptive-statistics.pdf) |
-| 3. Inferential Statistics | [Open lesson](03-inferential-statistics.qmd) | [PDF](pdf/03-inferential-statistics.pdf) |
+| 1. Introduction to R | [Open lesson](lessons/01-introduction-to-r.qmd) | [PDF](pdf/01-introduction-to-r.pdf) |
+| 2. Descriptive Statistics | [Open lesson](lessons/02-descriptive-statistics.qmd) | [PDF](pdf/02-descriptive-statistics.pdf) |
+| 3. Inferential Statistics | [Open lesson](lessons/03-inferential-statistics.qmd) | [PDF](pdf/03-inferential-statistics.pdf) |
 
 ## Work with R or study offline
 

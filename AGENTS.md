@@ -5,7 +5,7 @@
 - The previous course is retired in full under `archived/2026-11-01-retired-course/`.
 - Build a fresh, simple PowerPoint-style course based on the user's original
   307102 Descriptive Statistics for Business slides.
-- `slides/307102-descriptive-statistics-original.pptx` and its PDF companion are
+- `sources/slides/307102-descriptive-statistics-original.pptx` and its PDF companion are
   unchanged reference copies from the neighboring 307102 course.
 - Preserve the original slides' teaching sequence and simple format as the basis
   for future work. Do not carry over the retired Quarto structure, textbook
@@ -24,15 +24,15 @@
 
 ## Accepted structure and conversion — 1 November 2026
 
-- Part 1: Introduction to R, `01-introduction-to-r.qmd`, condensed from the four expanded R lessons.
-- Part 2: Descriptive Statistics, `02-descriptive-statistics.qmd`.
-- Part 3: Inferential Statistics, `03-inferential-statistics.qmd`, authorized and developed from the four original 307102 inferential decks.
+- Part 1: Introduction to R, `lessons/01-introduction-to-r.qmd`, condensed from the four expanded R lessons.
+- Part 2: Descriptive Statistics, `lessons/02-descriptive-statistics.qmd`.
+- Part 3: Inferential Statistics, `lessons/03-inferential-statistics.qmd`, authorized and developed from the four original 307102 inferential decks.
 - Use Quarto with the shared Petra theme to give the lessons a slide-like sense.
 - Preserve the original slide text and images exactly; do not silently correct or rewrite them.
 - Convert existing code examples into executable Quarto cells. Original Excel instructions remain unchanged unless the user explicitly authorizes adaptation.
-- Record statistical source issues separately under `_instructor/`.
+- Record statistical source issues separately under `instructor/`.
 - `assets/petra-brand.css` is the active shared stylesheet; the archived copy is historical.
-- `_preview/` contains generated local previews, not a published website.
+- `_build/website/` contains generated local previews, not a published website.
 
 ## Course identity and diagrams — 1 November 2026
 
@@ -40,7 +40,7 @@
   identifier is source provenance only, not the current course title.
 - The user authorized replacing the inconsistent statistical process, data-types,
   measurement-level, scale-comparison, and variance/SD diagrams with a standard
-  Petra theme. Editable replacements live under `content/diagrams/`, with shared
+  Petra theme. Editable replacements live under `lessons/_includes/diagrams/`, with shared
   styles in `assets/source-slides.css`; the converter includes them reproducibly.
 - Preserve other original material and executable R cells. The untouched source
   PPTX/PDF remain the reference for the historical diagrams.
@@ -51,7 +51,7 @@
 - Keep their sequence: probability distributions, estimation, hypothesis testing, regression.
 - `scripts/convert-inferential-slides.py` reproducibly converts the source decks and exports selected native slide tables as CSV.
 - Added R equivalents are labeled; original Python listings are preserved as source examples.
-- Source errors and interpretation issues are documented separately in `_instructor/inferential-source-review.md`. Do not describe uncorrected source claims as validated.
+- Source errors and interpretation issues are documented separately in `instructor/inferential-source-review.md`. Do not describe uncorrected source claims as validated.
 
 ## Publication authorization — 1 November 2026
 
@@ -61,14 +61,43 @@
 
 ## Condensed Part 1 — 1 November 2026
 
-- The user authorized skimming and combining the R introduction into one root-level Quarto notebook beside Parts 2 and 3.
+- The user authorized skimming and combining the R introduction into one Quarto notebook beside Parts 2 and 3 in `lessons/`.
 - Retain setup, basic R objects/data frames/missing values, essential dplyr, and introductory ggplot2.
 - Use the same original student CSV as Part 2 for continuity.
 - The expanded R lessons and exercises are preserved under `archived/2026-11-01-r-introduction-expanded/`; do not render or navigate to them in the active course.
 
 ## Required student downloads
 
-- Publish a PDF for each of the three root notebooks on every deployment.
+- Publish a PDF for each of the three lesson notebooks on every deployment.
 - Use `scripts/build-student-downloads.py` through the publisher to preserve HTML diagrams and executed results.
 - The home page links each PDF plus the complete student RStudio project and PDF bundle.
 - Follow `PUBLISHING.md`; a source push alone is not publication. Verify live downloads.
+
+## Workspace organization — 4 November 2026
+
+- User authorized reorganizing the workspace. Active notebooks live in `lessons/`;
+  their shared fragments live in `lessons/_includes/`. Keep the root uncluttered.
+- Separate pilot activities live in `practicals/`; they are not adopted into the
+  published course automatically. All working CSVs belong under `data/`.
+- Original decks live in `sources/slides/`; instructor material in `instructor/`.
+- Generated website, pilot previews, and slide caches belong under `_build/`.
+- Unused textbook data and R images were preserved under
+  `archived/2026-11-04-unused-support/`. Empty placeholder folders were removed.
+- Keep R execution relative to the project root. Update converters, packaging,
+  links, and publishing validation together when moving course files.
+
+## Data paths — 4 November 2026
+
+- Keep the only editable datasets under the course root `data/`.
+- R import cells must work both from the course root and from the notebook
+  folder (`lessons/` or `practicals/`), including individually executed cells.
+- Locate `data_dir` inside every import cell, then use `file.path(data_dir, ...)`.
+  Do not rely on YAML working-directory settings for interactive RStudio cells.
+- Preserve this convention in the converter R-example JSON sources as well.
+
+## Student-facing case language — 4 November 2026
+
+- Present cases directly through their business context, question and task.
+- Keep authoring commentary such as “teaching scenario” or “newly written
+  teaching activities” in instructor notes, not student-facing material.
+- Retain accurate source attribution, dates, units and substantive data limits.

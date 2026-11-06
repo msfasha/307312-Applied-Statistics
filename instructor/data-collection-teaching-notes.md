@@ -8,7 +8,7 @@ and survey errors. The supplement is included after original descriptive slide 1
 converter inserts the same include on regeneration. Original slide blocks, their
 order, source files, images and R cells are unchanged.
 
-`content/data-collection-and-surveys.qmd` contains 21 slide-style blocks, including
+`lessons/_includes/data-collection-and-surveys.qmd` contains 21 slide-style blocks, including
 learning objectives, a discussion activity and references. It distinguishes
 collection approaches, sample selection and survey communication modes. No new
 dataset is needed; examples are conceptual or explicitly hypothetical.
