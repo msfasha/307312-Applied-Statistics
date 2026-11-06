@@ -1,9 +1,11 @@
-# Petra grayscale teaching theme
+# Petra burgundy and gray teaching theme
 
-Approved revision: **6 November 2026**. This replaces the previous lavender/pink
-teaching palette. The design uses white reading surfaces, charcoal text and a
-clear grayscale hierarchy. It is a teaching-document theme inspired by the
-University of Petra context, not an official university identity manual.
+Approved revision: **6 November 2026**. The user approved the preview with muted
+burgundy heading bands and white title text, retaining gray charts and tables.
+This supersedes the earlier all-gray heading palette and the original pale pink
+palette. White reading surfaces and charcoal body text remain unchanged. This
+teaching-document theme is inspired by the University of Petra context; it is
+not an official university identity manual.
 
 ## Scope and sources of truth
 
@@ -34,14 +36,13 @@ than separate heading-color rules in individual notebooks.
 | Role | Hex | Usage |
 |---|---|---|
 | Reading surface | `#FFFFFF` | Main content and diagram backgrounds |
-| Main title surface | `#B0B0B0` | Distinct darker gray title panel |
-| Main title and H2 text | `#262626` | Charcoal text |
-| Main title top rule | `#404040` | Thin dark gray rule |
-| Subtitle | `#444444` | Readable secondary text on the darker title panel |
-| H2 surface | `#B8B8B8` | Strongest section fill |
-| H3 surface | `#C4C4C4` | Lighter topic fill |
-| H4 surface | `#D0D0D0` | Lightest subtopic fill |
-| Heading accent and diagram connectors | `#A3A3A3` | Thin rules, borders and connectors |
+| Main title surface | `#542638` | Deep burgundy document title panel |
+| Heading text | `#FFFFFF` | White text on document title and H2–H4 bands |
+| Main title top rule and heading accent | `#542638` | Burgundy rules for headings only |
+| Subtitle | `#F3EAF0` | Light text inside the burgundy title panel |
+| H2, H3 and H4 surface | `#763D52` | Approved muted burgundy topic bands |
+| Diagram labels | `#262626` | Dark text on light gray content fills |
+| Diagram connectors and borders | `#A3A3A3` | Neutral gray, independent of heading accents |
 | Body text | `#303030` | Dark text on white |
 | Secondary text | `#666666` | Captions, metadata and minor labels |
 | Diagram root and table header | `#F2F2F2` | Neutral header surface |
@@ -54,37 +55,40 @@ than separate heading-color rules in individual notebooks.
 | Links | `#356B8C` | Readable blue interactive links |
 | Link hover | `#244D68` | Darker blue |
 
-The hex values define the palette. Pink, lavender and purple are no longer used
-for authored heading bands, content panels or diagram fills. Existing university
-logos and preserved source figures retain their original colors and attribution.
-Links and analytical chart colors are purposeful exceptions to the grayscale
-interface; do not recolor every visual indiscriminately.
+The hex values define the palette. Burgundy is reserved for authored title and
+heading bands; diagram boxes, table headers and note surfaces remain neutral gray.
+Existing university logos and preserved source figures retain their original
+colors and attribution. Blue links and meaningful analytical chart colors remain
+appropriate; do not recolor every visual indiscriminately.
 
 ## Heading hierarchy and layout
 
 | Semantic role | Source | Treatment |
 |---|---|---|
-| Document title | YAML `title`, or one H1 in a native notebook | `#B0B0B0` gray panel, charcoal text, 3 px dark top rule |
-| Subtitle | YAML `subtitle`, or a subtitle paragraph | Smaller gray text, subordinate to the title |
-| Main section | H2 / `##` | `#B8B8B8` fill and a thin gray left rule |
-| Topic | H3 / `###` | `#C4C4C4` fill and a thin gray left rule |
-| Subtopic | H4 / `####` | `#D0D0D0` fill and a thin gray left rule |
-| Minor labels | H5/H6 | Plain dark headings |
+| Document title | YAML `title`, or one H1 in a native notebook | `#542638` deep burgundy panel, white text, 3 px dark top rule |
+| Subtitle | YAML `subtitle`, or a subtitle paragraph | Smaller `#F3EAF0` text within the title panel |
+| Main section | H2 / `##` | `#763D52` burgundy fill, white text and a thin deep burgundy left rule |
+| Topic | H3 / `###` | Same approved burgundy fill and white text |
+| Subtopic | H4 / `####` | Same approved burgundy fill and white text, with smaller type and padding |
+| Minor labels | H5/H6 | Plain dark headings on white |
 
-The main title panel is deliberately darker than H2–H4 surfaces so the document
-title remains visually distinct from sections. Every H2–H4 heading band must also
-be darker than diagram nodes and table fills. This applies to slide/topic titles
-such as “Types of data”, not only to the document's opening title.
+The main title panel is deeper burgundy than the H2–H4 bands. Apply the topic
+bands to all slide/topic titles, such as “Types of data”, across lessons and
+practicals, not only the document's opening title. White on `#763D52` has a
+contrast ratio of approximately 8.2:1; white on `#542638` approximately 12.3:1.
+Keep links, bold text and inline code inside heading bands white as well.
 
-Keep heading tokens (`--course-section-bg`, `--course-topic-bg`,
-`--course-subtopic-bg`) separate from content tokens
-(`--course-diagram-*-bg`, `--course-table-*-bg`). Do not reuse a heading fill for
-a diagram box or table header; changing titles must not darken the content too.
+Keep heading tokens (`--course-title-bg`, `--course-section-bg`,
+`--course-topic-bg`, `--course-subtopic-bg`, `--course-heading-text`,
+`--course-heading-accent`) separate from content tokens
+(`--course-diagram-*-bg`, `--course-table-*-bg`, `--course-title-text` for dark
+diagram labels, and `--course-accent` for gray diagram connectors). Do not reuse
+heading text or fill colors for diagram boxes or table headers.
 
 Keep genuine heading levels and normal navigation; do not promote all topics to
 H2 just to imitate slides. Distinguish levels through size, weight, whitespace and
-progressively lighter fills. Body content stays on white. Avoid heavy shadows,
-large dark panels and filled backgrounds behind every paragraph.
+consistent burgundy bands. Body content stays on white. Avoid heavy shadows
+and filled backgrounds behind paragraphs; burgundy belongs to headings only.
 
 The current HTML title panel uses `1.5rem 1.75rem` padding and 8 px lower corner
 rounding. H2 uses `.75rem 1.1rem` padding with about `2.3rem` preceding space.

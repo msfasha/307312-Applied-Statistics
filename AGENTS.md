@@ -142,14 +142,15 @@
 - Apply this preference to future practicals; preserve original source-slide
   wording in the main lessons unless separately authorized.
 
-## Grayscale teaching theme — 6 November 2026
+## Burgundy and gray teaching theme — 6 November 2026
 
-- The user approved replacing the lavender/pink teaching palette across authored
-  course material with the Petra grayscale theme. Use `assets/petra-theme.md`;
-  synchronize it with the portable master `../petra_theme/petra_theme.md`.
-- Keep titles, heading bands, editable diagrams, tables and note surfaces neutral
-  gray with dark text on white. All H2–H4 title bands must be darker than diagram
-  and table fills; keep their CSS color tokens separate. Follow the shared CSS, not per-notebook overrides.
+- The user approved the muted burgundy preview for all authored course headings,
+  superseding the previous grayscale and pale pink heading palettes. Use
+  `assets/petra-theme.md`; synchronize it with `../petra_theme/petra_theme.md`.
+- Use `#763D52` for H2–H4 heading bands with white text and `#542638` for the
+  document title panel. Keep diagrams, table fills and note surfaces neutral
+  gray with dark labels. Keep heading and content color tokens separate.
+  Follow the shared CSS, not per-notebook overrides.
 - Our generated charts use neutral defaults; meaningful analytical group and
   ordered-category colors remain appropriate. Preserve labels and consistent mappings.
 - Keep source-slide images and R plots centered. Small instructional images use

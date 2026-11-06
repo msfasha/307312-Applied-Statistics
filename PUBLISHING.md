@@ -45,7 +45,7 @@ PowerPoint decks, and build caches/logs. Test it after extraction separately
 from the maintainer workspace.
 
 The RStudio ZIP also includes `assets/petra-theme.md`, the tracked specification
-for the Petra grayscale theme. Keep it synchronized with the portable master
+for the Petra burgundy and gray theme. Keep it synchronized with the portable master
 `../petra_theme/petra_theme.md` when changing the shared palette or layout rules.
 
 ## Source and student website

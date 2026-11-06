@@ -73,7 +73,7 @@ project.
 
 ## Shared teaching theme
 
-The course uses the **Petra grayscale teaching theme**, approved 6 November 2026.
+The course uses the **Petra burgundy and gray teaching theme**, approved 6 November 2026.
 See [the theme specification](assets/petra-theme.md) for the exact palette, heading
 hierarchy, diagram rules and analytical chart colors. The portable master is
 `../petra_theme/petra_theme.md`; keep it synchronized with the tracked course copy.
