@@ -34,13 +34,13 @@ than separate heading-color rules in individual notebooks.
 | Role | Hex | Usage |
 |---|---|---|
 | Reading surface | `#FFFFFF` | Main content and diagram backgrounds |
-| Main title surface | `#D0D0D0` | Distinct darker gray title panel |
+| Main title surface | `#B0B0B0` | Distinct darker gray title panel |
 | Main title and H2 text | `#262626` | Charcoal text |
 | Main title top rule | `#404040` | Thin dark gray rule |
-| Subtitle | `#555555` | Readable secondary text on the darker title panel |
-| H2 surface | `#D8D8D8` | Strongest section fill |
-| H3 surface | `#E0E0E0` | Lighter topic fill |
-| H4 surface | `#E8E8E8` | Lightest subtopic fill |
+| Subtitle | `#444444` | Readable secondary text on the darker title panel |
+| H2 surface | `#B8B8B8` | Strongest section fill |
+| H3 surface | `#C4C4C4` | Lighter topic fill |
+| H4 surface | `#D0D0D0` | Lightest subtopic fill |
 | Heading accent and diagram connectors | `#A3A3A3` | Thin rules, borders and connectors |
 | Body text | `#303030` | Dark text on white |
 | Secondary text | `#666666` | Captions, metadata and minor labels |
@@ -64,11 +64,11 @@ interface; do not recolor every visual indiscriminately.
 
 | Semantic role | Source | Treatment |
 |---|---|---|
-| Document title | YAML `title`, or one H1 in a native notebook | `#D0D0D0` gray panel, charcoal text, 3 px dark top rule |
+| Document title | YAML `title`, or one H1 in a native notebook | `#B0B0B0` gray panel, charcoal text, 3 px dark top rule |
 | Subtitle | YAML `subtitle`, or a subtitle paragraph | Smaller gray text, subordinate to the title |
-| Main section | H2 / `##` | `#D8D8D8` fill and a thin gray left rule |
-| Topic | H3 / `###` | `#E0E0E0` fill and a thin gray left rule |
-| Subtopic | H4 / `####` | `#E8E8E8` fill and a thin gray left rule |
+| Main section | H2 / `##` | `#B8B8B8` fill and a thin gray left rule |
+| Topic | H3 / `###` | `#C4C4C4` fill and a thin gray left rule |
+| Subtopic | H4 / `####` | `#D0D0D0` fill and a thin gray left rule |
 | Minor labels | H5/H6 | Plain dark headings |
 
 The main title panel is deliberately darker than H2–H4 surfaces so the document
