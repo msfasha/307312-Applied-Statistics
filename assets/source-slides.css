@@ -6,6 +6,9 @@
 /* Captionless source images and R plots also need explicit horizontal centering. */
 .source-slide img, .cell-output-display img { display: block; margin-inline: auto; }
 .source-slide a.lightbox, .cell-output-display a.lightbox { display: block; }
+/* Give small instructional graphics a readable minimum size; retain cover artwork sizing. */
+.source-slide img { min-width: 50%; }
+.source-slide[id$="slide-01"] img { min-width: 0; }
 .source-text { margin: 1rem 0; }
 .source-text p { margin-bottom: .85rem; line-height: 1.65; }
 .source-bullet { padding-left: 1.2rem; position: relative; }
