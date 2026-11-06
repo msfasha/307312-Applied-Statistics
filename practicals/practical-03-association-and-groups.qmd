@@ -20,6 +20,8 @@ This practical accompanies measures of association and comparative boxplots in [
 
 By the end, you should be able to compare groups using their distributions, inspect a numerical relationship with a scatterplot, calculate Pearson correlation, and distinguish an observed association from a causal explanation.
 
+[Download this practical as PDF](../pdf/practical-03-association-and-groups.pdf) · [Download the student RStudio project](../downloads/applied-statistics-rstudio.zip)
+
 ## 1. The business questions
 
 Return to the historical list of **259 mutual funds**:

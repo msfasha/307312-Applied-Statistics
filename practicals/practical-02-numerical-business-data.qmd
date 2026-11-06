@@ -4,7 +4,6 @@ subtitle: "Comparing cereal costs · 307312 Applied Statistics — Masters Level
 format:
   html:
     theme: cosmo
-    css: ../assets/petra-brand.css
     toc: true
     toc-depth: 2
     code-copy: true
@@ -21,6 +20,8 @@ execute:
 This practical accompanies the lessons on numerical variables, histograms, central tendency and dispersion in [Part 2: Descriptive statistics](../lessons/02-descriptive-statistics.qmd). Complete [Practical 1](practical-01-categorical-business-data.qmd) first. Allow approximately **50–60 minutes**.
 
 By the end, you should be able to inspect a small business dataset, describe a distribution with a histogram, calculate its centre and spread, use quartiles and boxplots to investigate unusual values, and explain what the results can tell a manager.
+
+[Download this practical as PDF](../pdf/practical-02-numerical-business-data.pdf) · [Download the student RStudio project](../downloads/applied-statistics-rstudio.zip)
 
 ## 1. The business question
 

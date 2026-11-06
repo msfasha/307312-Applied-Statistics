@@ -1,8 +1,8 @@
 # Part 2 practical companions
 
 Three core activities accompany the existing descriptive-statistics lesson.
-They are prepared for local review, separate from published navigation and
-student bundles. Optional coffee, Medicare, legal-advertising and Consumer
+They are included in the course website, individual PDF downloads and
+student RStudio project. Optional coffee, Medicare, legal-advertising and Consumer
 Research activities remain future work.
 
 | Order | Notebook | Focus | Suggested time |
@@ -33,5 +33,5 @@ Instructor material:
 - `instructor/cereals-pilot-notes.md`: retained notes for the original shorter pilot.
 
 Verify executable examples and independent import paths with
-`python3 scripts/check-practicals.py`. Final classroom adoption and publication
-are stage 5, outside this stages 1–3 preparation.
+`python3 scripts/check-practicals.py`. The root publishing workflow builds and stages the three approved practicals.
+See `PUBLISHING.md` for deployment and student-package checks.

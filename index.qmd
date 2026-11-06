@@ -11,9 +11,20 @@ Study the three parts in order. Read online, or download the PDFs for offline re
 | 2. Descriptive Statistics | [Open lesson](lessons/02-descriptive-statistics.qmd) | [PDF](pdf/02-descriptive-statistics.pdf) |
 | 3. Inferential Statistics | [Open lesson](lessons/03-inferential-statistics.qmd) | [PDF](pdf/03-inferential-statistics.pdf) |
 
+## Part 2 practicals {#part-2-practicals}
+
+Apply the descriptive methods in order. Each practical includes explained R code,
+executed results, charts and independent tasks.
+
+| Practical | Read online | Download |
+|---|---|---|
+| 1. Categorical business data — mutual funds | [Open practical](practicals/practical-01-categorical-business-data.html) | [PDF](pdf/practical-01-categorical-business-data.pdf) |
+| 2. Numerical business data — cereals | [Open practical](practicals/practical-02-numerical-business-data.html) | [PDF](pdf/practical-02-numerical-business-data.pdf) |
+| 3. Association and group comparisons — mutual funds | [Open practical](practicals/practical-03-association-and-groups.html) | [PDF](pdf/practical-03-association-and-groups.pdf) |
+
 ## Work with R or study offline
 
-- [Download the complete student RStudio project](downloads/applied-statistics-rstudio.zip): editable lessons, teaching CSVs, images, and setup instructions. Extract the ZIP, then open `Applied-Statistics.Rproj` in RStudio.
-- [Download all three PDFs](downloads/applied-statistics-pdfs.zip).
+- [Download the complete student RStudio project](downloads/applied-statistics-rstudio.zip): editable lessons and practicals, teaching CSVs, images, and setup instructions. Extract the ZIP, then open `Applied-Statistics.Rproj` in RStudio.
+- [Download all lesson and practical PDFs](downloads/applied-statistics-pdfs.zip).
 
 The online lessons and PDFs show the code and its results. To run or change R code, use the RStudio project.

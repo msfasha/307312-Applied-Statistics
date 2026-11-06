@@ -65,8 +65,8 @@ visible there even though excluded from the student website and ZIPs.
 
 ## Part 2 practical companions
 
-Three separate practicals are ready for local review: categorical mutual-fund
+Three practical companions are available on the course website: categorical mutual-fund
 data, numerical cereal costs, and mutual-fund association/group comparisons.
 See [the practical guide](practicals/README.md) for notebook order, preview
-instructions and instructor references. They remain outside published course
-navigation and student bundles pending the integration stage.
+instructions and instructor references. They are included in course navigation, PDF downloads and the student RStudio
+project.

@@ -13,4 +13,6 @@ project:
 format:
   html:
     theme: cosmo
-    css: ../assets/petra-brand.css
+    css:
+      - ../assets/petra-brand.css
+      - ../assets/practical-print.css

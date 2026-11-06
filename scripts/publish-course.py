@@ -8,13 +8,16 @@ def run(*args,cwd=ROOT):
 def validate(site):
     required=['index.html','lessons/02-descriptive-statistics.html','lessons/03-inferential-statistics.html','lessons/01-introduction-to-r.html']
     required += ['pdf/'+p+'.pdf' for p in ['01-introduction-to-r','02-descriptive-statistics','03-inferential-statistics']]
+    practicals=['practical-01-categorical-business-data','practical-02-numerical-business-data','practical-03-association-and-groups']
+    required += ['practicals/'+p+'.html' for p in practicals]+['pdf/'+p+'.pdf' for p in practicals]
+    required += ['data/practicals/'+p for p in ['cereals.csv','funds2002.csv','README.md']]
     required += ['downloads/applied-statistics-rstudio.zip','downloads/applied-statistics-pdfs.zip']
     for name in required:
         if not (site/name).exists():raise RuntimeError('Missing generated page: '+name)
     for name in ['paired_scores.csv','graduate_salaries.csv','female_major_salaries.csv','teaching_methods.csv','teaching_gender.csv','houses.csv']:
         if not (site/'data/inferential-statistics'/name).exists():raise RuntimeError('Missing teaching CSV: '+name)
     if not (site/'data/descriptive-statistics/students.csv').exists():raise RuntimeError('Missing descriptive teaching CSV')
-    forbidden=[p for p in site.rglob('*') if p.is_file() and (any(t in p.relative_to(site).parts for t in ['instructor','archived','books','sources','practicals']) or p.suffix.lower() in ['.xlsx','.xls'])]
+    forbidden=[p for p in site.rglob('*') if p.is_file() and (any(t in p.relative_to(site).parts for t in ['instructor','archived','books','sources','_includes']) or p.suffix.lower() in ['.xlsx','.xls'])]
     if forbidden:raise RuntimeError('Local-only files in generated site: '+str(forbidden[:5]))
     infer=(site/'lessons/03-inferential-statistics.html').read_text()
     if sum(f'id="part3-{k:02d}-slide-{i:02d}"' in infer for k,n in enumerate([37,26,57,21],1) for i in range(1,n+1))!=141:raise RuntimeError('Incomplete Part 3')
@@ -24,9 +27,13 @@ if not args.skip_render:
     if previous.exists():shutil.rmtree(previous)
     quarto=shutil.which('quarto') or '/usr/lib/rstudio/resources/app/bin/quarto/bin/quarto'
     subprocess.run([quarto,'render','--quiet'],cwd=ROOT,check=True)
+if args.skip_render:
+    subprocess.run(['python3',str(ROOT/'scripts/preview-practicals.py')],cwd=ROOT,check=True)
+    subprocess.run(['python3',str(ROOT/'scripts/stage-practicals.py')],cwd=ROOT,check=True)
 site=ROOT/'_build/website'
 subprocess.run(['python3',str(ROOT/'scripts/build-student-downloads.py')],cwd=ROOT,check=True)
 validate(site)
+subprocess.run(['python3',str(ROOT/'scripts/validate-student-site.py')],cwd=ROOT,check=True)
 source=run('git','rev-parse','HEAD')
 (site/'deployment.json').write_text(json.dumps({'source_commit':source,'course':'307312 Applied Statistics - Masters Level','published_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat()},indent=2)+'\n')
 (site/'.nojekyll').touch()
@@ -41,7 +48,7 @@ with tempfile.TemporaryDirectory(prefix='307312-pages-') as temp:
             else:p.unlink()
         shutil.copytree(site,checkout,dirs_exist_ok=True)
         run('git','add','--all',cwd=checkout)
-        run('git','commit','-m','Publish compact three-part course and student downloads',cwd=checkout)
+        run('git','commit','-m','Publish course practicals and student downloads',cwd=checkout)
         print(run('git','push','origin','HEAD:gh-pages',cwd=checkout))
         print('Published source commit:',source)
         print('Website: https://msfasha.github.io/307312-Applied-Statistics/')

@@ -3,6 +3,9 @@ project:
   output-dir: _build/website
   execute-dir: project
   resources:
+    - data/practicals/cereals.csv
+    - data/practicals/funds2002.csv
+    - data/practicals/README.md
     - data/descriptive-statistics/README.md
     - data/descriptive-statistics/provenance.json
     - data/descriptive-statistics/students.csv
@@ -22,6 +25,8 @@ project:
     - "!_build/**"
   post-render:
     - python3 scripts/finalize-preview.py
+    - python3 scripts/preview-practicals.py
+    - python3 scripts/stage-practicals.py
   render:
     - index.qmd
     - lessons/01-introduction-to-r.qmd
@@ -40,6 +45,8 @@ website:
         href: lessons/01-introduction-to-r.qmd
       - text: "Part 2: Descriptive statistics"
         href: lessons/02-descriptive-statistics.qmd
+      - text: "Practicals"
+        href: index.qmd#part-2-practicals
       - text: "Part 3: Inferential statistics"
         href: lessons/03-inferential-statistics.qmd
 format:

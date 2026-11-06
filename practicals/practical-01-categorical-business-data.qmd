@@ -20,6 +20,8 @@ This practical accompanies categorical variables, frequency tables, contingency 
 
 By the end, you should be able to summarize nominal and ordinal variables, choose a suitable chart, distinguish overall from conditional percentages, and write a business finding with a clear denominator.
 
+[Download this practical as PDF](../pdf/practical-01-categorical-business-data.pdf) · [Download the student RStudio project](../downloads/applied-statistics-rstudio.zip)
+
 ## 1. The business question
 
 An analyst is reviewing a historical list of **259 mutual funds**:

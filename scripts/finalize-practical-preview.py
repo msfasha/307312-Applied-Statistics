@@ -12,6 +12,8 @@ for page in PREVIEW.glob('*.html'):
     text = re.sub(r'href="../lessons/([^"#]+)\.qmd',
                   r'href="../website/lessons/\1.html', text)
     text = re.sub(r'href="(practical-[^"#]+)\.qmd', r'href="\1.html', text)
+    text = text.replace('href="../pdf/', 'href="../website/pdf/')
+    text = text.replace('href="../downloads/', 'href="../website/downloads/')
     page.write_text(text)
 for name in ['cereals.csv', 'funds2002.csv', 'README.md']:
     destination = PREVIEW / 'data/practicals' / name

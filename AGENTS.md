@@ -119,3 +119,15 @@
   locations. Preserve the existing lesson content and source decks.
 - Public adoption/navigation and download integration remain stage 5. The four
   optional extension cases remain future work; do not adopt them automatically.
+
+## Publication of core practicals — 6 November 2026
+
+- The user authorized making all three core practicals available online.
+- The home page links their HTML pages and individual PDFs. Both student bundles
+  include the approved practicals; preserve instructor/source-file exclusions.
+- Root Quarto rendering builds/stages the independent practical project through
+  `scripts/preview-practicals.py` and `scripts/stage-practicals.py`.
+- `scripts/build-student-downloads.py` exports all six notebooks as PDFs and
+  includes the practical CSVs, shared R styling and required scripts in the
+  RStudio ZIP. Verify the extracted project and live downloads on deployment.
+- Future optional extension cases are still not adopted automatically.
