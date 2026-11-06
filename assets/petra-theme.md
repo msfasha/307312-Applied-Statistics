@@ -37,7 +37,7 @@ than separate heading-color rules in individual notebooks.
 | Main title surface | `#DADADA` | Distinct darker gray title panel |
 | Main title and H2 text | `#262626` | Charcoal text |
 | Main title top rule | `#404040` | Thin dark gray rule |
-| Subtitle | `#666666` | Secondary title text |
+| Subtitle | `#595959` | Readable secondary text on the darker title panel |
 | H2 surface | `#E8E8E8` | Strongest section fill |
 | H3 surface | `#F3F3F3` | Lighter topic fill |
 | H4 surface | `#F8F8F8` | Lightest subtopic fill |
