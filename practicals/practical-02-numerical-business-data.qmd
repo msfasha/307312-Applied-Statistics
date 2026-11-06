@@ -17,27 +17,43 @@ execute:
   fig-height: 4.5
 ---
 
-This practical accompanies the lessons on numerical variables, histograms, central tendency and dispersion in [Part 2: Descriptive statistics](../lessons/02-descriptive-statistics.qmd). Complete [Practical 1](practical-01-categorical-business-data.qmd) first. Allow approximately **50–60 minutes**.
+- This practical accompanies the lessons on numerical variables, histograms, central tendency and dispersion in [Part 2: Descriptive statistics](../lessons/02-descriptive-statistics.qmd).
+- Complete [Practical 1](practical-01-categorical-business-data.qmd) first.
+- Allow approximately **50–60 minutes**.
 
-By the end, you should be able to inspect a small business dataset, describe a distribution with a histogram, calculate its centre and spread, use quartiles and boxplots to investigate unusual values, and explain what the results can tell a manager.
+**By the end, you should be able to:**
+
+- Inspect a small business dataset.
+- Describe a distribution with a histogram.
+- Calculate its centre and spread.
+- Use quartiles and boxplots to investigate unusual values.
+- Explain what the results can tell a manager.
 
 [Download this practical as PDF](../pdf/practical-02-numerical-business-data.pdf) · [Download the student RStudio project](../downloads/applied-statistics-rstudio.zip)
 
 ## 1. The business question
 
-A grocery buyer is reviewing a historical list of **33 breakfast cereals**. Before comparing individual products, the buyer wants a short description of their costs:
+- A grocery buyer is reviewing a historical list of **33 breakfast cereals**.
+- Before comparing individual products, the buyer wants a short description of their costs:
 
 > What is a typical cost per ounce in this list, and how much do the costs vary?
 
 You will prepare a histogram, a summary table and a short recommendation about how to describe these costs.
 
-The records come from the **CEREALS** dataset accompanying Berenson, Levine and Krehbiel's *Basic Business Statistics: Concepts and Applications*, ninth edition. The book attributes the data to *Consumer Reports*, October 1999. These are historical records, so the amounts describe this list rather than current shop prices.
+- The records come from the **CEREALS** dataset accompanying Berenson, Levine and Krehbiel's *Basic Business Statistics: Concepts and Applications*, ninth edition.
+- The book attributes the data to *Consumer Reports*, October 1999.
+- These are historical records, so the amounts describe this list rather than current shop prices.
 
 ## 2. Open and inspect the data
 
-Open `Applied-Statistics.Rproj` in RStudio, then open this notebook. Run the code cells in order. The CSV is stored in `data/practicals/cereals.csv`, relative to the course project folder. The import cell below locates this same folder when run from either the course root or `practicals/`; keep the data outside `practicals/`. You can also [download the CSV](../data/practicals/cereals.csv).
+- Open `Applied-Statistics.Rproj` in RStudio, then open this notebook.
+- Run the code cells in order.
+- The CSV is stored in `data/practicals/cereals.csv`, relative to the course project folder.
+- The import cell below locates this same folder when run from either the course root or `practicals/`; keep the data outside `practicals/`.
+- You can also [download the CSV](../data/practicals/cereals.csv).
 
-The only package used here is **ggplot2**, introduced in Part 1. If it is not installed, run `install.packages("ggplot2")` once in the Console.
+- The only package used here is **ggplot2**, introduced in Part 1.
+- If it is not installed, run `install.packages("ggplot2")` once in the Console.
 
 ```{r}
 #| label: cereals-import
@@ -62,7 +78,8 @@ str(cereals)
 | `fiber_g` | Reported fibre in grams | Numerical; serving basis is not specified in this file |
 | `sugar_g` | Reported sugar in grams | Numerical; serving basis is not specified in this file |
 
-We use cost **per ounce** because its comparison basis is explicit. We cannot assume that the nutrition figures refer to equal-sized servings or rank products as healthier from these columns alone.
+- We use cost **per ounce** because its comparison basis is explicit.
+- We cannot assume that the nutrition figures refer to equal-sized servings or rank products as healthier from these columns alone.
 
 ```{r}
 #| label: cereals-preview
@@ -71,7 +88,8 @@ knitr::kable(head(cereals), digits = 2,
              col.names = c("Product", "Cost ($/oz)", "Calories", "Fibre (g)", "Sugar (g)"))
 ```
 
-Check missing values before calculating summaries. A missing value and a recorded zero mean different things.
+- Check missing values before calculating summaries.
+- A missing value and a recorded zero mean different things.
 
 ```{r}
 #| label: cereals-missing
@@ -79,13 +97,16 @@ Check missing values before calculating summaries. A missing value and a recorde
 colSums(is.na(cereals))
 ```
 
-There are no missing values in this supplied table. The zero sugar values are recorded observations; they are not missing-value codes.
+- There are no missing values in this supplied table.
+- The zero sugar values are recorded observations; they are not missing-value codes.
 
 **Pause and explain:** Why would taking the average of the `product` column make no sense, while taking the average of `cost_per_ounce` does?
 
 ## 3. Look at the distribution
 
-A histogram groups numerical costs into intervals. Its bars count **products**, rather than purchases or customers. Each interval below is $0.02 per ounce wide.
+- A histogram groups numerical costs into intervals.
+- Its bars count **products**, rather than purchases or customers.
+- Each interval below is $0.02 per ounce wide.
 
 ```{r}
 #| label: cereals-histogram
@@ -100,13 +121,18 @@ ggplot(cereals, aes(x = cost_per_ounce)) +
   labs(x = "Historical cost per ounce ($)", y = "Number of products")
 ```
 
-Before calculating anything, describe where most costs lie and how far the observed values extend. Look for gaps or unusually high or low costs. A product is not an error simply because its cost is unusual.
+- Before calculating anything, describe where most costs lie and how far the observed values extend.
+- Look for gaps or unusually high or low costs.
+- A product is not an error simply because its cost is unusual.
 
-These prices are rounded to cents, and changing the bin width can change the histogram's appearance. Avoid giving a strong shape label based on one arrangement of a small number of bars.
+- These prices are rounded to cents, and changing the bin width can change the histogram's appearance.
+- Avoid giving a strong shape label based on one arrangement of a small number of bars.
 
 ## 4. Describe a typical cost
 
-The **mean** uses every cost. The **median** is the middle cost after sorting the observations. Comparing them helps us assess whether the choice of a measure of centre makes much difference here.
+- The **mean** uses every cost.
+- The **median** is the middle cost after sorting the observations.
+- Comparing them helps us assess whether the choice of a measure of centre makes much difference here.
 
 ```{r}
 #| label: cereals-centre
@@ -123,13 +149,18 @@ knitr::kable(centre, digits = 4,
              col.names = c("Measure", "Historical cost ($/oz)"))
 ```
 
-Both measures are approximately **$0.17 per ounce**. For this list, either gives a similar description of the typical cost. The small difference between them is much less than one cent per ounce.
+- Both measures are approximately **$0.17 per ounce**.
+- For this list, either gives a similar description of the typical cost.
+- The small difference between them is much less than one cent per ounce.
 
-This agreement does not prove that the distribution is symmetric or normal. We still need the plot and the spread. The additional decimal places in the calculated mean result from averaging prices; the original costs were reported to cents.
+- This agreement does not prove that the distribution is symmetric or normal.
+- We still need the plot and the spread.
+- The additional decimal places in the calculated mean result from averaging prices; the original costs were reported to cents.
 
 ## 5. Describe the variation
 
-A typical value does not tell the buyer whether all products cost about the same amount. We also need to describe how much the costs differ.
+- A typical value does not tell the buyer whether all products cost about the same amount.
+- We also need to describe how much the costs differ.
 
 ```{r}
 #| label: cereals-spread
@@ -148,13 +179,15 @@ knitr::kable(spread, digits = 4,
 - **Sample standard deviation:** approximately $0.047 per ounce, or 4.7 cents. It describes spread around the mean using squared deviations; it is not the average absolute difference from the mean.
 - **Interquartile range:** $0.07 per ounce. Using R's default quartile convention, the middle half of the recorded costs runs from $0.13 to $0.20 per ounce.
 
-We use the sample-SD convention taught in Part 2. Calculating it does not establish that these products were randomly sampled from all cereals.
+- We use the sample-SD convention taught in Part 2.
+- Calculating it does not establish that these products were randomly sampled from all cereals.
 
 **Pause and explain:** Why is “the typical cost is about $0.17 per ounce” an incomplete description of the list?
 
 ## 6. Quartiles, boxplots and unusual values
 
-The histogram and numerical summaries describe different aspects of the same observations. A boxplot adds a compact view of the middle half and flags values beyond its whiskers.
+- The histogram and numerical summaries describe different aspects of the same observations.
+- A boxplot adds a compact view of the middle half and flags values beyond its whiskers.
 
 ```{r}
 #| label: cereals-quartiles
@@ -174,7 +207,9 @@ ggplot(cereals, aes(x = "Listed products", y = cost_per_ounce)) +
   labs(x = NULL, y = "Historical cost per ounce ($)")
 ```
 
-Calculate 1.5-IQR fences using the stated type-7 quartiles. A fence need not be an observed value. A boxplot whisker ends at an observation within its plotting fences; it is not automatically the minimum or maximum in every dataset.
+- Calculate 1.5-IQR fences using the stated type-7 quartiles.
+- A fence need not be an observed value.
+- A boxplot whisker ends at an observation within its plotting fences; it is not automatically the minimum or maximum in every dataset.
 
 ```{r}
 #| label: cereals-outlier-check
@@ -187,23 +222,35 @@ data.frame(Lower_fence = fences[1], Upper_fence = fences[2],
            Flagged_products = sum(flagged), row.names = NULL)
 ```
 
-No cost is outside these fences. That does not prove the data are error-free or normally distributed. A boxplot alone also cannot establish symmetry; inspect the histogram and the recorded values.
+- No cost is outside these fences.
+- That does not prove the data are error-free or normally distributed.
+- A boxplot alone also cannot establish symmetry; inspect the histogram and the recorded values.
 
-**Your turn:** Compare the histogram and boxplot. What can you see more easily in each? Explain why a legitimate high price should not be deleted simply to make a distribution look more balanced.
+**Your turn**
+
+- Compare the histogram and boxplot.
+- What can you see more easily in each?
+- Explain why a legitimate high price should not be deleted simply to make a distribution look more balanced.
 
 ## 7. Write the business interpretation
 
 Here is one way to report the results to the buyer:
 
-> In this historical list of 33 cereal products, both the mean and median cost are about $0.17 per ounce. Individual costs range from $0.10 to $0.27, with a sample standard deviation of about $0.047 per ounce. The middle half lies between $0.13 and $0.20. A single typical cost is therefore useful as an overview, but it hides meaningful differences between products.
+> - In this historical list of 33 cereal products, both the mean and median cost are about $0.17 per ounce.
+> - Individual costs range from $0.10 to $0.27, with a sample standard deviation of about $0.047 per ounce.
+> - The middle half lies between $0.13 and $0.20.
+> - A single typical cost is therefore useful as an overview, but it hides meaningful differences between products.
 
-These results describe the listed products. They do not establish current market prices, explain why products have different costs, or show which product the shop should stock. A stocking decision would also need information about customer demand, selling prices, margins and other product characteristics.
+- These results describe the listed products.
+- They do not establish current market prices, explain why products have different costs, or show which product the shop should stock.
+- A stocking decision would also need information about customer demand, selling prices, margins and other product characteristics.
 
 ## 8. Your turn: a lower-cost shortlist
 
 The buyer wants to examine products costing **no more than $0.15 per ounce in this historical list**.
 
-Use the starter code to create the shortlist. Then apply the functions used above.
+- Use the starter code to create the shortlist.
+- Then apply the functions used above.
 
 ```{r}
 #| label: cereals-student-task
@@ -217,14 +264,25 @@ lower_cost <- subset(cereals, cost_per_ounce <= 0.15)
 # 3. How do these compare with the full list?
 ```
 
-Submit your completed notebook with a histogram or boxplot, a summary table containing mean, median, sample SD and IQR for both lists, and **three or four sentences for the buyer**. Explain whether the shortlist has a lower typical cost and less variation. State why selecting a low-cost subset does not, by itself, identify a better product or demonstrate a price reduction over time.
+**Submit your completed notebook with:**
 
-As a small extension, change the histogram's `binwidth` from `0.02` to `0.04`. Describe what changes in the picture and what remains unchanged in the calculated summaries.
+- A histogram or boxplot.
+- A summary table containing mean, median, sample SD and IQR for both lists.
+- **Three or four sentences for the buyer**.
+- Explain whether the shortlist has a lower typical cost and less variation.
+- State why selecting a low-cost subset does not, by itself, identify a better product or demonstrate a price reduction over time.
+
+- As a small extension, change the histogram's `binwidth` from `0.02` to `0.04`.
+- Describe what changes in the picture and what remains unchanged in the calculated summaries.
 
 ## Source and data notes
 
-Dataset: **CEREALS**, supplied with *Basic Business Statistics: Concepts and Applications*, ninth edition, Berenson, Levine and Krehbiel; see exercise 3.68, pp. 127–128. The book credits Consumers Union of U.S., Inc., *Consumer Reports*, October 1999, pp. 33–34. That magazine attribution is reported from the book and has not been independently checked against the original article.
+- Dataset: **CEREALS**, supplied with *Basic Business Statistics: Concepts and Applications*, ninth edition, Berenson, Levine and Krehbiel; see exercise 3.68, pp. 127–128.
+- The book credits Consumers Union of U.S., Inc., *Consumer Reports*, October 1999, pp. 33–34.
+- That magazine attribution is reported from the book and has not been independently checked against the original article.
 
-The course CSV preserves all 33 rows, numerical values and product labels from the publisher's `Data` worksheet. Column names were simplified for R. [Data notes](../data/practicals/README.md) describe the fields and limitations.
+- The course CSV preserves all 33 rows, numerical values and product labels from the publisher's `Data` worksheet.
+- Column names were simplified for R.
+- [Data notes](../data/practicals/README.md) describe the fields and limitations.
 
 Continue with [Practical 3: Association and group comparisons](practical-03-association-and-groups.qmd).

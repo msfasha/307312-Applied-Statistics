@@ -131,3 +131,13 @@
   includes the practical CSVs, shared R styling and required scripts in the
   RStudio ZIP. Verify the extracted project and live downloads on deployment.
 - Future optional extension cases are still not adopted automatically.
+
+## Practical readability — 6 November 2026
+
+- The user prefers short, slide-like bullet points over continuous explanatory
+  paragraphs throughout the three practicals. Separate the observational unit,
+  source, period, interpretation and limitations into distinct points.
+- Present learning outcomes and multi-part prompts as scannable lists. Preserve
+  statistical meaning, source attribution, code cells, tables and task scope.
+- Apply this preference to future practicals; preserve original source-slide
+  wording in the main lessons unless separately authorized.

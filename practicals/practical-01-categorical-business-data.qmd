@@ -16,9 +16,16 @@ execute:
   fig-height: 4.5
 ---
 
-This practical accompanies categorical variables, frequency tables, contingency tables and qualitative charts in [Part 2](../lessons/02-descriptive-statistics.qmd). Complete [Part 1](../lessons/01-introduction-to-r.qmd) first. Allow **two sessions of approximately 40–50 minutes**: Sections 1–4, then Sections 5–8.
+- This practical accompanies categorical variables, frequency tables, contingency tables and qualitative charts in [Part 2](../lessons/02-descriptive-statistics.qmd).
+- Complete [Part 1](../lessons/01-introduction-to-r.qmd) first.
+- Allow **two sessions of approximately 40–50 minutes**: Sections 1–4, then Sections 5–8.
 
-By the end, you should be able to summarize nominal and ordinal variables, choose a suitable chart, distinguish overall from conditional percentages, and write a business finding with a clear denominator.
+**By the end, you should be able to:**
+
+- Summarize nominal and ordinal variables.
+- Choose a suitable chart.
+- Distinguish overall from conditional percentages.
+- Write a business finding with a clear denominator.
 
 [Download this practical as PDF](../pdf/practical-01-categorical-business-data.pdf) · [Download the student RStudio project](../downloads/applied-statistics-rstudio.zip)
 
@@ -26,9 +33,12 @@ By the end, you should be able to summarize nominal and ordinal variables, choos
 
 An analyst is reviewing a historical list of **259 mutual funds**:
 
-> How is this list distributed across investment objectives and risk classifications, and does the proportion carrying a sales charge differ across risk groups?
+> - How is this list distributed across investment objectives and risk classifications?
+> - Does the proportion carrying a sales charge differ across risk groups?
 
-One row represents **one listed fund entry**, not an investor, purchase or year. The data are supplied with Berenson, Levine and Krehbiel's *Basic Business Statistics: Concepts and Applications*, ninth edition, as **FUNDS2002**. They describe historical classifications and returns through 2001, rather than today's market.
+- One row represents **one listed fund entry**, not an investor, purchase or year.
+- The data are supplied with Berenson, Levine and Krehbiel's *Basic Business Statistics: Concepts and Applications*, ninth edition, as **FUNDS2002**.
+- They describe historical classifications and returns through 2001, rather than today's market.
 
 | Course variable | Meaning | Treatment |
 |---|---|---|
@@ -39,11 +49,16 @@ One row represents **one listed fund entry**, not an investor, purchase or year.
 | `risk` | Very low, low, average, high, very high | Ordered category |
 | `turnover` | Trading activity in the same five ordered levels | Ordered category |
 
-**Sales charge and expense ratio are different variables.** A fund recorded as having no sales charge can still have operating expenses. The risk categories are classifications, not equally spaced numerical measurements.
+- **Sales charge and expense ratio are different variables.**
+- A fund recorded as having no sales charge can still have operating expenses.
+- The risk categories are classifications, not equally spaced numerical measurements.
 
 ## 2. Import and inspect
 
-Open `Applied-Statistics.Rproj`, then this notebook. Install `dplyr` and `ggplot2` once if needed, as introduced in Part 1. Run the cells in order. [Download the CSV](../data/practicals/funds2002.csv).
+- Open `Applied-Statistics.Rproj`, then this notebook.
+- Install `dplyr` and `ggplot2` once if needed, as introduced in Part 1.
+- Run the cells in order.
+- [Download the CSV](../data/practicals/funds2002.csv).
 
 ```{r}
 #| label: categorical-import
@@ -62,7 +77,10 @@ c(Records = nrow(funds), Variables = ncol(funds))
 colSums(is.na(funds))
 ```
 
-`read.csv()` imports the records; `factor()` defines category order. `is.na()` and `colSums()` check missing cells, including unrecognized factor labels. There are 259 records, 13 variables and no missing cells after this conversion.
+- `read.csv()` imports the records.
+- `factor()` defines category order.
+- `is.na()` and `colSums()` check missing cells, including unrecognized factor labels.
+- There are 259 records, 13 variables and no missing cells after this conversion.
 
 ```{r}
 #| label: categorical-preview
@@ -86,7 +104,9 @@ objective_table <- funds |>
 knitr::kable(objective_table, digits = 3)
 ```
 
-There are **158 Growth funds (61.0%)** and **101 Value funds (39.0%)**. The denominator is all 259 entries in this list. This is not an estimate of the share of all funds in today's market.
+- There are **158 Growth funds (61.0%)** and **101 Value funds (39.0%)**.
+- The denominator is all 259 entries in this list.
+- This is not an estimate of the share of all funds in today's market.
 
 ```{r}
 #| label: objective-bars
@@ -98,7 +118,8 @@ ggplot(funds, aes(x = objective, fill = objective)) +
   labs(x = "Investment objective", y = "Number of fund entries")
 ```
 
-A bar chart makes comparisons easy. A pie chart can show parts of the same whole, but angles are harder to compare precisely.
+- A bar chart makes comparisons easy.
+- A pie chart can show parts of the same whole, but angles are harder to compare precisely.
 
 ```{r}
 #| label: objective-pie
@@ -110,7 +131,11 @@ ggplot(objective_table, aes(x = "", y = Frequency, fill = objective)) +
   labs(x = NULL, y = NULL, fill = "Objective") + theme_void(base_size = 12)
 ```
 
-**Your turn A:** Create a count-and-percentage table and a bar chart for `type`. Identify the largest category and state the denominator. Use the bar chart as your main comparison; the pie chart is an alternative display, not an additional required submission.
+**Your turn A**
+
+- Create a count-and-percentage table and a bar chart for `type`.
+- Identify the largest category and state the denominator.
+- Use the bar chart as your main comparison; the pie chart is an alternative display, not an additional required submission.
 
 ## 4. Ordered categories
 
@@ -127,7 +152,9 @@ risk_table <- funds |>
 knitr::kable(risk_table, digits = 1)
 ```
 
-The first three categories contain **164 / 259 = 63.3%** of the listed funds. That is average risk **or lower**. The Average category alone contains **82 / 259 = 31.7%**.
+- The first three categories contain **164 / 259 = 63.3%** of the listed funds.
+- That is average risk **or lower**.
+- The Average category alone contains **82 / 259 = 31.7%**.
 
 ```{r}
 #| label: risk-bars
@@ -138,7 +165,12 @@ ggplot(risk_table, aes(x = risk, y = Frequency, fill = risk)) +
   labs(x = "Risk classification", y = "Number of fund entries")
 ```
 
-**Your turn B:** Repeat the cumulative table for `turnover`. What percentage have low turnover or less? Explain why the ordering must be defined before calculating a running total. A cumulative percentage across Growth and Value would depend on an arbitrary ordering and has no useful interpretation here.
+**Your turn B**
+
+- Repeat the cumulative table for `turnover`.
+- What percentage have low turnover or less?
+- Explain why the ordering must be defined before calculating a running total.
+- A cumulative percentage across Growth and Value would depend on an arbitrary ordering and has no useful interpretation here.
 
 ## 5. Compare categorical distributions
 
@@ -153,7 +185,8 @@ ggplot(funds, aes(x = risk, fill = objective)) +
   labs(x = "Risk classification", y = "Number of fund entries", fill = "Objective")
 ```
 
-The groups contain different numbers of funds. Counts answer how many entries appear; percentages within each objective answer how each group's risk composition is distributed.
+- The groups contain different numbers of funds.
+- Counts answer how many entries appear; percentages within each objective answer how each group's risk composition is distributed.
 
 ```{r}
 #| label: risk-objective-percentages
@@ -166,7 +199,11 @@ ggplot(funds, aes(x = objective, fill = risk)) +
   labs(x = "Objective", y = "Percentage within objective", fill = "Risk")
 ```
 
-**Your turn C:** Compare sales-charge status across capitalization types using counts and a 100% stacked chart. Use `sales_charge`, rather than the numerical `expense_ratio_pct`. Describe how the two displays answer different questions.
+**Your turn C**
+
+- Compare sales-charge status across capitalization types using counts and a 100% stacked chart.
+- Use `sales_charge`, rather than the numerical `expense_ratio_pct`.
+- Describe how the two displays answer different questions.
 
 ## 6. Contingency tables and denominators
 
@@ -179,7 +216,9 @@ charge_risk <- table(Risk = funds$risk, Sales_charge = funds$sales_charge)
 knitr::kable(addmargins(charge_risk))
 ```
 
-There are 95 Yes and 164 No entries overall. Among the 80 High-risk funds, 35 have a sales charge. These values support three different statements:
+- There are 95 Yes and 164 No entries overall.
+- Among the 80 High-risk funds, 35 have a sales charge.
+- These values support three different statements:
 
 | Calculation | Question | Percentage |
 |---|---|---:|
@@ -205,9 +244,13 @@ ggplot(funds, aes(x = risk, fill = sales_charge)) +
   labs(x = "Risk classification", y = "Percentage within risk group", fill = "Sales charge")
 ```
 
-The observed percentages describe this list. They do not establish that risk causes charges, or that any observed difference extends to a wider population.
+- The observed percentages describe this list.
+- They do not establish that risk causes charges, or that any observed difference extends to a wider population.
 
-**Your turn D:** Construct `type` by `objective` counts and row percentages. Write one business question answered by the row percentages, then explain how the question changes if you use column percentages.
+**Your turn D**
+
+- Construct `type` by `objective` counts and row percentages.
+- Write one business question answered by the row percentages, then explain how the question changes if you use column percentages.
 
 ## 7. Interpretation workshop
 
@@ -230,12 +273,18 @@ Prepare a concise briefing for the analyst with:
 3. One chart comparing sales-charge percentages within capitalization types.
 4. Three findings with explicit denominators and one limitation.
 
-Submit your completed Quarto notebook and rendered HTML. Keep the briefing to approximately **one page**, with supporting code and output below it. Credit depends on method choice and interpretation as well as correct calculations.
+- Submit your completed Quarto notebook and rendered HTML.
+- Keep the briefing to approximately **one page**, with supporting code and output below it.
+- Credit depends on method choice and interpretation as well as correct calculations.
 
 ## Source and data notes
 
-Berenson, Levine and Krehbiel, *Basic Business Statistics: Concepts and Applications*, ninth edition, **FUNDS2002** companion data. The local ninth-edition book defines the fund comparison on p. 40 and variables on p. 75 (team project TP2.1); page numbers differ from the international edition cited by the supplied draft. Category ordering and the guided tasks here support the course's Part 2 sequence.
+- Berenson, Levine and Krehbiel, *Basic Business Statistics: Concepts and Applications*, ninth edition, **FUNDS2002** companion data.
+- The local ninth-edition book defines the fund comparison on p. 40 and variables on p. 75 (team project TP2.1); page numbers differ from the international edition cited by the supplied draft.
+- Category ordering and the guided tasks here support the course's Part 2 sequence.
 
-The CSV preserves source observations and order; headers were renamed and surrounding spaces in `Type` were trimmed. The underlying collection and probability-selection method have not been established, so conclusions concern the supplied list. [Data dictionary and provenance](../data/practicals/README.md).
+- The CSV preserves source observations and order; headers were renamed and surrounding spaces in `Type` were trimmed.
+- The underlying collection and probability-selection method have not been established, so conclusions concern the supplied list.
+- [Data dictionary and provenance](../data/practicals/README.md).
 
 Continue with [Practical 2: Numerical business data](practical-02-numerical-business-data.qmd).

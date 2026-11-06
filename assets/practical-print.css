@@ -1,11 +1,14 @@
-/* Print layout for the practical companions; online Petra styling is unchanged. */
+/* Readable teaching points and print layout for the practical companions. */
+#quarto-document-content li { margin-bottom: .45rem; }
+#quarto-document-content li:last-child { margin-bottom: 0; }
 @media print {
   @page { size: A4; margin: 16mm; }
   body { font-size: 10.5pt; line-height: 1.4; }
   #title-block-header { margin: 0 0 1rem; }
   #title-block-header .quarto-title { padding: 1rem; }
   #quarto-document-content h2 { margin-top: 1.2rem; padding: .55rem .8rem; }
-  p { orphans: 3; widows: 3; }
+  p, li { orphans: 3; widows: 3; }
+  #quarto-document-content li { margin-bottom: .2rem; }
   pre, div.sourceCode, table, .quarto-figure, figure, .cell-output-display {
     break-inside: avoid;
     page-break-inside: avoid;
@@ -14,6 +17,7 @@
   .cell-output-display, .table-responsive {
     overflow: visible !important; height: auto !important; max-height: none !important;
   }
+  #source-and-data-notes { break-inside: avoid; page-break-inside: avoid; }
   .code-copy-button { display: none; }
   .table td, .table th { padding: .4rem; }
 }
