@@ -2202,13 +2202,15 @@ vertical-align: -.125em;
 
 <style type="text/css">
 :root {
---course-brand: #404040;
+--course-brand: #542638;
+--course-heading-text: #FFFFFF;
+--course-heading-accent: #542638;
 --course-accent: #A3A3A3;
---course-title-bg: #B0B0B0;
+--course-title-bg: #542638;
 --course-title-text: #262626;
---course-section-bg: #B8B8B8;
---course-topic-bg: #C4C4C4;
---course-subtopic-bg: #D0D0D0;
+--course-section-bg: #763D52;
+--course-topic-bg: #763D52;
+--course-subtopic-bg: #763D52;
 
 --course-diagram-root-bg: #F2F2F2;
 --course-diagram-node-bg: #F7F7F7;
@@ -2231,10 +2233,10 @@ background: var(--course-title-bg); border-top: 3px solid var(--course-brand);
 padding: 1.5rem 1.75rem; border-radius: 0 0 8px 8px;
 }
 #title-block-header .title {
-color: var(--course-title-text); margin-top: 0; border: 0;
+color: var(--course-heading-text); margin-top: 0; border: 0;
 line-height: 1.25; padding-bottom: 0;
 }
-#title-block-header .subtitle { color: #444444; margin-bottom: 0; }
+#title-block-header .subtitle { color: #F3EAF0; margin-bottom: 0; }
 #title-block-header .quarto-title-meta,
 #title-block-header .quarto-title-meta-contents { color: var(--course-muted); }
 #title-block-header .quarto-title-meta:empty { display: none; }
@@ -2247,14 +2249,14 @@ font-size: .9rem; line-height: 1.5;
 #title-block-header .breadcrumb-item::before { color: var(--course-muted); }
 #title-block-header .breadcrumb a { color: #356B8C; text-decoration: underline; text-underline-offset: .15em; }
 #quarto-document-content h2 {
-background: var(--course-section-bg); color: var(--course-title-text);
+background: var(--course-section-bg); color: var(--course-heading-text);
 padding: .75rem 1.1rem; margin-top: 2.3rem; margin-bottom: 1rem;
-border: 0; border-left: 3px solid var(--course-accent); border-radius: 0 5px 5px 0;
+border: 0; border-left: 3px solid var(--course-heading-accent); border-radius: 0 5px 5px 0;
 font-weight: 650; line-height: 1.35; box-shadow: none;
 }
 #quarto-document-content h3, #quarto-document-content h4 {
-color: var(--course-dark); border: 0;
-border-left: 3px solid var(--course-accent); border-radius: 0 5px 5px 0;
+color: var(--course-heading-text); border: 0;
+border-left: 3px solid var(--course-heading-accent); border-radius: 0 5px 5px 0;
 font-weight: 650; line-height: 1.4; box-shadow: none;
 }
 #quarto-document-content h3 {
@@ -2267,9 +2269,10 @@ margin-top: 1.5rem; margin-bottom: .7rem;
 }
 #quarto-document-content :is(h2, h3, h4) { overflow-wrap: anywhere; break-after: avoid; }
 #quarto-document-content :is(h2, h3, h4) code { color: inherit; background: transparent; }
-#quarto-document-content h2 a, #quarto-document-content h2 .anchorjs-link { color: var(--course-title-text); }
+#quarto-document-content h2 a, #quarto-document-content h2 .anchorjs-link { color: var(--course-heading-text); }
 #quarto-document-content h3 a, #quarto-document-content h3 .anchorjs-link,
-#quarto-document-content h4 { color: var(--course-dark); }
+#quarto-document-content h4,
+#quarto-document-content h4 a { color: var(--course-heading-text); }
 a { color: #356B8C; text-decoration-color: currentColor; }
 a:hover { color: #244D68; }
 .table thead { --bs-table-bg: var(--course-table-head-bg); background: var(--course-table-head-bg); border-bottom: 2px solid #D6D6D6; color: var(--course-dark); }
@@ -2282,18 +2285,20 @@ div.sourceCode { border-left: 3px solid #D6D6D6; border-radius: 4px; }
 .source-note { font-size: .9rem; color: var(--course-muted); }
 .reveal .slide h1, .reveal .slide h2,
 .reveal #title-slide .title {
-color: var(--course-title-text); background: var(--course-title-bg);
+color: var(--course-heading-text); background: var(--course-title-bg);
 padding: .5em .7em; border-radius: 0 0 6px 6px;
 border: 0; border-top: 3px solid var(--course-brand); box-shadow: none;
 }
-.reveal .slide h2 { background: var(--course-section-bg); border-top: 0; border-left: 3px solid var(--course-accent); }
+.reveal .slide h2 { background: var(--course-section-bg); border-top: 0; border-left: 3px solid var(--course-heading-accent); }
 .reveal .slide h3, .reveal .slide h4 {
-color: var(--course-dark); padding: .4em .6em;
-border-left: 3px solid var(--course-accent);
+color: var(--course-heading-text); padding: .4em .6em;
+border-left: 3px solid var(--course-heading-accent);
 }
 .reveal .slide h3 { background: var(--course-topic-bg); }
 .reveal .slide h4 { background: var(--course-subtopic-bg); }
 .reveal strong { color: var(--course-dark); }
+.reveal :is(h1, h2, h3, h4) :is(a, strong, code) { color: inherit; background: transparent; }
+.reveal #title-slide .subtitle { color: var(--course-dark); }
 .reveal a { color: #356B8C; }
 .reveal .progress { color: #666666; }
 .reveal .slide-number { background: #F3F3F3; color: #262626; }

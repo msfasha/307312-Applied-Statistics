@@ -1,4 +1,4 @@
-/* Flow layout for the unchanged PowerPoint material; colors come from the shared Petra grayscale theme. */
+/* Flow layout for the unchanged PowerPoint material; colors come from the shared Petra burgundy and gray theme. */
 .source-slide { padding: 0 0 2rem; margin-bottom: 2rem; border-bottom: 1px solid #D6D6D6; }
 .source-slide :is(h2, h3, h4) { scroll-margin-top: 5rem; }
 .source-slide .quarto-figure { margin: 1.3rem auto; text-align: center; }
