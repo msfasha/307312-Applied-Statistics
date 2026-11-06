@@ -1,5 +1,5 @@
-/* Flow layout for the unchanged PowerPoint material; colors come from Petra. */
-.source-slide { padding: 0 0 2rem; margin-bottom: 2rem; border-bottom: 1px solid #DEE2E6; }
+/* Flow layout for the unchanged PowerPoint material; colors come from the shared Petra grayscale theme. */
+.source-slide { padding: 0 0 2rem; margin-bottom: 2rem; border-bottom: 1px solid #D6D6D6; }
 .source-slide :is(h2, h3, h4) { scroll-margin-top: 5rem; }
 .source-slide .quarto-figure { margin: 1.3rem auto; text-align: center; }
 .source-slide img { max-width: 100%; height: auto; object-fit: contain; }
@@ -17,8 +17,8 @@
 .source-level-2 { margin-left: 2.4rem; }
 .source-table { overflow-x: auto; margin: 1.3rem 0; }
 .source-table table { border-collapse: collapse; width: 100%; }
-.source-table td { padding: .5rem .75rem; border-bottom: 1px solid #DEE2E6; }
-.source-table tr:first-child { background: #F3F4F6; font-weight: 600; }
+.source-table td { padding: .5rem .75rem; border-bottom: 1px solid #D6D6D6; }
+.source-table tr:first-child { background: #F3F3F3; font-weight: 600; }
 .source-table td p { margin: 0; }
 .source-slide-number { color: #56616D; font-size: .85rem; }
 @media print { .source-slide { break-inside: avoid; } }
@@ -27,7 +27,7 @@
 .original-branding img { height: auto; max-width: 45%; }
 
 /* Standard Petra diagrams: editable text, one palette, responsive structure. */
-.petra-diagram { margin: 1.4rem 0; padding: 1.25rem; border: 1px solid #DEE2E6; border-top: 3px solid var(--course-accent); background: #FFFFFF; color: var(--course-dark); }
+.petra-diagram { margin: 1.4rem 0; padding: 1.25rem; border: 1px solid #D6D6D6; border-top: 3px solid var(--course-accent); background: #FFFFFF; color: var(--course-dark); }
 .petra-diagram p, .petra-diagram li { font-size: 1rem; line-height: 1.6; }
 .petra-diagram figcaption { margin-top: 1rem; color: var(--course-muted); font-size: .9rem; }
 .diagram-root, .diagram-node, .diagram-leaves > div { padding: .65rem .8rem; text-align: center; font-weight: 650; color: var(--course-title-text); background: var(--course-topic-bg); border: 1px solid var(--course-accent); line-height: 1.4; }
@@ -47,7 +47,7 @@
 .step-number { display: inline-grid; place-items: center; flex: 0 0 2.3rem; height: 2.3rem; border: 1px solid var(--course-accent); border-radius: 50%; background: var(--course-topic-bg); color: var(--course-title-text); font-weight: 650; }
 .diagram-table-scroll { overflow-x: auto; }
 .diagram-comparison { width: 100%; min-width: 640px; border-collapse: collapse; font-size: .95rem; }
-.diagram-comparison th, .diagram-comparison td { padding: .8rem .65rem; border-bottom: 1px solid #DEE2E6; vertical-align: top; line-height: 1.5; }
+.diagram-comparison th, .diagram-comparison td { padding: .8rem .65rem; border-bottom: 1px solid #D6D6D6; vertical-align: top; line-height: 1.5; }
 .diagram-comparison thead { background: var(--course-section-bg); color: var(--course-title-text); }
 .diagram-comparison tbody th { background: var(--course-subtopic-bg); font-weight: 600; }
 .diagram-comparison td:last-child { white-space: nowrap; }
