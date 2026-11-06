@@ -2204,11 +2204,17 @@ vertical-align: -.125em;
 :root {
 --course-brand: #404040;
 --course-accent: #A3A3A3;
---course-title-bg: #DADADA;
+--course-title-bg: #D0D0D0;
 --course-title-text: #262626;
---course-section-bg: #E8E8E8;
---course-topic-bg: #F3F3F3;
---course-subtopic-bg: #F8F8F8;
+--course-section-bg: #D8D8D8;
+--course-topic-bg: #E0E0E0;
+--course-subtopic-bg: #E8E8E8;
+
+--course-diagram-root-bg: #F2F2F2;
+--course-diagram-node-bg: #F7F7F7;
+--course-diagram-leaf-bg: #FAFAFA;
+--course-table-head-bg: #F2F2F2;
+--course-table-label-bg: #FAFAFA;
 --course-dark: #303030;
 --course-muted: #666666;
 --bs-link-color: #356B8C;
@@ -2228,7 +2234,7 @@ padding: 1.5rem 1.75rem; border-radius: 0 0 8px 8px;
 color: var(--course-title-text); margin-top: 0; border: 0;
 line-height: 1.25; padding-bottom: 0;
 }
-#title-block-header .subtitle { color: #595959; margin-bottom: 0; }
+#title-block-header .subtitle { color: #555555; margin-bottom: 0; }
 #title-block-header .quarto-title-meta,
 #title-block-header .quarto-title-meta-contents { color: var(--course-muted); }
 #title-block-header .quarto-title-meta:empty { display: none; }
@@ -2266,7 +2272,7 @@ margin-top: 1.5rem; margin-bottom: .7rem;
 #quarto-document-content h4 { color: var(--course-dark); }
 a { color: #356B8C; text-decoration-color: currentColor; }
 a:hover { color: #244D68; }
-.table thead { background: #F3F3F3; border-bottom: 2px solid #D6D6D6; color: var(--course-dark); }
+.table thead { --bs-table-bg: var(--course-table-head-bg); background: var(--course-table-head-bg); border-bottom: 2px solid #D6D6D6; color: var(--course-dark); }
 .table td, .table th { padding: .65rem; vertical-align: top; }
 div.sourceCode { border-left: 3px solid #D6D6D6; border-radius: 4px; }
 .figure-caption { font-size: .9rem; line-height: 1.5; color: var(--course-muted); }
@@ -2291,7 +2297,7 @@ border-left: 3px solid var(--course-accent);
 .reveal a { color: #356B8C; }
 .reveal .progress { color: #666666; }
 .reveal .slide-number { background: #F3F3F3; color: #262626; }
-.reveal table th { background: #F3F3F3; color: var(--course-dark); border-bottom-color: #D6D6D6; }
+.reveal table th { background: var(--course-table-head-bg); color: var(--course-dark); border-bottom-color: #D6D6D6; }
 @media (max-width: 575px) {
 #title-block-header .quarto-title { padding: 1.1rem; }
 #quarto-document-content :is(h2, h3, h4) { padding: .6rem .75rem; }
