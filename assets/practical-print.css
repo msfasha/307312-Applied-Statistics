@@ -1,0 +1,25 @@
+/* Readable teaching points and print layout for the practical companions. */
+#quarto-document-content li { margin-bottom: .45rem; }
+#quarto-document-content li:last-child { margin-bottom: 0; }
+@media print {
+  @page { size: A4; margin: 16mm; }
+  body { font-size: 10.5pt; line-height: 1.4; }
+  #title-block-header { margin: 0 0 1rem; }
+  #title-block-header .quarto-title { padding: 1rem; }
+  #quarto-document-content h2 { margin-top: 1.2rem; padding: .55rem .8rem; }
+  p, li { orphans: 3; widows: 3; }
+  #quarto-document-content li { margin-bottom: .2rem; }
+  pre, div.sourceCode, table, .quarto-figure, figure, .cell-output-display {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  pre, pre code { white-space: pre-wrap !important; overflow-wrap: anywhere; }
+  .cell-output-display, .table-responsive {
+    overflow: visible !important; height: auto !important; max-height: none !important;
+  }
+  #source-and-data-notes { break-inside: avoid; page-break-inside: avoid; }
+  .code-copy-button { display: none; }
+  table { width: 100% !important; max-width: 100% !important; table-layout: fixed; }
+  .table td, .table th { padding: .35rem; overflow-wrap: anywhere; font-size: 8.5pt; }
+  .cell-output-display img { max-width: 100% !important; height: auto !important; }
+}
