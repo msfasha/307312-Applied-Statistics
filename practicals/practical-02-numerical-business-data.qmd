@@ -202,7 +202,7 @@ knitr::kable(data.frame(Quartile = names(quartiles), Cost_per_ounce = unname(qua
 #| fig-cap: "Historical cereal costs. The box shows the middle half of the observations."
 # The boxplot convention can differ from type-7 quartiles for some sample sizes.
 ggplot(cereals, aes(x = "Listed products", y = cost_per_ounce)) +
-  geom_boxplot(fill = petra_accent, colour = "#493347", width = 0.35) +
+  geom_boxplot(fill = petra_accent, colour = "#262626", width = 0.35) +
   scale_y_continuous(labels = function(x) sprintf("$%.2f", x)) +
   labs(x = NULL, y = "Historical cost per ounce ($)")
 ```

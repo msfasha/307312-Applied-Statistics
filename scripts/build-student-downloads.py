@@ -36,7 +36,7 @@ with zipfile.ZipFile(SITE/'downloads/applied-statistics-pdfs.zip','w',zipfile.ZI
     for _, part in DOCUMENTS:z.write(SITE/'pdf'/(part+'.pdf'),part+'.pdf')
 with zipfile.ZipFile(SITE/'downloads/applied-statistics-rstudio.zip','w',zipfile.ZIP_DEFLATED) as z:
     # No instructor files, archives, original slides, books, or build caches.
-    names=['assets/practical-print.css','assets/petra-brand.css','assets/source-slides.css','Applied-Statistics.Rproj','_quarto.yml','index.qmd']+['lessons/'+p+'.qmd' for p in PARTS]+['practicals/'+p+'.qmd' for p in PRACTICALS]+['practicals/_quarto.yml','practicals/practical-01-cereals.qmd','practicals/_includes/petra-plots.R','scripts/finalize-preview.py','scripts/finalize-practical-preview.py','scripts/preview-practicals.py']
+    names=['assets/petra-theme.md','assets/practical-print.css','assets/petra-brand.css','assets/source-slides.css','Applied-Statistics.Rproj','_quarto.yml','index.qmd']+['lessons/'+p+'.qmd' for p in PARTS]+['practicals/'+p+'.qmd' for p in PRACTICALS]+['practicals/_quarto.yml','practicals/practical-01-cereals.qmd','practicals/_includes/petra-plots.R','scripts/finalize-preview.py','scripts/finalize-practical-preview.py','scripts/preview-practicals.py']
     for folder in ['assets/descriptive-statistics','assets/inferential-statistics','lessons/_includes','data']:
         names.extend(str(p.relative_to(ROOT)) for p in (ROOT/folder).rglob('*') if p.is_file() and p.suffix.lower() in ['.png','.jpg','.jpeg','.svg','.css','.qmd','.csv','.json','.md'])
     # Resources must be restricted to the same explicit teaching files as the site.

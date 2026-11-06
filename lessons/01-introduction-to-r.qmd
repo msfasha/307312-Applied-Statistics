@@ -306,7 +306,7 @@ Changing the bin width can change the apparent shape. Parts 2 and 3 develop the 
 # geom_boxplot() displays each gender group's distribution of height; its whiskers extend to observations within 1.5 IQR of the hinges.
 # Values beyond the whiskers are plotted separately as potential outliers, not automatically as errors.
 ggplot(students, aes(x = gender, y = height)) +
-  geom_boxplot(fill = "#E9DDE7") +
+  geom_boxplot(fill = "#D4D4D4") +
   labs(x = "Gender", y = "Height (cm)")
 ```
 

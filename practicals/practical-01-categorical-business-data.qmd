@@ -160,7 +160,7 @@ knitr::kable(risk_table, digits = 1)
 #| label: risk-bars
 #| fig-cap: "Risk classifications in their stated order."
 ggplot(risk_table, aes(x = risk, y = Frequency, fill = risk)) +
-  geom_col(width = 0.7, colour = "#6D526A") +
+  geom_col(width = 0.7, colour = "#4B4B4B") +
   scale_fill_manual(values = petra_risk, guide = "none") +
   labs(x = "Risk classification", y = "Number of fund entries")
 ```

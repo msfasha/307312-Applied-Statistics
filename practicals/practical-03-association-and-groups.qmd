@@ -162,7 +162,7 @@ mean_gap_pp
 #| fig-cap: "Expense ratios and historical five-year annualized returns. Each point is one fund."
 # A scatterplot retains individual observations; transparency shows overlapping points.
 ggplot(funds, aes(x = expense_ratio_pct, y = return_5yr_pct)) +
-  geom_point(colour = petra_purple, alpha = 0.6, size = 2) +
+  geom_point(colour = petra_ink, alpha = 0.6, size = 2) +
   labs(x = "Expense ratio (% of average net assets)",
        y = "Five-year annualized return (%)")
 ```

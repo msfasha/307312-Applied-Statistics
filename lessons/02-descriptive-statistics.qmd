@@ -1475,10 +1475,10 @@ quantile(students$height, probs = c(0.25, 0.50), type = 6)
 #| label: r-slide-76
 # boxplot(height~gender) compares groups; whiskers extend to the last data within 1.5 IQR of the hinges.
 # subset() selects Turkish/Russian males; R's default boxplot hinges can differ from type-7 quartiles.
-boxplot(height ~ gender, data = students, ylab = "Height (cm)", col = "#E9DDE7")
+boxplot(height ~ gender, data = students, ylab = "Height (cm)", col = "#D4D4D4")
 # The source spells Russia as "Russa"; match that original label without changing the data.
 males <- subset(students, gender == "Male" & country %in% c("Turkey", "Russa"))
-boxplot(height ~ country, data = males, ylab = "Height (cm)", col = "#E9DDE7")
+boxplot(height ~ country, data = males, ylab = "Height (cm)", col = "#D4D4D4")
 ```
 
 :::

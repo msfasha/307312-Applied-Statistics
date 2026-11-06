@@ -141,3 +141,18 @@
   statistical meaning, source attribution, code cells, tables and task scope.
 - Apply this preference to future practicals; preserve original source-slide
   wording in the main lessons unless separately authorized.
+
+## Grayscale teaching theme — 6 November 2026
+
+- The user approved replacing the lavender/pink teaching palette across authored
+  course material with the Petra grayscale theme. Use `assets/petra-theme.md`;
+  synchronize it with the portable master `../petra_theme/petra_theme.md`.
+- Keep titles, heading bands, editable diagrams, tables and note surfaces neutral
+  gray with dark text on white. Follow the shared CSS, not per-notebook overrides.
+- Our generated charts use neutral defaults; meaningful analytical group and
+  ordered-category colors remain appropriate. Preserve labels and consistent mappings.
+- Keep source-slide images and R plots centered. Small instructional images use
+  at least half the content width; retain aspect ratio and cover artwork sizing.
+- Original reference decks, source images and logos retain their colors and attribution.
+- Refresh HTML, all six PDFs and both student bundles on publication. Include the
+  tracked theme specification in the student RStudio project.

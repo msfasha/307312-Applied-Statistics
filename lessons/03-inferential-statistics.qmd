@@ -1285,7 +1285,7 @@ results <- replicate(1000, {
 # sd() and mean() compare simulated sampling spread and average estimated SE; agreement is illustrative.
 # hist() uses 30 bins to display the 1,000 sample means; this simulation is not a mathematical proof.
 c(SD_of_sample_means=sd(results[1,]), average_estimated_SE=mean(results[2,]))
-hist(results[1,], breaks=30, col="#E9DDE7", main="Distribution of Sample Means", xlab="Sample Mean")
+hist(results[1,], breaks=30, col="#D4D4D4", main="Distribution of Sample Means", xlab="Sample Mean")
 ```
 
 :::

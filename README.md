@@ -70,3 +70,11 @@ data, numerical cereal costs, and mutual-fund association/group comparisons.
 See [the practical guide](practicals/README.md) for notebook order, preview
 instructions and instructor references. They are included in course navigation, PDF downloads and the student RStudio
 project.
+
+## Shared teaching theme
+
+The course uses the **Petra grayscale teaching theme**, approved 6 November 2026.
+See [the theme specification](assets/petra-theme.md) for the exact palette, heading
+hierarchy, diagram rules and analytical chart colors. The portable master is
+`../petra_theme/petra_theme.md`; keep it synchronized with the tracked course copy.
+Use the maintained shared stylesheets rather than notebook-specific color rules.

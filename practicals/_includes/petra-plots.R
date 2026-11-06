@@ -1,13 +1,13 @@
-# Shared Petra chart styling for the three Part 2 practicals.
+# Shared Petra grayscale styling; blue/orange distinguish analytical groups.
 suppressPackageStartupMessages(library(ggplot2))
-petra_purple <- "#A83296"
-petra_accent <- "#C8ABC3"
-petra_groups <- c(Growth = "#A83296", Value = "#6D526A")
-petra_risk <- c("very low" = "#F0E6EF", "low" = "#DCC5D8",
-                "average" = "#C199BA", "high" = "#A83296", "very high" = "#63305B")
-petra_charge <- c(No = "#C8ABC3", Yes = "#79386E")
+petra_ink <- "#4B4B4B"
+petra_accent <- "#D4D4D4"
+petra_groups <- c(Growth = "#3B6B8A", Value = "#B56A3A")
+petra_risk <- c("very low" = "#EFF3F6", "low" = "#CBDCE8",
+                "average" = "#91B3CC", "high" = "#557F9D", "very high" = "#244860")
+petra_charge <- c(No = "#777777", Yes = "#3B6B8A")
 theme_set(theme_minimal(base_size = 12) +
             theme(panel.grid.minor = element_blank(),
-                  plot.title = element_text(colour = "#493347", face = "bold"),
-                  axis.title = element_text(colour = "#2F343B"),
+                  plot.title = element_text(colour = "#262626", face = "bold"),
+                  axis.title = element_text(colour = "#303030"),
                   legend.position = "bottom"))
