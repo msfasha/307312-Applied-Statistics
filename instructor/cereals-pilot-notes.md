@@ -1,5 +1,10 @@
 # CEREALS pilot — instructor notes
 
+Historical notes for the shorter pilot. The current expanded activity is
+`practicals/practical-02-numerical-business-data.qmd`; see
+`instructor/part2-practicals-answers.md` for current tasks and answers.
+The former notebook path is retained as an entry page.
+
 This is one practical activity for review before developing the proposed
 descriptive and inferential companions. The existing three course lessons,
 teaching content is unchanged. The notebook in `practicals/`

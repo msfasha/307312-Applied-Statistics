@@ -1,23 +1,37 @@
-# Practical R activities — drafts
+# Part 2 practical companions
 
-`practical-01-cereals.qmd` is the first descriptive statistics pilot: inspect 33
-historical cereal records, plot costs, compare mean and median, measure spread,
-and write a business interpretation. Data: `data/practicals/`. Answers:
-`instructor/cereals-pilot-notes.md`.
+Three core activities accompany the existing descriptive-statistics lesson.
+They are prepared for local review, separate from published navigation and
+student bundles. Optional coffee, Medicare, legal-advertising and Consumer
+Research activities remain future work.
 
-Open the root RStudio project first. Build with
-`python3 scripts/preview-cereals-pilot.py` from the project root. Output:
-`_build/practicals/practical-01-cereals.html`. The pilot is separate from the
-active website and student packages pending review.
+| Order | Notebook | Focus | Suggested time |
+|---|---|---|---|
+| 1 | `practical-01-categorical-business-data.qmd` | Mutual-fund categories, charts and percentage denominators | Two 40–50 minute sessions |
+| 2 | `practical-02-numerical-business-data.qmd` | Cereal costs, histograms, centre, spread, quartiles, boxplots and outliers | 50–60 minutes |
+| 3 | `practical-03-association-and-groups.qmd` | Fund returns, group comparisons, scatterplots and correlation | 60–75 minutes |
 
-## Preview in RStudio
+Open `Applied-Statistics.Rproj` in RStudio and open a notebook above. Install
+`knitr`, `rmarkdown`, `dplyr` and `ggplot2` if needed. Run cells in order; starter
+cells marked `eval: false` are for students to complete. Each import cell finds
+the canonical `data/` folder from either the course root or notebook folder.
 
-Open `Applied-Statistics.Rproj`, then `practicals/practical-01-cereals.qmd`,
-and click **Render** or **Preview**. This folder has its own Quarto configuration,
-so the draft does not inherit the published website settings. Data import cells work from either the course root or the notebook folder,
-matching both RStudio cell execution and Quarto Preview.
+Click **Render** or **Preview** in RStudio, or run
+`python3 scripts/preview-practicals.py` from the course root to build all three.
+Output: `_build/practicals/`. Shared chart styling is in
+`_includes/petra-plots.R`; document styling uses `assets/petra-brand.css`.
+Render the main course with Quarto first if local links to lesson previews are
+needed under `_build/website/`.
 
-Keep the editable data at **`data/practicals/` in the course root**. Do not move
-the course data folder into `practicals/`. Markup links are relative to the
-notebook; R imports locate `data/` from the course root or `../data/` from the notebook folder. Both reference the same files.
-The preview build creates download copies automatically under `_build/practicals/`.
+The former `practical-01-cereals.qmd` is a compatibility entry page pointing to
+the extended Practical 2. The old preview helper continues to work.
+
+Instructor material:
+
+- `instructor/part2-practicals-source-review.md`: case map, source checks and limitations.
+- `instructor/part2-practicals-answers.md`: expected results and assessment guidance.
+- `instructor/cereals-pilot-notes.md`: retained notes for the original shorter pilot.
+
+Verify executable examples and independent import paths with
+`python3 scripts/check-practicals.py`. Final classroom adoption and publication
+are stage 5, outside this stages 1–3 preparation.

@@ -101,3 +101,21 @@
 - Keep authoring commentary such as “teaching scenario” or “newly written
   teaching activities” in instructor notes, not student-facing material.
 - Retain accurate source attribution, dates, units and substantive data limits.
+
+## Part 2 core practicals — 6 November 2026
+
+- User authorized stages 1–3: source/data review and three separate Part 2
+  practical notebooks, followed by commit and push.
+- Practical 1 is categorical business data (FUNDS2002); Practical 2 is numerical
+  business data (CEREALS); Practical 3 is association/group comparisons
+  (FUNDS2002). Editable notebooks live under `practicals/`.
+- `practicals/practical-01-cereals.qmd` is now an entry page linking to Practical 2;
+  the former shorter pilot is retained in Git history.
+- Use the shared Petra chart styling in `practicals/_includes/petra-plots.R`.
+- Keep answers and source issues in `instructor/part2-practicals-*.md`; keep
+  working CSVs and manifests in `data/practicals/`.
+- `scripts/preview-practicals.py` builds the independent practical project;
+  `scripts/check-practicals.py` verifies worked R cells, data and both import
+  locations. Preserve the existing lesson content and source decks.
+- Public adoption/navigation and download integration remain stage 5. The four
+  optional extension cases remain future work; do not adopt them automatically.

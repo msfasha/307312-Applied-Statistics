@@ -1,4 +1,4 @@
-# Independent draft project: RStudio Preview works without publishing the pilot.
+# Independent Part 2 practical project; publication remains a separate adoption step.
 project:
   type: default
   output-dir: ../_build/practicals
@@ -6,6 +6,9 @@ project:
   post-render:
     - python3 ../scripts/finalize-practical-preview.py
   render:
+    - practical-01-categorical-business-data.qmd
+    - practical-02-numerical-business-data.qmd
+    - practical-03-association-and-groups.qmd
     - practical-01-cereals.qmd
 format:
   html:

@@ -1,0 +1,33 @@
+{
+  "dataset": "FUNDS2002",
+  "source_book": "Basic Business Statistics: Concepts and Applications, ninth edition",
+  "source_file": "books/2-Basic business statistics  concepts and applications/BusStats Excel/FUNDS2002.txt",
+  "source_sha256": "97f883e2bfe02a6e9c89825135be787c93e12c839a133520148abcc52653e3ef",
+  "output_file": "data/practicals/funds2002.csv",
+  "output_sha256": "4e552573bdcf9151b57bb5b68f24616d7bb9c2c9ea61c40a8cc53b4944b61596",
+  "rows": 259,
+  "columns": 13,
+  "column_mapping": {
+    "Fund": "fund",
+    "Type": "type",
+    "Objective": "objective",
+    "Assets": "assets_million_dollars",
+    "Fees": "sales_charge",
+    "Expense ratio": "expense_ratio_pct",
+    "Return 2001": "return_2001_pct",
+    "3Yr-Return": "return_3yr_pct",
+    "5-Yr-Return": "return_5yr_pct",
+    "Turnover": "turnover",
+    "Risk": "risk",
+    "Best Quarter": "best_quarter_pct",
+    "Worst Quarter": "worst_quarter_pct"
+  },
+  "transformations": [
+    "Trimmed surrounding whitespace in Type in 213 rows.",
+    "Renamed columns; preserved fund labels, source order and all numeric text values."
+  ],
+  "validation": "Every exported cell compared with source text after the documented Type trim; no missing cells; unique fund labels.",
+  "source_definitions": "Printed pp. 40 and 75 (PDF viewer pp. 66 and 101); team projects pp. 130\u2013131.",
+  "provenance_limit": "Publisher companion data verified; original collection method and probability sampling not established.",
+  "reviewed_on": "2026-11-06"
+}

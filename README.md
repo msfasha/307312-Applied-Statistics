@@ -62,3 +62,11 @@ removed from the active folders during reorganization. Nothing there is adopted
 automatically. Original publisher files and original student measurements remain
 local-only. Instructor notes tracked on a public source branch are publicly
 visible there even though excluded from the student website and ZIPs.
+
+## Part 2 practical companions
+
+Three separate practicals are ready for local review: categorical mutual-fund
+data, numerical cereal costs, and mutual-fund association/group comparisons.
+See [the practical guide](practicals/README.md) for notebook order, preview
+instructions and instructor references. They remain outside published course
+navigation and student bundles pending the integration stage.
