@@ -34,7 +34,7 @@ than separate heading-color rules in individual notebooks.
 | Role | Hex | Usage |
 |---|---|---|
 | Reading surface | `#FFFFFF` | Main content and diagram backgrounds |
-| Main title surface | `#F3F3F3` | Light gray title panel |
+| Main title surface | `#DADADA` | Distinct darker gray title panel |
 | Main title and H2 text | `#262626` | Charcoal text |
 | Main title top rule | `#404040` | Thin dark gray rule |
 | Subtitle | `#666666` | Secondary title text |
@@ -62,12 +62,15 @@ interface; do not recolor every visual indiscriminately.
 
 | Semantic role | Source | Treatment |
 |---|---|---|
-| Document title | YAML `title`, or one H1 in a native notebook | Light gray panel, charcoal text, 3 px dark top rule |
+| Document title | YAML `title`, or one H1 in a native notebook | `#DADADA` gray panel, charcoal text, 3 px dark top rule |
 | Subtitle | YAML `subtitle`, or a subtitle paragraph | Smaller gray text, subordinate to the title |
 | Main section | H2 / `##` | `#E8E8E8` fill and a thin gray left rule |
 | Topic | H3 / `###` | `#F3F3F3` fill and a thin gray left rule |
 | Subtopic | H4 / `####` | `#F8F8F8` fill and a thin gray left rule |
 | Minor labels | H5/H6 | Plain dark headings |
+
+The main title panel is deliberately darker than H2–H4 surfaces so the document
+title remains visually distinct from sections and diagram content.
 
 Keep genuine heading levels and normal navigation; do not promote all topics to
 H2 just to imitate slides. Distinguish levels through size, weight, whitespace and
