@@ -2310,13 +2310,16 @@ color: var(--course-dark); margin: .8rem 0 1.4rem;
 .case-narration[lang="ar"] code { direction: ltr; unicode-bidi: isolate; }
 </style>
 <style type="text/css">
+#quarto-document-content li { margin-bottom: .45rem; }
+#quarto-document-content li:last-child { margin-bottom: 0; }
 @media print {
 @page { size: A4; margin: 16mm; }
 body { font-size: 10.5pt; line-height: 1.4; }
 #title-block-header { margin: 0 0 1rem; }
 #title-block-header .quarto-title { padding: 1rem; }
 #quarto-document-content h2 { margin-top: 1.2rem; padding: .55rem .8rem; }
-p { orphans: 3; widows: 3; }
+p, li { orphans: 3; widows: 3; }
+#quarto-document-content li { margin-bottom: .2rem; }
 pre, div.sourceCode, table, .quarto-figure, figure, .cell-output-display {
 break-inside: avoid;
 page-break-inside: avoid;
@@ -2325,6 +2328,7 @@ pre, pre code { white-space: pre-wrap !important; overflow-wrap: anywhere; }
 .cell-output-display, .table-responsive {
 overflow: visible !important; height: auto !important; max-height: none !important;
 }
+#source-and-data-notes { break-inside: avoid; page-break-inside: avoid; }
 .code-copy-button { display: none; }
 .table td, .table th { padding: .4rem; }
 }
@@ -2373,16 +2377,33 @@ overflow: visible !important; height: auto !important; max-height: none !importa
 </header>
 
 
-<p>This practical accompanies categorical variables, frequency tables, contingency tables and qualitative charts in <a href="../lessons/02-descriptive-statistics.html">Part 2</a>. Complete <a href="../lessons/01-introduction-to-r.html">Part 1</a> first. Allow <strong>two sessions of approximately 40–50 minutes</strong>: Sections 1–4, then Sections 5–8.</p>
-<p>By the end, you should be able to summarize nominal and ordinal variables, choose a suitable chart, distinguish overall from conditional percentages, and write a business finding with a clear denominator.</p>
+<ul>
+<li>This practical accompanies categorical variables, frequency tables, contingency tables and qualitative charts in <a href="../lessons/02-descriptive-statistics.html">Part 2</a>.</li>
+<li>Complete <a href="../lessons/01-introduction-to-r.html">Part 1</a> first.</li>
+<li>Allow <strong>two sessions of approximately 40–50 minutes</strong>: Sections 1–4, then Sections 5–8.</li>
+</ul>
+<p><strong>By the end, you should be able to:</strong></p>
+<ul>
+<li>Summarize nominal and ordinal variables.</li>
+<li>Choose a suitable chart.</li>
+<li>Distinguish overall from conditional percentages.</li>
+<li>Write a business finding with a clear denominator.</li>
+</ul>
 <p><a href="../pdf/practical-01-categorical-business-data.pdf">Download this practical as PDF</a> · <a href="../downloads/applied-statistics-rstudio.zip">Download the student RStudio project</a></p>
 <section id="the-business-question" class="level2">
 <h2 class="anchored" data-anchor-id="the-business-question">1. The business question</h2>
 <p>An analyst is reviewing a historical list of <strong>259 mutual funds</strong>:</p>
 <blockquote class="blockquote">
-<p>How is this list distributed across investment objectives and risk classifications, and does the proportion carrying a sales charge differ across risk groups?</p>
+<ul>
+<li>How is this list distributed across investment objectives and risk classifications?</li>
+<li>Does the proportion carrying a sales charge differ across risk groups?</li>
+</ul>
 </blockquote>
-<p>One row represents <strong>one listed fund entry</strong>, not an investor, purchase or year. The data are supplied with Berenson, Levine and Krehbiel’s <em>Basic Business Statistics: Concepts and Applications</em>, ninth edition, as <strong>FUNDS2002</strong>. They describe historical classifications and returns through 2001, rather than today’s market.</p>
+<ul>
+<li>One row represents <strong>one listed fund entry</strong>, not an investor, purchase or year.</li>
+<li>The data are supplied with Berenson, Levine and Krehbiel’s <em>Basic Business Statistics: Concepts and Applications</em>, ninth edition, as <strong>FUNDS2002</strong>.</li>
+<li>They describe historical classifications and returns through 2001, rather than today’s market.</li>
+</ul>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -2429,11 +2450,20 @@ overflow: visible !important; height: auto !important; max-height: none !importa
 </tr>
 </tbody>
 </table>
-<p><strong>Sales charge and expense ratio are different variables.</strong> A fund recorded as having no sales charge can still have operating expenses. The risk categories are classifications, not equally spaced numerical measurements.</p>
+<ul>
+<li><strong>Sales charge and expense ratio are different variables.</strong></li>
+<li>A fund recorded as having no sales charge can still have operating expenses.</li>
+<li>The risk categories are classifications, not equally spaced numerical measurements.</li>
+</ul>
 </section>
 <section id="import-and-inspect" class="level2">
 <h2 class="anchored" data-anchor-id="import-and-inspect">2. Import and inspect</h2>
-<p>Open <code>Applied-Statistics.Rproj</code>, then this notebook. Install <code>dplyr</code> and <code>ggplot2</code> once if needed, as introduced in Part 1. Run the cells in order. <a href="../data/practicals/funds2002.csv">Download the CSV</a>.</p>
+<ul>
+<li>Open <code>Applied-Statistics.Rproj</code>, then this notebook.</li>
+<li>Install <code>dplyr</code> and <code>ggplot2</code> once if needed, as introduced in Part 1.</li>
+<li>Run the cells in order.</li>
+<li><a href="../data/practicals/funds2002.csv">Download the CSV</a>.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Locate the shared data folder from the course root or notebook folder.</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data_dir <span class="ot">&lt;-</span> <span class="cf">if</span> (<span class="fu">dir.exists</span>(<span class="st">&quot;data&quot;</span>)) <span class="st">&quot;data&quot;</span> <span class="cf">else</span> <span class="fu">file.path</span>(<span class="st">&quot;..&quot;</span>, <span class="st">&quot;data&quot;</span>)</span>
@@ -2465,7 +2495,12 @@ assets_million_dollars           sales_charge      expense_ratio_pct
                      0 </code></pre>
 </div>
 </div>
-<p><code>read.csv()</code> imports the records; <code>factor()</code> defines category order. <code>is.na()</code> and <code>colSums()</code> check missing cells, including unrecognized factor labels. There are 259 records, 13 variables and no missing cells after this conversion.</p>
+<ul>
+<li><code>read.csv()</code> imports the records.</li>
+<li><code>factor()</code> defines category order.</li>
+<li><code>is.na()</code> and <code>colSums()</code> check missing cells, including unrecognized factor labels.</li>
+<li>There are 259 records, 13 variables and no missing cells after this conversion.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select only the fields needed for the categorical questions.</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(funds[<span class="fu">c</span>(<span class="st">&quot;fund&quot;</span>, <span class="st">&quot;type&quot;</span>, <span class="st">&quot;objective&quot;</span>, <span class="st">&quot;sales_charge&quot;</span>, <span class="st">&quot;risk&quot;</span>)]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2573,7 +2608,11 @@ assets_million_dollars           sales_charge      expense_ratio_pct
 </table>
 </div>
 </div>
-<p>There are <strong>158 Growth funds (61.0%)</strong> and <strong>101 Value funds (39.0%)</strong>. The denominator is all 259 entries in this list. This is not an estimate of the share of all funds in today’s market.</p>
+<ul>
+<li>There are <strong>158 Growth funds (61.0%)</strong> and <strong>101 Value funds (39.0%)</strong>.</li>
+<li>The denominator is all 259 entries in this list.</li>
+<li>This is not an estimate of the share of all funds in today’s market.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_bar() counts records directly; use the same objective colors throughout.</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(funds, <span class="fu">aes</span>(<span class="at">x =</span> objective, <span class="at">fill =</span> objective)) <span class="sc">+</span></span>
@@ -2589,7 +2628,10 @@ assets_million_dollars           sales_charge      expense_ratio_pct
 </div>
 </div>
 </div>
-<p>A bar chart makes comparisons easy. A pie chart can show parts of the same whole, but angles are harder to compare precisely.</p>
+<ul>
+<li>A bar chart makes comparisons easy.</li>
+<li>A pie chart can show parts of the same whole, but angles are harder to compare precisely.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_col() uses computed counts; polar coordinates turn the stack into slices.</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(objective_table, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> Frequency, <span class="at">fill =</span> objective)) <span class="sc">+</span></span>
@@ -2605,7 +2647,12 @@ assets_million_dollars           sales_charge      expense_ratio_pct
 </div>
 </div>
 </div>
-<p><strong>Your turn A:</strong> Create a count-and-percentage table and a bar chart for <code>type</code>. Identify the largest category and state the denominator. Use the bar chart as your main comparison; the pie chart is an alternative display, not an additional required submission.</p>
+<p><strong>Your turn A</strong></p>
+<ul>
+<li>Create a count-and-percentage table and a bar chart for <code>type</code>.</li>
+<li>Identify the largest category and state the denominator.</li>
+<li>Use the bar chart as your main comparison; the pie chart is an alternative display, not an additional required submission.</li>
+</ul>
 </section>
 <section id="ordered-categories" class="level2">
 <h2 class="anchored" data-anchor-id="ordered-categories">4. Ordered categories</h2>
@@ -2676,7 +2723,11 @@ assets_million_dollars           sales_charge      expense_ratio_pct
 </table>
 </div>
 </div>
-<p>The first three categories contain <strong>164 / 259 = 63.3%</strong> of the listed funds. That is average risk <strong>or lower</strong>. The Average category alone contains <strong>82 / 259 = 31.7%</strong>.</p>
+<ul>
+<li>The first three categories contain <strong>164 / 259 = 63.3%</strong> of the listed funds.</li>
+<li>That is average risk <strong>or lower</strong>.</li>
+<li>The Average category alone contains <strong>82 / 259 = 31.7%</strong>.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(risk_table, <span class="fu">aes</span>(<span class="at">x =</span> risk, <span class="at">y =</span> Frequency, <span class="at">fill =</span> risk)) <span class="sc">+</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">0.7</span>, <span class="at">colour =</span> <span class="st">&quot;#6D526A&quot;</span>) <span class="sc">+</span></span>
@@ -2691,7 +2742,13 @@ assets_million_dollars           sales_charge      expense_ratio_pct
 </div>
 </div>
 </div>
-<p><strong>Your turn B:</strong> Repeat the cumulative table for <code>turnover</code>. What percentage have low turnover or less? Explain why the ordering must be defined before calculating a running total. A cumulative percentage across Growth and Value would depend on an arbitrary ordering and has no useful interpretation here.</p>
+<p><strong>Your turn B</strong></p>
+<ul>
+<li>Repeat the cumulative table for <code>turnover</code>.</li>
+<li>What percentage have low turnover or less?</li>
+<li>Explain why the ordering must be defined before calculating a running total.</li>
+<li>A cumulative percentage across Growth and Value would depend on an arbitrary ordering and has no useful interpretation here.</li>
+</ul>
 </section>
 <section id="compare-categorical-distributions" class="level2">
 <h2 class="anchored" data-anchor-id="compare-categorical-distributions">5. Compare categorical distributions</h2>
@@ -2710,7 +2767,10 @@ assets_million_dollars           sales_charge      expense_ratio_pct
 </div>
 </div>
 </div>
-<p>The groups contain different numbers of funds. Counts answer how many entries appear; percentages within each objective answer how each group’s risk composition is distributed.</p>
+<ul>
+<li>The groups contain different numbers of funds.</li>
+<li>Counts answer how many entries appear; percentages within each objective answer how each group’s risk composition is distributed.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># position=&quot;fill&quot; divides each stack by that objective&#39;s total.</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(funds, <span class="fu">aes</span>(<span class="at">x =</span> objective, <span class="at">fill =</span> risk)) <span class="sc">+</span></span>
@@ -2727,7 +2787,12 @@ assets_million_dollars           sales_charge      expense_ratio_pct
 </div>
 </div>
 </div>
-<p><strong>Your turn C:</strong> Compare sales-charge status across capitalization types using counts and a 100% stacked chart. Use <code>sales_charge</code>, rather than the numerical <code>expense_ratio_pct</code>. Describe how the two displays answer different questions.</p>
+<p><strong>Your turn C</strong></p>
+<ul>
+<li>Compare sales-charge status across capitalization types using counts and a 100% stacked chart.</li>
+<li>Use <code>sales_charge</code>, rather than the numerical <code>expense_ratio_pct</code>.</li>
+<li>Describe how the two displays answer different questions.</li>
+</ul>
 </section>
 <section id="contingency-tables-and-denominators" class="level2">
 <h2 class="anchored" data-anchor-id="contingency-tables-and-denominators">6. Contingency tables and denominators</h2>
@@ -2787,7 +2852,11 @@ assets_million_dollars           sales_charge      expense_ratio_pct
 </table>
 </div>
 </div>
-<p>There are 95 Yes and 164 No entries overall. Among the 80 High-risk funds, 35 have a sales charge. These values support three different statements:</p>
+<ul>
+<li>There are 95 Yes and 164 No entries overall.</li>
+<li>Among the 80 High-risk funds, 35 have a sales charge.</li>
+<li>These values support three different statements:</li>
+</ul>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 30%">
@@ -2957,8 +3026,15 @@ assets_million_dollars           sales_charge      expense_ratio_pct
 </div>
 </div>
 </div>
-<p>The observed percentages describe this list. They do not establish that risk causes charges, or that any observed difference extends to a wider population.</p>
-<p><strong>Your turn D:</strong> Construct <code>type</code> by <code>objective</code> counts and row percentages. Write one business question answered by the row percentages, then explain how the question changes if you use column percentages.</p>
+<ul>
+<li>The observed percentages describe this list.</li>
+<li>They do not establish that risk causes charges, or that any observed difference extends to a wider population.</li>
+</ul>
+<p><strong>Your turn D</strong></p>
+<ul>
+<li>Construct <code>type</code> by <code>objective</code> counts and row percentages.</li>
+<li>Write one business question answered by the row percentages, then explain how the question changes if you use column percentages.</li>
+</ul>
 </section>
 <section id="interpretation-workshop" class="level2">
 <h2 class="anchored" data-anchor-id="interpretation-workshop">7. Interpretation workshop</h2>
@@ -2981,12 +3057,22 @@ assets_million_dollars           sales_charge      expense_ratio_pct
 <li>One chart comparing sales-charge percentages within capitalization types.</li>
 <li>Three findings with explicit denominators and one limitation.</li>
 </ol>
-<p>Submit your completed Quarto notebook and rendered HTML. Keep the briefing to approximately <strong>one page</strong>, with supporting code and output below it. Credit depends on method choice and interpretation as well as correct calculations.</p>
+<ul>
+<li>Submit your completed Quarto notebook and rendered HTML.</li>
+<li>Keep the briefing to approximately <strong>one page</strong>, with supporting code and output below it.</li>
+<li>Credit depends on method choice and interpretation as well as correct calculations.</li>
+</ul>
 </section>
 <section id="source-and-data-notes" class="level2">
 <h2 class="anchored" data-anchor-id="source-and-data-notes">Source and data notes</h2>
-<p>Berenson, Levine and Krehbiel, <em>Basic Business Statistics: Concepts and Applications</em>, ninth edition, <strong>FUNDS2002</strong> companion data. The local ninth-edition book defines the fund comparison on p. 40 and variables on p. 75 (team project TP2.1); page numbers differ from the international edition cited by the supplied draft. Category ordering and the guided tasks here support the course’s Part 2 sequence.</p>
-<p>The CSV preserves source observations and order; headers were renamed and surrounding spaces in <code>Type</code> were trimmed. The underlying collection and probability-selection method have not been established, so conclusions concern the supplied list. <a href="../data/practicals/README.md">Data dictionary and provenance</a>.</p>
+<ul>
+<li><p>Berenson, Levine and Krehbiel, <em>Basic Business Statistics: Concepts and Applications</em>, ninth edition, <strong>FUNDS2002</strong> companion data.</p></li>
+<li><p>The local ninth-edition book defines the fund comparison on p. 40 and variables on p. 75 (team project TP2.1); page numbers differ from the international edition cited by the supplied draft.</p></li>
+<li><p>Category ordering and the guided tasks here support the course’s Part 2 sequence.</p></li>
+<li><p>The CSV preserves source observations and order; headers were renamed and surrounding spaces in <code>Type</code> were trimmed.</p></li>
+<li><p>The underlying collection and probability-selection method have not been established, so conclusions concern the supplied list.</p></li>
+<li><p><a href="../data/practicals/README.md">Data dictionary and provenance</a>.</p></li>
+</ul>
 <p>Continue with <a href="practical-02-numerical-business-data.html">Practical 2: Numerical business data</a>.</p>
 </section>
 

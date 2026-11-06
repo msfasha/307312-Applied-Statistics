@@ -2310,13 +2310,16 @@ color: var(--course-dark); margin: .8rem 0 1.4rem;
 .case-narration[lang="ar"] code { direction: ltr; unicode-bidi: isolate; }
 </style>
 <style type="text/css">
+#quarto-document-content li { margin-bottom: .45rem; }
+#quarto-document-content li:last-child { margin-bottom: 0; }
 @media print {
 @page { size: A4; margin: 16mm; }
 body { font-size: 10.5pt; line-height: 1.4; }
 #title-block-header { margin: 0 0 1rem; }
 #title-block-header .quarto-title { padding: 1rem; }
 #quarto-document-content h2 { margin-top: 1.2rem; padding: .55rem .8rem; }
-p { orphans: 3; widows: 3; }
+p, li { orphans: 3; widows: 3; }
+#quarto-document-content li { margin-bottom: .2rem; }
 pre, div.sourceCode, table, .quarto-figure, figure, .cell-output-display {
 break-inside: avoid;
 page-break-inside: avoid;
@@ -2325,6 +2328,7 @@ pre, pre code { white-space: pre-wrap !important; overflow-wrap: anywhere; }
 .cell-output-display, .table-responsive {
 overflow: visible !important; height: auto !important; max-height: none !important;
 }
+#source-and-data-notes { break-inside: avoid; page-break-inside: avoid; }
 .code-copy-button { display: none; }
 .table td, .table th { padding: .4rem; }
 }
@@ -2373,16 +2377,33 @@ overflow: visible !important; height: auto !important; max-height: none !importa
 </header>
 
 
-<p>This practical accompanies measures of association and comparative boxplots in <a href="../lessons/02-descriptive-statistics.html">Part 2</a>. Complete <a href="practical-01-categorical-business-data.html">categorical data</a> and <a href="practical-02-numerical-business-data.html">numerical data</a> first. Allow <strong>60–75 minutes</strong>, or two shorter sessions.</p>
-<p>By the end, you should be able to compare groups using their distributions, inspect a numerical relationship with a scatterplot, calculate Pearson correlation, and distinguish an observed association from a causal explanation.</p>
+<ul>
+<li>This practical accompanies measures of association and comparative boxplots in <a href="../lessons/02-descriptive-statistics.html">Part 2</a>.</li>
+<li>Complete <a href="practical-01-categorical-business-data.html">categorical data</a> and <a href="practical-02-numerical-business-data.html">numerical data</a> first.</li>
+<li>Allow <strong>60–75 minutes</strong>, or two shorter sessions.</li>
+</ul>
+<p><strong>By the end, you should be able to:</strong></p>
+<ul>
+<li>Compare groups using their distributions.</li>
+<li>Inspect a numerical relationship with a scatterplot.</li>
+<li>Calculate Pearson correlation.</li>
+<li>Distinguish an observed association from a causal explanation.</li>
+</ul>
 <p><a href="../pdf/practical-03-association-and-groups.pdf">Download this practical as PDF</a> · <a href="../downloads/applied-statistics-rstudio.zip">Download the student RStudio project</a></p>
 <section id="the-business-questions" class="level2">
 <h2 class="anchored" data-anchor-id="the-business-questions">1. The business questions</h2>
 <p>Return to the historical list of <strong>259 mutual funds</strong>:</p>
 <blockquote class="blockquote">
-<p>How do Growth and Value funds compare on five-year annualized returns? Is expense ratio associated with those returns in this list?</p>
+<ul>
+<li>How do Growth and Value funds compare on five-year annualized returns?</li>
+<li>Is expense ratio associated with those returns in this list?</li>
+</ul>
 </blockquote>
-<p>An analyst needs distributions and numerical summaries, rather than a single ranking. The five-year return covers <strong>1997–2001</strong> and is expressed as an annualized percentage. For example, a recorded value of 10 means 10% per year over that period; it is not a total five-year return of 10%.</p>
+<ul>
+<li>An analyst needs distributions and numerical summaries, rather than a single ranking.</li>
+<li>The five-year return covers <strong>1997–2001</strong> and is expressed as an annualized percentage.</li>
+<li>For example, a recorded value of 10 means 10% per year over that period; it is not a total five-year return of 10%.</li>
+</ul>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -2417,7 +2438,10 @@ overflow: visible !important; height: auto !important; max-height: none !importa
 </tr>
 </tbody>
 </table>
-<p>A difference between two percentage returns is measured in <strong>percentage points</strong>. A single recorded return per fund does not give us annual observations for that fund or its year-to-year volatility.</p>
+<ul>
+<li>A difference between two percentage returns is measured in <strong>percentage points</strong>.</li>
+<li>A single recorded return per fund does not give us annual observations for that fund or its year-to-year volatility.</li>
+</ul>
 </section>
 <section id="import-and-inspect" class="level2">
 <h2 class="anchored" data-anchor-id="import-and-inspect">2. Import and inspect</h2>
@@ -2456,7 +2480,12 @@ Growth  Value
  Max.   :2.130     Max.   :26.30  </code></pre>
 </div>
 </div>
-<p><code>factor()</code> fixes a consistent display order. <code>table()</code> reports 158 Growth and 101 Value funds. <code>summary()</code> helps spot unexpected ranges; unusual values require investigation rather than automatic deletion. <a href="../data/practicals/funds2002.csv">Download the CSV</a>.</p>
+<ul>
+<li><code>factor()</code> fixes a consistent display order.</li>
+<li><code>table()</code> reports 158 Growth and 101 Value funds.</li>
+<li><code>summary()</code> helps spot unexpected ranges; unusual values require investigation rather than automatic deletion.</li>
+<li><a href="../data/practicals/funds2002.csv">Download the CSV</a>.</li>
+</ul>
 </section>
 <section id="compare-distributions-before-calculating-differences" class="level2">
 <h2 class="anchored" data-anchor-id="compare-distributions-before-calculating-differences">3. Compare distributions before calculating differences</h2>
@@ -2475,9 +2504,20 @@ Growth  Value
 </div>
 </div>
 </div>
-<p>The line inside each box is the median. The box spans the middle half of observations using the plotting convention. Whiskers extend to observed values within 1.5 IQR of the hinges; points beyond them are flags for inspection, not necessarily errors.</p>
-<p><strong>Pause:</strong> Which group appears to have the higher median? Which has more spread? Do the distributions overlap? Can a higher group median tell us that every fund in that group outperformed every fund in the other group?</p>
-<p>For a second view, compare histograms using a common bin width and horizontal scale. Each panel has its own group denominator.</p>
+<ul>
+<li>The line inside each box is the median.</li>
+<li>The box spans the middle half of observations using the plotting convention.</li>
+<li>Whiskers extend to observed values within 1.5 IQR of the hinges; points beyond them are flags for inspection, not necessarily errors.</li>
+</ul>
+<p><strong>Pause</strong></p>
+<ul>
+<li><p>Which group appears to have the higher median?</p></li>
+<li><p>Which has more spread?</p></li>
+<li><p>Do the distributions overlap?</p></li>
+<li><p>Can a higher group median tell us that every fund in that group outperformed every fund in the other group?</p></li>
+<li><p>For a second view, compare histograms using a common bin width and horizontal scale.</p></li>
+<li><p>Each panel has its own group denominator.</p></li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Density rescales unequal group sizes; each panel has total bar area 1.</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(funds, <span class="fu">aes</span>(<span class="at">x =</span> return_5yr_pct, <span class="at">y =</span> <span class="fu">after_stat</span>(density), <span class="at">fill =</span> objective)) <span class="sc">+</span></span>
@@ -2494,7 +2534,11 @@ Growth  Value
 </div>
 </div>
 </div>
-<p>Density height is not itself a percentage. Each bar’s area is its group’s relative frequency in that interval. Common bins make the displays comparable; the plot does not weight a fund by its assets.</p>
+<ul>
+<li>Density height is not itself a percentage.</li>
+<li>Each bar’s area is its group’s relative frequency in that interval.</li>
+<li>Common bins make the displays comparable; the plot does not weight a fund by its assets.</li>
+</ul>
 </section>
 <section id="summarize-the-comparison" class="level2">
 <h2 class="anchored" data-anchor-id="summarize-the-comparison">4. Summarize the comparison</h2>
@@ -2552,9 +2596,20 @@ Growth  Value
 <pre><code>[1] 1.545325</code></pre>
 </div>
 </div>
-<p>The mean five-year annualized return is about <strong>10.15% for Growth</strong> and <strong>11.69% for Value</strong>, a difference of <strong>1.55 percentage points</strong> in this list. Medians are 10.1% and 11.7%. The sample SDs, about 4.77 and 4.01 percentage points, describe <strong>variation across the listed funds’ five-year annualized returns</strong>. They do not measure the volatility of an individual fund over time.</p>
-<p>The overlapping distributions matter: these summaries do not identify a universal winner. They also give each fund equal weight; the mean is not the return on a portfolio weighted by money invested.</p>
-<p><strong>Your turn A:</strong> Repeat the grouped summary using <code>return_2001_pct</code>. Compare the size and direction of the gap with the five-year comparison. Explain why changing the observation period changes the business question.</p>
+<ul>
+<li><p>The mean five-year annualized return is about <strong>10.15% for Growth</strong> and <strong>11.69% for Value</strong>, a difference of <strong>1.55 percentage points</strong> in this list.</p></li>
+<li><p>Medians are 10.1% and 11.7%.</p></li>
+<li><p>The sample SDs, about 4.77 and 4.01 percentage points, describe <strong>variation across the listed funds’ five-year annualized returns</strong>.</p></li>
+<li><p>They do not measure the volatility of an individual fund over time.</p></li>
+<li><p>The overlapping distributions matter: these summaries do not identify a universal winner.</p></li>
+<li><p>They also give each fund equal weight; the mean is not the return on a portfolio weighted by money invested.</p></li>
+</ul>
+<p><strong>Your turn A</strong></p>
+<ul>
+<li>Repeat the grouped summary using <code>return_2001_pct</code>.</li>
+<li>Compare the size and direction of the gap with the five-year comparison.</li>
+<li>Explain why changing the observation period changes the business question.</li>
+</ul>
 </section>
 <section id="inspect-a-numerical-relationship" class="level2">
 <h2 class="anchored" data-anchor-id="inspect-a-numerical-relationship">5. Inspect a numerical relationship</h2>
@@ -2574,7 +2629,11 @@ Growth  Value
 </div>
 </div>
 </div>
-<p>Describe direction, form, strength and unusual points before calculating a coefficient. The expense ratio is a single reported characteristic; the file does not give its complete five-year history. This plot cannot isolate the effect of changing expenses.</p>
+<ul>
+<li>Describe direction, form, strength and unusual points before calculating a coefficient.</li>
+<li>The expense ratio is a single reported characteristic; the file does not give its complete five-year history.</li>
+<li>This plot cannot isolate the effect of changing expenses.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cor() calculates Pearson&#39;s linear correlation using complete pairs.</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>complete_pairs <span class="ot">&lt;-</span> <span class="fu">complete.cases</span>(funds[<span class="fu">c</span>(<span class="st">&quot;expense_ratio_pct&quot;</span>, <span class="st">&quot;return_5yr_pct&quot;</span>)])</span>
@@ -2601,7 +2660,12 @@ Growth  Value
 </table>
 </div>
 </div>
-<p>Pearson’s <strong>r is approximately 0.142</strong>, a weak positive linear association in this list. It is unitless and summarizes a linear pattern. It does not mean a 14.2% return, a 14.2-percentage-point increase, or that expenses explain 14.2% of return variation. A small correlation also does not exclude a nonlinear relationship.</p>
+<ul>
+<li>Pearson’s <strong>r is approximately 0.142</strong>, a weak positive linear association in this list.</li>
+<li>It is unitless and summarizes a linear pattern.</li>
+<li>It does not mean a 14.2% return, a 14.2-percentage-point increase, or that expenses explain 14.2% of return variation.</li>
+<li>A small correlation also does not exclude a nonlinear relationship.</li>
+</ul>
 </section>
 <section id="examine-the-groups-within-the-relationship" class="level2">
 <h2 class="anchored" data-anchor-id="examine-the-groups-within-the-relationship">6. Examine the groups within the relationship</h2>
@@ -2621,7 +2685,13 @@ Growth  Value
 </div>
 </div>
 </div>
-<p><strong>Your turn B:</strong> Calculate the expense–return correlation separately for Growth and Value funds. Compare the results with the overall correlation. Explain why an overall relationship can hide differences between groups. Use the plot as evidence, rather than treating the coefficient as a complete explanation.</p>
+<p><strong>Your turn B</strong></p>
+<ul>
+<li>Calculate the expense–return correlation separately for Growth and Value funds.</li>
+<li>Compare the results with the overall correlation.</li>
+<li>Explain why an overall relationship can hide differences between groups.</li>
+<li>Use the plot as evidence, rather than treating the coefficient as a complete explanation.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Complete the expressions using the variables introduced above.</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>funds <span class="sc">|&gt;</span></span>
@@ -2639,8 +2709,14 @@ Growth  Value
 <li>Raising a fund’s expense ratio would improve its return because the overall correlation is positive.</li>
 <li>Correlating 2001 returns with 1997–2001 returns gives independent evidence of performance persistence.</li>
 </ol>
-<p>For claim 5, note that <strong>2001 is included in the five-year period</strong>. An association between overlapping return windows is not evidence about independent periods. There is also no random assignment of fund expenses or objectives, and the source does not establish probability selection.</p>
-<p>Significance tests, confidence intervals and regression inference belong to Part 3. Before extending these analyses, we would need to justify the target population, selection process, independence and model assumptions. Fund returns can be related through common holdings and market conditions.</p>
+<ul>
+<li><p>For claim 5, note that <strong>2001 is included in the five-year period</strong>.</p></li>
+<li><p>An association between overlapping return windows is not evidence about independent periods.</p></li>
+<li><p>There is also no random assignment of fund expenses or objectives, and the source does not establish probability selection.</p></li>
+<li><p>Significance tests, confidence intervals and regression inference belong to Part 3.</p></li>
+<li><p>Before extending these analyses, we would need to justify the target population, selection process, independence and model assumptions.</p></li>
+<li><p>Fund returns can be related through common holdings and market conditions.</p></li>
+</ul>
 </section>
 <section id="independent-analyst-briefing" class="level2">
 <h2 class="anchored" data-anchor-id="independent-analyst-briefing">8. Independent analyst briefing</h2>
@@ -2651,12 +2727,22 @@ Growth  Value
 <li>State three findings, including at least one in percentage points, and two limits on interpretation.</li>
 <li>Identify one additional variable or study-design detail needed before making a stronger business recommendation.</li>
 </ol>
-<p>Make your choices and explain them. A descriptive difference alone is not a recommendation to buy a fund or a forecast of future performance.</p>
+<ul>
+<li>Make your choices and explain them.</li>
+<li>A descriptive difference alone is not a recommendation to buy a fund or a forecast of future performance.</li>
+</ul>
 </section>
 <section id="source-and-data-notes" class="level2">
 <h2 class="anchored" data-anchor-id="source-and-data-notes">Source and data notes</h2>
-<p>Berenson, Levine and Krehbiel, <em>Basic Business Statistics: Concepts and Applications</em>, ninth edition, <strong>FUNDS2002</strong> companion data. Printed p. 40 defines the 1997–2001 comparison; p. 75 and team projects pp. 130–131 define variables and related comparisons. The course questions adapt these data to Part 2; they do not reproduce every original exercise.</p>
-<p>Source order and all numerical observations are preserved. Column names were simplified and spaces in <code>Type</code> trimmed. Returns are historical; original collection and probability-selection methods remain unverified. <a href="../data/practicals/README.md">Full data dictionary</a>.</p>
+<ul>
+<li><p>Berenson, Levine and Krehbiel, <em>Basic Business Statistics: Concepts and Applications</em>, ninth edition, <strong>FUNDS2002</strong> companion data.</p></li>
+<li><p>Printed p. 40 defines the 1997–2001 comparison; p. 75 and team projects pp. 130–131 define variables and related comparisons.</p></li>
+<li><p>The course questions adapt these data to Part 2; they do not reproduce every original exercise.</p></li>
+<li><p>Source order and all numerical observations are preserved.</p></li>
+<li><p>Column names were simplified and spaces in <code>Type</code> trimmed.</p></li>
+<li><p>Returns are historical; original collection and probability-selection methods remain unverified.</p></li>
+<li><p><a href="../data/practicals/README.md">Full data dictionary</a>.</p></li>
+</ul>
 </section>
 
 </main>

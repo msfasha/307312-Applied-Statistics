@@ -2310,13 +2310,16 @@ color: var(--course-dark); margin: .8rem 0 1.4rem;
 .case-narration[lang="ar"] code { direction: ltr; unicode-bidi: isolate; }
 </style>
 <style type="text/css">
+#quarto-document-content li { margin-bottom: .45rem; }
+#quarto-document-content li:last-child { margin-bottom: 0; }
 @media print {
 @page { size: A4; margin: 16mm; }
 body { font-size: 10.5pt; line-height: 1.4; }
 #title-block-header { margin: 0 0 1rem; }
 #title-block-header .quarto-title { padding: 1rem; }
 #quarto-document-content h2 { margin-top: 1.2rem; padding: .55rem .8rem; }
-p { orphans: 3; widows: 3; }
+p, li { orphans: 3; widows: 3; }
+#quarto-document-content li { margin-bottom: .2rem; }
 pre, div.sourceCode, table, .quarto-figure, figure, .cell-output-display {
 break-inside: avoid;
 page-break-inside: avoid;
@@ -2325,6 +2328,7 @@ pre, pre code { white-space: pre-wrap !important; overflow-wrap: anywhere; }
 .cell-output-display, .table-responsive {
 overflow: visible !important; height: auto !important; max-height: none !important;
 }
+#source-and-data-notes { break-inside: avoid; page-break-inside: avoid; }
 .code-copy-button { display: none; }
 .table td, .table th { padding: .4rem; }
 }
@@ -2373,22 +2377,47 @@ overflow: visible !important; height: auto !important; max-height: none !importa
 </header>
 
 
-<p>This practical accompanies the lessons on numerical variables, histograms, central tendency and dispersion in <a href="../lessons/02-descriptive-statistics.html">Part 2: Descriptive statistics</a>. Complete <a href="practical-01-categorical-business-data.html">Practical 1</a> first. Allow approximately <strong>50–60 minutes</strong>.</p>
-<p>By the end, you should be able to inspect a small business dataset, describe a distribution with a histogram, calculate its centre and spread, use quartiles and boxplots to investigate unusual values, and explain what the results can tell a manager.</p>
+<ul>
+<li>This practical accompanies the lessons on numerical variables, histograms, central tendency and dispersion in <a href="../lessons/02-descriptive-statistics.html">Part 2: Descriptive statistics</a>.</li>
+<li>Complete <a href="practical-01-categorical-business-data.html">Practical 1</a> first.</li>
+<li>Allow approximately <strong>50–60 minutes</strong>.</li>
+</ul>
+<p><strong>By the end, you should be able to:</strong></p>
+<ul>
+<li>Inspect a small business dataset.</li>
+<li>Describe a distribution with a histogram.</li>
+<li>Calculate its centre and spread.</li>
+<li>Use quartiles and boxplots to investigate unusual values.</li>
+<li>Explain what the results can tell a manager.</li>
+</ul>
 <p><a href="../pdf/practical-02-numerical-business-data.pdf">Download this practical as PDF</a> · <a href="../downloads/applied-statistics-rstudio.zip">Download the student RStudio project</a></p>
 <section id="the-business-question" class="level2">
 <h2 class="anchored" data-anchor-id="the-business-question">1. The business question</h2>
-<p>A grocery buyer is reviewing a historical list of <strong>33 breakfast cereals</strong>. Before comparing individual products, the buyer wants a short description of their costs:</p>
+<ul>
+<li>A grocery buyer is reviewing a historical list of <strong>33 breakfast cereals</strong>.</li>
+<li>Before comparing individual products, the buyer wants a short description of their costs:</li>
+</ul>
 <blockquote class="blockquote">
 <p>What is a typical cost per ounce in this list, and how much do the costs vary?</p>
 </blockquote>
 <p>You will prepare a histogram, a summary table and a short recommendation about how to describe these costs.</p>
-<p>The records come from the <strong>CEREALS</strong> dataset accompanying Berenson, Levine and Krehbiel’s <em>Basic Business Statistics: Concepts and Applications</em>, ninth edition. The book attributes the data to <em>Consumer Reports</em>, October 1999. These are historical records, so the amounts describe this list rather than current shop prices.</p>
+<ul>
+<li>The records come from the <strong>CEREALS</strong> dataset accompanying Berenson, Levine and Krehbiel’s <em>Basic Business Statistics: Concepts and Applications</em>, ninth edition.</li>
+<li>The book attributes the data to <em>Consumer Reports</em>, October 1999.</li>
+<li>These are historical records, so the amounts describe this list rather than current shop prices.</li>
+</ul>
 </section>
 <section id="open-and-inspect-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="open-and-inspect-the-data">2. Open and inspect the data</h2>
-<p>Open <code>Applied-Statistics.Rproj</code> in RStudio, then open this notebook. Run the code cells in order. The CSV is stored in <code>data/practicals/cereals.csv</code>, relative to the course project folder. The import cell below locates this same folder when run from either the course root or <code>practicals/</code>; keep the data outside <code>practicals/</code>. You can also <a href="../data/practicals/cereals.csv">download the CSV</a>.</p>
-<p>The only package used here is <strong>ggplot2</strong>, introduced in Part 1. If it is not installed, run <code>install.packages(&quot;ggplot2&quot;)</code> once in the Console.</p>
+<ul>
+<li><p>Open <code>Applied-Statistics.Rproj</code> in RStudio, then open this notebook.</p></li>
+<li><p>Run the code cells in order.</p></li>
+<li><p>The CSV is stored in <code>data/practicals/cereals.csv</code>, relative to the course project folder.</p></li>
+<li><p>The import cell below locates this same folder when run from either the course root or <code>practicals/</code>; keep the data outside <code>practicals/</code>.</p></li>
+<li><p>You can also <a href="../data/practicals/cereals.csv">download the CSV</a>.</p></li>
+<li><p>The only package used here is <strong>ggplot2</strong>, introduced in Part 1.</p></li>
+<li><p>If it is not installed, run <code>install.packages(&quot;ggplot2&quot;)</code> once in the Console.</p></li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read.csv() imports the supplied observations. Product labels stay as text.</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the shared data folder from either the course root or this notebook folder.</span></span>
@@ -2453,7 +2482,10 @@ overflow: visible !important; height: auto !important; max-height: none !importa
 </tr>
 </tbody>
 </table>
-<p>We use cost <strong>per ounce</strong> because its comparison basis is explicit. We cannot assume that the nutrition figures refer to equal-sized servings or rank products as healthier from these columns alone.</p>
+<ul>
+<li>We use cost <strong>per ounce</strong> because its comparison basis is explicit.</li>
+<li>We cannot assume that the nutrition figures refer to equal-sized servings or rank products as healthier from these columns alone.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># head() selects the first six rows; kable() displays them as a readable table.</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(cereals), <span class="at">digits =</span> <span class="dv">2</span>,</span>
@@ -2523,7 +2555,10 @@ overflow: visible !important; height: auto !important; max-height: none !importa
 </table>
 </div>
 </div>
-<p>Check missing values before calculating summaries. A missing value and a recorded zero mean different things.</p>
+<ul>
+<li>Check missing values before calculating summaries.</li>
+<li>A missing value and a recorded zero mean different things.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># is.na() marks missing cells; colSums() counts them separately for each variable.</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(cereals))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2532,12 +2567,19 @@ overflow: visible !important; height: auto !important; max-height: none !importa
              0              0              0              0              0 </code></pre>
 </div>
 </div>
-<p>There are no missing values in this supplied table. The zero sugar values are recorded observations; they are not missing-value codes.</p>
+<ul>
+<li>There are no missing values in this supplied table.</li>
+<li>The zero sugar values are recorded observations; they are not missing-value codes.</li>
+</ul>
 <p><strong>Pause and explain:</strong> Why would taking the average of the <code>product</code> column make no sense, while taking the average of <code>cost_per_ounce</code> does?</p>
 </section>
 <section id="look-at-the-distribution" class="level2">
 <h2 class="anchored" data-anchor-id="look-at-the-distribution">3. Look at the distribution</h2>
-<p>A histogram groups numerical costs into intervals. Its bars count <strong>products</strong>, rather than purchases or customers. Each interval below is $0.02 per ounce wide.</p>
+<ul>
+<li>A histogram groups numerical costs into intervals.</li>
+<li>Its bars count <strong>products</strong>, rather than purchases or customers.</li>
+<li>Each interval below is $0.02 per ounce wide.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># aes() maps cost to the horizontal axis; geom_histogram() counts products in bins.</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># boundary and closed specify the bin edges and their inclusion convention.</span></span>
@@ -2556,12 +2598,21 @@ overflow: visible !important; height: auto !important; max-height: none !importa
 </div>
 </div>
 </div>
-<p>Before calculating anything, describe where most costs lie and how far the observed values extend. Look for gaps or unusually high or low costs. A product is not an error simply because its cost is unusual.</p>
-<p>These prices are rounded to cents, and changing the bin width can change the histogram’s appearance. Avoid giving a strong shape label based on one arrangement of a small number of bars.</p>
+<ul>
+<li><p>Before calculating anything, describe where most costs lie and how far the observed values extend.</p></li>
+<li><p>Look for gaps or unusually high or low costs.</p></li>
+<li><p>A product is not an error simply because its cost is unusual.</p></li>
+<li><p>These prices are rounded to cents, and changing the bin width can change the histogram’s appearance.</p></li>
+<li><p>Avoid giving a strong shape label based on one arrangement of a small number of bars.</p></li>
+</ul>
 </section>
 <section id="describe-a-typical-cost" class="level2">
 <h2 class="anchored" data-anchor-id="describe-a-typical-cost">4. Describe a typical cost</h2>
-<p>The <strong>mean</strong> uses every cost. The <strong>median</strong> is the middle cost after sorting the observations. Comparing them helps us assess whether the choice of a measure of centre makes much difference here.</p>
+<ul>
+<li>The <strong>mean</strong> uses every cost.</li>
+<li>The <strong>median</strong> is the middle cost after sorting the observations.</li>
+<li>Comparing them helps us assess whether the choice of a measure of centre makes much difference here.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the numerical column so the calculations below are easy to read.</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>cost <span class="ot">&lt;-</span> cereals<span class="sc">$</span>cost_per_ounce</span>
@@ -2595,12 +2646,21 @@ overflow: visible !important; height: auto !important; max-height: none !importa
 </table>
 </div>
 </div>
-<p>Both measures are approximately <strong>$0.17 per ounce</strong>. For this list, either gives a similar description of the typical cost. The small difference between them is much less than one cent per ounce.</p>
-<p>This agreement does not prove that the distribution is symmetric or normal. We still need the plot and the spread. The additional decimal places in the calculated mean result from averaging prices; the original costs were reported to cents.</p>
+<ul>
+<li><p>Both measures are approximately <strong>$0.17 per ounce</strong>.</p></li>
+<li><p>For this list, either gives a similar description of the typical cost.</p></li>
+<li><p>The small difference between them is much less than one cent per ounce.</p></li>
+<li><p>This agreement does not prove that the distribution is symmetric or normal.</p></li>
+<li><p>We still need the plot and the spread.</p></li>
+<li><p>The additional decimal places in the calculated mean result from averaging prices; the original costs were reported to cents.</p></li>
+</ul>
 </section>
 <section id="describe-the-variation" class="level2">
 <h2 class="anchored" data-anchor-id="describe-the-variation">5. Describe the variation</h2>
-<p>A typical value does not tell the buyer whether all products cost about the same amount. We also need to describe how much the costs differ.</p>
+<ul>
+<li>A typical value does not tell the buyer whether all products cost about the same amount.</li>
+<li>We also need to describe how much the costs differ.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># range() returns the minimum and maximum; diff() subtracts them.</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sd() uses the sample denominator n-1. IQR() measures the middle-half spread.</span></span>
@@ -2644,17 +2704,21 @@ overflow: visible !important; height: auto !important; max-height: none !importa
 </div>
 </div>
 <ul>
-<li><strong>Minimum and maximum:</strong> the listed costs run from $0.10 to $0.27 per ounce.</li>
-<li><strong>Range:</strong> the highest and lowest costs differ by $0.17 per ounce. This uses only the two extremes.</li>
-<li><strong>Sample standard deviation:</strong> approximately $0.047 per ounce, or 4.7 cents. It describes spread around the mean using squared deviations; it is not the average absolute difference from the mean.</li>
-<li><strong>Interquartile range:</strong> $0.07 per ounce. Using R’s default quartile convention, the middle half of the recorded costs runs from $0.13 to $0.20 per ounce.</li>
+<li><p><strong>Minimum and maximum:</strong> the listed costs run from $0.10 to $0.27 per ounce.</p></li>
+<li><p><strong>Range:</strong> the highest and lowest costs differ by $0.17 per ounce. This uses only the two extremes.</p></li>
+<li><p><strong>Sample standard deviation:</strong> approximately $0.047 per ounce, or 4.7 cents. It describes spread around the mean using squared deviations; it is not the average absolute difference from the mean.</p></li>
+<li><p><strong>Interquartile range:</strong> $0.07 per ounce. Using R’s default quartile convention, the middle half of the recorded costs runs from $0.13 to $0.20 per ounce.</p></li>
+<li><p>We use the sample-SD convention taught in Part 2.</p></li>
+<li><p>Calculating it does not establish that these products were randomly sampled from all cereals.</p></li>
 </ul>
-<p>We use the sample-SD convention taught in Part 2. Calculating it does not establish that these products were randomly sampled from all cereals.</p>
 <p><strong>Pause and explain:</strong> Why is “the typical cost is about $0.17 per ounce” an incomplete description of the list?</p>
 </section>
 <section id="quartiles-boxplots-and-unusual-values" class="level2">
 <h2 class="anchored" data-anchor-id="quartiles-boxplots-and-unusual-values">6. Quartiles, boxplots and unusual values</h2>
-<p>The histogram and numerical summaries describe different aspects of the same observations. A boxplot adds a compact view of the middle half and flags values beyond its whiskers.</p>
+<ul>
+<li>The histogram and numerical summaries describe different aspects of the same observations.</li>
+<li>A boxplot adds a compact view of the middle half and flags values beyond its whiskers.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R type-7 quantiles use interpolation; state the convention when comparing software.</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>quartiles <span class="ot">&lt;-</span> <span class="fu">quantile</span>(cost, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>), <span class="at">type =</span> <span class="dv">7</span>)</span>
@@ -2700,7 +2764,11 @@ overflow: visible !important; height: auto !important; max-height: none !importa
 </div>
 </div>
 </div>
-<p>Calculate 1.5-IQR fences using the stated type-7 quartiles. A fence need not be an observed value. A boxplot whisker ends at an observation within its plotting fences; it is not automatically the minimum or maximum in every dataset.</p>
+<ul>
+<li>Calculate 1.5-IQR fences using the stated type-7 quartiles.</li>
+<li>A fence need not be an observed value.</li>
+<li>A boxplot whisker ends at an observation within its plotting fences; it is not automatically the minimum or maximum in every dataset.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Keep all records; the flag identifies values to investigate, not values to delete.</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>q <span class="ot">&lt;-</span> <span class="fu">quantile</span>(cost, <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>), <span class="at">type =</span> <span class="dv">7</span>)</span>
@@ -2714,21 +2782,42 @@ overflow: visible !important; height: auto !important; max-height: none !importa
 1       0.025       0.305                0</code></pre>
 </div>
 </div>
-<p>No cost is outside these fences. That does not prove the data are error-free or normally distributed. A boxplot alone also cannot establish symmetry; inspect the histogram and the recorded values.</p>
-<p><strong>Your turn:</strong> Compare the histogram and boxplot. What can you see more easily in each? Explain why a legitimate high price should not be deleted simply to make a distribution look more balanced.</p>
+<ul>
+<li>No cost is outside these fences.</li>
+<li>That does not prove the data are error-free or normally distributed.</li>
+<li>A boxplot alone also cannot establish symmetry; inspect the histogram and the recorded values.</li>
+</ul>
+<p><strong>Your turn</strong></p>
+<ul>
+<li>Compare the histogram and boxplot.</li>
+<li>What can you see more easily in each?</li>
+<li>Explain why a legitimate high price should not be deleted simply to make a distribution look more balanced.</li>
+</ul>
 </section>
 <section id="write-the-business-interpretation" class="level2">
 <h2 class="anchored" data-anchor-id="write-the-business-interpretation">7. Write the business interpretation</h2>
 <p>Here is one way to report the results to the buyer:</p>
 <blockquote class="blockquote">
-<p>In this historical list of 33 cereal products, both the mean and median cost are about $0.17 per ounce. Individual costs range from $0.10 to $0.27, with a sample standard deviation of about $0.047 per ounce. The middle half lies between $0.13 and $0.20. A single typical cost is therefore useful as an overview, but it hides meaningful differences between products.</p>
+<ul>
+<li>In this historical list of 33 cereal products, both the mean and median cost are about $0.17 per ounce.</li>
+<li>Individual costs range from $0.10 to $0.27, with a sample standard deviation of about $0.047 per ounce.</li>
+<li>The middle half lies between $0.13 and $0.20.</li>
+<li>A single typical cost is therefore useful as an overview, but it hides meaningful differences between products.</li>
+</ul>
 </blockquote>
-<p>These results describe the listed products. They do not establish current market prices, explain why products have different costs, or show which product the shop should stock. A stocking decision would also need information about customer demand, selling prices, margins and other product characteristics.</p>
+<ul>
+<li>These results describe the listed products.</li>
+<li>They do not establish current market prices, explain why products have different costs, or show which product the shop should stock.</li>
+<li>A stocking decision would also need information about customer demand, selling prices, margins and other product characteristics.</li>
+</ul>
 </section>
 <section id="your-turn-a-lower-cost-shortlist" class="level2">
 <h2 class="anchored" data-anchor-id="your-turn-a-lower-cost-shortlist">8. Your turn: a lower-cost shortlist</h2>
 <p>The buyer wants to examine products costing <strong>no more than $0.15 per ounce in this historical list</strong>.</p>
-<p>Use the starter code to create the shortlist. Then apply the functions used above.</p>
+<ul>
+<li>Use the starter code to create the shortlist.</li>
+<li>Then apply the functions used above.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># subset() keeps rows meeting the condition; &lt;= includes exactly $0.15.</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>lower_cost <span class="ot">&lt;-</span> <span class="fu">subset</span>(cereals, cost_per_ounce <span class="sc">&lt;=</span> <span class="fl">0.15</span>)</span>
@@ -2738,13 +2827,27 @@ overflow: visible !important; height: auto !important; max-height: none !importa
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. What are their mean, median, sample SD and IQR of cost per ounce?</span></span>
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. How do these compare with the full list?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Submit your completed notebook with a histogram or boxplot, a summary table containing mean, median, sample SD and IQR for both lists, and <strong>three or four sentences for the buyer</strong>. Explain whether the shortlist has a lower typical cost and less variation. State why selecting a low-cost subset does not, by itself, identify a better product or demonstrate a price reduction over time.</p>
-<p>As a small extension, change the histogram’s <code>binwidth</code> from <code>0.02</code> to <code>0.04</code>. Describe what changes in the picture and what remains unchanged in the calculated summaries.</p>
+<p><strong>Submit your completed notebook with:</strong></p>
+<ul>
+<li><p>A histogram or boxplot.</p></li>
+<li><p>A summary table containing mean, median, sample SD and IQR for both lists.</p></li>
+<li><p><strong>Three or four sentences for the buyer</strong>.</p></li>
+<li><p>Explain whether the shortlist has a lower typical cost and less variation.</p></li>
+<li><p>State why selecting a low-cost subset does not, by itself, identify a better product or demonstrate a price reduction over time.</p></li>
+<li><p>As a small extension, change the histogram’s <code>binwidth</code> from <code>0.02</code> to <code>0.04</code>.</p></li>
+<li><p>Describe what changes in the picture and what remains unchanged in the calculated summaries.</p></li>
+</ul>
 </section>
 <section id="source-and-data-notes" class="level2">
 <h2 class="anchored" data-anchor-id="source-and-data-notes">Source and data notes</h2>
-<p>Dataset: <strong>CEREALS</strong>, supplied with <em>Basic Business Statistics: Concepts and Applications</em>, ninth edition, Berenson, Levine and Krehbiel; see exercise 3.68, pp. 127–128. The book credits Consumers Union of U.S., Inc., <em>Consumer Reports</em>, October 1999, pp. 33–34. That magazine attribution is reported from the book and has not been independently checked against the original article.</p>
-<p>The course CSV preserves all 33 rows, numerical values and product labels from the publisher’s <code>Data</code> worksheet. Column names were simplified for R. <a href="../data/practicals/README.md">Data notes</a> describe the fields and limitations.</p>
+<ul>
+<li><p>Dataset: <strong>CEREALS</strong>, supplied with <em>Basic Business Statistics: Concepts and Applications</em>, ninth edition, Berenson, Levine and Krehbiel; see exercise 3.68, pp. 127–128.</p></li>
+<li><p>The book credits Consumers Union of U.S., Inc., <em>Consumer Reports</em>, October 1999, pp. 33–34.</p></li>
+<li><p>That magazine attribution is reported from the book and has not been independently checked against the original article.</p></li>
+<li><p>The course CSV preserves all 33 rows, numerical values and product labels from the publisher’s <code>Data</code> worksheet.</p></li>
+<li><p>Column names were simplified for R.</p></li>
+<li><p><a href="../data/practicals/README.md">Data notes</a> describe the fields and limitations.</p></li>
+</ul>
 <p>Continue with <a href="practical-03-association-and-groups.html">Practical 3: Association and group comparisons</a>.</p>
 </section>
 
