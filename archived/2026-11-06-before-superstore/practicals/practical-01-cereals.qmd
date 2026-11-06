@@ -1,0 +1,8 @@
+---
+title: "Cereals practical has moved"
+format: html
+---
+
+The extended cereals activity is now [Practical 2 — Numerical business data](practical-02-numerical-business-data.qmd).
+
+Open `practical-02-numerical-business-data.qmd` to run the R cells.

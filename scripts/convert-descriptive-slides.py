@@ -13,7 +13,7 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parents[1]
 PPT = ROOT/'sources/slides/307102-descriptive-statistics-original.pptx'
 PDF = PPT.with_suffix('.pdf')
-DEST = ROOT/'assets/descriptive-statistics'
+DEST = ROOT/'_build/reference-conversions/assets/descriptive-statistics'
 DEST.mkdir(parents=True, exist_ok=True)
 for old_graphic in DEST.glob('slide-*-graphic-*.png'):
     old_graphic.unlink()
@@ -131,6 +131,6 @@ with ZipFile(PPT) as z, tempfile.TemporaryDirectory() as temp:
         source=[t.text or '' for t in tree.findall('.//a:t',NS)]
         assert sorted(t for t in source if t.strip())==sorted(t for t in native if t.strip()), f'Unpreserved native text on slide {i}'
         audit.append({'slide':i,'title':titletext,'text_runs':len(source),'graphics':imagecount,'all_native_text_preserved': i != 1, 'authorized_changes': ('Course identity updated to 307312 Applied Statistics — Masters Level' if i == 1 else ('Diagram rebuilt in standard Petra theme' if i in overrides else None))})
-(ROOT/'lessons/02-descriptive-statistics.qmd').write_text(lesson_markup(''.join(q)),encoding='utf-8')
-(ROOT/'instructor/descriptive-conversion-audit.json').write_text(json.dumps({'source_sha256':hashlib.sha256(PPT.read_bytes()).hexdigest(),'slides':audit},indent=2),encoding='utf-8')
+(ROOT/'_build/reference-conversions/02-descriptive-statistics.qmd').write_text(lesson_markup(''.join(q)),encoding='utf-8')
+(ROOT/'_build/reference-conversions/descriptive-conversion-audit.json').write_text(json.dumps({'source_sha256':hashlib.sha256(PPT.read_bytes()).hexdigest(),'slides':audit},indent=2),encoding='utf-8')
 print(f'Converted {len(audit)} slides; {sum(x["text_runs"] for x in audit)} native text runs preserved; {sum(x["graphics"] for x in audit)} graphics.')

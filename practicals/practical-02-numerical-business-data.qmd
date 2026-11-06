@@ -1,9 +1,8 @@
 ---
-title: "Practical 2 — Numerical business data"
-subtitle: "Comparing cereal costs · 307312 Applied Statistics — Masters Level"
+title: "Practical 2 — Superstore order size"
+subtitle: "Numerical summaries, distributions and unusual orders · 307312 Applied Statistics"
 format:
   html:
-    theme: cosmo
     toc: true
     toc-depth: 2
     code-copy: true
@@ -17,272 +16,195 @@ execute:
   fig-height: 4.5
 ---
 
-- This practical accompanies the lessons on numerical variables, histograms, central tendency and dispersion in [Part 2: Descriptive statistics](../lessons/02-descriptive-statistics.qmd).
-- Complete [Practical 1](practical-01-categorical-business-data.qmd) first.
-- Allow approximately **50–60 minutes**.
+[Practical PDF](../pdf/practical-02-numerical-business-data.pdf) · [Student RStudio project](../downloads/applied-statistics-rstudio.zip)
+
+- Companion to centre, spread, percentiles and boxplots in [Part 2](../lessons/02-descriptive-statistics.qmd).
+- Continue from [Practical 1](practical-01-categorical-business-data.qmd).
+- Allow two sessions of about 40–50 minutes.
 
 **By the end, you should be able to:**
 
-- Inspect a small business dataset.
-- Describe a distribution with a histogram.
-- Calculate its centre and spread.
-- Use quartiles and boxplots to investigate unusual values.
-- Explain what the results can tell a manager.
+- Aggregate transactions at the correct level.
+- Explain the difference between typical order size and total revenue.
+- Describe skewness, spread and percentile thresholds.
+- Investigate unusual records while preserving the complete analysis.
 
-[Download this practical as PDF](../pdf/practical-02-numerical-business-data.pdf) · [Download the student RStudio project](../downloads/applied-statistics-rstudio.zip)
+## 1. The operations manager's question
 
-## 1. The business question
+> What is a typical order worth, and how much variation must operations accommodate?
 
-- A grocery buyer is reviewing a historical list of **33 breakfast cereals**.
-- Before comparing individual products, the buyer wants a short description of their costs:
+- **Unit:** one order after combining all its product lines.
+- **Source:** Tableau's fictitious Superstore, downloaded 6 November 2026.
+- **Scope:** United States; orders placed in 2023–2025.
+- **Records:** 3,322 orders built from 6,682 product lines.
+- **Amounts:** recorded dollars; `sales` is the line/order sales field, not a list price.
+- **Limit:** these describe the course extract, not actual future sales.
 
-> What is a typical cost per ounce in this list, and how much do the costs vary?
-
-You will prepare a histogram, a summary table and a short recommendation about how to describe these costs.
-
-- The records come from the **CEREALS** dataset accompanying Berenson, Levine and Krehbiel's *Basic Business Statistics: Concepts and Applications*, ninth edition.
-- The book attributes the data to *Consumer Reports*, October 1999.
-- These are historical records, so the amounts describe this list rather than current shop prices.
-
-## 2. Open and inspect the data
-
-- Open `Applied-Statistics.Rproj` in RStudio, then open this notebook.
-- Run the code cells in order.
-- The CSV is stored in `data/practicals/cereals.csv`, relative to the course project folder.
-- The import cell below locates this same folder when run from either the course root or `practicals/`; keep the data outside `practicals/`.
-- You can also [download the CSV](../data/practicals/cereals.csv).
-
-- The only package used here is **ggplot2**, introduced in Part 1.
-- If it is not installed, run `install.packages("ggplot2")` once in the Console.
+## 2. Import and aggregate
 
 ```{r}
-#| label: cereals-import
-# read.csv() imports the supplied observations. Product labels stay as text.
-# Find the shared data folder from either the course root or this notebook folder.
+#| label: numerical-import
 data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
-cereals <- read.csv(file.path(data_dir, "practicals/cereals.csv"), stringsAsFactors = FALSE)
-source(file.path(data_dir, "..", "practicals", "_includes", "petra-plots.R"))
-
-# nrow() counts observations; str() displays variable names and R data types.
-nrow(cereals)
-str(cereals)
+source(file.path(data_dir, "..", "lessons", "_includes", "course-tools.R"))
+lines <- read.csv(file.path(data_dir, "business", "superstore-lines.csv"),
+                  stringsAsFactors = FALSE, colClasses = c(postal_code = "character"))
+orders <- make_orders(lines)
+stopifnot(nrow(orders) == n_distinct(lines$order_id),
+          isTRUE(all.equal(sum(orders$sales), sum(lines$sales))))
+knitr::kable(head(orders[c("order_id", "sales", "profit", "quantity", "line_count")] ), digits = 2)
 ```
 
-**One row represents one cereal product entry.** A row does not represent a customer, a purchase or a serving eaten by someone.
+- [Download the line CSV](../data/business/superstore-lines.csv) · [Data guide](../data/business/README.md).
+- Sales, profit and quantity are **summed** across an order's lines.
+- Do not average line sales to estimate average order sales.
+- The reconciliation checks that aggregation neither loses nor duplicates revenue.
 
-| Variable | Meaning | How to treat it |
-|---|---|---|
-| `product` | Product label supplied with the data | Text label used to identify an entry |
-| `cost_per_ounce` | Cost in dollars per ounce, as reported | Numerical measurement; our variable of interest |
-| `calories` | Reported calories | Numerical; serving basis is not specified in this file |
-| `fiber_g` | Reported fibre in grams | Numerical; serving basis is not specified in this file |
-| `sugar_g` | Reported sugar in grams | Numerical; serving basis is not specified in this file |
-
-- We use cost **per ounce** because its comparison basis is explicit.
-- We cannot assume that the nutrition figures refer to equal-sized servings or rank products as healthier from these columns alone.
+## 3. Look at the distribution first
 
 ```{r}
-#| label: cereals-preview
-# head() selects the first six rows; kable() displays them as a readable table.
-knitr::kable(head(cereals), digits = 2,
-             col.names = c("Product", "Cost ($/oz)", "Calories", "Fibre (g)", "Sugar (g)"))
+#| fig-alt: "Histogram of all order sales, retaining the long right tail."
+ggplot(orders, aes(sales)) +
+  geom_histogram(bins = 35, fill = petra_ink, colour = "white") +
+  labs(x = "Order sales (USD)", y = "Orders")
 ```
 
-- Check missing values before calculating summaries.
-- A missing value and a recorded zero mean different things.
+- Most orders are relatively small; a few are very large.
+- The long right tail affects the mean and SD.
+- A histogram's bin width changes the visible detail.
+- A tall bar shows many orders in an interval, not many dollars of revenue.
 
 ```{r}
-#| label: cereals-missing
-# is.na() marks missing cells; colSums() counts them separately for each variable.
-colSums(is.na(cereals))
+#| fig-alt: "The order-sales histogram with a labelled logarithmic sales axis."
+ggplot(orders, aes(sales)) +
+  geom_histogram(bins = 25, fill = petra_ink, colour = "white") +
+  scale_x_log10() + labs(x = "Order sales ($; log10 axis)", y = "Orders")
 ```
 
-- There are no missing values in this supplied table.
-- The zero sugar values are recorded observations; they are not missing-value codes.
+- The log axis makes the lower range easier to inspect without deleting large orders.
+- Equal spacing on this axis means equal ratios, not equal dollar differences.
 
-**Pause and explain:** Why would taking the average of the `product` column make no sense, while taking the average of `cost_per_ounce` does?
-
-## 3. Look at the distribution
-
-- A histogram groups numerical costs into intervals.
-- Its bars count **products**, rather than purchases or customers.
-- Each interval below is $0.02 per ounce wide.
+## 4. Choose useful numerical measures
 
 ```{r}
-#| label: cereals-histogram
-#| fig-cap: "Historical costs of 33 cereal products. Each bin spans $0.02 per ounce."
-# aes() maps cost to the horizontal axis; geom_histogram() counts products in bins.
-# boundary and closed specify the bin edges and their inclusion convention.
-ggplot(cereals, aes(x = cost_per_ounce)) +
-  geom_histogram(binwidth = 0.02, boundary = 0.10, closed = "left",
-                 fill = petra_accent, colour = "white") +
-  scale_x_continuous(breaks = seq(0.10, 0.28, by = 0.02),
-                     labels = function(x) sprintf("$%.2f", x)) +
-  labs(x = "Historical cost per ounce ($)", y = "Number of products")
+x <- orders$sales
+summary_table <- data.frame(
+  statistic = c("Orders", "Mean (USD)", "Median (USD)", "Sample SD (USD)",
+                "Minimum (USD)", "Q1 (USD)", "Q3 (USD)", "Maximum (USD)", "IQR (USD)"),
+  value = c(length(x), mean(x), median(x), sd(x), min(x),
+            quantile(x, .25, type = 7), quantile(x, .75, type = 7), max(x), IQR(x)))
+knitr::kable(summary_table, digits = 2)
 ```
 
-- Before calculating anything, describe where most costs lie and how far the observed values extend.
-- Look for gaps or unusually high or low costs.
-- A product is not an error simply because its cost is unusual.
+- Mean order sales: about **$471**.
+- Median order sales: about **$154**.
+- Mean explains revenue per order; median describes the middle order.
+- SD is sensitive to the right tail; IQR describes the middle half.
+- `sd()` uses denominator $n-1$; the frame SD uses $N$ and is slightly smaller here.
 
-- These prices are rounded to cents, and changing the bin width can change the histogram's appearance.
-- Avoid giving a strong shape label based on one arrangement of a small number of bars.
-
-## 4. Describe a typical cost
-
-- The **mean** uses every cost.
-- The **median** is the middle cost after sorting the observations.
-- Comparing them helps us assess whether the choice of a measure of centre makes much difference here.
+### Revenue reconciliation
 
 ```{r}
-#| label: cereals-centre
-# Save the numerical column so the calculations below are easy to read.
-cost <- cereals$cost_per_ounce
-mean_cost <- mean(cost)
-median_cost <- median(cost)
-
-centre <- data.frame(
-  Measure = c("Mean", "Median"),
-  Dollars_per_ounce = c(mean_cost, median_cost)
-)
-knitr::kable(centre, digits = 4,
-             col.names = c("Measure", "Historical cost ($/oz)"))
+c(total_sales = sum(x), mean_times_orders = mean(x) * length(x),
+  median_times_orders = median(x) * length(x))
 ```
 
-- Both measures are approximately **$0.17 per ounce**.
-- For this list, either gives a similar description of the typical cost.
-- The small difference between them is much less than one cent per ounce.
+- Mean × number of orders reproduces total revenue.
+- Median × number of orders generally does not.
+- The median is not an alternative way to calculate the total.
 
-- This agreement does not prove that the distribution is symmetric or normal.
-- We still need the plot and the spread.
-- The additional decimal places in the calculated mean result from averaging prices; the original costs were reported to cents.
-
-## 5. Describe the variation
-
-- A typical value does not tell the buyer whether all products cost about the same amount.
-- We also need to describe how much the costs differ.
+### Absolute and relative spread
 
 ```{r}
-#| label: cereals-spread
-# range() returns the minimum and maximum; diff() subtracts them.
-# sd() uses the sample denominator n-1. IQR() measures the middle-half spread.
-spread <- data.frame(
-  Measure = c("Minimum", "Maximum", "Range", "Sample standard deviation", "Interquartile range"),
-  Dollars_per_ounce = c(min(cost), max(cost), diff(range(cost)), sd(cost), IQR(cost))
-)
-knitr::kable(spread, digits = 4,
-             col.names = c("Measure", "Historical cost ($/oz)"))
+c(range_dollars = diff(range(x)),
+  mean_absolute_deviation = mean(abs(x - mean(x))),
+  coefficient_of_variation_pct = 100 * sd(x) / mean(x))
 ```
 
-- **Minimum and maximum:** the listed costs run from $0.10 to $0.27 per ounce.
-- **Range:** the highest and lowest costs differ by $0.17 per ounce. This uses only the two extremes.
-- **Sample standard deviation:** approximately $0.047 per ounce, or 4.7 cents. It describes spread around the mean using squared deviations; it is not the average absolute difference from the mean.
-- **Interquartile range:** $0.07 per ounce. Using R's default quartile convention, the middle half of the recorded costs runs from $0.13 to $0.20 per ounce.
+- Mean absolute deviation above is not R's `mad()`, which uses the median and a scaling constant.
+- CV is appropriate here because sales have a meaningful zero and positive mean.
+- Do not apply the same CV rule to profits that can be negative or near zero on average.
 
-- We use the sample-SD convention taught in Part 2.
-- Calculating it does not establish that these products were randomly sampled from all cereals.
+## 5. Percentiles for operational planning
 
-**Pause and explain:** Why is “the typical cost is about $0.17 per ounce” an incomplete description of the list?
-
-## 6. Quartiles, boxplots and unusual values
-
-- The histogram and numerical summaries describe different aspects of the same observations.
-- A boxplot adds a compact view of the middle half and flags values beyond its whiskers.
+> What order values define the upper 10% and upper 5% of the observed distribution?
 
 ```{r}
-#| label: cereals-quartiles
-# R type-7 quantiles use interpolation; state the convention when comparing software.
-quartiles <- quantile(cost, probs = c(0.25, 0.5, 0.75), type = 7)
-knitr::kable(data.frame(Quartile = names(quartiles), Cost_per_ounce = unname(quartiles)),
-             digits = 3)
+knitr::kable(data.frame(percentile = c("50th", "75th", "90th", "95th", "99th"),
+  order_sales = as.numeric(quantile(x, c(.5, .75, .9, .95, .99), type = 7))), digits = 2)
 ```
 
+- Percentiles describe positions in the observed distribution.
+- Interpolation and ties mean a threshold may not leave exactly the named percentage strictly above it.
+- A sales percentile does not directly measure parcel size, picking time or staffing needs.
+- Additional operational variables would be needed for those decisions.
+
+## 6. Boxplots and unusual orders
+
 ```{r}
-#| label: cereals-boxplot
-#| fig-cap: "Historical cereal costs. The box shows the middle half of the observations."
-# The boxplot convention can differ from type-7 quartiles for some sample sizes.
-ggplot(cereals, aes(x = "Listed products", y = cost_per_ounce)) +
-  geom_boxplot(fill = petra_accent, colour = "#262626", width = 0.35) +
-  scale_y_continuous(labels = function(x) sprintf("$%.2f", x)) +
-  labs(x = NULL, y = "Historical cost per ounce ($)")
+#| fig-alt: "Boxplot of all order sales; points beyond the whiskers identify unusual records to investigate."
+ggplot(orders, aes(x = "All orders", y = sales)) +
+  geom_boxplot(fill = petra_accent, outlier.alpha = .3) +
+  labs(x = NULL, y = "Order sales (USD)")
+
+quartiles <- quantile(x, c(.25, .75), type = 7)
+lower_fence <- quartiles[1] - 1.5 * IQR(x)
+upper_fence <- quartiles[2] + 1.5 * IQR(x)
+flagged <- orders %>% filter(sales < lower_fence | sales > upper_fence)
+c(lower_fence = lower_fence, upper_fence = upper_fence, flagged_orders = nrow(flagged))
 ```
 
-- Calculate 1.5-IQR fences using the stated type-7 quartiles.
-- A fence need not be an observed value.
-- A boxplot whisker ends at an observation within its plotting fences; it is not automatically the minimum or maximum in every dataset.
+- Flags identify records worth investigating.
+- The source contains genuine large recorded transactions; a flag alone does not establish an error.
+- Boxplot hinges and reported quartiles can differ slightly for some sample sizes.
 
 ```{r}
-#| label: cereals-outlier-check
-# Keep all records; the flag identifies values to investigate, not values to delete.
-q <- quantile(cost, c(0.25, 0.75), type = 7)
-iqr <- q[2] - q[1]
-fences <- c(Lower = unname(q[1] - 1.5 * iqr), Upper = unname(q[2] + 1.5 * iqr))
-flagged <- cost < fences[1] | cost > fences[2]
-data.frame(Lower_fence = fences[1], Upper_fence = fences[2],
-           Flagged_products = sum(flagged), row.names = NULL)
+knitr::kable(orders %>% arrange(desc(sales)) %>%
+  select(order_id, sales, profit, line_count, quantity) %>% head(5), digits = 2)
 ```
 
-- No cost is outside these fences.
-- That does not prove the data are error-free or normally distributed.
-- A boxplot alone also cannot establish symmetry; inspect the histogram and the recorded values.
+- Inspect the underlying product lines before deciding what a large order means.
+- A large order may contain one costly product or several products.
+- Keep all records in the main summary.
 
-**Your turn**
-
-- Compare the histogram and boxplot.
-- What can you see more easily in each?
-- Explain why a legitimate high price should not be deleted simply to make a distribution look more balanced.
-
-## 7. Write the business interpretation
-
-Here is one way to report the results to the buyer:
-
-> - In this historical list of 33 cereal products, both the mean and median cost are about $0.17 per ounce.
-> - Individual costs range from $0.10 to $0.27, with a sample standard deviation of about $0.047 per ounce.
-> - The middle half lies between $0.13 and $0.20.
-> - A single typical cost is therefore useful as an overview, but it hides meaningful differences between products.
-
-- These results describe the listed products.
-- They do not establish current market prices, explain why products have different costs, or show which product the shop should stock.
-- A stocking decision would also need information about customer demand, selling prices, margins and other product characteristics.
-
-## 8. Your turn: a lower-cost shortlist
-
-The buyer wants to examine products costing **no more than $0.15 per ounce in this historical list**.
-
-- Use the starter code to create the shortlist.
-- Then apply the functions used above.
+### A labelled sensitivity comparison
 
 ```{r}
-#| label: cereals-student-task
+central_orders <- orders %>% filter(sales >= lower_fence, sales <= upper_fence)
+knitr::kable(data.frame(
+  scope = c("Full frame — primary result", "Within IQR fences — sensitivity only"),
+  n = c(nrow(orders), nrow(central_orders)),
+  mean_sales = c(mean(orders$sales), mean(central_orders$sales)),
+  median_sales = c(median(orders$sales), median(central_orders$sales))), digits = 2)
+```
+
+- The second row changes the scope; it is not a corrected estimate of the original frame mean.
+- Large changes show why valid extreme values matter to the business.
+- Do not hide exclusions or present the smaller mean as the retailer's full average order value.
+
+## 7. Independent operations briefing
+
+1. Compare order sales across regions using $n$, mean, median, SD and IQR.
+2. Draw side-by-side boxplots, with the same scale for all regions.
+3. Find the region with the largest **total revenue** and the largest **median order**. Are they the same?
+4. Identify the top five orders by sales and inspect their product lines.
+5. Calculate the share of total revenue contributed by the top 10% of orders ranked by sales. State how you handle ties or rounding of the number of orders.
+6. Write a short briefing distinguishing typical size, variability and revenue concentration.
+
+```{r}
 #| eval: false
-# subset() keeps rows meeting the condition; <= includes exactly $0.15.
-lower_cost <- subset(cereals, cost_per_ounce <= 0.15)
-
-# Complete your analysis below.
-# 1. How many products are included?
-# 2. What are their mean, median, sample SD and IQR of cost per ounce?
-# 3. How do these compare with the full list?
+# group_by(region) %>% summarise(...) builds the regional table.
+# arrange(desc(sales)) ranks order records.
+# An explicit rule is to take ceiling(0.10 * nrow(orders)) highest-ranked orders.
 ```
 
-**Submit your completed notebook with:**
+**Your conclusion should include:**
 
-- A histogram or boxplot.
-- A summary table containing mean, median, sample SD and IQR for both lists.
-- **Three or four sentences for the buyer**.
-- Explain whether the shortlist has a lower typical cost and less variation.
-- State why selecting a low-cost subset does not, by itself, identify a better product or demonstrate a price reduction over time.
+- The scope and order-level denominator.
+- Two numerical findings with dollar units.
+- One useful operational follow-up.
+- A limitation: sales values alone do not measure physical workload.
 
-- As a small extension, change the histogram's `binwidth` from `0.02` to `0.04`.
-- Describe what changes in the picture and what remains unchanged in the calculated summaries.
+## 8. Continue
 
-## Source and data notes
-
-- Dataset: **CEREALS**, supplied with *Basic Business Statistics: Concepts and Applications*, ninth edition, Berenson, Levine and Krehbiel; see exercise 3.68, pp. 127–128.
-- The book credits Consumers Union of U.S., Inc., *Consumer Reports*, October 1999, pp. 33–34.
-- That magazine attribution is reported from the book and has not been independently checked against the original article.
-
-- The course CSV preserves all 33 rows, numerical values and product labels from the publisher's `Data` worksheet.
-- Column names were simplified for R.
-- [Data notes](../data/practicals/README.md) describe the fields and limitations.
-
-Continue with [Practical 3: Association and group comparisons](practical-03-association-and-groups.qmd).
+- [Practical 3: Discounts and profitability](practical-03-association-and-groups.qmd).
+- [Data definitions and provenance](../data/business/README.md).

@@ -1,11 +1,13 @@
-# Teaching data
+# Course data
 
-| Folder | Use | Status |
-|---|---|---|
-| descriptive-statistics/ | Student teaching CSV shared by Parts 1 and 2 | Active; source provenance is not established as actual student records |
-| inferential-statistics/ | Six CSV tables used by Part 3 | Active; see local provenance and guide |
-| practicals/ | Historical CEREALS data for the draft R practical | Pilot; excluded from course publication and student ZIP |
+The active course uses only `business/`: Superstore, COLA and Consumer.
+See [the current data guide](business/README.md) for units, provenance and limits.
 
-Each subfolder contains its own data guide and provenance. R import cells locate this folder from either the course root or a notebook subfolder. The original publisher workbooks remain unchanged
-in local reference storage. Unused textbook CSVs from the retired course were
-moved to `archived/2026-11-04-unused-support/textbook-data/`.
+The former descriptive-statistics/, inferential-statistics/ and practicals/
+collections are historical support for preserved notebooks and source-slide
+conversions. They are excluded from the active student website and both bundles.
+Do not infer that keeping a historical file adopts it into the course.
+
+Keep all editable datasets under this course-root data/ directory. Each R import
+cell must locate data_dir independently and work from either the root or its
+notebook folder. Original publisher files stay unchanged and local-only in books/.

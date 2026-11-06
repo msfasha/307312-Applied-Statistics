@@ -1,6 +1,6 @@
 ---
-title: "Practical 1 — Categorical business data"
-subtitle: "Historical mutual funds · 307312 Applied Statistics — Masters Level"
+title: "Practical 1 — Superstore product mix"
+subtitle: "Categorical tables, percentages and charts · 307312 Applied Statistics"
 format:
   html:
     toc: true
@@ -16,275 +16,183 @@ execute:
   fig-height: 4.5
 ---
 
-- This practical accompanies categorical variables, frequency tables, contingency tables and qualitative charts in [Part 2](../lessons/02-descriptive-statistics.qmd).
+[Practical PDF](../pdf/practical-01-categorical-business-data.pdf) · [Student RStudio project](../downloads/applied-statistics-rstudio.zip)
+
 - Complete [Part 1](../lessons/01-introduction-to-r.qmd) first.
-- Allow **two sessions of approximately 40–50 minutes**: Sections 1–4, then Sections 5–8.
+- Companion to categorical summaries in [Part 2](../lessons/02-descriptive-statistics.qmd).
+- Allow two sessions of about 40–50 minutes.
 
 **By the end, you should be able to:**
 
-- Summarize nominal and ordinal variables.
-- Choose a suitable chart.
-- Distinguish overall from conditional percentages.
-- Write a business finding with a clear denominator.
+- Identify the observational unit and categorical variables.
+- Build frequency, conditional-percentage and cumulative tables.
+- Select charts with a clear business purpose.
+- Explain why a change of denominator changes the answer.
 
-[Download this practical as PDF](../pdf/practical-01-categorical-business-data.pdf) · [Download the student RStudio project](../downloads/applied-statistics-rstudio.zip)
+## 1. The category manager's question
 
-## 1. The business question
+> Which product categories dominate activity, and does the mix differ across customer segments?
 
-An analyst is reviewing a historical list of **259 mutual funds**:
+- **Business:** Superstore, a fictitious retailer of office products, furniture and technology.
+- **Source:** Tableau's official sample workbook, downloaded 6 November 2026.
+- **Period:** orders placed in 2023–2025.
+- **Market:** United States only.
+- **Unit:** one product line within an order; 6,682 lines across 3,322 orders.
+- **Limit:** a teaching company; no claims about actual retailers or future demand.
 
-> - How is this list distributed across investment objectives and risk classifications?
-> - Does the proportion carrying a sales charge differ across risk groups?
-
-- One row represents **one listed fund entry**, not an investor, purchase or year.
-- The data are supplied with Berenson, Levine and Krehbiel's *Basic Business Statistics: Concepts and Applications*, ninth edition, as **FUNDS2002**.
-- They describe historical classifications and returns through 2001, rather than today's market.
-
-| Course variable | Meaning | Treatment |
+| Variable | Meaning | Treatment |
 |---|---|---|
-| `fund` | Fund label | Identifier |
-| `type` | Large-, mid- or small-cap stocks | Category for this analysis |
-| `objective` | Growth or Value | Nominal category |
-| `sales_charge` | Whether a sales charge is recorded, No or Yes | Nominal category; the book calls this `Fees` |
-| `risk` | Very low, low, average, high, very high | Ordered category |
-| `turnover` | Trading activity in the same five ordered levels | Ordered category |
+| `category`, `sub_category` | Product classification | Nominal |
+| `segment` | Consumer, Corporate or Home Office | Nominal |
+| `region` | Central, East, South or West | Nominal |
+| `ship_mode` | Recorded service label | Nominal |
+| `order_id` | Identifies an order | Identifier, repeated across product lines |
+| `ship_days` | Days between order and dispatch | Ordered numerical duration, derived at order level |
 
-- **Sales charge and expense ratio are different variables.**
-- A fund recorded as having no sales charge can still have operating expenses.
-- The risk categories are classifications, not equally spaced numerical measurements.
+## 2. Import and check
 
-## 2. Import and inspect
-
-- Open `Applied-Statistics.Rproj`, then this notebook.
-- Install `dplyr` and `ggplot2` once if needed, as introduced in Part 1.
-- Run the cells in order.
-- [Download the CSV](../data/practicals/funds2002.csv).
+- [Order-line CSV](../data/business/superstore-lines.csv) · [Data guide](../data/business/README.md).
+- Run the import cell by itself from either the project root or `practicals/`.
 
 ```{r}
 #| label: categorical-import
-# Locate the shared data folder from the course root or notebook folder.
 data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
-funds <- read.csv(file.path(data_dir, "practicals/funds2002.csv"),
-                  stringsAsFactors = FALSE)
-suppressPackageStartupMessages(library(dplyr))
-source(file.path(data_dir, "..", "practicals", "_includes", "petra-plots.R"))
-
-# Ordered factors keep cumulative tables and plots in the intended order.
-risk_levels <- c("very low", "low", "average", "high", "very high")
-funds$risk <- factor(funds$risk, levels = risk_levels, ordered = TRUE)
-funds$turnover <- factor(funds$turnover, levels = risk_levels, ordered = TRUE)
-c(Records = nrow(funds), Variables = ncol(funds))
-colSums(is.na(funds))
+source(file.path(data_dir, "..", "lessons", "_includes", "course-tools.R"))
+lines <- read.csv(file.path(data_dir, "business", "superstore-lines.csv"),
+                  stringsAsFactors = FALSE, colClasses = c(postal_code = "character"))
+orders <- make_orders(lines)
+c(lines = nrow(lines), orders = nrow(orders), customers = n_distinct(lines$customer_id))
+colSums(is.na(lines))
 ```
 
-- `read.csv()` imports the records.
-- `factor()` defines category order.
-- `is.na()` and `colSums()` check missing cells, including unrecognized factor labels.
-- There are 259 records, 13 variables and no missing cells after this conversion.
+- `make_orders()` verifies consistent attributes and combines lines with the same order ID.
+- It does not count a multi-line order several times.
+- IDs and postal codes remain labels.
 
 ```{r}
-#| label: categorical-preview
-# Select only the fields needed for the categorical questions.
-knitr::kable(head(funds[c("fund", "type", "objective", "sales_charge", "risk")]))
+knitr::kable(head(lines[c("order_id", "category", "sub_category", "segment", "region")]))
 ```
 
-**Explain:** Why can we calculate a percentage of Growth funds, but not a meaningful mean of the words Growth and Value?
-
-## 3. One categorical variable
-
-**Question:** What percentage of the listed funds have each investment objective?
+## 3. Describe the category mix
 
 ```{r}
-#| label: objective-frequencies
-# count() counts records; mutate() adds proportions and percentages.
-objective_table <- funds |>
-  count(objective, name = "Frequency") |>
-  mutate(Relative_frequency = Frequency / sum(Frequency),
-         Percentage = 100 * Relative_frequency)
-knitr::kable(objective_table, digits = 3)
+#| fig-alt: "Product-line counts by category, led by Office Supplies."
+category_mix <- lines %>% count(category, name = "line_count") %>%
+  mutate(line_pct = 100 * line_count / sum(line_count))
+knitr::kable(category_mix, digits = 1)
+
+ggplot(category_mix, aes(reorder(category, line_count), line_count)) +
+  geom_col(fill = petra_ink) + coord_flip() +
+  labs(x = NULL, y = "Product lines")
 ```
 
-- There are **158 Growth funds (61.0%)** and **101 Value funds (39.0%)**.
-- The denominator is all 259 entries in this list.
-- This is not an estimate of the share of all funds in today's market.
+- `count()` produces frequencies.
+- The denominator is all product lines in the extract.
+- Office Supplies dominates line count; this does not establish the largest revenue or profit contribution.
+- Categories have no required numerical order, so a cumulative category percentage would depend on an arbitrary arrangement.
+
+### Change the business measure
 
 ```{r}
-#| label: objective-bars
-#| fig-cap: "Investment objective among the 259 historical fund entries."
-# geom_bar() counts records directly; use the same objective colors throughout.
-ggplot(funds, aes(x = objective, fill = objective)) +
-  geom_bar(width = 0.65) +
-  scale_fill_manual(values = petra_groups, guide = "none") +
-  labs(x = "Investment objective", y = "Number of fund entries")
+category_sales <- lines %>% group_by(category) %>%
+  summarise(total_sales = sum(sales), total_units = sum(quantity), .groups = "drop") %>%
+  mutate(sales_pct = 100 * total_sales / sum(total_sales))
+knitr::kable(category_sales, digits = 1)
 ```
 
-- A bar chart makes comparisons easy.
-- A pie chart can show parts of the same whole, but angles are harder to compare precisely.
+- A line can contain several units and very different sales values.
+- Line share, unit share and revenue share answer different questions.
+- Technology leads revenue here even though it has fewer lines than Office Supplies.
+
+**Pause:** Which measure would you use to discuss warehouse picking activity? Which would you use to discuss revenue? Explain the limits of each.
+
+## 4. Compare customer segments
 
 ```{r}
-#| label: objective-pie
-#| fig-cap: "Share of listed funds by objective; the two slices total 100%."
-# geom_col() uses computed counts; polar coordinates turn the stack into slices.
-ggplot(objective_table, aes(x = "", y = Frequency, fill = objective)) +
-  geom_col(width = 1, colour = "white") + coord_polar(theta = "y") +
-  scale_fill_manual(values = petra_groups) +
-  labs(x = NULL, y = NULL, fill = "Objective") + theme_void(base_size = 12)
+counts <- xtabs(~ segment + category, data = lines)
+row_percent <- 100 * prop.table(counts, margin = 1)
+knitr::kable(counts)
+knitr::kable(row_percent, digits = 1)
 ```
 
-**Your turn A**
-
-- Create a count-and-percentage table and a bar chart for `type`.
-- Identify the largest category and state the denominator.
-- Use the bar chart as your main comparison; the pie chart is an alternative display, not an additional required submission.
-
-## 4. Ordered categories
-
-**Question:** What percentage of the listed funds have average risk or lower?
+- Rows: customer segments.
+- Columns: product categories.
+- Each percentage row totals 100%.
+- A cell answers: “Within this segment's product lines, what percentage belong to this category?”
+- Dividing by a column total answers a different question: segment mix within a category.
 
 ```{r}
-#| label: risk-cumulative
-# .drop=FALSE retains every defined category; cumsum() calculates running totals.
-risk_table <- funds |>
-  count(risk, name = "Frequency", .drop = FALSE) |>
-  mutate(Percentage = 100 * Frequency / sum(Frequency),
-         Cumulative_frequency = cumsum(Frequency),
-         Cumulative_percentage = 100 * Cumulative_frequency / sum(Frequency))
-knitr::kable(risk_table, digits = 1)
+#| fig-alt: "One hundred percent stacked bars compare category mix within each customer segment."
+plot_mix <- lines %>% count(segment, category) %>%
+  group_by(segment) %>% mutate(percent = 100 * n / sum(n)) %>% ungroup()
+ggplot(plot_mix, aes(segment, percent, fill = category)) +
+  geom_col() + scale_fill_manual(values = petra_categories) +
+  labs(x = NULL, y = "Product lines within segment (%)", fill = "Category")
 ```
 
-- The first three categories contain **164 / 259 = 63.3%** of the listed funds.
-- That is average risk **or lower**.
-- The Average category alone contains **82 / 259 = 31.7%**.
+- Every segment bar reaches 100%, even though segment counts differ.
+- State both percentages and denominators when reporting a comparison.
+- A difference of 5 percentage points is not automatically a 5% relative increase.
+
+## 5. Use an ordered cumulative summary
+
+> What share of orders is dispatched within each number of days?
 
 ```{r}
-#| label: risk-bars
-#| fig-cap: "Risk classifications in their stated order."
-ggplot(risk_table, aes(x = risk, y = Frequency, fill = risk)) +
-  geom_col(width = 0.7, colour = "#4B4B4B") +
-  scale_fill_manual(values = petra_risk, guide = "none") +
-  labs(x = "Risk classification", y = "Number of fund entries")
+#| fig-alt: "Cumulative percentage of orders dispatched within each number of days."
+shipping <- orders %>% count(ship_days, name = "order_count") %>%
+  arrange(ship_days) %>%
+  mutate(percent = 100 * order_count / sum(order_count), cumulative_pct = cumsum(percent))
+knitr::kable(shipping, digits = 1)
+ggplot(shipping, aes(ship_days, cumulative_pct)) +
+  geom_step(colour = petra_ink) + geom_point(colour = petra_ink) +
+  labs(x = "Days from order to dispatch", y = "Orders dispatched within this duration (%)")
 ```
 
-**Your turn B**
+- Durations have a natural order, so cumulative percentages are meaningful.
+- Use one record per order; counting lines would give large baskets extra weight.
+- Dispatch time is not delivery time.
+- Observed lag is not the same as an advertised service guarantee.
 
-- Repeat the cumulative table for `turnover`.
-- What percentage have low turnover or less?
-- Explain why the ordering must be defined before calculating a running total.
-- A cumulative percentage across Growth and Value would depend on an arbitrary ordering and has no useful interpretation here.
-
-## 5. Compare categorical distributions
-
-**Question:** How does risk composition differ between Growth and Value funds?
+## 6. Interpret a returns table correctly
 
 ```{r}
-#| label: risk-objective-counts
-# position="dodge" places objective counts beside one another within each risk level.
-ggplot(funds, aes(x = risk, fill = objective)) +
-  geom_bar(position = "dodge") +
-  scale_fill_manual(values = petra_groups) +
-  labs(x = "Risk classification", y = "Number of fund entries", fill = "Objective")
+return_mix <- orders %>% count(return_status, name = "order_count") %>%
+  mutate(percent = 100 * order_count / sum(order_count))
+knitr::kable(return_mix, digits = 2)
 ```
 
-- The groups contain different numbers of funds.
-- Counts answer how many entries appear; percentages within each objective answer how each group's risk composition is distributed.
+- An order is **Listed return** when its ID appears in the workbook's Returns sheet.
+- The unit and denominator are orders, not products, returned units or customers.
+- **Not listed** is absence from this source table; it is not independently confirmed non-return.
+- Do not use the table to infer refund amounts or to adjust recorded profit.
+
+## 7. Independent business briefing
+
+The regional manager asks for a one-page summary.
+
+1. Build a region frequency table using **orders**, with percentages.
+2. Compare shipping-mode percentages **within each region**.
+3. Show one chart that makes this comparison readable.
+4. Calculate the percentage dispatched within four days, overall and by region.
+5. Report the listed-return percentage for each segment, using orders.
+6. Write four bullets: finding, numerical evidence, denominator and limitation.
 
 ```{r}
-#| label: risk-objective-percentages
-#| fig-cap: "Risk distribution within each objective; each bar totals 100%."
-# position="fill" divides each stack by that objective's total.
-ggplot(funds, aes(x = objective, fill = risk)) +
-  geom_bar(position = "fill") +
-  scale_fill_manual(values = petra_risk) +
-  scale_y_continuous(labels = function(x) paste0(round(100 * x), "%")) +
-  labs(x = "Objective", y = "Percentage within objective", fill = "Risk")
+#| eval: false
+# Use orders for these questions.
+# Start with count(region), then xtabs(~ region + ship_mode, data = orders).
+# For a group proportion: mean(ship_days <= 4) within each region.
 ```
 
-**Your turn C**
+**Check your reasoning:**
 
-- Compare sales-charge status across capitalization types using counts and a 100% stacked chart.
-- Use `sales_charge`, rather than the numerical `expense_ratio_pct`.
-- Describe how the two displays answer different questions.
+- Would line-based results give every order equal weight?
+- Are you interpreting dispatch rather than delivery?
+- Does the reader know whether a percentage is within a row or within the full table?
 
-## 6. Contingency tables and denominators
+## 8. Continue
 
-**Question:** Within each risk group, what proportion of funds have a sales charge?
-
-```{r}
-#| label: charge-risk-counts
-# table() cross-classifies two variables; addmargins() adds count totals.
-charge_risk <- table(Risk = funds$risk, Sales_charge = funds$sales_charge)
-knitr::kable(addmargins(charge_risk))
-```
-
-- There are 95 Yes and 164 No entries overall.
-- Among the 80 High-risk funds, 35 have a sales charge.
-- These values support three different statements:
-
-| Calculation | Question | Percentage |
-|---|---|---:|
-| 35 / 259 | What share of all entries are both High risk and Yes? | 13.5% |
-| 35 / 80 | Within High risk, what share are Yes? | 43.8% |
-| 35 / 95 | Within Yes, what share are High risk? | 36.8% |
-
-```{r}
-#| label: charge-risk-percentages
-# No margin uses the grand total; margin 1 uses row totals; margin 2 uses column totals.
-knitr::kable(round(100 * prop.table(charge_risk), 1), caption = "Overall percentages")
-knitr::kable(round(100 * prop.table(charge_risk, margin = 1), 1), caption = "Row percentages")
-knitr::kable(round(100 * prop.table(charge_risk, margin = 2), 1), caption = "Column percentages")
-```
-
-```{r}
-#| label: charge-risk-chart
-#| fig-cap: "Sales-charge status within each risk group; equivalent to row percentages."
-ggplot(funds, aes(x = risk, fill = sales_charge)) +
-  geom_bar(position = "fill") +
-  scale_fill_manual(values = petra_charge) +
-  scale_y_continuous(labels = function(x) paste0(round(100 * x), "%")) +
-  labs(x = "Risk classification", y = "Percentage within risk group", fill = "Sales charge")
-```
-
-- The observed percentages describe this list.
-- They do not establish that risk causes charges, or that any observed difference extends to a wider population.
-
-**Your turn D**
-
-- Construct `type` by `objective` counts and row percentages.
-- Write one business question answered by the row percentages, then explain how the question changes if you use column percentages.
-
-## 7. Interpretation workshop
-
-Decide whether each claim is supported, and correct any misleading statement.
-
-1. Most entries in this list have a Growth objective.
-2. 63.3% of the funds are classified as Average risk.
-3. 43.8% of all entries are High-risk funds with a sales charge.
-4. A fund with no sales charge has no expenses.
-5. Risk classifications explain why a fund charges a sales fee.
-
-For each reported percentage, identify the numerator, denominator and group being described.
-
-## 8. Independent briefing
-
-Prepare a concise briefing for the analyst with:
-
-1. One table describing capitalization types and their percentages.
-2. One ordered cumulative table for turnover.
-3. One chart comparing sales-charge percentages within capitalization types.
-4. Three findings with explicit denominators and one limitation.
-
-- Submit your completed Quarto notebook and rendered HTML.
-- Keep the briefing to approximately **one page**, with supporting code and output below it.
-- Credit depends on method choice and interpretation as well as correct calculations.
-
-## Source and data notes
-
-- Berenson, Levine and Krehbiel, *Basic Business Statistics: Concepts and Applications*, ninth edition, **FUNDS2002** companion data.
-- The local ninth-edition book defines the fund comparison on p. 40 and variables on p. 75 (team project TP2.1); page numbers differ from the international edition cited by the supplied draft.
-- Category ordering and the guided tasks here support the course's Part 2 sequence.
-
-- The CSV preserves source observations and order; headers were renamed and surrounding spaces in `Type` were trimmed.
-- The underlying collection and probability-selection method have not been established, so conclusions concern the supplied list.
-- [Data dictionary and provenance](../data/practicals/README.md).
-
-Continue with [Practical 2: Numerical business data](practical-02-numerical-business-data.qmd).
+- Keep your tables and briefing in your RStudio project.
+- Continue to [Practical 2: Order size](practical-02-numerical-business-data.qmd).
+- Source definitions and extract limits: [course data guide](../data/business/README.md).

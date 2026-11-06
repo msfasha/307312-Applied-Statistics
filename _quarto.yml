@@ -3,20 +3,10 @@ project:
   output-dir: _build/website
   execute-dir: project
   resources:
-    - data/practicals/cereals.csv
-    - data/practicals/funds2002.csv
-    - data/practicals/README.md
-    - data/descriptive-statistics/README.md
-    - data/descriptive-statistics/provenance.json
-    - data/descriptive-statistics/students.csv
-    - data/inferential-statistics/README.md
-    - data/inferential-statistics/female_major_salaries.csv
-    - data/inferential-statistics/graduate_salaries.csv
-    - data/inferential-statistics/houses.csv
-    - data/inferential-statistics/paired_scores.csv
-    - data/inferential-statistics/provenance.json
-    - data/inferential-statistics/teaching_gender.csv
-    - data/inferential-statistics/teaching_methods.csv
+    - data/business/superstore-lines.csv
+    - data/business/cola.csv
+    - data/business/consumer.csv
+    - data/business/README.md
     - "!archived/**"
     - "!instructor/**"
     - "!books/**"
@@ -55,6 +45,7 @@ format:
     css:
       - assets/petra-brand.css
       - assets/source-slides.css
+      - assets/practical-print.css
     toc: true
     code-copy: true
 execute:

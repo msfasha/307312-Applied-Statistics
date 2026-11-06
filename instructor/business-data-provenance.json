@@ -1,0 +1,66 @@
+{
+  "reviewed": "2026-11-06",
+  "superstore_source_url": "https://public.tableau.com/app/sample-data/sample_-_superstore.xls",
+  "selection": {
+    "country": "United States",
+    "order_date_from": "2023-01-01",
+    "order_date_through": "2025-12-31"
+  },
+  "datasets": {
+    "superstore-lines": {
+      "source_file": "books/tableau/sample_-_superstore.xls",
+      "source_sha256": "5045ed4fec49cae2cc0dfc5ab0d204ba09efa767fe00c996822499e8cc42fbbd",
+      "output_file": "data/business/superstore-lines.csv",
+      "output_sha256": "d0c7a4a0d5d8d9ab12c25527299d323ad592c0fa30c7a338b7e4cd554111abba",
+      "rows": 6682,
+      "columns": [
+        "row_id",
+        "order_id",
+        "order_date",
+        "ship_date",
+        "ship_mode",
+        "customer_id",
+        "customer_name",
+        "segment",
+        "country",
+        "city",
+        "state",
+        "postal_code",
+        "region",
+        "product_id",
+        "category",
+        "sub_category",
+        "product_name",
+        "sales",
+        "quantity",
+        "discount",
+        "profit",
+        "return_status"
+      ]
+    },
+    "cola": {
+      "source_file": "books/2-Basic business statistics  concepts and applications/Data-9th e/browse/Data_Files/Excel/COLA.XLS",
+      "source_sha256": "0278a35a8d309ff9d03b76041f1588d2a1a77e4d1605736f5285c6029c3cb1c9",
+      "output_file": "data/business/cola.csv",
+      "output_sha256": "603481c2e650aec80ed17756831f0cff76d77ccf459084885739015a0e1c4353",
+      "rows": 20,
+      "columns": [
+        "store_id",
+        "display",
+        "weekly_cases"
+      ]
+    },
+    "consumer": {
+      "source_file": "books/1-Modern Business Statistics-Organized-Data/7th-Data - Modern Business Statistics with Microsoft Excel Anderson Sweeney Williams/Chapter 15 Multiple Regression/Consumer.xls",
+      "source_sha256": "a52ec8d1026e484681be7ea33e42478c8162dfb47227925a5e2c7a574afe6fee",
+      "output_file": "data/business/consumer.csv",
+      "output_sha256": "1a009825a455e1a7b152455f8fbe7b1c700a6851dad2da0464faad7a6a8074d3",
+      "rows": 50,
+      "columns": [
+        "income_thousands",
+        "household_size",
+        "card_charges"
+      ]
+    }
+  }
+}

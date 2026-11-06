@@ -158,3 +158,17 @@
 - Original reference decks, source images and logos retain their colors and attribution.
 - Refresh HTML, all six PDFs and both student bundles on publication. Include the
   tracked theme specification in the student RStudio project.
+
+## Superstore business-course revision — 6 November 2026
+
+- The user explicitly authorized new content throughout the material, followed by commit, push and publication. This supersedes preservation of source-slide wording in the active authored lessons; untouched PPTX/PDF reference decks remain unchanged.
+- Active Part 1 and Part 2 and all three descriptive practicals use Tableau Superstore. Pin the official 6 November 2026 download and the US orders placed in 2023–2025: 6,682 lines, 3,322 orders, 782 customer IDs. Do not substitute old tutorial versions or silently relabel dates.
+- Part 3 preserves probability → estimation → hypothesis testing → regression, with Superstore finite-frame sampling, randomized COLA store displays and observational Consumer credit-card regression. Its independent inference tasks are inside the lesson.
+- Only data/business/ enters active publication and student ZIPs. Previous students/funds/cereals/slide extracts remain historical and excluded. Source workbooks remain local-only in books/.
+- Current shared R functions and plot style: lessons/_includes/course-tools.R. The practical plot helper is a compatibility wrapper. Preserve per-cell data_dir lookup from both working locations.
+- Pre-revision notebooks are preserved under archived/2026-11-06-before-superstore/. Historical slide converters export under _build/reference-conversions/ and must not overwrite authored active lessons.
+- Preserve the six-document download contract (three lessons and three descriptive practicals), existing URLs, all PDF exports and both student ZIPs. Follow PUBLISHING.md and verify the extracted project and live downloads.
+- Superstore is fictitious. Return status means membership in the source Returns sheet. Treat lines, orders and customers separately; do not infer refund accounting or causal discount effects.
+- The COLA source describes random assignment, not random selection of all supermarkets. Use independent groups, report cases/week and distinguish the course Welch analysis from the book's pooled analysis.
+- Consumer source reporting periods are not established by the workbook; do not add annual labels. Regression inference remains conditional on model/sampling assumptions.
+- The nominal t interval on 200 Superstore orders undercovers in the seeded simulation; retain this diagnostic and coverage comparison rather than claiming validated 95% precision.

@@ -65,7 +65,7 @@ Rendered lesson pages live under `lessons/` on the website. Root-level legacy
 lesson URLs redirect to those pages. The three approved practicals are rendered independently under
 `_build/practicals/` and staged as self-contained HTML under website `practicals/`
 by `scripts/stage-practicals.py`. Only the approved pages, the compatibility
-entry page, cereals/funds CSVs and their student data guide enter the site.
+entry page, data/business/ CSVs and their student data guide enter the site.
 Instructor answers, provenance manifests for these practicals, books, original
 publisher workbooks and future draft activities stay out of public downloads.
 
@@ -80,3 +80,24 @@ contains six PDFs. The RStudio ZIP includes all six editable notebooks, the
 shared practical plot helper, practical configuration and post-render scripts.
 A full website render also renders and stages the approved practicals.
 `--skip-render` reuses lesson HTML but refreshes practical HTML before packaging.
+
+## Business-course release — 6 November 2026
+
+The active lessons are authored around Superstore (R and descriptive statistics),
+Superstore sampling, COLA display experiments and Consumer regression. The original
+141-slide conversion count is historical and is not an active publication criterion.
+Validate the new lesson content, all executed cells and current source-data hashes.
+
+Only these data resources enter the site/project: data/business/superstore-lines.csv,
+data/business/cola.csv, data/business/consumer.csv and data/business/README.md.
+Do not stage former students, funds, cereals or slide-table extracts. Package the
+shared lessons/_includes/course-tools.R helper. No readxl dependency is needed by
+students; source-workbook preparation is a maintainer-only task.
+
+Before committing, run python3 scripts/check-practicals.py. It checks all six
+notebooks, fresh-session imports from both locations, full source-cell equivalence
+when publisher workbooks are available, provenance hashes and key teaching results.
+After building downloads, extract the RStudio ZIP into a new directory and run all
+six notebooks there; the extraction must not depend on maintainer files or books/.
+Inspect representative PDF pages and verify all live pages, six PDFs, both ZIPs,
+and deployment.json against the committed source revision.

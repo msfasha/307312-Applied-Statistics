@@ -7,8 +7,8 @@ import html, re, json, subprocess, hashlib, csv, io, posixpath
 from PIL import Image
 ROOT=Path(__file__).resolve().parents[1]
 from slide_source import NS, text, para, paragraphs, rect
-DEST=ROOT/'assets/inferential-statistics';DEST.mkdir(exist_ok=True)
-DATA=ROOT/'data/inferential-statistics';DATA.mkdir(exist_ok=True)
+DEST=ROOT/'_build/reference-conversions/assets/inferential-statistics';DEST.mkdir(parents=True, exist_ok=True)
+DATA=ROOT/'_build/reference-conversions/data/inferential-statistics';DATA.mkdir(parents=True, exist_ok=True)
 for p in DEST.glob('part-*-graphic-*.png'):p.unlink()
 examples=json.loads((ROOT/'scripts/inferential-r-examples.json').read_text())
 manifest=json.loads((ROOT/'sources/slides/inferential-source-provenance.json').read_text())
@@ -167,7 +167,7 @@ for key,index,start,name,header in exports:
         writer=csv.writer(f);writer.writerow(header);writer.writerows(clean)
     with (DATA/name).open() as f:assert list(csv.reader(f))[1:]==clean
     csv_provenance.append({'file':name,'source_part_slide':key,'table_index':index,'rows':len(rows),'columns':header,'transformations':'Header labels simplified; dollar symbols and thousands separators removed. Row order and numeric precision retained. Salary currency conflict retained for instructor review.'})
-(ROOT/'lessons/03-inferential-statistics.qmd').write_text(lesson_markup(''.join(q)))
+(ROOT/'_build/reference-conversions/03-inferential-statistics.qmd').write_text(lesson_markup(''.join(q)))
 (DATA/'provenance.json').write_text(json.dumps(csv_provenance,indent=2)+'\n')
-(ROOT/'instructor/inferential-conversion-audit.json').write_text(json.dumps({'sources':manifest,'slides':audit},indent=2)+'\n')
+(ROOT/'_build/reference-conversions/inferential-conversion-audit.json').write_text(json.dumps({'sources':manifest,'slides':audit},indent=2)+'\n')
 print(f'Converted {len(audit)} source slides, {sum(x.get("graphics",0) for x in audit)} graphics, {len(examples)} executable R cells; exported six checked CSVs.')

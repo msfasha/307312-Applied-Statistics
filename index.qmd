@@ -3,7 +3,7 @@ title: "307312 Applied Statistics"
 subtitle: "Masters Level"
 ---
 
-Study the three parts in order. Read online, or download the PDFs for offline reading.
+Follow one retail story from R to descriptive analysis, then study sampling, a randomized display experiment and credit-card regression. Read online or use the complete offline downloads.
 
 | Course part | Read online | Download |
 |---|---|---|
@@ -14,13 +14,16 @@ Study the three parts in order. Read online, or download the PDFs for offline re
 ## Part 2 practicals {#part-2-practicals}
 
 Apply the descriptive methods in order. Each practical includes explained R code,
-executed results, charts and independent tasks.
+executed results, charts and independent business tasks. All three use the same fixed Superstore extract.
+
+Part 3 includes worked inference and independent briefings using Superstore sampling,
+COLA display experiments and Consumer credit-card charges.
 
 | Practical | Read online | Download |
 |---|---|---|
-| 1. Categorical business data — mutual funds | [Open practical](practicals/practical-01-categorical-business-data.html) | [PDF](pdf/practical-01-categorical-business-data.pdf) |
-| 2. Numerical business data — cereals | [Open practical](practicals/practical-02-numerical-business-data.html) | [PDF](pdf/practical-02-numerical-business-data.pdf) |
-| 3. Association and group comparisons — mutual funds | [Open practical](practicals/practical-03-association-and-groups.html) | [PDF](pdf/practical-03-association-and-groups.pdf) |
+| 1. Superstore — product mix and categorical tables | [Open practical](practicals/practical-01-categorical-business-data.html) | [PDF](pdf/practical-01-categorical-business-data.pdf) |
+| 2. Superstore — order size and numerical measures | [Open practical](practicals/practical-02-numerical-business-data.html) | [PDF](pdf/practical-02-numerical-business-data.pdf) |
+| 3. Superstore — discounts, profit and group comparisons | [Open practical](practicals/practical-03-association-and-groups.html) | [PDF](pdf/practical-03-association-and-groups.pdf) |
 
 ## Work with R or study offline
 

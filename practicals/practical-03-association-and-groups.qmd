@@ -1,6 +1,6 @@
 ---
-title: "Practical 3 — Association and group comparisons"
-subtitle: "Historical mutual-fund returns · 307312 Applied Statistics — Masters Level"
+title: "Practical 3 — Superstore discounts and profit"
+subtitle: "Association, group comparisons and business interpretation · 307312 Applied Statistics"
 format:
   html:
     toc: true
@@ -16,244 +16,190 @@ execute:
   fig-height: 4.5
 ---
 
-- This practical accompanies measures of association and comparative boxplots in [Part 2](../lessons/02-descriptive-statistics.qmd).
-- Complete [categorical data](practical-01-categorical-business-data.qmd) and [numerical data](practical-02-numerical-business-data.qmd) first.
-- Allow **60–75 minutes**, or two shorter sessions.
+[Practical PDF](../pdf/practical-03-association-and-groups.pdf) · [Student RStudio project](../downloads/applied-statistics-rstudio.zip)
+
+- Companion to association and group comparisons in [Part 2](../lessons/02-descriptive-statistics.qmd).
+- Complete Practicals [1](practical-01-categorical-business-data.qmd) and [2](practical-02-numerical-business-data.qmd).
+- Allow two sessions of about 40–50 minutes.
 
 **By the end, you should be able to:**
 
-- Compare groups using their distributions.
-- Inspect a numerical relationship with a scatterplot.
-- Calculate Pearson correlation.
-- Distinguish an observed association from a causal explanation.
+- Compare sales, profit and weighted margins.
+- Summarize groups using distributions as well as totals.
+- Use scatterplots and correlations with the correct observational unit.
+- Distinguish a useful business lead from a causal conclusion.
 
-[Download this practical as PDF](../pdf/practical-03-association-and-groups.pdf) · [Download the student RStudio project](../downloads/applied-statistics-rstudio.zip)
+## 1. The commercial manager's question
 
-## 1. The business questions
+> Which product groups deserve a discount and profitability review?
 
-Return to the historical list of **259 mutual funds**:
+- **Source:** Tableau's fictitious Superstore, downloaded 6 November 2026.
+- **Scope:** US orders placed in 2023–2025.
+- **Line analysis:** 6,682 product lines for categories and discount bands.
+- **Order analysis:** 3,322 orders for basket sales and profit.
+- **Units:** sales and profit in dollars; discount as a fraction.
+- **Limit:** discount decisions were not randomized; product mix and other factors differ across groups.
 
-> - How do Growth and Value funds compare on five-year annualized returns?
-> - Is expense ratio associated with those returns in this list?
-
-- An analyst needs distributions and numerical summaries, rather than a single ranking.
-- The five-year return covers **1997–2001** and is expressed as an annualized percentage.
-- For example, a recorded value of 10 means 10% per year over that period; it is not a total five-year return of 10%.
-
-| Variable | Meaning and unit |
-|---|---|
-| `objective` | Growth or Value |
-| `expense_ratio_pct` | Expenses as a percentage of average net assets, as defined by the book |
-| `return_5yr_pct` | Annualized return for 1997–2001, in percent |
-| `return_2001_pct` | Twelve-month return during 2001, in percent |
-| `risk` | Historical ordered risk classification |
-
-- A difference between two percentage returns is measured in **percentage points**.
-- A single recorded return per fund does not give us annual observations for that fund or its year-to-year volatility.
-
-## 2. Import and inspect
+## 2. Import and construct useful variables
 
 ```{r}
 #| label: association-import
-# This import cell works from the project root or the notebook folder.
 data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
-funds <- read.csv(file.path(data_dir, "practicals/funds2002.csv"),
-                  stringsAsFactors = FALSE)
-suppressPackageStartupMessages(library(dplyr))
-source(file.path(data_dir, "..", "practicals", "_includes", "petra-plots.R"))
-funds$objective <- factor(funds$objective, levels = c("Growth", "Value"))
-funds$risk <- factor(funds$risk,
-                     levels = c("very low", "low", "average", "high", "very high"),
-                     ordered = TRUE)
-
-# Check group sizes, missing values and numerical ranges before comparing results.
-table(funds$objective)
-colSums(is.na(funds[c("objective", "expense_ratio_pct", "return_5yr_pct")]))
-summary(funds[c("expense_ratio_pct", "return_5yr_pct")])
+source(file.path(data_dir, "..", "lessons", "_includes", "course-tools.R"))
+lines <- read.csv(file.path(data_dir, "business", "superstore-lines.csv"),
+                  stringsAsFactors = FALSE, colClasses = c(postal_code = "character"))
+orders <- make_orders(lines)
+lines <- lines %>% mutate(
+  line_margin_pct = 100 * profit / sales,
+  loss_line = profit < 0,
+  discount_band = cut(discount, breaks = c(-Inf, 0, .2, Inf),
+    labels = c("None", "Above 0 to 20%", "Above 20%"), ordered_result = TRUE))
+stopifnot(!anyNA(lines$discount_band), all(lines$sales > 0))
 ```
 
-- `factor()` fixes a consistent display order.
-- `table()` reports 158 Growth and 101 Value funds.
-- `summary()` helps spot unexpected ranges; unusual values require investigation rather than automatic deletion.
-- [Download the CSV](../data/practicals/funds2002.csv).
+- [CSV](../data/business/superstore-lines.csv) · [Data guide](../data/business/README.md).
+- A 20% discount belongs to the middle band; zero belongs to **None**.
+- These bands are analyst-defined categories, not source classifications.
+- A line's margin is profit divided by its recorded sales.
+- We do not construct a discount-adjusted revenue or refund measure from undocumented accounting assumptions.
 
-## 3. Compare distributions before calculating differences
+## 3. Compare categories fairly
 
 ```{r}
-#| label: objective-return-boxplots
-#| fig-cap: "Five-year annualized returns by objective, 1997–2001."
-# Boxplots show median, middle-half spread and observations beyond the whiskers.
-ggplot(funds, aes(x = objective, y = return_5yr_pct, fill = objective)) +
-  geom_boxplot(width = 0.55, outlier.shape = 1) +
-  scale_fill_manual(values = petra_groups, guide = "none") +
-  labs(x = "Investment objective", y = "Five-year annualized return (%)")
+#| fig-alt: "Overall category profit margins; Furniture has a much thinner margin than the other categories."
+category_results <- lines %>% group_by(category) %>%
+  summarise(line_count = n(), total_sales = sum(sales), total_profit = sum(profit),
+            median_line_profit = median(profit), loss_line_pct = 100 * mean(loss_line),
+            .groups = "drop") %>%
+  mutate(overall_margin_pct = 100 * total_profit / total_sales)
+knitr::kable(category_results, digits = 2)
+ggplot(category_results, aes(category, overall_margin_pct)) +
+  geom_col(fill = petra_ink) +
+  labs(x = NULL, y = "Total profit / total sales (%)")
 ```
 
-- The line inside each box is the median.
-- The box spans the middle half of observations using the plotting convention.
-- Whiskers extend to observed values within 1.5 IQR of the hinges; points beyond them are flags for inspection, not necessarily errors.
+- Furniture has substantial sales but a much thinner overall margin in this extract.
+- Category totals describe business contribution; median line profit describes a typical line.
+- The loss-line rate uses lines as its denominator.
+- A category can contain both profitable and loss-making subcategories.
 
-**Pause**
-
-- Which group appears to have the higher median?
-- Which has more spread?
-- Do the distributions overlap?
-- Can a higher group median tell us that every fund in that group outperformed every fund in the other group?
-
-- For a second view, compare histograms using a common bin width and horizontal scale.
-- Each panel has its own group denominator.
+### Why an average of percentages can mislead
 
 ```{r}
-#| label: objective-return-histograms
-#| fig-cap: "Relative distributions with a common 4-percentage-point bin width."
-# Density rescales unequal group sizes; each panel has total bar area 1.
-ggplot(funds, aes(x = return_5yr_pct, y = after_stat(density), fill = objective)) +
-  geom_histogram(binwidth = 4, boundary = 0, colour = "white") +
-  facet_wrap(~ objective, ncol = 1) +
-  scale_fill_manual(values = petra_groups, guide = "none") +
-  labs(x = "Five-year annualized return (%)", y = "Density (per percentage point)")
+margin_comparison <- lines %>% group_by(category) %>%
+  summarise(equal_line_mean_margin_pct = mean(line_margin_pct),
+            sales_weighted_margin_pct = 100 * sum(profit) / sum(sales), .groups = "drop")
+knitr::kable(margin_comparison, digits = 2)
 ```
 
-- Density height is not itself a percentage.
-- Each bar's area is its group's relative frequency in that interval.
-- Common bins make the displays comparable; the plot does not weight a fund by its assets.
+- The first gives every line equal weight.
+- The second gives each dollar of sales equal weight.
+- Use the second to report the overall category margin.
 
-## 4. Summarize the comparison
+## 4. Examine discount groups
 
 ```{r}
-#| label: objective-return-summaries
-# group_by() separates objectives; summarise() computes the same statistics for each.
-group_summary <- funds |>
-  group_by(objective) |>
-  summarise(n = n(), mean_pct = mean(return_5yr_pct),
-            median_pct = median(return_5yr_pct), sd_pp = sd(return_5yr_pct),
-            q1_pct = quantile(return_5yr_pct, 0.25),
-            q3_pct = quantile(return_5yr_pct, 0.75), .groups = "drop")
-knitr::kable(group_summary, digits = 2,
-             col.names = c("Objective", "n", "Mean (%)", "Median (%)",
-                           "Sample SD (pp)", "Q1 (%)", "Q3 (%)"))
-
-# Calculate Value minus Growth, rather than relying on the ordering of table rows.
-mean_gap_pp <- mean(funds$return_5yr_pct[funds$objective == "Value"]) -
-               mean(funds$return_5yr_pct[funds$objective == "Growth"])
-mean_gap_pp
+#| fig-alt: "Boxplots of line margins across three discount bands, with negative margins retained."
+discount_results <- lines %>% group_by(discount_band) %>%
+  summarise(line_count = n(), total_sales = sum(sales), total_profit = sum(profit),
+            median_line_profit = median(profit), loss_line_pct = 100 * mean(loss_line),
+            .groups = "drop") %>%
+  mutate(overall_margin_pct = 100 * total_profit / total_sales)
+knitr::kable(discount_results, digits = 2)
+ggplot(lines, aes(discount_band, line_margin_pct)) +
+  geom_hline(yintercept = 0, colour = "#A3A3A3") +
+  geom_boxplot(fill = petra_accent, outlier.alpha = .25) +
+  labs(x = "Recorded line discount", y = "Line profit / line sales (%)")
 ```
 
-- The mean five-year annualized return is about **10.15% for Growth** and **11.69% for Value**, a difference of **1.55 percentage points** in this list.
-- Medians are 10.1% and 11.7%.
-- The sample SDs, about 4.77 and 4.01 percentage points, describe **variation across the listed funds' five-year annualized returns**.
-- They do not measure the volatility of an individual fund over time.
+- Compare medians, spread, group sizes and weighted margins.
+- The chart gives each line equal weight; the overall margin table does not.
+- A negative line margin is possible and is not automatically a bad import.
+- Discounts, prices and profit are connected accounting quantities; an association is expected to reflect more than customer response alone.
 
-- The overlapping distributions matter: these summaries do not identify a universal winner.
-- They also give each fund equal weight; the mean is not the return on a portfolio weighted by money invested.
-
-**Your turn A**
-
-- Repeat the grouped summary using `return_2001_pct`.
-- Compare the size and direction of the gap with the five-year comparison.
-- Explain why changing the observation period changes the business question.
-
-## 5. Inspect a numerical relationship
-
-**Question:** Do higher expense ratios tend to occur with higher or lower five-year annualized returns in these records?
+### Keep product mix visible
 
 ```{r}
-#| label: expense-return-scatterplot
-#| fig-cap: "Expense ratios and historical five-year annualized returns. Each point is one fund."
-# A scatterplot retains individual observations; transparency shows overlapping points.
-ggplot(funds, aes(x = expense_ratio_pct, y = return_5yr_pct)) +
-  geom_point(colour = petra_ink, alpha = 0.6, size = 2) +
-  labs(x = "Expense ratio (% of average net assets)",
-       y = "Five-year annualized return (%)")
+#| fig-alt: "Overall profit margins by discount band within each category; zero discount is distinct from positive discounts up to twenty percent."
+within_category <- lines %>% group_by(category, discount_band) %>%
+  summarise(line_count = n(), margin_pct = 100 * sum(profit) / sum(sales),
+            .groups = "drop")
+knitr::kable(within_category, digits = 2)
+ggplot(within_category, aes(discount_band, margin_pct)) +
+  geom_col(fill = petra_ink) + facet_wrap(~ category) +
+  scale_x_discrete(labels = c("None" = "0%", "Above 0 to 20%" = "(0,20%]",
+                               "Above 20%" = ">20%")) +
+  labs(x = "Discount band", y = "Group overall margin (%)")
 ```
 
-- Describe direction, form, strength and unusual points before calculating a coefficient.
-- The expense ratio is a single reported characteristic; the file does not give its complete five-year history.
-- This plot cannot isolate the effect of changing expenses.
+- Stratification compares discount bands within each category.
+- It reduces one source of mixing, but does not remove all confounding.
+- It does not establish what would happen if the manager changed discounts.
+
+## 5. Association at order level
+
+> Are higher-sales orders also higher-profit orders?
 
 ```{r}
-#| label: expense-return-correlation
-# cor() calculates Pearson's linear correlation using complete pairs.
-complete_pairs <- complete.cases(funds[c("expense_ratio_pct", "return_5yr_pct")])
-relationship <- data.frame(
-  Complete_pairs = sum(complete_pairs),
-  Pearson_r = cor(funds$expense_ratio_pct[complete_pairs],
-                  funds$return_5yr_pct[complete_pairs])
-)
-knitr::kable(relationship, digits = 3)
+#| fig-alt: "Order sales versus order profit, including large positive and negative profit values."
+ggplot(orders, aes(sales, profit)) +
+  geom_hline(yintercept = 0, colour = "#A3A3A3") +
+  geom_point(alpha = .35, colour = petra_ink) +
+  labs(x = "Order sales ($)", y = "Order profit ($)")
+
+correlations <- orders %>% group_by(segment) %>%
+  summarise(orders = n(), pearson_r = cor(sales, profit),
+            spearman_r = cor(sales, profit, method = "spearman"), .groups = "drop")
+knitr::kable(correlations, digits = 3)
 ```
 
-- Pearson's **r is approximately 0.142**, a weak positive linear association in this list.
-- It is unitless and summarizes a linear pattern.
-- It does not mean a 14.2% return, a 14.2-percentage-point increase, or that expenses explain 14.2% of return variation.
-- A small correlation also does not exclude a nonlinear relationship.
+- Pearson measures linear association; Spearman uses ranks.
+- Large observations can strongly influence Pearson correlation.
+- Segment correlations can differ from the overall correlation.
+- Correlation does not show the distribution of losses or establish a causal effect.
+- Repeated customers matter if we later try to model orders as independent future observations.
 
-## 6. Examine the groups within the relationship
+## 6. Turn a pattern into a decision question
+
+**Supported wording:**
+
+- “In this extract, the highest discount band has weaker recorded profitability.”
+- “Furniture's overall margin warrants a closer subcategory review.”
+
+**Before proposing a discount change, obtain:**
+
+- Product cost and accounting definitions.
+- Promotion timing and reasons for discount assignment.
+- Comparable product groups and customer demand evidence.
+- A planned experiment or another defensible causal design.
+
+- Do not claim that removing discounts would reproduce the undiscounted group's margin.
+- Do not describe a line-count loss rate as the percentage of customers losing money.
+
+## 7. Independent commercial briefing
+
+1. Rank subcategories by total profit and by overall margin. Include sales and line counts.
+2. Select one weak-performing subcategory and compare its discount bands.
+3. Find its three largest loss-making lines; retain them in the main analysis.
+4. Compare order-level loss percentages across customer segments.
+5. Produce two charts answering different questions.
+6. Write a recommendation separating an observed finding, a plausible explanation and evidence still needed.
 
 ```{r}
-#| label: expense-return-by-objective
-#| fig-cap: "The same relationship, identifying Growth and Value funds."
-ggplot(funds, aes(x = expense_ratio_pct, y = return_5yr_pct,
-                  colour = objective, shape = objective)) +
-  geom_point(alpha = 0.65, size = 2) +
-  scale_colour_manual(values = petra_groups) +
-  labs(x = "Expense ratio (% of average net assets)",
-       y = "Five-year annualized return (%)", colour = "Objective", shape = "Objective")
-```
-
-**Your turn B**
-
-- Calculate the expense–return correlation separately for Growth and Value funds.
-- Compare the results with the overall correlation.
-- Explain why an overall relationship can hide differences between groups.
-- Use the plot as evidence, rather than treating the coefficient as a complete explanation.
-
-```{r}
-#| label: association-student-correlation
 #| eval: false
-# Complete the expressions using the variables introduced above.
-funds |>
-  group_by(objective) |>
-  summarise(n = n(), r = cor(..., ...), .groups = "drop")
+# Use lines for product/discount questions and orders for basket questions.
+# A group loss percentage is 100 * mean(profit < 0).
+# Calculate rates before overwriting any column with a group total.
 ```
 
-## 7. Evaluate the claims
+**Submission:**
 
-Discuss what is supported, what is uncertain and what additional evidence would be needed.
+- One compact results table.
+- Two labelled charts with units and denominators.
+- Five short briefing bullets, including one limitation and one proposed follow-up.
 
-1. Value funds had a higher mean five-year annualized return in this historical list.
-2. Every Value fund outperformed every Growth fund.
-3. A larger cross-fund SD proves that each fund fluctuated more from year to year.
-4. Raising a fund's expense ratio would improve its return because the overall correlation is positive.
-5. Correlating 2001 returns with 1997–2001 returns gives independent evidence of performance persistence.
+## 8. Move from description to inference
 
-- For claim 5, note that **2001 is included in the five-year period**.
-- An association between overlapping return windows is not evidence about independent periods.
-- There is also no random assignment of fund expenses or objectives, and the source does not establish probability selection.
-
-- Significance tests, confidence intervals and regression inference belong to Part 3.
-- Before extending these analyses, we would need to justify the target population, selection process, independence and model assumptions.
-- Fund returns can be related through common holdings and market conditions.
-
-## 8. Independent analyst briefing
-
-Produce a **one-page descriptive briefing**, supported by your code and output:
-
-1. Compare five-year annualized returns across the ordered `risk` categories using a boxplot and a summary table with group sizes, medians and IQRs.
-2. Use the expense–return plot and correlations to explain whether the numerical association is consistent across objectives.
-3. State three findings, including at least one in percentage points, and two limits on interpretation.
-4. Identify one additional variable or study-design detail needed before making a stronger business recommendation.
-
-- Make your choices and explain them.
-- A descriptive difference alone is not a recommendation to buy a fund or a forecast of future performance.
-
-## Source and data notes
-
-- Berenson, Levine and Krehbiel, *Basic Business Statistics: Concepts and Applications*, ninth edition, **FUNDS2002** companion data.
-- Printed p. 40 defines the 1997–2001 comparison; p. 75 and team projects pp. 130–131 define variables and related comparisons.
-- The course questions adapt these data to Part 2; they do not reproduce every original exercise.
-
-- Source order and all numerical observations are preserved.
-- Column names were simplified and spaces in `Type` trimmed.
-- Returns are historical; original collection and probability-selection methods remain unverified.
-- [Full data dictionary](../data/practicals/README.md).
+- [Part 3](../lessons/03-inferential-statistics.qmd) adds sampling uncertainty, COLA's randomized display comparison and Consumer regression.
+- The descriptive evidence here concerns the complete fixed extract; p-values are not required to describe its totals.
+- [Source, variable definitions and selection rules](../data/business/README.md).

@@ -13,13 +13,13 @@ if __name__ == '__main__':
     for name in NAMES + ['practical-01-cereals']:
         source = ROOT / '_build/practicals' / (name + '.html')
         text = source.read_text()
-        text = text.replace('href="data/practicals/', 'href="../data/practicals/')
+        text = text.replace('href="data/business/', 'href="../data/business/')
         text = text.replace('href="../website/lessons/', 'href="../lessons/')
         text = text.replace('href="../website/pdf/', 'href="../pdf/')
         text = text.replace('href="../website/downloads/', 'href="../downloads/')
         (destination / source.name).write_text(text)
-    for name in ['cereals.csv', 'funds2002.csv', 'README.md']:
-        target = ROOT / '_build/website/data/practicals' / name
+    for name in ['superstore-lines.csv', 'cola.csv', 'consumer.csv', 'README.md']:
+        target = ROOT / '_build/website/data/business' / name
         target.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(ROOT / 'data/practicals' / name, target)
+        shutil.copy2(ROOT / 'data/business' / name, target)
     print('Staged three approved practicals and their student data.')

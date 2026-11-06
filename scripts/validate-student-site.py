@@ -36,6 +36,9 @@ if __name__ == '__main__':
             if target.scheme or target.netloc or not target.path or target.path.startswith('/'):
                 continue
             assert (page.parent/unquote(target.path)).exists(), (page.name, href)
+    assert not (SITE/'data/practicals').exists(), 'Retired practical data leaked into site'
+    assert not (SITE/'data/descriptive-statistics').exists(), 'Retired student data leaked into site'
+    assert not (SITE/'data/inferential-statistics').exists(), 'Retired inference data leaked into site'
     for path in SITE.rglob('*'):
         if not path.is_file():
             continue
@@ -46,9 +49,11 @@ if __name__ == '__main__':
     with zipfile.ZipFile(SITE/'downloads/applied-statistics-rstudio.zip') as bundle:
         names = set(bundle.namelist())
         assert {f'practicals/{n}.qmd' for n in PRACTICALS} <= names
-        assert {'data/practicals/funds2002.csv', 'data/practicals/cereals.csv',
+        assert {'data/business/superstore-lines.csv', 'data/business/cola.csv', 'data/business/consumer.csv',
+                'data/business/README.md', 'lessons/_includes/course-tools.R',
                 'practicals/_includes/petra-plots.R', 'assets/practical-print.css', 'scripts/stage-practicals.py',
                 'scripts/preview-practicals.py', 'scripts/finalize-practical-preview.py'} <= names
+        assert not any(n.startswith(('data/practicals/', 'data/descriptive-statistics/', 'data/inferential-statistics/')) for n in names)
         assert not any(set(Path(n).parts) & {'instructor', 'books', 'sources', 'archived', '_build'} for n in names)
         assert not any(Path(n).suffix.lower() in {'.xls', '.xlsx', '.pptx'} for n in names)
     print('Student site links, six-PDF bundle and complete RStudio package verified.')

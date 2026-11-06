@@ -28,6 +28,25 @@ for folder, part in DOCUMENTS:
             '-dGrayImageResolution=180','-dAutoRotatePages=/None',
             '-sOutputFile='+str(compact),str(output)],check=True,capture_output=True,timeout=180)
         compact.replace(output)
+    # Chrome can append an empty page from trailing layout space. Remove it only
+    # when both text extraction and Ghostscript ink coverage establish emptiness.
+    if all(shutil.which(t) for t in ['gs', 'pdfinfo', 'pdftotext']):
+        while True:
+            info = subprocess.check_output(['pdfinfo', str(output)], text=True)
+            pages = int(next(line.split(':', 1)[1] for line in info.splitlines() if line.startswith('Pages:')))
+            if pages <= 1:
+                break
+            text = subprocess.check_output(['pdftotext', '-f', str(pages), '-l', str(pages), str(output), '-'], text=True)
+            coverage = subprocess.check_output(['gs', '-q', '-dNOPAUSE', '-dBATCH', '-sDEVICE=inkcov',
+                '-o', '-', '-dFirstPage='+str(pages), '-dLastPage='+str(pages), str(output)], text=True)
+            lines = [line.split() for line in coverage.splitlines() if 'CMYK' in line]
+            blank = not text.strip() and len(lines) == 1 and all(float(v) == 0 for v in lines[0][:4])
+            if not blank:
+                break
+            trimmed = output.with_suffix('.trimmed.pdf')
+            subprocess.run(['gs', '-q', '-dNOPAUSE', '-dBATCH', '-sDEVICE=pdfwrite',
+                '-dFirstPage=1', '-dLastPage='+str(pages-1), '-sOutputFile='+str(trimmed), str(output)], check=True)
+            trimmed.replace(output)
     if not output.exists() or output.stat().st_size<10000 or output.read_bytes()[:5]!=b'%PDF-':
         raise RuntimeError('PDF export failed: '+part)
     print('Created',output.name,flush=True)
@@ -36,9 +55,9 @@ with zipfile.ZipFile(SITE/'downloads/applied-statistics-pdfs.zip','w',zipfile.ZI
     for _, part in DOCUMENTS:z.write(SITE/'pdf'/(part+'.pdf'),part+'.pdf')
 with zipfile.ZipFile(SITE/'downloads/applied-statistics-rstudio.zip','w',zipfile.ZIP_DEFLATED) as z:
     # No instructor files, archives, original slides, books, or build caches.
-    names=['assets/petra-theme.md','assets/practical-print.css','assets/petra-brand.css','assets/source-slides.css','Applied-Statistics.Rproj','_quarto.yml','index.qmd']+['lessons/'+p+'.qmd' for p in PARTS]+['practicals/'+p+'.qmd' for p in PRACTICALS]+['practicals/_quarto.yml','practicals/practical-01-cereals.qmd','practicals/_includes/petra-plots.R','scripts/finalize-preview.py','scripts/finalize-practical-preview.py','scripts/preview-practicals.py']
-    for folder in ['assets/descriptive-statistics','assets/inferential-statistics','lessons/_includes','data']:
-        names.extend(str(p.relative_to(ROOT)) for p in (ROOT/folder).rglob('*') if p.is_file() and p.suffix.lower() in ['.png','.jpg','.jpeg','.svg','.css','.qmd','.csv','.json','.md'])
+    names=['assets/petra-theme.md','assets/practical-print.css','assets/petra-brand.css','assets/source-slides.css','Applied-Statistics.Rproj','_quarto.yml','index.qmd']+['lessons/'+p+'.qmd' for p in PARTS]+['practicals/'+p+'.qmd' for p in PRACTICALS]+['practicals/_quarto.yml','practicals/practical-01-cereals.qmd','practicals/_includes/petra-plots.R','lessons/_includes/course-tools.R','scripts/finalize-preview.py','scripts/finalize-practical-preview.py','scripts/preview-practicals.py']
+    for folder in ['data/business']:
+        names.extend(str(p.relative_to(ROOT)) for p in (ROOT/folder).rglob('*') if p.is_file() and p.suffix.lower() in ['.png','.jpg','.jpeg','.svg','.css','.qmd','.csv','.json','.md','.R'])
     # Resources must be restricted to the same explicit teaching files as the site.
     import re
     allowed=set(re.findall(r'^    - (data/[^\n]+)',(ROOT/'_quarto.yml').read_text(),re.M))
@@ -65,7 +84,9 @@ with zipfile.ZipFile(SITE/'downloads/applied-statistics-rstudio.zip','w',zipfile
 6. Choose Render to view a notebook. Run `quarto render practicals` for practicals.
 7. Run `quarto render` to build the lesson website.
 
-MASS is a recommended R package used in Part 3; install it if absent.
+The lessons use Superstore (US, 2023–2025), COLA and Consumer CSVs.
+See data/business/README.md for provenance, units and limitations.
+Part 3 includes the inferential activities and independent business briefings.
 Python 3 is needed for the small HTML post-render step.
 PDF and ZIP download links point to the published website; local rendering creates HTML.
 Keep the complete folder structure. Import cells locate the shared data/ folder

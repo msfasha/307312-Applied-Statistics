@@ -10,17 +10,21 @@ def validate(site):
     required += ['pdf/'+p+'.pdf' for p in ['01-introduction-to-r','02-descriptive-statistics','03-inferential-statistics']]
     practicals=['practical-01-categorical-business-data','practical-02-numerical-business-data','practical-03-association-and-groups']
     required += ['practicals/'+p+'.html' for p in practicals]+['pdf/'+p+'.pdf' for p in practicals]
-    required += ['data/practicals/'+p for p in ['cereals.csv','funds2002.csv','README.md']]
+    required += ['data/business/'+p for p in ['superstore-lines.csv','cola.csv','consumer.csv','README.md']]
     required += ['downloads/applied-statistics-rstudio.zip','downloads/applied-statistics-pdfs.zip']
     for name in required:
         if not (site/name).exists():raise RuntimeError('Missing generated page: '+name)
-    for name in ['paired_scores.csv','graduate_salaries.csv','female_major_salaries.csv','teaching_methods.csv','teaching_gender.csv','houses.csv']:
-        if not (site/'data/inferential-statistics'/name).exists():raise RuntimeError('Missing teaching CSV: '+name)
-    if not (site/'data/descriptive-statistics/students.csv').exists():raise RuntimeError('Missing descriptive teaching CSV')
     forbidden=[p for p in site.rglob('*') if p.is_file() and (any(t in p.relative_to(site).parts for t in ['instructor','archived','books','sources','_includes']) or p.suffix.lower() in ['.xlsx','.xls'])]
     if forbidden:raise RuntimeError('Local-only files in generated site: '+str(forbidden[:5]))
-    infer=(site/'lessons/03-inferential-statistics.html').read_text()
-    if sum(f'id="part3-{k:02d}-slide-{i:02d}"' in infer for k,n in enumerate([37,26,57,21],1) for i in range(1,n+1))!=141:raise RuntimeError('Incomplete Part 3')
+    expected = {
+        'lessons/01-introduction-to-r.html': ['Superstore', 'category_summary'],
+        'lessons/02-descriptive-statistics.html': ['Superstore', '2.9 Put the evidence together'],
+        'lessons/03-inferential-statistics.html': ['COLA', 'Consumer', '3.10 Your inferential business briefing'],
+    }
+    for page, markers in expected.items():
+        content = (site/page).read_text()
+        if not all(marker in content for marker in markers):
+            raise RuntimeError('Incomplete business course: '+page)
 parser=argparse.ArgumentParser();parser.add_argument('--skip-render',action='store_true');args=parser.parse_args()
 if not args.skip_render:
     previous=ROOT/'_build/website'
@@ -48,7 +52,7 @@ with tempfile.TemporaryDirectory(prefix='307312-pages-') as temp:
             else:p.unlink()
         shutil.copytree(site,checkout,dirs_exist_ok=True)
         run('git','add','--all',cwd=checkout)
-        run('git','commit','-m','Publish course practicals and student downloads',cwd=checkout)
+        run('git','commit','-m','Publish Superstore business course and refreshed student downloads',cwd=checkout)
         print(run('git','push','origin','HEAD:gh-pages',cwd=checkout))
         print('Published source commit:',source)
         print('Website: https://msfasha.github.io/307312-Applied-Statistics/')

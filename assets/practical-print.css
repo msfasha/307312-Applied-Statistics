@@ -19,5 +19,7 @@
   }
   #source-and-data-notes { break-inside: avoid; page-break-inside: avoid; }
   .code-copy-button { display: none; }
-  .table td, .table th { padding: .4rem; }
+  table { width: 100% !important; max-width: 100% !important; table-layout: fixed; }
+  .table td, .table th { padding: .35rem; overflow-wrap: anywhere; font-size: 8.5pt; }
+  .cell-output-display img { max-width: 100% !important; height: auto !important; }
 }

@@ -1,8 +1,5 @@
 ---
-title: "Cereals practical has moved"
-format: html
+title: "Practical notebooks have moved"
 ---
 
-The extended cereals activity is now [Practical 2 — Numerical business data](practical-02-numerical-business-data.qmd).
-
-Open `practical-02-numerical-business-data.qmd` to run the R cells.
+The practical sequence now uses Superstore. Start with [Practical 1: Product mix](practical-01-categorical-business-data.qmd), then [Practical 2: Order size](practical-02-numerical-business-data.qmd) and [Practical 3: Discounts and profit](practical-03-association-and-groups.qmd).

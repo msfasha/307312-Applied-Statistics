@@ -1,0 +1,290 @@
+---
+title: "Practical 1 — Categorical business data"
+subtitle: "Historical mutual funds · 307312 Applied Statistics — Masters Level"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-copy: true
+    code-overflow: wrap
+    embed-resources: true
+execute:
+  echo: true
+  warning: true
+  message: false
+  fig-width: 7
+  fig-height: 4.5
+---
+
+- This practical accompanies categorical variables, frequency tables, contingency tables and qualitative charts in [Part 2](../lessons/02-descriptive-statistics.qmd).
+- Complete [Part 1](../lessons/01-introduction-to-r.qmd) first.
+- Allow **two sessions of approximately 40–50 minutes**: Sections 1–4, then Sections 5–8.
+
+**By the end, you should be able to:**
+
+- Summarize nominal and ordinal variables.
+- Choose a suitable chart.
+- Distinguish overall from conditional percentages.
+- Write a business finding with a clear denominator.
+
+[Download this practical as PDF](../pdf/practical-01-categorical-business-data.pdf) · [Download the student RStudio project](../downloads/applied-statistics-rstudio.zip)
+
+## 1. The business question
+
+An analyst is reviewing a historical list of **259 mutual funds**:
+
+> - How is this list distributed across investment objectives and risk classifications?
+> - Does the proportion carrying a sales charge differ across risk groups?
+
+- One row represents **one listed fund entry**, not an investor, purchase or year.
+- The data are supplied with Berenson, Levine and Krehbiel's *Basic Business Statistics: Concepts and Applications*, ninth edition, as **FUNDS2002**.
+- They describe historical classifications and returns through 2001, rather than today's market.
+
+| Course variable | Meaning | Treatment |
+|---|---|---|
+| `fund` | Fund label | Identifier |
+| `type` | Large-, mid- or small-cap stocks | Category for this analysis |
+| `objective` | Growth or Value | Nominal category |
+| `sales_charge` | Whether a sales charge is recorded, No or Yes | Nominal category; the book calls this `Fees` |
+| `risk` | Very low, low, average, high, very high | Ordered category |
+| `turnover` | Trading activity in the same five ordered levels | Ordered category |
+
+- **Sales charge and expense ratio are different variables.**
+- A fund recorded as having no sales charge can still have operating expenses.
+- The risk categories are classifications, not equally spaced numerical measurements.
+
+## 2. Import and inspect
+
+- Open `Applied-Statistics.Rproj`, then this notebook.
+- Install `dplyr` and `ggplot2` once if needed, as introduced in Part 1.
+- Run the cells in order.
+- [Download the CSV](../data/practicals/funds2002.csv).
+
+```{r}
+#| label: categorical-import
+# Locate the shared data folder from the course root or notebook folder.
+data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
+funds <- read.csv(file.path(data_dir, "practicals/funds2002.csv"),
+                  stringsAsFactors = FALSE)
+suppressPackageStartupMessages(library(dplyr))
+source(file.path(data_dir, "..", "practicals", "_includes", "petra-plots.R"))
+
+# Ordered factors keep cumulative tables and plots in the intended order.
+risk_levels <- c("very low", "low", "average", "high", "very high")
+funds$risk <- factor(funds$risk, levels = risk_levels, ordered = TRUE)
+funds$turnover <- factor(funds$turnover, levels = risk_levels, ordered = TRUE)
+c(Records = nrow(funds), Variables = ncol(funds))
+colSums(is.na(funds))
+```
+
+- `read.csv()` imports the records.
+- `factor()` defines category order.
+- `is.na()` and `colSums()` check missing cells, including unrecognized factor labels.
+- There are 259 records, 13 variables and no missing cells after this conversion.
+
+```{r}
+#| label: categorical-preview
+# Select only the fields needed for the categorical questions.
+knitr::kable(head(funds[c("fund", "type", "objective", "sales_charge", "risk")]))
+```
+
+**Explain:** Why can we calculate a percentage of Growth funds, but not a meaningful mean of the words Growth and Value?
+
+## 3. One categorical variable
+
+**Question:** What percentage of the listed funds have each investment objective?
+
+```{r}
+#| label: objective-frequencies
+# count() counts records; mutate() adds proportions and percentages.
+objective_table <- funds |>
+  count(objective, name = "Frequency") |>
+  mutate(Relative_frequency = Frequency / sum(Frequency),
+         Percentage = 100 * Relative_frequency)
+knitr::kable(objective_table, digits = 3)
+```
+
+- There are **158 Growth funds (61.0%)** and **101 Value funds (39.0%)**.
+- The denominator is all 259 entries in this list.
+- This is not an estimate of the share of all funds in today's market.
+
+```{r}
+#| label: objective-bars
+#| fig-cap: "Investment objective among the 259 historical fund entries."
+# geom_bar() counts records directly; use the same objective colors throughout.
+ggplot(funds, aes(x = objective, fill = objective)) +
+  geom_bar(width = 0.65) +
+  scale_fill_manual(values = petra_groups, guide = "none") +
+  labs(x = "Investment objective", y = "Number of fund entries")
+```
+
+- A bar chart makes comparisons easy.
+- A pie chart can show parts of the same whole, but angles are harder to compare precisely.
+
+```{r}
+#| label: objective-pie
+#| fig-cap: "Share of listed funds by objective; the two slices total 100%."
+# geom_col() uses computed counts; polar coordinates turn the stack into slices.
+ggplot(objective_table, aes(x = "", y = Frequency, fill = objective)) +
+  geom_col(width = 1, colour = "white") + coord_polar(theta = "y") +
+  scale_fill_manual(values = petra_groups) +
+  labs(x = NULL, y = NULL, fill = "Objective") + theme_void(base_size = 12)
+```
+
+**Your turn A**
+
+- Create a count-and-percentage table and a bar chart for `type`.
+- Identify the largest category and state the denominator.
+- Use the bar chart as your main comparison; the pie chart is an alternative display, not an additional required submission.
+
+## 4. Ordered categories
+
+**Question:** What percentage of the listed funds have average risk or lower?
+
+```{r}
+#| label: risk-cumulative
+# .drop=FALSE retains every defined category; cumsum() calculates running totals.
+risk_table <- funds |>
+  count(risk, name = "Frequency", .drop = FALSE) |>
+  mutate(Percentage = 100 * Frequency / sum(Frequency),
+         Cumulative_frequency = cumsum(Frequency),
+         Cumulative_percentage = 100 * Cumulative_frequency / sum(Frequency))
+knitr::kable(risk_table, digits = 1)
+```
+
+- The first three categories contain **164 / 259 = 63.3%** of the listed funds.
+- That is average risk **or lower**.
+- The Average category alone contains **82 / 259 = 31.7%**.
+
+```{r}
+#| label: risk-bars
+#| fig-cap: "Risk classifications in their stated order."
+ggplot(risk_table, aes(x = risk, y = Frequency, fill = risk)) +
+  geom_col(width = 0.7, colour = "#4B4B4B") +
+  scale_fill_manual(values = petra_risk, guide = "none") +
+  labs(x = "Risk classification", y = "Number of fund entries")
+```
+
+**Your turn B**
+
+- Repeat the cumulative table for `turnover`.
+- What percentage have low turnover or less?
+- Explain why the ordering must be defined before calculating a running total.
+- A cumulative percentage across Growth and Value would depend on an arbitrary ordering and has no useful interpretation here.
+
+## 5. Compare categorical distributions
+
+**Question:** How does risk composition differ between Growth and Value funds?
+
+```{r}
+#| label: risk-objective-counts
+# position="dodge" places objective counts beside one another within each risk level.
+ggplot(funds, aes(x = risk, fill = objective)) +
+  geom_bar(position = "dodge") +
+  scale_fill_manual(values = petra_groups) +
+  labs(x = "Risk classification", y = "Number of fund entries", fill = "Objective")
+```
+
+- The groups contain different numbers of funds.
+- Counts answer how many entries appear; percentages within each objective answer how each group's risk composition is distributed.
+
+```{r}
+#| label: risk-objective-percentages
+#| fig-cap: "Risk distribution within each objective; each bar totals 100%."
+# position="fill" divides each stack by that objective's total.
+ggplot(funds, aes(x = objective, fill = risk)) +
+  geom_bar(position = "fill") +
+  scale_fill_manual(values = petra_risk) +
+  scale_y_continuous(labels = function(x) paste0(round(100 * x), "%")) +
+  labs(x = "Objective", y = "Percentage within objective", fill = "Risk")
+```
+
+**Your turn C**
+
+- Compare sales-charge status across capitalization types using counts and a 100% stacked chart.
+- Use `sales_charge`, rather than the numerical `expense_ratio_pct`.
+- Describe how the two displays answer different questions.
+
+## 6. Contingency tables and denominators
+
+**Question:** Within each risk group, what proportion of funds have a sales charge?
+
+```{r}
+#| label: charge-risk-counts
+# table() cross-classifies two variables; addmargins() adds count totals.
+charge_risk <- table(Risk = funds$risk, Sales_charge = funds$sales_charge)
+knitr::kable(addmargins(charge_risk))
+```
+
+- There are 95 Yes and 164 No entries overall.
+- Among the 80 High-risk funds, 35 have a sales charge.
+- These values support three different statements:
+
+| Calculation | Question | Percentage |
+|---|---|---:|
+| 35 / 259 | What share of all entries are both High risk and Yes? | 13.5% |
+| 35 / 80 | Within High risk, what share are Yes? | 43.8% |
+| 35 / 95 | Within Yes, what share are High risk? | 36.8% |
+
+```{r}
+#| label: charge-risk-percentages
+# No margin uses the grand total; margin 1 uses row totals; margin 2 uses column totals.
+knitr::kable(round(100 * prop.table(charge_risk), 1), caption = "Overall percentages")
+knitr::kable(round(100 * prop.table(charge_risk, margin = 1), 1), caption = "Row percentages")
+knitr::kable(round(100 * prop.table(charge_risk, margin = 2), 1), caption = "Column percentages")
+```
+
+```{r}
+#| label: charge-risk-chart
+#| fig-cap: "Sales-charge status within each risk group; equivalent to row percentages."
+ggplot(funds, aes(x = risk, fill = sales_charge)) +
+  geom_bar(position = "fill") +
+  scale_fill_manual(values = petra_charge) +
+  scale_y_continuous(labels = function(x) paste0(round(100 * x), "%")) +
+  labs(x = "Risk classification", y = "Percentage within risk group", fill = "Sales charge")
+```
+
+- The observed percentages describe this list.
+- They do not establish that risk causes charges, or that any observed difference extends to a wider population.
+
+**Your turn D**
+
+- Construct `type` by `objective` counts and row percentages.
+- Write one business question answered by the row percentages, then explain how the question changes if you use column percentages.
+
+## 7. Interpretation workshop
+
+Decide whether each claim is supported, and correct any misleading statement.
+
+1. Most entries in this list have a Growth objective.
+2. 63.3% of the funds are classified as Average risk.
+3. 43.8% of all entries are High-risk funds with a sales charge.
+4. A fund with no sales charge has no expenses.
+5. Risk classifications explain why a fund charges a sales fee.
+
+For each reported percentage, identify the numerator, denominator and group being described.
+
+## 8. Independent briefing
+
+Prepare a concise briefing for the analyst with:
+
+1. One table describing capitalization types and their percentages.
+2. One ordered cumulative table for turnover.
+3. One chart comparing sales-charge percentages within capitalization types.
+4. Three findings with explicit denominators and one limitation.
+
+- Submit your completed Quarto notebook and rendered HTML.
+- Keep the briefing to approximately **one page**, with supporting code and output below it.
+- Credit depends on method choice and interpretation as well as correct calculations.
+
+## Source and data notes
+
+- Berenson, Levine and Krehbiel, *Basic Business Statistics: Concepts and Applications*, ninth edition, **FUNDS2002** companion data.
+- The local ninth-edition book defines the fund comparison on p. 40 and variables on p. 75 (team project TP2.1); page numbers differ from the international edition cited by the supplied draft.
+- Category ordering and the guided tasks here support the course's Part 2 sequence.
+
+- The CSV preserves source observations and order; headers were renamed and surrounding spaces in `Type` were trimmed.
+- The underlying collection and probability-selection method have not been established, so conclusions concern the supplied list.
+- [Data dictionary and provenance](../data/practicals/README.md).
+
+Continue with [Practical 2: Numerical business data](practical-02-numerical-business-data.qmd).

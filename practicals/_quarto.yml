@@ -1,4 +1,4 @@
-# Independent Part 2 practical project; publication remains a separate adoption step.
+# Independent Superstore practical project, staged by the root website build.
 project:
   type: default
   output-dir: ../_build/practicals

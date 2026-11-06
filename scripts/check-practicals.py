@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify core practical data, worked R cells and interactive import locations."""
+"""Verify all six business notebooks, pinned data and isolated interactive imports."""
 import csv
 import hashlib
 import json
@@ -9,14 +9,12 @@ import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-NOTEBOOKS = [ROOT / 'practicals' / name for name in [
-    'practical-01-categorical-business-data.qmd',
-    'practical-02-numerical-business-data.qmd',
+NOTEBOOKS = sorted((ROOT/'lessons').glob('*.qmd')) + [ROOT/'practicals'/name for name in [
+    'practical-01-categorical-business-data.qmd', 'practical-02-numerical-business-data.qmd',
     'practical-03-association-and-groups.qmd']]
 
 def run_r(code, cwd):
-    # Route any noninteractive charts away from the editable workspace.
-    code = 'pdf(file = tempfile(fileext = ".pdf"))\n' + code + '\ndev.off()\n'
+    code = 'pdf(file = tempfile(fileext = ".pdf"))\noptions(warn = 2)\n' + code + '\ndev.off()\n'
     with tempfile.NamedTemporaryFile(mode='w', suffix='.R') as stream:
         stream.write(code)
         stream.flush()
@@ -26,24 +24,17 @@ def run_r(code, cwd):
         raise RuntimeError(result.stdout + result.stderr)
 
 def verify_data():
-    for stem, key in [('funds2002', 'output_sha256'), ('cereals', 'csv_sha256')]:
-        path = ROOT / 'data/practicals' / (stem + '.csv')
-        manifest = json.loads(path.with_name(stem + '-provenance.json').read_text())
-        assert hashlib.sha256(path.read_bytes()).hexdigest() == manifest[key], stem
+    manifest = json.loads((ROOT/'instructor/business-data-provenance.json').read_text())
+    for stem, entry in manifest['datasets'].items():
+        path = ROOT/entry['output_file']
+        assert hashlib.sha256(path.read_bytes()).hexdigest() == entry['output_sha256'], stem
         with path.open(newline='') as stream:
             rows = list(csv.DictReader(stream))
-        assert len(rows) == manifest['rows'] and all(all(v != '' for v in r.values()) for r in rows)
-    # Recheck the derived fund extract against publisher text when available.
-    manifest = json.loads((ROOT / 'data/practicals/funds2002-provenance.json').read_text())
-    source = ROOT / manifest['source_file']
-    if source.exists():
-        assert hashlib.sha256(source.read_bytes()).hexdigest() == manifest['source_sha256']
-        with source.open(newline='') as stream:
-            rows = list(csv.reader(stream, delimiter='\t'))[1:]
-        for row in rows:
-            row[1] = row[1].strip()
-        with (ROOT / manifest['output_file']).open(newline='') as stream:
-            assert list(csv.reader(stream))[1:] == rows
+        assert len(rows) == entry['rows'] and list(rows[0]) == entry['columns']
+        assert all(all(v != '' for v in r.values()) for r in rows), stem
+        source = ROOT/entry['source_file']
+        if source.exists():
+            assert hashlib.sha256(source.read_bytes()).hexdigest() == entry['source_sha256'], stem
 
 if __name__ == '__main__':
     verify_data()
@@ -57,25 +48,52 @@ if __name__ == '__main__':
             run_r(imports[0], cwd)
             run_r('\n'.join(worked), cwd)
             checks += 2
-        print('Passed worked cells and isolated import from both locations:', notebook.name)
+        print('Passed isolated import and worked cells from both locations:', notebook.name, flush=True)
     run_r('''
-d <- read.csv("data/practicals/funds2002.csv")
-c <- read.csv("data/practicals/cereals.csv")
-near <- function(x, y) length(x) == length(y) && all(abs(as.numeric(x) - as.numeric(y)) <= 1e-7)
-stopifnot(nrow(d) == 259, ncol(d) == 13, !anyNA(d),
-          sum(d$objective == "Growth") == 158, sum(d$objective == "Value") == 101,
-          sum(d$risk %in% c("very low", "low", "average")) == 164,
-          sum(d$turnover %in% c("very low", "low")) == 93,
-          sum(d$risk == "high" & d$sales_charge == "Yes") == 35,
-          near(cor(d$expense_ratio_pct, d$return_5yr_pct), 0.1416481),
-          near(tapply(d$return_5yr_pct, d$objective, mean), c(10.1487341772, 11.6940594059)),
-          near(cor(subset(d, objective == "Growth")$expense_ratio_pct,
-                   subset(d, objective == "Growth")$return_5yr_pct), 0.1069140671),
-          near(cor(subset(d, objective == "Value")$expense_ratio_pct,
-                   subset(d, objective == "Value")$return_5yr_pct), 0.2445624229),
-          nrow(c) == 33, !anyNA(c), near(mean(c$cost_per_ounce), 0.1706060606),
-          near(sd(c$cost_per_ounce), 0.0469001195), near(IQR(c$cost_per_ounce), 0.07),
-          nrow(subset(c, cost_per_ounce <= .15)) == 14,
-          near(IQR(subset(c, cost_per_ounce <= .15)$cost_per_ounce), .035))
+source('lessons/_includes/course-tools.R')
+x <- read.csv('data/business/superstore-lines.csv', colClasses = c(postal_code = 'character'))
+o <- make_orders(x)
+c <- read.csv('data/business/cola.csv')
+u <- read.csv('data/business/consumer.csv')
+stopifnot(nrow(x) == 6682, nrow(o) == 3322, n_distinct(o$customer_id) == 782,
+          !anyNA(x), !anyDuplicated(x$row_id), all(x$country == 'United States'),
+          all(as.Date(x$order_date) >= as.Date('2023-01-01')),
+          all(as.Date(x$order_date) <= as.Date('2025-12-31')),
+          sum(x$profit < 0) == 1251, sum(o$loss_order) == 671, sum(o$listed_return) == 191,
+          isTRUE(all.equal(sum(x$sales), sum(o$sales))),
+          isTRUE(all.equal(sum(x$profit), sum(o$profit))),
+          abs(mean(o$sales) - 470.796354003612) < .01,
+          abs(median(o$sales) - 153.982) < .0001,
+          nrow(c) == 20, nrow(u) == 50)
+end <- c$weekly_cases[c$display == 'End aisle']
+normal <- c$weekly_cases[c$display == 'Normal']
+t <- t.test(end, normal)
+stopifnot(abs(mean(end) - mean(normal) - 21.7) < 1e-10,
+          abs(t$p.value - .007848949) < 1e-6,
+          all(abs(t$conf.int - c(6.568701,36.831299)) < 1e-5))
+m <- lm(card_charges ~ income_thousands + household_size, data = u)
+stopifnot(all(abs(coef(m) - c(1304.9048,33.1330,356.2962)) < .01),
+          abs(summary(m)$adj.r.squared - .8181) < .0001)
 ''', ROOT)
-    print(f'{checks} R execution checks passed; dataset hashes, source cells and key teaching results agree.')
+    # Full numerical source-cell checks, when maintainer source workbooks are present.
+    if (ROOT/'books/tableau/sample_-_superstore.xls').exists():
+        run_r('''
+library(readxl)
+d <- as.data.frame(read_excel('books/tableau/sample_-_superstore.xls', sheet = 'Orders'))
+x <- read.csv('data/business/superstore-lines.csv', colClasses = c(postal_code = 'character'))
+d <- d[d[['Country/Region']] == 'United States' & as.Date(d[['Order Date']]) >= as.Date('2023-01-01') &
+       as.Date(d[['Order Date']]) < as.Date('2026-01-01'), ]
+d[['Order Date']] <- as.character(as.Date(d[['Order Date']]))
+d[['Ship Date']] <- as.character(as.Date(d[['Ship Date']]))
+stopifnot(nrow(d) == nrow(x))
+for (j in seq_len(21)) stopifnot(isTRUE(all.equal(as.character(d[[j]]), as.character(x[[j]]))))
+r <- read_excel('books/tableau/sample_-_superstore.xls', sheet = 'Returns')
+stopifnot(all((x$return_status == 'Listed return') == (x$order_id %in% r[['Order ID']])))
+p <- 'books/2-Basic business statistics  concepts and applications/Data-9th e/browse/Data_Files/Excel/COLA.XLS'
+z <- read_excel(p, sheet = 'Data'); c <- read.csv('data/business/cola.csv')
+stopifnot(all(c$weekly_cases == c(z$Normal,z$EndAisle)))
+p <- 'books/1-Modern Business Statistics-Organized-Data/7th-Data - Modern Business Statistics with Microsoft Excel Anderson Sweeney Williams/Chapter 15 Multiple Regression/Consumer.xls'
+z <- read_excel(p); u <- read.csv('data/business/consumer.csv')
+stopifnot(all(as.matrix(z) == as.matrix(u)))
+''', ROOT)
+    print(f'{checks} fresh-session execution checks passed; source cells, hashes and key results verified.')
