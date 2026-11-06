@@ -148,7 +148,8 @@
   course material with the Petra grayscale theme. Use `assets/petra-theme.md`;
   synchronize it with the portable master `../petra_theme/petra_theme.md`.
 - Keep titles, heading bands, editable diagrams, tables and note surfaces neutral
-  gray with dark text on white. Follow the shared CSS, not per-notebook overrides.
+  gray with dark text on white. All H2–H4 title bands must be darker than diagram
+  and table fills; keep their CSS color tokens separate. Follow the shared CSS, not per-notebook overrides.
 - Our generated charts use neutral defaults; meaningful analytical group and
   ordered-category colors remain appropriate. Preserve labels and consistent mappings.
 - Keep source-slide images and R plots centered. Small instructional images use

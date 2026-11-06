@@ -34,17 +34,19 @@ than separate heading-color rules in individual notebooks.
 | Role | Hex | Usage |
 |---|---|---|
 | Reading surface | `#FFFFFF` | Main content and diagram backgrounds |
-| Main title surface | `#DADADA` | Distinct darker gray title panel |
+| Main title surface | `#D0D0D0` | Distinct darker gray title panel |
 | Main title and H2 text | `#262626` | Charcoal text |
 | Main title top rule | `#404040` | Thin dark gray rule |
-| Subtitle | `#595959` | Readable secondary text on the darker title panel |
-| H2 surface | `#E8E8E8` | Strongest section fill |
-| H3 surface | `#F3F3F3` | Lighter topic fill |
-| H4 surface | `#F8F8F8` | Lightest subtopic fill |
+| Subtitle | `#555555` | Readable secondary text on the darker title panel |
+| H2 surface | `#D8D8D8` | Strongest section fill |
+| H3 surface | `#E0E0E0` | Lighter topic fill |
+| H4 surface | `#E8E8E8` | Lightest subtopic fill |
 | Heading accent and diagram connectors | `#A3A3A3` | Thin rules, borders and connectors |
 | Body text | `#303030` | Dark text on white |
 | Secondary text | `#666666` | Captions, metadata and minor labels |
-| Table header | `#F3F3F3` | Neutral header surface |
+| Diagram root and table header | `#F2F2F2` | Neutral header surface |
+| Diagram node | `#F7F7F7` | Light content fill |
+| Diagram leaf and table row header | `#FAFAFA` | Lightest content fill |
 | Inline code text | `#303030` | Variable names and short code references |
 | Table and code divider | `#D6D6D6` | Subtle separators |
 | Note header | `#F5F5F5` | Neutral note surface |
@@ -62,15 +64,22 @@ interface; do not recolor every visual indiscriminately.
 
 | Semantic role | Source | Treatment |
 |---|---|---|
-| Document title | YAML `title`, or one H1 in a native notebook | `#DADADA` gray panel, charcoal text, 3 px dark top rule |
+| Document title | YAML `title`, or one H1 in a native notebook | `#D0D0D0` gray panel, charcoal text, 3 px dark top rule |
 | Subtitle | YAML `subtitle`, or a subtitle paragraph | Smaller gray text, subordinate to the title |
-| Main section | H2 / `##` | `#E8E8E8` fill and a thin gray left rule |
-| Topic | H3 / `###` | `#F3F3F3` fill and a thin gray left rule |
-| Subtopic | H4 / `####` | `#F8F8F8` fill and a thin gray left rule |
+| Main section | H2 / `##` | `#D8D8D8` fill and a thin gray left rule |
+| Topic | H3 / `###` | `#E0E0E0` fill and a thin gray left rule |
+| Subtopic | H4 / `####` | `#E8E8E8` fill and a thin gray left rule |
 | Minor labels | H5/H6 | Plain dark headings |
 
 The main title panel is deliberately darker than H2–H4 surfaces so the document
-title remains visually distinct from sections and diagram content.
+title remains visually distinct from sections. Every H2–H4 heading band must also
+be darker than diagram nodes and table fills. This applies to slide/topic titles
+such as “Types of data”, not only to the document's opening title.
+
+Keep heading tokens (`--course-section-bg`, `--course-topic-bg`,
+`--course-subtopic-bg`) separate from content tokens
+(`--course-diagram-*-bg`, `--course-table-*-bg`). Do not reuse a heading fill for
+a diagram box or table header; changing titles must not darken the content too.
 
 Keep genuine heading levels and normal navigation; do not promote all topics to
 H2 just to imitate slides. Distinguish levels through size, weight, whitespace and
@@ -89,8 +98,8 @@ panel on white. Keep headings with their following content in print.
 ## Diagrams, tables and notes
 
 Editable diagrams use white outer containers, neutral borders and dark labels.
-Root/section nodes use `#E8E8E8`, ordinary nodes `#F3F3F3`, and subordinate nodes
-`#F8F8F8`. Connectors use `#A3A3A3`. Use bold labels and clear spacing to distinguish
+Root/section nodes use `#F2F2F2`, ordinary nodes `#F7F7F7`, and subordinate nodes
+`#FAFAFA`. Connectors use `#A3A3A3`. Use bold labels and clear spacing to distinguish
 levels; the diagram should not depend on color alone.
 
 Tables use neutral headers, subtle horizontal rules, white data cells and a light
