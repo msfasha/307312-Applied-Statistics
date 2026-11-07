@@ -21,10 +21,6 @@ include-before: |
   </div>
 ---
 
-[Download this notebook as PDF](../pdf/r-02-basic-concepts.pdf)
-
-[1. Introduction to R](01-introduction-to-r.qmd) | [2. Basic Concepts in R](r-02-basic-concepts.qmd) | [3. Data Manipulation using dplyr](r-03-dplyr.qmd) | [4. Introduction to ggplot2](r-04-ggplot2.qmd)
-
 ## Hello World Program
 
 Write the "Hello World" program using both (1) R command prompt and (2) writing a script.

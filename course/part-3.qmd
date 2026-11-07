@@ -7,13 +7,13 @@ toc: false
 
 - Probability distributions, estimation, hypothesis testing and regression.
 
-[Read slides online (HTML)](../lessons/03-inferential-statistics.qmd){.btn .btn-primary}
+[Read slides](../lessons/03-inferential-statistics.qmd){.btn .btn-primary}
 [Download slides (PDF)](../pdf/03-inferential-statistics.pdf){.btn .btn-outline-secondary}
 
 ## R practical {#practical}
 
 **Coming soon.** The companion inferential-statistics practical has not yet been prepared. It will appear here when available.
 
-[Download the student RStudio project](../downloads/applied-statistics-rstudio.zip) to run the existing R examples in the inferential lesson.
+[Download RStudio files (.zip)](../downloads/applied-statistics-rstudio.zip) to run the existing R examples in the inferential lesson.
 
 [All course parts](index.qmd)

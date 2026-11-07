@@ -7,7 +7,7 @@ subtitle: "Three descriptive R applications · 307312 Applied Statistics — Mas
 - **Business:** Superstore, Tableau’s fictitious retailer; the fixed official extract downloaded 6 November 2026 contains US orders placed in 2023–2025.
 - **Scope:** 6,682 product lines, 3,322 orders and 782 customer IDs. Keep these observational units distinct.
 - Work through the three notebooks in order. Each includes explained R code, worked results and independent business tasks.
-- [Data guide](../../data/business/README.md) · [Student RStudio project](../../downloads/applied-statistics-rstudio.zip).
+- [RStudio files (.zip)](../../downloads/applied-statistics-rstudio.zip) contain the editable notebooks, data and data guide.
 
 | Notebook | Focus | Download |
 |---|---|---|

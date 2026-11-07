@@ -16,8 +16,6 @@ execute:
   fig-height: 4.5
 ---
 
-[Practical PDF](../../pdf/practical-02-numerical-business-data.pdf) · [Student RStudio project](../../downloads/applied-statistics-rstudio.zip)
-
 - Companion to centre, spread, percentiles and boxplots in [Part 2](../../lessons/02-descriptive-statistics.qmd).
 - Continue from [Practical 1](practical-01-categorical-business-data.qmd).
 - Allow two sessions of about 40–50 minutes.
@@ -54,7 +52,7 @@ stopifnot(nrow(orders) == n_distinct(lines$order_id),
 knitr::kable(head(orders[c("order_id", "sales", "profit", "quantity", "line_count")] ), digits = 2)
 ```
 
-- [Download the line CSV](../../data/business/superstore-lines.csv) · [Data guide](../../data/business/README.md).
+- `data/business/superstore-lines.csv`; guide: `data/business/README.md`.
 - Sales, profit and quantity are **summed** across an order's lines.
 - Do not average line sales to estimate average order sales.
 - The reconciliation checks that aggregation neither loses nor duplicates revenue.
@@ -207,4 +205,4 @@ knitr::kable(data.frame(
 ## 8. Continue
 
 - [Practical 3: Discounts and profitability](practical-03-association-and-groups.qmd).
-- [Data definitions and provenance](../../data/business/README.md).
+- `data/business/README.md`.

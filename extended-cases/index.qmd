@@ -13,7 +13,7 @@ toc: false
 
 | Extended case | Start after / focus | Read online | Download |
 |---|---|---|---|
-| Superstore — three notebooks | Part 2: categorical data, numerical measures, association and groups | [Open case](superstore/index.qmd) | PDFs: [1](../pdf/practical-01-categorical-business-data.pdf), [2](../pdf/practical-02-numerical-business-data.pdf), [3](../pdf/practical-03-association-and-groups.pdf) |
+| Superstore — three notebooks | Part 2: categorical data, numerical measures, association and groups | [Open case](superstore/index.qmd) | On the Superstore page |
 | 1. Springville Herald | Part 2: daily calls; Part 3: regression; optional forecasting | [Open case](case-01-springville-herald.qmd) | [PDF](../pdf/case-01-springville-herald.pdf) |
 | 2. Oxford Cereal | Part 3: sampling, estimation and one-mean testing | [Open case](case-02-oxford-cereal.qmd) | [PDF](../pdf/case-02-oxford-cereal.pdf) |
 | 3. BLK Retail Display | Part 3: independent-group comparisons applied to COLA | [Open case](case-03-retail-display.qmd) | [PDF](../pdf/case-03-retail-display.pdf) |
@@ -26,4 +26,7 @@ toc: false
 The six numbered cases draw on Berenson, Levine and Krehbiel's *Basic Business Statistics: Concepts and Applications*, ninth edition. Each identifies its source, observational unit and limits; Oxford uses reported summary inputs rather than raw box weights.
 
 
-[Return to the course](../course/index.qmd) · [Student RStudio project](../downloads/applied-statistics-rstudio.zip) · [All PDFs](../downloads/applied-statistics-pdfs.zip)
+## Downloads
+
+- [RStudio files (.zip)](../downloads/applied-statistics-rstudio.zip) — editable notebooks and data for running the code.
+- [PDF collection (.zip)](../downloads/applied-statistics-pdfs.zip) — all lessons and scenarios for reading.

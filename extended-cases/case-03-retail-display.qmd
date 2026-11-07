@@ -15,8 +15,6 @@ execute:
   fig-height: 4.5
 ---
 
-[Case PDF](../pdf/case-03-retail-display.pdf) · [Student RStudio project](../downloads/applied-statistics-rstudio.zip) · [All extended cases](index.qmd)
-
 - **Start after:** the [independent-groups comparison in Part 3](../lessons/03-inferential-statistics.qmd#part3-title-03-29).
 - **Suggested time:** 50–60 minutes.
 - **Role:** apply independent-group comparisons to COLA data and prepare a commercial briefing.
@@ -52,7 +50,7 @@ knitr::kable(cola %>% group_by(display) %>%
     sd_cases = sd(weekly_cases), .groups = "drop"), digits = 2)
 ```
 
-- [COLA CSV](../data/business/cola.csv) · [Data guide](../data/business/README.md).
+- `data/business/cola.csv`; guide: `data/business/README.md`.
 - Each row is one store; the source's side-by-side columns did not represent pairs.
 - Course store IDs identify rows; they are not publisher store names.
 

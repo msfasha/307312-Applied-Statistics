@@ -15,8 +15,6 @@ execute:
   fig-height: 4.5
 ---
 
-[Case PDF](../pdf/case-02-oxford-cereal.pdf) · [Student RStudio project](../downloads/applied-statistics-rstudio.zip) · [All extended cases](index.qmd)
-
 - **Start after:** sampling distributions, confidence intervals and one-mean testing in [Part 3](../lessons/03-inferential-statistics.qmd).
 - **Suggested time:** 50–60 minutes.
 - **Business question:** Does the reported sample provide evidence that mean box weight differs from the 368 g target?
@@ -53,7 +51,7 @@ alpha <- oxford$alpha[1]
 stopifnot(n == 25, sigma == 15, mu0 == 368, xbar == 372.5)
 ```
 
-- [Summary CSV](../data/business/extended-oxford-summary.csv) · [Data guide](../data/business/README.md).
+- `data/business/extended-oxford-summary.csv`; guide: `data/business/README.md`.
 - `sigma` is assumed known in the textbook example; it is not estimated from these 25 boxes.
 - A Z procedure requires the stated known SD and an appropriate sampling/normal model.
 

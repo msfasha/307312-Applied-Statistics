@@ -15,8 +15,6 @@ execute:
   fig-height: 4.5
 ---
 
-[Case PDF](../pdf/case-01-springville-herald.pdf) · [Student RStudio project](../downloads/applied-statistics-rstudio.zip) · [All extended cases](index.qmd)
-
 - **Start after:** [Part 2](../lessons/02-descriptive-statistics.qmd) for Section A; [Part 3 regression](../lessons/03-inferential-statistics.qmd#part3-title-04-09) for Section B.
 - **Optional advanced work:** Section C introduces trend forecasting.
 - **Suggested time:** 45 minutes for A; 60 minutes for B; 30 minutes for C.
@@ -52,7 +50,7 @@ knitr::kable(data.frame(file = c("SH2", "SH13", "SH16"),
   unit = c("Day", "Month: marketing", "Month: subscription base")))
 ```
 
-- CSVs: [daily calls](../data/business/extended-herald-calls.csv), [marketing](../data/business/extended-herald-marketing.csv), [subscription base](../data/business/extended-herald-subscriptions.csv).
+- CSVs: `data/business/extended-herald-calls.csv`, `data/business/extended-herald-marketing.csv`, `data/business/extended-herald-subscriptions.csv`.
 - SH2 chart-helper columns were excluded; all 90 daily call counts remain.
 - `source()` loads the same R packages and plot style used in the core course.
 

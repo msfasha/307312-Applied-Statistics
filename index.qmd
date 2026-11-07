@@ -24,4 +24,7 @@ Optional business applications, including Superstore and six further cases.
 :::
 :::
 
-[Student RStudio project](downloads/applied-statistics-rstudio.zip) · [All course and scenario PDFs](downloads/applied-statistics-pdfs.zip)
+## Downloads
+
+- [RStudio files (.zip)](downloads/applied-statistics-rstudio.zip) — notebooks and data for running the code.
+- [PDF collection (.zip)](downloads/applied-statistics-pdfs.zip) — all lessons and scenarios for reading.

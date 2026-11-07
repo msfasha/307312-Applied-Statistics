@@ -17,8 +17,6 @@ execute:
   fig-height: 4.5
 ---
 
-[Practical PDF](../pdf/descriptive-statistics-r-practical.pdf) · [Student RStudio project](../downloads/applied-statistics-rstudio.zip) · [Part 2 slides](../lessons/02-descriptive-statistics.qmd)
-
 ## Before we begin
 
 - Use this notebook after explaining the descriptive-statistics slides, or return to the matching section after each topic.
@@ -30,7 +28,7 @@ execute:
 ## The data and our purpose
 
 - **Source:** the original 307102 Descriptive Statistics teaching material used for Part 2; the original PDF, PowerPoint and workbook remain unchanged reference files.
-- **Data:** [student CSV](../data/descriptive-statistics/students.csv) and [data guide](../data/descriptive-statistics/README.md), containing 8,239 records and six variables.
+- **Data:** `data/descriptive-statistics/students.csv` and `data/descriptive-statistics/README.md`, containing 8,239 records and six variables.
 - **Unit:** one record in the supplied student example, rather than a product line, order or customer.
 - **Categorical variables:** `gender`, `country` and `major`, with the original labels retained.
 - **Numerical variables:** `age` in years, `height` in centimetres and `weight` in kilograms.

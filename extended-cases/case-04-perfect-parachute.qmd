@@ -15,8 +15,6 @@ execute:
   fig-height: 4.5
 ---
 
-[Case PDF](../pdf/case-04-perfect-parachute.pdf) · [Student RStudio project](../downloads/applied-statistics-rstudio.zip) · [All extended cases](index.qmd)
-
 - **Start after:** independent-group comparisons and [more than two means in Part 3](../lessons/03-inferential-statistics.qmd#part3-title-03-50).
 - **Suggested time:** 70–90 minutes, including the ANOVA introduction below.
 - **Business question:** Do the four suppliers differ in mean tensile strength, and what evidence should guide procurement?
@@ -51,7 +49,7 @@ supplier_summary <- parachutes %>% group_by(supplier) %>%
 knitr::kable(supplier_summary, digits = 2)
 ```
 
-- [Strength CSV](../data/business/extended-parachute.csv) · [Data guide](../data/business/README.md).
+- `data/business/extended-parachute.csv`; guide: `data/business/README.md`.
 - Workbook means, medians and standard deviations are summary rows; they are excluded from the 20 observations.
 - The means are 19.52, 24.26, 22.84 and 21.16 for suppliers 1–4.
 

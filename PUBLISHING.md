@@ -16,7 +16,18 @@ This supersedes the earlier local-only instruction.
 
 Part 2 retains all 87 approved source slides, their figures, Excel instructions,
 the collection/survey supplement and the authorized diagram/CV corrections.
-Its R cells have moved into the companion practical. Part 3 retains all 141
+Its executable R cells live in the companion practical. Each of the 18 matching
+slides also shows a **Try this in R** code reference and one direct link to the
+corresponding practical section. The practical remains the code source: run
+`python3 scripts/sync-descriptive-r-references.py` after editing its R examples.
+The local builder checks that the slide references match. These references appear
+in the lesson HTML and PDF without a separate PowerPoint copy. Downloads stay on
+the Part 2 landing page rather than a repeated link row in the practical.
+Across all sixteen notebooks, omit repeated PDF/ZIP download rows and Part 1's
+repeated four-lesson menu. Keep individual downloads on the part/scenario landing
+pages and identify bundled data files by path in notebooks. Preserve source
+citations and links that connect a specific teaching example to its explanation.
+Part 3 retains all 141
 source slides and its labeled R equivalents. Original PPTX/PDF files remain unchanged.
 The publisher checks all retained slide IDs and rejects reintroduction of slide 88.
 

@@ -16,8 +16,6 @@ execute:
   fig-height: 4.5
 ---
 
-[Practical PDF](../../pdf/practical-01-categorical-business-data.pdf) · [Student RStudio project](../../downloads/applied-statistics-rstudio.zip)
-
 - Complete [Part 1](../../lessons/01-introduction-to-r.qmd) first.
 - Companion to categorical summaries in [Part 2](../../lessons/02-descriptive-statistics.qmd).
 - Allow two sessions of about 40–50 minutes.
@@ -51,7 +49,7 @@ execute:
 
 ## 2. Import and check
 
-- [Order-line CSV](../../data/business/superstore-lines.csv) · [Data guide](../../data/business/README.md).
+- `data/business/superstore-lines.csv`; guide: `data/business/README.md`.
 - Run the import cell by itself from either the project root or `extended-cases/superstore/`.
 
 ```{r}
@@ -195,4 +193,4 @@ The regional manager asks for a one-page summary.
 
 - Keep your tables and briefing in your RStudio project.
 - Continue to [Practical 2: Order size](practical-02-numerical-business-data.qmd).
-- Source definitions and extract limits: [course data guide](../../data/business/README.md).
+- Source definitions and extract limits: `data/business/README.md`.

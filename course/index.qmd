@@ -38,4 +38,4 @@ Slides covering probability, estimation, hypothesis testing and regression.
 :::
 :::
 
-[Download the student RStudio project](../downloads/applied-statistics-rstudio.zip) to run and edit the course notebooks.
+[Download RStudio files (.zip)](../downloads/applied-statistics-rstudio.zip) to run and edit the course notebooks.

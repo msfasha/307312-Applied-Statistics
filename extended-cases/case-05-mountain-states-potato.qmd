@@ -15,8 +15,6 @@ execute:
   fig-height: 4.5
 ---
 
-[Case PDF](../pdf/case-05-mountain-states-potato.pdf) · [Student RStudio project](../downloads/applied-statistics-rstudio.zip) · [All extended cases](index.qmd)
-
 - **Start after:** multiple regression and model diagnostics in [Part 3](../lessons/03-inferential-statistics.qmd#part3-title-04-14).
 - **Suggested time:** 90–120 minutes.
 - **Business question:** Which measured production factors help explain filter-cake solids content, and what should management investigate?
@@ -48,7 +46,7 @@ stopifnot(nrow(potato) == 54, ncol(potato) == 7, !anyNA(potato))
 knitr::kable(head(potato))
 ```
 
-- [Process CSV](../data/business/extended-potato.csv) · [Data guide](../data/business/README.md).
+- `data/business/extended-potato.csv`; guide: `data/business/README.md`.
 - `solids`: percentage solids; `ph`: acidity.
 - `lower_pressure` and `upper_pressure`: vacuum-line pressure below and above the fluid line.
 - `cake_thickness`: thickness on the drum.

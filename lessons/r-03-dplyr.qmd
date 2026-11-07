@@ -21,10 +21,6 @@ include-before: |
   </div>
 ---
 
-[Download this notebook as PDF](../pdf/r-03-dplyr.pdf)
-
-[1. Introduction to R](01-introduction-to-r.qmd) | [2. Basic Concepts in R](r-02-basic-concepts.qmd) | [3. Data Manipulation using dplyr](r-03-dplyr.qmd) | [4. Introduction to ggplot2](r-04-ggplot2.qmd)
-
 - These examples use the original 2014–2017 Superstore tutorial CSV supplied with the R material, separate from the 2023–2025 extract used in the course practicals.
 
 `dplyr` is a cornerstone of the tidyverse in R, a suite of packages designed for data science that makes data manipulation straightforward and intuitive.

@@ -265,3 +265,15 @@
 - Top-level sections are Course and Extended scenarios. Course has landing pages for Parts 1–3 under course/, bundling each part’s resources. Part 1 lists four supplied R notebooks; Part 2 links slides and its R practical; Part 3 links slides and honestly marks its unbuilt practical as coming soon.
 - Navigation pages are listed in scripts/course_documents.py and included in rendering, student project and live/link validation, without extra PDF requirements. Preserve all existing notebook/PDF URLs and sixteen-document bundles.
 - User requested building, committing and pushing this interface update.
+
+## R references and fewer links — 7 November 2026
+
+- User authorized adding **Try this in R** with actual code to the 18 matching
+  descriptive slides, plus one link to the corresponding executable practical
+  section. Do not create another PowerPoint copy. Keep the practical's code and
+  comments as the source; `scripts/sync-descriptive-r-references.py` refreshes the
+  displayed slide code, and the local builder verifies that it matches.
+- Remove repeated PDF/ZIP download rows and repeated Part 1 lesson menus from all
+  notebooks. Keep downloads on the part/scenario landing pages. Identify bundled
+  CSVs by path, preserve source citations and useful teaching cross-references,
+  and regenerate all sixteen PDFs and both student bundles.

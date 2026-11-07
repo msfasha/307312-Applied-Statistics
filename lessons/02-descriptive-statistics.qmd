@@ -17,9 +17,7 @@ execute:
   message: false
 ---
 
-[Download this part as PDF](../pdf/02-descriptive-statistics.pdf){.pdf-download}
-
-[Run the companion descriptive-statistics R practical](../practicals/descriptive-statistics-r-practical.html).
+The **Try this in R** sections show the code for the matching R practical examples. To execute it in RStudio, open `practicals/descriptive-statistics-r-practical.qmd` in the student project. Run Example 1 first to load `students`; later examples reuse it. Each section has one link to the matching worked example.
 
 <div class="original-branding"><img src="../assets/descriptive-statistics/original-branding.png" alt="Institute of Analytics and University of Petra" width="230"></div>
 
@@ -255,6 +253,27 @@ execute:
 
 ![](../assets/descriptive-statistics/slide-16-graphic-01.png){width="100%" fig-alt="Original graphic from slide 16"}
 
+<!-- BEGIN TRY IN R 16 -->
+:::: {.try-in-r #try-r-16}
+
+#### Try this in R {.unlisted}
+
+**Example 1: Import and inspect the student data**
+
+```r
+# read.csv() imports the supplied CSV; stringsAsFactors=FALSE keeps category labels as text.
+# head() previews six rows; height is in cm, weight in kg, and age in years.
+# Find the shared data folder from either the course root or this notebook folder.
+data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
+students <- read.csv(file.path(data_dir, "descriptive-statistics/students.csv"), stringsAsFactors = FALSE)
+head(students)
+```
+
+[Open example 1 in the R practical](../practicals/descriptive-statistics-r-practical.html#import-and-inspect-the-student-data).
+
+::::
+<!-- END TRY IN R 16 -->
+
 :::
 
 <!-- Original slide 17 -->
@@ -281,6 +300,26 @@ execute:
 </div>
 ```
 
+<!-- BEGIN TRY IN R 17 -->
+:::: {.try-in-r #try-r-17}
+
+#### Try this in R {.unlisted}
+
+**Example 2: Frequency tables and percentages**
+
+```r
+# table() counts students in each country category; prop.table() divides by all counted students.
+# Multiplying by 100 gives percentages; cumsum() is meaningful only when categories have an order.
+country_counts <- table(students$country)
+country_counts
+100 * prop.table(country_counts)
+```
+
+[Open example 2 in the R practical](../practicals/descriptive-statistics-r-practical.html#frequency-tables-and-percentages).
+
+::::
+<!-- END TRY IN R 17 -->
+
 :::
 
 <!-- Original slide 18 -->
@@ -305,6 +344,25 @@ execute:
 </div>
 ```
 
+<!-- BEGIN TRY IN R 18 -->
+:::: {.try-in-r #try-r-18}
+
+#### Try this in R {.unlisted}
+
+**Example 3: Group numerical values into intervals**
+
+```r
+# cut() converts ages in years into intervals; right=FALSE includes the lower boundary, not the upper.
+# table() counts each interval; these explicitly chosen bands are an added R illustration.
+age_groups <- cut(students$age, breaks = c(0, 20, 25, 30, Inf), right = FALSE)
+table(age_groups)
+```
+
+[Open example 3 in the R practical](../practicals/descriptive-statistics-r-practical.html#group-numerical-values-into-intervals).
+
+::::
+<!-- END TRY IN R 18 -->
+
 :::
 
 <!-- Original slide 19 -->
@@ -321,6 +379,25 @@ execute:
 <p>Major by Gender in our example.</p>
 </div>
 ```
+
+<!-- BEGIN TRY IN R 19 -->
+:::: {.try-in-r #try-r-19}
+
+#### Try this in R {.unlisted}
+
+**Example 4: Cross-tabulate two categorical variables**
+
+```r
+# xtabs() counts combinations: the formula ~ major + gender creates a two-way frequency table.
+# addmargins() adds row and column totals without changing the underlying counts.
+major_gender <- xtabs(~ major + gender, data = students)
+addmargins(major_gender)
+```
+
+[Open example 4 in the R practical](../practicals/descriptive-statistics-r-practical.html#cross-tabulate-two-categorical-variables).
+
+::::
+<!-- END TRY IN R 19 -->
 
 :::
 
@@ -379,6 +456,24 @@ execute:
 </div>
 ```
 
+<!-- BEGIN TRY IN R 23 -->
+:::: {.try-in-r #try-r-23}
+
+#### Try this in R {.unlisted}
+
+**Example 5: Bar chart of category frequencies**
+
+```r
+# barplot() draws a bar for each category count supplied by table().
+# las=2 rotates country labels; ylab states that bar heights are numbers of students.
+barplot(table(students$country), las = 2, col = "#356B8C", ylab = "Number of students")
+```
+
+[Open example 5 in the R practical](../practicals/descriptive-statistics-r-practical.html#bar-chart-of-category-frequencies).
+
+::::
+<!-- END TRY IN R 23 -->
+
 :::
 
 <!-- Original slide 24 -->
@@ -396,6 +491,24 @@ execute:
 ```
 
 ![](../assets/descriptive-statistics/slide-24-graphic-02.png){width="51%" fig-alt="Original graphic from slide 24"}
+
+<!-- BEGIN TRY IN R 24 -->
+:::: {.try-in-r #try-r-24}
+
+#### Try this in R {.unlisted}
+
+**Example 6: Pie chart of category shares**
+
+```r
+# pie() divides the circle according to the country counts computed by table().
+# The denominator is all students with a recorded country category, including Other.
+pie(table(students$country))
+```
+
+[Open example 6 in the R practical](../practicals/descriptive-statistics-r-practical.html#pie-chart-of-category-shares).
+
+::::
+<!-- END TRY IN R 24 -->
 
 :::
 
@@ -432,6 +545,25 @@ execute:
 </div>
 ```
 
+<!-- BEGIN TRY IN R 26 -->
+:::: {.try-in-r #try-r-26}
+
+#### Try this in R {.unlisted}
+
+**Example 7: Grouped bars for two categorical variables**
+
+```r
+# table() cross-classifies gender and country; barplot(beside=TRUE) places gender bars side by side.
+# legend.text=TRUE labels the groups; counts, rather than percentages, determine bar heights.
+barplot(table(students$gender, students$country), beside = TRUE, legend.text = TRUE,
+        col = c("#356B8C", "#C47735"), ylab = "Number of students", las = 2)
+```
+
+[Open example 7 in the R practical](../practicals/descriptive-statistics-r-practical.html#grouped-bars-for-two-categorical-variables).
+
+::::
+<!-- END TRY IN R 26 -->
+
 :::
 
 <!-- Original slide 27 -->
@@ -455,6 +587,25 @@ execute:
 <p class="source-bullet source-level-0">The x-axis of a histogram reflects the range of values of a numeric variable, while the y-axis can reflect either the frequencies (counts) or relative frequencies.</p>
 </div>
 ```
+
+<!-- BEGIN TRY IN R 28 -->
+:::: {.try-in-r #try-r-28}
+
+#### Try this in R {.unlisted}
+
+**Example 8: Histogram of ages**
+
+```r
+# hist() groups ages into bins; breaks specifies yearly boundaries at half-year positions.
+# freq=TRUE displays counts rather than probability density; recorded ages are measured in years.
+hist(students$age, breaks = seq(min(students$age) - 0.5, max(students$age) + 0.5, by = 1),
+     freq = TRUE, col = "#356B8C", main = "", xlab = "Age (years)")
+```
+
+[Open example 8 in the R practical](../practicals/descriptive-statistics-r-practical.html#histogram-of-ages).
+
+::::
+<!-- END TRY IN R 28 -->
 
 :::
 
@@ -553,6 +704,25 @@ execute:
 ```
 
 ![](../assets/descriptive-statistics/slide-33-graphic-02.png){width="56%" fig-alt="Original graphic from slide 33"}
+
+<!-- BEGIN TRY IN R 33 -->
+:::: {.try-in-r #try-r-33}
+
+#### Try this in R {.unlisted}
+
+**Example 9: Scatterplot of height and weight**
+
+```r
+# plot(x,y) makes a scatterplot, with height on the horizontal axis and weight on the vertical.
+# pch=16 uses filled points; no fitted line or causal relationship is assumed.
+plot(students$height, students$weight, pch = 16, col = "#356B8C",
+     xlab = "Height (cm)", ylab = "Weight (kg)")
+```
+
+[Open example 9 in the R practical](../practicals/descriptive-statistics-r-practical.html#scatterplot-of-height-and-weight).
+
+::::
+<!-- END TRY IN R 33 -->
 
 :::
 
@@ -672,6 +842,27 @@ execute:
 ```
 
 ![](../assets/descriptive-statistics/slide-42-graphic-02.png){width="43%" fig-alt="Original graphic from slide 42"}
+
+<!-- BEGIN TRY IN R 42 -->
+:::: {.try-in-r #try-r-42}
+
+#### Try this in R {.unlisted}
+
+**Example 10: Mean, median and modes**
+
+```r
+# mean() and median() summarize ages; table() counts each recorded age to identify every tied mode.
+# names() returns the ages whose counts equal max(), the greatest frequency.
+mean(students$age)
+median(students$age)
+age_counts <- table(students$age)
+names(age_counts)[age_counts == max(age_counts)]
+```
+
+[Open example 10 in the R practical](../practicals/descriptive-statistics-r-practical.html#mean-median-and-modes).
+
+::::
+<!-- END TRY IN R 42 -->
 
 :::
 
@@ -818,6 +1009,26 @@ execute:
 
 ![](../assets/descriptive-statistics/slide-50-graphic-02.png){width="43%" fig-alt="Original graphic from slide 50"}
 
+<!-- BEGIN TRY IN R 50 -->
+:::: {.try-in-r #try-r-50}
+
+#### Try this in R {.unlisted}
+
+**Example 11: Range, mean absolute deviation, variance and standard deviation**
+
+```r
+# diff(range()) gives maximum minus minimum; mean(abs()) calculates mean absolute deviation.
+# var() and sd() use the sample denominator n-1; R's mad() instead computes median absolute deviation.
+age <- students$age
+c(range = diff(range(age)), mean_absolute_deviation = mean(abs(age - mean(age))),
+  sample_variance = var(age), sample_standard_deviation = sd(age))
+```
+
+[Open example 11 in the R practical](../practicals/descriptive-statistics-r-practical.html#range-mean-absolute-deviation-variance-and-standard-deviation).
+
+::::
+<!-- END TRY IN R 50 -->
+
 :::
 
 <!-- Original slide 51 -->
@@ -900,6 +1111,26 @@ execute:
 ```
 
 **As percentages:** DS1 = **52.70%**; DS2 = **1.54%**. These calculations use the unrounded sample standard deviation.
+
+<!-- BEGIN TRY IN R 55 -->
+:::: {.try-in-r #try-r-55}
+
+#### Try this in R {.unlisted}
+
+**Example 12: Coefficient of variation**
+
+```r
+# c() creates the exact two datasets shown in the original table; sd() uses the sample denominator n-1.
+# sd()/mean() expresses CV as a ratio, without multiplying by 100; these means are positive.
+DS1 <- c(10, 20, 30, 40, 50)
+DS2 <- c(1010, 1020, 1030, 1040, 1050)
+c(DS1 = sd(DS1) / mean(DS1), DS2 = sd(DS2) / mean(DS2))
+```
+
+[Open example 12 in the R practical](../practicals/descriptive-statistics-r-practical.html#coefficient-of-variation).
+
+::::
+<!-- END TRY IN R 55 -->
 
 :::
 
@@ -1071,6 +1302,27 @@ execute:
 
 ![](../assets/descriptive-statistics/slide-63-graphic-02.png){width="100%" fig-alt="Original graphic from slide 63"}
 
+<!-- BEGIN TRY IN R 63 -->
+:::: {.try-in-r #try-r-63}
+
+#### Try this in R {.unlisted}
+
+**Example 13: Covariance and Pearson correlation**
+
+```r
+# cov() calculates sample covariance and cor() calculates Pearson's linear correlation by default.
+# use="complete.obs" omits pairs with missing values; units remain cm, kg, and years.
+cov(students$height, students$weight, use = "complete.obs")
+cor(students$height, students$weight, use = "complete.obs")
+cov(students$height, students$age, use = "complete.obs")
+cor(students$height, students$age, use = "complete.obs")
+```
+
+[Open example 13 in the R practical](../practicals/descriptive-statistics-r-practical.html#covariance-and-pearson-correlation).
+
+::::
+<!-- END TRY IN R 63 -->
+
 :::
 
 <!-- Original slide 64 -->
@@ -1169,6 +1421,26 @@ execute:
 
 ![](../assets/descriptive-statistics/slide-68-graphic-02.png){width="51%" fig-alt="Original graphic from slide 68"}
 
+<!-- BEGIN TRY IN R 68 -->
+:::: {.try-in-r #try-r-68}
+
+#### Try this in R {.unlisted}
+
+**Example 14: Adjusted sample skewness**
+
+```r
+# length() supplies n; sum() adds cubed standardized deviations, using sample sd() with n-1.
+# n/((n-1)*(n-2)) gives adjusted sample skewness, corresponding to Excel SKEW for n>2.
+age <- students$age
+n <- length(age)
+n / ((n - 1) * (n - 2)) * sum(((age - mean(age)) / sd(age))^3)
+```
+
+[Open example 14 in the R practical](../practicals/descriptive-statistics-r-practical.html#adjusted-sample-skewness).
+
+::::
+<!-- END TRY IN R 68 -->
+
 :::
 
 <!-- Original slide 69 -->
@@ -1232,6 +1504,25 @@ execute:
 
 ![](../assets/descriptive-statistics/slide-72-graphic-03.png){width="69%" fig-alt="Original graphic from slide 72"}
 
+<!-- BEGIN TRY IN R 72 -->
+:::: {.try-in-r #try-r-72}
+
+#### Try this in R {.unlisted}
+
+**Example 15: The 90th percentile**
+
+```r
+# quantile() finds the requested percentile; probs=0.90 means the 90th percentile of height in cm.
+# type=7 matches Excel PERCENTILE.INC; type=6 matches PERCENTILE.EXC for this sample and probability.
+quantile(students$height, probs = 0.90, type = 7)
+quantile(students$height, probs = 0.90, type = 6)
+```
+
+[Open example 15 in the R practical](../practicals/descriptive-statistics-r-practical.html#the-90th-percentile).
+
+::::
+<!-- END TRY IN R 72 -->
+
 :::
 
 <!-- Original slide 73 -->
@@ -1266,6 +1557,25 @@ execute:
 ![](../assets/descriptive-statistics/slide-74-graphic-02.png){width="67%" fig-alt="Original graphic from slide 74"}
 
 ![](../assets/descriptive-statistics/slide-74-graphic-03.png){width="43%" fig-alt="Original graphic from slide 74"}
+
+<!-- BEGIN TRY IN R 74 -->
+:::: {.try-in-r #try-r-74}
+
+#### Try this in R {.unlisted}
+
+**Example 16: First and second quartiles**
+
+```r
+# quantile(probs=c(0.25,0.50)) returns the first and second quartiles of height in cm.
+# type=7 uses Excel's inclusive convention; type=6 uses its exclusive convention for these probabilities.
+quantile(students$height, probs = c(0.25, 0.50), type = 7)
+quantile(students$height, probs = c(0.25, 0.50), type = 6)
+```
+
+[Open example 16 in the R practical](../practicals/descriptive-statistics-r-practical.html#first-and-second-quartiles).
+
+::::
+<!-- END TRY IN R 74 -->
 
 :::
 
@@ -1302,6 +1612,27 @@ execute:
 ```
 
 ![](../assets/descriptive-statistics/slide-76-graphic-02.png){width="49%" fig-alt="Original graphic from slide 76"}
+
+<!-- BEGIN TRY IN R 76 -->
+:::: {.try-in-r #try-r-76}
+
+#### Try this in R {.unlisted}
+
+**Example 17: Boxplots and group comparisons**
+
+```r
+# boxplot(height~gender) compares groups; whiskers extend to the last data within 1.5 IQR of the hinges.
+# subset() selects Turkish/Russian males; R's default boxplot hinges can differ from type-7 quartiles.
+boxplot(height ~ gender, data = students, ylab = "Height (cm)", col = "#D4D4D4")
+# The source spells Russia as "Russa"; match that original label without changing the data.
+males <- subset(students, gender == "Male" & country %in% c("Turkey", "Russa"))
+boxplot(height ~ country, data = males, ylab = "Height (cm)", col = "#D4D4D4")
+```
+
+[Open example 17 in the R practical](../practicals/descriptive-statistics-r-practical.html#boxplots-and-group-comparisons).
+
+::::
+<!-- END TRY IN R 76 -->
 
 :::
 
@@ -1362,6 +1693,29 @@ execute:
 ```
 
 ![](../assets/descriptive-statistics/slide-79-graphic-02.png){width="84%" fig-alt="Original graphic from slide 79"}
+
+<!-- BEGIN TRY IN R 79 -->
+:::: {.try-in-r #try-r-79}
+
+#### Try this in R {.unlisted}
+
+**Example 18: Use IQR fences to flag potential outliers**
+
+```r
+# quantile(type=7) supplies inclusive quartiles; the 1.5-IQR fences flag values for investigation.
+# sum() counts TRUE flags and does not remove observations; these age fences are measured in years.
+q <- quantile(students$age, probs = c(0.25, 0.75), type = 7)
+iqr <- q[2] - q[1]
+lower <- q[1] - 1.5 * iqr
+upper <- q[2] + 1.5 * iqr
+c(lower_fence = unname(lower), upper_fence = unname(upper))
+sum(students$age < lower | students$age > upper)
+```
+
+[Open example 18 in the R practical](../practicals/descriptive-statistics-r-practical.html#use-iqr-fences-to-flag-potential-outliers).
+
+::::
+<!-- END TRY IN R 79 -->
 
 :::
 

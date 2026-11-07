@@ -15,8 +15,6 @@ execute:
   fig-height: 4.5
 ---
 
-[Case PDF](../pdf/case-06-harnswell-quality.pdf) · [Student RStudio project](../downloads/applied-statistics-rstudio.zip) · [All extended cases](index.qmd)
-
 - **Start after:** descriptive statistics and inference in Parts [2](../lessons/02-descriptive-statistics.qmd) and [3](../lessons/03-inferential-statistics.qmd).
 - **Optional advanced case:** introduces statistical process control; read the chart primer below first.
 - **Suggested time:** 90–120 minutes.
@@ -52,7 +50,7 @@ USL <- .5075
 knitr::kable(head(rollers), digits = 4)
 ```
 
-- [Diameter CSV](../data/business/extended-harnswell.csv) · [Data guide](../data/business/README.md).
+- `data/business/extended-harnswell.csv`; guide: `data/business/README.md`.
 - Never sort all diameters and then divide them into new batches; that destroys the subgroup structure.
 - `LSL` and `USL` are engineering requirements, not limits estimated from these measurements.
 

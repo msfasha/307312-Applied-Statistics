@@ -16,8 +16,6 @@ execute:
   fig-height: 4.5
 ---
 
-[Practical PDF](../../pdf/practical-03-association-and-groups.pdf) · [Student RStudio project](../../downloads/applied-statistics-rstudio.zip)
-
 - Companion to association and group comparisons in [Part 2](../../lessons/02-descriptive-statistics.qmd).
 - Complete Practicals [1](practical-01-categorical-business-data.qmd) and [2](practical-02-numerical-business-data.qmd).
 - Allow two sessions of about 40–50 minutes.
@@ -57,7 +55,7 @@ lines <- lines %>% mutate(
 stopifnot(!anyNA(lines$discount_band), all(lines$sales > 0))
 ```
 
-- [CSV](../../data/business/superstore-lines.csv) · [Data guide](../../data/business/README.md).
+- `data/business/superstore-lines.csv`; guide: `data/business/README.md`.
 - A 20% discount belongs to the middle band; zero belongs to **None**.
 - These bands are analyst-defined categories, not source classifications.
 - A line's margin is profit divided by its recorded sales.
@@ -202,4 +200,4 @@ knitr::kable(correlations, digits = 3)
 
 - [Part 3](../../lessons/03-inferential-statistics.qmd) covers probability, estimation, hypothesis testing and regression.
 - The descriptive evidence here concerns the complete fixed extract; p-values are not required to describe its totals.
-- [Source, variable definitions and selection rules](../../data/business/README.md).
+- `data/business/README.md`.
