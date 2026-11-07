@@ -62,7 +62,7 @@ project:
     - "!instructor/**"
 website:
   site-url: https://msfasha.github.io/307312-Applied-Statistics/
-  title: "307312 Applied Statistics - Masters Level"
+  title: "307312 Applied Statistics"
   navbar:
     left:
       - text: "Course"

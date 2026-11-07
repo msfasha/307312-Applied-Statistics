@@ -299,3 +299,7 @@
 ## Home-only part footer — 7 November 2026
 
 - User superseded the Home/Next/download footer: Parts 1, 2 and 3 end with only Home, linking to the root main page. Remove Next and RStudio download links from those footers. Preserve resource-table links and home-page downloads.
+
+## Public title — 7 November 2026
+
+- User removed Masters Level from the main title area and shared website title. Use 307312 Applied Statistics, with no home-page subtitle.

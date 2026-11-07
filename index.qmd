@@ -1,6 +1,5 @@
 ---
 title: "307312 Applied Statistics"
-subtitle: "Masters Level"
 toc: false
 ---
 
