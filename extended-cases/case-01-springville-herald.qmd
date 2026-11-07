@@ -39,11 +39,10 @@ execute:
 
 ```{r}
 #| label: case-import
-data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
-source(file.path(data_dir, "..", "lessons", "_includes", "course-tools.R"))
-calls <- read.csv(file.path(data_dir, "business", "extended-herald-calls.csv"))
-marketing <- read.csv(file.path(data_dir, "business", "extended-herald-marketing.csv"))
-subscriptions <- read.csv(file.path(data_dir, "business", "extended-herald-subscriptions.csv"))
+source("lessons/_includes/course-tools.R")
+calls <- read.csv("data/business/extended-herald-calls.csv")
+marketing <- read.csv("data/business/extended-herald-marketing.csv")
+subscriptions <- read.csv("data/business/extended-herald-subscriptions.csv")
 stopifnot(nrow(calls) == 90, nrow(marketing) == 24, nrow(subscriptions) == 24)
 knitr::kable(data.frame(file = c("SH2", "SH13", "SH16"),
   observations = c(nrow(calls), nrow(marketing), nrow(subscriptions)),

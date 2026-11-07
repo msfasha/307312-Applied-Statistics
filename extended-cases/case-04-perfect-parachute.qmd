@@ -38,9 +38,8 @@ execute:
 
 ```{r}
 #| label: case-import
-data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
-source(file.path(data_dir, "..", "lessons", "_includes", "course-tools.R"))
-parachutes <- read.csv(file.path(data_dir, "business", "extended-parachute.csv"))
+source("lessons/_includes/course-tools.R")
+parachutes <- read.csv("data/business/extended-parachute.csv")
 parachutes$supplier <- factor(parachutes$supplier)
 stopifnot(nrow(parachutes) == 20, all(table(parachutes$supplier) == 5))
 supplier_summary <- parachutes %>% group_by(supplier) %>%

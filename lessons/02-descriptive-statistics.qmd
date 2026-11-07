@@ -263,9 +263,8 @@ The **Try this in R** sections show the code for the matching R practical exampl
 ```r
 # read.csv() imports the supplied CSV; stringsAsFactors=FALSE keeps category labels as text.
 # head() previews six rows; height is in cm, weight in kg, and age in years.
-# Find the shared data folder from either the course root or this notebook folder.
-data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
-students <- read.csv(file.path(data_dir, "descriptive-statistics/students.csv"), stringsAsFactors = FALSE)
+# Open Applied-Statistics.Rproj; paths start in the project folder.
+students <- read.csv("data/descriptive-statistics/students.csv", stringsAsFactors = FALSE)
 head(students)
 ```
 

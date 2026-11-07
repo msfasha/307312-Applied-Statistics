@@ -41,9 +41,8 @@ execute:
 
 ```{r}
 #| label: case-import
-data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
-source(file.path(data_dir, "..", "lessons", "_includes", "course-tools.R"))
-rollers <- read.csv(file.path(data_dir, "business", "extended-harnswell.csv"))
+source("lessons/_includes/course-tools.R")
+rollers <- read.csv("data/business/extended-harnswell.csv")
 stopifnot(nrow(rollers) == 150, all(table(rollers$batch) == 5))
 LSL <- .5072
 USL <- .5075

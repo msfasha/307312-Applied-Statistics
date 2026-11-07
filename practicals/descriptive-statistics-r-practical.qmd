@@ -17,9 +17,17 @@ execute:
   fig-height: 4.5
 ---
 
+```{r}
+#| label: render-project-root
+#| include: false
+knitr::opts_knit$set(root.dir = normalizePath(".."))
+```
+
+
 ## Before we begin
 
 - Use this notebook after explaining the descriptive-statistics slides, or return to the matching section after each topic.
+- Open `Applied-Statistics.Rproj` first and keep the working directory at the project root.
 - Work through the code cells from top to bottom in RStudio. Run the import cell first; later cells reuse its `students` data frame.
 - These examples use base R. No additional R package is needed to run the analysis cells; rendering the notebook requires Quarto, knitr and rmarkdown.
 - Each section identifies the matching source slide, introduces the calculation and explains how to read its output. The worked code and its original comments are retained in full.
@@ -39,15 +47,14 @@ execute:
 
 - **Slides:** [source slide 16](../lessons/02-descriptive-statistics.qmd#slide-16).
 - **What we are doing:** Load the same student dataset used in the descriptive slides. Each row is one record; the six variables are gender, age, height, weight, country and major. The first six rows let us check the column names and see how the values are recorded.
-- **How to read the result:** Run this cell first. It creates `students`, which the later examples use. `data_dir` finds the CSV from either the course root or this notebook folder. Height is in centimetres, weight in kilograms and age in years. No names or student IDs are included.
+- **How to read the result:** Run this cell first. It creates `students`, which the later examples use. Open `Applied-Statistics.Rproj` first; the CSV path starts in the project folder. Height is in centimetres, weight in kilograms and age in years. No names or student IDs are included.
 
 ```{r}
 #| label: r-slide-16
 # read.csv() imports the supplied CSV; stringsAsFactors=FALSE keeps category labels as text.
 # head() previews six rows; height is in cm, weight in kg, and age in years.
-# Find the shared data folder from either the course root or this notebook folder.
-data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
-students <- read.csv(file.path(data_dir, "descriptive-statistics/students.csv"), stringsAsFactors = FALSE)
+# Open Applied-Statistics.Rproj; paths start in the project folder.
+students <- read.csv("data/descriptive-statistics/students.csv", stringsAsFactors = FALSE)
 head(students)
 ```
 

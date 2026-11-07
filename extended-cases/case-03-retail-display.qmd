@@ -38,9 +38,8 @@ execute:
 
 ```{r}
 #| label: case-import
-data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
-source(file.path(data_dir, "..", "lessons", "_includes", "course-tools.R"))
-cola <- read.csv(file.path(data_dir, "business", "cola.csv"))
+source("lessons/_includes/course-tools.R")
+cola <- read.csv("data/business/cola.csv")
 cola$display <- factor(cola$display, levels = c("Normal", "End aisle"))
 normal <- cola$weekly_cases[cola$display == "Normal"]
 end <- cola$weekly_cases[cola$display == "End aisle"]

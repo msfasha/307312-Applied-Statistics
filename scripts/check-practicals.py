@@ -43,22 +43,21 @@ if __name__ == '__main__':
     for notebook in NOTEBOOKS:
         chunks = re.findall(r'^```\{r\}[^\n]*\n(.*?)^```\s*$', notebook.read_text(), re.M | re.S)
         worked = [c for c in chunks if not re.search(r'^#\|\s*eval:\s*false', c, re.M)]
-        imports = [c for c in worked if 'data_dir <-' in c]
+        worked = [c for c in worked if 'label: render-project-root' not in c]
+        imports = [c for c in worked if 'read.csv(' in c]
         if notebook.name in ['01-introduction-to-r.qmd', 'r-02-basic-concepts.qmd', 'r-03-dplyr.qmd', 'r-04-ggplot2.qmd']:
             continue  # Original R lessons are verified by a full Quarto execution (including expected-error demonstrations).
         if notebook.name == '02-descriptive-statistics.qmd':
             assert not worked, 'Descriptive R examples must stay in the companion practical'
             continue
         assert imports and worked, notebook.name
-        for cwd in [ROOT, notebook.parent]:
-            for import_cell in imports:
-                run_r(import_cell, cwd)
-            # Preserve original MASS optimization examples, whose intermediate
-            # parameter trials can warn even when the final fit succeeds.
-            run_r('\n'.join(worked), cwd,
-                  warnings_as_errors=not notebook.name.startswith('03-inferential'))
-            checks += 2
-        print('Passed isolated import and worked cells from both locations:', notebook.name, flush=True)
+        for import_cell in imports:
+            run_r(import_cell, ROOT)
+        # Preserve the original MASS examples' intermediate optimization warnings.
+        run_r('\n'.join(worked), ROOT,
+              warnings_as_errors=not notebook.name.startswith('03-inferential'))
+        checks += 2
+        print('Passed project-root imports and worked cells:', notebook.name, flush=True)
     run_r('''
 source('lessons/_includes/course-tools.R')
 x <- read.csv('data/business/superstore-lines.csv', colClasses = c(postal_code = 'character'))

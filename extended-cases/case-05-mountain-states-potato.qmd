@@ -39,9 +39,8 @@ execute:
 
 ```{r}
 #| label: case-import
-data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
-source(file.path(data_dir, "..", "lessons", "_includes", "course-tools.R"))
-potato <- read.csv(file.path(data_dir, "business", "extended-potato.csv"))
+source("lessons/_includes/course-tools.R")
+potato <- read.csv("data/business/extended-potato.csv")
 stopifnot(nrow(potato) == 54, ncol(potato) == 7, !anyNA(potato))
 knitr::kable(head(potato))
 ```

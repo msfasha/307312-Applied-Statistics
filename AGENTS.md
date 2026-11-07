@@ -277,3 +277,9 @@
   notebooks. Keep downloads on the part/scenario landing pages. Identify bundled
   CSVs by path, preserve source citations and useful teaching cross-references,
   and regenerate all sixteen PDFs and both student bundles.
+
+## Simple project-root CSV paths — 7 November 2026
+
+- User superseded per-import `data_dir` discovery: open `Applied-Statistics.Rproj`, keep execution at the project root, and read fixed `data/...csv` paths directly.
+- Use the project root for RStudio chunks, Quarto rendering and validation. The independent practical has a hidden render setup to use the parent course root.
+- Keep source JSON examples and descriptive slide reference panels synchronized. Reference PPTX/PDF files and historical archives stay unchanged.

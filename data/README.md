@@ -1,13 +1,12 @@
 # Course data
 
-The active course uses only `business/`: Superstore, COLA and Consumer.
-See [the current data guide](business/README.md) for units, provenance and limits.
+Keep all editable CSVs in this course-root `data/` folder:
 
-The former descriptive-statistics/, inferential-statistics/ and practicals/
-collections are historical support for preserved notebooks and source-slide
-conversions. They are excluded from the active student website and both bundles.
-Do not infer that keeping a historical file adopts it into the course.
+- `r-introduction/`: original R tutorial data.
+- `descriptive-statistics/` and `inferential-statistics/`: core lesson teaching data.
+- `business/`: Superstore and the approved business cases.
 
-Keep all editable datasets under this course-root data/ directory. Each R import
-cell must locate data_dir independently and work from either the root or its
-notebook folder. Original publisher files stay unchanged and local-only in books/.
+Open `Applied-Statistics.Rproj` and keep the working directory at the project root.
+Read CSVs directly, for example `read.csv("data/descriptive-statistics/students.csv")`.
+Keep the extracted student project's folder structure intact.
+Original publisher workbooks remain unchanged and local-only in `books/`.

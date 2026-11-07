@@ -2191,9 +2191,8 @@ c(t=t_stat, p_value=pt(t_stat,df=29,lower.tail=FALSE))
 #| label: inferential-3-27
 # read.csv() loads the exact 30 paired observations printed in the source slide.
 # paired=TRUE tests within-student changes; greater tests whether score2 exceeds score1.
-# Find the shared data folder from either the course root or this notebook folder.
-data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
-paired <- read.csv(file.path(data_dir, "inferential-statistics/paired_scores.csv"))
+# Open Applied-Statistics.Rproj; paths start in the project folder.
+paired <- read.csv("data/inferential-statistics/paired_scores.csv")
 t.test(paired$score2, paired$score1, paired=TRUE, alternative="greater")
 ```
 
@@ -2274,9 +2273,8 @@ t.test(paired$score2, paired$score1, paired=TRUE, alternative="greater")
 #| label: inferential-3-29
 # read.csv() loads the exact printed salary samples; the source currency labels conflict (Euro narrative, dollar table).
 # var.equal=TRUE uses the source's pooled-variance assumption; the default alternative is two-sided.
-# Find the shared data folder from either the course root or this notebook folder.
-data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
-salaries <- read.csv(file.path(data_dir, "inferential-statistics/graduate_salaries.csv"))
+# Open Applied-Statistics.Rproj; paths start in the project folder.
+salaries <- read.csv("data/inferential-statistics/graduate_salaries.csv")
 t.test(salaries$male, salaries$female, var.equal=TRUE)
 ```
 
@@ -2356,9 +2354,8 @@ t.test(salaries$male, salaries$female, var.equal=TRUE)
 #| label: inferential-3-31
 # read.csv() preserves the two exact printed female-graduate salary samples.
 # var.equal=FALSE uses Welch's test; greater tests Political Science > Social Science, with 99% confidence.
-# Find the shared data folder from either the course root or this notebook folder.
-data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
-majors <- read.csv(file.path(data_dir, "inferential-statistics/female_major_salaries.csv"))
+# Open Applied-Statistics.Rproj; paths start in the project folder.
+majors <- read.csv("data/inferential-statistics/female_major_salaries.csv")
 t.test(majors$political_science, majors$social_science,
        alternative="greater", var.equal=FALSE, conf.level=0.99)
 ```
@@ -2795,9 +2792,8 @@ chi$expected
 #| label: inferential-3-53
 # read.csv() loads the exact 15 scores printed for the three teaching methods.
 # aov(score~group) fits one-way ANOVA; summary() reports its F test under independent normal errors and equal variances.
-# Find the shared data folder from either the course root or this notebook folder.
-data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
-methods <- read.csv(file.path(data_dir, "inferential-statistics/teaching_methods.csv"))
+# Open Applied-Statistics.Rproj; paths start in the project folder.
+methods <- read.csv("data/inferential-statistics/teaching_methods.csv")
 summary(aov(score~group,data=methods))
 ```
 
@@ -2864,9 +2860,8 @@ summary(aov(score~group,data=methods))
 #| label: inferential-3-56
 # factor() treats gender and method as categories in the exact eight printed observations.
 # gender*method includes both main effects and their interaction; aov() assumes independent, equal-variance normal errors.
-# Find the shared data folder from either the course root or this notebook folder.
-data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
-teaching <- read.csv(file.path(data_dir, "inferential-statistics/teaching_gender.csv"))
+# Open Applied-Statistics.Rproj; paths start in the project folder.
+teaching <- read.csv("data/inferential-statistics/teaching_gender.csv")
 teaching$gender <- factor(teaching$gender)
 teaching$method <- factor(teaching$method)
 summary(aov(score~gender*method,data=teaching))
@@ -3052,9 +3047,8 @@ summary(aov(score~gender*method,data=teaching))
 #| label: inferential-4-9
 # read.csv() imports the ten houses printed in the source; price is in thousands of dollars and size in square feet.
 # lm(price~size) fits least squares with an intercept; summary() reports coefficients, R-squared, and inference.
-# Find the shared data folder from either the course root or this notebook folder.
-data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
-houses <- read.csv(file.path(data_dir, "inferential-statistics/houses.csv"))
+# Open Applied-Statistics.Rproj; paths start in the project folder.
+houses <- read.csv("data/inferential-statistics/houses.csv")
 simple <- lm(price~size,data=houses)
 summary(simple)
 ```

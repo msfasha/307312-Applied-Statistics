@@ -48,9 +48,9 @@ local build files; it never pushes or publishes. The publishing command calls
 this same builder before uploading the generated website.
 
 Use the configured RStudio Quarto executable if `quarto` is not on PATH.
-The R checks verify fresh-session imports and all worked cells from both the
-course root and each notebook folder. Nested Superstore imports also locate
-`data/` from `extended-cases/superstore/`. They verify pinned hashes, source-cell
+The R checks verify fresh-session imports and all worked cells from the course
+project root. Open `Applied-Statistics.Rproj` and use project-root chunk execution
+in RStudio. All examples read fixed `data/` paths, including nested Superstore notebooks. They verify pinned hashes, source-cell
 equivalence when original local workbooks are available, and key teaching results.
 The four supplied Part 1 notebooks contain expected-error demonstrations and
 are verified through full Quarto execution.
@@ -81,7 +81,7 @@ student project: original descriptive/inferential teaching CSVs and guides,
 canonical business CSVs and guide, and the supplied historical R-introduction
 Superstore CSV and guide. The 2014–2017 R-introduction dataset is distinct from
 the pinned US 2023–2025 business Superstore extract. Keep the only editable data
-under root `data/`; preserve per-import path lookup for interactive RStudio cells.
+under root `data/`; read fixed paths from the project root in interactive RStudio cells.
 
 Exclude books, instructor notes/answers, provenance manifests, archives, original
 student measurement workbooks, publisher workbooks, source decks and build caches.

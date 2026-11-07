@@ -39,9 +39,8 @@ execute:
 
 ```{r}
 #| label: case-import
-data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
-source(file.path(data_dir, "..", "lessons", "_includes", "course-tools.R"))
-oxford <- read.csv(file.path(data_dir, "business", "extended-oxford-summary.csv"))
+source("lessons/_includes/course-tools.R")
+oxford <- read.csv("data/business/extended-oxford-summary.csv")
 knitr::kable(oxford)
 n <- oxford$n[1]
 xbar <- oxford$sample_mean_g[1]

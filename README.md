@@ -18,7 +18,7 @@ separately. All twelve notebooks have PDF downloads.
 
 Extract the full student project ZIP from the website and open `Applied-Statistics.Rproj`.
 Install `knitr`, `rmarkdown`, `dplyr` and `ggplot2`; MASS is used by the original inference examples. Install Quarto to render notebooks.
-Import cells run both from the project root and from `lessons/` or `practicals/`.
+Keep the working directory at the project root. In RStudio, use Tools → Global Options → R Markdown → Evaluate chunks in directory → Project. CSV paths start with `data/`; no path-finding code is needed.
 
 - `lessons/`: the three active notebooks; `_includes/course-tools.R` holds shared aggregation and chart styling.
 - `practicals/`: three active Superstore practicals and a compatibility entry page.

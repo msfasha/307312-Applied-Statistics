@@ -121,8 +121,10 @@ See data/business/README.md for provenance, units and limitations.
 The six numbered extended cases provide separate business applications of course concepts.
 Python 3 is needed for the small HTML post-render step.
 PDF and ZIP download links point to the published website; local rendering creates HTML.
-Keep the complete folder structure. Import cells locate the shared data/ folder
-from either the course root or the notebook folder. All teaching data is CSV.
+Keep the complete folder structure. Open Applied-Statistics.Rproj and keep the
+working directory at the project root. In RStudio, set Tools > Global Options >
+R Markdown > Evaluate chunks in directory to Project. Read CSVs using their
+data/ paths. All teaching data is CSV.
 Website: https://msfasha.github.io/307312-Applied-Statistics/
 ''')
 print('Created student RStudio project and PDF bundle.',flush=True)

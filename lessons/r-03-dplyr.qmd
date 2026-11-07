@@ -73,8 +73,7 @@ library(readr)
 ### Open CSV File
 
 ```{r}
-data_dir <- if (dir.exists("data")) "data" else "../data"
-file_path <- file.path(data_dir, "r-introduction", "superstore.csv")
+file_path <- "data/r-introduction/superstore.csv"
 superstore <- readr::read_csv(file_path, show_col_types = FALSE)
 ```
 
