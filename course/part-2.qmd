@@ -12,4 +12,6 @@ Read the slides, then work through the 18 R examples in the practical using the 
 
 [Download RStudio files (.zip)](../downloads/applied-statistics-rstudio.zip) for the editable practical, data and supporting files.
 
-[All course parts](index.qmd) · [Next: Part 3](part-3.qmd)
+[All course parts](index.qmd)
+
+[Next: Part 3](part-3.qmd)

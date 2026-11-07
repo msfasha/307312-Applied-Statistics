@@ -14,4 +14,6 @@ Work through these four notebooks in order. Each includes its explanations and e
 
 [Download RStudio files (.zip)](../downloads/applied-statistics-rstudio.zip) for all four editable R notebooks, data and supporting files.
 
-[All course parts](index.qmd) · [Next: Part 2](part-2.qmd)
+[All course parts](index.qmd)
+
+[Next: Part 2](part-2.qmd)
