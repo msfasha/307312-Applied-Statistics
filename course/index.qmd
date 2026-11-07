@@ -1,0 +1,41 @@
+---
+title: "Course"
+subtitle: "307312 Applied Statistics"
+toc: false
+---
+
+Choose a part to find its lessons, downloads and practical work.
+
+::: {.course-navigation}
+::: {.course-card}
+## Part 1
+
+**Introduction to R**
+
+Four notebooks: introduction, basic concepts, dplyr and ggplot2.
+
+[Open Part 1](part-1.qmd){.btn .btn-primary}
+:::
+
+::: {.course-card}
+## Part 2
+
+**Descriptive Statistics**
+
+Slides and the companion R practical.
+
+[Open Part 2](part-2.qmd){.btn .btn-primary}
+:::
+
+::: {.course-card}
+## Part 3
+
+**Inferential Statistics**
+
+Slides covering probability, estimation, hypothesis testing and regression.
+
+[Open Part 3](part-3.qmd){.btn .btn-primary}
+:::
+:::
+
+[Download the student RStudio project](../downloads/applied-statistics-rstudio.zip) to run and edit the course notebooks.

@@ -1,56 +1,27 @@
 ---
 title: "307312 Applied Statistics"
 subtitle: "Masters Level"
+toc: false
 ---
 
-Study the original descriptive and inferential slide material, apply the concepts in separate R practicals, and work through the extended business cases. Read online or use the complete offline downloads.
+Choose the course materials or explore the extended business scenarios.
 
-| Course part | Read online | Download |
-|---|---|---|
-| Part 1 — 1. Introduction to R | [Open notebook](lessons/01-introduction-to-r.qmd) | [PDF](pdf/01-introduction-to-r.pdf) |
-| Part 1 — 2. Basic Concepts in R | [Open notebook](lessons/r-02-basic-concepts.qmd) | [PDF](pdf/r-02-basic-concepts.pdf) |
-| Part 1 — 3. Data Manipulation using dplyr | [Open notebook](lessons/r-03-dplyr.qmd) | [PDF](pdf/r-03-dplyr.pdf) |
-| Part 1 — 4. Introduction to ggplot2 | [Open notebook](lessons/r-04-ggplot2.qmd) | [PDF](pdf/r-04-ggplot2.pdf) |
-| 2. Descriptive Statistics | [Open lesson](lessons/02-descriptive-statistics.qmd) | [PDF](pdf/02-descriptive-statistics.pdf) |
-| 3. Inferential Statistics | [Open lesson](lessons/03-inferential-statistics.qmd) | [PDF](pdf/03-inferential-statistics.pdf) |
+::: {.course-navigation}
+::: {.course-card #part-2-practicals}
+## Course
 
-## Part 2 practical {#part-2-practicals}
+Parts 1–3, with each part’s lessons, PDFs and practical work together.
 
-After the descriptive slides, run the companion R notebook with your instructor.
-It brings together all 18 R examples from the slides, with their original code
-and comments, introductions and guidance for reading the results. It uses the
-same supplied student dataset; the Excel examples remain in the slides.
+[Open course](course/index.qmd){.btn .btn-primary}
+:::
 
-Part 3 preserves the original probability, estimation, hypothesis-testing and regression
-slides, including the original Excel examples and labeled R equivalents. Business
-applications are kept separately in the practicals and extended cases.
+::: {.course-card #extended-business-cases}
+## Extended scenarios
 
-| Practical | Read online | Download |
-|---|---|---|
-| Descriptive Statistics — R Practical | [Open practical](practicals/descriptive-statistics-r-practical.html) | [PDF](pdf/descriptive-statistics-r-practical.pdf) |
+Optional business applications, including Superstore and six further cases.
 
-## Extended Business Cases {#extended-business-cases}
+[Explore scenarios](extended-cases/index.qmd){.btn .btn-primary}
+:::
+:::
 
-- Apply the course methods to another business setting after the core practicals or the relevant Part 3 topics.
-- Each case stays together as one notebook, with a worked analysis and independent business tasks.
-- Your instructor may assign selected cases or sections; the extended cases are optional.
-- ANOVA, forecasting and process control include introductions and are marked as extensions.
-
-| Extended case | Start after / focus | Read online | Download |
-|---|---|---|---|
-| Superstore — three notebooks | Part 2: categorical data, numerical measures, association and groups | [Open case](extended-cases/superstore/index.qmd) | PDFs: [1](pdf/practical-01-categorical-business-data.pdf), [2](pdf/practical-02-numerical-business-data.pdf), [3](pdf/practical-03-association-and-groups.pdf) |
-| 1. Springville Herald | Part 2: daily calls; Part 3: regression; optional forecasting | [Open case](extended-cases/case-01-springville-herald.qmd) | [PDF](pdf/case-01-springville-herald.pdf) |
-| 2. Oxford Cereal | Part 3: sampling, estimation and one-mean testing | [Open case](extended-cases/case-02-oxford-cereal.qmd) | [PDF](pdf/case-02-oxford-cereal.pdf) |
-| 3. BLK Retail Display | Part 3: independent-group comparisons applied to COLA | [Open case](extended-cases/case-03-retail-display.qmd) | [PDF](pdf/case-03-retail-display.pdf) |
-| 4. Perfect Parachute | Part 3: extend two-group comparisons to ANOVA | [Open case](extended-cases/case-04-perfect-parachute.qmd) | [PDF](pdf/case-04-perfect-parachute.pdf) |
-| 5. Mountain States Potato | Part 3: multiple regression and diagnostics | [Open case](extended-cases/case-05-mountain-states-potato.qmd) | [PDF](pdf/case-05-mountain-states-potato.pdf) |
-| 6. Harnswell Quality | After Parts 2–3: optional process-control extension | [Open case](extended-cases/case-06-harnswell-quality.qmd) | [PDF](pdf/case-06-harnswell-quality.pdf) |
-
-The six numbered cases draw on Berenson, Levine and Krehbiel's *Basic Business Statistics: Concepts and Applications*, ninth edition. Each identifies its source, observational unit and limits; Oxford uses reported summary inputs rather than raw box weights.
-
-## Work with R or study offline
-
-- [Download the complete student RStudio project](downloads/applied-statistics-rstudio.zip): editable lessons, the descriptive R practical, Superstore and six further extended cases, teaching CSVs, shared styling and setup instructions. Extract the ZIP, then open `Applied-Statistics.Rproj` in RStudio.
-- [Download all 16 lesson, practical and extended-case PDFs](downloads/applied-statistics-pdfs.zip).
-
-The online lessons and PDFs show the code and its results. To run or change R code, use the RStudio project.
+[Student RStudio project](downloads/applied-statistics-rstudio.zip) · [All course and scenario PDFs](downloads/applied-statistics-pdfs.zip)

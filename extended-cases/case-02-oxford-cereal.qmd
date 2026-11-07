@@ -15,7 +15,7 @@ execute:
   fig-height: 4.5
 ---
 
-[Case PDF](../pdf/case-02-oxford-cereal.pdf) · [Student RStudio project](../downloads/applied-statistics-rstudio.zip) · [All extended cases](../index.qmd#extended-business-cases)
+[Case PDF](../pdf/case-02-oxford-cereal.pdf) · [Student RStudio project](../downloads/applied-statistics-rstudio.zip) · [All extended cases](index.qmd)
 
 - **Start after:** sampling distributions, confidence intervals and one-mean testing in [Part 3](../lessons/03-inferential-statistics.qmd).
 - **Suggested time:** 50–60 minutes.

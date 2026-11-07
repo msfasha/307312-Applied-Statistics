@@ -4,12 +4,13 @@ from pathlib import Path
 import argparse
 import shutil
 import subprocess
-from course_documents import EXTENDED, DOCUMENTS
+from course_documents import EXTENDED, DOCUMENTS, NAVIGATION_PAGES
 
 ROOT = Path(__file__).resolve().parents[1]
 
 def validate(site):
-    required=['index.html','lessons/02-descriptive-statistics.html','lessons/03-inferential-statistics.html','lessons/01-introduction-to-r.html']
+    required=[n+'.html' for n in NAVIGATION_PAGES]
+    required += ['index.html','lessons/02-descriptive-statistics.html','lessons/03-inferential-statistics.html','lessons/01-introduction-to-r.html']
     required += [f'{folder}/{name}.html' for folder, name in DOCUMENTS]
     required += ['pdf/'+name+'.pdf' for _, name in DOCUMENTS]
     required += ['pdf/'+p+'.pdf' for p in ['01-introduction-to-r','02-descriptive-statistics','03-inferential-statistics']]

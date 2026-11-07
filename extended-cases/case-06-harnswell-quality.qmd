@@ -15,7 +15,7 @@ execute:
   fig-height: 4.5
 ---
 
-[Case PDF](../pdf/case-06-harnswell-quality.pdf) · [Student RStudio project](../downloads/applied-statistics-rstudio.zip) · [All extended cases](../index.qmd#extended-business-cases)
+[Case PDF](../pdf/case-06-harnswell-quality.pdf) · [Student RStudio project](../downloads/applied-statistics-rstudio.zip) · [All extended cases](index.qmd)
 
 - **Start after:** descriptive statistics and inference in Parts [2](../lessons/02-descriptive-statistics.qmd) and [3](../lessons/03-inferential-statistics.qmd).
 - **Optional advanced case:** introduces statistical process control; read the chart primer below first.

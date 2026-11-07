@@ -37,6 +37,11 @@ project:
     - python3 scripts/stage-practicals.py
   render:
     - index.qmd
+    - course/index.qmd
+    - course/part-1.qmd
+    - course/part-2.qmd
+    - course/part-3.qmd
+    - extended-cases/index.qmd
     - lessons/01-introduction-to-r.qmd
     - lessons/r-02-basic-concepts.qmd
     - lessons/r-03-dplyr.qmd
@@ -61,25 +66,9 @@ website:
   navbar:
     left:
       - text: "Course"
-        href: index.qmd
-      - text: "Part 1: Introduction to R"
-        menu:
-          - text: "1. Introduction to R"
-            href: lessons/01-introduction-to-r.qmd
-          - text: "2. Basic Concepts in R"
-            href: lessons/r-02-basic-concepts.qmd
-          - text: "3. Data Manipulation using dplyr"
-            href: lessons/r-03-dplyr.qmd
-          - text: "4. Introduction to ggplot2"
-            href: lessons/r-04-ggplot2.qmd
-      - text: "Part 2: Descriptive statistics"
-        href: lessons/02-descriptive-statistics.qmd
-      - text: "Practicals"
-        href: index.qmd#part-2-practicals
-      - text: "Part 3: Inferential statistics"
-        href: lessons/03-inferential-statistics.qmd
-      - text: "Extended cases"
-        href: index.qmd#extended-business-cases
+        href: course/index.qmd
+      - text: "Extended scenarios"
+        href: extended-cases/index.qmd
 format:
   html:
     theme: cosmo
@@ -87,6 +76,7 @@ format:
       - assets/petra-brand.css
       - assets/source-slides.css
       - assets/practical-print.css
+      - assets/course-navigation.css
     toc: true
     code-copy: true
 execute:

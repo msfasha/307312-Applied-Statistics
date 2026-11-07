@@ -9,7 +9,7 @@ import re
 import subprocess
 import time
 
-from course_documents import DOCUMENTS
+from course_documents import DOCUMENTS, NAVIGATION_PAGES
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT/'_build/website'
@@ -36,7 +36,7 @@ if __name__ == '__main__':
         if attempt % 4 == 0:
             print('Waiting for GitHub Pages deployment of', revision[:8], flush=True)
         time.sleep(15)
-    names = ['index.html', 'extended-cases/superstore/index.html'] + [folder+'/'+name+'.html' for folder, name in DOCUMENTS]
+    names = [n+'.html' for n in NAVIGATION_PAGES] + [folder+'/'+name+'.html' for folder, name in DOCUMENTS]
     names += ['pdf/'+name+'.pdf' for _, name in DOCUMENTS]
     names += ['downloads/applied-statistics-rstudio.zip', 'downloads/applied-statistics-pdfs.zip']
     names += re.findall(r'^    - (data/[^\n]+)', (ROOT/'_quarto.yml').read_text(), re.M)

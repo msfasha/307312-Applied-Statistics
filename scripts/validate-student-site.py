@@ -10,7 +10,7 @@ import hashlib
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / '_build/website'
-from course_documents import LESSONS, PRACTICALS, EXTENDED, DOCUMENTS, SUPERSTORE
+from course_documents import LESSONS, PRACTICALS, EXTENDED, DOCUMENTS, SUPERSTORE, NAVIGATION_PAGES
 
 class Links(HTMLParser):
     def __init__(self):
@@ -26,7 +26,7 @@ class Links(HTMLParser):
                 self.hrefs.append(value)
 
 if __name__ == '__main__':
-    pages = [SITE/'index.html', SITE/'extended-cases/superstore/index.html']
+    pages = [SITE/(n+'.html') for n in NAVIGATION_PAGES]
     pages += [SITE/folder/(n+'.html') for folder, n in DOCUMENTS]
     pages += [SITE/'practicals'/(n+'.html') for n in SUPERSTORE]
     parsed = {}
@@ -60,6 +60,8 @@ if __name__ == '__main__':
         assert set(bundle.namelist()) == {n+'.pdf' for _, n in DOCUMENTS}
     with zipfile.ZipFile(SITE/'downloads/applied-statistics-rstudio.zip') as bundle:
         names = set(bundle.namelist())
+        assert {n+'.qmd' for n in NAVIGATION_PAGES} <= names
+        assert 'assets/course-navigation.css' in names
         assert {f'practicals/{n}.qmd' for n in PRACTICALS} <= names
         assert {f'{folder}/{n}.qmd' for folder, n in DOCUMENTS} <= names
         assert 'extended-cases/superstore/index.qmd' in names

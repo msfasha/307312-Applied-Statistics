@@ -15,7 +15,7 @@ execute:
   fig-height: 4.5
 ---
 
-[Case PDF](../pdf/case-05-mountain-states-potato.pdf) · [Student RStudio project](../downloads/applied-statistics-rstudio.zip) · [All extended cases](../index.qmd#extended-business-cases)
+[Case PDF](../pdf/case-05-mountain-states-potato.pdf) · [Student RStudio project](../downloads/applied-statistics-rstudio.zip) · [All extended cases](index.qmd)
 
 - **Start after:** multiple regression and model diagnostics in [Part 3](../lessons/03-inferential-statistics.qmd#part3-title-04-14).
 - **Suggested time:** 90–120 minutes.

@@ -6,7 +6,7 @@ from urllib.parse import urljoin, urlsplit
 from html import unescape, escape
 ROOT=Path(__file__).resolve().parents[1]
 SITE=ROOT/'_build/website'
-from course_documents import LESSONS as PARTS, PRACTICALS, EXTENDED, SUPERSTORE, DOCUMENTS
+from course_documents import LESSONS as PARTS, PRACTICALS, EXTENDED, SUPERSTORE, DOCUMENTS, NAVIGATION_PAGES
 chrome=shutil.which('google-chrome') or shutil.which('chromium')
 if not chrome: raise RuntimeError('Google Chrome or Chromium is required to export the lesson PDFs.')
 (SITE/'pdf').mkdir(exist_ok=True)
@@ -73,7 +73,8 @@ with zipfile.ZipFile(SITE/'downloads/applied-statistics-rstudio.zip','w',zipfile
     # No instructor files, archives, original slides, books, or build caches.
     names=['assets/petra-theme.md','assets/practical-print.css','assets/petra-brand.css','assets/source-slides.css','Applied-Statistics.Rproj','_quarto.yml','index.qmd']+['lessons/'+p+'.qmd' for p in PARTS]+['practicals/'+p+'.qmd' for p in PRACTICALS]+['practicals/_quarto.yml','practicals/practical-01-cereals.qmd','practicals/_includes/petra-plots.R','lessons/_includes/course-tools.R','scripts/finalize-preview.py','scripts/finalize-practical-preview.py','scripts/preview-practicals.py']
     names += [folder+'/'+p+'.qmd' for folder, p in DOCUMENTS]
-    names += ['extended-cases/superstore/index.qmd', 'scripts/course_documents.py']
+    names += [n+'.qmd' for n in NAVIGATION_PAGES]
+    names += ['assets/course-navigation.css', 'scripts/course_documents.py']
     names += ['practicals/'+p+'.qmd' for p in SUPERSTORE]
     for folder in ['data/r-introduction', 'assets/introduction-to-r', 'data/business', 'data/descriptive-statistics', 'data/inferential-statistics',
                    'assets/descriptive-statistics', 'assets/inferential-statistics', 'lessons/_includes']:

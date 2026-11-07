@@ -15,7 +15,7 @@ execute:
   fig-height: 4.5
 ---
 
-[Case PDF](../pdf/case-01-springville-herald.pdf) · [Student RStudio project](../downloads/applied-statistics-rstudio.zip) · [All extended cases](../index.qmd#extended-business-cases)
+[Case PDF](../pdf/case-01-springville-herald.pdf) · [Student RStudio project](../downloads/applied-statistics-rstudio.zip) · [All extended cases](index.qmd)
 
 - **Start after:** [Part 2](../lessons/02-descriptive-statistics.qmd) for Section A; [Part 3 regression](../lessons/03-inferential-statistics.qmd#part3-title-04-09) for Section B.
 - **Optional advanced work:** Section C introduces trend forecasting.

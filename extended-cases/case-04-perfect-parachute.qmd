@@ -15,7 +15,7 @@ execute:
   fig-height: 4.5
 ---
 
-[Case PDF](../pdf/case-04-perfect-parachute.pdf) · [Student RStudio project](../downloads/applied-statistics-rstudio.zip) · [All extended cases](../index.qmd#extended-business-cases)
+[Case PDF](../pdf/case-04-perfect-parachute.pdf) · [Student RStudio project](../downloads/applied-statistics-rstudio.zip) · [All extended cases](index.qmd)
 
 - **Start after:** independent-group comparisons and [more than two means in Part 3](../lessons/03-inferential-statistics.qmd#part3-title-03-50).
 - **Suggested time:** 70–90 minutes, including the ANOVA introduction below.

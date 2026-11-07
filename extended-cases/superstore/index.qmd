@@ -17,4 +17,4 @@ subtitle: "Three descriptive R applications · 307312 Applied Statistics — Mas
 
 - Return status means membership in the source Returns sheet, not verified refund accounting.
 - The analyses are descriptive; they do not establish causal discount effects or represent actual retailers.
-- [All extended business cases](../../index.qmd#extended-business-cases).
+- [All extended business cases](../index.qmd).

@@ -1,0 +1,8 @@
+/* Shared course landing pages; the Petra theme supplies the teaching palette. */
+.course-navigation { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 1.25rem; margin: 1.5rem 0 2rem; }
+.course-card { border: 1px solid #D6D6D6; border-radius: 8px; padding: 1.1rem; display: flex; flex-direction: column; background: #FFFFFF; }
+#quarto-document-content .course-card h2 { margin-top: 0; font-size: 1.35rem; }
+.course-card > p:last-child { margin-top: auto; padding-top: .75rem; margin-bottom: 0; }
+.course-navigation .btn-primary, main .btn-primary { background: var(--course-section-bg, #763D52); border-color: var(--course-section-bg, #763D52); color: white; }
+.course-navigation .btn-primary:hover, main .btn-primary:hover { background: #542638; border-color: #542638; color: white; }
+main .btn { white-space: normal; margin-bottom: .5rem; }

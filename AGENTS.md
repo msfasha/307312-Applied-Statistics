@@ -259,3 +259,9 @@
 
 - `python3 scripts/build-course.py` builds and validates the complete local website, all approved PDFs and both student bundles without network publication.
 - `scripts/publish-course.py` invokes this builder before deploying; Git source push remains a separate explicit step.
+
+## Simple course navigation — 7 November 2026
+
+- Top-level sections are Course and Extended scenarios. Course has landing pages for Parts 1–3 under course/, bundling each part’s resources. Part 1 lists four supplied R notebooks; Part 2 links slides and its R practical; Part 3 links slides and honestly marks its unbuilt practical as coming soon.
+- Navigation pages are listed in scripts/course_documents.py and included in rendering, student project and live/link validation, without extra PDF requirements. Preserve all existing notebook/PDF URLs and sixteen-document bundles.
+- User requested building, committing and pushing this interface update.

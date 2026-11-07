@@ -105,3 +105,7 @@ website files. A source push or local render alone is not publication. Verify
 committed source revision. The live verifier compares actual bytes and writes
 `_build/extended-review/live-verification.json`. PDF navigation uses public URLs.
 The user explicitly authorized the current push and website update.
+
+## Simplified interface
+
+The home page presents Course and Extended scenarios. course/index.qmd links the three part landing pages, which collect their own HTML/PDF and practical resources. Part 3 practical is coming soon, without a placeholder download. NAVIGATION_PAGES in scripts/course_documents.py tracks the landing pages for packaging and validation. These do not add PDFs to the sixteen-document contract.
