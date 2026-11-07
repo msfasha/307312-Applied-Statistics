@@ -14,7 +14,7 @@ Choose a part to find its lessons, downloads and practical work.
 
 Four notebooks: introduction, basic concepts, dplyr and ggplot2.
 
-[Open Part 1](course/part-1.qmd){.btn .btn-primary}
+[Open Part 1](course/part-1.qmd)
 :::
 
 ::: {.course-card #part-2-practicals}
@@ -24,7 +24,7 @@ Four notebooks: introduction, basic concepts, dplyr and ggplot2.
 
 Slides and the companion R practical.
 
-[Open Part 2](course/part-2.qmd){.btn .btn-primary}
+[Open Part 2](course/part-2.qmd)
 :::
 
 ::: {.course-card}
@@ -34,7 +34,7 @@ Slides and the companion R practical.
 
 Slides covering probability, estimation, hypothesis testing and regression.
 
-[Open Part 3](course/part-3.qmd){.btn .btn-primary}
+[Open Part 3](course/part-3.qmd)
 :::
 :::
 
