@@ -1,5 +1,194 @@
 [
   {
+    "objectID": "extended-cases/case-06-harnswell-quality.html",
+    "href": "extended-cases/case-06-harnswell-quality.html",
+    "title": "Extended Case 6 — Harnswell Quality",
+    "section": "",
+    "text": "Case PDF · Student RStudio project · All extended cases\nLearning outcomes:"
+  },
+  {
+    "objectID": "extended-cases/case-06-harnswell-quality.html#the-quality-managers-brief",
+    "href": "extended-cases/case-06-harnswell-quality.html#the-quality-managers-brief",
+    "title": "Extended Case 6 — Harnswell Quality",
+    "section": "1. The quality manager’s brief",
+    "text": "1. The quality manager’s brief\n\nHarnswell manufactures precision cam rollers for sewing machines.\nOversized parts may be downgraded; undersized parts may become scrap.\nSource: Basic Business Statistics, ninth edition, Chapter 18, pp. 752–754.\nUnit: one roller diameter, in inches; five measurements per production batch for 30 batches.\nEngineering limits: 0.5072 to 0.5075 inches, inclusive.\nPeriod: source batch order is retained; calendar dates are not supplied in the CSV.\nThe workbook column Day is represented here as batch, consistent with the case’s production subgroups.\nLimit: the historical case narrative does not establish that temperature alone caused the observed variation."
+  },
+  {
+    "objectID": "extended-cases/case-06-harnswell-quality.html#import-and-preserve-batch-membership",
+    "href": "extended-cases/case-06-harnswell-quality.html#import-and-preserve-batch-membership",
+    "title": "Extended Case 6 — Harnswell Quality",
+    "section": "2. Import and preserve batch membership",
+    "text": "2. Import and preserve batch membership\n\ndata_dir &lt;- if (dir.exists(\"data\")) \"data\" else file.path(\"..\", \"data\")\nsource(file.path(data_dir, \"..\", \"lessons\", \"_includes\", \"course-tools.R\"))\nrollers &lt;- read.csv(file.path(data_dir, \"business\", \"extended-harnswell.csv\"))\nstopifnot(nrow(rollers) == 150, all(table(rollers$batch) == 5))\nLSL &lt;- .5072\nUSL &lt;- .5075\nknitr::kable(head(rollers), digits = 4)\n\n\n\n\nbatch\ndiameter\n\n\n\n\n1\n0.5076\n\n\n1\n0.5076\n\n\n1\n0.5075\n\n\n1\n0.5077\n\n\n1\n0.5075\n\n\n2\n0.5075\n\n\n\n\n\n\nDiameter CSV · Data guide.\nNever sort all diameters and then divide them into new batches; that destroys the subgroup structure.\nLSL and USL are engineering requirements, not limits estimated from these measurements."
+  },
+  {
+    "objectID": "extended-cases/case-06-harnswell-quality.html#describe-specification-compliance",
+    "href": "extended-cases/case-06-harnswell-quality.html#describe-specification-compliance",
+    "title": "Extended Case 6 — Harnswell Quality",
+    "section": "3. Describe specification compliance",
+    "text": "3. Describe specification compliance\n\nknitr::kable(rollers %&gt;% summarise(n = n(), mean = mean(diameter),\n  sd = sd(diameter), min = min(diameter), max = max(diameter)), digits = 6)\n\n\n\n\nn\nmean\nsd\nmin\nmax\n\n\n\n\n150\n0.507523\n8.7e-05\n0.5072\n0.5077\n\n\n\n\ncompliance &lt;- rollers %&gt;% mutate(status = case_when(\n  diameter &lt; LSL ~ \"Below specification\",\n  diameter &gt; USL ~ \"Above specification\",\n  TRUE ~ \"Within specification\")) %&gt;%\n  count(status) %&gt;% mutate(percent = 100 * n / sum(n))\nknitr::kable(compliance, digits = 2)\n\n\n\n\nstatus\nn\npercent\n\n\n\n\nAbove specification\n56\n37.33\n\n\nWithin specification\n94\n62.67\n\n\n\n\nggplot(rollers, aes(diameter)) +\n  geom_histogram(binwidth = .0001, boundary = .50715,\n                 fill = petra_accent, colour = \"white\") +\n  geom_vline(xintercept = c(LSL, USL), colour = petra_ink, linetype = \"dashed\") +\n  scale_x_continuous(labels = function(x) sprintf(\"%.4f\", x)) +\n  labs(x = \"Roller diameter (inches)\", y = \"Rollers\")\n\n\n\n\n\n\n\n\n\nThe workbook has 56 above-specification rollers (37.33%), 94 within specification and none below.\nThe book narrative reports 55 above specification; the table here follows the unchanged workbook values.\nDo not extrapolate this observed percentage to annual production without a defensible sampling and stability basis."
+  },
+  {
+    "objectID": "extended-cases/case-06-harnswell-quality.html#a-short-process-control-primer",
+    "href": "extended-cases/case-06-harnswell-quality.html#a-short-process-control-primer",
+    "title": "Extended Case 6 — Harnswell Quality",
+    "section": "4. A short process-control primer",
+    "text": "4. A short process-control primer\n\nWithin-batch variation concerns the five rollers in one subgroup.\nBetween-batch changes may indicate shifts in centering or operating conditions.\nAn R chart tracks within-batch ranges; an X-bar chart tracks batch means.\nCheck the R chart first: unstable within-batch variation undermines interpretation of X-bar limits.\nControl limits estimate expected variation for a stable process; specification limits describe acceptable products.\nA stable process can still produce unacceptable parts."
+  },
+  {
+    "objectID": "extended-cases/case-06-harnswell-quality.html#estimate-initial-chart-limits",
+    "href": "extended-cases/case-06-harnswell-quality.html#estimate-initial-chart-limits",
+    "title": "Extended Case 6 — Harnswell Quality",
+    "section": "5. Estimate initial chart limits",
+    "text": "5. Estimate initial chart limits\n\nFor subgroup size five, use A2 = 0.577, D3 = 0, D4 = 2.114.\nX-bar limits: grand mean ± A2 × average range.\nR limits: D3 × average range and D4 × average range.\nThese are initial Phase I limits estimated using all 30 batches, including any unusual batches.\n\n\nsubgroups &lt;- rollers %&gt;% group_by(batch) %&gt;%\n  summarise(xbar = mean(diameter), R = max(diameter) - min(diameter),\n    n = n(), .groups = \"drop\") %&gt;% arrange(batch)\nstopifnot(all(subgroups$n == 5))\nxbarbar &lt;- mean(subgroups$xbar)\nRbar &lt;- mean(subgroups$R)\nxlimits &lt;- xbarbar + c(-1, 1) * .577 * Rbar\nrlimits &lt;- c(0, 2.114 * Rbar)\nknitr::kable(data.frame(chart = c(\"X-bar\", \"R\"),\n  centre = c(xbarbar, Rbar), lower = c(xlimits[1], rlimits[1]),\n  upper = c(xlimits[2], rlimits[2])), digits = 7)\n\n\n\n\nchart\ncentre\nlower\nupper\n\n\n\n\nX-bar\n0.5075227\n0.5074169\n0.5076284\n\n\nR\n0.0001833\n0.0000000\n0.0003876\n\n\n\n\n\n\ngroup_by(batch) preserves the original subgroups.\nThe X-bar limits apply to batch means, not individual roller diameters.\nEngineering limits should not replace statistical limits on these charts."
+  },
+  {
+    "objectID": "extended-cases/case-06-harnswell-quality.html#check-the-r-chart-then-the-x-bar-chart",
+    "href": "extended-cases/case-06-harnswell-quality.html#check-the-r-chart-then-the-x-bar-chart",
+    "title": "Extended Case 6 — Harnswell Quality",
+    "section": "6. Check the R chart, then the X-bar chart",
+    "text": "6. Check the R chart, then the X-bar chart\n\nggplot(subgroups, aes(batch, R)) + geom_line() + geom_point() +\n  geom_hline(yintercept = Rbar, colour = petra_ink) +\n  geom_hline(yintercept = rlimits, linetype = \"dashed\") +\n  scale_y_continuous(labels = function(x) sprintf(\"%.5f\", x)) +\n  labs(x = \"Source batch number\", y = \"Within-batch range (inches)\")\n\n\n\n\n\n\n\nggplot(subgroups, aes(batch, xbar)) + geom_line() + geom_point() +\n  geom_hline(yintercept = xbarbar, colour = petra_ink) +\n  geom_hline(yintercept = xlimits, linetype = \"dashed\") +\n  scale_y_continuous(labels = function(x) sprintf(\"%.5f\", x)) +\n  labs(x = \"Source batch number\", y = \"Mean diameter (inches)\")\n\n\n\n\n\n\n\nflags &lt;- subgroups %&gt;% mutate(xbar_out = xbar &lt; xlimits[1] | xbar &gt; xlimits[2],\n  R_out = R &lt; rlimits[1] | R &gt; rlimits[2]) %&gt;% filter(xbar_out | R_out)\nknitr::kable(flags, digits = 6)\n\n\n\n\nbatch\nxbar\nR\nn\nxbar_out\nR_out\n\n\n\n\n17\n0.5074\n3e-04\n5\nTRUE\nFALSE\n\n\n\n\n\n\nThe initial X-bar chart flags batch 17 below its lower limit; the R chart has no beyond-limit point.\nA signal is a reason to investigate a potential special cause.\nNo beyond-limit points would not by itself prove stability: runs, trends, grouping and operational context also matter.\nKeep batch 17 in the original analysis; do not delete it merely to make the chart look stable."
+  },
+  {
+    "objectID": "extended-cases/case-06-harnswell-quality.html#capability-requires-a-stable-suitable-process-model",
+    "href": "extended-cases/case-06-harnswell-quality.html#capability-requires-a-stable-suitable-process-model",
+    "title": "Extended Case 6 — Harnswell Quality",
+    "section": "7. Capability requires a stable, suitable process model",
+    "text": "7. Capability requires a stable, suitable process model\n\nCp compares specification width with six within-process standard deviations.\nCpk also accounts for the process mean’s distance from each specification limit.\nWith subgroup size five, an estimate of within-process SD is average range / d2, where d2 = 2.326.\nThe initial charts signal instability, so a reliable capability claim is not supported by this initial dataset.\nThe following template is intentionally not executed. Use it only after a documented stability investigation and suitable distribution/measurement checks.\n\n\n# stable_subgroups must come from a justified, documented process phase.\nmu &lt;- mean(stable_subgroups$xbar)\nsigma_within &lt;- mean(stable_subgroups$R) / 2.326\nCp &lt;- (USL - LSL) / (6 * sigma_within)\nCpk &lt;- min((USL - mu) / (3 * sigma_within),\n           (mu - LSL) / (3 * sigma_within))\n\n\nA negative Cpk indicates a fitted mean beyond a specification limit; it is not a negative defect percentage.\nDo not convert Cp or Cpk into a guaranteed future defect rate without the additional model assumptions."
+  },
+  {
+    "objectID": "extended-cases/case-06-harnswell-quality.html#independent-quality-improvement-briefing",
+    "href": "extended-cases/case-06-harnswell-quality.html#independent-quality-improvement-briefing",
+    "title": "Extended Case 6 — Harnswell Quality",
+    "section": "8. Independent quality-improvement briefing",
+    "text": "8. Independent quality-improvement briefing\n\nReproduce specification counts and percentages from the 150 measurements.\nReport the initial R and X-bar limits with units and appropriate decimal precision.\nExplain how batch 17 can signal a shift even though none of its individual measurements is below specification.\nPropose records to examine: temperature, warm-up, setup, tooling and measurement calibration.\nThe book describes a cold-start explanation and corrective action. Explain why the narrative is insufficient to prove causality in the CSV alone.\nAs a retrospective sensitivity analysis, recalculate limits excluding batch 17, retain the original results and state what evidence would justify treating it as a separate process condition.\nExplain why recalculated limits alone do not validate future process stability or capability.\nRecommend how to collect new subgroups after an intervention, and distinguish reducing variation from shifting the process mean."
+  },
+  {
+    "objectID": "extended-cases/case-06-harnswell-quality.html#submission",
+    "href": "extended-cases/case-06-harnswell-quality.html#submission",
+    "title": "Extended Case 6 — Harnswell Quality",
+    "section": "Submission",
+    "text": "Submission\n\nSpecification table, both initial control charts and the flagged-batch table.\nA 150–200-word improvement memo addressing stability, compliance, the source discrepancy and next measurements.\nInclude a justified comparison of original and sensitivity results if assigned; keep capability claims conditional."
+  },
+  {
+    "objectID": "extended-cases/case-04-perfect-parachute.html",
+    "href": "extended-cases/case-04-perfect-parachute.html",
+    "title": "Extended Case 4 — Perfect Parachute",
+    "section": "",
+    "text": "Case PDF · Student RStudio project · All extended cases\nLearning outcomes:"
+  },
+  {
+    "objectID": "extended-cases/case-04-perfect-parachute.html#the-procurement-managers-brief",
+    "href": "extended-cases/case-04-perfect-parachute.html#the-procurement-managers-brief",
+    "title": "Extended Case 4 — Perfect Parachute",
+    "section": "1. The procurement manager’s brief",
+    "text": "1. The procurement manager’s brief\n\nPerfect Parachute purchases synthetic fibre from four suppliers.\nFive parachutes per supplier are woven and tested to breaking point.\nSource: Basic Business Statistics, ninth edition, Chapter 11, pp. 388 and 393–399.\nUnit: one tested parachute; 20 measurements in four groups.\nOutcome: tensile strength on the source scale; a physical force unit is not specified in the reviewed material.\nLimit: small groups provide limited information about distribution shape and supplier reliability."
+  },
+  {
+    "objectID": "extended-cases/case-04-perfect-parachute.html#import-measurement-rows-only",
+    "href": "extended-cases/case-04-perfect-parachute.html#import-measurement-rows-only",
+    "title": "Extended Case 4 — Perfect Parachute",
+    "section": "2. Import measurement rows only",
+    "text": "2. Import measurement rows only\n\ndata_dir &lt;- if (dir.exists(\"data\")) \"data\" else file.path(\"..\", \"data\")\nsource(file.path(data_dir, \"..\", \"lessons\", \"_includes\", \"course-tools.R\"))\nparachutes &lt;- read.csv(file.path(data_dir, \"business\", \"extended-parachute.csv\"))\nparachutes$supplier &lt;- factor(parachutes$supplier)\nstopifnot(nrow(parachutes) == 20, all(table(parachutes$supplier) == 5))\nsupplier_summary &lt;- parachutes %&gt;% group_by(supplier) %&gt;%\n  summarise(n = n(), mean_strength = mean(strength), sd_strength = sd(strength),\n    min_strength = min(strength), max_strength = max(strength), .groups = \"drop\")\nknitr::kable(supplier_summary, digits = 2)\n\n\n\n\n\n\n\n\n\n\n\n\nsupplier\nn\nmean_strength\nsd_strength\nmin_strength\nmax_strength\n\n\n\n\nSupplier 1\n5\n19.52\n2.69\n17.2\n24.0\n\n\nSupplier 2\n5\n24.26\n1.92\n21.2\n26.3\n\n\nSupplier 3\n5\n22.84\n2.13\n20.6\n25.2\n\n\nSupplier 4\n5\n21.16\n2.98\n17.5\n25.4\n\n\n\n\n\n\nStrength CSV · Data guide.\nWorkbook means, medians and standard deviations are summary rows; they are excluded from the 20 observations.\nThe means are 19.52, 24.26, 22.84 and 21.16 for suppliers 1–4.\n\n\nggplot(parachutes, aes(supplier, strength)) +\n  geom_boxplot(fill = petra_accent, width = .45, outlier.shape = NA) +\n  geom_point(position = position_jitter(width = .06, height = 0, seed = 307312)) +\n  labs(x = \"Fibre supplier\", y = \"Tensile strength (source scale)\")\n\n\n\n\n\n\n\n\n\nIndividual points keep the five observations per supplier visible.\nA higher sample mean does not by itself establish a superior supplier."
+  },
+  {
+    "objectID": "extended-cases/case-04-perfect-parachute.html#a-short-anova-introduction",
+    "href": "extended-cases/case-04-perfect-parachute.html#a-short-anova-introduction",
+    "title": "Extended Case 4 — Perfect Parachute",
+    "section": "3. A short ANOVA introduction",
+    "text": "3. A short ANOVA introduction\n\nSeparate variation between supplier means from variation within suppliers.\nANOVA divides each sum of squares by its degrees of freedom to form a mean square.\nF = between-group mean square / within-group mean square.\nA large F is evidence against equal population means under the model.\nNull: all four population mean strengths are equal.\nAlternative: at least one differs; the test does not say that all pairs differ.\nClassical one-way ANOVA assumes independent errors, approximately normal errors within groups and a common error variance.\n\n\nfit &lt;- aov(strength ~ supplier, data = parachutes)\nsummary(fit)\n\n            Df Sum Sq Mean Sq F value Pr(&gt;F)  \nsupplier     3  63.29  21.095   3.462 0.0414 *\nResiduals   16  97.50   6.094                 \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\naov() fits the one-factor model; supplier is categorical, not a numeric trend.\nF is approximately 3.462, with p approximately 0.0414.\nAt 5%, the model gives evidence against all four means being equal."
+  },
+  {
+    "objectID": "extended-cases/case-04-perfect-parachute.html#which-comparisons-are-supported",
+    "href": "extended-cases/case-04-perfect-parachute.html#which-comparisons-are-supported",
+    "title": "Extended Case 4 — Perfect Parachute",
+    "section": "4. Which comparisons are supported?",
+    "text": "4. Which comparisons are supported?\n\nTukeyHSD(fit)\n\n  Tukey multiple comparisons of means\n    95% family-wise confidence level\n\nFit: aov(formula = strength ~ supplier, data = parachutes)\n\n$supplier\n                       diff        lwr      upr     p adj\nSupplier 2-Supplier 1  4.74  0.2731426 9.206857 0.0356281\nSupplier 3-Supplier 1  3.32 -1.1468574 7.786857 0.1868706\nSupplier 4-Supplier 1  1.64 -2.8268574 6.106857 0.7231935\nSupplier 3-Supplier 2 -1.42 -5.8868574 3.046857 0.8000982\nSupplier 4-Supplier 2 -3.10 -7.5668574 1.366857 0.2340709\nSupplier 4-Supplier 3 -1.68 -6.1468574 2.786857 0.7084910\n\n\n\nTukey’s procedure adjusts pairwise intervals and tests for the family of comparisons under the ANOVA assumptions.\nRead each contrast’s direction and interval; do not rank suppliers using p-values alone.\nAn overall significant test need not make every pair significant.\nThese intervals concern mean differences, not minimum guaranteed product strength."
+  },
+  {
+    "objectID": "extended-cases/case-04-perfect-parachute.html#check-the-model-and-its-limits",
+    "href": "extended-cases/case-04-perfect-parachute.html#check-the-model-and-its-limits",
+    "title": "Extended Case 4 — Perfect Parachute",
+    "section": "5. Check the model and its limits",
+    "text": "5. Check the model and its limits\n\npar(mfrow = c(1, 2))\nplot(fit, which = 1)\nplot(fit, which = 2)\n\n\n\n\n\n\n\npar(mfrow = c(1, 1))\nfligner.test(strength ~ supplier, data = parachutes)\n\n\n    Fligner-Killeen test of homogeneity of variances\n\ndata:  strength by supplier\nFligner-Killeen:med chi-squared = 0.55853, df = 3, p-value = 0.9059\n\n\n\nResidual plots assess spread and approximate normality; they cannot establish independent assignment.\nfligner.test() checks dispersion; a large p-value does not prove equal variances.\nFive observations per supplier give imprecise diagnostics.\nCausal supplier claims need a defensible assignment protocol and control of weaving/testing conditions.\n\n\nOptional: relax the equal-variance assumption\n\noneway.test(strength ~ supplier, data = parachutes, var.equal = FALSE)\n\n\n    One-way analysis of means (not assuming equal variances)\n\ndata:  strength and supplier\nF = 3.3206, num df = 3.0000, denom df = 8.7743, p-value = 0.07206\n\n\n\nWelch’s one-way test avoids assuming equal variances.\nTukey intervals from the classical model do not automatically become Welch-compatible pairwise intervals.\nReport sensitivity openly rather than choosing the method giving the preferred answer."
+  },
+  {
+    "objectID": "extended-cases/case-04-perfect-parachute.html#independent-procurement-briefing",
+    "href": "extended-cases/case-04-perfect-parachute.html#independent-procurement-briefing",
+    "title": "Extended Case 4 — Perfect Parachute",
+    "section": "6. Independent procurement briefing",
+    "text": "6. Independent procurement briefing\n\nExplain F using the observed between- and within-supplier variation.\nIdentify the largest sample mean difference and report its Tukey interval and adjusted p-value.\nCompare classical and Welch conclusions, including their assumptions.\nExplain why five tests per supplier cannot establish rare failure rates or minimum guaranteed strength.\nSpecify additional evidence on cost, delivery reliability and engineering requirements before recommending a supplier.\nPropose a follow-up experiment controlling loom conditions and assigning fibre treatments appropriately."
+  },
+  {
+    "objectID": "extended-cases/case-04-perfect-parachute.html#optional-design-discussion-supplier-and-loom",
+    "href": "extended-cases/case-04-perfect-parachute.html#optional-design-discussion-supplier-and-loom",
+    "title": "Extended Case 4 — Perfect Parachute",
+    "section": "7. Optional design discussion: supplier and loom",
+    "text": "7. Optional design discussion: supplier and loom\n\nThe book also considers four suppliers and two loom types.\nThe local Parachute2 workbook contains a separate Data sheet with loom-level observations as well as summary sheets.\nThis case analyses the original one-way, 20-measurement dataset; it does not combine the two experiments.\nA supplier-by-loom interaction means the supplier difference depends on loom type.\nDiscuss how an interaction would change procurement advice; a two-factor analysis is beyond this assignment."
+  },
+  {
+    "objectID": "extended-cases/case-04-perfect-parachute.html#submission",
+    "href": "extended-cases/case-04-perfect-parachute.html#submission",
+    "title": "Extended Case 4 — Perfect Parachute",
+    "section": "Submission",
+    "text": "Submission\n\nSupplier summary table, one chart and a brief explanation of the overall and pairwise results.\nA 150-word procurement memo with a practical threshold, assumptions and a proposed follow-up.\nIf a minimum strength threshold is not supplied, request one; do not invent an engineering requirement."
+  },
+  {
+    "objectID": "extended-cases/case-02-oxford-cereal.html",
+    "href": "extended-cases/case-02-oxford-cereal.html",
+    "title": "Extended Case 2 — Oxford Cereal",
+    "section": "",
+    "text": "Case PDF · Student RStudio project · All extended cases\nLearning outcomes:"
+  },
+  {
+    "objectID": "extended-cases/case-02-oxford-cereal.html#the-packaging-managers-brief",
+    "href": "extended-cases/case-02-oxford-cereal.html#the-packaging-managers-brief",
+    "title": "Extended Case 2 — Oxford Cereal",
+    "section": "1. The packaging manager’s brief",
+    "text": "1. The packaging manager’s brief\n\nOxford fills cereal boxes labelled 368 grams.\nUnderfilling concerns customers; overfilling uses extra product.\nSource: Basic Business Statistics, ninth edition, Chapters 7 (p. 232) and 9 (pp. 296–303; numerical example p. 302).\nReported evidence: 25 boxes, sample mean 372.5 g, assumed known population SD 15 g.\nUnit: grams per box; the supplied CSV has one summary row, not 25 box records.\nLimit: raw weights, collection dates and individual underfill counts are unavailable.\nThe publisher’s separate CEREALS cost/nutrition dataset is not Oxford packaging data."
+  },
+  {
+    "objectID": "extended-cases/case-02-oxford-cereal.html#import-the-reported-inputs",
+    "href": "extended-cases/case-02-oxford-cereal.html#import-the-reported-inputs",
+    "title": "Extended Case 2 — Oxford Cereal",
+    "section": "2. Import the reported inputs",
+    "text": "2. Import the reported inputs\n\ndata_dir &lt;- if (dir.exists(\"data\")) \"data\" else file.path(\"..\", \"data\")\nsource(file.path(data_dir, \"..\", \"lessons\", \"_includes\", \"course-tools.R\"))\noxford &lt;- read.csv(file.path(data_dir, \"business\", \"extended-oxford-summary.csv\"))\nknitr::kable(oxford)\n\n\n\n\nn\nsample_mean_g\npopulation_sd_g\ntarget_mean_g\nalpha\n\n\n\n\n25\n372.5\n15\n368\n0.05\n\n\n\n\nn &lt;- oxford$n[1]\nxbar &lt;- oxford$sample_mean_g[1]\nsigma &lt;- oxford$population_sd_g[1]\nmu0 &lt;- oxford$target_mean_g[1]\nalpha &lt;- oxford$alpha[1]\nstopifnot(n == 25, sigma == 15, mu0 == 368, xbar == 372.5)\n\n\nSummary CSV · Data guide.\nsigma is assumed known in the textbook example; it is not estimated from these 25 boxes.\nA Z procedure requires the stated known SD and an appropriate sampling/normal model."
+  },
+  {
+    "objectID": "extended-cases/case-02-oxford-cereal.html#separate-variation-between-boxes-and-between-sample-means",
+    "href": "extended-cases/case-02-oxford-cereal.html#separate-variation-between-boxes-and-between-sample-means",
+    "title": "Extended Case 2 — Oxford Cereal",
+    "section": "3. Separate variation between boxes and between sample means",
+    "text": "3. Separate variation between boxes and between sample means\n\nse &lt;- sigma / sqrt(n)\nknitr::kable(data.frame(sample_size = n, sample_mean_g = xbar,\n  difference_from_target_g = xbar - mu0, process_sd_g = sigma,\n  standard_error_g = se), digits = 2)\n\n\n\n\n\n\n\n\n\n\n\nsample_size\nsample_mean_g\ndifference_from_target_g\nprocess_sd_g\nstandard_error_g\n\n\n\n\n25\n372.5\n4.5\n15\n3\n\n\n\n\n\n\nsigma = 15 g describes variation between individual boxes under the model.\nse = 3 g describes variation between means of independent samples of 25 boxes.\nIncreasing sample size reduces the standard error; it does not mechanically reduce process variation."
+  },
+  {
+    "objectID": "extended-cases/case-02-oxford-cereal.html#see-the-sampling-distribution",
+    "href": "extended-cases/case-02-oxford-cereal.html#see-the-sampling-distribution",
+    "title": "Extended Case 2 — Oxford Cereal",
+    "section": "4. See the sampling distribution",
+    "text": "4. See the sampling distribution\n\nThis simulation generates hypothetical normal-process weights under a 368 g mean and 15 g SD.\nIts values are not observed Oxford measurements.\n\n\nset.seed(42001)\nsim_means &lt;- replicate(10000, mean(rnorm(n, mean = mu0, sd = sigma)))\nggplot(data.frame(sample_mean = sim_means), aes(sample_mean)) +\n  geom_histogram(bins = 35, fill = petra_accent, colour = \"white\") +\n  geom_vline(xintercept = xbar, colour = petra_ink, linewidth = 1) +\n  labs(x = \"Mean of 25 simulated boxes (g)\", y = \"Simulated samples\")\n\n\n\n\n\n\n\n\n\nset.seed() makes the simulation reproducible.\nreplicate() repeats the hypothetical sampling experiment.\nThe vertical line marks the reported sample mean, 372.5 g."
+  },
+  {
+    "objectID": "extended-cases/case-02-oxford-cereal.html#test-the-process-mean",
+    "href": "extended-cases/case-02-oxford-cereal.html#test-the-process-mean",
+    "title": "Extended Case 2 — Oxford Cereal",
+    "section": "5. Test the process mean",
+    "text": "5. Test the process mean\n\nNull: the population mean is 368 g.\nAlternative: the population mean differs from 368 g.\nDecision threshold: 5%, two-sided.\n\n\nz &lt;- (xbar - mu0) / se\np_value &lt;- 2 * pnorm(-abs(z))\nci &lt;- xbar + c(-1, 1) * qnorm(1 - alpha / 2) * se\nknitr::kable(data.frame(z = z, p_value = p_value,\n  lower_mean_g = ci[1], upper_mean_g = ci[2], reject = p_value &lt; alpha), digits = 4)\n\n\n\n\nz\np_value\nlower_mean_g\nupper_mean_g\nreject\n\n\n\n\n1.5\n0.1336\n366.6201\n378.3799\nFALSE\n\n\n\n\n\n\npnorm() gives the normal tail probability; the two tails account for deviations in either direction.\nThe result is Z = 1.50, with p about 0.134.\nThe 95% interval for the process mean is approximately 366.62–378.38 g.\nThe evidence is insufficient to reject the 368 g mean at 5% under the stated assumptions.\nThis does not prove exact centering, individual-box compliance or a low underfill rate."
+  },
+  {
+    "objectID": "extended-cases/case-02-oxford-cereal.html#independent-packaging-review",
+    "href": "extended-cases/case-02-oxford-cereal.html#independent-packaging-review",
+    "title": "Extended Case 2 — Oxford Cereal",
+    "section": "6. Independent packaging review",
+    "text": "6. Independent packaging review\n\nExplain why sd() or t.test() on the single summary row cannot analyse 25 individual boxes.\nRecalculate the test and interval for a hypothetical sample mean of 375 g, holding the other inputs fixed.\nCompare the standard errors for hypothetical independent sample sizes 25 and 100 with the same known process SD.\nExplain why a narrow interval for the mean does not guarantee that individual boxes meet a weight requirement.\nDescribe Type I and Type II errors as unnecessary process intervention and missed process changes.\nSpecify the raw measurements and sampling records needed to investigate underfilling and process stability.\n\n\n# Independent task: change the summary inputs and label the scenario hypothetical.\n# Use (sample_mean - target) / (known_sd / sqrt(sample_size))."
+  },
+  {
+    "objectID": "extended-cases/case-02-oxford-cereal.html#submission",
+    "href": "extended-cases/case-02-oxford-cereal.html#submission",
+    "title": "Extended Case 2 — Oxford Cereal",
+    "section": "Submission",
+    "text": "Submission\n\nOne comparison table for the reported and hypothetical scenarios.\nA sampling-distribution chart with clearly labelled simulated values.\nFive briefing bullets covering evidence, decision, assumptions, limits and further data."
+  },
+  {
     "objectID": "lessons/03-inferential-statistics.html",
     "href": "lessons/03-inferential-statistics.html",
     "title": "Part 3: Inferential Statistics",
@@ -74,7 +263,7 @@
     "href": "lessons/03-inferential-statistics.html#your-inferential-business-briefing",
     "title": "Part 3: Inferential Statistics",
     "section": "3.10 Your inferential business briefing",
-    "text": "3.10 Your inferential business briefing\n\nA. Sampling audit\n\nDraw a new random sample of 100 Superstore orders with a seed you report.\nEstimate mean order sales and construct a 95% interval with the finite-frame correction.\nCompare it with the known full-frame mean.\nExplain why another sample can produce a different interval.\nState why the result does not describe all US retailers.\n\n\n\nB. Display decision\n\nReport the COLA difference, interval and p-value in cases per week.\nExplain why the groups are independent and why random assignment matters.\nIdentify the missing financial information needed before recommending the display.\nDistinguish the experimental effect from generalization to all supermarkets.\n\n\n\nC. Consumer model\n\nFit a simple model using household size alone.\nCompare it with the two-predictor model using fit and residual evidence.\nPredict charges for a $40,000-income, four-person household.\nExplain the difference between a mean-response interval and an individual prediction interval.\nWrite a recommendation containing no causal claim.\n\n\n# Use the worked analyses as patterns; justify each choice and target.\n# Report effects and intervals rather than submitting raw output alone.\n\n\n\nSources and continuation\n\nSuperstore: Tableau sample data and transaction detail.\nCOLA: Berenson, Levine and Krehbiel, Basic Business Statistics, ninth edition, pp. 336–339; publisher COLA.XLS.\nConsumer: Anderson/Sweeney/Williams data collection, Consumer.xls; related Consumer Research case indexed in Essentials of Statistics for Business and Economics, ninth edition, pp. 790–791. Local edition details are distinguished in the data guide.\nProbability, estimation, testing and regression follow the sequence of the instructor’s original 307102 inferential decks. The current explanations and business analyses are revised for 307312 Applied Statistics.\nReturn to the course home page for all practicals and downloads."
+    "text": "3.10 Your inferential business briefing\n\nA. Sampling audit\n\nDraw a new random sample of 100 Superstore orders with a seed you report.\nEstimate mean order sales and construct a 95% interval with the finite-frame correction.\nCompare it with the known full-frame mean.\nExplain why another sample can produce a different interval.\nState why the result does not describe all US retailers.\n\n\n\nB. Display decision\n\nReport the COLA difference, interval and p-value in cases per week.\nExplain why the groups are independent and why random assignment matters.\nIdentify the missing financial information needed before recommending the display.\nDistinguish the experimental effect from generalization to all supermarkets.\n\n\n\nC. Consumer model\n\nFit a simple model using household size alone.\nCompare it with the two-predictor model using fit and residual evidence.\nPredict charges for a $40,000-income, four-person household.\nExplain the difference between a mean-response interval and an individual prediction interval.\nWrite a recommendation containing no causal claim.\n\n\n# Use the worked analyses as patterns; justify each choice and target.\n# Report effects and intervals rather than submitting raw output alone.\n\n\n\nExtend the methods to another business case\n\nOxford Cereal: sampling variation, a mean test and an interval from reported summary inputs.\nBLK Retail Display: follow up the COLA example with a commercial sensitivity briefing.\nSpringville Herald, Section B: marketing regression; optional Section C introduces forecasting.\nPerfect Parachute: extend group comparisons to four suppliers with an ANOVA primer.\nMountain States Potato: multiple regression, diagnostics and production recommendations.\nHarnswell Quality: optional process-control extension with an introductory chart guide.\nSelect cases as assigned; the six complete notebooks are collected under Extended Business Cases.\n\n\n\nSources and continuation\n\nSuperstore: Tableau sample data and transaction detail.\nCOLA: Berenson, Levine and Krehbiel, Basic Business Statistics, ninth edition, pp. 336–339; publisher COLA.XLS.\nConsumer: Anderson/Sweeney/Williams data collection, Consumer.xls; related Consumer Research case indexed in Essentials of Statistics for Business and Economics, ninth edition, pp. 790–791. Local edition details are distinguished in the data guide.\nProbability, estimation, testing and regression follow the sequence of the instructor’s original 307102 inferential decks. The current explanations and business analyses are revised for 307312 Applied Statistics.\nReturn to the course home page for all practicals and downloads."
   },
   {
     "objectID": "lessons/01-introduction-to-r.html",
@@ -154,11 +343,18 @@
     "text": "Part 2 practicals\nApply the descriptive methods in order. Each practical includes explained R code, executed results, charts and independent business tasks. All three use the same fixed Superstore extract.\nPart 3 includes worked inference and independent briefings using Superstore sampling, COLA display experiments and Consumer credit-card charges.\n\n\n\nPractical\nRead online\nDownload\n\n\n\n\n1. Superstore — product mix and categorical tables\nOpen practical\nPDF\n\n\n2. Superstore — order size and numerical measures\nOpen practical\nPDF\n\n\n3. Superstore — discounts, profit and group comparisons\nOpen practical\nPDF"
   },
   {
+    "objectID": "index.html#extended-business-cases",
+    "href": "index.html#extended-business-cases",
+    "title": "307312 Applied Statistics",
+    "section": "Extended Business Cases",
+    "text": "Extended Business Cases\n\nApply the course methods to another business setting after the core practicals or the relevant Part 3 topics.\nEach case stays together as one notebook, with a worked analysis and independent business tasks.\nYour instructor may assign selected cases or sections; completing all six is optional.\nANOVA, forecasting and process control include introductions and are marked as extensions.\n\n\n\n\nExtended case\nStart after / focus\nRead online\nDownload\n\n\n\n\n1. Springville Herald\nPart 2: daily calls; Part 3: regression; optional forecasting\nOpen case\nPDF\n\n\n2. Oxford Cereal\nPart 3: sampling, estimation and one-mean testing\nOpen case\nPDF\n\n\n3. BLK Retail Display\nPart 3: follow-up to the worked COLA comparison\nOpen case\nPDF\n\n\n4. Perfect Parachute\nPart 3: extend two-group comparisons to ANOVA\nOpen case\nPDF\n\n\n5. Mountain States Potato\nPart 3: multiple regression and diagnostics\nOpen case\nPDF\n\n\n6. Harnswell Quality\nAfter Parts 2–3: optional process-control extension\nOpen case\nPDF\n\n\n\nThe cases draw on Berenson, Levine and Krehbiel’s Basic Business Statistics: Concepts and Applications, ninth edition. Each identifies its source, observational unit and limits; Oxford uses reported summary inputs rather than raw box weights."
+  },
+  {
     "objectID": "index.html#work-with-r-or-study-offline",
     "href": "index.html#work-with-r-or-study-offline",
     "title": "307312 Applied Statistics",
     "section": "Work with R or study offline",
-    "text": "Work with R or study offline\n\nDownload the complete student RStudio project: editable lessons and practicals, teaching CSVs, images, and setup instructions. Extract the ZIP, then open Applied-Statistics.Rproj in RStudio.\nDownload all lesson and practical PDFs.\n\nThe online lessons and PDFs show the code and its results. To run or change R code, use the RStudio project."
+    "text": "Work with R or study offline\n\nDownload the complete student RStudio project: editable lessons, core practicals and six extended cases, teaching CSVs, shared styling and setup instructions. Extract the ZIP, then open Applied-Statistics.Rproj in RStudio.\nDownload all 12 lesson, practical and extended-case PDFs.\n\nThe online lessons and PDFs show the code and its results. To run or change R code, use the RStudio project."
   },
   {
     "objectID": "lessons/02-descriptive-statistics.html",
@@ -228,6 +424,174 @@
     "href": "lessons/02-descriptive-statistics.html#put-the-evidence-together",
     "title": "Part 2: Descriptive Statistics",
     "section": "2.9 Put the evidence together",
-    "text": "2.9 Put the evidence together\nA useful management briefing contains:\n\nScope: US Superstore orders placed in 2023–2025; fictitious company.\nFinding: Furniture has substantial sales but a thin recorded profit margin.\nEvidence: category totals, weighted margins and the distribution of order values.\nInterpretation: sales volume and profitability answer different questions.\nNext step: examine subcategories, discount bands and large loss-making orders.\nLimit: observed associations do not prove the effect of changing discounts.\n\n\nApply the methods\n\nPractical 1: Product mix and categorical tables.\nPractical 2: Order size and numerical measures.\nPractical 3: Discounts, profitability and group comparisons.\nContinue to Part 3 for uncertainty, tests and models.\n\n\n\nSources\n\nTableau Superstore sample data, downloaded 6 November 2026.\nTableau on dimensions, measures and transaction detail.\nCourse data dictionary and selection rules.\nTopic order builds on the instructor’s original 307102 descriptive-statistics slides; business examples and explanations were revised for 307312 Applied Statistics."
+    "text": "2.9 Put the evidence together\nA useful management briefing contains:\n\nScope: US Superstore orders placed in 2023–2025; fictitious company.\nFinding: Furniture has substantial sales but a thin recorded profit margin.\nEvidence: category totals, weighted margins and the distribution of order values.\nInterpretation: sales volume and profitability answer different questions.\nNext step: examine subcategories, discount bands and large loss-making orders.\nLimit: observed associations do not prove the effect of changing discounts.\n\n\nApply the methods\n\nPractical 1: Product mix and categorical tables.\nPractical 2: Order size and numerical measures.\nPractical 3: Discounts, profitability and group comparisons.\nContinue to Part 3 for uncertainty, tests and models.\nOptional transfer activity: Springville Herald, Section A applies descriptive methods to daily calls.\n\n\n\nSources\n\nTableau Superstore sample data, downloaded 6 November 2026.\nTableau on dimensions, measures and transaction detail.\nCourse data dictionary and selection rules.\nTopic order builds on the instructor’s original 307102 descriptive-statistics slides; business examples and explanations were revised for 307312 Applied Statistics."
+  },
+  {
+    "objectID": "extended-cases/case-01-springville-herald.html",
+    "href": "extended-cases/case-01-springville-herald.html",
+    "title": "Extended Case 1 — Springville Herald",
+    "section": "",
+    "text": "Case PDF · Student RStudio project · All extended cases\nLearning outcomes:"
+  },
+  {
+    "objectID": "extended-cases/case-01-springville-herald.html#the-circulation-managers-brief",
+    "href": "extended-cases/case-01-springville-herald.html#the-circulation-managers-brief",
+    "title": "Extended Case 1 — Springville Herald",
+    "section": "1. The circulation manager’s brief",
+    "text": "1. The circulation manager’s brief\n\nThe Springville Herald wants to grow home-delivery subscriptions and coordinate delivery capacity.\nMarketing records calling activity and telemarketing hours; circulation tracks the subscription base.\nSource: Berenson, Levine and Krehbiel, Basic Business Statistics: Concepts and Applications, ninth edition, Springville running case; Chapters 2, 13 (pp. 536–537) and 16 (pp. 689–690).\nData: historical publisher case measurements; independently verified real-company origins are not established.\nPeriod: SH13 and SH16 each cover 24 months; calendar dates are not supplied in these CSVs.\nLimit: these files have different observational units. Do not join them by row number or assume their months align."
+  },
+  {
+    "objectID": "extended-cases/case-01-springville-herald.html#import-the-three-files",
+    "href": "extended-cases/case-01-springville-herald.html#import-the-three-files",
+    "title": "Extended Case 1 — Springville Herald",
+    "section": "2. Import the three files",
+    "text": "2. Import the three files\n\ndata_dir &lt;- if (dir.exists(\"data\")) \"data\" else file.path(\"..\", \"data\")\nsource(file.path(data_dir, \"..\", \"lessons\", \"_includes\", \"course-tools.R\"))\ncalls &lt;- read.csv(file.path(data_dir, \"business\", \"extended-herald-calls.csv\"))\nmarketing &lt;- read.csv(file.path(data_dir, \"business\", \"extended-herald-marketing.csv\"))\nsubscriptions &lt;- read.csv(file.path(data_dir, \"business\", \"extended-herald-subscriptions.csv\"))\nstopifnot(nrow(calls) == 90, nrow(marketing) == 24, nrow(subscriptions) == 24)\nknitr::kable(data.frame(file = c(\"SH2\", \"SH13\", \"SH16\"),\n  observations = c(nrow(calls), nrow(marketing), nrow(subscriptions)),\n  unit = c(\"Day\", \"Month: marketing\", \"Month: subscription base\")))\n\n\n\n\nfile\nobservations\nunit\n\n\n\n\nSH2\n90\nDay\n\n\nSH13\n24\nMonth: marketing\n\n\nSH16\n24\nMonth: subscription base\n\n\n\n\n\n\nCSVs: daily calls, marketing, subscription base.\nSH2 chart-helper columns were excluded; all 90 daily call counts remain.\nsource() loads the same R packages and plot style used in the core course."
+  },
+  {
+    "objectID": "extended-cases/case-01-springville-herald.html#section-a",
+    "href": "extended-cases/case-01-springville-herald.html#section-a",
+    "title": "Extended Case 1 — Springville Herald",
+    "section": "A. Describe daily calling activity",
+    "text": "A. Describe daily calling activity\n\ncall_summary &lt;- calls %&gt;% summarise(days = n(), mean_calls = mean(calls),\n  median_calls = median(calls), sd_calls = sd(calls),\n  min_calls = min(calls), max_calls = max(calls))\nknitr::kable(call_summary, digits = 2)\n\n\n\n\ndays\nmean_calls\nmedian_calls\nsd_calls\nmin_calls\nmax_calls\n\n\n\n\n90\n51.84\n49\n17.43\n11\n94\n\n\n\n\nggplot(calls, aes(calls)) +\n  geom_histogram(binwidth = 10, boundary = 0, fill = petra_ink, colour = \"white\") +\n  labs(x = \"Telephone calls per day\", y = \"Days\")\n\n\n\n\n\n\n\n\n\nsummarise() reports centre and spread across days.\nThe standard deviation describes day-to-day variation; it is not a standard error.\nA histogram groups call counts; its vertical axis counts days.\nDiscuss: Would the mean alone give the circulation manager enough information?\n\n\nIndependent task A\n\nCalculate the first and third quartiles and the IQR of daily calls.\nDraw a boxplot and investigate any observations flagged by the 1.5-IQR rule; retain valid observations.\nExplain how changing the histogram bin width affects its appearance.\nWrite three bullets about typical workload, variability and a limitation."
+  },
+  {
+    "objectID": "extended-cases/case-01-springville-herald.html#section-b",
+    "href": "extended-cases/case-01-springville-herald.html#section-b",
+    "title": "Extended Case 1 — Springville Herald",
+    "section": "B. Relate telemarketing hours to new subscriptions",
+    "text": "B. Relate telemarketing hours to new subscriptions\n\nknitr::kable(data.frame(variable = c(\"Hours per month\", \"New subscriptions per month\"),\n  mean = sapply(marketing, mean), sd = sapply(marketing, sd),\n  min = sapply(marketing, min), max = sapply(marketing, max)),\n  row.names = FALSE, digits = 2)\n\n\n\n\nvariable\nmean\nsd\nmin\nmax\n\n\n\n\nHours per month\n1112.54\n226.97\n704\n1498\n\n\nNew subscriptions per month\n4490.21\n1077.77\n2546\n6177\n\n\n\n\nggplot(marketing, aes(hours, new_subscriptions)) +\n  geom_point(colour = petra_ink) + geom_smooth(method = \"lm\", formula = y ~ x, colour = petra_ink) +\n  labs(x = \"Telemarketing hours per month\", y = \"New subscriptions per month\")\n\n\n\n\n\n\n\nmodel &lt;- lm(new_subscriptions ~ hours, data = marketing)\nsummary(model)\n\n\nCall:\nlm(formula = new_subscriptions ~ hours, data = marketing)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-585.95 -233.67  -65.11  172.85 1181.43 \n\nCoefficients:\n             Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) -413.8204   427.0878  -0.969    0.343    \nhours          4.4080     0.3765  11.709 6.36e-11 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 409.8 on 22 degrees of freedom\nMultiple R-squared:  0.8617,    Adjusted R-squared:  0.8554 \nF-statistic: 137.1 on 1 and 22 DF,  p-value: 6.358e-11\n\nconfint(model)\n\n                  2.5 %     97.5 %\n(Intercept) -1299.54639 471.905508\nhours           3.62724   5.188661\n\n\n\nlm(y ~ x) fits a straight-line relationship.\nThe slope is the estimated difference in new monthly subscriptions per additional telemarketing hour.\nObservational association does not establish that increasing hours causes the predicted increase.\nStaffing, campaigns and seasonal demand may also matter.\n\n\nAverage response versus one future month\n\nnew_month &lt;- data.frame(hours = 1200)\nknitr::kable(predict(model, newdata = new_month, interval = \"confidence\"), digits = 1)\n\n\n\n\nfit\nlwr\nupr\n\n\n\n\n4875.7\n4689.3\n5062.1\n\n\n\n\nknitr::kable(predict(model, newdata = new_month, interval = \"prediction\"), digits = 1)\n\n\n\n\nfit\nlwr\nupr\n\n\n\n\n4875.7\n4005.7\n5745.8\n\n\n\n\nrange(marketing$hours)\n\n[1]  704 1498\n\npar(mfrow = c(2, 2))\nplot(model)\n\n\n\n\n\n\n\npar(mfrow = c(1, 1))\n\n\nThe confidence interval concerns the mean response at 1,200 hours under the fitted model.\nThe prediction interval concerns one future month’s response and is wider.\nCheck the observed hours range before treating a prediction as interpolation.\nResidual plots help assess linearity, spread, unusual observations and normality.\nThese plots alone cannot establish independence across months; the file has no month identifier.\n\n\n\nIndependent task B\n\nReport the fitted equation with units and interpret its slope.\nCompare the two intervals at 1,200 hours and explain their different uses.\nPredict at 2,000 hours; explain the additional risk using the observed hours range.\nIdentify one omitted business factor and describe how to collect it.\nWrite a 150-word staffing recommendation conditional on the model assumptions."
+  },
+  {
+    "objectID": "extended-cases/case-01-springville-herald.html#section-c",
+    "href": "extended-cases/case-01-springville-herald.html#section-c",
+    "title": "Extended Case 1 — Springville Herald",
+    "section": "C. Optional advanced work: forecast the subscription base",
+    "text": "C. Optional advanced work: forecast the subscription base\n\nA stock is the total subscription base at a time; a flow is the new subscriptions during a period.\nNew subscriptions do not equal net growth: cancellations and other changes also matter.\nA straight-line trend is a baseline for extrapolation, not a complete time-series analysis.\n\n\nsubscriptions &lt;- subscriptions %&gt;% arrange(month)\nggplot(subscriptions, aes(month, subscriptions)) +\n  geom_line(colour = petra_ink) + geom_point() +\n  labs(x = \"Source month number\", y = \"Home-delivery subscriptions\")\n\n\n\n\n\n\n\ntrend &lt;- lm(subscriptions ~ month, data = subscriptions)\nfuture &lt;- data.frame(month = 25:28)\nknitr::kable(cbind(future, predict(trend, future, interval = \"prediction\")), digits = 0)\n\n\n\n\nmonth\nfit\nlwr\nupr\n\n\n\n\n25\n105957\n104512\n107401\n\n\n26\n107191\n105733\n108649\n\n\n27\n108425\n106953\n109898\n\n\n28\n109660\n108172\n111148\n\n\n\n\nplot(subscriptions$month, residuals(trend), type = \"b\",\n     xlab = \"Source month number\", ylab = \"Trend residual (subscriptions)\")\nabline(h = 0, col = petra_ink)\n\n\n\n\n\n\n\nacf(residuals(trend), main = \"Trend residual autocorrelation\")\n\n\n\n\n\n\n\n\n\npredict() extrapolates the fitted line to months 25–28.\nIts nominal 95% prediction intervals assume a suitable linear model with independent, constant-variance normal errors.\nResidual patterns or autocorrelation undermine those intervals; they are not validated forecast coverage.\nWith only 24 months, seasonal structure is difficult to establish reliably.\n\n\nIndependent task C\n\nCompare the first and last subscription totals; distinguish absolute growth from percentage growth.\nAssess the residual plots and explain whether the linear trend is an adequate baseline.\nWrite a cautious four-month capacity briefing and explain why a 12-month extrapolation would need more evidence."
+  },
+  {
+    "objectID": "extended-cases/case-01-springville-herald.html#submission",
+    "href": "extended-cases/case-01-springville-herald.html#submission",
+    "title": "Extended Case 1 — Springville Herald",
+    "section": "Submission",
+    "text": "Submission\n\nSubmit the sections assigned by your instructor; the entire case is not required for every assignment.\nFor each assigned section: one compact table, one labelled chart and a recommendation with a limitation.\nKeep the three datasets and their units separate."
+  },
+  {
+    "objectID": "extended-cases/case-03-retail-display.html",
+    "href": "extended-cases/case-03-retail-display.html",
+    "title": "Extended Case 3 — BLK Retail Display",
+    "section": "",
+    "text": "Case PDF · Student RStudio project · All extended cases\nLearning outcomes:"
+  },
+  {
+    "objectID": "extended-cases/case-03-retail-display.html#the-merchandising-managers-brief",
+    "href": "extended-cases/case-03-retail-display.html#the-merchandising-managers-brief",
+    "title": "Extended Case 3 — BLK Retail Display",
+    "section": "1. The merchandising manager’s brief",
+    "text": "1. The merchandising manager’s brief\n\nBLK cola is sold in normal-shelf and end-of-aisle displays.\nSource: Basic Business Statistics, ninth edition, Chapter 10, pp. 336–339.\nDesign: 20 selected stores of similar sales volume; random assignment of ten stores to each condition.\nUnit: one store observed for one week; outcome is cases sold per week.\nLimit: random selection from all supermarkets is not established, and one week does not establish long-term effects.\nBusiness question: Does the sales gain warrant further consideration of the display space?"
+  },
+  {
+    "objectID": "extended-cases/case-03-retail-display.html#reuse-the-courses-canonical-cola-file",
+    "href": "extended-cases/case-03-retail-display.html#reuse-the-courses-canonical-cola-file",
+    "title": "Extended Case 3 — BLK Retail Display",
+    "section": "2. Reuse the course’s canonical COLA file",
+    "text": "2. Reuse the course’s canonical COLA file\n\ndata_dir &lt;- if (dir.exists(\"data\")) \"data\" else file.path(\"..\", \"data\")\nsource(file.path(data_dir, \"..\", \"lessons\", \"_includes\", \"course-tools.R\"))\ncola &lt;- read.csv(file.path(data_dir, \"business\", \"cola.csv\"))\ncola$display &lt;- factor(cola$display, levels = c(\"Normal\", \"End aisle\"))\nnormal &lt;- cola$weekly_cases[cola$display == \"Normal\"]\nend &lt;- cola$weekly_cases[cola$display == \"End aisle\"]\nstopifnot(length(normal) == 10, length(end) == 10)\nknitr::kable(cola %&gt;% group_by(display) %&gt;%\n  summarise(stores = n(), mean_cases = mean(weekly_cases),\n    sd_cases = sd(weekly_cases), .groups = \"drop\"), digits = 2)\n\n\n\n\ndisplay\nstores\nmean_cases\nsd_cases\n\n\n\n\nNormal\n10\n50.3\n18.73\n\n\nEnd aisle\n10\n72.0\n12.54\n\n\n\n\n\n\nCOLA CSV · Data guide.\nEach row is one store; the source’s side-by-side columns did not represent pairs.\nCourse store IDs identify rows; they are not publisher store names."
+  },
+  {
+    "objectID": "extended-cases/case-03-retail-display.html#review-the-worked-comparison",
+    "href": "extended-cases/case-03-retail-display.html#review-the-worked-comparison",
+    "title": "Extended Case 3 — BLK Retail Display",
+    "section": "3. Review the worked comparison",
+    "text": "3. Review the worked comparison\n\nggplot(cola, aes(display, weekly_cases)) +\n  geom_boxplot(fill = petra_accent, width = .45, outlier.shape = NA) +\n  geom_point(position = position_jitter(width = .07, height = 0, seed = 307312),\n             colour = petra_ink) +\n  labs(x = \"Display\", y = \"Cases sold per store per week\")\n\n\n\n\n\n\n\nwelch &lt;- t.test(end, normal, var.equal = FALSE)\nknitr::kable(data.frame(difference = mean(end) - mean(normal),\n  lower_95 = welch$conf.int[1], upper_95 = welch$conf.int[2],\n  p_value = welch$p.value), digits = 4)\n\n\n\n\ndifference\nlower_95\nupper_95\np_value\n\n\n\n\n21.7\n6.5687\n36.8313\n0.0078\n\n\n\n\n\n\nThe estimated difference is end aisle minus normal: 21.7 cases per store per week.\nThe Welch 95% interval is about 6.57–36.83 cases, with p about 0.00785.\nThe two-sided null is equal mean sales under the two conditions.\nThe book uses a pooled-variance t test; the course uses Welch, which avoids the equal-variance assumption.\nRandom assignment supports the experimental contrast among these stores, subject to implementation and no interference.\nSales evidence alone does not establish the display’s net commercial value."
+  },
+  {
+    "objectID": "extended-cases/case-03-retail-display.html#review-assumptions-before-reporting",
+    "href": "extended-cases/case-03-retail-display.html#review-assumptions-before-reporting",
+    "title": "Extended Case 3 — BLK Retail Display",
+    "section": "4. Review assumptions before reporting",
+    "text": "4. Review assumptions before reporting\n\npar(mfrow = c(1, 2))\nqqnorm(normal, main = \"Normal shelf: Q-Q plot\"); qqline(normal)\nqqnorm(end, main = \"End aisle: Q-Q plot\"); qqline(end)\n\n\n\n\n\n\n\npar(mfrow = c(1, 1))\n\n\nEach group contains only ten stores; Q-Q plots have limited power to reveal departures from normality.\nIndependence follows from the design and store operations, not from a normality plot.\nCheck whether stores could affect one another’s sales or whether promotions differed.\nDo not choose a paired test because the original spreadsheet aligned two columns."
+  },
+  {
+    "objectID": "extended-cases/case-03-retail-display.html#independent-commercial-briefing",
+    "href": "extended-cases/case-03-retail-display.html#independent-commercial-briefing",
+    "title": "Extended Case 3 — BLK Retail Display",
+    "section": "5. Independent commercial briefing",
+    "text": "5. Independent commercial briefing\n\nReproduce the effect, confidence interval and p-value, with units and direction.\nRun the textbook’s pooled test using var.equal = TRUE; compare its interval and assumptions with Welch’s.\nRun a Wilcoxon rank-sum comparison. Explain why it is not generally a test of equality of means.\nDefine the population to which you can reasonably discuss the results; distinguish assignment from selection.\nComplete the commercial sensitivity analysis below and recommend a next step.\n\n\nHypothetical commercial assumptions\n\nContribution margin per additional case: $4, $6 or $8.\nOpportunity cost of the display: $80 per store per week.\nThese are assignment assumptions, not COLA observations or textbook financial data.\nAssume the measured sales difference represents incremental cases and the chosen margin applies to them; discuss why this may fail.\n\n\nmargin_per_case &lt;- c(4, 6, 8)\ndisplay_cost &lt;- 80\n# For each assumed margin, calculate:\n# estimated net contribution = estimated case difference * margin - cost\n# corresponding interval endpoints = Welch endpoints * margin - cost\n# break-even additional cases = cost / margin\n\n\nMultiplying the sales interval by a fixed positive margin gives a conditional interval under that assumed margin.\nIt does not include uncertainty in costs, margins, cannibalization or future display effects.\nTreat a zero-crossing interval as uncertainty about the assumed commercial threshold, not proof of no value."
+  },
+  {
+    "objectID": "extended-cases/case-03-retail-display.html#submission",
+    "href": "extended-cases/case-03-retail-display.html#submission",
+    "title": "Extended Case 3 — BLK Retail Display",
+    "section": "Submission",
+    "text": "Submission\n\nOne results table comparing Welch, pooled and rank-based analyses with their different targets.\nOne commercial sensitivity table and one labelled chart.\nA 150–200-word recommendation addressing magnitude, uncertainty, cost assumptions and transfer to other stores or weeks."
+  },
+  {
+    "objectID": "extended-cases/case-05-mountain-states-potato.html",
+    "href": "extended-cases/case-05-mountain-states-potato.html",
+    "title": "Extended Case 5 — Mountain States Potato",
+    "section": "",
+    "text": "Case PDF · Student RStudio project · All extended cases\nLearning outcomes:"
+  },
+  {
+    "objectID": "extended-cases/case-05-mountain-states-potato.html#the-production-managers-brief",
+    "href": "extended-cases/case-05-mountain-states-potato.html#the-production-managers-brief",
+    "title": "Extended Case 5 — Mountain States Potato",
+    "section": "1. The production manager’s brief",
+    "text": "1. The production manager’s brief\n\nFilter cake is a potato-processing by-product used in cattle feed.\nSolids content had historically been slightly above 12%, but recent levels were nearer 11%.\nSource: Basic Business Statistics, ninth edition, Chapter 15, p. 623; variable dictionary also p. 790.\nUnit: one process measurement; 54 rows with solids and six potential predictors.\nPeriod: measurements were taken several times daily over 20 days; calendar dates and day IDs are absent from the workbook.\nLimit: observations may be temporally dependent; randomized process settings are not established.\nThe management goal is to investigate how to return solids above 12%, not merely maximize fitted R-squared."
+  },
+  {
+    "objectID": "extended-cases/case-05-mountain-states-potato.html#import-the-process-measurements",
+    "href": "extended-cases/case-05-mountain-states-potato.html#import-the-process-measurements",
+    "title": "Extended Case 5 — Mountain States Potato",
+    "section": "2. Import the process measurements",
+    "text": "2. Import the process measurements\n\ndata_dir &lt;- if (dir.exists(\"data\")) \"data\" else file.path(\"..\", \"data\")\nsource(file.path(data_dir, \"..\", \"lessons\", \"_includes\", \"course-tools.R\"))\npotato &lt;- read.csv(file.path(data_dir, \"business\", \"extended-potato.csv\"))\nstopifnot(nrow(potato) == 54, ncol(potato) == 7, !anyNA(potato))\nknitr::kable(head(potato))\n\n\n\n\n\n\n\n\n\n\n\n\n\nsolids\nph\nlower_pressure\nupper_pressure\ncake_thickness\nvaridriv_speed\ndrum_speed\n\n\n\n\n9.7\n3.7\n13\n14\n0.250\n6\n33.00\n\n\n9.4\n3.8\n17\n18\n0.875\n6\n30.43\n\n\n10.5\n3.8\n14\n15\n0.500\n6\n34.00\n\n\n10.9\n3.9\n14\n14\n0.500\n6\n34.00\n\n\n11.6\n4.3\n17\n18\n0.375\n6\n36.24\n\n\n10.9\n4.2\n16\n17\n0.500\n6\n31.76\n\n\n\n\n\n\nProcess CSV · Data guide.\nsolids: percentage solids; ph: acidity.\nlower_pressure and upper_pressure: vacuum-line pressure below and above the fluid line.\ncake_thickness: thickness on the drum.\nvaridriv_speed: control setting; drum_speed: measured rotation speed.\nThe reviewed dictionary does not establish physical units for pressure, thickness or speed; retain source-scale labels."
+  },
+  {
+    "objectID": "extended-cases/case-05-mountain-states-potato.html#describe-the-gap-from-the-target",
+    "href": "extended-cases/case-05-mountain-states-potato.html#describe-the-gap-from-the-target",
+    "title": "Extended Case 5 — Mountain States Potato",
+    "section": "3. Describe the gap from the target",
+    "text": "3. Describe the gap from the target\n\nknitr::kable(data.frame(variable = names(potato),\n  mean = sapply(potato, mean), sd = sapply(potato, sd),\n  min = sapply(potato, min), max = sapply(potato, max)),\n  row.names = FALSE, digits = 3)\n\n\n\n\nvariable\nmean\nsd\nmin\nmax\n\n\n\n\nsolids\n11.093\n1.373\n9.40\n17.800\n\n\nph\n3.981\n0.267\n3.40\n4.600\n\n\nlower_pressure\n14.426\n1.987\n8.00\n18.000\n\n\nupper_pressure\n15.315\n2.109\n8.00\n19.000\n\n\ncake_thickness\n0.438\n0.131\n0.25\n0.875\n\n\nvaridriv_speed\n5.778\n0.538\n4.00\n6.000\n\n\ndrum_speed\n38.211\n6.328\n30.43\n60.400\n\n\n\n\nknitr::kable(data.frame(measurements = nrow(potato),\n  below_12_pct = 100 * mean(potato$solids &lt; 12),\n  at_or_below_12_pct = 100 * mean(potato$solids &lt;= 12)), digits = 2)\n\n\n\n\nmeasurements\nbelow_12_pct\nat_or_below_12_pct\n\n\n\n\n54\n90.74\n92.59\n\n\n\n\nggplot(potato, aes(solids)) +\n  geom_histogram(binwidth = .5, fill = petra_accent, colour = \"white\") +\n  geom_vline(xintercept = 12, colour = petra_ink, linewidth = 1) +\n  labs(x = \"Filter-cake solids (%)\", y = \"Process measurements\")\n\n\n\n\n\n\n\n\n\nThe 12% line is a business reference, not an estimated statistical control limit.\n“Below 12%” and “not above 12%” use different comparisons for values exactly at 12.\nThe percentages describe the 54 records; repeated measurements do not establish the plant-wide failure rate."
+  },
+  {
+    "objectID": "extended-cases/case-05-mountain-states-potato.html#explore-associations-and-predictor-overlap",
+    "href": "extended-cases/case-05-mountain-states-potato.html#explore-associations-and-predictor-overlap",
+    "title": "Extended Case 5 — Mountain States Potato",
+    "section": "4. Explore associations and predictor overlap",
+    "text": "4. Explore associations and predictor overlap\n\nknitr::kable(cor(potato), digits = 2)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsolids\nph\nlower_pressure\nupper_pressure\ncake_thickness\nvaridriv_speed\ndrum_speed\n\n\n\n\nsolids\n1.00\n0.50\n-0.34\n-0.34\n-0.28\n0.25\n-0.10\n\n\nph\n0.50\n1.00\n0.12\n0.12\n-0.36\n0.33\n-0.29\n\n\nlower_pressure\n-0.34\n0.12\n1.00\n0.94\n0.44\n-0.10\n-0.03\n\n\nupper_pressure\n-0.34\n0.12\n0.94\n1.00\n0.44\n-0.05\n-0.09\n\n\ncake_thickness\n-0.28\n-0.36\n0.44\n0.44\n1.00\n-0.18\n0.12\n\n\nvaridriv_speed\n0.25\n0.33\n-0.10\n-0.05\n-0.18\n1.00\n-0.94\n\n\ndrum_speed\n-0.10\n-0.29\n-0.03\n-0.09\n0.12\n-0.94\n1.00\n\n\n\n\nggplot(potato, aes(ph, solids)) + geom_point(colour = petra_ink) +\n  geom_smooth(method = \"lm\", formula = y ~ x, colour = petra_ink) +\n  labs(x = \"pH\", y = \"Filter-cake solids (%)\")\n\n\n\n\n\n\n\n\n\nCorrelation describes linear association; inspect plots before treating it as an adequate summary.\nStrong predictor correlations can make individual adjusted slopes unstable.\nDo not interpret a marginal pH association as a demonstrated process intervention effect."
+  },
+  {
+    "objectID": "extended-cases/case-05-mountain-states-potato.html#fit-the-full-regression",
+    "href": "extended-cases/case-05-mountain-states-potato.html#fit-the-full-regression",
+    "title": "Extended Case 5 — Mountain States Potato",
+    "section": "5. Fit the full regression",
+    "text": "5. Fit the full regression\n\nfull &lt;- lm(solids ~ ph + lower_pressure + upper_pressure +\n  cake_thickness + varidriv_speed + drum_speed, data = potato)\nsummary(full)\n\n\nCall:\nlm(formula = solids ~ ph + lower_pressure + upper_pressure + \n    cake_thickness + varidriv_speed + drum_speed, data = potato)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-1.4287 -0.4711 -0.0692  0.3339  4.8631 \n\nCoefficients:\n                Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)    -13.50253    7.85428  -1.719   0.0922 .  \nph               2.94422    0.64822   4.542 3.88e-05 ***\nlower_pressure  -0.15421    0.21013  -0.734   0.4667    \nupper_pressure  -0.10619    0.19638  -0.541   0.5912    \ncake_thickness   1.50329    1.39232   1.080   0.2858    \nvaridriv_speed   1.79546    0.83886   2.140   0.0375 *  \ndrum_speed       0.14897    0.07001   2.128   0.0386 *  \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.043 on 47 degrees of freedom\nMultiple R-squared:  0.4885,    Adjusted R-squared:  0.4232 \nF-statistic: 7.482 on 6 and 47 DF,  p-value: 1.166e-05\n\nconfint(full)\n\n                       2.5 %    97.5 %\n(Intercept)    -29.303292556 2.2982419\nph               1.640157149 4.2482739\nlower_pressure  -0.576947980 0.2685199\nupper_pressure  -0.501247641 0.2888686\ncake_thickness  -1.297697193 4.3042706\nvaridriv_speed   0.107902180 3.4830246\ndrum_speed       0.008117934 0.2898192\n\n\n\nEach slope describes the fitted solids difference holding the other included predictors fixed.\nWith solids measured in percent, a one-unit predictor change corresponds to a percentage-point difference in solids.\nConventional coefficient tests and intervals require suitable errors and sampling/model assumptions.\nThe missing day/time identifiers limit checks of temporal dependence; nominal p-values are conditional, not validated process evidence."
+  },
+  {
+    "objectID": "extended-cases/case-05-mountain-states-potato.html#check-diagnostics-before-using-the-model",
+    "href": "extended-cases/case-05-mountain-states-potato.html#check-diagnostics-before-using-the-model",
+    "title": "Extended Case 5 — Mountain States Potato",
+    "section": "6. Check diagnostics before using the model",
+    "text": "6. Check diagnostics before using the model\n\npar(mfrow = c(2, 2))\nplot(full)\n\n\n\n\n\n\n\npar(mfrow = c(1, 1))\ninfluence &lt;- data.frame(source_row = seq_len(nrow(potato)),\n  cooks_distance = cooks.distance(full), leverage = hatvalues(full))\nknitr::kable(head(influence[order(-influence$cooks_distance), ], 5), digits = 3)\n\n\n\n\n\nsource_row\ncooks_distance\nleverage\n\n\n\n\n35\n35\n0.446\n0.113\n\n\n28\n28\n0.442\n0.333\n\n\n29\n29\n0.087\n0.088\n\n\n16\n16\n0.072\n0.317\n\n\n25\n25\n0.068\n0.245\n\n\n\n\n\n\nInspect curvature, changing residual spread, unusual residuals and influential rows.\nRow numbers identify records; they are not verified timestamps.\nA diagnostic flag is a reason to investigate, not an automatic rule for deleting a measurement.\n\n\nA direct collinearity check\n\npredictor_names &lt;- names(potato)[names(potato) != \"solids\"]\nvif &lt;- sapply(predictor_names, function(variable) {\n  others &lt;- setdiff(predictor_names, variable)\n  1 / (1 - summary(lm(reformulate(others, variable), data = potato))$r.squared)\n})\nknitr::kable(data.frame(predictor = names(vif), VIF = as.numeric(vif)), digits = 2)\n\n\n\n\npredictor\nVIF\n\n\n\n\nph\n1.46\n\n\nlower_pressure\n8.49\n\n\nupper_pressure\n8.35\n\n\ncake_thickness\n1.61\n\n\nvaridriv_speed\n9.92\n\n\ndrum_speed\n9.56\n\n\n\n\n\n\nEach VIF compares a predictor with the other predictors; it measures variance inflation from their linear overlap.\nLarge VIFs warn that holding the other predictors fixed may describe combinations with little support in the data.\nVIF does not assess omitted confounding or establish a causal model."
+  },
+  {
+    "objectID": "extended-cases/case-05-mountain-states-potato.html#compare-a-simpler-model-cautiously",
+    "href": "extended-cases/case-05-mountain-states-potato.html#compare-a-simpler-model-cautiously",
+    "title": "Extended Case 5 — Mountain States Potato",
+    "section": "7. Compare a simpler model cautiously",
+    "text": "7. Compare a simpler model cautiously\n\nreduced &lt;- lm(solids ~ ph + cake_thickness + drum_speed, data = potato)\nknitr::kable(AIC(full, reduced), digits = 2)\n\n\n\n\n\ndf\nAIC\n\n\n\n\nfull\n8\n166.30\n\n\nreduced\n5\n179.67\n\n\n\n\nsummary(reduced)\n\n\nCall:\nlm(formula = solids ~ ph + cake_thickness + drum_speed, data = potato)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-1.3360 -0.6110 -0.1941  0.1124  5.7761 \n\nCoefficients:\n               Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)     1.42148    3.42858   0.415 0.680211    \nph              2.45269    0.69267   3.541 0.000873 ***\ncake_thickness -1.22410    1.36387  -0.898 0.373743    \ndrum_speed      0.01155    0.02746   0.421 0.675759    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.21 on 50 degrees of freedom\nMultiple R-squared:  0.2679,    Adjusted R-squared:  0.2239 \nF-statistic: 6.098 on 3 and 50 DF,  p-value: 0.001282\n\n\n\nThis reduced specification is a course illustration, not a textbook-selected model or a verified optimum.\nAIC balances fit and complexity for comparable models fitted to the same response and records.\nA lower in-sample AIC does not demonstrate reliable future prediction or causal effects.\nProcess knowledge and validation on later, time-identified measurements are needed before operational use."
+  },
+  {
+    "objectID": "extended-cases/case-05-mountain-states-potato.html#independent-production-briefing",
+    "href": "extended-cases/case-05-mountain-states-potato.html#independent-production-briefing",
+    "title": "Extended Case 5 — Mountain States Potato",
+    "section": "8. Independent production briefing",
+    "text": "8. Independent production briefing\n\nReport the mean solids and the percentages below, and at or below, 12%; explain the denominator.\nIdentify the strongest predictor overlaps using correlations and VIFs.\nInterpret one coefficient from the full model in correct units, including what is held constant.\nCompare full and reduced models using fit, diagnostics and process interpretability.\nInvestigate the most influential record. If you fit a sensitivity model without it, retain and report the original full-data model too.\nPropose additional data collection with timestamps, day IDs and relevant operating conditions.\nDesign a controlled follow-up investigation of one promising factor within feasible operating ranges."
+  },
+  {
+    "objectID": "extended-cases/case-05-mountain-states-potato.html#submission",
+    "href": "extended-cases/case-05-mountain-states-potato.html#submission",
+    "title": "Extended Case 5 — Mountain States Potato",
+    "section": "Submission",
+    "text": "Submission\n\nOne model-comparison table and two charts serving different questions.\nA 150–200-word executive summary distinguishing observed association, uncertain prediction and proposed controlled investigation.\nDo not recommend immediately changing plant settings based solely on these observational regressions."
   }
 ]

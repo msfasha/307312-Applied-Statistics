@@ -67,7 +67,7 @@ causal effects. Historical associations are not forecasts.
 - All 20 numerical observations are preserved; the source's two columns are reshaped into long form.
 - Independent-group Welch t analysis is the course default. The book's pooled-variance test assumes equal variances and gives a slightly different interval/p-value.
 - Random assignment supports the within-experiment comparison. Random selection of stores from all supermarkets is not established. The textbook scenario is not independently verified field research.
-- Profit per case, display cost and displaced sales are absent; do not fabricate a profitability calculation.
+- Profit per case, display cost and displaced sales are absent. Extended Case 3 uses explicitly hypothetical margins and costs for sensitivity analysis; these are not source observations.
 
 ## Consumer: income, household size and card charges
 
@@ -81,6 +81,33 @@ causal effects. Historical associations are not forecasts.
 - No rows or numerical values are changed. Source headers are renamed for R.
 - Authenticity and probability sampling are not independently established. Treat regression inference as conditional on a suitable model and target population, not as causal evidence or verified lending forecasts.
 
+## Extended Business Cases: ninth-edition publisher data
+
+- Source: Berenson, Levine and Krehbiel, *Basic Business Statistics: Concepts and Applications*, ninth edition, and its local publisher workbook collection.
+- These are historical case data, not independently authenticated contemporary business measurements.
+- All numerical observations are preserved. Headers are standardized for R; the transformations below exclude workbook chart helpers or summary rows.
+- Calendar dates and units not established by the source are not invented.
+- Student notebooks stay together under `extended-cases/`; source workbooks and instructor solutions are excluded from downloads.
+
+| File | Records and observational unit | Variables and limits |
+|---|---|---|
+| `extended-herald-calls.csv` | 90 days, SH2 | `day`: source day number; `calls`: telephone calls that day. `Bins` and `Midpoints` chart helpers excluded. |
+| `extended-herald-marketing.csv` | 24 months, SH13 | `hours`: telemarketing hours per month; `new_subscriptions`: new monthly subscriptions. No calendar/month identifier; do not join to SH16 by row. |
+| `extended-herald-subscriptions.csv` | 24 months, SH16 | `month`: source month index 1–24; `subscriptions`: total home-delivery subscription base, a stock rather than a monthly inflow. |
+| `extended-oxford-summary.csv` | One reported case summary, not raw boxes | `n=25`, `sample_mean_g=372.5`, assumed known `population_sd_g=15`, `target_mean_g=368`, `alpha=0.05`. Transcribed from printed p. 302; the separate CEREALS nutrition file is unrelated. |
+| `extended-parachute.csv` | 20 tested parachutes; five per supplier | `supplier`: Supplier 1–4; `strength`: original tensile-strength scale, physical force unit unspecified. Only the first five measurement rows in each source supplier column; summary rows excluded. |
+| `extended-potato.csv` | 54 process measurements, collected several times daily over 20 days | `solids`: percentage solids; `ph`: acidity; `lower_pressure`, `upper_pressure`: vacuum-line pressures; `cake_thickness`: drum cake thickness; `varidriv_speed`: control setting; `drum_speed`: measured drum speed. Pressure/thickness/speed units and timestamps are unestablished. Temporal dependence may affect regression inference. |
+| `extended-harnswell.csv` | 150 rollers; five per source batch, 30 batches | `batch`: source `Day` identifier retained as a subgroup; `diameter`: inches. Engineering limits 0.5072–0.5075 inclusive. Preserve subgroup membership and source order. |
+
+### Case sources and substantive limits
+
+- Springville: Chapters 2, 13 (pp. 536–537) and 16 (pp. 689–690). The files describe different units and are not linked records.
+- Oxford: Chapters 7 (p. 232) and 9 (pp. 296–303; reported numerical inputs p. 302). Simulated weights/means are clearly labelled hypothetical. No raw box weights are reconstructed.
+- Perfect Parachute: Chapter 11, pp. 388 and 393–399. The one-way case does not combine its 20 measurements with the separate supplier-by-loom experiment.
+- Mountain States Potato: Chapter 15, p. 623, and dictionary p. 790. The business goal is solids above 12%; below 12 and at-or-below 12 are different counts. Observational regression does not identify causal setting changes.
+- Harnswell: Chapter 18, pp. 752–754. The workbook has **56** above-specification measurements (37.33%), whereas the narrative says **55** (36.67%). We retain workbook values. Initial chart limits flag batch 17; capability should not be claimed for an unstable process. Specification compliance is not process stability.
+- BLK uses the existing `cola.csv`, with the same measurements as Part 3. Fixed assumed margins/costs in its independent task are not publisher financial data.
+
 ## Reproduction and preservation
 
 - Editable teaching CSVs live only here under the course-root `data/` folder.
@@ -88,3 +115,4 @@ causal effects. Historical associations are not forecasts.
 - `scripts/prepare-business-data.py` verifies pinned source hashes, runs the R exporter and verifies the CSV hashes. It requires the local source workbooks and maintainer package `readxl`.
 - Local-only provenance hashes and source checks are recorded in `instructor/business-data-provenance.json`; these are excluded from student downloads.
 - Students need only the CSVs and ordinary R packages listed in the project README.
+- `scripts/prepare-extended-data.py` recreates the seven extension CSVs from local publisher workbooks and the documented Oxford inputs, recording source/output hashes under `instructor/extended-cases-provenance.json`.
