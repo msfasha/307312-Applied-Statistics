@@ -1,12 +1,12 @@
 ---
-title: "Course"
-subtitle: "307312 Applied Statistics"
+title: "307312 Applied Statistics"
+subtitle: "Masters Level"
 toc: false
 ---
 
 Choose a part to find its lessons, downloads and practical work.
 
-::: {.course-navigation}
+::: {.course-navigation .course-parts}
 ::: {.course-card}
 ## Part 1
 
@@ -17,7 +17,7 @@ Four notebooks: introduction, basic concepts, dplyr and ggplot2.
 [Open Part 1](part-1.qmd){.btn .btn-primary}
 :::
 
-::: {.course-card}
+::: {.course-card #part-2-practicals}
 ## Part 2
 
 **Descriptive Statistics**
@@ -38,4 +38,8 @@ Slides covering probability, estimation, hypothesis testing and regression.
 :::
 :::
 
-[Download RStudio files (.zip)](../downloads/applied-statistics-rstudio.zip) to run and edit the course notebooks.
+## Links and downloads
+
+- [RStudio files (.zip)](../downloads/applied-statistics-rstudio.zip) — notebooks and data for running the code.
+- [PDF collection (.zip)](../downloads/applied-statistics-pdfs.zip) — all lessons and scenarios for reading.
+- [Extended scenarios](../extended-cases/index.qmd){#extended-business-cases} — optional business applications, including Superstore and six further cases.

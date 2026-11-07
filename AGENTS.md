@@ -283,3 +283,9 @@
 - User superseded per-import `data_dir` discovery: open `Applied-Statistics.Rproj`, keep execution at the project root, and read fixed `data/...csv` paths directly.
 - Use the project root for RStudio chunks, Quarto rendering and validation. The independent practical has a hidden render setup to use the parent course root.
 - Keep source JSON examples and descriptive slide reference panels synchronized. Reference PPTX/PDF files and historical archives stay unchanged.
+
+## Direct course home page — 7 November 2026
+
+- User made Parts 1–3 the home page, stacked vertically. Put both student bundle downloads and a simple Extended scenarios link below the parts.
+- Course navigation opens the root home page. Retain `course/index.qmd` as a compatible entry page; extended cases stay available through the lower link.
+- Build, commit, push and publish this interface change and verify the live release.

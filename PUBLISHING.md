@@ -119,4 +119,4 @@ The user explicitly authorized the current push and website update.
 
 ## Simplified interface
 
-The home page presents Course and Extended scenarios. course/index.qmd links the three part landing pages, which collect their own HTML/PDF and practical resources. Part 3 practical is coming soon, without a placeholder download. NAVIGATION_PAGES in scripts/course_documents.py tracks the landing pages for packaging and validation. These do not add PDFs to the sixteen-document contract.
+The home page presents Parts 1–3 vertically and links directly to their landing pages. Both bundle downloads and a simple Extended scenarios link appear below the parts. The navbar Course link opens the home page; course/index.qmd remains a compatible entry page. Part landing pages collect their own HTML/PDF and practical resources. Part 3 practical is coming soon, without a placeholder download. NAVIGATION_PAGES in scripts/course_documents.py tracks the landing pages for packaging and validation. These do not add PDFs to the sixteen-document contract.

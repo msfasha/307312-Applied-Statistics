@@ -66,9 +66,7 @@ website:
   navbar:
     left:
       - text: "Course"
-        href: course/index.qmd
-      - text: "Extended scenarios"
-        href: extended-cases/index.qmd
+        href: index.qmd
 format:
   html:
     theme: cosmo
