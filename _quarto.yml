@@ -3,6 +3,15 @@ project:
   output-dir: _build/website
   execute-dir: project
   resources:
+    - data/descriptive-statistics/students.csv
+    - data/descriptive-statistics/README.md
+    - data/inferential-statistics/paired_scores.csv
+    - data/inferential-statistics/graduate_salaries.csv
+    - data/inferential-statistics/female_major_salaries.csv
+    - data/inferential-statistics/teaching_methods.csv
+    - data/inferential-statistics/teaching_gender.csv
+    - data/inferential-statistics/houses.csv
+    - data/inferential-statistics/README.md
     - data/business/superstore-lines.csv
     - data/business/cola.csv
     - data/business/consumer.csv

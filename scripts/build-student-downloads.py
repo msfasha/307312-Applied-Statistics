@@ -73,7 +73,8 @@ with zipfile.ZipFile(SITE/'downloads/applied-statistics-rstudio.zip','w',zipfile
     # No instructor files, archives, original slides, books, or build caches.
     names=['assets/petra-theme.md','assets/practical-print.css','assets/petra-brand.css','assets/source-slides.css','Applied-Statistics.Rproj','_quarto.yml','index.qmd']+['lessons/'+p+'.qmd' for p in PARTS]+['practicals/'+p+'.qmd' for p in PRACTICALS]+['practicals/_quarto.yml','practicals/practical-01-cereals.qmd','practicals/_includes/petra-plots.R','lessons/_includes/course-tools.R','scripts/finalize-preview.py','scripts/finalize-practical-preview.py','scripts/preview-practicals.py']
     names += ['extended-cases/'+p+'.qmd' for p in EXTENDED]
-    for folder in ['data/business']:
+    for folder in ['data/business', 'data/descriptive-statistics', 'data/inferential-statistics',
+                   'assets/descriptive-statistics', 'assets/inferential-statistics', 'lessons/_includes']:
         names.extend(str(p.relative_to(ROOT)) for p in (ROOT/folder).rglob('*') if p.is_file() and p.suffix.lower() in ['.png','.jpg','.jpeg','.svg','.css','.qmd','.csv','.json','.md','.R'])
     # Resources must be restricted to the same explicit teaching files as the site.
     import re
@@ -103,11 +104,13 @@ with zipfile.ZipFile(SITE/'downloads/applied-statistics-rstudio.zip','w',zipfile
 8. Choose optional activities in extended-cases/. Each case lists prerequisites.
    Run `quarto render extended-cases/case-02-oxford-cereal.qmd` for one case.
 
-The lessons use Superstore (US, 2023–2025), COLA and Consumer CSVs.
+Parts 2 and 3 preserve the original slide-based lessons, including Excel instructions
+and labeled R examples. Their original teaching CSVs and diagrams are included.
+The separate R practicals use Superstore (US, 2023–2025).
 The extended cases add historical ninth-edition business cases and summary inputs.
 All twelve notebooks are included; choose the extended cases assigned by your instructor.
 See data/business/README.md for provenance, units and limitations.
-Part 3 includes the inferential activities and independent business briefings.
+The six extended cases provide separate business applications of course concepts.
 Python 3 is needed for the small HTML post-render step.
 PDF and ZIP download links point to the published website; local rendering creates HTML.
 Keep the complete folder structure. Import cells locate the shared data/ folder

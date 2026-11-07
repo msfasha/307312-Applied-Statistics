@@ -39,7 +39,7 @@ if __name__ == '__main__':
     names = ['index.html'] + [folder+'/'+name+'.html' for folder, name in DOCUMENTS]
     names += ['pdf/'+name+'.pdf' for _, name in DOCUMENTS]
     names += ['downloads/applied-statistics-rstudio.zip', 'downloads/applied-statistics-pdfs.zip']
-    names += re.findall(r'^    - (data/business/[^\n]+)', (ROOT/'_quarto.yml').read_text(), re.M)
+    names += re.findall(r'^    - (data/[^\n]+)', (ROOT/'_quarto.yml').read_text(), re.M)
     verified = []
     for name in names:
         data = fetch(name, revision)

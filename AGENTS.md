@@ -185,3 +185,23 @@
 - Harnswell workbook contains 56 above-specification rollers; book narrative says 55. Retain measurements and report the discrepancy. Do not claim capability from unstable initial charts or delete batch 17 automatically.
 - `Parachute2.xls` does have raw loom observations on its `Data` sheet, contrary to the supplied draft's summary-only claim. The adopted case analyses the separate one-way dataset only.
 - Potato has repeated measurements over 20 days without timestamps/day IDs; regression inference remains conditional. Preserve unestablished unit/period limits, source attribution and the distinction between below 12% and not above 12%.
+
+## Restore original core; retain practicals and six cases — 7 November 2026
+
+- Latest user clarification supersedes the Superstore rewrite of the core lessons:
+  use the original slide-based descriptive and inferential lessons from `70bf7ee`.
+  Preserve their original text, figures, teaching sequence, Excel instructions,
+  collection/survey addition and labeled R equivalents. Keep the burgundy theme.
+- Practical R applications stay separate from these core slides. Retain the
+  three current practicals and all six recently approved extended business cases.
+  Do not replace the core slides with a business narrative or case examples.
+- The active publication includes the original lesson teaching CSVs under
+  `data/descriptive-statistics/` and `data/inferential-statistics/`, in addition
+  to the approved business CSVs. Only explicitly allowed CSVs/guides enter bundles;
+  original workbooks and instructor/source provenance remain local-only.
+- Preserve all twelve notebook/PDF URLs and both student bundles. The publisher
+  checks all 88 descriptive slides and 141 inferential slides before deployment.
+- Future practical/case work must preserve the core lessons unless the user
+  explicitly authorizes a change to the original slide material.
+- A safety copy of the pre-restoration revision is on Git branch
+  `codex/backup-before-original-course-restore-20261107`.

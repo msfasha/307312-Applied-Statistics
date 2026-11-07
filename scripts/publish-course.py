@@ -13,7 +13,7 @@ def validate(site):
     required += ['practicals/'+p+'.html' for p in practicals]+['pdf/'+p+'.pdf' for p in practicals]
     required += ['extended-cases/'+p+'.html' for p in EXTENDED]+['pdf/'+p+'.pdf' for p in EXTENDED]
     import re
-    required += re.findall(r'^    - (data/business/[^\n]+)', (ROOT/'_quarto.yml').read_text(), re.M)
+    required += re.findall(r'^    - (data/[^\n]+)', (ROOT/'_quarto.yml').read_text(), re.M)
     required += ['data/business/'+p for p in ['superstore-lines.csv','cola.csv','consumer.csv','README.md']]
     required += ['downloads/applied-statistics-rstudio.zip','downloads/applied-statistics-pdfs.zip']
     for name in required:
@@ -22,13 +22,21 @@ def validate(site):
     if forbidden:raise RuntimeError('Local-only files in generated site: '+str(forbidden[:5]))
     expected = {
         'lessons/01-introduction-to-r.html': ['Superstore', 'category_summary'],
-        'lessons/02-descriptive-statistics.html': ['Superstore', '2.9 Put the evidence together'],
-        'lessons/03-inferential-statistics.html': ['COLA', 'Consumer', '3.10 Your inferential business briefing'],
+        'lessons/02-descriptive-statistics.html': ['What is Statistics?', 'source-title-88'],
+        'lessons/03-inferential-statistics.html': ['part3-01-slide-01', 'part3-04-slide-21'],
     }
     for page, markers in expected.items():
         content = (site/page).read_text()
         if not all(marker in content for marker in markers):
-            raise RuntimeError('Incomplete business course: '+page)
+            raise RuntimeError('Incomplete course: '+page)
+    # Guard the restored core against future replacement by practical/case rewrites.
+    descriptive = (site/'lessons/02-descriptive-statistics.html').read_text()
+    if any(f'id="slide-{i:02d}"' not in descriptive for i in range(1, 89)):
+        raise RuntimeError('Incomplete original descriptive slides')
+    inferential = (site/'lessons/03-inferential-statistics.html').read_text()
+    if any(f'id="part3-{k:02d}-slide-{i:02d}"' not in inferential
+           for k, count in enumerate([37, 26, 57, 21], 1) for i in range(1, count+1)):
+        raise RuntimeError('Incomplete original inferential slides: expected 141')
 parser=argparse.ArgumentParser();parser.add_argument('--skip-render',action='store_true');args=parser.parse_args()
 if not args.skip_render:
     previous=ROOT/'_build/website'

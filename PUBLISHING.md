@@ -65,7 +65,7 @@ Rendered lesson pages live under `lessons/` on the website. Root-level legacy
 lesson URLs redirect to those pages. The three approved practicals are rendered independently under
 `_build/practicals/` and staged as self-contained HTML under website `practicals/`
 by `scripts/stage-practicals.py`. Only the approved pages, the compatibility
-entry page, approved data/business/ CSVs and their student data guide enter the site.
+entry page, approved lesson/business CSVs and their student data guide enter the site.
 Instructor answers, provenance manifests for these practicals, books, original
 publisher workbooks and future draft activities stay out of public downloads.
 
@@ -81,18 +81,22 @@ shared practical plot helper, practical configuration and post-render scripts.
 A full website render also renders and stages the approved practicals.
 `--skip-render` reuses lesson HTML but refreshes practical HTML before packaging.
 
-## Business-course release — 6 November 2026
+## Original core restored; applications kept separate — 7 November 2026
 
-The active lessons are authored around Superstore (R and descriptive statistics),
-Superstore sampling, COLA display experiments and Consumer regression. The original
-141-slide conversion count is historical and is not an active publication criterion.
-Validate the new lesson content, all executed cells and current source-data hashes.
+Parts 2 and 3 restore the original slide-based lessons from `70bf7ee`: all 88
+descriptive slides plus the approved collection/survey section, and all 141
+inferential slides. Preserve the original sequence, Excel examples, source
+figures and labeled R equivalents. The publisher checks these slide IDs.
+The three R practicals and all six extended cases remain separate applications.
+Do not replace the core lessons while updating practical examples.
 
-Core data resources entering the site/project: data/business/superstore-lines.csv,
-data/business/cola.csv, data/business/consumer.csv and data/business/README.md.
-Do not stage former students, funds, cereals or slide-table extracts. Package the
-shared lessons/_includes/course-tools.R helper. No readxl dependency is needed by
-students; source-workbook preparation is a maintainer-only task.
+The website and student project include only explicitly listed resources in
+`_quarto.yml`: approved `data/business/` CSVs, the previously approved de-identified
+`data/descriptive-statistics/students.csv`, the six printed-slide inference CSVs,
+and their student guides. Do not publish original measurement workbooks or source
+provenance JSONs. Include original instructional assets and all required shared
+lesson fragments alongside the current business/practical helpers in the ZIP.
+The restored original R examples use MASS, which is a recommended R package.
 
 Before committing, run python3 scripts/check-practicals.py. It checks all twelve
 notebooks, fresh-session imports from both locations, full source-cell equivalence
@@ -122,7 +126,7 @@ exports and release checks. Preserve the original six PDF URLs and add:
 The home page and navbar link Extended Business Cases; each case has its own PDF
 and student-project link. Both bundles now cover twelve documents. The RStudio
 ZIP includes the six editable case notebooks and seven canonical extension CSVs
-explicitly allowed in `_quarto.yml`, all under `data/business/`. COLA is reused
+explicitly allowed in `_quarto.yml`, under `data/business/`, alongside the restored core lesson CSVs. COLA is reused
 rather than duplicated. Do not copy the supplied ZIP, unfiltered Parachute summary
 rows, SH2 chart helpers or publisher workbooks into student outputs.
 

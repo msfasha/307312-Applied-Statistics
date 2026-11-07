@@ -21,7 +21,7 @@ execute:
 - **Question:** Which product categories deserve a closer profitability review?
 - **Data:** Tableau's fictitious Superstore; US orders placed in 2023–2025.
 - **Outcome:** Import a CSV, inspect records, build a summary and explain a chart.
-- Use this same retail dataset in Part 2 and the three practicals.
+- Use this same retail dataset in the three R practicals alongside the Part 2 slides.
 
 ## 1.1 Set up your project
 

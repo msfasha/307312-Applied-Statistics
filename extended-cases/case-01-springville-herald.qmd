@@ -17,7 +17,7 @@ execute:
 
 [Case PDF](../pdf/case-01-springville-herald.pdf) · [Student RStudio project](../downloads/applied-statistics-rstudio.zip) · [All extended cases](../index.qmd#extended-business-cases)
 
-- **Start after:** [Part 2](../lessons/02-descriptive-statistics.qmd) for Section A; [Part 3 regression](../lessons/03-inferential-statistics.qmd#simple-linear-regression) for Section B.
+- **Start after:** [Part 2](../lessons/02-descriptive-statistics.qmd) for Section A; [Part 3 regression](../lessons/03-inferential-statistics.qmd#part3-title-04-09) for Section B.
 - **Optional advanced work:** Section C introduces trend forecasting.
 - **Suggested time:** 45 minutes for A; 60 minutes for B; 30 minutes for C.
 - **Business question:** How can a newspaper describe calling activity, plan telemarketing and forecast its subscription base?

@@ -47,8 +47,6 @@ if __name__ == '__main__':
             if target.fragment and path.suffix == '.html':
                 assert unquote(target.fragment) in parsed[path].ids, (page.name, href, 'missing fragment')
     assert not (SITE/'data/practicals').exists(), 'Retired practical data leaked into site'
-    assert not (SITE/'data/descriptive-statistics').exists(), 'Retired student data leaked into site'
-    assert not (SITE/'data/inferential-statistics').exists(), 'Retired inference data leaked into site'
     for path in SITE.rglob('*'):
         if not path.is_file():
             continue
@@ -60,7 +58,7 @@ if __name__ == '__main__':
         names = set(bundle.namelist())
         assert {f'practicals/{n}.qmd' for n in PRACTICALS} <= names
         assert {f'extended-cases/{n}.qmd' for n in EXTENDED} <= names
-        allowed_data = set(re.findall(r'^    - (data/business/[^\n]+)', (ROOT/'_quarto.yml').read_text(), re.M))
+        allowed_data = set(re.findall(r'^    - (data/[^\n]+)', (ROOT/'_quarto.yml').read_text(), re.M))
         assert {n for n in names if n.startswith('data/')} == allowed_data
         for name in allowed_data:
             expected = hashlib.sha256((ROOT/name).read_bytes()).digest()
@@ -70,7 +68,11 @@ if __name__ == '__main__':
                 'data/business/README.md', 'lessons/_includes/course-tools.R',
                 'practicals/_includes/petra-plots.R', 'assets/practical-print.css', 'scripts/stage-practicals.py',
                 'scripts/preview-practicals.py', 'scripts/finalize-practical-preview.py'} <= names
-        assert not any(n.startswith(('data/practicals/', 'data/descriptive-statistics/', 'data/inferential-statistics/')) for n in names)
+        assert not any(n.startswith('data/practicals/') for n in names)
+        assert {'lessons/_includes/data-collection-and-surveys.qmd',
+                'lessons/_includes/diagrams/09-types-of-data.qmd',
+                'data/descriptive-statistics/students.csv',
+                'data/inferential-statistics/houses.csv'} <= names
         assert not any(set(Path(n).parts) & {'instructor', 'books', 'sources', 'archived', '_build'} for n in names)
         assert not any(Path(n).suffix.lower() in {'.xls', '.xlsx', '.pptx'} for n in names)
     print('Student site links, twelve-PDF bundle and complete RStudio package verified.')

@@ -3,7 +3,7 @@ title: "307312 Applied Statistics"
 subtitle: "Masters Level"
 ---
 
-Follow one retail story from R to descriptive analysis, then study sampling, a randomized display experiment and credit-card regression. Read online or use the complete offline downloads.
+Study the original descriptive and inferential slide material, apply the concepts in separate R practicals, and work through the six business cases. Read online or use the complete offline downloads.
 
 | Course part | Read online | Download |
 |---|---|---|
@@ -16,8 +16,9 @@ Follow one retail story from R to descriptive analysis, then study sampling, a r
 Apply the descriptive methods in order. Each practical includes explained R code,
 executed results, charts and independent business tasks. All three use the same fixed Superstore extract.
 
-Part 3 includes worked inference and independent briefings using Superstore sampling,
-COLA display experiments and Consumer credit-card charges.
+Part 3 preserves the original probability, estimation, hypothesis-testing and regression
+slides, including the original Excel examples and labeled R equivalents. Business
+applications are kept separately in the practicals and extended cases.
 
 | Practical | Read online | Download |
 |---|---|---|
@@ -36,7 +37,7 @@ COLA display experiments and Consumer credit-card charges.
 |---|---|---|---|
 | 1. Springville Herald | Part 2: daily calls; Part 3: regression; optional forecasting | [Open case](extended-cases/case-01-springville-herald.qmd) | [PDF](pdf/case-01-springville-herald.pdf) |
 | 2. Oxford Cereal | Part 3: sampling, estimation and one-mean testing | [Open case](extended-cases/case-02-oxford-cereal.qmd) | [PDF](pdf/case-02-oxford-cereal.pdf) |
-| 3. BLK Retail Display | Part 3: follow-up to the worked COLA comparison | [Open case](extended-cases/case-03-retail-display.qmd) | [PDF](pdf/case-03-retail-display.pdf) |
+| 3. BLK Retail Display | Part 3: independent-group comparisons applied to COLA | [Open case](extended-cases/case-03-retail-display.qmd) | [PDF](pdf/case-03-retail-display.pdf) |
 | 4. Perfect Parachute | Part 3: extend two-group comparisons to ANOVA | [Open case](extended-cases/case-04-perfect-parachute.qmd) | [PDF](pdf/case-04-perfect-parachute.pdf) |
 | 5. Mountain States Potato | Part 3: multiple regression and diagnostics | [Open case](extended-cases/case-05-mountain-states-potato.qmd) | [PDF](pdf/case-05-mountain-states-potato.pdf) |
 | 6. Harnswell Quality | After Parts 2–3: optional process-control extension | [Open case](extended-cases/case-06-harnswell-quality.qmd) | [PDF](pdf/case-06-harnswell-quality.pdf) |
