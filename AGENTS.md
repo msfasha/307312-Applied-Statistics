@@ -254,3 +254,8 @@
 
 - User explicitly requested pushing the current committed updates to GitHub and updating the website. This supersedes the earlier local-only restrictions for the Part 1 replacement and descriptive practical/Superstore reorganization.
 - Publish all sixteen approved notebook/PDF pairs and both bundles through PUBLISHING.md and verify the live release.
+
+## Separate local build command — 7 November 2026
+
+- `python3 scripts/build-course.py` builds and validates the complete local website, all approved PDFs and both student bundles without network publication.
+- `scripts/publish-course.py` invokes this builder before deploying; Git source push remains a separate explicit step.

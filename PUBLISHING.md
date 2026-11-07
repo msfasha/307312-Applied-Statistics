@@ -28,11 +28,13 @@ The home page and navbar distinguish the core practical from extended cases.
 ## Local verification
 
 ```sh
-python3 scripts/check-practicals.py
-quarto render
-python3 scripts/build-student-downloads.py
-python3 scripts/validate-student-site.py
+python3 scripts/build-course.py
 ```
+
+This command runs R checks, rebuilds HTML, exports all sixteen PDFs, rebuilds both
+student bundles and validates completeness, links and exclusions. It only writes
+local build files; it never pushes or publishes. The publishing command calls
+this same builder before uploading the generated website.
 
 Use the configured RStudio Quarto executable if `quarto` is not on PATH.
 The R checks verify fresh-session imports and all worked cells from both the
