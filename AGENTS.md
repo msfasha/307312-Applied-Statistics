@@ -303,3 +303,7 @@
 ## Public title — 7 November 2026
 
 - User removed Masters Level from the main title area and shared website title. Use 307312 Applied Statistics, with no home-page subtitle.
+
+## Remove Minard opening example — 7 November 2026
+
+- User removed the opening Grammar of Graphics subsection containing Minard's map and its historical discussion from lessons/r-04-ggplot2.qmd. Start the introduction with What is ggplot2?; preserve subsequent explanations and executable examples. Neighboring original course sources remain unchanged.

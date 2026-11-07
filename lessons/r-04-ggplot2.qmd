@@ -25,30 +25,6 @@ include-before: |
 
 ## Introduction to ggplot2
 
-### Grammar of Graphics
-
-![](../assets/introduction-to-r/Minard.png)
-
-Minard's Map or Minard's Flow Map, is a remarkable example of how data visualization can tell a powerful and complex story in a single image.
-
-The map, created in 1869, is widely considered one of the most effective and impactful pieces of statistical graphics ever produced.
-
-The maps tells us the following:
-
-1.  **Army Size Decrease**: The size of Napoleon’s army drastically reduced from over 400,000 men at the start to fewer than 10,000 by the end of the campaign.
-
-2.  **Geographical Journey**: The army's route from the western border of Russia to Moscow and back is clearly depicted.
-
-3.  **Impact of Weather**: The map highlights the severe cold temperatures during the retreat, which significantly contributed to the army’s losses.
-
-4.  **Temporal Progression**: Dates along the route show when the army reached different points, illustrating the timeline of the campaign.
-
-5.  **Catastrophic Loss**: The map visually emphasizes the catastrophic nature of the Russian campaign and its role in Napoleon’s downfall.
-
-Minard's map relates to the "Grammar of Graphics" concept by exemplifying how complex data can be effectively communicated through systematic visual components.
-
-The "Grammar of Graphics" is a framework that describes the building blocks of data visualization, allowing for the structured and meaningful presentation of data.
-
 ### What is ggplot2?
 
 `ggplot2` is a powerful and highly versatile plotting system for R, designed to help researchers, analysts, and data scientists create meaningful and visually appealing data visualizations. Based on the principles of the Grammar of Graphics, `ggplot2` allows users to construct plots by specifying graphical primitives that represent data in a declarative way. This approach enables a clear and logical structure for creating a wide variety of charts, from simple scatter plots to complex multi-panel graphics.
