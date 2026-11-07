@@ -452,7 +452,7 @@
     "href": "course/part-2.html",
     "title": "Part 2: Descriptive Statistics",
     "section": "",
-    "text": "Read the slides, then work through the 18 R examples in the practical using the supplied student dataset.\n\n\n\nResource\nRead online\nDownload\n\n\n\n\nDescriptive Statistics slides\nRead\nPDF\n\n\nR practical\nRead\nPDF\n\n\n\nDownload RStudio files (.zip) for the editable practical, data and supporting files.\nAll course parts · Next: Part 3"
+    "text": "Read the slides, then work through the 18 R examples in the practical using the supplied student dataset.\n\n\n\nResource\nRead online\nDownload\n\n\n\n\nDescriptive Statistics slides\nRead\nPDF\n\n\nR practical\nRead\nPDF\n\n\n\nDownload RStudio files (.zip) for the editable practical, data and supporting files.\nAll course parts\nNext: Part 3"
   },
   {
     "objectID": "course/part-2.html#slides",
@@ -473,7 +473,7 @@
     "href": "course/index.html",
     "title": "Course",
     "section": "",
-    "text": "Choose a part to find its lessons, downloads and practical work.\nDownload the student RStudio project to run and edit the course notebooks."
+    "text": "Choose a part to find its lessons, downloads and practical work.\nDownload RStudio files (.zip) to run and edit the course notebooks."
   },
   {
     "objectID": "course/index.html#part-1",
@@ -529,7 +529,7 @@
     "href": "course/part-1.html",
     "title": "Part 1: Introduction to R",
     "section": "",
-    "text": "Work through these four notebooks in order. Each includes its explanations and examples.\n\n\n\nNotebook\nRead online\nDownload\n\n\n\n\n1. Introduction to R\nHTML\nPDF\n\n\n2. Basic Concepts in R\nHTML\nPDF\n\n\n3. Data Manipulation using dplyr\nHTML\nPDF\n\n\n4. Introduction to ggplot2\nHTML\nPDF\n\n\n\nDownload the student RStudio project for all four editable R notebooks, data and supporting files.\nAll course parts · Next: Part 2"
+    "text": "Work through these four notebooks in order. Each includes its explanations and examples.\n\n\n\nNotebook\nRead online\nDownload\n\n\n\n\n1. Introduction to R\nRead\nPDF\n\n\n2. Basic Concepts in R\nRead\nPDF\n\n\n3. Data Manipulation using dplyr\nRead\nPDF\n\n\n4. Introduction to ggplot2\nRead\nPDF\n\n\n\nDownload RStudio files (.zip) for all four editable R notebooks, data and supporting files.\nAll course parts\nNext: Part 2"
   },
   {
     "objectID": "course/part-3.html",
