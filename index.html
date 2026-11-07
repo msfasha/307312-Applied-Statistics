@@ -101,10 +101,29 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link active" href="./index.html" aria-current="page"> 
 <span class="menu-text">Course</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./lessons/01-introduction-to-r.html"> 
-<span class="menu-text">Part 1: Introduction to R</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-part-1-introduction-to-r" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Part 1: Introduction to R</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-part-1-introduction-to-r">    
+        <li>
+    <a class="dropdown-item" href="./lessons/01-introduction-to-r.html">
+ <span class="dropdown-text">1. Introduction to R</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./lessons/r-02-basic-concepts.html">
+ <span class="dropdown-text">2. Basic Concepts in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./lessons/r-03-dplyr.html">
+ <span class="dropdown-text">3. Data Manipulation using dplyr</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./lessons/r-04-ggplot2.html">
+ <span class="dropdown-text">4. Introduction to ggplot2</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="./lessons/02-descriptive-statistics.html"> 
 <span class="menu-text">Part 2: Descriptive statistics</span></a>
@@ -137,7 +156,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#part-2-practicals" id="toc-part-2-practicals" class="nav-link active" data-scroll-target="#part-2-practicals">Part 2 practicals</a></li>
+  <li><a href="#part-2-practicals" id="toc-part-2-practicals" class="nav-link active" data-scroll-target="#part-2-practicals">Part 2 practical</a></li>
   <li><a href="#extended-business-cases" id="toc-extended-business-cases" class="nav-link" data-scroll-target="#extended-business-cases">Extended Business Cases</a></li>
   <li><a href="#work-with-r-or-study-offline" id="toc-work-with-r-or-study-offline" class="nav-link" data-scroll-target="#work-with-r-or-study-offline">Work with R or study offline</a></li>
   </ul>
@@ -166,7 +185,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Study the original descriptive and inferential slide material, apply the concepts in separate R practicals, and work through the six business cases. Read online or use the complete offline downloads.</p>
+<p>Study the original descriptive and inferential slide material, apply the concepts in separate R practicals, and work through the extended business cases. Read online or use the complete offline downloads.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -177,16 +196,31 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td>1. Introduction to R</td>
-<td><a href="./lessons/01-introduction-to-r.html">Open lesson</a></td>
+<td>Part 1 — 1. Introduction to R</td>
+<td><a href="./lessons/01-introduction-to-r.html">Open notebook</a></td>
 <td><a href="pdf/01-introduction-to-r.pdf">PDF</a></td>
 </tr>
 <tr class="even">
+<td>Part 1 — 2. Basic Concepts in R</td>
+<td><a href="./lessons/r-02-basic-concepts.html">Open notebook</a></td>
+<td><a href="pdf/r-02-basic-concepts.pdf">PDF</a></td>
+</tr>
+<tr class="odd">
+<td>Part 1 — 3. Data Manipulation using dplyr</td>
+<td><a href="./lessons/r-03-dplyr.html">Open notebook</a></td>
+<td><a href="pdf/r-03-dplyr.pdf">PDF</a></td>
+</tr>
+<tr class="even">
+<td>Part 1 — 4. Introduction to ggplot2</td>
+<td><a href="./lessons/r-04-ggplot2.html">Open notebook</a></td>
+<td><a href="pdf/r-04-ggplot2.pdf">PDF</a></td>
+</tr>
+<tr class="odd">
 <td>2. Descriptive Statistics</td>
 <td><a href="./lessons/02-descriptive-statistics.html">Open lesson</a></td>
 <td><a href="pdf/02-descriptive-statistics.pdf">PDF</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>3. Inferential Statistics</td>
 <td><a href="./lessons/03-inferential-statistics.html">Open lesson</a></td>
 <td><a href="pdf/03-inferential-statistics.pdf">PDF</a></td>
@@ -194,8 +228,8 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <section id="part-2-practicals" class="level2">
-<h2 class="anchored" data-anchor-id="part-2-practicals">Part 2 practicals</h2>
-<p>Apply the descriptive methods in order. Each practical includes explained R code, executed results, charts and independent business tasks. All three use the same fixed Superstore extract.</p>
+<h2 class="anchored" data-anchor-id="part-2-practicals">Part 2 practical</h2>
+<p>After the descriptive slides, run the companion R notebook with your instructor. It brings together all 18 R examples from the slides, with their original code and comments, introductions and guidance for reading the results. It uses the same supplied student dataset; the Excel examples remain in the slides.</p>
 <p>Part 3 preserves the original probability, estimation, hypothesis-testing and regression slides, including the original Excel examples and labeled R equivalents. Business applications are kept separately in the practicals and extended cases.</p>
 <table class="caption-top table">
 <thead>
@@ -207,19 +241,9 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td>1. Superstore — product mix and categorical tables</td>
-<td><a href="practicals/practical-01-categorical-business-data.html">Open practical</a></td>
-<td><a href="pdf/practical-01-categorical-business-data.pdf">PDF</a></td>
-</tr>
-<tr class="even">
-<td>2. Superstore — order size and numerical measures</td>
-<td><a href="practicals/practical-02-numerical-business-data.html">Open practical</a></td>
-<td><a href="pdf/practical-02-numerical-business-data.pdf">PDF</a></td>
-</tr>
-<tr class="odd">
-<td>3. Superstore — discounts, profit and group comparisons</td>
-<td><a href="practicals/practical-03-association-and-groups.html">Open practical</a></td>
-<td><a href="pdf/practical-03-association-and-groups.pdf">PDF</a></td>
+<td>Descriptive Statistics — R Practical</td>
+<td><a href="practicals/descriptive-statistics-r-practical.html">Open practical</a></td>
+<td><a href="pdf/descriptive-statistics-r-practical.pdf">PDF</a></td>
 </tr>
 </tbody>
 </table>
@@ -229,7 +253,7 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>Apply the course methods to another business setting after the core practicals or the relevant Part 3 topics.</li>
 <li>Each case stays together as one notebook, with a worked analysis and independent business tasks.</li>
-<li>Your instructor may assign selected cases or sections; completing all six is optional.</li>
+<li>Your instructor may assign selected cases or sections; the extended cases are optional.</li>
 <li>ANOVA, forecasting and process control include introductions and are marked as extensions.</li>
 </ul>
 <table class="caption-top table">
@@ -243,36 +267,42 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
+<td>Superstore — three notebooks</td>
+<td>Part 2: categorical data, numerical measures, association and groups</td>
+<td><a href="./extended-cases/superstore/index.html">Open case</a></td>
+<td>PDFs: <a href="pdf/practical-01-categorical-business-data.pdf">1</a>, <a href="pdf/practical-02-numerical-business-data.pdf">2</a>, <a href="pdf/practical-03-association-and-groups.pdf">3</a></td>
+</tr>
+<tr class="even">
 <td>1. Springville Herald</td>
 <td>Part 2: daily calls; Part 3: regression; optional forecasting</td>
 <td><a href="./extended-cases/case-01-springville-herald.html">Open case</a></td>
 <td><a href="pdf/case-01-springville-herald.pdf">PDF</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>2. Oxford Cereal</td>
 <td>Part 3: sampling, estimation and one-mean testing</td>
 <td><a href="./extended-cases/case-02-oxford-cereal.html">Open case</a></td>
 <td><a href="pdf/case-02-oxford-cereal.pdf">PDF</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>3. BLK Retail Display</td>
 <td>Part 3: independent-group comparisons applied to COLA</td>
 <td><a href="./extended-cases/case-03-retail-display.html">Open case</a></td>
 <td><a href="pdf/case-03-retail-display.pdf">PDF</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>4. Perfect Parachute</td>
 <td>Part 3: extend two-group comparisons to ANOVA</td>
 <td><a href="./extended-cases/case-04-perfect-parachute.html">Open case</a></td>
 <td><a href="pdf/case-04-perfect-parachute.pdf">PDF</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>5. Mountain States Potato</td>
 <td>Part 3: multiple regression and diagnostics</td>
 <td><a href="./extended-cases/case-05-mountain-states-potato.html">Open case</a></td>
 <td><a href="pdf/case-05-mountain-states-potato.pdf">PDF</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>6. Harnswell Quality</td>
 <td>After Parts 2–3: optional process-control extension</td>
 <td><a href="./extended-cases/case-06-harnswell-quality.html">Open case</a></td>
@@ -280,13 +310,13 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<p>The cases draw on Berenson, Levine and Krehbiel’s <em>Basic Business Statistics: Concepts and Applications</em>, ninth edition. Each identifies its source, observational unit and limits; Oxford uses reported summary inputs rather than raw box weights.</p>
+<p>The six numbered cases draw on Berenson, Levine and Krehbiel’s <em>Basic Business Statistics: Concepts and Applications</em>, ninth edition. Each identifies its source, observational unit and limits; Oxford uses reported summary inputs rather than raw box weights.</p>
 </section>
 <section id="work-with-r-or-study-offline" class="level2">
 <h2 class="anchored" data-anchor-id="work-with-r-or-study-offline">Work with R or study offline</h2>
 <ul>
-<li><a href="downloads/applied-statistics-rstudio.zip">Download the complete student RStudio project</a>: editable lessons, core practicals and six extended cases, teaching CSVs, shared styling and setup instructions. Extract the ZIP, then open <code>Applied-Statistics.Rproj</code> in RStudio.</li>
-<li><a href="downloads/applied-statistics-pdfs.zip">Download all 12 lesson, practical and extended-case PDFs</a>.</li>
+<li><a href="downloads/applied-statistics-rstudio.zip">Download the complete student RStudio project</a>: editable lessons, the descriptive R practical, Superstore and six further extended cases, teaching CSVs, shared styling and setup instructions. Extract the ZIP, then open <code>Applied-Statistics.Rproj</code> in RStudio.</li>
+<li><a href="downloads/applied-statistics-pdfs.zip">Download all 16 lesson, practical and extended-case PDFs</a>.</li>
 </ul>
 <p>The online lessons and PDFs show the code and its results. To run or change R code, use the RStudio project.</p>
 
