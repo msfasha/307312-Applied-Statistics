@@ -23,8 +23,6 @@ include-before: |
 
 ------------------------------------------------------------------------
 
-## Introduction to ggplot2
-
 ### What is ggplot2?
 
 `ggplot2` is a powerful and highly versatile plotting system for R, designed to help researchers, analysts, and data scientists create meaningful and visually appealing data visualizations. Based on the principles of the Grammar of Graphics, `ggplot2` allows users to construct plots by specifying graphical primitives that represent data in a declarative way. This approach enables a clear and logical structure for creating a wide variety of charts, from simple scatter plots to complex multi-panel graphics.
