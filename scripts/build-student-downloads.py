@@ -6,7 +6,7 @@ from urllib.parse import urljoin, urlsplit
 from html import unescape, escape
 ROOT=Path(__file__).resolve().parents[1]
 SITE=ROOT/'_build/website'
-from course_documents import LESSONS as PARTS, PRACTICALS, EXTENDED, DOCUMENTS
+from course_documents import LESSONS as PARTS, PRACTICALS, EXTENDED, SUPERSTORE, DOCUMENTS
 chrome=shutil.which('google-chrome') or shutil.which('chromium')
 if not chrome: raise RuntimeError('Google Chrome or Chromium is required to export the lesson PDFs.')
 (SITE/'pdf').mkdir(exist_ok=True)
@@ -72,7 +72,9 @@ with zipfile.ZipFile(SITE/'downloads/applied-statistics-pdfs.zip','w',zipfile.ZI
 with zipfile.ZipFile(SITE/'downloads/applied-statistics-rstudio.zip','w',zipfile.ZIP_DEFLATED) as z:
     # No instructor files, archives, original slides, books, or build caches.
     names=['assets/petra-theme.md','assets/practical-print.css','assets/petra-brand.css','assets/source-slides.css','Applied-Statistics.Rproj','_quarto.yml','index.qmd']+['lessons/'+p+'.qmd' for p in PARTS]+['practicals/'+p+'.qmd' for p in PRACTICALS]+['practicals/_quarto.yml','practicals/practical-01-cereals.qmd','practicals/_includes/petra-plots.R','lessons/_includes/course-tools.R','scripts/finalize-preview.py','scripts/finalize-practical-preview.py','scripts/preview-practicals.py']
-    names += ['extended-cases/'+p+'.qmd' for p in EXTENDED]
+    names += [folder+'/'+p+'.qmd' for folder, p in DOCUMENTS]
+    names += ['extended-cases/superstore/index.qmd', 'scripts/course_documents.py']
+    names += ['practicals/'+p+'.qmd' for p in SUPERSTORE]
     for folder in ['data/r-introduction', 'assets/introduction-to-r', 'data/business', 'data/descriptive-statistics', 'data/inferential-statistics',
                    'assets/descriptive-statistics', 'assets/inferential-statistics', 'lessons/_includes']:
         names.extend(str(p.relative_to(ROOT)) for p in (ROOT/folder).rglob('*') if p.is_file() and p.suffix.lower() in ['.gif','.png','.jpg','.jpeg','.svg','.css','.qmd','.csv','.json','.md','.R'])
@@ -83,6 +85,8 @@ with zipfile.ZipFile(SITE/'downloads/applied-statistics-rstudio.zip','w',zipfile
     for name in sorted(set(names)):
         if name.endswith('.qmd'):
             text=(ROOT/name).read_text()
+            text=text.replace('](../../pdf/','](https://msfasha.github.io/307312-Applied-Statistics/pdf/')
+            text=text.replace('](../../downloads/','](https://msfasha.github.io/307312-Applied-Statistics/downloads/')
             text=text.replace('](../pdf/','](https://msfasha.github.io/307312-Applied-Statistics/pdf/')
             text=text.replace('](../downloads/','](https://msfasha.github.io/307312-Applied-Statistics/downloads/')
             text=text.replace('](pdf/','](https://msfasha.github.io/307312-Applied-Statistics/pdf/')
@@ -98,19 +102,22 @@ with zipfile.ZipFile(SITE/'downloads/applied-statistics-rstudio.zip','w',zipfile
 3. Run this once in the R console:
    install.packages(c("knitr", "rmarkdown", "dplyr", "ggplot2", "readr", "tidyr", "zoo"))
 4. Open lessons/01-introduction-to-r.qmd, followed by r-02-basic-concepts.qmd, r-03-dplyr.qmd and r-04-ggplot2.qmd, then Parts 2 and 3. Run code chunks in order.
-5. Open practicals/practical-01-categorical-business-data.qmd, then Practicals 2 and 3.
+5. After the Part 2 slides, open practicals/descriptive-statistics-r-practical.qmd.
+   Run its 18 worked examples in order; these use the original student teaching CSV.
 6. Choose Render to view a notebook. Run `quarto render practicals` for practicals.
 7. Run `quarto render` to build the lesson website.
-8. Choose optional activities in extended-cases/. Each case lists prerequisites.
+8. Choose optional activities in extended-cases/. Superstore is grouped under
+   extended-cases/superstore/; start with its index.qmd. Each case lists prerequisites.
    Run `quarto render extended-cases/case-02-oxford-cereal.qmd` for one case.
 
-Parts 2 and 3 preserve the original slide-based lessons, including Excel instructions
-and labeled R examples. Their original teaching CSVs and diagrams are included.
-The separate R practicals use Superstore (US, 2023–2025).
+Parts 2 and 3 preserve the original slide-based lessons and Excel instructions.
+Part 2 R examples are collected in the separate descriptive R practical; Part 3
+keeps its labeled R examples. Their original teaching CSVs and diagrams are included.
+The Superstore extended case uses the US 2023–2025 extract.
 The extended cases add historical ninth-edition business cases and summary inputs.
-All fifteen notebooks are included; choose the extended cases assigned by your instructor.
+All sixteen notebooks are included; choose the extended cases assigned by your instructor.
 See data/business/README.md for provenance, units and limitations.
-The six extended cases provide separate business applications of course concepts.
+The six numbered extended cases provide separate business applications of course concepts.
 Python 3 is needed for the small HTML post-render step.
 PDF and ZIP download links point to the published website; local rendering creates HTML.
 Keep the complete folder structure. Import cells locate the shared data/ folder

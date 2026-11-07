@@ -11,8 +11,7 @@ def validate(site):
     required += [f'{folder}/{name}.html' for folder, name in DOCUMENTS]
     required += ['pdf/'+name+'.pdf' for _, name in DOCUMENTS]
     required += ['pdf/'+p+'.pdf' for p in ['01-introduction-to-r','02-descriptive-statistics','03-inferential-statistics']]
-    practicals=['practical-01-categorical-business-data','practical-02-numerical-business-data','practical-03-association-and-groups']
-    required += ['practicals/'+p+'.html' for p in practicals]+['pdf/'+p+'.pdf' for p in practicals]
+    required += ['extended-cases/superstore/index.html']
     required += ['extended-cases/'+p+'.html' for p in EXTENDED]+['pdf/'+p+'.pdf' for p in EXTENDED]
     import re
     required += re.findall(r'^    - (data/[^\n]+)', (ROOT/'_quarto.yml').read_text(), re.M)

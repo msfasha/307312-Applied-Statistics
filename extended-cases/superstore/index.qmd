@@ -1,0 +1,20 @@
+---
+title: "Superstore — Extended Business Case"
+subtitle: "Three descriptive R applications · 307312 Applied Statistics — Masters Level"
+---
+
+- **Start after:** [Part 2 slides](../../lessons/02-descriptive-statistics.qmd) and the [Descriptive Statistics R Practical](../../practicals/descriptive-statistics-r-practical.html).
+- **Business:** Superstore, Tableau’s fictitious retailer; the fixed official extract downloaded 6 November 2026 contains US orders placed in 2023–2025.
+- **Scope:** 6,682 product lines, 3,322 orders and 782 customer IDs. Keep these observational units distinct.
+- Work through the three notebooks in order. Each includes explained R code, worked results and independent business tasks.
+- [Data guide](../../data/business/README.md) · [Student RStudio project](../../downloads/applied-statistics-rstudio.zip).
+
+| Notebook | Focus | Download |
+|---|---|---|
+| [1. Product mix](practical-01-categorical-business-data.qmd) | Categories, frequencies, percentages and charts | [PDF](../../pdf/practical-01-categorical-business-data.pdf) |
+| [2. Order size](practical-02-numerical-business-data.qmd) | Centre, spread, percentiles and boxplots | [PDF](../../pdf/practical-02-numerical-business-data.pdf) |
+| [3. Discounts, profit and groups](practical-03-association-and-groups.qmd) | Association and group comparisons | [PDF](../../pdf/practical-03-association-and-groups.pdf) |
+
+- Return status means membership in the source Returns sheet, not verified refund accounting.
+- The analyses are descriptive; they do not establish causal discount effects or represent actual retailers.
+- [All extended business cases](../../index.qmd#extended-business-cases).

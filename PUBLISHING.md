@@ -1,152 +1,105 @@
-# Publishing the course and extended cases
+# Course builds and publication
 
-Students use https://msfasha.github.io/307312-Applied-Statistics/.
-The home page must offer six lesson notebooks, a PDF for **each** lesson, a complete
-student RStudio project ZIP, and an all-PDF ZIP.
+Students use <https://msfasha.github.io/307312-Applied-Statistics/>.
 
-The original three lesson entry points sit together under `lessons/`:
+**Current instruction, 7 November 2026: commit locally; do not push or publish.**
+The commands below document the release workflow for a future authorized deployment.
 
-1. `lessons/01-introduction-to-r.qmd`
-2. `lessons/02-descriptive-statistics.qmd`
-3. `lessons/03-inferential-statistics.qmd`
+## Active student material
 
-## Build and publish
+`scripts/course_documents.py` is the authoritative list of sixteen notebook/PDF pairs:
 
-Commit and push the editable sources on `main`, then run:
+- Six lesson notebooks under `lessons/`: the four supplied Part 1 R notebooks, Part 2 descriptive slides and Part 3 inferential slides.
+- One companion notebook, `practicals/descriptive-statistics-r-practical.qmd`, containing all eighteen Part 2 R examples in slide order, with original code/comments and explanatory introductions.
+- Three Superstore notebooks under `extended-cases/superstore/`, grouped by `index.qmd`.
+- Six numbered extended cases under `extended-cases/`: Springville, Oxford, BLK, Parachute, Potato and Harnswell.
+
+Part 2 retains all 87 approved source slides, their figures, Excel instructions,
+the collection/survey supplement and the authorized diagram/CV corrections.
+Its R cells have moved into the companion practical. Part 3 retains all 141
+source slides and its labeled R equivalents. Original PPTX/PDF files remain unchanged.
+The publisher checks all retained slide IDs and rejects reintroduction of slide 88.
+
+The Superstore move preserves its three existing PDF names. Old HTML URLs under
+`practicals/` remain compatibility entry pages, pointing to the relocated notebooks.
+The former cereals entry page points to the new descriptive practical.
+The home page and navbar distinguish the core practical from extended cases.
+
+## Local verification
+
+```sh
+python3 scripts/check-practicals.py
+quarto render
+python3 scripts/build-student-downloads.py
+python3 scripts/validate-student-site.py
+```
+
+Use the configured RStudio Quarto executable if `quarto` is not on PATH.
+The R checks verify fresh-session imports and all worked cells from both the
+course root and each notebook folder. Nested Superstore imports also locate
+`data/` from `extended-cases/superstore/`. They verify pinned hashes, source-cell
+equivalence when original local workbooks are available, and key teaching results.
+The four supplied Part 1 notebooks contain expected-error demonstrations and
+are verified through full Quarto execution.
+
+Root rendering writes `_build/website/`. Its post-render steps build the independent
+`practicals/` project under `_build/practicals/` and stage only approved pages and
+compatibility entry pages. The root project renders Superstore and the six other
+extended cases directly, with the shared Petra burgundy and gray theme.
+
+PDFs are printed from executed HTML to preserve diagrams, tables, images,
+formula notation and results. Chrome/Chromium is required; Ghostscript optionally
+compresses images at 180 dpi while retaining vector text. All sixteen PDFs go
+under `_build/website/pdf/`, with both ZIPs under `_build/website/downloads/`.
+Check PDF text and representative rendered pages. Extract the student RStudio ZIP
+into a fresh directory and render the complete project to verify independence
+from maintainer files. Keep `assets/petra-theme.md` synchronized with the portable
+master `../petra_theme/petra_theme.md` when changing the shared theme.
+
+## Student resources and exclusions
+
+Both bundles include all sixteen approved documents. The RStudio ZIP contains
+editable notebooks, required shared fragments, theme assets, project configuration,
+build helpers and setup instructions. The PDF ZIP contains exactly one PDF per
+approved notebook. The home page links all sixteen PDFs and both bundles.
+
+Only explicitly listed `data/` resources in `_quarto.yml` enter the website and
+student project: original descriptive/inferential teaching CSVs and guides,
+canonical business CSVs and guide, and the supplied historical R-introduction
+Superstore CSV and guide. The 2014–2017 R-introduction dataset is distinct from
+the pinned US 2023–2025 business Superstore extract. Keep the only editable data
+under root `data/`; preserve per-import path lookup for interactive RStudio cells.
+
+Exclude books, instructor notes/answers, provenance manifests, archives, original
+student measurement workbooks, publisher workbooks, source decks and build caches.
+Original instructional image assets and approved editable diagrams remain included.
+The Superstore workbook and publisher workbooks stay unchanged and local-only.
+Do not infer random sampling, causal discount effects or refund accounting.
+
+The extension source reviews and answer keys remain under `instructor/`.
+`scripts/prepare-extended-data.py` regenerates approved extension CSVs only when
+intentionally requested; it must not silently change source measurements.
+Historical slide converters write `_build/reference-conversions/` and must not
+overwrite authored lessons or reinsert Part 2 R cells into the active slide lesson.
+
+## Future authorized publication
+
+After explicit authorization, commit and push sources on `main`, then run:
 
 ```sh
 python3 scripts/publish-course.py
+python3 scripts/verify-live-course.py
 ```
 
-The publisher renders all lessons with executable R cells, renders the three approved Part 2 practicals and six extended cases, prints all fifteen
-rendered notebooks to PDF, builds both student ZIPs, validates the required
-outputs and exclusions, and pushes a normal commit to `gh-pages`. PDFs are
-printed from HTML to preserve the original HTML diagrams, tables, images,
-formula notation, and executed R results. Chrome or Chromium is required for
-printing. Ghostscript, when installed, compresses images at 180 dpi while retaining vector text; Quarto, R, Python 3, and the lesson R packages are required to build.
+The publisher rebuilds HTML, all sixteen PDFs and both ZIPs, validates slide IDs,
+navigation, bundle contents and exclusions, and pushes a normal commit to `gh-pages`.
+It preserves branch history and never force pushes. `--skip-render` is only for a
+completed, verified HTML build; it refreshes the independent practical pages and
+always rebuilds all PDFs and both ZIPs. After structural moves, prefer a full build.
 
-`--skip-render` is only for an already completed, verified full HTML build.
-It **always regenerates all fifteen PDFs and both ZIPs** from that build.
-For a local download build without publication, run
-`python3 scripts/build-student-downloads.py` after rendering the full site.
-
-## Required published downloads
-
-- `pdf/01-introduction-to-r.pdf`
-- `pdf/02-descriptive-statistics.pdf`
-- `pdf/03-inferential-statistics.pdf`
-- `downloads/applied-statistics-pdfs.zip`
-- `downloads/applied-statistics-rstudio.zip`
-
-The student project contains the six editable lesson notebooks, three practical notebooks and six extended-case notebooks, project and website
-configuration, required assets/CSV data, and setup instructions. It excludes
-instructor answers, archives, books, original measurement workbooks, source
-PowerPoint decks, and build caches/logs. Test it after extraction separately
-from the maintainer workspace.
-
-The RStudio ZIP also includes `assets/petra-theme.md`, the tracked specification
-for the Petra burgundy and gray theme. Keep it synchronized with the portable master
-`../petra_theme/petra_theme.md` when changing the shared palette or layout rules.
-
-## Source and student website
-
-`main` is the maintainer workspace, with support scripts and historical sources.
-`gh-pages` contains only the generated active student website from `_build/website/`.
-Books and local reference documents remain ignored. Never copy instructor files,
-archives, publisher books, raw measurement workbooks, caches, or logs to the site.
-
-A local build or push to `main` alone is **not publication**. Check the live home
-page, all three lessons, all three practicals, all six extended cases, all fifteen PDF downloads, both ZIPs, and the source commit
-in `deployment.json`. Check PDF text and sample rendered pages, and confirm that
-executable R results appear. The publisher preserves branch history and never
-force pushes. The existing user authorization covers this course publication.
-
-Rendered lesson pages live under `lessons/` on the website. Root-level legacy
-lesson URLs redirect to those pages. The three approved practicals are rendered independently under
-`_build/practicals/` and staged as self-contained HTML under website `practicals/`
-by `scripts/stage-practicals.py`. Only the approved pages, the compatibility
-entry page, approved lesson/business CSVs and their student data guide enter the site.
-Instructor answers, provenance manifests for these practicals, books, original
-publisher workbooks and future draft activities stay out of public downloads.
-
-## Approved Part 2 practical downloads
-
-- `pdf/practical-01-categorical-business-data.pdf`
-- `pdf/practical-02-numerical-business-data.pdf`
-- `pdf/practical-03-association-and-groups.pdf`
-
-The home page links all three HTML practicals and their PDFs. The all-PDF ZIP
-contains fifteen PDFs. The RStudio ZIP includes all fifteen editable notebooks, the
-shared practical plot helper, practical configuration and post-render scripts.
-A full website render also renders and stages the approved practicals.
-`--skip-render` reuses lesson HTML but refreshes practical HTML before packaging.
-
-## Original core restored; applications kept separate — 7 November 2026
-
-Parts 2 and 3 restore the original slide-based lessons from `70bf7ee`: all 87 retained
-descriptive slides (source slide 88 was removed at the user’s request) plus the approved collection/survey section, and all 141
-inferential slides. Preserve the original sequence, Excel examples, source
-figures and labeled R equivalents. The publisher checks these slide IDs.
-The three R practicals and all six extended cases remain separate applications.
-Do not replace the core lessons while updating practical examples.
-
-The website and student project include only explicitly listed resources in
-`_quarto.yml`: approved `data/business/` CSVs, the previously approved de-identified
-`data/descriptive-statistics/students.csv`, the six printed-slide inference CSVs,
-and their student guides. Do not publish original measurement workbooks or source
-provenance JSONs. Include original instructional assets and all required shared
-lesson fragments alongside the current business/practical helpers in the ZIP.
-The restored original R examples use MASS, which is a recommended R package.
-
-Before committing, run python3 scripts/check-practicals.py. It checks all fifteen
-notebooks, fresh-session imports from both locations, full source-cell equivalence
-when publisher workbooks are available, provenance hashes and key teaching results.
-After building downloads, extract the RStudio ZIP into a new directory and run all
-fifteen notebooks there; the extraction must not depend on maintainer files or books/.
-Inspect representative PDF pages and verify all live pages, fifteen PDFs, both ZIPs,
-and deployment.json against the committed source revision.
-
-## Extended Business Cases — 7 November 2026
-
-The user authorized six standalone extension notebooks under `extended-cases/`.
-The root Quarto project renders these with the shared course theme and normal
-website navigation. Lesson links point to the complete cases or Springville
-sections; the core teaching sequence remains intact.
-
-`scripts/course_documents.py` lists the fifteen approved notebooks used for PDF
-exports and release checks. Preserve the original six PDF URLs and add:
-
-- `pdf/case-01-springville-herald.pdf`
-- `pdf/case-02-oxford-cereal.pdf`
-- `pdf/case-03-retail-display.pdf`
-- `pdf/case-04-perfect-parachute.pdf`
-- `pdf/case-05-mountain-states-potato.pdf`
-- `pdf/case-06-harnswell-quality.pdf`
-
-The home page and navbar link Extended Business Cases; each case has its own PDF
-and student-project link. Both bundles now cover fifteen documents. The RStudio
-ZIP includes the six editable case notebooks and seven canonical extension CSVs
-explicitly allowed in `_quarto.yml`, under `data/business/`, alongside the restored core lesson CSVs. COLA is reused
-rather than duplicated. Do not copy the supplied ZIP, unfiltered Parachute summary
-rows, SH2 chart helpers or publisher workbooks into student outputs.
-
-Run `scripts/prepare-extended-data.py` only when intentionally regenerating the
-extension CSVs from local publisher workbooks. Check source/output hashes and
-source-cell equivalence. `instructor/extended-cases-source-review.md`, the
-provenance manifest and answer keys stay out of publication and student bundles.
-
-A release must pass fresh-session imports/worked cells from both locations for
-all fifteen notebooks, full site navigation including fragments, fifteen-PDF ZIP
-contents, and a separately extracted student project's full render. Inspect all
-six new PDFs and representative core PDFs; verify live case pages, fifteen PDF
-URLs, both ZIPs and `deployment.json` against the committed revision.
-
-After publishing, run `python3 scripts/verify-live-course.py`. It waits for the
-committed revision to reach GitHub Pages, then compares deployed bytes against
-the local release for all fifteen notebook pages, fifteen PDFs, both ZIPs and all
-approved data. Its release report is `_build/extended-review/live-verification.json`.
-PDF navigation is exported with public course URLs rather than local build paths.
-
-## Part 1 replaced — 7 November 2026
-
-Part 1 now contains four supplied R notebooks, numbered 1–4: introduction, basic concepts, dplyr and ggplot2. The existing introduction is retired under archived/2026-11-07-replaced-part1/. Keep its URL for the new first notebook. scripts/course_documents.py now lists fifteen notebook/PDF pairs; both bundles include all fifteen. Include assets/introduction-to-r/ and the explicitly allowed data/r-introduction/ CSV and guide. This is the original historical 2014–2017 tutorial file, separate from current business practical data. Preserve the other lessons, practicals and cases. Current instruction: commit locally; do not push or publish this revision.
+`main` is the maintainer workspace; `gh-pages` contains only generated student
+website files. A source push or local render alone is not publication. Verify
+`deployment.json`, every approved page/PDF/CSV and both bundles against the
+committed source revision. The live verifier compares actual bytes and writes
+`_build/extended-review/live-verification.json`. PDF navigation uses public URLs.
+Do not run either publication command while the current local-only instruction applies.

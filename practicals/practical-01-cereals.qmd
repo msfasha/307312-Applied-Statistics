@@ -1,5 +1,8 @@
 ---
-title: "Practical notebooks have moved"
+title: "Descriptive Statistics practical"
+format:
+  html:
+    embed-resources: true
 ---
 
-The practical sequence now uses Superstore. Start with [Practical 1: Product mix](practical-01-categorical-business-data.qmd), then [Practical 2: Order size](practical-02-numerical-business-data.qmd) and [Practical 3: Discounts and profit](practical-03-association-and-groups.qmd).
+Start with the [Descriptive Statistics R Practical](descriptive-statistics-r-practical.qmd). The business application is available separately in the [Superstore extended case](../extended-cases/superstore/index.qmd).

@@ -9,11 +9,8 @@ import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-from course_documents import EXTENDED
-NOTEBOOKS = sorted((ROOT/'lessons').glob('*.qmd')) + [ROOT/'practicals'/name for name in [
-    'practical-01-categorical-business-data.qmd', 'practical-02-numerical-business-data.qmd',
-    'practical-03-association-and-groups.qmd']]
-NOTEBOOKS += [ROOT/'extended-cases'/(name+'.qmd') for name in EXTENDED]
+from course_documents import DOCUMENTS
+NOTEBOOKS = [ROOT/folder/(name+'.qmd') for folder, name in DOCUMENTS]
 
 def run_r(code, cwd, warnings_as_errors=True):
     code = 'pdf(file = tempfile(fileext = ".pdf"))\noptions(warn = '+str(2 if warnings_as_errors else 1)+')\n' + code + '\ndev.off()\n'
@@ -49,6 +46,9 @@ if __name__ == '__main__':
         imports = [c for c in worked if 'data_dir <-' in c]
         if notebook.name in ['01-introduction-to-r.qmd', 'r-02-basic-concepts.qmd', 'r-03-dplyr.qmd', 'r-04-ggplot2.qmd']:
             continue  # Original R lessons are verified by a full Quarto execution (including expected-error demonstrations).
+        if notebook.name == '02-descriptive-statistics.qmd':
+            assert not worked, 'Descriptive R examples must stay in the companion practical'
+            continue
         assert imports and worked, notebook.name
         for cwd in [ROOT, notebook.parent]:
             for import_cell in imports:

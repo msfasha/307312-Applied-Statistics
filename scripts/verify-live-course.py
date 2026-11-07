@@ -36,7 +36,7 @@ if __name__ == '__main__':
         if attempt % 4 == 0:
             print('Waiting for GitHub Pages deployment of', revision[:8], flush=True)
         time.sleep(15)
-    names = ['index.html'] + [folder+'/'+name+'.html' for folder, name in DOCUMENTS]
+    names = ['index.html', 'extended-cases/superstore/index.html'] + [folder+'/'+name+'.html' for folder, name in DOCUMENTS]
     names += ['pdf/'+name+'.pdf' for _, name in DOCUMENTS]
     names += ['downloads/applied-statistics-rstudio.zip', 'downloads/applied-statistics-pdfs.zip']
     names += re.findall(r'^    - (data/[^\n]+)', (ROOT/'_quarto.yml').read_text(), re.M)
@@ -56,4 +56,4 @@ if __name__ == '__main__':
     output = ROOT/'_build/extended-review/live-verification.json'
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, indent=2)+'\n')
-    print('Verified live revision, 15 notebook pages, 15 PDFs, both ZIPs and all approved data.', flush=True)
+    print('Verified live revision, 16 notebook pages, 16 PDFs, both ZIPs and all approved data.', flush=True)

@@ -1,0 +1,210 @@
+---
+title: "Practical 2 — Superstore order size"
+subtitle: "Numerical summaries, distributions and unusual orders · 307312 Applied Statistics"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-copy: true
+    code-overflow: wrap
+    embed-resources: true
+execute:
+  echo: true
+  warning: true
+  message: false
+  fig-width: 7
+  fig-height: 4.5
+---
+
+[Practical PDF](../../pdf/practical-02-numerical-business-data.pdf) · [Student RStudio project](../../downloads/applied-statistics-rstudio.zip)
+
+- Companion to centre, spread, percentiles and boxplots in [Part 2](../../lessons/02-descriptive-statistics.qmd).
+- Continue from [Practical 1](practical-01-categorical-business-data.qmd).
+- Allow two sessions of about 40–50 minutes.
+
+**By the end, you should be able to:**
+
+- Aggregate transactions at the correct level.
+- Explain the difference between typical order size and total revenue.
+- Describe skewness, spread and percentile thresholds.
+- Investigate unusual records while preserving the complete analysis.
+
+## 1. The operations manager's question
+
+> What is a typical order worth, and how much variation must operations accommodate?
+
+- **Unit:** one order after combining all its product lines.
+- **Source:** Tableau's fictitious Superstore, downloaded 6 November 2026.
+- **Scope:** United States; orders placed in 2023–2025.
+- **Records:** 3,322 orders built from 6,682 product lines.
+- **Amounts:** recorded dollars; `sales` is the line/order sales field, not a list price.
+- **Limit:** these describe the course extract, not actual future sales.
+
+## 2. Import and aggregate
+
+```{r}
+#| label: numerical-import
+data_dir <- if (dir.exists("data")) "data" else if (dir.exists(file.path("..", "data"))) file.path("..", "data") else file.path("..", "..", "data")
+source(file.path(data_dir, "..", "lessons", "_includes", "course-tools.R"))
+lines <- read.csv(file.path(data_dir, "business", "superstore-lines.csv"),
+                  stringsAsFactors = FALSE, colClasses = c(postal_code = "character"))
+orders <- make_orders(lines)
+stopifnot(nrow(orders) == n_distinct(lines$order_id),
+          isTRUE(all.equal(sum(orders$sales), sum(lines$sales))))
+knitr::kable(head(orders[c("order_id", "sales", "profit", "quantity", "line_count")] ), digits = 2)
+```
+
+- [Download the line CSV](../../data/business/superstore-lines.csv) · [Data guide](../../data/business/README.md).
+- Sales, profit and quantity are **summed** across an order's lines.
+- Do not average line sales to estimate average order sales.
+- The reconciliation checks that aggregation neither loses nor duplicates revenue.
+
+## 3. Look at the distribution first
+
+```{r}
+#| fig-alt: "Histogram of all order sales, retaining the long right tail."
+ggplot(orders, aes(sales)) +
+  geom_histogram(bins = 35, fill = petra_ink, colour = "white") +
+  labs(x = "Order sales (USD)", y = "Orders")
+```
+
+- Most orders are relatively small; a few are very large.
+- The long right tail affects the mean and SD.
+- A histogram's bin width changes the visible detail.
+- A tall bar shows many orders in an interval, not many dollars of revenue.
+
+```{r}
+#| fig-alt: "The order-sales histogram with a labelled logarithmic sales axis."
+ggplot(orders, aes(sales)) +
+  geom_histogram(bins = 25, fill = petra_ink, colour = "white") +
+  scale_x_log10() + labs(x = "Order sales ($; log10 axis)", y = "Orders")
+```
+
+- The log axis makes the lower range easier to inspect without deleting large orders.
+- Equal spacing on this axis means equal ratios, not equal dollar differences.
+
+## 4. Choose useful numerical measures
+
+```{r}
+x <- orders$sales
+summary_table <- data.frame(
+  statistic = c("Orders", "Mean (USD)", "Median (USD)", "Sample SD (USD)",
+                "Minimum (USD)", "Q1 (USD)", "Q3 (USD)", "Maximum (USD)", "IQR (USD)"),
+  value = c(length(x), mean(x), median(x), sd(x), min(x),
+            quantile(x, .25, type = 7), quantile(x, .75, type = 7), max(x), IQR(x)))
+knitr::kable(summary_table, digits = 2)
+```
+
+- Mean order sales: about **$471**.
+- Median order sales: about **$154**.
+- Mean explains revenue per order; median describes the middle order.
+- SD is sensitive to the right tail; IQR describes the middle half.
+- `sd()` uses denominator $n-1$; the frame SD uses $N$ and is slightly smaller here.
+
+### Revenue reconciliation
+
+```{r}
+c(total_sales = sum(x), mean_times_orders = mean(x) * length(x),
+  median_times_orders = median(x) * length(x))
+```
+
+- Mean × number of orders reproduces total revenue.
+- Median × number of orders generally does not.
+- The median is not an alternative way to calculate the total.
+
+### Absolute and relative spread
+
+```{r}
+c(range_dollars = diff(range(x)),
+  mean_absolute_deviation = mean(abs(x - mean(x))),
+  coefficient_of_variation_pct = 100 * sd(x) / mean(x))
+```
+
+- Mean absolute deviation above is not R's `mad()`, which uses the median and a scaling constant.
+- CV is appropriate here because sales have a meaningful zero and positive mean.
+- Do not apply the same CV rule to profits that can be negative or near zero on average.
+
+## 5. Percentiles for operational planning
+
+> What order values define the upper 10% and upper 5% of the observed distribution?
+
+```{r}
+knitr::kable(data.frame(percentile = c("50th", "75th", "90th", "95th", "99th"),
+  order_sales = as.numeric(quantile(x, c(.5, .75, .9, .95, .99), type = 7))), digits = 2)
+```
+
+- Percentiles describe positions in the observed distribution.
+- Interpolation and ties mean a threshold may not leave exactly the named percentage strictly above it.
+- A sales percentile does not directly measure parcel size, picking time or staffing needs.
+- Additional operational variables would be needed for those decisions.
+
+## 6. Boxplots and unusual orders
+
+```{r}
+#| fig-alt: "Boxplot of all order sales; points beyond the whiskers identify unusual records to investigate."
+ggplot(orders, aes(x = "All orders", y = sales)) +
+  geom_boxplot(fill = petra_accent, outlier.alpha = .3) +
+  labs(x = NULL, y = "Order sales (USD)")
+
+quartiles <- quantile(x, c(.25, .75), type = 7)
+lower_fence <- quartiles[1] - 1.5 * IQR(x)
+upper_fence <- quartiles[2] + 1.5 * IQR(x)
+flagged <- orders %>% filter(sales < lower_fence | sales > upper_fence)
+c(lower_fence = lower_fence, upper_fence = upper_fence, flagged_orders = nrow(flagged))
+```
+
+- Flags identify records worth investigating.
+- The source contains genuine large recorded transactions; a flag alone does not establish an error.
+- Boxplot hinges and reported quartiles can differ slightly for some sample sizes.
+
+```{r}
+knitr::kable(orders %>% arrange(desc(sales)) %>%
+  select(order_id, sales, profit, line_count, quantity) %>% head(5), digits = 2)
+```
+
+- Inspect the underlying product lines before deciding what a large order means.
+- A large order may contain one costly product or several products.
+- Keep all records in the main summary.
+
+### A labelled sensitivity comparison
+
+```{r}
+central_orders <- orders %>% filter(sales >= lower_fence, sales <= upper_fence)
+knitr::kable(data.frame(
+  scope = c("Full frame — primary result", "Within IQR fences — sensitivity only"),
+  n = c(nrow(orders), nrow(central_orders)),
+  mean_sales = c(mean(orders$sales), mean(central_orders$sales)),
+  median_sales = c(median(orders$sales), median(central_orders$sales))), digits = 2)
+```
+
+- The second row changes the scope; it is not a corrected estimate of the original frame mean.
+- Large changes show why valid extreme values matter to the business.
+- Do not hide exclusions or present the smaller mean as the retailer's full average order value.
+
+## 7. Independent operations briefing
+
+1. Compare order sales across regions using $n$, mean, median, SD and IQR.
+2. Draw side-by-side boxplots, with the same scale for all regions.
+3. Find the region with the largest **total revenue** and the largest **median order**. Are they the same?
+4. Identify the top five orders by sales and inspect their product lines.
+5. Calculate the share of total revenue contributed by the top 10% of orders ranked by sales. State how you handle ties or rounding of the number of orders.
+6. Write a short briefing distinguishing typical size, variability and revenue concentration.
+
+```{r}
+#| eval: false
+# group_by(region) %>% summarise(...) builds the regional table.
+# arrange(desc(sales)) ranks order records.
+# An explicit rule is to take ceiling(0.10 * nrow(orders)) highest-ranked orders.
+```
+
+**Your conclusion should include:**
+
+- The scope and order-level denominator.
+- Two numerical findings with dollar units.
+- One useful operational follow-up.
+- A limitation: sales values alone do not measure physical workload.
+
+## 8. Continue
+
+- [Practical 3: Discounts and profitability](practical-03-association-and-groups.qmd).
+- [Data definitions and provenance](../../data/business/README.md).

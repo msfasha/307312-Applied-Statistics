@@ -1,0 +1,205 @@
+---
+title: "Practical 3 — Superstore discounts and profit"
+subtitle: "Association, group comparisons and business interpretation · 307312 Applied Statistics"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-copy: true
+    code-overflow: wrap
+    embed-resources: true
+execute:
+  echo: true
+  warning: true
+  message: false
+  fig-width: 7
+  fig-height: 4.5
+---
+
+[Practical PDF](../../pdf/practical-03-association-and-groups.pdf) · [Student RStudio project](../../downloads/applied-statistics-rstudio.zip)
+
+- Companion to association and group comparisons in [Part 2](../../lessons/02-descriptive-statistics.qmd).
+- Complete Practicals [1](practical-01-categorical-business-data.qmd) and [2](practical-02-numerical-business-data.qmd).
+- Allow two sessions of about 40–50 minutes.
+
+**By the end, you should be able to:**
+
+- Compare sales, profit and weighted margins.
+- Summarize groups using distributions as well as totals.
+- Use scatterplots and correlations with the correct observational unit.
+- Distinguish a useful business lead from a causal conclusion.
+
+## 1. The commercial manager's question
+
+> Which product groups deserve a discount and profitability review?
+
+- **Source:** Tableau's fictitious Superstore, downloaded 6 November 2026.
+- **Scope:** US orders placed in 2023–2025.
+- **Line analysis:** 6,682 product lines for categories and discount bands.
+- **Order analysis:** 3,322 orders for basket sales and profit.
+- **Units:** sales and profit in dollars; discount as a fraction.
+- **Limit:** discount decisions were not randomized; product mix and other factors differ across groups.
+
+## 2. Import and construct useful variables
+
+```{r}
+#| label: association-import
+data_dir <- if (dir.exists("data")) "data" else if (dir.exists(file.path("..", "data"))) file.path("..", "data") else file.path("..", "..", "data")
+source(file.path(data_dir, "..", "lessons", "_includes", "course-tools.R"))
+lines <- read.csv(file.path(data_dir, "business", "superstore-lines.csv"),
+                  stringsAsFactors = FALSE, colClasses = c(postal_code = "character"))
+orders <- make_orders(lines)
+lines <- lines %>% mutate(
+  line_margin_pct = 100 * profit / sales,
+  loss_line = profit < 0,
+  discount_band = cut(discount, breaks = c(-Inf, 0, .2, Inf),
+    labels = c("None", "Above 0 to 20%", "Above 20%"), ordered_result = TRUE))
+stopifnot(!anyNA(lines$discount_band), all(lines$sales > 0))
+```
+
+- [CSV](../../data/business/superstore-lines.csv) · [Data guide](../../data/business/README.md).
+- A 20% discount belongs to the middle band; zero belongs to **None**.
+- These bands are analyst-defined categories, not source classifications.
+- A line's margin is profit divided by its recorded sales.
+- We do not construct a discount-adjusted revenue or refund measure from undocumented accounting assumptions.
+
+## 3. Compare categories fairly
+
+```{r}
+#| fig-alt: "Overall category profit margins; Furniture has a much thinner margin than the other categories."
+category_results <- lines %>% group_by(category) %>%
+  summarise(line_count = n(), total_sales = sum(sales), total_profit = sum(profit),
+            median_line_profit = median(profit), loss_line_pct = 100 * mean(loss_line),
+            .groups = "drop") %>%
+  mutate(overall_margin_pct = 100 * total_profit / total_sales)
+knitr::kable(category_results, digits = 2)
+ggplot(category_results, aes(category, overall_margin_pct)) +
+  geom_col(fill = petra_ink) +
+  labs(x = NULL, y = "Total profit / total sales (%)")
+```
+
+- Furniture has substantial sales but a much thinner overall margin in this extract.
+- Category totals describe business contribution; median line profit describes a typical line.
+- The loss-line rate uses lines as its denominator.
+- A category can contain both profitable and loss-making subcategories.
+
+### Why an average of percentages can mislead
+
+```{r}
+margin_comparison <- lines %>% group_by(category) %>%
+  summarise(equal_line_mean_margin_pct = mean(line_margin_pct),
+            sales_weighted_margin_pct = 100 * sum(profit) / sum(sales), .groups = "drop")
+knitr::kable(margin_comparison, digits = 2)
+```
+
+- The first gives every line equal weight.
+- The second gives each dollar of sales equal weight.
+- Use the second to report the overall category margin.
+
+## 4. Examine discount groups
+
+```{r}
+#| fig-alt: "Boxplots of line margins across three discount bands, with negative margins retained."
+discount_results <- lines %>% group_by(discount_band) %>%
+  summarise(line_count = n(), total_sales = sum(sales), total_profit = sum(profit),
+            median_line_profit = median(profit), loss_line_pct = 100 * mean(loss_line),
+            .groups = "drop") %>%
+  mutate(overall_margin_pct = 100 * total_profit / total_sales)
+knitr::kable(discount_results, digits = 2)
+ggplot(lines, aes(discount_band, line_margin_pct)) +
+  geom_hline(yintercept = 0, colour = "#A3A3A3") +
+  geom_boxplot(fill = petra_accent, outlier.alpha = .25) +
+  labs(x = "Recorded line discount", y = "Line profit / line sales (%)")
+```
+
+- Compare medians, spread, group sizes and weighted margins.
+- The chart gives each line equal weight; the overall margin table does not.
+- A negative line margin is possible and is not automatically a bad import.
+- Discounts, prices and profit are connected accounting quantities; an association is expected to reflect more than customer response alone.
+
+### Keep product mix visible
+
+```{r}
+#| fig-alt: "Overall profit margins by discount band within each category; zero discount is distinct from positive discounts up to twenty percent."
+within_category <- lines %>% group_by(category, discount_band) %>%
+  summarise(line_count = n(), margin_pct = 100 * sum(profit) / sum(sales),
+            .groups = "drop")
+knitr::kable(within_category, digits = 2)
+ggplot(within_category, aes(discount_band, margin_pct)) +
+  geom_col(fill = petra_ink) + facet_wrap(~ category) +
+  scale_x_discrete(labels = c("None" = "0%", "Above 0 to 20%" = "(0,20%]",
+                               "Above 20%" = ">20%")) +
+  labs(x = "Discount band", y = "Group overall margin (%)")
+```
+
+- Stratification compares discount bands within each category.
+- It reduces one source of mixing, but does not remove all confounding.
+- It does not establish what would happen if the manager changed discounts.
+
+## 5. Association at order level
+
+> Are higher-sales orders also higher-profit orders?
+
+```{r}
+#| fig-alt: "Order sales versus order profit, including large positive and negative profit values."
+ggplot(orders, aes(sales, profit)) +
+  geom_hline(yintercept = 0, colour = "#A3A3A3") +
+  geom_point(alpha = .35, colour = petra_ink) +
+  labs(x = "Order sales ($)", y = "Order profit ($)")
+
+correlations <- orders %>% group_by(segment) %>%
+  summarise(orders = n(), pearson_r = cor(sales, profit),
+            spearman_r = cor(sales, profit, method = "spearman"), .groups = "drop")
+knitr::kable(correlations, digits = 3)
+```
+
+- Pearson measures linear association; Spearman uses ranks.
+- Large observations can strongly influence Pearson correlation.
+- Segment correlations can differ from the overall correlation.
+- Correlation does not show the distribution of losses or establish a causal effect.
+- Repeated customers matter if we later try to model orders as independent future observations.
+
+## 6. Turn a pattern into a decision question
+
+**Supported wording:**
+
+- “In this extract, the highest discount band has weaker recorded profitability.”
+- “Furniture's overall margin warrants a closer subcategory review.”
+
+**Before proposing a discount change, obtain:**
+
+- Product cost and accounting definitions.
+- Promotion timing and reasons for discount assignment.
+- Comparable product groups and customer demand evidence.
+- A planned experiment or another defensible causal design.
+
+- Do not claim that removing discounts would reproduce the undiscounted group's margin.
+- Do not describe a line-count loss rate as the percentage of customers losing money.
+
+## 7. Independent commercial briefing
+
+1. Rank subcategories by total profit and by overall margin. Include sales and line counts.
+2. Select one weak-performing subcategory and compare its discount bands.
+3. Find its three largest loss-making lines; retain them in the main analysis.
+4. Compare order-level loss percentages across customer segments.
+5. Produce two charts answering different questions.
+6. Write a recommendation separating an observed finding, a plausible explanation and evidence still needed.
+
+```{r}
+#| eval: false
+# Use lines for product/discount questions and orders for basket questions.
+# A group loss percentage is 100 * mean(profit < 0).
+# Calculate rates before overwriting any column with a group total.
+```
+
+**Submission:**
+
+- One compact results table.
+- Two labelled charts with units and denominators.
+- Five short briefing bullets, including one limitation and one proposed follow-up.
+
+## 8. Move from description to inference
+
+- [Part 3](../../lessons/03-inferential-statistics.qmd) covers probability, estimation, hypothesis testing and regression.
+- The descriptive evidence here concerns the complete fixed extract; p-values are not required to describe its totals.
+- [Source, variable definitions and selection rules](../../data/business/README.md).

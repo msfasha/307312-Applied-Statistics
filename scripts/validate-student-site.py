@@ -10,7 +10,7 @@ import hashlib
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / '_build/website'
-from course_documents import LESSONS, PRACTICALS, EXTENDED
+from course_documents import LESSONS, PRACTICALS, EXTENDED, DOCUMENTS, SUPERSTORE
 
 class Links(HTMLParser):
     def __init__(self):
@@ -26,9 +26,9 @@ class Links(HTMLParser):
                 self.hrefs.append(value)
 
 if __name__ == '__main__':
-    pages = [SITE/'index.html'] + [SITE/'lessons'/(n+'.html') for n in LESSONS]
-    pages += [SITE/'practicals'/(n+'.html') for n in PRACTICALS]
-    pages += [SITE/'extended-cases'/(n+'.html') for n in EXTENDED]
+    pages = [SITE/'index.html', SITE/'extended-cases/superstore/index.html']
+    pages += [SITE/folder/(n+'.html') for folder, n in DOCUMENTS]
+    pages += [SITE/'practicals'/(n+'.html') for n in SUPERSTORE]
     parsed = {}
     for path in SITE.rglob('*.html'):
         links = Links()
@@ -57,11 +57,12 @@ if __name__ == '__main__':
         assert not set(path.relative_to(SITE).parts) & {'instructor', 'books', 'sources', 'archived', '_includes'}, path
         assert path.suffix.lower() not in {'.xls', '.xlsx', '.pptx', '.qmd', '.r'}, path
     with zipfile.ZipFile(SITE/'downloads/applied-statistics-pdfs.zip') as bundle:
-        assert set(bundle.namelist()) == {n+'.pdf' for n in LESSONS+PRACTICALS+EXTENDED}
+        assert set(bundle.namelist()) == {n+'.pdf' for _, n in DOCUMENTS}
     with zipfile.ZipFile(SITE/'downloads/applied-statistics-rstudio.zip') as bundle:
         names = set(bundle.namelist())
         assert {f'practicals/{n}.qmd' for n in PRACTICALS} <= names
-        assert {f'extended-cases/{n}.qmd' for n in EXTENDED} <= names
+        assert {f'{folder}/{n}.qmd' for folder, n in DOCUMENTS} <= names
+        assert 'extended-cases/superstore/index.qmd' in names
         allowed_data = set(re.findall(r'^    - (data/[^\n]+)', (ROOT/'_quarto.yml').read_text(), re.M))
         assert {n for n in names if n.startswith('data/')} == allowed_data
         for name in allowed_data:
@@ -79,4 +80,4 @@ if __name__ == '__main__':
                 'data/inferential-statistics/houses.csv'} <= names
         assert not any(set(Path(n).parts) & {'instructor', 'books', 'sources', 'archived', '_build'} for n in names)
         assert not any(Path(n).suffix.lower() in {'.xls', '.xlsx', '.pptx'} for n in names)
-    print('Student site links, fifteen-PDF bundle and complete RStudio package verified.')
+    print('Student site links, sixteen-PDF bundle and complete RStudio package verified.')

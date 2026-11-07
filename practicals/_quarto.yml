@@ -1,4 +1,4 @@
-# Independent Superstore practical project, staged by the root website build.
+# Independent descriptive-statistics practical project, staged by the root website build.
 project:
   type: default
   output-dir: ../_build/practicals
@@ -6,6 +6,7 @@ project:
   post-render:
     - python3 ../scripts/finalize-practical-preview.py
   render:
+    - descriptive-statistics-r-practical.qmd
     - practical-01-categorical-business-data.qmd
     - practical-02-numerical-business-data.qmd
     - practical-03-association-and-groups.qmd
@@ -15,4 +16,5 @@ format:
     theme: cosmo
     css:
       - ../assets/petra-brand.css
+      - ../assets/source-slides.css
       - ../assets/practical-print.css

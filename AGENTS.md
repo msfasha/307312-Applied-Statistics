@@ -240,3 +240,12 @@
 - Active files: lessons/01-introduction-to-r.qmd, r-02-basic-concepts.qmd, r-03-dplyr.qmd, r-04-ggplot2.qmd. The previous introduction is archived under archived/2026-11-07-replaced-part1/.
 - Preserve supplied examples and images; the historical tutorial Superstore CSV is under data/r-introduction/ with original dates and is separate from the practical dataset. Both bundles and PDF exports now cover fifteen notebooks.
 - User instructed local commit only, with no push or publication for this change.
+
+## Descriptive R companion and Superstore relocation — 7 November 2026
+
+- User moved the three Superstore practicals into `extended-cases/superstore/`, grouped by its `index.qmd`; retain their analyses, pinned data and existing PDF names. Old practical URLs remain compatibility entry pages.
+- The core Part 2 practical is one runnable notebook: `practicals/descriptive-statistics-r-practical.qmd`. It collects all eighteen R examples from the descriptive slide lesson in source-slide order. Preserve every original code line and comment; introductions and explanations may be expanded, not removed.
+- Remove those R examples from `lessons/02-descriptive-statistics.qmd`; preserve the source slide text, Excel examples, figures, collection/survey supplement and approved corrections. Part 3 is unchanged.
+- Introduce each practical example with its purpose, variables, corresponding slide and guidance for reading results. Use the original student teaching CSV, not Superstore, for this companion.
+- Root rendering, navigation, PDF exports, both bundles and validation cover sixteen notebook/PDF pairs through `scripts/course_documents.py`. Nested Superstore imports must work from both root and their notebook folder.
+- User explicitly requested a local commit only: do not push or publish.

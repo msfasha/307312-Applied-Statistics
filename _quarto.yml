@@ -43,6 +43,10 @@ project:
     - lessons/r-04-ggplot2.qmd
     - lessons/02-descriptive-statistics.qmd
     - lessons/03-inferential-statistics.qmd
+    - extended-cases/superstore/index.qmd
+    - extended-cases/superstore/practical-01-categorical-business-data.qmd
+    - extended-cases/superstore/practical-02-numerical-business-data.qmd
+    - extended-cases/superstore/practical-03-association-and-groups.qmd
     - extended-cases/case-01-springville-herald.qmd
     - extended-cases/case-02-oxford-cereal.qmd
     - extended-cases/case-03-retail-display.qmd
