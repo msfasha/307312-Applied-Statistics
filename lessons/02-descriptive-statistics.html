@@ -4347,6 +4347,15 @@ table { width: 100% !important; max-width: 100% !important; table-layout: fixed;
 .cell-output-display img { max-width: 100% !important; height: auto !important; }
 }
 </style>
+<style type="text/css">
+.course-navigation { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 1.25rem; margin: 1.5rem 0 2rem; }
+.course-card { border: 1px solid #D6D6D6; border-radius: 8px; padding: 1.1rem; display: flex; flex-direction: column; background: #FFFFFF; }
+#quarto-document-content .course-card h2 { margin-top: 0; font-size: 1.35rem; }
+.course-card > p:last-child { margin-top: auto; padding-top: .75rem; margin-bottom: 0; }
+.course-navigation .btn-primary, main .btn-primary { background: var(--course-section-bg, #763D52); border-color: var(--course-section-bg, #763D52); color: white; }
+.course-navigation .btn-primary:hover, main .btn-primary:hover { background: #542638; border-color: #542638; color: white; }
+main .btn { white-space: normal; margin-bottom: .5rem; }
+</style>
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -4367,47 +4376,12 @@ table { width: 100% !important; max-width: 100% !important; table-layout: fixed;
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../course/index.html"> 
 <span class="menu-text">Course</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-part-1-introduction-to-r" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Part 1: Introduction to R</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-part-1-introduction-to-r">    
-        <li>
-    <a class="dropdown-item" href="../lessons/01-introduction-to-r.html">
- <span class="dropdown-text">1. Introduction to R</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../lessons/r-02-basic-concepts.html">
- <span class="dropdown-text">2. Basic Concepts in R</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../lessons/r-03-dplyr.html">
- <span class="dropdown-text">3. Data Manipulation using dplyr</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../lessons/r-04-ggplot2.html">
- <span class="dropdown-text">4. Introduction to ggplot2</span></a>
-  </li>  
-    </ul>
-  </li>
   <li class="nav-item">
-    <a class="nav-link active" href="../lessons/02-descriptive-statistics.html" aria-current="page"> 
-<span class="menu-text">Part 2: Descriptive statistics</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../index.html#part-2-practicals"> 
-<span class="menu-text">Practicals</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../lessons/03-inferential-statistics.html"> 
-<span class="menu-text">Part 3: Inferential statistics</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../index.html#extended-business-cases"> 
-<span class="menu-text">Extended cases</span></a>
+    <a class="nav-link" href="../extended-cases/index.html"> 
+<span class="menu-text">Extended scenarios</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
