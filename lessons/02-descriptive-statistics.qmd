@@ -375,6 +375,7 @@ A useful management briefing contains:
 - [Practical 2: Order size and numerical measures](../practicals/practical-02-numerical-business-data.html).
 - [Practical 3: Discounts, profitability and group comparisons](../practicals/practical-03-association-and-groups.html).
 - Continue to [Part 3](03-inferential-statistics.qmd) for uncertainty, tests and models.
+- Optional transfer activity: [Springville Herald, Section A](../extended-cases/case-01-springville-herald.qmd#section-a) applies descriptive methods to daily calls.
 
 ### Sources
 

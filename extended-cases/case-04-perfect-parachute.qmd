@@ -1,0 +1,144 @@
+---
+title: "Extended Case 4 — Perfect Parachute"
+subtitle: "Compare four suppliers with ANOVA · 307312 Applied Statistics — Masters Level"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-copy: true
+    code-overflow: wrap
+execute:
+  echo: true
+  warning: true
+  message: false
+  fig-width: 7
+  fig-height: 4.5
+---
+
+[Case PDF](../pdf/case-04-perfect-parachute.pdf) · [Student RStudio project](../downloads/applied-statistics-rstudio.zip) · [All extended cases](../index.qmd#extended-business-cases)
+
+- **Start after:** independent-group comparisons and [more than two means in Part 3](../lessons/03-inferential-statistics.qmd#more-than-two-means).
+- **Suggested time:** 70–90 minutes, including the ANOVA introduction below.
+- **Business question:** Do the four suppliers differ in mean tensile strength, and what evidence should guide procurement?
+
+**Learning outcomes:**
+
+- Compare variation within and between groups.
+- Interpret an overall ANOVA test and adjusted pairwise comparisons.
+- State assumptions and avoid equating statistical significance with supplier suitability.
+
+## 1. The procurement manager's brief
+
+- Perfect Parachute purchases synthetic fibre from four suppliers.
+- Five parachutes per supplier are woven and tested to breaking point.
+- **Source:** *Basic Business Statistics*, ninth edition, Chapter 11, pp. 388 and 393–399.
+- **Unit:** one tested parachute; 20 measurements in four groups.
+- **Outcome:** tensile strength on the source scale; a physical force unit is not specified in the reviewed material.
+- **Limit:** small groups provide limited information about distribution shape and supplier reliability.
+
+## 2. Import measurement rows only
+
+```{r}
+#| label: case-import
+data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
+source(file.path(data_dir, "..", "lessons", "_includes", "course-tools.R"))
+parachutes <- read.csv(file.path(data_dir, "business", "extended-parachute.csv"))
+parachutes$supplier <- factor(parachutes$supplier)
+stopifnot(nrow(parachutes) == 20, all(table(parachutes$supplier) == 5))
+supplier_summary <- parachutes %>% group_by(supplier) %>%
+  summarise(n = n(), mean_strength = mean(strength), sd_strength = sd(strength),
+    min_strength = min(strength), max_strength = max(strength), .groups = "drop")
+knitr::kable(supplier_summary, digits = 2)
+```
+
+- [Strength CSV](../data/business/extended-parachute.csv) · [Data guide](../data/business/README.md).
+- Workbook means, medians and standard deviations are summary rows; they are excluded from the 20 observations.
+- The means are 19.52, 24.26, 22.84 and 21.16 for suppliers 1–4.
+
+```{r}
+ggplot(parachutes, aes(supplier, strength)) +
+  geom_boxplot(fill = petra_accent, width = .45, outlier.shape = NA) +
+  geom_point(position = position_jitter(width = .06, height = 0, seed = 307312)) +
+  labs(x = "Fibre supplier", y = "Tensile strength (source scale)")
+```
+
+- Individual points keep the five observations per supplier visible.
+- A higher sample mean does not by itself establish a superior supplier.
+
+## 3. A short ANOVA introduction
+
+- Separate variation **between supplier means** from variation **within suppliers**.
+- ANOVA divides each sum of squares by its degrees of freedom to form a mean square.
+- **F = between-group mean square / within-group mean square.**
+- A large F is evidence against equal population means under the model.
+- **Null:** all four population mean strengths are equal.
+- **Alternative:** at least one differs; the test does not say that all pairs differ.
+- Classical one-way ANOVA assumes independent errors, approximately normal errors within groups and a common error variance.
+
+```{r}
+fit <- aov(strength ~ supplier, data = parachutes)
+summary(fit)
+```
+
+- `aov()` fits the one-factor model; supplier is categorical, not a numeric trend.
+- F is approximately **3.462**, with p approximately **0.0414**.
+- At 5%, the model gives evidence against all four means being equal.
+
+## 4. Which comparisons are supported?
+
+```{r}
+TukeyHSD(fit)
+```
+
+- Tukey's procedure adjusts pairwise intervals and tests for the family of comparisons under the ANOVA assumptions.
+- Read each contrast's direction and interval; do not rank suppliers using p-values alone.
+- An overall significant test need not make every pair significant.
+- These intervals concern mean differences, not minimum guaranteed product strength.
+
+## 5. Check the model and its limits
+
+```{r}
+par(mfrow = c(1, 2))
+plot(fit, which = 1)
+plot(fit, which = 2)
+par(mfrow = c(1, 1))
+fligner.test(strength ~ supplier, data = parachutes)
+```
+
+- Residual plots assess spread and approximate normality; they cannot establish independent assignment.
+- `fligner.test()` checks dispersion; a large p-value does not prove equal variances.
+- Five observations per supplier give imprecise diagnostics.
+- Causal supplier claims need a defensible assignment protocol and control of weaving/testing conditions.
+
+### Optional: relax the equal-variance assumption
+
+```{r}
+oneway.test(strength ~ supplier, data = parachutes, var.equal = FALSE)
+```
+
+- Welch's one-way test avoids assuming equal variances.
+- Tukey intervals from the classical model do not automatically become Welch-compatible pairwise intervals.
+- Report sensitivity openly rather than choosing the method giving the preferred answer.
+
+## 6. Independent procurement briefing
+
+1. Explain F using the observed between- and within-supplier variation.
+2. Identify the largest sample mean difference and report its Tukey interval and adjusted p-value.
+3. Compare classical and Welch conclusions, including their assumptions.
+4. Explain why five tests per supplier cannot establish rare failure rates or minimum guaranteed strength.
+5. Specify additional evidence on cost, delivery reliability and engineering requirements before recommending a supplier.
+6. Propose a follow-up experiment controlling loom conditions and assigning fibre treatments appropriately.
+
+## 7. Optional design discussion: supplier and loom
+
+- The book also considers four suppliers and two loom types.
+- The local `Parachute2` workbook contains a separate `Data` sheet with loom-level observations as well as summary sheets.
+- This case analyses the original **one-way, 20-measurement dataset**; it does not combine the two experiments.
+- A supplier-by-loom interaction means the supplier difference depends on loom type.
+- Discuss how an interaction would change procurement advice; a two-factor analysis is beyond this assignment.
+
+## Submission
+
+- Supplier summary table, one chart and a brief explanation of the overall and pairwise results.
+- A 150-word procurement memo with a practical threshold, assumptions and a proposed follow-up.
+- If a minimum strength threshold is not supplied, request one; do not invent an engineering requirement.

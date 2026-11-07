@@ -7,6 +7,13 @@ project:
     - data/business/cola.csv
     - data/business/consumer.csv
     - data/business/README.md
+    - data/business/extended-herald-calls.csv
+    - data/business/extended-herald-marketing.csv
+    - data/business/extended-herald-subscriptions.csv
+    - data/business/extended-oxford-summary.csv
+    - data/business/extended-parachute.csv
+    - data/business/extended-potato.csv
+    - data/business/extended-harnswell.csv
     - "!archived/**"
     - "!instructor/**"
     - "!books/**"
@@ -22,6 +29,12 @@ project:
     - lessons/01-introduction-to-r.qmd
     - lessons/02-descriptive-statistics.qmd
     - lessons/03-inferential-statistics.qmd
+    - extended-cases/case-01-springville-herald.qmd
+    - extended-cases/case-02-oxford-cereal.qmd
+    - extended-cases/case-03-retail-display.qmd
+    - extended-cases/case-04-perfect-parachute.qmd
+    - extended-cases/case-05-mountain-states-potato.qmd
+    - extended-cases/case-06-harnswell-quality.qmd
     - "!archived/**"
     - "!instructor/**"
 website:
@@ -39,6 +52,8 @@ website:
         href: index.qmd#part-2-practicals
       - text: "Part 3: Inferential statistics"
         href: lessons/03-inferential-statistics.qmd
+      - text: "Extended cases"
+        href: index.qmd#extended-business-cases
 format:
   html:
     theme: cosmo

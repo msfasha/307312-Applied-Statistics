@@ -1,23 +1,39 @@
 #!/usr/bin/env python3
 """Print the rendered HTML lessons and package only active student resources."""
 from pathlib import Path
-import shutil, subprocess, tempfile, zipfile
+import shutil, subprocess, tempfile, zipfile, re
+from urllib.parse import urljoin, urlsplit
+from html import unescape, escape
 ROOT=Path(__file__).resolve().parents[1]
 SITE=ROOT/'_build/website'
-PARTS=['01-introduction-to-r','02-descriptive-statistics','03-inferential-statistics']
-PRACTICALS=['practical-01-categorical-business-data','practical-02-numerical-business-data','practical-03-association-and-groups']
-DOCUMENTS=[('lessons', p) for p in PARTS]+[('practicals', p) for p in PRACTICALS]
+from course_documents import LESSONS as PARTS, PRACTICALS, EXTENDED, DOCUMENTS
 chrome=shutil.which('google-chrome') or shutil.which('chromium')
 if not chrome: raise RuntimeError('Google Chrome or Chromium is required to export the lesson PDFs.')
 (SITE/'pdf').mkdir(exist_ok=True)
 for folder, part in DOCUMENTS:
     output=SITE/'pdf'/(part+'.pdf')
-    with tempfile.TemporaryDirectory(prefix='307312-print-') as profile:
-        subprocess.run([chrome,'--headless','--no-sandbox','--disable-dev-shm-usage',
-            '--disable-gpu','--no-pdf-header-footer','--allow-file-access-from-files',
-            '--run-all-compositor-stages-before-draw','--virtual-time-budget=5000',
-            '--user-data-dir='+profile,'--print-to-pdf='+str(output),
-            (SITE/folder/(part+'.html')).as_uri()],check=True,capture_output=True,timeout=180)
+    page = SITE/folder/(part+'.html')
+    public_page = 'https://msfasha.github.io/307312-Applied-Statistics/'+folder+'/'+part+'.html'
+    def public_link(match):
+        href = unescape(match[2])
+        if href.startswith('#') or urlsplit(href).scheme or href.startswith('//'):
+            return match[0]
+        return match[1]+escape(urljoin(public_page, href), quote=True)+match[3]
+    # Keep local CSS/images for printing, but make PDF navigation work for students.
+    printable = re.sub(r'(<a\b[^>]*\bhref=")([^"]*)(")', public_link, page.read_text())
+    with tempfile.NamedTemporaryFile(mode='w', suffix='.html', dir=page.parent,
+                                     prefix='.print-', delete=False) as stream:
+        stream.write(printable)
+        print_page = Path(stream.name)
+    try:
+        with tempfile.TemporaryDirectory(prefix='307312-print-') as profile:
+            subprocess.run([chrome,'--headless','--no-sandbox','--disable-dev-shm-usage',
+                '--disable-gpu','--no-pdf-header-footer','--allow-file-access-from-files',
+                '--run-all-compositor-stages-before-draw','--virtual-time-budget=5000',
+                '--user-data-dir='+profile,'--print-to-pdf='+str(output),
+                print_page.as_uri()],check=True,capture_output=True,timeout=180)
+    finally:
+        print_page.unlink(missing_ok=True)
     # Keep downloads compact; text remains vector, screenshots use 180 dpi.
     if shutil.which('gs'):
         compact=output.with_suffix('.compact.pdf')
@@ -56,6 +72,7 @@ with zipfile.ZipFile(SITE/'downloads/applied-statistics-pdfs.zip','w',zipfile.ZI
 with zipfile.ZipFile(SITE/'downloads/applied-statistics-rstudio.zip','w',zipfile.ZIP_DEFLATED) as z:
     # No instructor files, archives, original slides, books, or build caches.
     names=['assets/petra-theme.md','assets/practical-print.css','assets/petra-brand.css','assets/source-slides.css','Applied-Statistics.Rproj','_quarto.yml','index.qmd']+['lessons/'+p+'.qmd' for p in PARTS]+['practicals/'+p+'.qmd' for p in PRACTICALS]+['practicals/_quarto.yml','practicals/practical-01-cereals.qmd','practicals/_includes/petra-plots.R','lessons/_includes/course-tools.R','scripts/finalize-preview.py','scripts/finalize-practical-preview.py','scripts/preview-practicals.py']
+    names += ['extended-cases/'+p+'.qmd' for p in EXTENDED]
     for folder in ['data/business']:
         names.extend(str(p.relative_to(ROOT)) for p in (ROOT/folder).rglob('*') if p.is_file() and p.suffix.lower() in ['.png','.jpg','.jpeg','.svg','.css','.qmd','.csv','.json','.md','.R'])
     # Resources must be restricted to the same explicit teaching files as the site.
@@ -83,8 +100,12 @@ with zipfile.ZipFile(SITE/'downloads/applied-statistics-rstudio.zip','w',zipfile
 5. Open practicals/practical-01-categorical-business-data.qmd, then Practicals 2 and 3.
 6. Choose Render to view a notebook. Run `quarto render practicals` for practicals.
 7. Run `quarto render` to build the lesson website.
+8. Choose optional activities in extended-cases/. Each case lists prerequisites.
+   Run `quarto render extended-cases/case-02-oxford-cereal.qmd` for one case.
 
 The lessons use Superstore (US, 2023–2025), COLA and Consumer CSVs.
+The extended cases add historical ninth-edition business cases and summary inputs.
+All twelve notebooks are included; choose the extended cases assigned by your instructor.
 See data/business/README.md for provenance, units and limitations.
 Part 3 includes the inferential activities and independent business briefings.
 Python 3 is needed for the small HTML post-render step.

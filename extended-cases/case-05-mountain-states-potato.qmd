@@ -1,0 +1,162 @@
+---
+title: "Extended Case 5 — Mountain States Potato"
+subtitle: "Production diagnosis with multiple regression · 307312 Applied Statistics — Masters Level"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-copy: true
+    code-overflow: wrap
+execute:
+  echo: true
+  warning: true
+  message: false
+  fig-width: 7
+  fig-height: 4.5
+---
+
+[Case PDF](../pdf/case-05-mountain-states-potato.pdf) · [Student RStudio project](../downloads/applied-statistics-rstudio.zip) · [All extended cases](../index.qmd#extended-business-cases)
+
+- **Start after:** multiple regression and model diagnostics in [Part 3](../lessons/03-inferential-statistics.qmd#multiple-regression).
+- **Suggested time:** 90–120 minutes.
+- **Business question:** Which measured production factors help explain filter-cake solids content, and what should management investigate?
+
+**Learning outcomes:**
+
+- Interpret adjusted regression associations in business units.
+- Compare models while checking collinearity and influential measurements.
+- Separate prediction, process intervention and evidence of causation.
+
+## 1. The production manager's brief
+
+- Filter cake is a potato-processing by-product used in cattle feed.
+- Solids content had historically been slightly above 12%, but recent levels were nearer 11%.
+- **Source:** *Basic Business Statistics*, ninth edition, Chapter 15, p. 623; variable dictionary also p. 790.
+- **Unit:** one process measurement; 54 rows with solids and six potential predictors.
+- **Period:** measurements were taken several times daily over 20 days; calendar dates and day IDs are absent from the workbook.
+- **Limit:** observations may be temporally dependent; randomized process settings are not established.
+- The management goal is to investigate how to return solids **above 12%**, not merely maximize fitted R-squared.
+
+## 2. Import the process measurements
+
+```{r}
+#| label: case-import
+data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
+source(file.path(data_dir, "..", "lessons", "_includes", "course-tools.R"))
+potato <- read.csv(file.path(data_dir, "business", "extended-potato.csv"))
+stopifnot(nrow(potato) == 54, ncol(potato) == 7, !anyNA(potato))
+knitr::kable(head(potato))
+```
+
+- [Process CSV](../data/business/extended-potato.csv) · [Data guide](../data/business/README.md).
+- `solids`: percentage solids; `ph`: acidity.
+- `lower_pressure` and `upper_pressure`: vacuum-line pressure below and above the fluid line.
+- `cake_thickness`: thickness on the drum.
+- `varidriv_speed`: control setting; `drum_speed`: measured rotation speed.
+- The reviewed dictionary does not establish physical units for pressure, thickness or speed; retain source-scale labels.
+
+## 3. Describe the gap from the target
+
+```{r}
+knitr::kable(data.frame(variable = names(potato),
+  mean = sapply(potato, mean), sd = sapply(potato, sd),
+  min = sapply(potato, min), max = sapply(potato, max)),
+  row.names = FALSE, digits = 3)
+knitr::kable(data.frame(measurements = nrow(potato),
+  below_12_pct = 100 * mean(potato$solids < 12),
+  at_or_below_12_pct = 100 * mean(potato$solids <= 12)), digits = 2)
+ggplot(potato, aes(solids)) +
+  geom_histogram(binwidth = .5, fill = petra_accent, colour = "white") +
+  geom_vline(xintercept = 12, colour = petra_ink, linewidth = 1) +
+  labs(x = "Filter-cake solids (%)", y = "Process measurements")
+```
+
+- The 12% line is a business reference, not an estimated statistical control limit.
+- “Below 12%” and “not above 12%” use different comparisons for values exactly at 12.
+- The percentages describe the 54 records; repeated measurements do not establish the plant-wide failure rate.
+
+## 4. Explore associations and predictor overlap
+
+```{r}
+knitr::kable(cor(potato), digits = 2)
+ggplot(potato, aes(ph, solids)) + geom_point(colour = petra_ink) +
+  geom_smooth(method = "lm", formula = y ~ x, colour = petra_ink) +
+  labs(x = "pH", y = "Filter-cake solids (%)")
+```
+
+- Correlation describes linear association; inspect plots before treating it as an adequate summary.
+- Strong predictor correlations can make individual adjusted slopes unstable.
+- Do not interpret a marginal pH association as a demonstrated process intervention effect.
+
+## 5. Fit the full regression
+
+```{r}
+full <- lm(solids ~ ph + lower_pressure + upper_pressure +
+  cake_thickness + varidriv_speed + drum_speed, data = potato)
+summary(full)
+confint(full)
+```
+
+- Each slope describes the fitted solids difference holding the other included predictors fixed.
+- With solids measured in percent, a one-unit predictor change corresponds to a **percentage-point** difference in solids.
+- Conventional coefficient tests and intervals require suitable errors and sampling/model assumptions.
+- The missing day/time identifiers limit checks of temporal dependence; nominal p-values are conditional, not validated process evidence.
+
+## 6. Check diagnostics before using the model
+
+```{r}
+par(mfrow = c(2, 2))
+plot(full)
+par(mfrow = c(1, 1))
+influence <- data.frame(source_row = seq_len(nrow(potato)),
+  cooks_distance = cooks.distance(full), leverage = hatvalues(full))
+knitr::kable(head(influence[order(-influence$cooks_distance), ], 5), digits = 3)
+```
+
+- Inspect curvature, changing residual spread, unusual residuals and influential rows.
+- Row numbers identify records; they are not verified timestamps.
+- A diagnostic flag is a reason to investigate, not an automatic rule for deleting a measurement.
+
+### A direct collinearity check
+
+```{r}
+predictor_names <- names(potato)[names(potato) != "solids"]
+vif <- sapply(predictor_names, function(variable) {
+  others <- setdiff(predictor_names, variable)
+  1 / (1 - summary(lm(reformulate(others, variable), data = potato))$r.squared)
+})
+knitr::kable(data.frame(predictor = names(vif), VIF = as.numeric(vif)), digits = 2)
+```
+
+- Each VIF compares a predictor with the other predictors; it measures variance inflation from their linear overlap.
+- Large VIFs warn that holding the other predictors fixed may describe combinations with little support in the data.
+- VIF does not assess omitted confounding or establish a causal model.
+
+## 7. Compare a simpler model cautiously
+
+```{r}
+reduced <- lm(solids ~ ph + cake_thickness + drum_speed, data = potato)
+knitr::kable(AIC(full, reduced), digits = 2)
+summary(reduced)
+```
+
+- This reduced specification is a course illustration, not a textbook-selected model or a verified optimum.
+- AIC balances fit and complexity for comparable models fitted to the same response and records.
+- A lower in-sample AIC does not demonstrate reliable future prediction or causal effects.
+- Process knowledge and validation on later, time-identified measurements are needed before operational use.
+
+## 8. Independent production briefing
+
+1. Report the mean solids and the percentages below, and at or below, 12%; explain the denominator.
+2. Identify the strongest predictor overlaps using correlations and VIFs.
+3. Interpret one coefficient from the full model in correct units, including what is held constant.
+4. Compare full and reduced models using fit, diagnostics and process interpretability.
+5. Investigate the most influential record. If you fit a sensitivity model without it, retain and report the original full-data model too.
+6. Propose additional data collection with timestamps, day IDs and relevant operating conditions.
+7. Design a controlled follow-up investigation of one promising factor within feasible operating ranges.
+
+## Submission
+
+- One model-comparison table and two charts serving different questions.
+- A 150–200-word executive summary distinguishing observed association, uncertain prediction and proposed controlled investigation.
+- Do not recommend immediately changing plant settings based solely on these observational regressions.

@@ -25,9 +25,27 @@ COLA display experiments and Consumer credit-card charges.
 | 2. Superstore — order size and numerical measures | [Open practical](practicals/practical-02-numerical-business-data.html) | [PDF](pdf/practical-02-numerical-business-data.pdf) |
 | 3. Superstore — discounts, profit and group comparisons | [Open practical](practicals/practical-03-association-and-groups.html) | [PDF](pdf/practical-03-association-and-groups.pdf) |
 
+## Extended Business Cases {#extended-business-cases}
+
+- Apply the course methods to another business setting after the core practicals or the relevant Part 3 topics.
+- Each case stays together as one notebook, with a worked analysis and independent business tasks.
+- Your instructor may assign selected cases or sections; completing all six is optional.
+- ANOVA, forecasting and process control include introductions and are marked as extensions.
+
+| Extended case | Start after / focus | Read online | Download |
+|---|---|---|---|
+| 1. Springville Herald | Part 2: daily calls; Part 3: regression; optional forecasting | [Open case](extended-cases/case-01-springville-herald.qmd) | [PDF](pdf/case-01-springville-herald.pdf) |
+| 2. Oxford Cereal | Part 3: sampling, estimation and one-mean testing | [Open case](extended-cases/case-02-oxford-cereal.qmd) | [PDF](pdf/case-02-oxford-cereal.pdf) |
+| 3. BLK Retail Display | Part 3: follow-up to the worked COLA comparison | [Open case](extended-cases/case-03-retail-display.qmd) | [PDF](pdf/case-03-retail-display.pdf) |
+| 4. Perfect Parachute | Part 3: extend two-group comparisons to ANOVA | [Open case](extended-cases/case-04-perfect-parachute.qmd) | [PDF](pdf/case-04-perfect-parachute.pdf) |
+| 5. Mountain States Potato | Part 3: multiple regression and diagnostics | [Open case](extended-cases/case-05-mountain-states-potato.qmd) | [PDF](pdf/case-05-mountain-states-potato.pdf) |
+| 6. Harnswell Quality | After Parts 2–3: optional process-control extension | [Open case](extended-cases/case-06-harnswell-quality.qmd) | [PDF](pdf/case-06-harnswell-quality.pdf) |
+
+The cases draw on Berenson, Levine and Krehbiel's *Basic Business Statistics: Concepts and Applications*, ninth edition. Each identifies its source, observational unit and limits; Oxford uses reported summary inputs rather than raw box weights.
+
 ## Work with R or study offline
 
-- [Download the complete student RStudio project](downloads/applied-statistics-rstudio.zip): editable lessons and practicals, teaching CSVs, images, and setup instructions. Extract the ZIP, then open `Applied-Statistics.Rproj` in RStudio.
-- [Download all lesson and practical PDFs](downloads/applied-statistics-pdfs.zip).
+- [Download the complete student RStudio project](downloads/applied-statistics-rstudio.zip): editable lessons, core practicals and six extended cases, teaching CSVs, shared styling and setup instructions. Extract the ZIP, then open `Applied-Statistics.Rproj` in RStudio.
+- [Download all 12 lesson, practical and extended-case PDFs](downloads/applied-statistics-pdfs.zip).
 
 The online lessons and PDFs show the code and its results. To run or change R code, use the RStudio project.

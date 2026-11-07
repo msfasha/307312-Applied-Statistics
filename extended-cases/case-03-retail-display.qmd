@@ -1,0 +1,127 @@
+---
+title: "Extended Case 3 — BLK Retail Display"
+subtitle: "From a sales difference to a business decision · 307312 Applied Statistics — Masters Level"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-copy: true
+    code-overflow: wrap
+execute:
+  echo: true
+  warning: true
+  message: false
+  fig-width: 7
+  fig-height: 4.5
+---
+
+[Case PDF](../pdf/case-03-retail-display.pdf) · [Student RStudio project](../downloads/applied-statistics-rstudio.zip) · [All extended cases](../index.qmd#extended-business-cases)
+
+- **Start after:** the worked [COLA comparison in Part 3](../lessons/03-inferential-statistics.qmd#cola-compare-display-conditions).
+- **Suggested time:** 50–60 minutes.
+- **Role:** follow-up assignment using the same COLA data with a stronger commercial briefing.
+
+**Learning outcomes:**
+
+- Interpret an independent-groups effect and confidence interval in cases per store per week.
+- Separate random assignment from representative sampling.
+- Evaluate business importance with explicitly assumed margin and display costs.
+
+## 1. The merchandising manager's brief
+
+- BLK cola is sold in normal-shelf and end-of-aisle displays.
+- **Source:** *Basic Business Statistics*, ninth edition, Chapter 10, pp. 336–339.
+- **Design:** 20 selected stores of similar sales volume; random assignment of ten stores to each condition.
+- **Unit:** one store observed for one week; outcome is cases sold per week.
+- **Limit:** random selection from all supermarkets is not established, and one week does not establish long-term effects.
+- **Business question:** Does the sales gain warrant further consideration of the display space?
+
+## 2. Reuse the course's canonical COLA file
+
+```{r}
+#| label: case-import
+data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
+source(file.path(data_dir, "..", "lessons", "_includes", "course-tools.R"))
+cola <- read.csv(file.path(data_dir, "business", "cola.csv"))
+cola$display <- factor(cola$display, levels = c("Normal", "End aisle"))
+normal <- cola$weekly_cases[cola$display == "Normal"]
+end <- cola$weekly_cases[cola$display == "End aisle"]
+stopifnot(length(normal) == 10, length(end) == 10)
+knitr::kable(cola %>% group_by(display) %>%
+  summarise(stores = n(), mean_cases = mean(weekly_cases),
+    sd_cases = sd(weekly_cases), .groups = "drop"), digits = 2)
+```
+
+- [COLA CSV](../data/business/cola.csv) · [Data guide](../data/business/README.md).
+- Each row is one store; the source's side-by-side columns did not represent pairs.
+- Course store IDs identify rows; they are not publisher store names.
+
+## 3. Review the worked comparison
+
+```{r}
+ggplot(cola, aes(display, weekly_cases)) +
+  geom_boxplot(fill = petra_accent, width = .45, outlier.shape = NA) +
+  geom_point(position = position_jitter(width = .07, height = 0, seed = 307312),
+             colour = petra_ink) +
+  labs(x = "Display", y = "Cases sold per store per week")
+welch <- t.test(end, normal, var.equal = FALSE)
+knitr::kable(data.frame(difference = mean(end) - mean(normal),
+  lower_95 = welch$conf.int[1], upper_95 = welch$conf.int[2],
+  p_value = welch$p.value), digits = 4)
+```
+
+- The estimated difference is **end aisle minus normal**: 21.7 cases per store per week.
+- The Welch 95% interval is about **6.57–36.83 cases**, with p about **0.00785**.
+- The two-sided null is equal mean sales under the two conditions.
+- The book uses a pooled-variance t test; the course uses Welch, which avoids the equal-variance assumption.
+- Random assignment supports the experimental contrast among these stores, subject to implementation and no interference.
+- Sales evidence alone does not establish the display's net commercial value.
+
+## 4. Review assumptions before reporting
+
+```{r}
+par(mfrow = c(1, 2))
+qqnorm(normal, main = "Normal shelf: Q-Q plot"); qqline(normal)
+qqnorm(end, main = "End aisle: Q-Q plot"); qqline(end)
+par(mfrow = c(1, 1))
+```
+
+- Each group contains only ten stores; Q-Q plots have limited power to reveal departures from normality.
+- Independence follows from the design and store operations, not from a normality plot.
+- Check whether stores could affect one another's sales or whether promotions differed.
+- Do not choose a paired test because the original spreadsheet aligned two columns.
+
+## 5. Independent commercial briefing
+
+1. Reproduce the effect, confidence interval and p-value, with units and direction.
+2. Run the textbook's pooled test using `var.equal = TRUE`; compare its interval and assumptions with Welch's.
+3. Run a Wilcoxon rank-sum comparison. Explain why it is not generally a test of equality of means.
+4. Define the population to which you can reasonably discuss the results; distinguish assignment from selection.
+5. Complete the commercial sensitivity analysis below and recommend a next step.
+
+### Hypothetical commercial assumptions
+
+- Contribution margin per additional case: **$4, $6 or $8**.
+- Opportunity cost of the display: **$80 per store per week**.
+- These are assignment assumptions, not COLA observations or textbook financial data.
+- Assume the measured sales difference represents incremental cases and the chosen margin applies to them; discuss why this may fail.
+
+```{r}
+#| eval: false
+margin_per_case <- c(4, 6, 8)
+display_cost <- 80
+# For each assumed margin, calculate:
+# estimated net contribution = estimated case difference * margin - cost
+# corresponding interval endpoints = Welch endpoints * margin - cost
+# break-even additional cases = cost / margin
+```
+
+- Multiplying the sales interval by a fixed positive margin gives a conditional interval under that assumed margin.
+- It does not include uncertainty in costs, margins, cannibalization or future display effects.
+- Treat a zero-crossing interval as uncertainty about the assumed commercial threshold, not proof of no value.
+
+## Submission
+
+- One results table comparing Welch, pooled and rank-based analyses with their different targets.
+- One commercial sensitivity table and one labelled chart.
+- A 150–200-word recommendation addressing magnitude, uncertainty, cost assumptions and transfer to other stores or weeks.

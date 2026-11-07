@@ -1,0 +1,98 @@
+{
+  "reviewed": "2026-11-07",
+  "datasets": {
+    "extended-herald-calls.csv": {
+      "source_file": "books/2-Basic business statistics  concepts and applications/BusStats Excel/SH2.XLS",
+      "source_sha256": "1b842a4e94c65379edb89815e5fef818963db117d8ede873868c3ae817d4f6bc",
+      "output_file": "data/business/extended-herald-calls.csv",
+      "output_sha256": "c8872a6f32fcdaffba248de3e6617ef9a35b207b32a0433689b4b19efa28e7f7",
+      "rows": 90,
+      "columns": [
+        "day",
+        "calls"
+      ],
+      "transformation": "Observation values preserved; headers standardized; SH2 chart helpers excluded."
+    },
+    "extended-herald-marketing.csv": {
+      "source_file": "books/2-Basic business statistics  concepts and applications/BusStats Excel/SH13.xls",
+      "source_sha256": "be1689b2844dbd310f1cbfb2b7016e09ae6c39cd50fb32dc654b7a594381222a",
+      "output_file": "data/business/extended-herald-marketing.csv",
+      "output_sha256": "0c3c68cdf031b5834f5cee00cafbe80e6e7b480edea04473b1b692a90f549ccf",
+      "rows": 24,
+      "columns": [
+        "hours",
+        "new_subscriptions"
+      ],
+      "transformation": "Observation values preserved; headers standardized; SH2 chart helpers excluded."
+    },
+    "extended-herald-subscriptions.csv": {
+      "source_file": "books/2-Basic business statistics  concepts and applications/BusStats Excel/SH16.xls",
+      "source_sha256": "48ee19c814c484d95d1ec259abe87ad62072fa457d01e33c1cba6a1a18b93c88",
+      "output_file": "data/business/extended-herald-subscriptions.csv",
+      "output_sha256": "afcb96d9c4c9a735be2d76c81fbc4bfaa1d0ed87cf09fdd96d6df1420ef9b8fd",
+      "rows": 24,
+      "columns": [
+        "month",
+        "subscriptions"
+      ],
+      "transformation": "Observation values preserved; headers standardized; SH2 chart helpers excluded."
+    },
+    "extended-parachute.csv": {
+      "source_file": "books/2-Basic business statistics  concepts and applications/BusStats Excel/Parachute.xls",
+      "source_sha256": "e3e33b19a04f5ce40928e466b95d6e490bc878c2af642a13f5648546383f2a2a",
+      "output_file": "data/business/extended-parachute.csv",
+      "output_sha256": "7ee050747cee01a1bf379b8e4ba1cc7af96f166aac033f030c35728f16318a49",
+      "rows": 20,
+      "columns": [
+        "supplier",
+        "strength"
+      ],
+      "transformation": "First five measurement rows only; suppliers stacked column-wise; summary rows excluded."
+    },
+    "extended-potato.csv": {
+      "source_file": "books/2-Basic business statistics  concepts and applications/BusStats Excel/potato.xls",
+      "source_sha256": "05b21e64950651aa648b0472eec38fa1b161d0edc4ccbc720ca574b620a64b3d",
+      "output_file": "data/business/extended-potato.csv",
+      "output_sha256": "83ab16f588a2dabcc17251c98d53ae37fadca13e794df6d3944156d498b7b894",
+      "rows": 54,
+      "columns": [
+        "solids",
+        "ph",
+        "lower_pressure",
+        "upper_pressure",
+        "cake_thickness",
+        "varidriv_speed",
+        "drum_speed"
+      ],
+      "transformation": "Observation values preserved; headers standardized; SH2 chart helpers excluded."
+    },
+    "extended-harnswell.csv": {
+      "source_file": "books/2-Basic business statistics  concepts and applications/BusStats Excel/HARNSWELL.xls",
+      "source_sha256": "7ff20ff23e9358ffb8056d945f519d4903e1011c191bc4a8328e45801a923827",
+      "output_file": "data/business/extended-harnswell.csv",
+      "output_sha256": "f7794919a5947c9bd0e3be3dd59ad082e4088ca23f200655f1e7db81cb5c0fba",
+      "rows": 150,
+      "columns": [
+        "batch",
+        "diameter"
+      ],
+      "transformation": "Observation values preserved; headers standardized; SH2 chart helpers excluded."
+    },
+    "extended-oxford-summary.csv": {
+      "source_file": "books/2-Basic business statistics  concepts and applications/9th-Basic business statistics concepts and applications (Berenson, Mark L, Levine, David M. etc.).pdf",
+      "source_sha256": "11db7841e6d93bb47edcb5c2d8faf06fe7bf9770f6a156501a5f8def479d2600",
+      "source_page": "Printed p. 302; PDF viewer p. 328",
+      "output_file": "data/business/extended-oxford-summary.csv",
+      "output_sha256": "695e39d3005295edab465daa5d0d515dd8e5cbf55c1479989912de5de09b2dd9",
+      "rows": 1,
+      "columns": [
+        "n",
+        "sample_mean_g",
+        "population_sd_g",
+        "target_mean_g",
+        "alpha"
+      ],
+      "transformation": "Transcribed summary inputs; no individual weights invented."
+    }
+  }
+}

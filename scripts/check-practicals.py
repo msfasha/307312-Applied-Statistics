@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify all six business notebooks, pinned data and isolated interactive imports."""
+"""Verify all twelve business notebooks, pinned data and isolated interactive imports."""
 import csv
 import hashlib
 import json
@@ -9,9 +9,11 @@ import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+from course_documents import EXTENDED
 NOTEBOOKS = sorted((ROOT/'lessons').glob('*.qmd')) + [ROOT/'practicals'/name for name in [
     'practical-01-categorical-business-data.qmd', 'practical-02-numerical-business-data.qmd',
     'practical-03-association-and-groups.qmd']]
+NOTEBOOKS += [ROOT/'extended-cases'/(name+'.qmd') for name in EXTENDED]
 
 def run_r(code, cwd):
     code = 'pdf(file = tempfile(fileext = ".pdf"))\noptions(warn = 2)\n' + code + '\ndev.off()\n'
@@ -24,8 +26,10 @@ def run_r(code, cwd):
         raise RuntimeError(result.stdout + result.stderr)
 
 def verify_data():
-    manifest = json.loads((ROOT/'instructor/business-data-provenance.json').read_text())
-    for stem, entry in manifest['datasets'].items():
+    datasets = {}
+    for name in ['business-data-provenance.json', 'extended-cases-provenance.json']:
+        datasets.update(json.loads((ROOT/'instructor'/name).read_text())['datasets'])
+    for stem, entry in datasets.items():
         path = ROOT/entry['output_file']
         assert hashlib.sha256(path.read_bytes()).hexdigest() == entry['output_sha256'], stem
         with path.open(newline='') as stream:
@@ -76,6 +80,22 @@ stopifnot(all(abs(coef(m) - c(1304.9048,33.1330,356.2962)) < .01),
           abs(summary(m)$adj.r.squared - .8181) < .0001)
 ''', ROOT)
     # Full numerical source-cell checks, when maintainer source workbooks are present.
+    extension_sources = ROOT/'books/2-Basic business statistics  concepts and applications/BusStats Excel'
+    if extension_sources.exists():
+        run_r('''
+library(readxl)
+p <- 'books/2-Basic business statistics  concepts and applications/BusStats Excel/'
+get <- function(n) read.csv(file.path('data/business',paste0('extended-',n,'.csv')))
+z <- read_excel(paste0(p,'SH2.XLS')); stopifnot(all(as.matrix(z[1:2]) == as.matrix(get('herald-calls'))))
+z <- read_excel(paste0(p,'SH13.xls')); stopifnot(all(as.matrix(z) == as.matrix(get('herald-marketing'))))
+z <- read_excel(paste0(p,'SH16.xls')); stopifnot(all(as.matrix(z) == as.matrix(get('herald-subscriptions'))))
+z <- read_excel(paste0(p,'potato.xls')); stopifnot(all(as.matrix(z) == as.matrix(get('potato'))))
+z <- read_excel(paste0(p,'HARNSWELL.xls')); stopifnot(all(as.matrix(z) == as.matrix(get('harnswell'))))
+z <- suppressMessages(read_excel(paste0(p,'Parachute.xls')))
+v <- get('parachute')
+for (j in 1:4) stopifnot(all(v$strength[v$supplier == paste('Supplier',j)] == z[[j]][1:5]))
+''', ROOT)
+    run_r((ROOT/'instructor/extended-cases-answer-key.R').read_text(), ROOT)
     if (ROOT/'books/tableau/sample_-_superstore.xls').exists():
         run_r('''
 library(readxl)

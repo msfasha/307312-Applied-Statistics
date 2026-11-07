@@ -172,3 +172,16 @@
 - The COLA source describes random assignment, not random selection of all supermarkets. Use independent groups, report cases/week and distinguish the course Welch analysis from the book's pooled analysis.
 - Consumer source reporting periods are not established by the workbook; do not add annual labels. Regression inference remains conditional on model/sampling assumptions.
 - The nominal t interval on 200 Superstore orders undercovers in the seeded simulation; retain this diagnostic and coverage comparison rather than claiming validated 95% precision.
+
+## Extended Business Cases — 7 November 2026
+
+- User authorized preparing, committing, pushing and publishing six standalone extended cases from the supplied `Six_Business_Statistics_Quarto_Cases.zip`.
+- Keep each case together under `extended-cases/`, linked from the home page and relevant lessons: Springville Herald, Oxford Cereal, BLK Retail Display, Perfect Parachute, Mountain States Potato, Harnswell Quality.
+- Preserve the existing core lessons/practicals. Springville has descriptive, regression and optional forecasting sections inside one notebook. BLK is a follow-up to the core COLA example. ANOVA, forecasting and process control include introductions and optional/extension labels.
+- Apply the shared Petra theme, brief bullet points, explained executable R, independent briefing tasks and per-import `data_dir` lookup from root or notebook folder. Instructor solutions and source issues remain in `instructor/`.
+- Publish all twelve notebook PDFs and include all twelve notebooks in both appropriate student bundles. This extends the six-document minimum; preserve all existing URLs. The approved document list is `scripts/course_documents.py`.
+- Only canonical CSVs under `data/business/` enter publication and student ZIPs. BLK reuses `cola.csv`. Reproduce extension exports with `scripts/prepare-extended-data.py`; preserve publisher workbooks unchanged and local-only.
+- Oxford has one row of reported summary inputs, not raw box weights; simulations and BLK commercial assumptions must be explicit hypotheticals.
+- Harnswell workbook contains 56 above-specification rollers; book narrative says 55. Retain measurements and report the discrepancy. Do not claim capability from unstable initial charts or delete batch 17 automatically.
+- `Parachute2.xls` does have raw loom observations on its `Data` sheet, contrary to the supplied draft's summary-only claim. The adopted case analyses the separate one-way dataset only.
+- Potato has repeated measurements over 20 days without timestamps/day IDs; regression inference remains conditional. Preserve unestablished unit/period limits, source attribution and the distinction between below 12% and not above 12%.

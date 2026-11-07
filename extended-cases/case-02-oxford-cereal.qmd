@@ -1,0 +1,130 @@
+---
+title: "Extended Case 2 — Oxford Cereal"
+subtitle: "Packaging weights and inference · 307312 Applied Statistics — Masters Level"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-copy: true
+    code-overflow: wrap
+execute:
+  echo: true
+  warning: true
+  message: false
+  fig-width: 7
+  fig-height: 4.5
+---
+
+[Case PDF](../pdf/case-02-oxford-cereal.pdf) · [Student RStudio project](../downloads/applied-statistics-rstudio.zip) · [All extended cases](../index.qmd#extended-business-cases)
+
+- **Start after:** sampling distributions, confidence intervals and one-mean testing in [Part 3](../lessons/03-inferential-statistics.qmd).
+- **Suggested time:** 50–60 minutes.
+- **Business question:** Does the reported sample provide evidence that mean box weight differs from the 368 g target?
+
+**Learning outcomes:**
+
+- Distinguish process standard deviation from the standard error of a mean.
+- Calculate a Z test and interval from reported summary statistics.
+- Explain what a failure to reject can and cannot establish.
+
+## 1. The packaging manager's brief
+
+- Oxford fills cereal boxes labelled **368 grams**.
+- Underfilling concerns customers; overfilling uses extra product.
+- **Source:** *Basic Business Statistics*, ninth edition, Chapters 7 (p. 232) and 9 (pp. 296–303; numerical example p. 302).
+- **Reported evidence:** 25 boxes, sample mean 372.5 g, assumed known population SD 15 g.
+- **Unit:** grams per box; the supplied CSV has one summary row, not 25 box records.
+- **Limit:** raw weights, collection dates and individual underfill counts are unavailable.
+- The publisher's separate `CEREALS` cost/nutrition dataset is not Oxford packaging data.
+
+## 2. Import the reported inputs
+
+```{r}
+#| label: case-import
+data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
+source(file.path(data_dir, "..", "lessons", "_includes", "course-tools.R"))
+oxford <- read.csv(file.path(data_dir, "business", "extended-oxford-summary.csv"))
+knitr::kable(oxford)
+n <- oxford$n[1]
+xbar <- oxford$sample_mean_g[1]
+sigma <- oxford$population_sd_g[1]
+mu0 <- oxford$target_mean_g[1]
+alpha <- oxford$alpha[1]
+stopifnot(n == 25, sigma == 15, mu0 == 368, xbar == 372.5)
+```
+
+- [Summary CSV](../data/business/extended-oxford-summary.csv) · [Data guide](../data/business/README.md).
+- `sigma` is assumed known in the textbook example; it is not estimated from these 25 boxes.
+- A Z procedure requires the stated known SD and an appropriate sampling/normal model.
+
+## 3. Separate variation between boxes and between sample means
+
+```{r}
+se <- sigma / sqrt(n)
+knitr::kable(data.frame(sample_size = n, sample_mean_g = xbar,
+  difference_from_target_g = xbar - mu0, process_sd_g = sigma,
+  standard_error_g = se), digits = 2)
+```
+
+- `sigma = 15` g describes variation between individual boxes under the model.
+- `se = 3` g describes variation between means of independent samples of 25 boxes.
+- Increasing sample size reduces the standard error; it does not mechanically reduce process variation.
+
+## 4. See the sampling distribution
+
+- This simulation generates **hypothetical** normal-process weights under a 368 g mean and 15 g SD.
+- Its values are not observed Oxford measurements.
+
+```{r}
+set.seed(42001)
+sim_means <- replicate(10000, mean(rnorm(n, mean = mu0, sd = sigma)))
+ggplot(data.frame(sample_mean = sim_means), aes(sample_mean)) +
+  geom_histogram(bins = 35, fill = petra_accent, colour = "white") +
+  geom_vline(xintercept = xbar, colour = petra_ink, linewidth = 1) +
+  labs(x = "Mean of 25 simulated boxes (g)", y = "Simulated samples")
+```
+
+- `set.seed()` makes the simulation reproducible.
+- `replicate()` repeats the hypothetical sampling experiment.
+- The vertical line marks the reported sample mean, 372.5 g.
+
+## 5. Test the process mean
+
+- **Null:** the population mean is 368 g.
+- **Alternative:** the population mean differs from 368 g.
+- **Decision threshold:** 5%, two-sided.
+
+```{r}
+z <- (xbar - mu0) / se
+p_value <- 2 * pnorm(-abs(z))
+ci <- xbar + c(-1, 1) * qnorm(1 - alpha / 2) * se
+knitr::kable(data.frame(z = z, p_value = p_value,
+  lower_mean_g = ci[1], upper_mean_g = ci[2], reject = p_value < alpha), digits = 4)
+```
+
+- `pnorm()` gives the normal tail probability; the two tails account for deviations in either direction.
+- The result is **Z = 1.50**, with p about **0.134**.
+- The 95% interval for the process mean is approximately **366.62–378.38 g**.
+- The evidence is insufficient to reject the 368 g mean at 5% under the stated assumptions.
+- This does not prove exact centering, individual-box compliance or a low underfill rate.
+
+## 6. Independent packaging review
+
+1. Explain why `sd()` or `t.test()` on the single summary row cannot analyse 25 individual boxes.
+2. Recalculate the test and interval for a **hypothetical** sample mean of 375 g, holding the other inputs fixed.
+3. Compare the standard errors for hypothetical independent sample sizes 25 and 100 with the same known process SD.
+4. Explain why a narrow interval for the mean does not guarantee that individual boxes meet a weight requirement.
+5. Describe Type I and Type II errors as unnecessary process intervention and missed process changes.
+6. Specify the raw measurements and sampling records needed to investigate underfilling and process stability.
+
+```{r}
+#| eval: false
+# Independent task: change the summary inputs and label the scenario hypothetical.
+# Use (sample_mean - target) / (known_sd / sqrt(sample_size)).
+```
+
+## Submission
+
+- One comparison table for the reported and hypothetical scenarios.
+- A sampling-distribution chart with clearly labelled simulated values.
+- Five briefing bullets covering evidence, decision, assumptions, limits and further data.

@@ -3,6 +3,7 @@
 from pathlib import Path
 import argparse,subprocess,shutil,tempfile,json,datetime
 ROOT=Path(__file__).resolve().parents[1]
+from course_documents import EXTENDED
 def run(*args,cwd=ROOT):
     return subprocess.run(args,cwd=cwd,check=True,text=True,capture_output=True).stdout.strip()
 def validate(site):
@@ -10,6 +11,9 @@ def validate(site):
     required += ['pdf/'+p+'.pdf' for p in ['01-introduction-to-r','02-descriptive-statistics','03-inferential-statistics']]
     practicals=['practical-01-categorical-business-data','practical-02-numerical-business-data','practical-03-association-and-groups']
     required += ['practicals/'+p+'.html' for p in practicals]+['pdf/'+p+'.pdf' for p in practicals]
+    required += ['extended-cases/'+p+'.html' for p in EXTENDED]+['pdf/'+p+'.pdf' for p in EXTENDED]
+    import re
+    required += re.findall(r'^    - (data/business/[^\n]+)', (ROOT/'_quarto.yml').read_text(), re.M)
     required += ['data/business/'+p for p in ['superstore-lines.csv','cola.csv','consumer.csv','README.md']]
     required += ['downloads/applied-statistics-rstudio.zip','downloads/applied-statistics-pdfs.zip']
     for name in required:
@@ -52,7 +56,7 @@ with tempfile.TemporaryDirectory(prefix='307312-pages-') as temp:
             else:p.unlink()
         shutil.copytree(site,checkout,dirs_exist_ok=True)
         run('git','add','--all',cwd=checkout)
-        run('git','commit','-m','Publish Superstore business course and refreshed student downloads',cwd=checkout)
+        run('git','commit','-m','Publish course with six extended business cases and refreshed downloads',cwd=checkout)
         print(run('git','push','origin','HEAD:gh-pages',cwd=checkout))
         print('Published source commit:',source)
         print('Website: https://msfasha.github.io/307312-Applied-Statistics/')

@@ -588,6 +588,16 @@ predict(multiple_model, newdata = profile, interval = "prediction")
 # Report effects and intervals rather than submitting raw output alone.
 ```
 
+### Extend the methods to another business case
+
+- [Oxford Cereal](../extended-cases/case-02-oxford-cereal.qmd): sampling variation, a mean test and an interval from reported summary inputs.
+- [BLK Retail Display](../extended-cases/case-03-retail-display.qmd): follow up the COLA example with a commercial sensitivity briefing.
+- [Springville Herald, Section B](../extended-cases/case-01-springville-herald.qmd#section-b): marketing regression; optional Section C introduces forecasting.
+- [Perfect Parachute](../extended-cases/case-04-perfect-parachute.qmd): extend group comparisons to four suppliers with an ANOVA primer.
+- [Mountain States Potato](../extended-cases/case-05-mountain-states-potato.qmd): multiple regression, diagnostics and production recommendations.
+- [Harnswell Quality](../extended-cases/case-06-harnswell-quality.qmd): optional process-control extension with an introductory chart guide.
+- Select cases as assigned; the six complete notebooks are collected under [Extended Business Cases](../index.qmd#extended-business-cases).
+
 ### Sources and continuation
 
 - Superstore: [Tableau sample data](https://public.tableau.com/app/resources/sample-data) and [transaction detail](https://help.tableau.com/current/pro/desktop/en-us/find_good_datasets.htm).

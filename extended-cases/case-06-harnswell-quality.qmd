@@ -1,0 +1,175 @@
+---
+title: "Extended Case 6 — Harnswell Quality"
+subtitle: "Precision parts and process stability · 307312 Applied Statistics — Masters Level"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-copy: true
+    code-overflow: wrap
+execute:
+  echo: true
+  warning: true
+  message: false
+  fig-width: 7
+  fig-height: 4.5
+---
+
+[Case PDF](../pdf/case-06-harnswell-quality.pdf) · [Student RStudio project](../downloads/applied-statistics-rstudio.zip) · [All extended cases](../index.qmd#extended-business-cases)
+
+- **Start after:** descriptive statistics and inference in Parts [2](../lessons/02-descriptive-statistics.qmd) and [3](../lessons/03-inferential-statistics.qmd).
+- **Optional advanced case:** introduces statistical process control; read the chart primer below first.
+- **Suggested time:** 90–120 minutes.
+- **Business question:** Is the cam-roller grinding process stable, and does its output meet engineering specifications?
+
+**Learning outcomes:**
+
+- Distinguish engineering specifications from statistical control limits.
+- Preserve rational subgroups when constructing X-bar and R charts.
+- Explain why process stability must precede capability claims.
+
+## 1. The quality manager's brief
+
+- Harnswell manufactures precision cam rollers for sewing machines.
+- Oversized parts may be downgraded; undersized parts may become scrap.
+- **Source:** *Basic Business Statistics*, ninth edition, Chapter 18, pp. 752–754.
+- **Unit:** one roller diameter, in inches; five measurements per production batch for 30 batches.
+- **Engineering limits:** **0.5072 to 0.5075 inches**, inclusive.
+- **Period:** source batch order is retained; calendar dates are not supplied in the CSV.
+- The workbook column `Day` is represented here as `batch`, consistent with the case's production subgroups.
+- **Limit:** the historical case narrative does not establish that temperature alone caused the observed variation.
+
+## 2. Import and preserve batch membership
+
+```{r}
+#| label: case-import
+data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
+source(file.path(data_dir, "..", "lessons", "_includes", "course-tools.R"))
+rollers <- read.csv(file.path(data_dir, "business", "extended-harnswell.csv"))
+stopifnot(nrow(rollers) == 150, all(table(rollers$batch) == 5))
+LSL <- .5072
+USL <- .5075
+knitr::kable(head(rollers), digits = 4)
+```
+
+- [Diameter CSV](../data/business/extended-harnswell.csv) · [Data guide](../data/business/README.md).
+- Never sort all diameters and then divide them into new batches; that destroys the subgroup structure.
+- `LSL` and `USL` are engineering requirements, not limits estimated from these measurements.
+
+## 3. Describe specification compliance
+
+```{r}
+knitr::kable(rollers %>% summarise(n = n(), mean = mean(diameter),
+  sd = sd(diameter), min = min(diameter), max = max(diameter)), digits = 6)
+compliance <- rollers %>% mutate(status = case_when(
+  diameter < LSL ~ "Below specification",
+  diameter > USL ~ "Above specification",
+  TRUE ~ "Within specification")) %>%
+  count(status) %>% mutate(percent = 100 * n / sum(n))
+knitr::kable(compliance, digits = 2)
+ggplot(rollers, aes(diameter)) +
+  geom_histogram(binwidth = .0001, boundary = .50715,
+                 fill = petra_accent, colour = "white") +
+  geom_vline(xintercept = c(LSL, USL), colour = petra_ink, linetype = "dashed") +
+  scale_x_continuous(labels = function(x) sprintf("%.4f", x)) +
+  labs(x = "Roller diameter (inches)", y = "Rollers")
+```
+
+- The workbook has **56 above-specification rollers (37.33%)**, 94 within specification and none below.
+- The book narrative reports 55 above specification; the table here follows the unchanged workbook values.
+- Do not extrapolate this observed percentage to annual production without a defensible sampling and stability basis.
+
+## 4. A short process-control primer
+
+- Within-batch variation concerns the five rollers in one subgroup.
+- Between-batch changes may indicate shifts in centering or operating conditions.
+- An **R chart** tracks within-batch ranges; an **X-bar chart** tracks batch means.
+- Check the R chart first: unstable within-batch variation undermines interpretation of X-bar limits.
+- Control limits estimate expected variation for a stable process; specification limits describe acceptable products.
+- A stable process can still produce unacceptable parts.
+
+## 5. Estimate initial chart limits
+
+- For subgroup size five, use **A2 = 0.577, D3 = 0, D4 = 2.114**.
+- X-bar limits: grand mean ± A2 × average range.
+- R limits: D3 × average range and D4 × average range.
+- These are initial Phase I limits estimated using all 30 batches, including any unusual batches.
+
+```{r}
+subgroups <- rollers %>% group_by(batch) %>%
+  summarise(xbar = mean(diameter), R = max(diameter) - min(diameter),
+    n = n(), .groups = "drop") %>% arrange(batch)
+stopifnot(all(subgroups$n == 5))
+xbarbar <- mean(subgroups$xbar)
+Rbar <- mean(subgroups$R)
+xlimits <- xbarbar + c(-1, 1) * .577 * Rbar
+rlimits <- c(0, 2.114 * Rbar)
+knitr::kable(data.frame(chart = c("X-bar", "R"),
+  centre = c(xbarbar, Rbar), lower = c(xlimits[1], rlimits[1]),
+  upper = c(xlimits[2], rlimits[2])), digits = 7)
+```
+
+- `group_by(batch)` preserves the original subgroups.
+- The X-bar limits apply to **batch means**, not individual roller diameters.
+- Engineering limits should not replace statistical limits on these charts.
+
+## 6. Check the R chart, then the X-bar chart
+
+```{r}
+ggplot(subgroups, aes(batch, R)) + geom_line() + geom_point() +
+  geom_hline(yintercept = Rbar, colour = petra_ink) +
+  geom_hline(yintercept = rlimits, linetype = "dashed") +
+  scale_y_continuous(labels = function(x) sprintf("%.5f", x)) +
+  labs(x = "Source batch number", y = "Within-batch range (inches)")
+ggplot(subgroups, aes(batch, xbar)) + geom_line() + geom_point() +
+  geom_hline(yintercept = xbarbar, colour = petra_ink) +
+  geom_hline(yintercept = xlimits, linetype = "dashed") +
+  scale_y_continuous(labels = function(x) sprintf("%.5f", x)) +
+  labs(x = "Source batch number", y = "Mean diameter (inches)")
+flags <- subgroups %>% mutate(xbar_out = xbar < xlimits[1] | xbar > xlimits[2],
+  R_out = R < rlimits[1] | R > rlimits[2]) %>% filter(xbar_out | R_out)
+knitr::kable(flags, digits = 6)
+```
+
+- The initial X-bar chart flags **batch 17** below its lower limit; the R chart has no beyond-limit point.
+- A signal is a reason to investigate a potential special cause.
+- No beyond-limit points would not by itself prove stability: runs, trends, grouping and operational context also matter.
+- Keep batch 17 in the original analysis; do not delete it merely to make the chart look stable.
+
+## 7. Capability requires a stable, suitable process model
+
+- **Cp** compares specification width with six within-process standard deviations.
+- **Cpk** also accounts for the process mean's distance from each specification limit.
+- With subgroup size five, an estimate of within-process SD is average range / **d2**, where **d2 = 2.326**.
+- The initial charts signal instability, so a reliable capability claim is not supported by this initial dataset.
+- The following template is intentionally not executed. Use it only after a documented stability investigation and suitable distribution/measurement checks.
+
+```{r}
+#| eval: false
+# stable_subgroups must come from a justified, documented process phase.
+mu <- mean(stable_subgroups$xbar)
+sigma_within <- mean(stable_subgroups$R) / 2.326
+Cp <- (USL - LSL) / (6 * sigma_within)
+Cpk <- min((USL - mu) / (3 * sigma_within),
+           (mu - LSL) / (3 * sigma_within))
+```
+
+- A negative Cpk indicates a fitted mean beyond a specification limit; it is not a negative defect percentage.
+- Do not convert Cp or Cpk into a guaranteed future defect rate without the additional model assumptions.
+
+## 8. Independent quality-improvement briefing
+
+1. Reproduce specification counts and percentages from the 150 measurements.
+2. Report the initial R and X-bar limits with units and appropriate decimal precision.
+3. Explain how batch 17 can signal a shift even though none of its individual measurements is below specification.
+4. Propose records to examine: temperature, warm-up, setup, tooling and measurement calibration.
+5. The book describes a cold-start explanation and corrective action. Explain why the narrative is insufficient to prove causality in the CSV alone.
+6. As a **retrospective sensitivity analysis**, recalculate limits excluding batch 17, retain the original results and state what evidence would justify treating it as a separate process condition.
+7. Explain why recalculated limits alone do not validate future process stability or capability.
+8. Recommend how to collect new subgroups after an intervention, and distinguish reducing variation from shifting the process mean.
+
+## Submission
+
+- Specification table, both initial control charts and the flagged-batch table.
+- A 150–200-word improvement memo addressing stability, compliance, the source discrepancy and next measurements.
+- Include a justified comparison of original and sensitivity results if assigned; keep capability claims conditional.
