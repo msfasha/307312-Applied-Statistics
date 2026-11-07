@@ -4301,6 +4301,21 @@ a { text-decoration: none !important; }
 @media print {
 #slide-39, #slide-46 { break-inside: avoid; }
 }
+
+.cv-formula { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem 2.5rem; margin: 1rem 0; font-size: 1.1rem; }
+.cv-formula p { margin: 0; }
+.cv-finance-calculations { margin: 1rem 0; padding: .6rem 1rem; background: #F7F7F7; font-size: 1.05rem; }
+.covariance-examples { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 1rem; max-width: 680px; margin: 1rem auto; }
+.covariance-examples > p, .covariance-examples .quarto-figure { margin: 0; }
+.source-slide .covariance-examples img { width: 100%; max-width: 100%; min-width: 0; height: auto; }
+.squared-distances { font-size: 21px; }
+@media (max-width: 575px) {
+.covariance-examples { grid-template-columns: 1fr; max-width: 220px; gap: .8rem; }
+.squared-distances { font-size: 29px; }
+}
+@media print {
+.cv-formula, .cv-finance-calculations, .covariance-examples, .squared-deviation-diagram { break-inside: avoid; }
+}
 </style>
 <style type="text/css">
 #quarto-document-content li { margin-bottom: .45rem; }
