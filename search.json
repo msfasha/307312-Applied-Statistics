@@ -452,7 +452,7 @@
     "href": "course/part-2.html",
     "title": "Part 2: Descriptive Statistics",
     "section": "",
-    "text": "Read slides online (HTML) Download slides (PDF)"
+    "text": "Read the slides, then work through the 18 R examples in the practical using the supplied student dataset.\n\n\n\nResource\nRead online\nDownload\n\n\n\n\nDescriptive Statistics slides\nRead\nPDF\n\n\nR practical\nRead\nPDF\n\n\n\nDownload RStudio files (.zip) for the editable practical, data and supporting files.\nAll course parts · Next: Part 3"
   },
   {
     "objectID": "course/part-2.html#slides",
@@ -536,7 +536,7 @@
     "href": "course/part-3.html",
     "title": "Part 3: Inferential Statistics",
     "section": "",
-    "text": "Probability distributions, estimation, hypothesis testing and regression.\n\nRead slides online (HTML) Download slides (PDF)"
+    "text": "Read the slides on probability distributions, estimation, hypothesis testing and regression.\n\n\n\nResource\nRead online\nDownload\n\n\n\n\nInferential Statistics slides\nRead\nPDF\n\n\nR practical\nComing soon\n—\n\n\n\nDownload RStudio files (.zip) to run the existing R examples in the inferential lesson.\nAll course parts"
   },
   {
     "objectID": "course/part-3.html#slides",
