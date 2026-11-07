@@ -1162,7 +1162,7 @@ c(DS1 = sd(DS1) / mean(DS1), DS2 = sd(DS2) / mean(DS2))
 
 ![](../assets/descriptive-statistics/slide-61-graphic-05.png){width="48%" fig-alt="Original graphic from slide 61"}
 
-![](../assets/descriptive-statistics/slide-61-graphic-06.png){width="18%" fig-alt="Original graphic from slide 61"}
+![](../assets/descriptive-statistics/slide-61-graphic-06.png){.zero-correlation-plot fig-alt="Original graphic from slide 61"}
 
 :::
 
