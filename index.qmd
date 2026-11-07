@@ -7,7 +7,10 @@ Study the original descriptive and inferential slide material, apply the concept
 
 | Course part | Read online | Download |
 |---|---|---|
-| 1. Introduction to R | [Open lesson](lessons/01-introduction-to-r.qmd) | [PDF](pdf/01-introduction-to-r.pdf) |
+| Part 1 — 1. Introduction to R | [Open notebook](lessons/01-introduction-to-r.qmd) | [PDF](pdf/01-introduction-to-r.pdf) |
+| Part 1 — 2. Basic Concepts in R | [Open notebook](lessons/r-02-basic-concepts.qmd) | [PDF](pdf/r-02-basic-concepts.pdf) |
+| Part 1 — 3. Data Manipulation using dplyr | [Open notebook](lessons/r-03-dplyr.qmd) | [PDF](pdf/r-03-dplyr.pdf) |
+| Part 1 — 4. Introduction to ggplot2 | [Open notebook](lessons/r-04-ggplot2.qmd) | [PDF](pdf/r-04-ggplot2.pdf) |
 | 2. Descriptive Statistics | [Open lesson](lessons/02-descriptive-statistics.qmd) | [PDF](pdf/02-descriptive-statistics.pdf) |
 | 3. Inferential Statistics | [Open lesson](lessons/03-inferential-statistics.qmd) | [PDF](pdf/03-inferential-statistics.pdf) |
 
@@ -47,6 +50,6 @@ The cases draw on Berenson, Levine and Krehbiel's *Basic Business Statistics: Co
 ## Work with R or study offline
 
 - [Download the complete student RStudio project](downloads/applied-statistics-rstudio.zip): editable lessons, core practicals and six extended cases, teaching CSVs, shared styling and setup instructions. Extract the ZIP, then open `Applied-Statistics.Rproj` in RStudio.
-- [Download all 12 lesson, practical and extended-case PDFs](downloads/applied-statistics-pdfs.zip).
+- [Download all 15 lesson, practical and extended-case PDFs](downloads/applied-statistics-pdfs.zip).
 
 The online lessons and PDFs show the code and its results. To run or change R code, use the RStudio project.

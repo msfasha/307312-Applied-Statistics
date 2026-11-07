@@ -1,0 +1,202 @@
+---
+title: "Part 1: Introduction to R"
+subtitle: "From a retail question to a reproducible answer · 307312 Applied Statistics"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-copy: true
+    code-overflow: wrap
+    embed-resources: true
+execute:
+  echo: true
+  warning: true
+  message: false
+  fig-width: 7
+  fig-height: 4.5
+---
+
+[Download this lesson as PDF](../pdf/01-introduction-to-r.pdf)
+
+- **Question:** Which product categories deserve a closer profitability review?
+- **Data:** Tableau's fictitious Superstore; US orders placed in 2023–2025.
+- **Outcome:** Import a CSV, inspect records, build a summary and explain a chart.
+- Use this same retail dataset in the three R practicals alongside the Part 2 slides.
+
+## 1.1 Set up your project
+
+1. Install R, RStudio and Quarto.
+2. Extract the complete [student RStudio project](../downloads/applied-statistics-rstudio.zip).
+3. Open `Applied-Statistics.Rproj`, then this notebook in `lessons/`.
+4. Run cells in order. Choose **Render** to combine explanations, code and results.
+
+- **R:** performs calculations.
+- **RStudio:** provides an editor, Console, Environment and Plots pane.
+- **Quarto:** produces the document you are reading.
+- Keep useful code in the notebook so another analyst can reproduce your answer.
+
+```{r}
+#| eval: false
+# Run once in the Console; do not reinstall every time you open a notebook.
+install.packages(c("knitr", "rmarkdown", "dplyr", "ggplot2"))
+```
+
+## 1.2 Objects, vectors and missing values
+
+### Save and calculate
+
+- `<-` saves a value; R distinguishes uppercase from lowercase.
+- Quoted text is character data. `TRUE` and `FALSE` are logical values.
+- The following values are **illustrative planning inputs**, not extra Superstore records.
+
+```{r}
+unit_price <- 25
+units <- 4
+sales_value <- unit_price * units
+sales_value
+business_question <- "Which categories generate profit?"
+sales_value > 80
+```
+
+### Work with several values
+
+```{r}
+# Illustrative order values, in dollars.
+order_values <- c(25, 60, 100, 250)
+mean(order_values)
+median(order_values)
+order_values[1]                    # R starts counting at 1
+order_values[order_values >= 100]   # Keep entries meeting a condition
+```
+
+- `==`: equals; `!=`: differs; `&`: AND; `|`: OR; `%in%`: belongs to a set.
+- `NA` means missing. It is different from zero.
+- Check why a value is missing before excluding it.
+
+```{r}
+values_with_missing <- c(25, 60, NA, 250)
+is.na(values_with_missing)
+mean(values_with_missing)                 # Missingness propagates
+mean(values_with_missing, na.rm = TRUE)   # Mean of the observed values only
+sum(is.na(values_with_missing))
+```
+
+## 1.3 Import the retail data
+
+- [Download the order-line CSV](../data/business/superstore-lines.csv).
+- One row is **one product line within an order**.
+- One order can have several lines. One customer can place several orders.
+- Use the supplied CSV so your results match the course's pinned version.
+
+```{r}
+#| label: r-intro-import
+# This cell works from the project root or the lessons/ folder.
+data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
+source(file.path(data_dir, "..", "lessons", "_includes", "course-tools.R"))
+lines <- read.csv(file.path(data_dir, "business", "superstore-lines.csv"),
+                  stringsAsFactors = FALSE, colClasses = c(postal_code = "character"))
+orders <- make_orders(lines)
+c(order_lines = nrow(lines), orders = nrow(orders),
+  customers = n_distinct(lines$customer_id))
+```
+
+- `read.csv()` creates a **data frame**: variables in columns, records in rows.
+- `source()` loads the shared chart style and the explained order-summary function.
+- `make_orders()` checks agreement of order attributes and sums sales, profit and units within each order.
+- It calculates shipping time from order date to ship date; this is **not delivery time**.
+
+```{r}
+names(lines)
+str(lines[c("order_id", "category", "sales", "quantity", "discount", "profit")])
+knitr::kable(head(lines[c("order_id", "category", "sales", "profit")]), digits = 2)
+colSums(is.na(lines))
+```
+
+- Postal codes and IDs are labels, even when they contain digits.
+- `discount = 0.20` means 20%, not 0.20%.
+- Negative profit is a recorded loss, not automatically a data error.
+- This extract has no missing cells; other datasets may do so.
+
+## 1.4 Select, filter and create variables
+
+- `select()` chooses columns.
+- `filter()` chooses rows.
+- `mutate()` adds or transforms variables.
+- `%>%` passes the result of one step to the next.
+
+```{r}
+loss_lines <- lines %>%
+  filter(profit < 0) %>%
+  select(order_id, category, sub_category, sales, discount, profit)
+knitr::kable(head(loss_lines), digits = 2)
+
+line_flags <- lines %>%
+  mutate(loss_line = profit < 0,
+         discount_pct = 100 * discount)
+c(loss_lines = sum(line_flags$loss_line),
+  loss_line_pct = 100 * mean(line_flags$loss_line))
+```
+
+- The denominator above is **6,682 order lines**.
+- A loss-making line does not necessarily make the whole order unprofitable.
+
+## 1.5 Group and summarize
+
+```{r}
+category_summary <- lines %>%
+  group_by(category) %>%
+  summarise(line_count = n(),
+            total_sales = sum(sales),
+            total_profit = sum(profit),
+            .groups = "drop") %>%
+  mutate(margin_pct = 100 * total_profit / total_sales) %>%
+  arrange(desc(total_profit))
+knitr::kable(category_summary, digits = 2)
+```
+
+- `group_by()` defines which records belong together.
+- `summarise()` returns one row per group.
+- Overall margin is **total profit / total sales**.
+- Averaging individual line margins gives a different, equally weighted statistic.
+
+## 1.6 Make and interpret a chart
+
+```{r}
+#| fig-alt: "Bar chart: Technology and Office Supplies contribute much more recorded profit than Furniture."
+#| label: intro-category-profit
+#| fig-cap: "Recorded profit by category, US Superstore orders placed in 2023–2025."
+ggplot(category_summary, aes(x = reorder(category, total_profit), y = total_profit)) +
+  geom_col(fill = petra_ink) + coord_flip() +
+  labs(x = NULL, y = "Recorded profit ($)")
+```
+
+- Furniture contributes much less profit than the other two categories in this extract.
+- Compare its margin and subcategories before proposing an action.
+- A chart identifies a pattern; it does not establish why the pattern occurred.
+
+## 1.7 Your first business briefing
+
+1. Summarize total sales and total profit by `region`.
+2. Calculate each region's overall profit margin.
+3. Draw a bar chart answering one clear question.
+4. Write three bullets: a finding, supporting numbers and a useful next investigation.
+
+```{r}
+#| eval: false
+# Start with lines, group by region, then summarize and calculate a margin.
+# Explain what each row of your result represents.
+```
+
+## 1.8 Before moving on
+
+- Can you explain the difference between a line, an order and a customer?
+- Can you identify the denominator of a percentage?
+- Can another student rerun your code from the complete project folder?
+- Continue to [Part 2](02-descriptive-statistics.qmd).
+
+### Source and data notes
+
+- [Tableau Superstore sample data](https://public.tableau.com/app/resources/sample-data): a fictitious company, not audited company accounts.
+- [Tableau's explanation of row detail](https://help.tableau.com/current/pro/desktop/en-us/find_good_datasets.htm).
+- The course uses a fixed US, 2023–2025 extract from the workbook downloaded on 6 November 2026.
+- Full variables, units, selection rules and limitations: [course data guide](../data/business/README.md).

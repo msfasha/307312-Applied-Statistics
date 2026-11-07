@@ -73,9 +73,9 @@ with zipfile.ZipFile(SITE/'downloads/applied-statistics-rstudio.zip','w',zipfile
     # No instructor files, archives, original slides, books, or build caches.
     names=['assets/petra-theme.md','assets/practical-print.css','assets/petra-brand.css','assets/source-slides.css','Applied-Statistics.Rproj','_quarto.yml','index.qmd']+['lessons/'+p+'.qmd' for p in PARTS]+['practicals/'+p+'.qmd' for p in PRACTICALS]+['practicals/_quarto.yml','practicals/practical-01-cereals.qmd','practicals/_includes/petra-plots.R','lessons/_includes/course-tools.R','scripts/finalize-preview.py','scripts/finalize-practical-preview.py','scripts/preview-practicals.py']
     names += ['extended-cases/'+p+'.qmd' for p in EXTENDED]
-    for folder in ['data/business', 'data/descriptive-statistics', 'data/inferential-statistics',
+    for folder in ['data/r-introduction', 'assets/introduction-to-r', 'data/business', 'data/descriptive-statistics', 'data/inferential-statistics',
                    'assets/descriptive-statistics', 'assets/inferential-statistics', 'lessons/_includes']:
-        names.extend(str(p.relative_to(ROOT)) for p in (ROOT/folder).rglob('*') if p.is_file() and p.suffix.lower() in ['.png','.jpg','.jpeg','.svg','.css','.qmd','.csv','.json','.md','.R'])
+        names.extend(str(p.relative_to(ROOT)) for p in (ROOT/folder).rglob('*') if p.is_file() and p.suffix.lower() in ['.gif','.png','.jpg','.jpeg','.svg','.css','.qmd','.csv','.json','.md','.R'])
     # Resources must be restricted to the same explicit teaching files as the site.
     import re
     allowed=set(re.findall(r'^    - (data/[^\n]+)',(ROOT/'_quarto.yml').read_text(),re.M))
@@ -96,8 +96,8 @@ with zipfile.ZipFile(SITE/'downloads/applied-statistics-rstudio.zip','w',zipfile
 1. Install R, RStudio, and Quarto.
 2. Extract this whole ZIP to a folder and open Applied-Statistics.Rproj.
 3. Run this once in the R console:
-   install.packages(c("knitr", "rmarkdown", "dplyr", "ggplot2"))
-4. Open lessons/01-introduction-to-r.qmd, then Parts 2 and 3. Run code chunks in order.
+   install.packages(c("knitr", "rmarkdown", "dplyr", "ggplot2", "readr", "tidyr", "zoo"))
+4. Open lessons/01-introduction-to-r.qmd, followed by r-02-basic-concepts.qmd, r-03-dplyr.qmd and r-04-ggplot2.qmd, then Parts 2 and 3. Run code chunks in order.
 5. Open practicals/practical-01-categorical-business-data.qmd, then Practicals 2 and 3.
 6. Choose Render to view a notebook. Run `quarto render practicals` for practicals.
 7. Run `quarto render` to build the lesson website.
@@ -108,7 +108,7 @@ Parts 2 and 3 preserve the original slide-based lessons, including Excel instruc
 and labeled R examples. Their original teaching CSVs and diagrams are included.
 The separate R practicals use Superstore (US, 2023–2025).
 The extended cases add historical ninth-edition business cases and summary inputs.
-All twelve notebooks are included; choose the extended cases assigned by your instructor.
+All fifteen notebooks are included; choose the extended cases assigned by your instructor.
 See data/business/README.md for provenance, units and limitations.
 The six extended cases provide separate business applications of course concepts.
 Python 3 is needed for the small HTML post-render step.

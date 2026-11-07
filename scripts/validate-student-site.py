@@ -36,7 +36,11 @@ if __name__ == '__main__':
         parsed[path.resolve()] = links
     for page in pages:
         text = page.read_text()
-        assert 'class="cell-output cell-output-error"' not in text, page
+        if page.name == 'r-02-basic-concepts.html':
+            # Two explicit error=T source demonstrations emit three expected errors.
+            assert text.count('class="cell-output cell-output-error"') == 3, page
+        else:
+            assert 'class="cell-output cell-output-error"' not in text, page
         links = parsed[page.resolve()]
         for href in links.hrefs:
             target = urlsplit(unescape(href))
@@ -75,4 +79,4 @@ if __name__ == '__main__':
                 'data/inferential-statistics/houses.csv'} <= names
         assert not any(set(Path(n).parts) & {'instructor', 'books', 'sources', 'archived', '_build'} for n in names)
         assert not any(Path(n).suffix.lower() in {'.xls', '.xlsx', '.pptx'} for n in names)
-    print('Student site links, twelve-PDF bundle and complete RStudio package verified.')
+    print('Student site links, fifteen-PDF bundle and complete RStudio package verified.')

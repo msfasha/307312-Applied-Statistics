@@ -3,11 +3,13 @@
 from pathlib import Path
 import argparse,subprocess,shutil,tempfile,json,datetime
 ROOT=Path(__file__).resolve().parents[1]
-from course_documents import EXTENDED
+from course_documents import EXTENDED, DOCUMENTS
 def run(*args,cwd=ROOT):
     return subprocess.run(args,cwd=cwd,check=True,text=True,capture_output=True).stdout.strip()
 def validate(site):
     required=['index.html','lessons/02-descriptive-statistics.html','lessons/03-inferential-statistics.html','lessons/01-introduction-to-r.html']
+    required += [f'{folder}/{name}.html' for folder, name in DOCUMENTS]
+    required += ['pdf/'+name+'.pdf' for _, name in DOCUMENTS]
     required += ['pdf/'+p+'.pdf' for p in ['01-introduction-to-r','02-descriptive-statistics','03-inferential-statistics']]
     practicals=['practical-01-categorical-business-data','practical-02-numerical-business-data','practical-03-association-and-groups']
     required += ['practicals/'+p+'.html' for p in practicals]+['pdf/'+p+'.pdf' for p in practicals]
@@ -21,7 +23,7 @@ def validate(site):
     forbidden=[p for p in site.rglob('*') if p.is_file() and (any(t in p.relative_to(site).parts for t in ['instructor','archived','books','sources','_includes']) or p.suffix.lower() in ['.xlsx','.xls'])]
     if forbidden:raise RuntimeError('Local-only files in generated site: '+str(forbidden[:5]))
     expected = {
-        'lessons/01-introduction-to-r.html': ['Superstore', 'category_summary'],
+        'lessons/01-introduction-to-r.html': ['History of R', 'Installing R'],
         'lessons/02-descriptive-statistics.html': ['What is Statistics?', 'source-title-87'],
         'lessons/03-inferential-statistics.html': ['part3-01-slide-01', 'part3-04-slide-21'],
     }

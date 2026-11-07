@@ -56,4 +56,4 @@ if __name__ == '__main__':
     output = ROOT/'_build/extended-review/live-verification.json'
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, indent=2)+'\n')
-    print('Verified live revision, 12 notebook pages, 12 PDFs, both ZIPs and all approved data.', flush=True)
+    print('Verified live revision, 15 notebook pages, 15 PDFs, both ZIPs and all approved data.', flush=True)

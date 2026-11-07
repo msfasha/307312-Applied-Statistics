@@ -3,6 +3,8 @@ project:
   output-dir: _build/website
   execute-dir: project
   resources:
+    - data/r-introduction/superstore.csv
+    - data/r-introduction/README.md
     - data/descriptive-statistics/students.csv
     - data/descriptive-statistics/README.md
     - data/inferential-statistics/paired_scores.csv
@@ -36,6 +38,9 @@ project:
   render:
     - index.qmd
     - lessons/01-introduction-to-r.qmd
+    - lessons/r-02-basic-concepts.qmd
+    - lessons/r-03-dplyr.qmd
+    - lessons/r-04-ggplot2.qmd
     - lessons/02-descriptive-statistics.qmd
     - lessons/03-inferential-statistics.qmd
     - extended-cases/case-01-springville-herald.qmd
@@ -54,7 +59,15 @@ website:
       - text: "Course"
         href: index.qmd
       - text: "Part 1: Introduction to R"
-        href: lessons/01-introduction-to-r.qmd
+        menu:
+          - text: "1. Introduction to R"
+            href: lessons/01-introduction-to-r.qmd
+          - text: "2. Basic Concepts in R"
+            href: lessons/r-02-basic-concepts.qmd
+          - text: "3. Data Manipulation using dplyr"
+            href: lessons/r-03-dplyr.qmd
+          - text: "4. Introduction to ggplot2"
+            href: lessons/r-04-ggplot2.qmd
       - text: "Part 2: Descriptive statistics"
         href: lessons/02-descriptive-statistics.qmd
       - text: "Practicals"

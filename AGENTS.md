@@ -233,3 +233,10 @@
   or PDFs; publisher guards 87 retained descriptive slides and 141 inference slides.
 - Keep these edits scoped; retain the current Superstore R practicals, all six
   business cases and the approved burgundy theme.
+
+## Replacement Part 1 — 7 November 2026
+
+- User replaced the condensed R introduction with the four supplied 307307 notebooks, numbered 1–4, using shared Petra styles. Originals remain unchanged in the neighboring course.
+- Active files: lessons/01-introduction-to-r.qmd, r-02-basic-concepts.qmd, r-03-dplyr.qmd, r-04-ggplot2.qmd. The previous introduction is archived under archived/2026-11-07-replaced-part1/.
+- Preserve supplied examples and images; the historical tutorial Superstore CSV is under data/r-introduction/ with original dates and is separate from the practical dataset. Both bundles and PDF exports now cover fifteen notebooks.
+- User instructed local commit only, with no push or publication for this change.

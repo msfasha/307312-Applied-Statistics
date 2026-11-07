@@ -1,202 +1,198 @@
 ---
-title: "Part 1: Introduction to R"
-subtitle: "From a retail question to a reproducible answer · 307312 Applied Statistics"
+title: "1. Introduction to R"
+subtitle: "Part 1: Introduction to R"
 format:
   html:
-    toc: true
-    toc-depth: 2
-    code-copy: true
-    code-overflow: wrap
     embed-resources: true
+    html-math-method: mathml
+    code-overflow: wrap
+    fig-align: center
+    toc-depth: 2
+    body-classes: r-introduction
 execute:
-  echo: true
-  warning: true
+  warning: false
   message: false
-  fig-width: 7
-  fig-height: 4.5
+editor: visual
+include-before: |
+  <div class="original-branding" style="text-align: center;">
+    <img src="../assets/introduction-to-r/department_logo.png" width="169" />
+    <img src="../assets/introduction-to-r/ioa_logo.png" width="122" />
+    <img src="../assets/introduction-to-r/petra_logo.png" width="52" />
+  </div>
 ---
 
-[Download this lesson as PDF](../pdf/01-introduction-to-r.pdf)
+[Download this notebook as PDF](../pdf/01-introduction-to-r.pdf)
 
-- **Question:** Which product categories deserve a closer profitability review?
-- **Data:** Tableau's fictitious Superstore; US orders placed in 2023–2025.
-- **Outcome:** Import a CSV, inspect records, build a summary and explain a chart.
-- Use this same retail dataset in the three R practicals alongside the Part 2 slides.
+[1. Introduction to R](01-introduction-to-r.qmd) | [2. Basic Concepts in R](r-02-basic-concepts.qmd) | [3. Data Manipulation using dplyr](r-03-dplyr.qmd) | [4. Introduction to ggplot2](r-04-ggplot2.qmd)
 
-## 1.1 Set up your project
+R is a powerful language and environment for statistical computing and graphics.
 
-1. Install R, RStudio and Quarto.
-2. Extract the complete [student RStudio project](../downloads/applied-statistics-rstudio.zip).
-3. Open `Applied-Statistics.Rproj`, then this notebook in `lessons/`.
-4. Run cells in order. Choose **Render** to combine explanations, code and results.
+-   It is widely used among statisticians and data analysts for developing statistical software and data analysis.
 
-- **R:** performs calculations.
-- **RStudio:** provides an editor, Console, Environment and Plots pane.
-- **Quarto:** produces the document you are reading.
-- Keep useful code in the notebook so another analyst can reproduce your answer.
+-   R is open source and freely available under the GNU General Public License, making it an accessible tool for data analysis, statistical modeling, and graphical representation.
 
-```{r}
-#| eval: false
-# Run once in the Console; do not reinstall every time you open a notebook.
-install.packages(c("knitr", "rmarkdown", "dplyr", "ggplot2"))
-```
+### History of R
 
-## 1.2 Objects, vectors and missing values
+-   R was created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand, in the early 1990s.
 
-### Save and calculate
+-   It was conceived as an implementation of the S programming language combined with lexical scoping semantics inspired by Scheme.
 
-- `<-` saves a value; R distinguishes uppercase from lowercase.
-- Quoted text is character data. `TRUE` and `FALSE` are logical values.
-- The following values are **illustrative planning inputs**, not extra Superstore records.
+-   The name 'R' was partly derived from the first letters of the creators' first names, as well as a play on the name of S.
 
-```{r}
-unit_price <- 25
-units <- 4
-sales_value <- unit_price * units
-sales_value
-business_question <- "Which categories generate profit?"
-sales_value > 80
-```
+-   R's official release to the public came in 1995, and since then, it has evolved with contributions from many statisticians and programmers worldwide.
 
-### Work with several values
+### Main Features of R
 
-```{r}
-# Illustrative order values, in dollars.
-order_values <- c(25, 60, 100, 250)
-mean(order_values)
-median(order_values)
-order_values[1]                    # R starts counting at 1
-order_values[order_values >= 100]   # Keep entries meeting a condition
-```
+-   **Comprehensive Statistical Analysis Tool:** R provides a wide array of statistical techniques including linear and nonlinear modeling, classical statistical tests, time-series analysis, classification, clustering, and more.
+-   **Graphical Capabilities:** R excels in creating quality plots and graphs, offering a vast number of techniques to visualize data, from basic charts to complex graphics.
+-   **Extensible:** One of R's most powerful features is its package system, which allows users to create and share sets of functions, data, and compiled code. The Comprehensive R Archive Network (CRAN) hosts thousands of packages covering a wide range of statistical, graphical, and data manipulation techniques.
+-   **Programming Features:** R includes conditional statements, loops, user-defined recursive functions, and input and output facilities.
+-   **Data Handling and Storage:** R handles various data types, including vectors, matrices, arrays, data frames, and lists. It provides facilities for data manipulation, calculation, and storage.
+-   **Community and Support:** R benefits from a large and active community. Users can seek help and share knowledge through forums, mailing lists, blogs, and user-contributed documentation.
 
-- `==`: equals; `!=`: differs; `&`: AND; `|`: OR; `%in%`: belongs to a set.
-- `NA` means missing. It is different from zero.
-- Check why a value is missing before excluding it.
+### Advantages of R
 
-```{r}
-values_with_missing <- c(25, 60, NA, 250)
-is.na(values_with_missing)
-mean(values_with_missing)                 # Missingness propagates
-mean(values_with_missing, na.rm = TRUE)   # Mean of the observed values only
-sum(is.na(values_with_missing))
-```
+-   **Open Source and Free:** Being open-source, R is freely available, and users can inspect, modify, and distribute the source code.
+-   **Cross-Platform:** R runs on various operating systems including Windows, MacOS, and Linux.
+-   **Active Community:** The vibrant community supports users at all levels, contributing packages, tools, and documentation.
+-   **Integration:** R can be integrated with other programming languages (like C, C++, and Python), enabling the use of R in diverse environments and applications.
 
-## 1.3 Import the retail data
+### Data Science and R
 
-- [Download the order-line CSV](../data/business/superstore-lines.csv).
-- One row is **one product line within an order**.
-- One order can have several lines. One customer can place several orders.
-- Use the supplied CSV so your results match the course's pinned version.
+-   **Versatile Tool for Data Manipulation:** R provides powerful libraries (dplyr, tidyr) for data cleaning, transformation, and preparation.
+-   **Advanced Statistical Analysis:** With its origins in statistics, R excels at performing complex statistical computations essential for data science.
+-   **Data Visualization:** R's ggplot2 and other plotting packages offer superior data visualization capabilities, allowing for the creation of professional and informative graphics.
 
-```{r}
-#| label: r-intro-import
-# This cell works from the project root or the lessons/ folder.
-data_dir <- if (dir.exists("data")) "data" else file.path("..", "data")
-source(file.path(data_dir, "..", "lessons", "_includes", "course-tools.R"))
-lines <- read.csv(file.path(data_dir, "business", "superstore-lines.csv"),
-                  stringsAsFactors = FALSE, colClasses = c(postal_code = "character"))
-orders <- make_orders(lines)
-c(order_lines = nrow(lines), orders = nrow(orders),
-  customers = n_distinct(lines$customer_id))
-```
+### Career Opportunities with R
 
-- `read.csv()` creates a **data frame**: variables in columns, records in rows.
-- `source()` loads the shared chart style and the explained order-summary function.
-- `make_orders()` checks agreement of order attributes and sums sales, profit and units within each order.
-- It calculates shipping time from order date to ship date; this is **not delivery time**.
+Careers that utilize R span across various industries, leveraging its powerful capabilities in data analysis, statistical modeling, visualization, and more. Here's a list of careers where proficiency in R is highly valued:
 
-```{r}
-names(lines)
-str(lines[c("order_id", "category", "sales", "quantity", "discount", "profit")])
-knitr::kable(head(lines[c("order_id", "category", "sales", "profit")]), digits = 2)
-colSums(is.na(lines))
-```
+1.  **Data Analyst:** Analyzes data to help businesses make informed decisions. Uses R for data cleaning, preparation, and visualization.
 
-- Postal codes and IDs are labels, even when they contain digits.
-- `discount = 0.20` means 20%, not 0.20%.
-- Negative profit is a recorded loss, not automatically a data error.
-- This extract has no missing cells; other datasets may do so.
+2.  **Data Scientist:** Uses statistical models and machine learning algorithms to analyze complex datasets. R is crucial for data manipulation, analysis, and predictive modeling.
 
-## 1.4 Select, filter and create variables
+3.  **Quantitative Analyst:** Works primarily in finance, using R to develop complex models that inform investment strategies, risk management, and financial forecasting.
 
-- `select()` chooses columns.
-- `filter()` chooses rows.
-- `mutate()` adds or transforms variables.
-- `%>%` passes the result of one step to the next.
+4.  **Statistician:** Applies mathematical and statistical techniques to solve real-world problems. Uses R for statistical testing, data analysis, and experiment design.
 
-```{r}
-loss_lines <- lines %>%
-  filter(profit < 0) %>%
-  select(order_id, category, sub_category, sales, discount, profit)
-knitr::kable(head(loss_lines), digits = 2)
+5.  **Bioinformatician/Biostatistician:** Uses R in the analysis of biological data, such as genetic sequencing, drug development, and epidemiological studies.
 
-line_flags <- lines %>%
-  mutate(loss_line = profit < 0,
-         discount_pct = 100 * discount)
-c(loss_lines = sum(line_flags$loss_line),
-  loss_line_pct = 100 * mean(line_flags$loss_line))
-```
+6.  **Market Research Analyst:** Analyzes market conditions to examine potential sales of a product or service. Uses R for survey analysis, consumer behavior studies, and trend forecasting.
 
-- The denominator above is **6,682 order lines**.
-- A loss-making line does not necessarily make the whole order unprofitable.
+7.  **Machine Learning Engineer:** Develops algorithms that enable computers to learn from and make decisions based on data. R is used for prototyping and developing statistical models.
 
-## 1.5 Group and summarize
+8.  **Econometrician:** Specializes in econometrics, using R to analyze economic data, forecast economic trends, and develop economic models.
 
-```{r}
-category_summary <- lines %>%
-  group_by(category) %>%
-  summarise(line_count = n(),
-            total_sales = sum(sales),
-            total_profit = sum(profit),
-            .groups = "drop") %>%
-  mutate(margin_pct = 100 * total_profit / total_sales) %>%
-  arrange(desc(total_profit))
-knitr::kable(category_summary, digits = 2)
-```
+9.  **Environmental Scientist:** Uses R for analyzing environmental data, modeling environmental processes, and evaluating the impacts of environmental policies.
 
-- `group_by()` defines which records belong together.
-- `summarise()` returns one row per group.
-- Overall margin is **total profit / total sales**.
-- Averaging individual line margins gives a different, equally weighted statistic.
+10. **Public Health Analyst:** Utilizes R in the analysis of health data to inform public health policy, program decisions, and research on health trends.
 
-## 1.6 Make and interpret a chart
+11. **Educational Researcher:** Employs R for analyzing educational data, evaluating the effectiveness of educational programs, and researching teaching methods and outcomes.
 
-```{r}
-#| fig-alt: "Bar chart: Technology and Office Supplies contribute much more recorded profit than Furniture."
-#| label: intro-category-profit
-#| fig-cap: "Recorded profit by category, US Superstore orders placed in 2023–2025."
-ggplot(category_summary, aes(x = reorder(category, total_profit), y = total_profit)) +
-  geom_col(fill = petra_ink) + coord_flip() +
-  labs(x = NULL, y = "Recorded profit ($)")
-```
+12. **Actuary:** Uses R for analyzing risk in the insurance and finance industries, helping companies set policies' prices and provisions.
 
-- Furniture contributes much less profit than the other two categories in this extract.
-- Compare its margin and subcategories before proposing an action.
-- A chart identifies a pattern; it does not establish why the pattern occurred.
+13. **Operations Research Analyst:** Applies mathematical and analytical methods to help organizations investigate complex issues, identify and solve problems, and make better decisions. R is used for optimization, simulation, and decision analysis.
 
-## 1.7 Your first business briefing
+14. **Sports Analyst:** Analyzes sports data to improve team performance, develop game strategies, and evaluate player performance. R is used for statistical analysis and predictive modeling in sports analytics.
 
-1. Summarize total sales and total profit by `region`.
-2. Calculate each region's overall profit margin.
-3. Draw a bar chart answering one clear question.
-4. Write three bullets: a finding, supporting numbers and a useful next investigation.
+15. **Clinical Researcher:** Utilizes R in the design, execution, and analysis of clinical trials, including statistical analysis to interpret study results.
 
-```{r}
-#| eval: false
-# Start with lines, group by region, then summarize and calculate a margin.
-# Explain what each row of your result represents.
-```
+These careers demonstrate the broad applicability of R across different sectors, emphasizing the importance of data-driven decision-making in today’s world. Proficiency in R can open doors to a wide range of job opportunities where data analysis and statistical modeling are crucial.
 
-## 1.8 Before moving on
+### Installing R: A Step-by-Step Guide
 
-- Can you explain the difference between a line, an order and a customer?
-- Can you identify the denominator of a percentage?
-- Can another student rerun your code from the complete project folder?
-- Continue to [Part 2](02-descriptive-statistics.qmd).
+Installing R is straightforward, whether you're using Windows, macOS, or a Linux distribution. Below is a step-by-step guide to help you through the process, which you can use to instruct your course attendees.
 
-### Source and data notes
+#### For Windows Users
 
-- [Tableau Superstore sample data](https://public.tableau.com/app/resources/sample-data): a fictitious company, not audited company accounts.
-- [Tableau's explanation of row detail](https://help.tableau.com/current/pro/desktop/en-us/find_good_datasets.htm).
-- The course uses a fixed US, 2023–2025 extract from the workbook downloaded on 6 November 2026.
-- Full variables, units, selection rules and limitations: [course data guide](../data/business/README.md).
+1.  **Download R:**
+    -   Visit the Comprehensive R Archive Network (CRAN) at <https://cran.r-project.org/>.
+    -   Click on "Download R for Windows".
+    -   Go to "install R for the first time" and click on "Download R x.x.x for Windows" (x.x.x denotes the latest version).
+2.  **Install R:**
+    -   Run the downloaded `.exe` file and follow the installation instructions.
+    -   Choose your preferred installation directory.
+    -   Select components to install (you can keep the default settings).
+    -   Choose the start menu folder (or accept the default), and decide whether to create a desktop icon or Quick Launch shortcut.
+    -   Review the installation options and click 'Finish' once the installation is complete.
+
+#### For macOS Users
+
+1.  **Download R:**
+    -   Visit CRAN at <https://cran.r-project.org/>.
+    -   Click on "Download R for (Mac) OS X".
+    -   Select the latest version of R and download the `.pkg` file suitable for your version of macOS.
+2.  **Install R:**
+    -   Open the downloaded `.pkg` file.
+    -   Follow the installation instructions provided by the installer.
+    -   If you encounter a warning about software from an unidentified developer, go to your system preferences under "Security & Privacy" and allow the R installation.
+
+#### For Linux Users
+
+-   The installation process for R on Linux varies depending on the distribution. Below is a general guide for Debian/Ubuntu-based systems. For other distributions, refer to the official documentation or community forums for specific instructions.
+
+1.  **Open Terminal.**
+
+2.  **Add CRAN to your repository list (optional, for the latest versions):**
+
+    -   For Ubuntu, add a CRAN repository by typing `sudo add-apt-repository 'deb https://<my.favorite.cran.mirror>/bin/linux/ubuntu <ubuntu_version_codename>/'` in the terminal. Replace `<my.favorite.cran.mirror>` with your preferred CRAN mirror and `<ubuntu_version_codename>` with your Ubuntu version codename (e.g., bionic, focal).
+
+3.  **Update package lists:**
+
+    -   Run `sudo apt update`.
+
+4.  **Install R:**
+
+    -   Install R by running `sudo apt install r-base`.
+
+#### Additional Steps for All Users
+
+-   **Install RStudio (Optional):**
+    -   For a more user-friendly interface, download and install RStudio, a popular IDE for R, from <https://www.rstudio.com/products/rstudio/download/>.
+    -   Choose the appropriate installer for your operating system, download it, and run the installation file, following the on-screen instructions.
+-   **Verify Installation:**
+    -   Open R or RStudio and type `sessionInfo()` in the console. This command will display your R session information, confirming that R is installed correctly.
+
+------------------------------------------------------------------------
+
+### Presenting the R Console
+
+Click on start menu and scroll to find R folder
+
+![](../assets/introduction-to-r/rfolder.png)
+
+Then open the R Console
+
+![](../assets/introduction-to-r/rconsole.png)
+
+### Presenting the R Studio
+
+![](../assets/introduction-to-r/rstudio.png)
+
+### Settings - Working Directory
+
+Select General in the left panel of the “Options” dialog, then enter the path to the directory you created into the Default working directory box
+
+![](../assets/introduction-to-r/settings_1.png)
+
+Set the default working directory to your preferred folder.
+
+![](../assets/introduction-to-r/settings_2.png)
+
+We can also change the working directory from the sessions menu.
+
+![](../assets/introduction-to-r/settings_3.png)
+
+### References
+
+Gen AI.
+
+In addition, we will be using the following sources for the next sections.
+
+<https://online.stat.psu.edu/stat484/>
+
+<https://online.stat.psu.edu/statprogram/sites/statprogram/files/EssentialR.pdf>
+
+[https://www.cyclismo.org/tutorial/R/index.html](https://www.cyclismo.org/tutorial/R/index.html#)
+
+R for Data Analysis in easy steps R Programming Essentials - Mike McGrath

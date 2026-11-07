@@ -141,3 +141,6 @@
 
 /* Keep the single zero-correlation plot at the scale of one comparison panel. */
 .source-slide img.zero-correlation-plot { min-width: 0; width: clamp(110px, 18%, 160px); }
+
+/* Supplied Part 1 instructional images; logos retain their original sizes. */
+.r-introduction main p > img { display: block; margin-inline: auto; min-width: 50%; max-width: 100%; height: auto; }
