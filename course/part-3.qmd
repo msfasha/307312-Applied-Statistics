@@ -3,16 +3,12 @@ title: "Part 3: Inferential Statistics"
 toc: false
 ---
 
-## Slides
+Read the slides on probability distributions, estimation, hypothesis testing and regression.
 
-- Probability distributions, estimation, hypothesis testing and regression.
-
-[Read slides](../lessons/03-inferential-statistics.qmd){.btn .btn-primary}
-[Download slides (PDF)](../pdf/03-inferential-statistics.pdf){.btn .btn-outline-secondary}
-
-## R practical {#practical}
-
-**Coming soon.** The companion inferential-statistics practical has not yet been prepared. It will appear here when available.
+| Resource | Read online | Download |
+|---|---|---|
+| Inferential Statistics slides | [Read](../lessons/03-inferential-statistics.qmd) | [PDF](../pdf/03-inferential-statistics.pdf) |
+| [R practical]{#practical} | Coming soon | — |
 
 [Download RStudio files (.zip)](../downloads/applied-statistics-rstudio.zip) to run the existing R examples in the inferential lesson.
 

@@ -3,18 +3,12 @@ title: "Part 2: Descriptive Statistics"
 toc: false
 ---
 
-## Slides
+Read the slides, then work through the 18 R examples in the practical using the supplied student dataset.
 
-[Read slides](../lessons/02-descriptive-statistics.qmd){.btn .btn-primary}
-[Download slides (PDF)](../pdf/02-descriptive-statistics.pdf){.btn .btn-outline-secondary}
-
-## R practical {#practical}
-
-- Work through the 18 R examples from the descriptive slides in order.
-- Use the supplied student dataset, with explanations and guidance for reading the results.
-
-[Open R practical](../practicals/descriptive-statistics-r-practical.html){.btn .btn-primary}
-[Download practical (PDF)](../pdf/descriptive-statistics-r-practical.pdf){.btn .btn-outline-secondary}
+| Resource | Read online | Download |
+|---|---|---|
+| Descriptive Statistics slides | [Read](../lessons/02-descriptive-statistics.qmd) | [PDF](../pdf/02-descriptive-statistics.pdf) |
+| [R practical]{#practical} | [Read](../practicals/descriptive-statistics-r-practical.html) | [PDF](../pdf/descriptive-statistics-r-practical.pdf) |
 
 [Download RStudio files (.zip)](../downloads/applied-statistics-rstudio.zip) for the editable practical, data and supporting files.
 
