@@ -2550,6 +2550,7 @@ table { width: 100% !important; max-width: 100% !important; table-layout: fixed;
 <h2 class="anchored" data-anchor-id="before-we-begin">Before we begin</h2>
 <ul>
 <li>Use this notebook after explaining the descriptive-statistics slides, or return to the matching section after each topic.</li>
+<li>Open <code>Applied-Statistics.Rproj</code> first and keep the working directory at the project root.</li>
 <li>Work through the code cells from top to bottom in RStudio. Run the import cell first; later cells reuse its <code>students</code> data frame.</li>
 <li>These examples use base R. No additional R package is needed to run the analysis cells; rendering the notebook requires Quarto, knitr and rmarkdown.</li>
 <li>Each section identifies the matching source slide, introduces the calculation and explains how to read its output. The worked code and its original comments are retained in full.</li>
@@ -2573,15 +2574,14 @@ table { width: 100% !important; max-width: 100% !important; table-layout: fixed;
 <ul>
 <li><strong>Slides:</strong> <a href="../lessons/02-descriptive-statistics.html#slide-16">source slide 16</a>.</li>
 <li><strong>What we are doing:</strong> Load the same student dataset used in the descriptive slides. Each row is one record; the six variables are gender, age, height, weight, country and major. The first six rows let us check the column names and see how the values are recorded.</li>
-<li><strong>How to read the result:</strong> Run this cell first. It creates <code>students</code>, which the later examples use. <code>data_dir</code> finds the CSV from either the course root or this notebook folder. Height is in centimetres, weight in kilograms and age in years. No names or student IDs are included.</li>
+<li><strong>How to read the result:</strong> Run this cell first. It creates <code>students</code>, which the later examples use. Open <code>Applied-Statistics.Rproj</code> first; the CSV path starts in the project folder. Height is in centimetres, weight in kilograms and age in years. No names or student IDs are included.</li>
 </ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read.csv() imports the supplied CSV; stringsAsFactors=FALSE keeps category labels as text.</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># head() previews six rows; height is in cm, weight in kg, and age in years.</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the shared data folder from either the course root or this notebook folder.</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>data_dir <span class="ot">&lt;-</span> <span class="cf">if</span> (<span class="fu">dir.exists</span>(<span class="st">&quot;data&quot;</span>)) <span class="st">&quot;data&quot;</span> <span class="cf">else</span> <span class="fu">file.path</span>(<span class="st">&quot;..&quot;</span>, <span class="st">&quot;data&quot;</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>students <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(data_dir, <span class="st">&quot;descriptive-statistics/students.csv&quot;</span>), <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(students)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Open Applied-Statistics.Rproj; paths start in the project folder.</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>students <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/descriptive-statistics/students.csv&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(students)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  gender age height weight country                  major
 1 Female  19    160   64.8  Turkey      Political Science

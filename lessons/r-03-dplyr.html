@@ -4458,9 +4458,8 @@ main .btn { white-space: normal; margin-bottom: .5rem; }
 <section id="open-csv-file" class="level3">
 <h3 class="anchored" data-anchor-id="open-csv-file">Open CSV File</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data_dir <span class="ot">&lt;-</span> <span class="cf">if</span> (<span class="fu">dir.exists</span>(<span class="st">&quot;data&quot;</span>)) <span class="st">&quot;data&quot;</span> <span class="cf">else</span> <span class="st">&quot;../data&quot;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>file_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(data_dir, <span class="st">&quot;r-introduction&quot;</span>, <span class="st">&quot;superstore.csv&quot;</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>superstore <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(file_path, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>file_path <span class="ot">&lt;-</span> <span class="st">&quot;data/r-introduction/superstore.csv&quot;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>superstore <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(file_path, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="selecting-columns-with-select" class="level3">
