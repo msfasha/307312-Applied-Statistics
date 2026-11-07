@@ -6,3 +6,6 @@
 .course-navigation .btn-primary, main .btn-primary { background: var(--course-section-bg, #763D52); border-color: var(--course-section-bg, #763D52); color: white; }
 .course-navigation .btn-primary:hover, main .btn-primary:hover { background: #542638; border-color: #542638; color: white; }
 main .btn { white-space: normal; margin-bottom: .5rem; }
+
+/* Keep the three core course parts in teaching order on every screen. */
+.course-navigation.course-parts { grid-template-columns: 1fr; }
