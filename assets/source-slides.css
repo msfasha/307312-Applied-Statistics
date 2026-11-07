@@ -21,7 +21,11 @@
 .source-table tr:first-child { background: var(--course-table-head-bg); font-weight: 600; }
 .source-table td p { margin: 0; }
 .source-slide-number { color: #56616D; font-size: .85rem; }
+.try-in-r { margin-top: 1.5rem; padding-top: .5rem; border-top: 1px solid #D6D6D6; }
+.try-in-r pre { margin-bottom: 1rem; }
+.try-in-r > p:last-child { break-before: avoid; }
 @media print { .source-slide { break-inside: avoid; } }
+@media print { .try-in-r { break-inside: avoid; } }
 
 .original-branding { text-align: right; margin: .5rem 0 1rem; }
 .original-branding img { height: auto; max-width: 45%; }

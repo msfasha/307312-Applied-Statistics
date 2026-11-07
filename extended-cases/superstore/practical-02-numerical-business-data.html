@@ -4319,7 +4319,11 @@ color: var(--course-dark); margin: .8rem 0 1.4rem;
 .source-table tr:first-child { background: var(--course-table-head-bg); font-weight: 600; }
 .source-table td p { margin: 0; }
 .source-slide-number { color: #56616D; font-size: .85rem; }
+.try-in-r { margin-top: 1.5rem; padding-top: .5rem; border-top: 1px solid #D6D6D6; }
+.try-in-r pre { margin-bottom: 1rem; }
+.try-in-r > p:last-child { break-before: avoid; }
 @media print { .source-slide { break-inside: avoid; } }
+@media print { .try-in-r { break-inside: avoid; } }
 .original-branding { text-align: right; margin: .5rem 0 1rem; }
 .original-branding img { height: auto; max-width: 45%; }
 
@@ -4547,7 +4551,6 @@ main .btn { white-space: normal; margin-bottom: .5rem; }
 </header>
 
 
-<p><a href="../../pdf/practical-02-numerical-business-data.pdf">Practical PDF</a> · <a href="../../downloads/applied-statistics-rstudio.zip">Student RStudio project</a></p>
 <ul>
 <li>Companion to centre, spread, percentiles and boxplots in <a href="../../lessons/02-descriptive-statistics.html">Part 2</a>.</li>
 <li>Continue from <a href="../../extended-cases/superstore/practical-01-categorical-business-data.html">Practical 1</a>.</li>
@@ -4644,7 +4647,7 @@ main .btn { white-space: normal; margin-bottom: .5rem; }
 </div>
 </div>
 <ul>
-<li><a href="../../data/business/superstore-lines.csv">Download the line CSV</a> · <a href="../../data/business/README.md">Data guide</a>.</li>
+<li><code>data/business/superstore-lines.csv</code>; guide: <code>data/business/README.md</code>.</li>
 <li>Sales, profit and quantity are <strong>summed</strong> across an order’s lines.</li>
 <li>Do not average line sales to estimate average order sales.</li>
 <li>The reconciliation checks that aggregation neither loses nor duplicates revenue.</li>
@@ -4994,7 +4997,7 @@ coefficient_of_variation_pct
 <h2 class="anchored" data-anchor-id="continue">8. Continue</h2>
 <ul>
 <li><a href="../../extended-cases/superstore/practical-03-association-and-groups.html">Practical 3: Discounts and profitability</a>.</li>
-<li><a href="../../data/business/README.md">Data definitions and provenance</a>.</li>
+<li><code>data/business/README.md</code>.</li>
 </ul>
 
 

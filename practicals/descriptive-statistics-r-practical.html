@@ -2344,7 +2344,11 @@ color: var(--course-dark); margin: .8rem 0 1.4rem;
 .source-table tr:first-child { background: var(--course-table-head-bg); font-weight: 600; }
 .source-table td p { margin: 0; }
 .source-slide-number { color: #56616D; font-size: .85rem; }
+.try-in-r { margin-top: 1.5rem; padding-top: .5rem; border-top: 1px solid #D6D6D6; }
+.try-in-r pre { margin-bottom: 1rem; }
+.try-in-r > p:last-child { break-before: avoid; }
 @media print { .source-slide { break-inside: avoid; } }
+@media print { .try-in-r { break-inside: avoid; } }
 .original-branding { text-align: right; margin: .5rem 0 1rem; }
 .original-branding img { height: auto; max-width: 45%; }
 
@@ -2542,7 +2546,6 @@ table { width: 100% !important; max-width: 100% !important; table-layout: fixed;
 </header>
 
 
-<p><a href="../pdf/descriptive-statistics-r-practical.pdf">Practical PDF</a> · <a href="../downloads/applied-statistics-rstudio.zip">Student RStudio project</a> · <a href="../lessons/02-descriptive-statistics.html">Part 2 slides</a></p>
 <section id="before-we-begin" class="level2">
 <h2 class="anchored" data-anchor-id="before-we-begin">Before we begin</h2>
 <ul>
@@ -2557,7 +2560,7 @@ table { width: 100% !important; max-width: 100% !important; table-layout: fixed;
 <h2 class="anchored" data-anchor-id="the-data-and-our-purpose">The data and our purpose</h2>
 <ul>
 <li><strong>Source:</strong> the original 307102 Descriptive Statistics teaching material used for Part 2; the original PDF, PowerPoint and workbook remain unchanged reference files.</li>
-<li><strong>Data:</strong> <a href="../data/descriptive-statistics/students.csv">student CSV</a> and <a href="../data/descriptive-statistics/README.md">data guide</a>, containing 8,239 records and six variables.</li>
+<li><strong>Data:</strong> <code>data/descriptive-statistics/students.csv</code> and <code>data/descriptive-statistics/README.md</code>, containing 8,239 records and six variables.</li>
 <li><strong>Unit:</strong> one record in the supplied student example, rather than a product line, order or customer.</li>
 <li><strong>Categorical variables:</strong> <code>gender</code>, <code>country</code> and <code>major</code>, with the original labels retained.</li>
 <li><strong>Numerical variables:</strong> <code>age</code> in years, <code>height</code> in centimetres and <code>weight</code> in kilograms.</li>

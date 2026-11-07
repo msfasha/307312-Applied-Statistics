@@ -4180,7 +4180,11 @@ color: var(--course-dark); margin: .8rem 0 1.4rem;
 .source-table tr:first-child { background: var(--course-table-head-bg); font-weight: 600; }
 .source-table td p { margin: 0; }
 .source-slide-number { color: #56616D; font-size: .85rem; }
+.try-in-r { margin-top: 1.5rem; padding-top: .5rem; border-top: 1px solid #D6D6D6; }
+.try-in-r pre { margin-bottom: 1rem; }
+.try-in-r > p:last-child { break-before: avoid; }
 @media print { .source-slide { break-inside: avoid; } }
+@media print { .try-in-r { break-inside: avoid; } }
 .original-branding { text-align: right; margin: .5rem 0 1rem; }
 .original-branding img { height: auto; max-width: 45%; }
 
@@ -4407,8 +4411,6 @@ main .btn { white-space: normal; margin-bottom: .5rem; }
 </header>
 
 
-<p><a href="../pdf/r-03-dplyr.pdf">Download this notebook as PDF</a></p>
-<p><a href="../lessons/01-introduction-to-r.html">1. Introduction to R</a> | <a href="../lessons/r-02-basic-concepts.html">2. Basic Concepts in R</a> | <a href="../lessons/r-03-dplyr.html">3. Data Manipulation using dplyr</a> | <a href="../lessons/r-04-ggplot2.html">4. Introduction to ggplot2</a></p>
 <ul>
 <li>These examples use the original 2014–2017 Superstore tutorial CSV supplied with the R material, separate from the 2023–2025 extract used in the course practicals.</li>
 </ul>

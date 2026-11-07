@@ -4180,7 +4180,11 @@ color: var(--course-dark); margin: .8rem 0 1.4rem;
 .source-table tr:first-child { background: var(--course-table-head-bg); font-weight: 600; }
 .source-table td p { margin: 0; }
 .source-slide-number { color: #56616D; font-size: .85rem; }
+.try-in-r { margin-top: 1.5rem; padding-top: .5rem; border-top: 1px solid #D6D6D6; }
+.try-in-r pre { margin-bottom: 1rem; }
+.try-in-r > p:last-child { break-before: avoid; }
 @media print { .source-slide { break-inside: avoid; } }
+@media print { .try-in-r { break-inside: avoid; } }
 .original-branding { text-align: right; margin: .5rem 0 1rem; }
 .original-branding img { height: auto; max-width: 45%; }
 
@@ -4408,7 +4412,6 @@ main .btn { white-space: normal; margin-bottom: .5rem; }
 </header>
 
 
-<p><a href="../../pdf/practical-03-association-and-groups.pdf">Practical PDF</a> · <a href="../../downloads/applied-statistics-rstudio.zip">Student RStudio project</a></p>
 <ul>
 <li>Companion to association and group comparisons in <a href="../../lessons/02-descriptive-statistics.html">Part 2</a>.</li>
 <li>Complete Practicals <a href="../../extended-cases/superstore/practical-01-categorical-business-data.html">1</a> and <a href="../../extended-cases/superstore/practical-02-numerical-business-data.html">2</a>.</li>
@@ -4451,7 +4454,7 @@ main .btn { white-space: normal; margin-bottom: .5rem; }
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="sc">!</span><span class="fu">anyNA</span>(lines<span class="sc">$</span>discount_band), <span class="fu">all</span>(lines<span class="sc">$</span>sales <span class="sc">&gt;</span> <span class="dv">0</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
-<li><a href="../../data/business/superstore-lines.csv">CSV</a> · <a href="../../data/business/README.md">Data guide</a>.</li>
+<li><code>data/business/superstore-lines.csv</code>; guide: <code>data/business/README.md</code>.</li>
 <li>A 20% discount belongs to the middle band; zero belongs to <strong>None</strong>.</li>
 <li>These bands are analyst-defined categories, not source classifications.</li>
 <li>A line’s margin is profit divided by its recorded sales.</li>
@@ -4866,7 +4869,7 @@ main .btn { white-space: normal; margin-bottom: .5rem; }
 <ul>
 <li><a href="../../lessons/03-inferential-statistics.html">Part 3</a> covers probability, estimation, hypothesis testing and regression.</li>
 <li>The descriptive evidence here concerns the complete fixed extract; p-values are not required to describe its totals.</li>
-<li><a href="../../data/business/README.md">Source, variable definitions and selection rules</a>.</li>
+<li><code>data/business/README.md</code>.</li>
 </ul>
 
 

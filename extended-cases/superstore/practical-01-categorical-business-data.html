@@ -4180,7 +4180,11 @@ color: var(--course-dark); margin: .8rem 0 1.4rem;
 .source-table tr:first-child { background: var(--course-table-head-bg); font-weight: 600; }
 .source-table td p { margin: 0; }
 .source-slide-number { color: #56616D; font-size: .85rem; }
+.try-in-r { margin-top: 1.5rem; padding-top: .5rem; border-top: 1px solid #D6D6D6; }
+.try-in-r pre { margin-bottom: 1rem; }
+.try-in-r > p:last-child { break-before: avoid; }
 @media print { .source-slide { break-inside: avoid; } }
+@media print { .try-in-r { break-inside: avoid; } }
 .original-branding { text-align: right; margin: .5rem 0 1rem; }
 .original-branding img { height: auto; max-width: 45%; }
 
@@ -4408,7 +4412,6 @@ main .btn { white-space: normal; margin-bottom: .5rem; }
 </header>
 
 
-<p><a href="../../pdf/practical-01-categorical-business-data.pdf">Practical PDF</a> · <a href="../../downloads/applied-statistics-rstudio.zip">Student RStudio project</a></p>
 <ul>
 <li>Complete <a href="../../lessons/01-introduction-to-r.html">Part 1</a> first.</li>
 <li>Companion to categorical summaries in <a href="../../lessons/02-descriptive-statistics.html">Part 2</a>.</li>
@@ -4484,7 +4487,7 @@ main .btn { white-space: normal; margin-bottom: .5rem; }
 <section id="import-and-check" class="level2">
 <h2 class="anchored" data-anchor-id="import-and-check">2. Import and check</h2>
 <ul>
-<li><a href="../../data/business/superstore-lines.csv">Order-line CSV</a> · <a href="../../data/business/README.md">Data guide</a>.</li>
+<li><code>data/business/superstore-lines.csv</code>; guide: <code>data/business/README.md</code>.</li>
 <li>Run the import cell by itself from either the project root or <code>extended-cases/superstore/</code>.</li>
 </ul>
 <div class="cell">
@@ -4931,7 +4934,7 @@ main .btn { white-space: normal; margin-bottom: .5rem; }
 <ul>
 <li>Keep your tables and briefing in your RStudio project.</li>
 <li>Continue to <a href="../../extended-cases/superstore/practical-02-numerical-business-data.html">Practical 2: Order size</a>.</li>
-<li>Source definitions and extract limits: <a href="../../data/business/README.md">course data guide</a>.</li>
+<li>Source definitions and extract limits: <code>data/business/README.md</code>.</li>
 </ul>
 
 
