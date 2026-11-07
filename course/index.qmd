@@ -4,42 +4,16 @@ subtitle: "Masters Level"
 toc: false
 ---
 
-Choose a part to find its lessons, downloads and practical work.
+## Course material
 
-::: {.course-navigation .course-parts}
-::: {.course-card}
-## Part 1
+[Part 1 - **Introduction to R**](part-1.qmd)
 
-**Introduction to R**
+[Part 2 - **Descriptive Statistics**](part-2.qmd){#part-2-practicals}
 
-Four notebooks: introduction, basic concepts, dplyr and ggplot2.
+[Part 3 - **Inferential Statistics**](part-3.qmd)
 
-[Open Part 1](part-1.qmd)
-:::
+## Other Downloads
 
-::: {.course-card #part-2-practicals}
-## Part 2
-
-**Descriptive Statistics**
-
-Slides and the companion R practical.
-
-[Open Part 2](part-2.qmd)
-:::
-
-::: {.course-card}
-## Part 3
-
-**Inferential Statistics**
-
-Slides covering probability, estimation, hypothesis testing and regression.
-
-[Open Part 3](part-3.qmd)
-:::
-:::
-
-## Links and downloads
-
-- [RStudio files (.zip)](../downloads/applied-statistics-rstudio.zip) — notebooks and data for running the code.
-- [PDF collection (.zip)](../downloads/applied-statistics-pdfs.zip) — all lessons and scenarios for reading.
-- [Extended scenarios](../extended-cases/index.qmd){#extended-business-cases} — optional business applications, including Superstore and six further cases.
+- [RStudio files (.zip)](../downloads/applied-statistics-rstudio.zip)
+- [PDF collection (.zip)](../downloads/applied-statistics-pdfs.zip)
+- [Extended scenarios](../extended-cases/index.qmd){#extended-business-cases}

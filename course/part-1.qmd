@@ -12,8 +12,6 @@ Work through these four notebooks in order. Each includes its explanations and e
 | 3. Data Manipulation using dplyr | [Read](../lessons/r-03-dplyr.qmd) | [PDF](../pdf/r-03-dplyr.pdf) |
 | 4. Introduction to ggplot2 | [Read](../lessons/r-04-ggplot2.qmd) | [PDF](../pdf/r-04-ggplot2.pdf) |
 
-[Download RStudio files (.zip)](../downloads/applied-statistics-rstudio.zip) for all four editable R notebooks, data and supporting files.
+[Home](../index.qmd) &nbsp; [Next: Part 2](part-2.qmd)
 
-[All course parts](index.qmd)
-
-[Next: Part 2](part-2.qmd)
+[Download R Studio](../downloads/applied-statistics-rstudio.zip)

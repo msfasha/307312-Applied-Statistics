@@ -10,6 +10,6 @@ Read the slides on probability distributions, estimation, hypothesis testing and
 | Inferential Statistics slides | [Read](../lessons/03-inferential-statistics.qmd) | [PDF](../pdf/03-inferential-statistics.pdf) |
 | [R practical]{#practical} | Coming soon | — |
 
-[Download RStudio files (.zip)](../downloads/applied-statistics-rstudio.zip) to run the existing R examples in the inferential lesson.
+[Home](../index.qmd)
 
-[All course parts](index.qmd)
+[Download R Studio](../downloads/applied-statistics-rstudio.zip)

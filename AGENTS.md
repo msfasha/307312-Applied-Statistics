@@ -289,3 +289,9 @@
 - User made Parts 1–3 the home page, stacked vertically. Put both student bundle downloads and a simple Extended scenarios link below the parts.
 - Course navigation opens the root home page. Retain `course/index.qmd` as a compatible entry page; extended cases stay available through the lower link.
 - Build, commit, push and publish this interface change and verify the live release.
+
+## Minimal course links — 7 November 2026
+
+- Home and course/index use a Course material heading with three plain links: Part 1 – Introduction to R, Part 2 – Descriptive Statistics, Part 3 – Inferential Statistics. Remove the course cards and descriptions.
+- Other Downloads contains the two bundle links and Extended scenarios.
+- Part landing pages end with Home and Next on one line (Home only in Part 3), followed by Download R Studio on the next paragraph.
