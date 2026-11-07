@@ -2,8 +2,8 @@
 
 Students use <https://msfasha.github.io/307312-Applied-Statistics/>.
 
-**Current instruction, 7 November 2026: commit locally; do not push or publish.**
-The commands below document the release workflow for a future authorized deployment.
+**Current instruction, 7 November 2026: push the committed updates to GitHub and publish the updated website.**
+This supersedes the earlier local-only instruction.
 
 ## Active student material
 
@@ -82,7 +82,7 @@ intentionally requested; it must not silently change source measurements.
 Historical slide converters write `_build/reference-conversions/` and must not
 overwrite authored lessons or reinsert Part 2 R cells into the active slide lesson.
 
-## Future authorized publication
+## Authorized publication
 
 After explicit authorization, commit and push sources on `main`, then run:
 
@@ -102,4 +102,4 @@ website files. A source push or local render alone is not publication. Verify
 `deployment.json`, every approved page/PDF/CSV and both bundles against the
 committed source revision. The live verifier compares actual bytes and writes
 `_build/extended-review/live-verification.json`. PDF navigation uses public URLs.
-Do not run either publication command while the current local-only instruction applies.
+The user explicitly authorized the current push and website update.

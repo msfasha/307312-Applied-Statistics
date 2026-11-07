@@ -249,3 +249,8 @@
 - Introduce each practical example with its purpose, variables, corresponding slide and guidance for reading results. Use the original student teaching CSV, not Superstore, for this companion.
 - Root rendering, navigation, PDF exports, both bundles and validation cover sixteen notebook/PDF pairs through `scripts/course_documents.py`. Nested Superstore imports must work from both root and their notebook folder.
 - User explicitly requested a local commit only: do not push or publish.
+
+## Publication authorized — 7 November 2026
+
+- User explicitly requested pushing the current committed updates to GitHub and updating the website. This supersedes the earlier local-only restrictions for the Part 1 replacement and descriptive practical/Superstore reorganization.
+- Publish all sixteen approved notebook/PDF pairs and both bundles through PUBLISHING.md and verify the live release.
