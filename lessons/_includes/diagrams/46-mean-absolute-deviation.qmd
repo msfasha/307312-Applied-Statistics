@@ -1,0 +1,37 @@
+::: {.petra-diagram .mad-diagram}
+
+**Mean absolute deviation: average the distances from the mean.**
+
+Values: **2, 4, 6, 8, 10**. Their mean is **6**.
+
+```{=html}
+<svg class="mad-distances" viewBox="0 0 640 300" role="img" aria-labelledby="mad-distance-title mad-distance-description" xmlns="http://www.w3.org/2000/svg">
+<title id="mad-distance-title">Distances from the mean of 6</title>
+<desc id="mad-distance-description">Five gray dots represent 2, 4, 6, 8 and 10. Horizontal lines to the burgundy mean line show absolute distances of 4, 2, 0, 2 and 4. Dots are staggered vertically for clarity; only horizontal position represents value.</desc>
+<g class="mad-segments"><path d="M96 65H320 M208 105H320 M320 185H432 M320 225H544"/></g>
+<path class="mad-mean" d="M320 38V248"/>
+<text class="mad-mean-label" x="320" y="24" text-anchor="middle">Mean = 6</text>
+<g class="mad-distance-labels" text-anchor="middle"><text x="208" y="55">4</text><text x="264" y="95">2</text><text x="345" y="151">0</text><text x="376" y="175">2</text><text x="432" y="215">4</text></g>
+<g class="mad-points"><circle cx="96" cy="65" r="8"/><circle cx="208" cy="105" r="8"/><circle cx="320" cy="145" r="8"/><circle cx="432" cy="185" r="8"/><circle cx="544" cy="225" r="8"/></g>
+<path class="mad-axis" d="M65 255H575 M96 251V260 M208 251V260 M320 251V260 M432 251V260 M544 251V260"/>
+<g class="mad-axis-labels" text-anchor="middle"><text x="96" y="285">2</text><text x="208" y="285">4</text><text x="320" y="285">6</text><text x="432" y="285">8</text><text x="544" y="285">10</text></g>
+</svg>
+<p class="mad-distance-caption">Horizontal lines show absolute distances: <strong>4, 2, 0, 2, 4</strong>.<br>Dots are staggered vertically for clarity; read values on the horizontal axis.</p>
+<p class="example-result">MAD = (4 + 2 + 0 + 2 + 4) &divide; 5 = <strong>2.4</strong></p>
+```
+
+The average absolute distance from the mean is **2.4 units**.
+
+::: {.stat-formulas}
+
+**Sample:** $\displaystyle \text{Mean AD}=\frac{1}{n}\sum_{i=1}^{n}|x_i-\bar{x}|$.
+
+**Population:** $\displaystyle \text{Mean AD}=\frac{1}{N}\sum_{i=1}^{N}|x_i-\mu|$.
+
+Here $n$ and $N$ are the numbers of sample and population values; $\bar{x}$ and $\mu$ are their means. Absolute values make every distance nonnegative.
+
+:::
+
+**Terminology:** Here MAD means *mean* absolute deviation. R's `mad()` calculates *median* absolute deviation; to compute this measure in R, use `mean(abs(x - mean(x)))` for a numeric vector without missing values.
+
+:::

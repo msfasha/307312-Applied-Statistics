@@ -205,3 +205,16 @@
   explicitly authorizes a change to the original slide material.
 - A safety copy of the pre-restoration revision is on Git branch
   `codex/backup-before-original-course-restore-20261107`.
+
+## Reviewable median and mean-AD diagrams — 7 November 2026
+
+- The user authorized replacing only the median graphics on slide 39 and the
+  mean absolute deviation graphics on slide 46 with original editable diagrams.
+- Replacements live in `lessons/_includes/diagrams/39-median.qmd` and
+  `46-mean-absolute-deviation.qmd`. Preserve surrounding slide text and all other
+  slides, practicals and six business cases. Original images/PPTX/PDF stay untouched.
+- Use burgundy to identify the median positions/mean reference line, gray for
+  other values and distances, and readable formulas. MAD here means mean absolute
+  deviation; distinguish R's `mad()` (median absolute deviation).
+- Keep this as a separate reversible commit; the user will review the result
+  and may request restoration of the previous graphics.

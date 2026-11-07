@@ -721,11 +721,7 @@ plot(students$height, students$weight, pch = 16, col = "#356B8C",
 
 ### The Median {#source-title-39}
 
-![](../assets/descriptive-statistics/slide-39-graphic-01.png){width="84%" fig-alt="Original graphic from slide 39"}
-
-![](../assets/descriptive-statistics/slide-39-graphic-02.png){width="30%" fig-alt="Original graphic from slide 39"}
-
-![](../assets/descriptive-statistics/slide-39-graphic-03.png){width="44%" fig-alt="Original graphic from slide 39"}
+{{< include _includes/diagrams/39-median.qmd >}}
 
 :::
 
@@ -857,9 +853,7 @@ names(age_counts)[age_counts == max(age_counts)]
 </div>
 ```
 
-![](../assets/descriptive-statistics/slide-46-graphic-02.png){width="70%" fig-alt="Original graphic from slide 46"}
-
-![](../assets/descriptive-statistics/slide-46-graphic-03.png){width="32%" fig-alt="Original graphic from slide 46"}
+{{< include _includes/diagrams/46-mean-absolute-deviation.qmd >}}
 
 :::
 

@@ -45,6 +45,8 @@ overrides = {
     9: '09-types-of-data.qmd',
     10: '10-levels-of-measurement.qmd',
     12: '12-scales-comparison.qmd',
+    39: '39-median.qmd',
+    46: '46-mean-absolute-deviation.qmd',
     48: '48-variance-standard-deviation.qmd',
 }
 
@@ -87,7 +89,7 @@ with ZipFile(PPT) as z, tempfile.TemporaryDirectory() as temp:
         elif i not in overrides:
             q.append(f'<span class="source-slide-number">{i:02d}</span>\n\n')
         page=Image.open(cache/f'slide-{i:02d}.png')
-        imagecount=0; native=[]
+        imagecount=0; native=[]; override_emitted=False
         for j,e in enumerate(sorted(elements,key=lambda e:(rect(e)[1],rect(e)[0]))):
             kind=e.tag.split('}')[-1]
             if e is title:
@@ -108,7 +110,9 @@ with ZipFile(PPT) as z, tempfile.TemporaryDirectory() as temp:
                 q.append('```{=html}\n<div class="source-table"><table>'+''.join(rows)+'</table></div>\n```\n\n')
             elif kind in ['pic','graphicFrame'] or (kind=='sp' and e.find('.//a:blip',NS) is not None):
                 if i in overrides:
-                    q.append('{{< include lessons/_includes/diagrams/' + overrides[i] + ' >}}\n\n')
+                    if not override_emitted:
+                        q.append('{{< include lessons/_includes/diagrams/' + overrides[i] + ' >}}\n\n')
+                        override_emitted=True
                     continue
                 x,y,w,h=rect(e)
                 if w<=0 or h<=0: continue

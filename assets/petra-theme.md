@@ -55,8 +55,10 @@ than separate heading-color rules in individual notebooks.
 | Links | `#356B8C` | Readable blue interactive links |
 | Link hover | `#244D68` | Darker blue |
 
-The hex values define the palette. Burgundy is reserved for authored title and
-heading bands; diagram boxes, table headers and note surfaces remain neutral gray.
+The hex values define the palette. Burgundy distinguishes authored title and heading bands. In the approved median
+and mean-absolute-deviation diagrams it also marks the middle values or mean
+reference line. Other diagram boxes, table headers and note surfaces remain
+neutral gray.
 Existing university logos and preserved source figures retain their original
 colors and attribution. Blue links and meaningful analytical chart colors remain
 appropriate; do not recolor every visual indiscriminately.
