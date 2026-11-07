@@ -10,6 +10,4 @@ Read the slides, then work through the 18 R examples in the practical using the 
 | Descriptive Statistics slides | [Read](../lessons/02-descriptive-statistics.qmd) | [PDF](../pdf/02-descriptive-statistics.pdf) |
 | [R practical]{#practical} | [Read](../practicals/descriptive-statistics-r-practical.html) | [PDF](../pdf/descriptive-statistics-r-practical.pdf) |
 
-[Home](../index.qmd) &nbsp; [Next: Part 3](part-3.qmd)
-
-[Download R Studio](../downloads/applied-statistics-rstudio.zip)
+[Home](../index.qmd)

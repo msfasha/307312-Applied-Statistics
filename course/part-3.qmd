@@ -11,5 +11,3 @@ Read the slides on probability distributions, estimation, hypothesis testing and
 | [R practical]{#practical} | Coming soon | — |
 
 [Home](../index.qmd)
-
-[Download R Studio](../downloads/applied-statistics-rstudio.zip)

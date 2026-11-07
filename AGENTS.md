@@ -295,3 +295,7 @@
 - Home and course/index use a Course material heading with three plain links: Part 1 – Introduction to R, Part 2 – Descriptive Statistics, Part 3 – Inferential Statistics. Remove the course cards and descriptions.
 - Other Downloads contains the two bundle links and Extended scenarios.
 - Part landing pages end with Home and Next on one line (Home only in Part 3), followed by Download R Studio on the next paragraph.
+
+## Home-only part footer — 7 November 2026
+
+- User superseded the Home/Next/download footer: Parts 1, 2 and 3 end with only Home, linking to the root main page. Remove Next and RStudio download links from those footers. Preserve resource-table links and home-page downloads.
