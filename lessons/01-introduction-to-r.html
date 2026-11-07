@@ -4241,6 +4241,41 @@ a { text-decoration: none !important; }
 }
 
 @media print { .source-slide.collection-slide { break-inside: avoid; } }
+
+.median-diagram .median-example { margin: 1rem 0; padding: 1rem; background: #FAFAFA; border: 1px solid #D6D6D6; }
+.median-diagram .example-label { margin: 0 0 .8rem; }
+.median-values { display: grid; grid-template-columns: repeat(var(--value-count), minmax(0, 1fr)); gap: .4rem; list-style: none; margin: 0; padding: 0; }
+.petra-diagram .median-values li { margin: 0 !important; padding: .55rem .15rem; border: 1px solid #D6D6D6; background: #F2F2F2; color: #303030; text-align: center; font-size: 1.15rem; font-weight: 650; }
+.petra-diagram .median-values .middle-value { background: var(--course-topic-bg); color: #FFFFFF; border-color: var(--course-topic-bg); }
+.petra-diagram .example-result { text-align: center; font-size: 1.15rem; margin: .9rem 0 0; }
+.stat-formulas { margin: 1.1rem 0; padding: .8rem 1rem; background: #F7F7F7; border: 1px solid #D6D6D6; }
+.stat-formulas p:first-child { margin-top: 0; }
+.stat-formulas p:last-child, .stat-formulas ul:last-child { margin-bottom: 0; }
+.mad-distances { display: block; width: 100%; max-width: 640px; height: auto; margin: 1rem auto 0; font-family: inherit; font-size: 22px; }
+.mad-segments { stroke: #777777; stroke-width: 3; fill: none; }
+.mad-mean { stroke: var(--course-topic-bg); stroke-width: 4; fill: none; }
+.mad-mean-label { fill: var(--course-topic-bg); font-weight: 700; }
+.mad-distance-labels, .mad-axis-labels { fill: #303030; }
+.mad-points { fill: #4B4B4B; }
+.mad-axis { stroke: #A3A3A3; stroke-width: 1.5; fill: none; }
+.mad-distance-caption { text-align: center; }
+@media (max-width: 575px) {
+.median-diagram .median-example { padding: .65rem .4rem; }
+.median-values { gap: .2rem; }
+.petra-diagram .median-values li { font-size: 1rem; }
+.stat-formulas { padding: .65rem; }
+}
+@media print {
+.median-diagram, .mad-diagram, .median-example, .stat-formulas { break-inside: avoid; }
+.median-diagram .median-example { padding: .6rem; margin: .7rem 0; }
+.mad-distances { max-width: 135mm; }
+}
+@media (max-width: 575px) {
+.mad-distances { font-size: 32px; }
+}
+@media print {
+#slide-39, #slide-46 { break-inside: avoid; }
+}
 </style>
 <style type="text/css">
 #quarto-document-content li { margin-bottom: .45rem; }
