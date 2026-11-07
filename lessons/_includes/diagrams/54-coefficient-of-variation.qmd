@@ -1,0 +1,9 @@
+::: {.cv-formula}
+
+**Population:** $CV=\dfrac{\sigma}{\mu}$
+
+**Sample:** $CV=\dfrac{s}{\bar{x}}$
+
+:::
+
+Multiply the ratio by 100 to express CV as a percentage. Use CV for ratio-scale quantities with a meaningful zero and a positive mean; it becomes unstable when the mean is close to zero.

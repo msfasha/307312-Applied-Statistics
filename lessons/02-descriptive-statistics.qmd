@@ -880,7 +880,7 @@ names(age_counts)[age_counts == max(age_counts)]
 </div>
 ```
 
-![](../assets/descriptive-statistics/slide-47-graphic-04.png){width="32%" fig-alt="Original graphic from slide 47"}
+{{< include _includes/diagrams/47-squared-deviations.qmd >}}
 
 :::
 
@@ -966,12 +966,12 @@ c(range = diff(range(age)), mean_absolute_deviation = mean(abs(age - mean(age)))
 <div class="source-text">
 <p class="source-bullet source-level-0">In some instances, we need to compare the variability of two or more data sets that have different means or different units of measurement.</p>
 <p class="source-bullet source-level-0">Consider the following example:</p>
-<p class="source-bullet source-level-0">We cannot tell which dataset has more variance in its values since both datasets have the same standard deviation.</p>
+<p class="source-bullet source-level-0">Both datasets have the same absolute spread: their sample standard deviations are equal. To compare spread relative to their different means, use the coefficient of variation.</p>
 </div>
 ```
 
 ```{=html}
-<div class="source-table"><table><tr><td></td><td><p><strong>DS1</strong></p></td><td><p><strong>DS2</strong></p></td></tr><tr><td></td><td><p>$10</p></td><td><p>$1010</p></td></tr><tr><td></td><td><p>$20</p></td><td><p>$1020</p></td></tr><tr><td></td><td><p>$30</p></td><td><p>$1030</p></td></tr><tr><td></td><td><p>$40</p></td><td><p>$1040</p></td></tr><tr><td></td><td><p>$50</p></td><td><p>$1050</p></td></tr><tr><td><p><strong>Average</strong></p></td><td><p><strong>$30</strong></p></td><td><p><strong>$1030</strong></p></td></tr><tr><td><p><strong>Standard Deviation</strong></p></td><td><p><strong>15.81</strong></p></td><td><p><strong>15.81</strong></p></td></tr></table></div>
+<div class="source-table"><table><tr><td></td><td><p><strong>DS1</strong></p></td><td><p><strong>DS2</strong></p></td></tr><tr><td></td><td><p>$10</p></td><td><p>$1010</p></td></tr><tr><td></td><td><p>$20</p></td><td><p>$1020</p></td></tr><tr><td></td><td><p>$30</p></td><td><p>$1030</p></td></tr><tr><td></td><td><p>$40</p></td><td><p>$1040</p></td></tr><tr><td></td><td><p>$50</p></td><td><p>$1050</p></td></tr><tr><td><p><strong>Average</strong></p></td><td><p><strong>$30</strong></p></td><td><p><strong>$1030</strong></p></td></tr><tr><td><p><strong>Sample Standard Deviation</strong></p></td><td><p><strong>15.81</strong></p></td><td><p><strong>15.81</strong></p></td></tr></table></div>
 ```
 
 :::
@@ -990,7 +990,7 @@ c(range = diff(range(age)), mean_absolute_deviation = mean(abs(age - mean(age)))
 </div>
 ```
 
-![](../assets/descriptive-statistics/slide-54-graphic-02.png){width="19%" fig-alt="Original graphic from slide 54"}
+{{< include _includes/diagrams/54-coefficient-of-variation.qmd >}}
 
 :::
 
@@ -1003,13 +1003,15 @@ c(range = diff(range(age)), mean_absolute_deviation = mean(abs(age - mean(age)))
 ```{=html}
 <div class="source-text">
 <p class="source-bullet source-level-0">Going back to the previous example, we can calculate the coefficient of variation for both sets to help us in determining which dataset has more variability in its values.</p>
-<p class="source-bullet source-level-0">Using the Coefficient of Variation, we can tell that DS1 varies more than DS2, and that DS2 is more stable than DS1.</p>
+<p class="source-bullet source-level-0">DS1 has greater relative variability than DS2: its standard deviation is larger as a proportion of its mean. Their absolute standard deviations remain equal.</p>
 </div>
 ```
 
 ```{=html}
-<div class="source-table"><table><tr><td></td><td><p><strong>DS1</strong></p></td><td><p><strong>DS2</strong></p></td></tr><tr><td></td><td><p>$10</p></td><td><p>$1010</p></td></tr><tr><td></td><td><p>$20</p></td><td><p>$1020</p></td></tr><tr><td></td><td><p>$30</p></td><td><p>$1030</p></td></tr><tr><td></td><td><p>$40</p></td><td><p>$1040</p></td></tr><tr><td></td><td><p>$50</p></td><td><p>$1050</p></td></tr><tr><td><p><strong>Average</strong></p></td><td><p><strong>$30</strong></p></td><td><p><strong>$1030</strong></p></td></tr><tr><td><p><strong>Standard Deviation</strong></p></td><td><p><strong>$15.81</strong></p></td><td><p><strong>$15.81</strong></p></td></tr><tr><td><p><strong>Coefficient of Variation</strong></p></td><td><p><strong>0.430</strong></p></td><td><p><strong>0.013</strong></p></td></tr></table></div>
+<div class="source-table"><table><tr><td></td><td><p><strong>DS1</strong></p></td><td><p><strong>DS2</strong></p></td></tr><tr><td></td><td><p>$10</p></td><td><p>$1010</p></td></tr><tr><td></td><td><p>$20</p></td><td><p>$1020</p></td></tr><tr><td></td><td><p>$30</p></td><td><p>$1030</p></td></tr><tr><td></td><td><p>$40</p></td><td><p>$1040</p></td></tr><tr><td></td><td><p>$50</p></td><td><p>$1050</p></td></tr><tr><td><p><strong>Average</strong></p></td><td><p><strong>$30</strong></p></td><td><p><strong>$1030</strong></p></td></tr><tr><td><p><strong>Sample Standard Deviation</strong></p></td><td><p><strong>$15.81</strong></p></td><td><p><strong>$15.81</strong></p></td></tr><tr><td><p><strong>CV (ratio)</strong></p></td><td><p><strong>0.5270</strong></p></td><td><p><strong>0.01535</strong></p></td></tr></table></div>
 ```
+
+**As percentages:** DS1 = **52.70%**; DS2 = **1.54%**. These calculations use the unrounded sample standard deviation.
 
 #### R equivalent (added)
 
@@ -1038,7 +1040,7 @@ c(DS1 = sd(DS1) / mean(DS1), DS2 = sd(DS2) / mean(DS2))
 </div>
 ```
 
-![](../assets/descriptive-statistics/slide-56-graphic-02.png){width="29%" fig-alt="Original graphic from slide 56"}
+{{< include _includes/diagrams/56-cv-finance.qmd >}}
 
 :::
 
@@ -1103,11 +1105,15 @@ c(DS1 = sd(DS1) / mean(DS1), DS2 = sd(DS2) / mean(DS2))
 </div>
 ```
 
-![](../assets/descriptive-statistics/slide-59-graphic-04.png){width="18%" fig-alt="Original graphic from slide 59"}
+::: {.covariance-examples}
 
-![](../assets/descriptive-statistics/slide-59-graphic-05.png){width="18%" fig-alt="Original graphic from slide 59"}
+![](../assets/descriptive-statistics/slide-59-graphic-04.png){width="100%" fig-alt="Original graphic from slide 59"}
 
-![](../assets/descriptive-statistics/slide-59-graphic-06.png){width="18%" fig-alt="Original graphic from slide 59"}
+![](../assets/descriptive-statistics/slide-59-graphic-05.png){width="100%" fig-alt="Original graphic from slide 59"}
+
+![](../assets/descriptive-statistics/slide-59-graphic-06.png){width="100%" fig-alt="Original graphic from slide 59"}
+
+:::
 
 :::
 
@@ -1251,7 +1257,7 @@ cor(students$height, students$age, use = "complete.obs")
 </div>
 ```
 
-![](../assets/descriptive-statistics/slide-66-graphic-03.png){width="49%" fig-alt="Original graphic from slide 66"}
+![](../assets/descriptive-statistics/slide-66-graphic-03.png){width="100%" fig-alt="Original graphic from slide 66"}
 
 :::
 
@@ -1587,7 +1593,7 @@ sum(students$age < lower | students$age > upper)
 
 ### Methods to screen for outliers in a dataset {#source-title-82}
 
-![](../assets/descriptive-statistics/slide-82-graphic-01.png){width="50%" fig-alt="Original graphic from slide 82"}
+![](../assets/descriptive-statistics/slide-82-graphic-01.png){width="72%" fig-alt="Original graphic from slide 82"}
 
 ```{=html}
 <div class="source-text">
@@ -1704,24 +1710,3 @@ sum(students$age < lower | students$age > upper)
 ```
 
 :::
-
-<!-- Original slide 88 -->
-
-::: {.source-slide #slide-88}
-
-### Practice Datasets {#source-title-88}
-
-![](../assets/descriptive-statistics/slide-88-graphic-01.png){width="21%" fig-alt="Original graphic from slide 88"}
-
-```{=html}
-<div class="source-text">
-<p>Practice Statistics Using the following Datasets</p>
-<p>Suggested Datasets:</p>
-<p>https://github.com/msfasha/307102-Descriptive-Statistics-for-Business/blob/main/Practical/additional/useful_datasets.md</p>
-<p>Suggested Analysis Scenario:</p>
-<p>https://github.com/msfasha/307102-Descriptive-Statistics-for-Business/blob/main/Practical/additional/superstore_analysis_scenario.md</p>
-</div>
-```
-
-:::
-

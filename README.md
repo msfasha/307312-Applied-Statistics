@@ -7,7 +7,7 @@ R practicals and six extended business cases apply the concepts separately.
 ## Course sequence
 
 1. **Introduction to R:** import Superstore, prepare a category summary and explain a chart.
-2. **Descriptive Statistics:** the original 88-slide sequence, original examples, diagrams, Excel instructions, labeled R equivalents and the approved survey section.
+2. **Descriptive Statistics:** the original slide sequence (87 retained slides; the cross-course final slide is omitted), original examples, diagrams, Excel instructions, labeled R equivalents and the approved survey section.
 3. **Inferential Statistics:** all 141 original slides in order: probability distributions, estimation, hypothesis testing and regression, with original Excel/Python source examples and labeled R equivalents.
 
 Three published practicals develop Superstore categorical analysis, order-size summaries,

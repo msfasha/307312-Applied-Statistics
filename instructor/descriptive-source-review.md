@@ -1,7 +1,7 @@
 # Source issues to review — original 307102 deck
 
 The conversion preserves the original source wording and figures. These are
-review observations, not corrections applied to the lesson.
+review observations. Explicitly authorized applied corrections are recorded below.
 
 - Slide 11: ordinal-to-interval conversion requires substantive justification;
   a transformation alone does not establish equal intervals.
@@ -48,3 +48,22 @@ discrete data is informal; a nominal variable can be given an arbitrary display
 order; interval treatment of intelligence scores is an assumption; and unbiased
 sample variance relies on the usual sampling assumptions. Diagram redesign
 does not establish or repair these claims.
+
+## Applied review corrections — 7 November 2026
+
+- The user requested checking the CV values and correcting the associated layout.
+  Slides 53–55 now explicitly use sample SD 15.8113883. Means are 30 and 1030;
+  CVs are 0.5270462767 and 0.0153508624 (52.70% and 1.54%). Original printed
+  0.430 and 0.013 are incorrect. Population CVs would also differ, so this is
+  not resolved by choosing a population SD convention.
+- Equal SDs imply equal absolute variances. Slides 53 and 55 now distinguish
+  absolute from relative dispersion rather than implying different absolute variance.
+- Slide 54 now presents compact editable population and sample CV formulas.
+- Slide 56 uses its stated 111.06, not the graphic's 111.6: A = 0.0372684564
+  (3.73%), B = 1.3/9.8 = 0.1326530612 (13.27%), not 0.134. Original data
+  values and source decks remain unchanged; this is the given hypothetical example.
+- User authorized an editable squared-deviation diagram on slide 47, compact
+  covariance graphics on slide 59, larger illustrations on slides 66 and 82,
+  and removal of source slide 88 (different course's Practice Datasets/QR code).
+- The slide 47 source claim that variance is universally better than MAD is
+  still a source issue; the diagram replacement does not validate it.

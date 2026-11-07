@@ -83,8 +83,8 @@ A full website render also renders and stages the approved practicals.
 
 ## Original core restored; applications kept separate — 7 November 2026
 
-Parts 2 and 3 restore the original slide-based lessons from `70bf7ee`: all 88
-descriptive slides plus the approved collection/survey section, and all 141
+Parts 2 and 3 restore the original slide-based lessons from `70bf7ee`: all 87 retained
+descriptive slides (source slide 88 was removed at the user’s request) plus the approved collection/survey section, and all 141
 inferential slides. Preserve the original sequence, Excel examples, source
 figures and labeled R equivalents. The publisher checks these slide IDs.
 The three R practicals and all six extended cases remain separate applications.

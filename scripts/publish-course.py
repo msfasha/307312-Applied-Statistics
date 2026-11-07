@@ -22,7 +22,7 @@ def validate(site):
     if forbidden:raise RuntimeError('Local-only files in generated site: '+str(forbidden[:5]))
     expected = {
         'lessons/01-introduction-to-r.html': ['Superstore', 'category_summary'],
-        'lessons/02-descriptive-statistics.html': ['What is Statistics?', 'source-title-88'],
+        'lessons/02-descriptive-statistics.html': ['What is Statistics?', 'source-title-87'],
         'lessons/03-inferential-statistics.html': ['part3-01-slide-01', 'part3-04-slide-21'],
     }
     for page, markers in expected.items():
@@ -31,8 +31,10 @@ def validate(site):
             raise RuntimeError('Incomplete course: '+page)
     # Guard the restored core against future replacement by practical/case rewrites.
     descriptive = (site/'lessons/02-descriptive-statistics.html').read_text()
-    if any(f'id="slide-{i:02d}"' not in descriptive for i in range(1, 89)):
-        raise RuntimeError('Incomplete original descriptive slides')
+    if any(f'id="slide-{i:02d}"' not in descriptive for i in range(1, 88)):
+        raise RuntimeError('Incomplete retained descriptive slides')
+    if 'id="slide-88"' in descriptive:
+        raise RuntimeError('Removed cross-course Practice Datasets slide reintroduced')
     inferential = (site/'lessons/03-inferential-statistics.html').read_text()
     if any(f'id="part3-{k:02d}-slide-{i:02d}"' not in inferential
            for k, count in enumerate([37, 26, 57, 21], 1) for i in range(1, count+1)):

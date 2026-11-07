@@ -55,8 +55,8 @@ than separate heading-color rules in individual notebooks.
 | Links | `#356B8C` | Readable blue interactive links |
 | Link hover | `#244D68` | Darker blue |
 
-The hex values define the palette. Burgundy distinguishes authored title and heading bands. In the approved median
-and mean-absolute-deviation diagrams it also marks the middle values or mean
+The hex values define the palette. Burgundy distinguishes authored title and heading bands. In the approved median,
+mean-absolute-deviation and squared-deviation diagrams it also marks the middle values or mean
 reference line. Other diagram boxes, table headers and note surfaces remain
 neutral gray.
 Existing university logos and preserved source figures retain their original
@@ -118,7 +118,10 @@ highlighting; the surrounding layout stays neutral.
 - Center instructional images and R plots horizontally, including captionless
   figures and lightbox-linked images.
 - Small source-slide illustrations have a minimum width of 50% of their content
-  area. Larger figures keep their existing widths, up to the available width.
+  area. Compact covariance panels in a comparison grid are an exception; their
+  images use the panel width without that minimum. Typeset formulas as modest
+  native math rather than enlarging formula screenshots. Larger figures keep
+  their existing widths, up to the available width.
   Preserve aspect ratio and check clarity; do not stretch images or invent detail.
 - Keep original cover artwork sizing and intentional logo placement. Original
   reference PowerPoints, publisher files and source images remain unchanged.

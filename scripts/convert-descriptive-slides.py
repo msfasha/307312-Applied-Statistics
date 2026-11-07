@@ -48,7 +48,11 @@ overrides = {
     39: '39-median.qmd',
     46: '46-mean-absolute-deviation.qmd',
     48: '48-variance-standard-deviation.qmd',
+    54: '54-coefficient-of-variation.qmd',
+    56: '56-cv-finance.qmd',
 }
+
+graphic_overrides = {(47, 4): '47-squared-deviations.qmd'}
 
 def lesson_markup(s):
     return (s.replace('src="assets/', 'src="../assets/').replace('![](assets/', '![](../assets/')
@@ -109,6 +113,9 @@ with ZipFile(PPT) as z, tempfile.TemporaryDirectory() as temp:
                     rows.append('<tr>'+''.join(cells)+'</tr>')
                 q.append('```{=html}\n<div class="source-table"><table>'+''.join(rows)+'</table></div>\n```\n\n')
             elif kind in ['pic','graphicFrame'] or (kind=='sp' and e.find('.//a:blip',NS) is not None):
+                if (i, j) in graphic_overrides:
+                    q.append('{{< include lessons/_includes/diagrams/' + graphic_overrides[(i, j)] + ' >}}\n\n')
+                    continue
                 if i in overrides:
                     if not override_emitted:
                         q.append('{{< include lessons/_includes/diagrams/' + overrides[i] + ' >}}\n\n')
@@ -134,7 +141,7 @@ with ZipFile(PPT) as z, tempfile.TemporaryDirectory() as temp:
             q.append('{{< include lessons/_includes/data-collection-and-surveys.qmd >}}\n\n')
         source=[t.text or '' for t in tree.findall('.//a:t',NS)]
         assert sorted(t for t in source if t.strip())==sorted(t for t in native if t.strip()), f'Unpreserved native text on slide {i}'
-        audit.append({'slide':i,'title':titletext,'text_runs':len(source),'graphics':imagecount,'all_native_text_preserved': i != 1, 'authorized_changes': ('Course identity updated to 307312 Applied Statistics — Masters Level' if i == 1 else ('Diagram rebuilt in standard Petra theme' if i in overrides else None))})
+        audit.append({'slide':i,'title':titletext,'text_runs':len(source),'graphics':imagecount,'all_native_text_preserved': i != 1, 'authorized_changes': ('Course identity updated to 307312 Applied Statistics — Masters Level' if i == 1 else ('Diagram rebuilt in standard Petra theme' if i in overrides or i == 47 else None))})
 (ROOT/'_build/reference-conversions/02-descriptive-statistics.qmd').write_text(lesson_markup(''.join(q)),encoding='utf-8')
 (ROOT/'_build/reference-conversions/descriptive-conversion-audit.json').write_text(json.dumps({'source_sha256':hashlib.sha256(PPT.read_bytes()).hexdigest(),'slides':audit},indent=2),encoding='utf-8')
 print(f'Converted {len(audit)} slides; {sum(x["text_runs"] for x in audit)} native text runs preserved; {sum(x["graphics"] for x in audit)} graphics.')

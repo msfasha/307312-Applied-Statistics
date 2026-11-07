@@ -1,0 +1,33 @@
+::: {.petra-diagram .squared-deviation-diagram}
+
+**Square each distance from the mean.**
+
+Use the same values as the MAD example: **2, 4, 6, 8, 10**. Mean = **6**.
+
+```{=html}
+<svg class="mad-distances squared-distances" viewBox="0 0 640 300" role="img" aria-labelledby="squared-distance-title squared-distance-description" xmlns="http://www.w3.org/2000/svg">
+<title id="squared-distance-title">Squared distances from the mean of 6</title>
+<desc id="squared-distance-description">Five gray dots represent 2, 4, 6, 8 and 10. Horizontal lines to the burgundy mean line show absolute distances of 4, 2, 0, 2 and 4; the labels show their squares: 16, 4, 0, 4 and 16. Dots are staggered vertically for clarity; only horizontal position represents value.</desc>
+<g class="mad-segments"><path d="M96 65H320 M208 105H320 M320 185H432 M320 225H544"/></g>
+<path class="mad-mean" d="M320 38V248"/>
+<text class="mad-mean-label" x="320" y="24" text-anchor="middle">Mean = 6</text>
+<g class="mad-distance-labels" text-anchor="middle"><text x="208" y="55">4² = 16</text><text x="264" y="95">2² = 4</text><text x="380" y="151">0² = 0</text><text x="376" y="175">2² = 4</text><text x="432" y="215">4² = 16</text></g>
+<g class="mad-points"><circle cx="96" cy="65" r="8"/><circle cx="208" cy="105" r="8"/><circle cx="320" cy="145" r="8"/><circle cx="432" cy="185" r="8"/><circle cx="544" cy="225" r="8"/></g>
+<path class="mad-axis" d="M65 255H575 M96 251V260 M208 251V260 M320 251V260 M432 251V260 M544 251V260"/>
+<g class="mad-axis-labels" text-anchor="middle"><text x="96" y="285">2</text><text x="208" y="285">4</text><text x="320" y="285">6</text><text x="432" y="285">8</text><text x="544" y="285">10</text></g>
+</svg>
+<p class="mad-distance-caption">Lines show distances from the mean; labels show their squares.<br>Dots are staggered vertically for clarity; only horizontal position represents value.</p>
+<p class="example-result">Sum of squared deviations = 16 + 4 + 0 + 4 + 16 = <strong>40</strong></p>
+```
+
+::: {.stat-formulas}
+
+**If these five values are a sample:** $s^2=40/(5-1)=10$ square units; $s=\sqrt{10}\approx3.16$ units.
+
+**If these five values are the whole population:** $\sigma^2=40/5=8$ square units; $\sigma=\sqrt{8}\approx2.83$ units.
+
+:::
+
+Squaring gives more weight to larger distances. Taking the square root returns the standard deviation to the original units.
+
+:::

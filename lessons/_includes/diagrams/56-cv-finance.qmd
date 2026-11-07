@@ -1,0 +1,9 @@
+::: {.cv-finance-calculations}
+
+**Stock A:** $CV_A=111.06/2980\approx0.03727=3.73\%$.
+
+**Stock B:** $CV_B=1.3/9.8\approx0.13265=13.27\%$.
+
+:::
+
+For these stated positive means, A has the lower **relative** dispersion.

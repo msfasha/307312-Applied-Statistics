@@ -218,3 +218,18 @@
   deviation; distinguish R's `mad()` (median absolute deviation).
 - Keep this as a separate reversible commit; the user will review the result
   and may request restoration of the previous graphics.
+
+## Targeted CV/figure review — 7 November 2026
+
+- User requested smaller CV formulas and covariance graphics, a MAD-style
+  squared-deviation diagram (slide 47), a larger three-panel skewness image
+  (slide 66), and a moderately larger outlier/boxplot illustration (slide 82).
+- CV review found source errors: sample CVs for the stated datasets are
+  0.5270462767 and 0.0153508624; finance examples give 0.0372684564 and
+  0.1326530612 using the stated summaries. Applied corrections are documented
+  in `instructor/descriptive-source-review.md`; retain original reference files.
+- The user explicitly removed the final Practice Datasets/QR-code slide because
+  it belongs to another course. Source slide 88 must not appear in active HTML
+  or PDFs; publisher guards 87 retained descriptive slides and 141 inference slides.
+- Keep these edits scoped; retain the current Superstore R practicals, all six
+  business cases and the approved burgundy theme.
