@@ -29,7 +29,7 @@ knitr::opts_knit$set(root.dir = normalizePath(".."))
 - Use this notebook after explaining the descriptive-statistics slides, or return to the matching section after each topic.
 - Open `Applied-Statistics.Rproj` first and keep the working directory at the project root.
 - Work through the code cells from top to bottom in RStudio. Run the import cell first; later cells reuse its `students` data frame.
-- These examples use base R. No additional R package is needed to run the analysis cells; rendering the notebook requires Quarto, knitr and rmarkdown.
+- These examples use base R, plus the e1071 package for skewness. Install it once with `install.packages("e1071")` in the R console; rendering the notebook also requires Quarto, knitr and rmarkdown.
 - Each section identifies the matching source slide, introduces the calculation and explains how to read its output. The worked code and its original comments are retained in full.
 - Before running a cell, predict what it will display. Afterwards, connect the result to the corresponding table, chart or definition in the slides.
 
@@ -230,26 +230,24 @@ cov(students$height, students$age, use = "complete.obs")
 cor(students$height, students$age, use = "complete.obs")
 ```
 
-## 14. Adjusted sample skewness
+## 14. Skewness of age
 
 - **Slides:** [source slide 68](../lessons/02-descriptive-statistics.qmd#slide-68).
-- **What we are doing:** Quantify the asymmetry of the age distribution with the adjusted sample skewness used by Excel SKEW. The code standardizes each age using the sample standard deviation, cubes those standardized distances and applies the sample-size correction.
+- **What we are doing:** Quantify the asymmetry of the age distribution with `skewness()` from the e1071 package. The `::` notation selects the function from that package. The argument `type = 2` selects the sample-size correction used by Excel SKEW; the observations are unchanged.
 - **How to read the result:** A positive value indicates a longer right tail; a negative value indicates a longer left tail. Compare the sign with the histogram rather than treating this statistic as a complete description of shape. The formula requires more than two observations and nonzero variation.
 
 ```{r}
 #| label: r-slide-68
-# length() supplies n; sum() adds cubed standardized deviations, using sample sd() with n-1.
-# n/((n-1)*(n-2)) gives adjusted sample skewness, corresponding to Excel SKEW for n>2.
-age <- students$age
-n <- length(age)
-n / ((n - 1) * (n - 2)) * sum(((age - mean(age)) / sd(age))^3)
+# e1071::skewness() measures asymmetry; type=2 selects the correction used by Excel SKEW.
+# Keep type=2: the function defaults to a different method (type=3).
+e1071::skewness(students$age, type = 2)
 ```
 
 ## 15. The 90th percentile
 
 - **Slides:** [source slide 72](../lessons/02-descriptive-statistics.qmd#slide-72).
 - **What we are doing:** Find the height value associated with the 90th percentile. Percentiles locate values within the ordered data; interpolation conventions can produce different numerical answers.
-- **How to read the result:** The first output uses R type 7, corresponding to Excel PERCENTILE.INC. The second uses type 6, corresponding to PERCENTILE.EXC for this sample and probability. Both outputs are in centimetres. State which convention you use.
+- **How to read the result:** The first output uses R type 7, corresponding to Excel PERCENTILE.INC. The second uses type 6, corresponding to PERCENTILE.EXC for this sample and probability. Both outputs are in centimetres. Here, `type` is a function argument selecting the percentile calculation method, not a data type. R defaults to type 7, so omitting `type = 7` gives the same result; keep `type = 6` when comparing the exclusive convention. These method numbers are specific to `quantile()` and are separate from the skewness methods.
 
 ```{r}
 #| label: r-slide-72
@@ -315,4 +313,3 @@ sum(students$age < lower | students$age > upper)
 - Which dispersion measures retain the original units, and which do not?
 - Why should percentile conventions be stated when comparing R and Excel results?
 - Why does an outlier flag call for investigation rather than automatic deletion?
-- Return to the [Part 2 slides](../lessons/02-descriptive-statistics.qmd) for the definitions and Excel instructions. For a separate business application, use the [Superstore extended case](../extended-cases/superstore/index.qmd).

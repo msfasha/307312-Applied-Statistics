@@ -1425,17 +1425,15 @@ cor(students$height, students$age, use = "complete.obs")
 
 #### Try this in R {.unlisted}
 
-**Example 14: Adjusted sample skewness**
+**Example 14: Skewness of age**
 
 ```r
-# length() supplies n; sum() adds cubed standardized deviations, using sample sd() with n-1.
-# n/((n-1)*(n-2)) gives adjusted sample skewness, corresponding to Excel SKEW for n>2.
-age <- students$age
-n <- length(age)
-n / ((n - 1) * (n - 2)) * sum(((age - mean(age)) / sd(age))^3)
+# e1071::skewness() measures asymmetry; type=2 selects the correction used by Excel SKEW.
+# Keep type=2: the function defaults to a different method (type=3).
+e1071::skewness(students$age, type = 2)
 ```
 
-[Open example 14 in the R practical](../practicals/descriptive-statistics-r-practical.html#adjusted-sample-skewness).
+[Open example 14 in the R practical](../practicals/descriptive-statistics-r-practical.html#skewness-of-age).
 
 ::::
 <!-- END TRY IN R 68 -->

@@ -101,7 +101,7 @@ with zipfile.ZipFile(SITE/'downloads/applied-statistics-rstudio.zip','w',zipfile
 1. Install R, RStudio, and Quarto.
 2. Extract this whole ZIP to a folder and open Applied-Statistics.Rproj.
 3. Run this once in the R console:
-   install.packages(c("knitr", "rmarkdown", "dplyr", "ggplot2", "readr", "tidyr", "zoo"))
+   install.packages(c("knitr", "rmarkdown", "dplyr", "ggplot2", "readr", "tidyr", "zoo", "e1071"))
 4. Open lessons/01-introduction-to-r.qmd, followed by r-02-basic-concepts.qmd, r-03-dplyr.qmd and r-04-ggplot2.qmd, then Parts 2 and 3. Run code chunks in order.
 5. After the Part 2 slides, open practicals/descriptive-statistics-r-practical.qmd.
    Run its 18 worked examples in order; these use the original student teaching CSV.
