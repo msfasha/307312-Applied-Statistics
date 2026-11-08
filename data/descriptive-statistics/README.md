@@ -1,7 +1,7 @@
-# Original 307102 student example
+# Student teaching example
 
 `students.csv` contains all 8,239 rows from the `students` worksheet in the
-original 307102 practical workbook. No observations are invented or corrected.
+original practical workbook. No observations are invented or corrected.
 Only the six columns needed by this preview are exported; names and IDs are omitted.
 
 | Column | Meaning | Unit / labels |
@@ -20,7 +20,7 @@ university students. Category labels, all numeric values, and row order are unch
 `scripts/export-original-students.py` reproduces the CSV and verifies every
 selected cell after round-trip import. `provenance.json` records the source path,
 worksheet, checksum, selected columns, and verification scope. The original
-workbook stays unchanged in the neighboring 307102 course folder.
+workbook remains an unchanged local reference file.
 
 The original country label `Russa` is preserved. R examples use that exact label
 when selecting Russian students.

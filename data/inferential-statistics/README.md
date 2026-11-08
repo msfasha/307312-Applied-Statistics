@@ -1,6 +1,6 @@
 # Inferential teaching data
 
-All files reproduce observations printed in the original 307102 slides. Original
+All files reproduce observations printed in the original inferential-statistics slides. Original
 collection provenance is not established. They are teaching examples, not verified
 records from the named businesses or university.
 
