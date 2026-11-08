@@ -233,54 +233,49 @@ cor(students$height, students$age, use = "complete.obs")
 ## 14. Skewness of age
 
 - **Slides:** [source slide 68](../lessons/02-descriptive-statistics.qmd#slide-68).
-- **What we are doing:** Quantify the asymmetry of the age distribution with `skewness()` from the e1071 package. The `::` notation selects the function from that package. The argument `type = 2` selects the sample-size correction used by Excel SKEW; the observations are unchanged.
-- **How to read the result:** A positive value indicates a longer right tail; a negative value indicates a longer left tail. Compare the sign with the histogram rather than treating this statistic as a complete description of shape. The formula requires more than two observations and nonzero variation.
+- **What we are doing:** Quantify the asymmetry of the age distribution with `skewness()` from the e1071 package, using its default method. The `::` notation selects the function from that package.
+- **How to read the result:** A positive value indicates a longer right tail; a negative value indicates a longer left tail. Compare the sign with the histogram rather than treating this statistic as a complete description of shape.
 
 ```{r}
 #| label: r-slide-68
-# e1071::skewness() measures asymmetry; type=2 selects the correction used by Excel SKEW.
-# Keep type=2: the function defaults to a different method (type=3).
-e1071::skewness(students$age, type = 2)
+# e1071::skewness() measures the asymmetry of the age distribution.
+e1071::skewness(students$age)
 ```
 
 ## 15. The 90th percentile
 
 - **Slides:** [source slide 72](../lessons/02-descriptive-statistics.qmd#slide-72).
-- **What we are doing:** Find the height value associated with the 90th percentile. Percentiles locate values within the ordered data; interpolation conventions can produce different numerical answers.
-- **How to read the result:** The first output uses R type 7, corresponding to Excel PERCENTILE.INC. The second uses type 6, corresponding to PERCENTILE.EXC for this sample and probability. Both outputs are in centimetres. Here, `type` is a function argument selecting the percentile calculation method, not a data type. R defaults to type 7, so omitting `type = 7` gives the same result; keep `type = 6` when comparing the exclusive convention. These method numbers are specific to `quantile()` and are separate from the skewness methods.
+- **What we are doing:** Find the height value associated with the 90th percentile using R's default calculation.
+- **How to read the result:** The output is in centimetres. About 90% of the recorded heights are at or below this value.
 
 ```{r}
 #| label: r-slide-72
-# quantile() finds the requested percentile; probs=0.90 means the 90th percentile of height in cm.
-# type=7 matches Excel PERCENTILE.INC; type=6 matches PERCENTILE.EXC for this sample and probability.
-quantile(students$height, probs = 0.90, type = 7)
-quantile(students$height, probs = 0.90, type = 6)
+# quantile() finds percentiles; probs=0.90 requests the 90th percentile of height in cm.
+quantile(students$height, probs = 0.90)
 ```
 
 ## 16. First and second quartiles
 
 - **Slides:** [source slide 74](../lessons/02-descriptive-statistics.qmd#slide-74).
-- **What we are doing:** Locate the 25th and 50th percentiles of height. These are the first quartile and median, respectively, and divide the ordered observations into interpretable portions.
-- **How to read the result:** Each output contains Q1 and Q2 in centimetres. Compare the inclusive and exclusive conventions. The chosen probabilities are valid for both conventions with this dataset; differences reflect interpolation rules rather than a change in the observations.
+- **What we are doing:** Locate the 25th and 50th percentiles of height: the first quartile and median.
+- **How to read the result:** The output gives Q1 and Q2 in centimetres. About 25% of recorded heights are at or below Q1; about 50% are at or below the median.
 
 ```{r}
 #| label: r-slide-74
-# quantile(probs=c(0.25,0.50)) returns the first and second quartiles of height in cm.
-# type=7 uses Excel's inclusive convention; type=6 uses its exclusive convention for these probabilities.
-quantile(students$height, probs = c(0.25, 0.50), type = 7)
-quantile(students$height, probs = c(0.25, 0.50), type = 6)
+# quantile(probs=c(0.25,0.50)) returns the first quartile and median of height in cm.
+quantile(students$height, probs = c(0.25, 0.50))
 ```
 
 ## 17. Boxplots and group comparisons
 
 - **Slides:** [source slide 76](../lessons/02-descriptive-statistics.qmd#slide-76).
 - **What we are doing:** Compare height distributions first by gender and then, among males, by the two selected country labels. Boxplots summarize the centre and spread and mark observations beyond the whiskers.
-- **How to read the result:** Read the median line, box and whiskers together. R uses boxplot hinges, which can differ from type-7 quartiles; whiskers reach the most extreme observations within 1.5 IQR of the hinges. The original label `Russa` is retained for the Russian category. Group differences here are descriptive, with no causal or population inference implied.
+- **How to read the result:** Read the median line, box and whiskers together. R uses boxplot hinges, which can differ from the quartiles returned by quantile(); whiskers reach the most extreme observations within 1.5 IQR of the hinges. The original label `Russa` is retained for the Russian category. Group differences here are descriptive, with no causal or population inference implied.
 
 ```{r}
 #| label: r-slide-76
 # boxplot(height~gender) compares groups; whiskers extend to the last data within 1.5 IQR of the hinges.
-# subset() selects Turkish/Russian males; R's default boxplot hinges can differ from type-7 quartiles.
+# subset() selects Turkish/Russian males; R's default boxplot hinges can differ from the quartiles returned by quantile().
 boxplot(height ~ gender, data = students, ylab = "Height (cm)", col = "#D4D4D4")
 # The source spells Russia as "Russa"; match that original label without changing the data.
 males <- subset(students, gender == "Male" & country %in% c("Turkey", "Russa"))
@@ -290,14 +285,14 @@ boxplot(height ~ country, data = males, ylab = "Height (cm)", col = "#D4D4D4")
 ## 18. Use IQR fences to flag potential outliers
 
 - **Slides:** [source slide 79](../lessons/02-descriptive-statistics.qmd#slide-79).
-- **What we are doing:** Calculate inclusive first and third age quartiles, their interquartile range and the lower and upper 1.5-IQR fences. Then count records outside those fences.
+- **What we are doing:** Calculate the first and third age quartiles, their interquartile range and the lower and upper 1.5-IQR fences. Then count records outside those fences.
 - **How to read the result:** The first output gives the fences in years; the second gives the number of flagged records. The strict comparisons flag ages below the lower fence or above the upper fence. Investigate flagged values in context; the code preserves every observation and does not automatically remove records.
 
 ```{r}
 #| label: r-slide-79
-# quantile(type=7) supplies inclusive quartiles; the 1.5-IQR fences flag values for investigation.
+# quantile() supplies quartiles; the 1.5-IQR fences flag values for investigation.
 # sum() counts TRUE flags and does not remove observations; these age fences are measured in years.
-q <- quantile(students$age, probs = c(0.25, 0.75), type = 7)
+q <- quantile(students$age, probs = c(0.25, 0.75))
 iqr <- q[2] - q[1]
 lower <- q[1] - 1.5 * iqr
 upper <- q[2] + 1.5 * iqr
@@ -311,5 +306,5 @@ sum(students$age < lower | students$age > upper)
 - Which charts suit categorical data, and which suit numerical data?
 - How do the mean and median describe different aspects of the same distribution?
 - Which dispersion measures retain the original units, and which do not?
-- Why should percentile conventions be stated when comparing R and Excel results?
+- What do the 90th percentile and the quartiles tell us about the data?
 - Why does an outlier flag call for investigation rather than automatic deletion?
