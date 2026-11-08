@@ -6281,13 +6281,11 @@ s = \sqrt{s^2}.
 <div id="try-r-68" class="try-in-r">
 <section id="try-this-in-r-13" class="level4 unlisted">
 <h4 class="unlisted anchored" data-anchor-id="try-this-in-r-13">Try this in R</h4>
-<p><strong>Example 14: Adjusted sample skewness</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># length() supplies n; sum() adds cubed standardized deviations, using sample sd() with n-1.</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># n/((n-1)*(n-2)) gives adjusted sample skewness, corresponding to Excel SKEW for n&gt;2.</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> students<span class="sc">$</span>age</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(age)</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>n <span class="sc">/</span> ((n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> (n <span class="sc">-</span> <span class="dv">2</span>)) <span class="sc">*</span> <span class="fu">sum</span>(((age <span class="sc">-</span> <span class="fu">mean</span>(age)) <span class="sc">/</span> <span class="fu">sd</span>(age))<span class="sc">^</span><span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><a href="../practicals/descriptive-statistics-r-practical.html#adjusted-sample-skewness">Open example 14 in the R practical</a>.</p>
+<p><strong>Example 14: Skewness of age</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># e1071::skewness() measures asymmetry; type=2 selects the correction used by Excel SKEW.</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Keep type=2: the function defaults to a different method (type=3).</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>e1071<span class="sc">::</span><span class="fu">skewness</span>(students<span class="sc">$</span>age, <span class="at">type =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><a href="../practicals/descriptive-statistics-r-practical.html#skewness-of-age">Open example 14 in the R practical</a>.</p>
 </section>
 </div>
 <!-- END TRY IN R 68 -->
@@ -8478,452 +8476,450 @@ s = \sqrt{s^2}.
 <span id="cb19-1425"><a href="#cb19-1425" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-1426"><a href="#cb19-1426" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Try this in R {.unlisted}</span></span>
 <span id="cb19-1427"><a href="#cb19-1427" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1428"><a href="#cb19-1428" aria-hidden="true" tabindex="-1"></a>**Example 14: Adjusted sample skewness**</span>
+<span id="cb19-1428"><a href="#cb19-1428" aria-hidden="true" tabindex="-1"></a>**Example 14: Skewness of age**</span>
 <span id="cb19-1429"><a href="#cb19-1429" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-1430"><a href="#cb19-1430" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb19-1431"><a href="#cb19-1431" aria-hidden="true" tabindex="-1"></a><span class="co"># length() supplies n; sum() adds cubed standardized deviations, using sample sd() with n-1.</span></span>
-<span id="cb19-1432"><a href="#cb19-1432" aria-hidden="true" tabindex="-1"></a><span class="co"># n/((n-1)*(n-2)) gives adjusted sample skewness, corresponding to Excel SKEW for n&gt;2.</span></span>
-<span id="cb19-1433"><a href="#cb19-1433" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> students<span class="sc">$</span>age</span>
-<span id="cb19-1434"><a href="#cb19-1434" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(age)</span>
-<span id="cb19-1435"><a href="#cb19-1435" aria-hidden="true" tabindex="-1"></a>n <span class="sc">/</span> ((n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> (n <span class="sc">-</span> <span class="dv">2</span>)) <span class="sc">*</span> <span class="fu">sum</span>(((age <span class="sc">-</span> <span class="fu">mean</span>(age)) <span class="sc">/</span> <span class="fu">sd</span>(age))<span class="sc">^</span><span class="dv">3</span>)</span>
-<span id="cb19-1436"><a href="#cb19-1436" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1431"><a href="#cb19-1431" aria-hidden="true" tabindex="-1"></a><span class="co"># e1071::skewness() measures asymmetry; type=2 selects the correction used by Excel SKEW.</span></span>
+<span id="cb19-1432"><a href="#cb19-1432" aria-hidden="true" tabindex="-1"></a><span class="co"># Keep type=2: the function defaults to a different method (type=3).</span></span>
+<span id="cb19-1433"><a href="#cb19-1433" aria-hidden="true" tabindex="-1"></a>e1071<span class="sc">::</span><span class="fu">skewness</span>(students<span class="sc">$</span>age, <span class="at">type =</span> <span class="dv">2</span>)</span>
+<span id="cb19-1434"><a href="#cb19-1434" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1435"><a href="#cb19-1435" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1436"><a href="#cb19-1436" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Open example 14 in the R practical</span><span class="co">](../practicals/descriptive-statistics-r-practical.html#skewness-of-age)</span>.</span>
 <span id="cb19-1437"><a href="#cb19-1437" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1438"><a href="#cb19-1438" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Open example 14 in the R practical</span><span class="co">](../practicals/descriptive-statistics-r-practical.html#adjusted-sample-skewness)</span>.</span>
-<span id="cb19-1439"><a href="#cb19-1439" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1440"><a href="#cb19-1440" aria-hidden="true" tabindex="-1"></a>::::</span>
-<span id="cb19-1441"><a href="#cb19-1441" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="re">END</span><span class="co"> TRY IN R 68 --&gt;</span></span>
+<span id="cb19-1438"><a href="#cb19-1438" aria-hidden="true" tabindex="-1"></a>::::</span>
+<span id="cb19-1439"><a href="#cb19-1439" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="re">END</span><span class="co"> TRY IN R 68 --&gt;</span></span>
+<span id="cb19-1440"><a href="#cb19-1440" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1441"><a href="#cb19-1441" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb19-1442"><a href="#cb19-1442" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1443"><a href="#cb19-1443" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb19-1443"><a href="#cb19-1443" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 69 --&gt;</span></span>
 <span id="cb19-1444"><a href="#cb19-1444" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1445"><a href="#cb19-1445" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 69 --&gt;</span></span>
+<span id="cb19-1445"><a href="#cb19-1445" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-69}</span>
 <span id="cb19-1446"><a href="#cb19-1446" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1447"><a href="#cb19-1447" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-69}</span>
+<span id="cb19-1447"><a href="#cb19-1447" aria-hidden="true" tabindex="-1"></a><span class="fu">### Practical Exercise: using Excel’s data analysis tools option {#source-title-69}</span></span>
 <span id="cb19-1448"><a href="#cb19-1448" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1449"><a href="#cb19-1449" aria-hidden="true" tabindex="-1"></a><span class="fu">### Practical Exercise: using Excel’s data analysis tools option {#source-title-69}</span></span>
-<span id="cb19-1450"><a href="#cb19-1450" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1451"><a href="#cb19-1451" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
-<span id="cb19-1452"><a href="#cb19-1452" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
-<span id="cb19-1453"><a href="#cb19-1453" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p&gt;Select: Data &amp;gt; Data Analysis &amp;gt; Descriptive Statistics &amp;gt; OK.&lt;/p&gt;</span></span>
-<span id="cb19-1454"><a href="#cb19-1454" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
-<span id="cb19-1455"><a href="#cb19-1455" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1449"><a href="#cb19-1449" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb19-1450"><a href="#cb19-1450" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
+<span id="cb19-1451"><a href="#cb19-1451" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p&gt;Select: Data &amp;gt; Data Analysis &amp;gt; Descriptive Statistics &amp;gt; OK.&lt;/p&gt;</span></span>
+<span id="cb19-1452"><a href="#cb19-1452" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb19-1453"><a href="#cb19-1453" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1454"><a href="#cb19-1454" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1455"><a href="#cb19-1455" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-69-graphic-02.png)</span>{width=&quot;56%&quot; fig-alt=&quot;Original graphic from slide 69&quot;}</span>
 <span id="cb19-1456"><a href="#cb19-1456" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1457"><a href="#cb19-1457" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-69-graphic-02.png)</span>{width=&quot;56%&quot; fig-alt=&quot;Original graphic from slide 69&quot;}</span>
+<span id="cb19-1457"><a href="#cb19-1457" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb19-1458"><a href="#cb19-1458" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1459"><a href="#cb19-1459" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb19-1459"><a href="#cb19-1459" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 70 --&gt;</span></span>
 <span id="cb19-1460"><a href="#cb19-1460" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1461"><a href="#cb19-1461" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 70 --&gt;</span></span>
+<span id="cb19-1461"><a href="#cb19-1461" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-70}</span>
 <span id="cb19-1462"><a href="#cb19-1462" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1463"><a href="#cb19-1463" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-70}</span>
+<span id="cb19-1463"><a href="#cb19-1463" aria-hidden="true" tabindex="-1"></a><span class="fu">## Percentiles, Quartiles and Boxplots {#source-title-70}</span></span>
 <span id="cb19-1464"><a href="#cb19-1464" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1465"><a href="#cb19-1465" aria-hidden="true" tabindex="-1"></a><span class="fu">## Percentiles, Quartiles and Boxplots {#source-title-70}</span></span>
+<span id="cb19-1465"><a href="#cb19-1465" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb19-1466"><a href="#cb19-1466" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1467"><a href="#cb19-1467" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb19-1467"><a href="#cb19-1467" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 71 --&gt;</span></span>
 <span id="cb19-1468"><a href="#cb19-1468" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1469"><a href="#cb19-1469" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 71 --&gt;</span></span>
+<span id="cb19-1469"><a href="#cb19-1469" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-71}</span>
 <span id="cb19-1470"><a href="#cb19-1470" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1471"><a href="#cb19-1471" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-71}</span>
+<span id="cb19-1471"><a href="#cb19-1471" aria-hidden="true" tabindex="-1"></a><span class="fu">### Percentiles {#source-title-71}</span></span>
 <span id="cb19-1472"><a href="#cb19-1472" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1473"><a href="#cb19-1473" aria-hidden="true" tabindex="-1"></a><span class="fu">### Percentiles {#source-title-71}</span></span>
+<span id="cb19-1473"><a href="#cb19-1473" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-71-graphic-01.png)</span>{width=&quot;50%&quot; fig-alt=&quot;Original graphic from slide 71&quot;}</span>
 <span id="cb19-1474"><a href="#cb19-1474" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1475"><a href="#cb19-1475" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-71-graphic-01.png)</span>{width=&quot;50%&quot; fig-alt=&quot;Original graphic from slide 71&quot;}</span>
-<span id="cb19-1476"><a href="#cb19-1476" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1477"><a href="#cb19-1477" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
-<span id="cb19-1478"><a href="#cb19-1478" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
-<span id="cb19-1479"><a href="#cb19-1479" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;A &lt;strong&gt;percentile&lt;/strong&gt; is a measure that helps us understand the position or relative standing of a particular value within a dataset. &lt;/p&gt;</span></span>
-<span id="cb19-1480"><a href="#cb19-1480" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Percentiles help us divide the data into equal-sized groups and determine the position of a value within those groups.&lt;/p&gt;</span></span>
-<span id="cb19-1481"><a href="#cb19-1481" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;For example, if someone&amp;#x27;s score is at the 80th percentile, it means they performed better than 80% of the people in the dataset.&lt;/p&gt;</span></span>
-<span id="cb19-1482"><a href="#cb19-1482" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Percentiles provide insights into how a specific value compares to others, allowing us to assess performance, rankings, or distributions. &lt;/p&gt;</span></span>
-<span id="cb19-1483"><a href="#cb19-1483" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;They are commonly used in various fields, such as education, healthcare, and finance, to understand and communicate data in a meaningful way.&lt;/p&gt;</span></span>
-<span id="cb19-1484"><a href="#cb19-1484" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
-<span id="cb19-1485"><a href="#cb19-1485" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1475"><a href="#cb19-1475" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb19-1476"><a href="#cb19-1476" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
+<span id="cb19-1477"><a href="#cb19-1477" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;A &lt;strong&gt;percentile&lt;/strong&gt; is a measure that helps us understand the position or relative standing of a particular value within a dataset. &lt;/p&gt;</span></span>
+<span id="cb19-1478"><a href="#cb19-1478" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Percentiles help us divide the data into equal-sized groups and determine the position of a value within those groups.&lt;/p&gt;</span></span>
+<span id="cb19-1479"><a href="#cb19-1479" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;For example, if someone&amp;#x27;s score is at the 80th percentile, it means they performed better than 80% of the people in the dataset.&lt;/p&gt;</span></span>
+<span id="cb19-1480"><a href="#cb19-1480" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Percentiles provide insights into how a specific value compares to others, allowing us to assess performance, rankings, or distributions. &lt;/p&gt;</span></span>
+<span id="cb19-1481"><a href="#cb19-1481" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;They are commonly used in various fields, such as education, healthcare, and finance, to understand and communicate data in a meaningful way.&lt;/p&gt;</span></span>
+<span id="cb19-1482"><a href="#cb19-1482" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb19-1483"><a href="#cb19-1483" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1484"><a href="#cb19-1484" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1485"><a href="#cb19-1485" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb19-1486"><a href="#cb19-1486" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1487"><a href="#cb19-1487" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb19-1487"><a href="#cb19-1487" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 72 --&gt;</span></span>
 <span id="cb19-1488"><a href="#cb19-1488" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1489"><a href="#cb19-1489" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 72 --&gt;</span></span>
+<span id="cb19-1489"><a href="#cb19-1489" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-72}</span>
 <span id="cb19-1490"><a href="#cb19-1490" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1491"><a href="#cb19-1491" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-72}</span>
+<span id="cb19-1491"><a href="#cb19-1491" aria-hidden="true" tabindex="-1"></a><span class="fu">### Practical Exercise {#source-title-72}</span></span>
 <span id="cb19-1492"><a href="#cb19-1492" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1493"><a href="#cb19-1493" aria-hidden="true" tabindex="-1"></a><span class="fu">### Practical Exercise {#source-title-72}</span></span>
-<span id="cb19-1494"><a href="#cb19-1494" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1495"><a href="#cb19-1495" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
-<span id="cb19-1496"><a href="#cb19-1496" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
-<span id="cb19-1497"><a href="#cb19-1497" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Using the students.xlsx file, find the 90% Percentile value for the “height” column.&lt;/p&gt;</span></span>
-<span id="cb19-1498"><a href="#cb19-1498" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;You can use percentile.inc or percentile.exc to compute percentiles in Excel.&lt;/p&gt;</span></span>
-<span id="cb19-1499"><a href="#cb19-1499" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
-<span id="cb19-1500"><a href="#cb19-1500" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1493"><a href="#cb19-1493" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb19-1494"><a href="#cb19-1494" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
+<span id="cb19-1495"><a href="#cb19-1495" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Using the students.xlsx file, find the 90% Percentile value for the “height” column.&lt;/p&gt;</span></span>
+<span id="cb19-1496"><a href="#cb19-1496" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;You can use percentile.inc or percentile.exc to compute percentiles in Excel.&lt;/p&gt;</span></span>
+<span id="cb19-1497"><a href="#cb19-1497" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb19-1498"><a href="#cb19-1498" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1499"><a href="#cb19-1499" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1500"><a href="#cb19-1500" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-72-graphic-02.png)</span>{width=&quot;43%&quot; fig-alt=&quot;Original graphic from slide 72&quot;}</span>
 <span id="cb19-1501"><a href="#cb19-1501" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1502"><a href="#cb19-1502" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-72-graphic-02.png)</span>{width=&quot;43%&quot; fig-alt=&quot;Original graphic from slide 72&quot;}</span>
+<span id="cb19-1502"><a href="#cb19-1502" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-72-graphic-03.png)</span>{width=&quot;69%&quot; fig-alt=&quot;Original graphic from slide 72&quot;}</span>
 <span id="cb19-1503"><a href="#cb19-1503" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1504"><a href="#cb19-1504" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-72-graphic-03.png)</span>{width=&quot;69%&quot; fig-alt=&quot;Original graphic from slide 72&quot;}</span>
-<span id="cb19-1505"><a href="#cb19-1505" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1506"><a href="#cb19-1506" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="re">BEGIN</span><span class="co"> TRY IN R 72 --&gt;</span></span>
-<span id="cb19-1507"><a href="#cb19-1507" aria-hidden="true" tabindex="-1"></a>:::: {.try-in-r #try-r-72}</span>
+<span id="cb19-1504"><a href="#cb19-1504" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="re">BEGIN</span><span class="co"> TRY IN R 72 --&gt;</span></span>
+<span id="cb19-1505"><a href="#cb19-1505" aria-hidden="true" tabindex="-1"></a>:::: {.try-in-r #try-r-72}</span>
+<span id="cb19-1506"><a href="#cb19-1506" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1507"><a href="#cb19-1507" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Try this in R {.unlisted}</span></span>
 <span id="cb19-1508"><a href="#cb19-1508" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1509"><a href="#cb19-1509" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Try this in R {.unlisted}</span></span>
+<span id="cb19-1509"><a href="#cb19-1509" aria-hidden="true" tabindex="-1"></a>**Example 15: The 90th percentile**</span>
 <span id="cb19-1510"><a href="#cb19-1510" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1511"><a href="#cb19-1511" aria-hidden="true" tabindex="-1"></a>**Example 15: The 90th percentile**</span>
-<span id="cb19-1512"><a href="#cb19-1512" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1513"><a href="#cb19-1513" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb19-1514"><a href="#cb19-1514" aria-hidden="true" tabindex="-1"></a><span class="co"># quantile() finds the requested percentile; probs=0.90 means the 90th percentile of height in cm.</span></span>
-<span id="cb19-1515"><a href="#cb19-1515" aria-hidden="true" tabindex="-1"></a><span class="co"># type=7 matches Excel PERCENTILE.INC; type=6 matches PERCENTILE.EXC for this sample and probability.</span></span>
-<span id="cb19-1516"><a href="#cb19-1516" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(students<span class="sc">$</span>height, <span class="at">probs =</span> <span class="fl">0.90</span>, <span class="at">type =</span> <span class="dv">7</span>)</span>
-<span id="cb19-1517"><a href="#cb19-1517" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(students<span class="sc">$</span>height, <span class="at">probs =</span> <span class="fl">0.90</span>, <span class="at">type =</span> <span class="dv">6</span>)</span>
-<span id="cb19-1518"><a href="#cb19-1518" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1511"><a href="#cb19-1511" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb19-1512"><a href="#cb19-1512" aria-hidden="true" tabindex="-1"></a><span class="co"># quantile() finds the requested percentile; probs=0.90 means the 90th percentile of height in cm.</span></span>
+<span id="cb19-1513"><a href="#cb19-1513" aria-hidden="true" tabindex="-1"></a><span class="co"># type=7 matches Excel PERCENTILE.INC; type=6 matches PERCENTILE.EXC for this sample and probability.</span></span>
+<span id="cb19-1514"><a href="#cb19-1514" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(students<span class="sc">$</span>height, <span class="at">probs =</span> <span class="fl">0.90</span>, <span class="at">type =</span> <span class="dv">7</span>)</span>
+<span id="cb19-1515"><a href="#cb19-1515" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(students<span class="sc">$</span>height, <span class="at">probs =</span> <span class="fl">0.90</span>, <span class="at">type =</span> <span class="dv">6</span>)</span>
+<span id="cb19-1516"><a href="#cb19-1516" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1517"><a href="#cb19-1517" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1518"><a href="#cb19-1518" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Open example 15 in the R practical</span><span class="co">](../practicals/descriptive-statistics-r-practical.html#the-90th-percentile)</span>.</span>
 <span id="cb19-1519"><a href="#cb19-1519" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1520"><a href="#cb19-1520" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Open example 15 in the R practical</span><span class="co">](../practicals/descriptive-statistics-r-practical.html#the-90th-percentile)</span>.</span>
-<span id="cb19-1521"><a href="#cb19-1521" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1522"><a href="#cb19-1522" aria-hidden="true" tabindex="-1"></a>::::</span>
-<span id="cb19-1523"><a href="#cb19-1523" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="re">END</span><span class="co"> TRY IN R 72 --&gt;</span></span>
+<span id="cb19-1520"><a href="#cb19-1520" aria-hidden="true" tabindex="-1"></a>::::</span>
+<span id="cb19-1521"><a href="#cb19-1521" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="re">END</span><span class="co"> TRY IN R 72 --&gt;</span></span>
+<span id="cb19-1522"><a href="#cb19-1522" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1523"><a href="#cb19-1523" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb19-1524"><a href="#cb19-1524" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1525"><a href="#cb19-1525" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb19-1525"><a href="#cb19-1525" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 73 --&gt;</span></span>
 <span id="cb19-1526"><a href="#cb19-1526" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1527"><a href="#cb19-1527" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 73 --&gt;</span></span>
+<span id="cb19-1527"><a href="#cb19-1527" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-73}</span>
 <span id="cb19-1528"><a href="#cb19-1528" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1529"><a href="#cb19-1529" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-73}</span>
+<span id="cb19-1529"><a href="#cb19-1529" aria-hidden="true" tabindex="-1"></a><span class="fu">### Quartiles {#source-title-73}</span></span>
 <span id="cb19-1530"><a href="#cb19-1530" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1531"><a href="#cb19-1531" aria-hidden="true" tabindex="-1"></a><span class="fu">### Quartiles {#source-title-73}</span></span>
-<span id="cb19-1532"><a href="#cb19-1532" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1533"><a href="#cb19-1533" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
-<span id="cb19-1534"><a href="#cb19-1534" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
-<span id="cb19-1535"><a href="#cb19-1535" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p&gt;A Quartile divides a sorted data set into 4 equal parts, so that each part represents ¼ of the data set.&lt;/p&gt;</span></span>
-<span id="cb19-1536"><a href="#cb19-1536" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
-<span id="cb19-1537"><a href="#cb19-1537" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1531"><a href="#cb19-1531" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb19-1532"><a href="#cb19-1532" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
+<span id="cb19-1533"><a href="#cb19-1533" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p&gt;A Quartile divides a sorted data set into 4 equal parts, so that each part represents ¼ of the data set.&lt;/p&gt;</span></span>
+<span id="cb19-1534"><a href="#cb19-1534" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb19-1535"><a href="#cb19-1535" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1536"><a href="#cb19-1536" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1537"><a href="#cb19-1537" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-73-graphic-02.png)</span>{width=&quot;73%&quot; fig-alt=&quot;Original graphic from slide 73&quot;}</span>
 <span id="cb19-1538"><a href="#cb19-1538" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1539"><a href="#cb19-1539" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-73-graphic-02.png)</span>{width=&quot;73%&quot; fig-alt=&quot;Original graphic from slide 73&quot;}</span>
+<span id="cb19-1539"><a href="#cb19-1539" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb19-1540"><a href="#cb19-1540" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1541"><a href="#cb19-1541" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb19-1541"><a href="#cb19-1541" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 74 --&gt;</span></span>
 <span id="cb19-1542"><a href="#cb19-1542" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1543"><a href="#cb19-1543" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 74 --&gt;</span></span>
+<span id="cb19-1543"><a href="#cb19-1543" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-74}</span>
 <span id="cb19-1544"><a href="#cb19-1544" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1545"><a href="#cb19-1545" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-74}</span>
+<span id="cb19-1545"><a href="#cb19-1545" aria-hidden="true" tabindex="-1"></a><span class="fu">### Practical Exercise {#source-title-74}</span></span>
 <span id="cb19-1546"><a href="#cb19-1546" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1547"><a href="#cb19-1547" aria-hidden="true" tabindex="-1"></a><span class="fu">### Practical Exercise {#source-title-74}</span></span>
-<span id="cb19-1548"><a href="#cb19-1548" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1549"><a href="#cb19-1549" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
-<span id="cb19-1550"><a href="#cb19-1550" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
-<span id="cb19-1551"><a href="#cb19-1551" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Using the students.xlsx file, find the 1&lt;sup&gt;st&lt;/sup&gt; and the 2&lt;sup&gt;nd&lt;/sup&gt; quartiles for the “height” column.&lt;/p&gt;</span></span>
-<span id="cb19-1552"><a href="#cb19-1552" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;You can use quartile.inc or quartile.exc to compute percentiles in Excel.&lt;/p&gt;</span></span>
-<span id="cb19-1553"><a href="#cb19-1553" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
-<span id="cb19-1554"><a href="#cb19-1554" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1547"><a href="#cb19-1547" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb19-1548"><a href="#cb19-1548" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
+<span id="cb19-1549"><a href="#cb19-1549" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Using the students.xlsx file, find the 1&lt;sup&gt;st&lt;/sup&gt; and the 2&lt;sup&gt;nd&lt;/sup&gt; quartiles for the “height” column.&lt;/p&gt;</span></span>
+<span id="cb19-1550"><a href="#cb19-1550" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;You can use quartile.inc or quartile.exc to compute percentiles in Excel.&lt;/p&gt;</span></span>
+<span id="cb19-1551"><a href="#cb19-1551" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb19-1552"><a href="#cb19-1552" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1553"><a href="#cb19-1553" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1554"><a href="#cb19-1554" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-74-graphic-02.png)</span>{width=&quot;67%&quot; fig-alt=&quot;Original graphic from slide 74&quot;}</span>
 <span id="cb19-1555"><a href="#cb19-1555" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1556"><a href="#cb19-1556" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-74-graphic-02.png)</span>{width=&quot;67%&quot; fig-alt=&quot;Original graphic from slide 74&quot;}</span>
+<span id="cb19-1556"><a href="#cb19-1556" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-74-graphic-03.png)</span>{width=&quot;43%&quot; fig-alt=&quot;Original graphic from slide 74&quot;}</span>
 <span id="cb19-1557"><a href="#cb19-1557" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1558"><a href="#cb19-1558" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-74-graphic-03.png)</span>{width=&quot;43%&quot; fig-alt=&quot;Original graphic from slide 74&quot;}</span>
-<span id="cb19-1559"><a href="#cb19-1559" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1560"><a href="#cb19-1560" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="re">BEGIN</span><span class="co"> TRY IN R 74 --&gt;</span></span>
-<span id="cb19-1561"><a href="#cb19-1561" aria-hidden="true" tabindex="-1"></a>:::: {.try-in-r #try-r-74}</span>
+<span id="cb19-1558"><a href="#cb19-1558" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="re">BEGIN</span><span class="co"> TRY IN R 74 --&gt;</span></span>
+<span id="cb19-1559"><a href="#cb19-1559" aria-hidden="true" tabindex="-1"></a>:::: {.try-in-r #try-r-74}</span>
+<span id="cb19-1560"><a href="#cb19-1560" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1561"><a href="#cb19-1561" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Try this in R {.unlisted}</span></span>
 <span id="cb19-1562"><a href="#cb19-1562" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1563"><a href="#cb19-1563" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Try this in R {.unlisted}</span></span>
+<span id="cb19-1563"><a href="#cb19-1563" aria-hidden="true" tabindex="-1"></a>**Example 16: First and second quartiles**</span>
 <span id="cb19-1564"><a href="#cb19-1564" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1565"><a href="#cb19-1565" aria-hidden="true" tabindex="-1"></a>**Example 16: First and second quartiles**</span>
-<span id="cb19-1566"><a href="#cb19-1566" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1567"><a href="#cb19-1567" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb19-1568"><a href="#cb19-1568" aria-hidden="true" tabindex="-1"></a><span class="co"># quantile(probs=c(0.25,0.50)) returns the first and second quartiles of height in cm.</span></span>
-<span id="cb19-1569"><a href="#cb19-1569" aria-hidden="true" tabindex="-1"></a><span class="co"># type=7 uses Excel&#39;s inclusive convention; type=6 uses its exclusive convention for these probabilities.</span></span>
-<span id="cb19-1570"><a href="#cb19-1570" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(students<span class="sc">$</span>height, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.50</span>), <span class="at">type =</span> <span class="dv">7</span>)</span>
-<span id="cb19-1571"><a href="#cb19-1571" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(students<span class="sc">$</span>height, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.50</span>), <span class="at">type =</span> <span class="dv">6</span>)</span>
-<span id="cb19-1572"><a href="#cb19-1572" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1565"><a href="#cb19-1565" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb19-1566"><a href="#cb19-1566" aria-hidden="true" tabindex="-1"></a><span class="co"># quantile(probs=c(0.25,0.50)) returns the first and second quartiles of height in cm.</span></span>
+<span id="cb19-1567"><a href="#cb19-1567" aria-hidden="true" tabindex="-1"></a><span class="co"># type=7 uses Excel&#39;s inclusive convention; type=6 uses its exclusive convention for these probabilities.</span></span>
+<span id="cb19-1568"><a href="#cb19-1568" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(students<span class="sc">$</span>height, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.50</span>), <span class="at">type =</span> <span class="dv">7</span>)</span>
+<span id="cb19-1569"><a href="#cb19-1569" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(students<span class="sc">$</span>height, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.50</span>), <span class="at">type =</span> <span class="dv">6</span>)</span>
+<span id="cb19-1570"><a href="#cb19-1570" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1571"><a href="#cb19-1571" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1572"><a href="#cb19-1572" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Open example 16 in the R practical</span><span class="co">](../practicals/descriptive-statistics-r-practical.html#first-and-second-quartiles)</span>.</span>
 <span id="cb19-1573"><a href="#cb19-1573" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1574"><a href="#cb19-1574" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Open example 16 in the R practical</span><span class="co">](../practicals/descriptive-statistics-r-practical.html#first-and-second-quartiles)</span>.</span>
-<span id="cb19-1575"><a href="#cb19-1575" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1576"><a href="#cb19-1576" aria-hidden="true" tabindex="-1"></a>::::</span>
-<span id="cb19-1577"><a href="#cb19-1577" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="re">END</span><span class="co"> TRY IN R 74 --&gt;</span></span>
+<span id="cb19-1574"><a href="#cb19-1574" aria-hidden="true" tabindex="-1"></a>::::</span>
+<span id="cb19-1575"><a href="#cb19-1575" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="re">END</span><span class="co"> TRY IN R 74 --&gt;</span></span>
+<span id="cb19-1576"><a href="#cb19-1576" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1577"><a href="#cb19-1577" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb19-1578"><a href="#cb19-1578" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1579"><a href="#cb19-1579" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb19-1579"><a href="#cb19-1579" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 75 --&gt;</span></span>
 <span id="cb19-1580"><a href="#cb19-1580" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1581"><a href="#cb19-1581" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 75 --&gt;</span></span>
+<span id="cb19-1581"><a href="#cb19-1581" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-75}</span>
 <span id="cb19-1582"><a href="#cb19-1582" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1583"><a href="#cb19-1583" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-75}</span>
+<span id="cb19-1583"><a href="#cb19-1583" aria-hidden="true" tabindex="-1"></a><span class="fu">### Boxplots – Box and Whiskers Plots {#source-title-75}</span></span>
 <span id="cb19-1584"><a href="#cb19-1584" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1585"><a href="#cb19-1585" aria-hidden="true" tabindex="-1"></a><span class="fu">### Boxplots – Box and Whiskers Plots {#source-title-75}</span></span>
-<span id="cb19-1586"><a href="#cb19-1586" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1587"><a href="#cb19-1587" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
-<span id="cb19-1588"><a href="#cb19-1588" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
-<span id="cb19-1589"><a href="#cb19-1589" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;A boxplot (box-and-whisker plot) is a standardized way of displaying the distribution of data based on a five number summary. &lt;/p&gt;</span></span>
-<span id="cb19-1590"><a href="#cb19-1590" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;The five number summary include the minimum value (Min), quartiles (Q1, Q2, and Q3), and the maximum value (Max).&lt;/p&gt;</span></span>
-<span id="cb19-1591"><a href="#cb19-1591" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Boxplots are useful in showing us the range and the skewness of our data as well as outliers.&lt;/p&gt;</span></span>
-<span id="cb19-1592"><a href="#cb19-1592" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
-<span id="cb19-1593"><a href="#cb19-1593" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1585"><a href="#cb19-1585" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb19-1586"><a href="#cb19-1586" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
+<span id="cb19-1587"><a href="#cb19-1587" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;A boxplot (box-and-whisker plot) is a standardized way of displaying the distribution of data based on a five number summary. &lt;/p&gt;</span></span>
+<span id="cb19-1588"><a href="#cb19-1588" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;The five number summary include the minimum value (Min), quartiles (Q1, Q2, and Q3), and the maximum value (Max).&lt;/p&gt;</span></span>
+<span id="cb19-1589"><a href="#cb19-1589" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Boxplots are useful in showing us the range and the skewness of our data as well as outliers.&lt;/p&gt;</span></span>
+<span id="cb19-1590"><a href="#cb19-1590" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb19-1591"><a href="#cb19-1591" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1592"><a href="#cb19-1592" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1593"><a href="#cb19-1593" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-75-graphic-02.png)</span>{width=&quot;79%&quot; fig-alt=&quot;Original graphic from slide 75&quot;}</span>
 <span id="cb19-1594"><a href="#cb19-1594" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1595"><a href="#cb19-1595" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-75-graphic-02.png)</span>{width=&quot;79%&quot; fig-alt=&quot;Original graphic from slide 75&quot;}</span>
+<span id="cb19-1595"><a href="#cb19-1595" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb19-1596"><a href="#cb19-1596" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1597"><a href="#cb19-1597" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb19-1597"><a href="#cb19-1597" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 76 --&gt;</span></span>
 <span id="cb19-1598"><a href="#cb19-1598" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1599"><a href="#cb19-1599" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 76 --&gt;</span></span>
+<span id="cb19-1599"><a href="#cb19-1599" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-76}</span>
 <span id="cb19-1600"><a href="#cb19-1600" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1601"><a href="#cb19-1601" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-76}</span>
+<span id="cb19-1601"><a href="#cb19-1601" aria-hidden="true" tabindex="-1"></a><span class="fu">### Practical Exercise {#source-title-76}</span></span>
 <span id="cb19-1602"><a href="#cb19-1602" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1603"><a href="#cb19-1603" aria-hidden="true" tabindex="-1"></a><span class="fu">### Practical Exercise {#source-title-76}</span></span>
-<span id="cb19-1604"><a href="#cb19-1604" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1605"><a href="#cb19-1605" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
-<span id="cb19-1606"><a href="#cb19-1606" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
-<span id="cb19-1607"><a href="#cb19-1607" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p&gt;Use the students.xlsx file:&lt;/p&gt;</span></span>
-<span id="cb19-1608"><a href="#cb19-1608" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Create a box plot that compares the height of male students vs female students.&lt;/p&gt;</span></span>
-<span id="cb19-1609"><a href="#cb19-1609" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Create a box plot that compares the height of Turkish male students vs Russian male students.&lt;/p&gt;</span></span>
-<span id="cb19-1610"><a href="#cb19-1610" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
-<span id="cb19-1611"><a href="#cb19-1611" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1603"><a href="#cb19-1603" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb19-1604"><a href="#cb19-1604" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
+<span id="cb19-1605"><a href="#cb19-1605" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p&gt;Use the students.xlsx file:&lt;/p&gt;</span></span>
+<span id="cb19-1606"><a href="#cb19-1606" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Create a box plot that compares the height of male students vs female students.&lt;/p&gt;</span></span>
+<span id="cb19-1607"><a href="#cb19-1607" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Create a box plot that compares the height of Turkish male students vs Russian male students.&lt;/p&gt;</span></span>
+<span id="cb19-1608"><a href="#cb19-1608" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb19-1609"><a href="#cb19-1609" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1610"><a href="#cb19-1610" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1611"><a href="#cb19-1611" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-76-graphic-02.png)</span>{width=&quot;49%&quot; fig-alt=&quot;Original graphic from slide 76&quot;}</span>
 <span id="cb19-1612"><a href="#cb19-1612" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1613"><a href="#cb19-1613" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-76-graphic-02.png)</span>{width=&quot;49%&quot; fig-alt=&quot;Original graphic from slide 76&quot;}</span>
-<span id="cb19-1614"><a href="#cb19-1614" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1615"><a href="#cb19-1615" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="re">BEGIN</span><span class="co"> TRY IN R 76 --&gt;</span></span>
-<span id="cb19-1616"><a href="#cb19-1616" aria-hidden="true" tabindex="-1"></a>:::: {.try-in-r #try-r-76}</span>
+<span id="cb19-1613"><a href="#cb19-1613" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="re">BEGIN</span><span class="co"> TRY IN R 76 --&gt;</span></span>
+<span id="cb19-1614"><a href="#cb19-1614" aria-hidden="true" tabindex="-1"></a>:::: {.try-in-r #try-r-76}</span>
+<span id="cb19-1615"><a href="#cb19-1615" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1616"><a href="#cb19-1616" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Try this in R {.unlisted}</span></span>
 <span id="cb19-1617"><a href="#cb19-1617" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1618"><a href="#cb19-1618" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Try this in R {.unlisted}</span></span>
+<span id="cb19-1618"><a href="#cb19-1618" aria-hidden="true" tabindex="-1"></a>**Example 17: Boxplots and group comparisons**</span>
 <span id="cb19-1619"><a href="#cb19-1619" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1620"><a href="#cb19-1620" aria-hidden="true" tabindex="-1"></a>**Example 17: Boxplots and group comparisons**</span>
-<span id="cb19-1621"><a href="#cb19-1621" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1622"><a href="#cb19-1622" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb19-1623"><a href="#cb19-1623" aria-hidden="true" tabindex="-1"></a><span class="co"># boxplot(height~gender) compares groups; whiskers extend to the last data within 1.5 IQR of the hinges.</span></span>
-<span id="cb19-1624"><a href="#cb19-1624" aria-hidden="true" tabindex="-1"></a><span class="co"># subset() selects Turkish/Russian males; R&#39;s default boxplot hinges can differ from type-7 quartiles.</span></span>
-<span id="cb19-1625"><a href="#cb19-1625" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(height <span class="sc">~</span> gender, <span class="at">data =</span> students, <span class="at">ylab =</span> <span class="st">&quot;Height (cm)&quot;</span>, <span class="at">col =</span> <span class="st">&quot;#D4D4D4&quot;</span>)</span>
-<span id="cb19-1626"><a href="#cb19-1626" aria-hidden="true" tabindex="-1"></a><span class="co"># The source spells Russia as &quot;Russa&quot;; match that original label without changing the data.</span></span>
-<span id="cb19-1627"><a href="#cb19-1627" aria-hidden="true" tabindex="-1"></a>males <span class="ot">&lt;-</span> <span class="fu">subset</span>(students, gender <span class="sc">==</span> <span class="st">&quot;Male&quot;</span> <span class="sc">&amp;</span> country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Turkey&quot;</span>, <span class="st">&quot;Russa&quot;</span>))</span>
-<span id="cb19-1628"><a href="#cb19-1628" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(height <span class="sc">~</span> country, <span class="at">data =</span> males, <span class="at">ylab =</span> <span class="st">&quot;Height (cm)&quot;</span>, <span class="at">col =</span> <span class="st">&quot;#D4D4D4&quot;</span>)</span>
-<span id="cb19-1629"><a href="#cb19-1629" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1620"><a href="#cb19-1620" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb19-1621"><a href="#cb19-1621" aria-hidden="true" tabindex="-1"></a><span class="co"># boxplot(height~gender) compares groups; whiskers extend to the last data within 1.5 IQR of the hinges.</span></span>
+<span id="cb19-1622"><a href="#cb19-1622" aria-hidden="true" tabindex="-1"></a><span class="co"># subset() selects Turkish/Russian males; R&#39;s default boxplot hinges can differ from type-7 quartiles.</span></span>
+<span id="cb19-1623"><a href="#cb19-1623" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(height <span class="sc">~</span> gender, <span class="at">data =</span> students, <span class="at">ylab =</span> <span class="st">&quot;Height (cm)&quot;</span>, <span class="at">col =</span> <span class="st">&quot;#D4D4D4&quot;</span>)</span>
+<span id="cb19-1624"><a href="#cb19-1624" aria-hidden="true" tabindex="-1"></a><span class="co"># The source spells Russia as &quot;Russa&quot;; match that original label without changing the data.</span></span>
+<span id="cb19-1625"><a href="#cb19-1625" aria-hidden="true" tabindex="-1"></a>males <span class="ot">&lt;-</span> <span class="fu">subset</span>(students, gender <span class="sc">==</span> <span class="st">&quot;Male&quot;</span> <span class="sc">&amp;</span> country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Turkey&quot;</span>, <span class="st">&quot;Russa&quot;</span>))</span>
+<span id="cb19-1626"><a href="#cb19-1626" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(height <span class="sc">~</span> country, <span class="at">data =</span> males, <span class="at">ylab =</span> <span class="st">&quot;Height (cm)&quot;</span>, <span class="at">col =</span> <span class="st">&quot;#D4D4D4&quot;</span>)</span>
+<span id="cb19-1627"><a href="#cb19-1627" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1628"><a href="#cb19-1628" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1629"><a href="#cb19-1629" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Open example 17 in the R practical</span><span class="co">](../practicals/descriptive-statistics-r-practical.html#boxplots-and-group-comparisons)</span>.</span>
 <span id="cb19-1630"><a href="#cb19-1630" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1631"><a href="#cb19-1631" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Open example 17 in the R practical</span><span class="co">](../practicals/descriptive-statistics-r-practical.html#boxplots-and-group-comparisons)</span>.</span>
-<span id="cb19-1632"><a href="#cb19-1632" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1633"><a href="#cb19-1633" aria-hidden="true" tabindex="-1"></a>::::</span>
-<span id="cb19-1634"><a href="#cb19-1634" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="re">END</span><span class="co"> TRY IN R 76 --&gt;</span></span>
+<span id="cb19-1631"><a href="#cb19-1631" aria-hidden="true" tabindex="-1"></a>::::</span>
+<span id="cb19-1632"><a href="#cb19-1632" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="re">END</span><span class="co"> TRY IN R 76 --&gt;</span></span>
+<span id="cb19-1633"><a href="#cb19-1633" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1634"><a href="#cb19-1634" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb19-1635"><a href="#cb19-1635" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1636"><a href="#cb19-1636" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb19-1636"><a href="#cb19-1636" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 77 --&gt;</span></span>
 <span id="cb19-1637"><a href="#cb19-1637" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1638"><a href="#cb19-1638" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 77 --&gt;</span></span>
+<span id="cb19-1638"><a href="#cb19-1638" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-77}</span>
 <span id="cb19-1639"><a href="#cb19-1639" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1640"><a href="#cb19-1640" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-77}</span>
+<span id="cb19-1640"><a href="#cb19-1640" aria-hidden="true" tabindex="-1"></a><span class="fu">### Outliers {#source-title-77}</span></span>
 <span id="cb19-1641"><a href="#cb19-1641" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1642"><a href="#cb19-1642" aria-hidden="true" tabindex="-1"></a><span class="fu">### Outliers {#source-title-77}</span></span>
-<span id="cb19-1643"><a href="#cb19-1643" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1644"><a href="#cb19-1644" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
-<span id="cb19-1645"><a href="#cb19-1645" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
-<span id="cb19-1646"><a href="#cb19-1646" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;An outlier is an observation that lies an abnormal distance from other values in a random sample from a population. &lt;/p&gt;</span></span>
-<span id="cb19-1647"><a href="#cb19-1647" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;We can identify potential outliers using Histograms, scatter plots, boxplots…etc.&lt;/p&gt;</span></span>
-<span id="cb19-1648"><a href="#cb19-1648" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
-<span id="cb19-1649"><a href="#cb19-1649" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1642"><a href="#cb19-1642" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb19-1643"><a href="#cb19-1643" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
+<span id="cb19-1644"><a href="#cb19-1644" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;An outlier is an observation that lies an abnormal distance from other values in a random sample from a population. &lt;/p&gt;</span></span>
+<span id="cb19-1645"><a href="#cb19-1645" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;We can identify potential outliers using Histograms, scatter plots, boxplots…etc.&lt;/p&gt;</span></span>
+<span id="cb19-1646"><a href="#cb19-1646" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb19-1647"><a href="#cb19-1647" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1648"><a href="#cb19-1648" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1649"><a href="#cb19-1649" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-77-graphic-02.png)</span>{width=&quot;43%&quot; fig-alt=&quot;Original graphic from slide 77&quot;}</span>
 <span id="cb19-1650"><a href="#cb19-1650" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1651"><a href="#cb19-1651" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-77-graphic-02.png)</span>{width=&quot;43%&quot; fig-alt=&quot;Original graphic from slide 77&quot;}</span>
+<span id="cb19-1651"><a href="#cb19-1651" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-77-graphic-03.png)</span>{width=&quot;38%&quot; fig-alt=&quot;Original graphic from slide 77&quot;}</span>
 <span id="cb19-1652"><a href="#cb19-1652" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1653"><a href="#cb19-1653" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-77-graphic-03.png)</span>{width=&quot;38%&quot; fig-alt=&quot;Original graphic from slide 77&quot;}</span>
+<span id="cb19-1653"><a href="#cb19-1653" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-77-graphic-04.png)</span>{width=&quot;28%&quot; fig-alt=&quot;Original graphic from slide 77&quot;}</span>
 <span id="cb19-1654"><a href="#cb19-1654" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1655"><a href="#cb19-1655" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-77-graphic-04.png)</span>{width=&quot;28%&quot; fig-alt=&quot;Original graphic from slide 77&quot;}</span>
+<span id="cb19-1655"><a href="#cb19-1655" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb19-1656"><a href="#cb19-1656" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1657"><a href="#cb19-1657" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb19-1657"><a href="#cb19-1657" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 78 --&gt;</span></span>
 <span id="cb19-1658"><a href="#cb19-1658" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1659"><a href="#cb19-1659" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 78 --&gt;</span></span>
+<span id="cb19-1659"><a href="#cb19-1659" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-78}</span>
 <span id="cb19-1660"><a href="#cb19-1660" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1661"><a href="#cb19-1661" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-78}</span>
+<span id="cb19-1661"><a href="#cb19-1661" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Interquartile Range (IQR) {#source-title-78}</span></span>
 <span id="cb19-1662"><a href="#cb19-1662" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1663"><a href="#cb19-1663" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Interquartile Range (IQR) {#source-title-78}</span></span>
-<span id="cb19-1664"><a href="#cb19-1664" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1665"><a href="#cb19-1665" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
-<span id="cb19-1666"><a href="#cb19-1666" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
-<span id="cb19-1667"><a href="#cb19-1667" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;The IQR is like the range, and it shows how the data is spread about the median. &lt;/p&gt;</span></span>
-<span id="cb19-1668"><a href="#cb19-1668" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;It is less susceptible than the range to outliers and can, therefore, be more helpful.&lt;/p&gt;</span></span>
-<span id="cb19-1669"><a href="#cb19-1669" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;The IQR is calculated according to the following formula:&lt;/p&gt;</span></span>
-<span id="cb19-1670"><a href="#cb19-1670" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p&gt; IQR = Q3 – Q1.&lt;/p&gt;</span></span>
-<span id="cb19-1671"><a href="#cb19-1671" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
-<span id="cb19-1672"><a href="#cb19-1672" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1663"><a href="#cb19-1663" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb19-1664"><a href="#cb19-1664" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
+<span id="cb19-1665"><a href="#cb19-1665" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;The IQR is like the range, and it shows how the data is spread about the median. &lt;/p&gt;</span></span>
+<span id="cb19-1666"><a href="#cb19-1666" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;It is less susceptible than the range to outliers and can, therefore, be more helpful.&lt;/p&gt;</span></span>
+<span id="cb19-1667"><a href="#cb19-1667" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;The IQR is calculated according to the following formula:&lt;/p&gt;</span></span>
+<span id="cb19-1668"><a href="#cb19-1668" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p&gt; IQR = Q3 – Q1.&lt;/p&gt;</span></span>
+<span id="cb19-1669"><a href="#cb19-1669" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb19-1670"><a href="#cb19-1670" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1671"><a href="#cb19-1671" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1672"><a href="#cb19-1672" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb19-1673"><a href="#cb19-1673" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1674"><a href="#cb19-1674" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb19-1674"><a href="#cb19-1674" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 79 --&gt;</span></span>
 <span id="cb19-1675"><a href="#cb19-1675" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1676"><a href="#cb19-1676" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 79 --&gt;</span></span>
+<span id="cb19-1676"><a href="#cb19-1676" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-79}</span>
 <span id="cb19-1677"><a href="#cb19-1677" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1678"><a href="#cb19-1678" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-79}</span>
+<span id="cb19-1678"><a href="#cb19-1678" aria-hidden="true" tabindex="-1"></a><span class="fu">### Using the IQR to Find Outliers {#source-title-79}</span></span>
 <span id="cb19-1679"><a href="#cb19-1679" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1680"><a href="#cb19-1680" aria-hidden="true" tabindex="-1"></a><span class="fu">### Using the IQR to Find Outliers {#source-title-79}</span></span>
-<span id="cb19-1681"><a href="#cb19-1681" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1682"><a href="#cb19-1682" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
-<span id="cb19-1683"><a href="#cb19-1683" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
-<span id="cb19-1684"><a href="#cb19-1684" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p&gt;Using the IQR to find potential outliers:&lt;/p&gt;</span></span>
-<span id="cb19-1685"><a href="#cb19-1685" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Calculate the IQR for the data.&lt;/p&gt;</span></span>
-<span id="cb19-1686"><a href="#cb19-1686" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Multiply the interquartile range (IQR) by 1.5 (a constant used to discern outliers).&lt;/p&gt;</span></span>
-<span id="cb19-1687"><a href="#cb19-1687" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Add the (1.5 x (IQR)) to the third quartile, any number greater than this is a suspected outlier.&lt;/p&gt;</span></span>
-<span id="cb19-1688"><a href="#cb19-1688" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Subtract the (1.5 x (IQR)) from the first quartile, any number less than this is a suspected outlier.&lt;/p&gt;</span></span>
-<span id="cb19-1689"><a href="#cb19-1689" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p&gt;However, any potential outlier obtained by the interquartile method should be examined in the context of the entire set of data. &lt;/p&gt;</span></span>
-<span id="cb19-1690"><a href="#cb19-1690" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p&gt;We should always follow up our outlier analysis by studying the resulting outliers to see if they make sense. &lt;/p&gt;</span></span>
-<span id="cb19-1691"><a href="#cb19-1691" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
-<span id="cb19-1692"><a href="#cb19-1692" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1680"><a href="#cb19-1680" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb19-1681"><a href="#cb19-1681" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
+<span id="cb19-1682"><a href="#cb19-1682" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p&gt;Using the IQR to find potential outliers:&lt;/p&gt;</span></span>
+<span id="cb19-1683"><a href="#cb19-1683" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Calculate the IQR for the data.&lt;/p&gt;</span></span>
+<span id="cb19-1684"><a href="#cb19-1684" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Multiply the interquartile range (IQR) by 1.5 (a constant used to discern outliers).&lt;/p&gt;</span></span>
+<span id="cb19-1685"><a href="#cb19-1685" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Add the (1.5 x (IQR)) to the third quartile, any number greater than this is a suspected outlier.&lt;/p&gt;</span></span>
+<span id="cb19-1686"><a href="#cb19-1686" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Subtract the (1.5 x (IQR)) from the first quartile, any number less than this is a suspected outlier.&lt;/p&gt;</span></span>
+<span id="cb19-1687"><a href="#cb19-1687" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p&gt;However, any potential outlier obtained by the interquartile method should be examined in the context of the entire set of data. &lt;/p&gt;</span></span>
+<span id="cb19-1688"><a href="#cb19-1688" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p&gt;We should always follow up our outlier analysis by studying the resulting outliers to see if they make sense. &lt;/p&gt;</span></span>
+<span id="cb19-1689"><a href="#cb19-1689" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb19-1690"><a href="#cb19-1690" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1691"><a href="#cb19-1691" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1692"><a href="#cb19-1692" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-79-graphic-02.png)</span>{width=&quot;84%&quot; fig-alt=&quot;Original graphic from slide 79&quot;}</span>
 <span id="cb19-1693"><a href="#cb19-1693" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1694"><a href="#cb19-1694" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-79-graphic-02.png)</span>{width=&quot;84%&quot; fig-alt=&quot;Original graphic from slide 79&quot;}</span>
-<span id="cb19-1695"><a href="#cb19-1695" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1696"><a href="#cb19-1696" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="re">BEGIN</span><span class="co"> TRY IN R 79 --&gt;</span></span>
-<span id="cb19-1697"><a href="#cb19-1697" aria-hidden="true" tabindex="-1"></a>:::: {.try-in-r #try-r-79}</span>
+<span id="cb19-1694"><a href="#cb19-1694" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="re">BEGIN</span><span class="co"> TRY IN R 79 --&gt;</span></span>
+<span id="cb19-1695"><a href="#cb19-1695" aria-hidden="true" tabindex="-1"></a>:::: {.try-in-r #try-r-79}</span>
+<span id="cb19-1696"><a href="#cb19-1696" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1697"><a href="#cb19-1697" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Try this in R {.unlisted}</span></span>
 <span id="cb19-1698"><a href="#cb19-1698" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1699"><a href="#cb19-1699" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Try this in R {.unlisted}</span></span>
+<span id="cb19-1699"><a href="#cb19-1699" aria-hidden="true" tabindex="-1"></a>**Example 18: Use IQR fences to flag potential outliers**</span>
 <span id="cb19-1700"><a href="#cb19-1700" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1701"><a href="#cb19-1701" aria-hidden="true" tabindex="-1"></a>**Example 18: Use IQR fences to flag potential outliers**</span>
-<span id="cb19-1702"><a href="#cb19-1702" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1703"><a href="#cb19-1703" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb19-1704"><a href="#cb19-1704" aria-hidden="true" tabindex="-1"></a><span class="co"># quantile(type=7) supplies inclusive quartiles; the 1.5-IQR fences flag values for investigation.</span></span>
-<span id="cb19-1705"><a href="#cb19-1705" aria-hidden="true" tabindex="-1"></a><span class="co"># sum() counts TRUE flags and does not remove observations; these age fences are measured in years.</span></span>
-<span id="cb19-1706"><a href="#cb19-1706" aria-hidden="true" tabindex="-1"></a>q <span class="ot">&lt;-</span> <span class="fu">quantile</span>(students<span class="sc">$</span>age, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>), <span class="at">type =</span> <span class="dv">7</span>)</span>
-<span id="cb19-1707"><a href="#cb19-1707" aria-hidden="true" tabindex="-1"></a>iqr <span class="ot">&lt;-</span> q[<span class="dv">2</span>] <span class="sc">-</span> q[<span class="dv">1</span>]</span>
-<span id="cb19-1708"><a href="#cb19-1708" aria-hidden="true" tabindex="-1"></a>lower <span class="ot">&lt;-</span> q[<span class="dv">1</span>] <span class="sc">-</span> <span class="fl">1.5</span> <span class="sc">*</span> iqr</span>
-<span id="cb19-1709"><a href="#cb19-1709" aria-hidden="true" tabindex="-1"></a>upper <span class="ot">&lt;-</span> q[<span class="dv">2</span>] <span class="sc">+</span> <span class="fl">1.5</span> <span class="sc">*</span> iqr</span>
-<span id="cb19-1710"><a href="#cb19-1710" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">lower_fence =</span> <span class="fu">unname</span>(lower), <span class="at">upper_fence =</span> <span class="fu">unname</span>(upper))</span>
-<span id="cb19-1711"><a href="#cb19-1711" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(students<span class="sc">$</span>age <span class="sc">&lt;</span> lower <span class="sc">|</span> students<span class="sc">$</span>age <span class="sc">&gt;</span> upper)</span>
-<span id="cb19-1712"><a href="#cb19-1712" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1701"><a href="#cb19-1701" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb19-1702"><a href="#cb19-1702" aria-hidden="true" tabindex="-1"></a><span class="co"># quantile(type=7) supplies inclusive quartiles; the 1.5-IQR fences flag values for investigation.</span></span>
+<span id="cb19-1703"><a href="#cb19-1703" aria-hidden="true" tabindex="-1"></a><span class="co"># sum() counts TRUE flags and does not remove observations; these age fences are measured in years.</span></span>
+<span id="cb19-1704"><a href="#cb19-1704" aria-hidden="true" tabindex="-1"></a>q <span class="ot">&lt;-</span> <span class="fu">quantile</span>(students<span class="sc">$</span>age, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>), <span class="at">type =</span> <span class="dv">7</span>)</span>
+<span id="cb19-1705"><a href="#cb19-1705" aria-hidden="true" tabindex="-1"></a>iqr <span class="ot">&lt;-</span> q[<span class="dv">2</span>] <span class="sc">-</span> q[<span class="dv">1</span>]</span>
+<span id="cb19-1706"><a href="#cb19-1706" aria-hidden="true" tabindex="-1"></a>lower <span class="ot">&lt;-</span> q[<span class="dv">1</span>] <span class="sc">-</span> <span class="fl">1.5</span> <span class="sc">*</span> iqr</span>
+<span id="cb19-1707"><a href="#cb19-1707" aria-hidden="true" tabindex="-1"></a>upper <span class="ot">&lt;-</span> q[<span class="dv">2</span>] <span class="sc">+</span> <span class="fl">1.5</span> <span class="sc">*</span> iqr</span>
+<span id="cb19-1708"><a href="#cb19-1708" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">lower_fence =</span> <span class="fu">unname</span>(lower), <span class="at">upper_fence =</span> <span class="fu">unname</span>(upper))</span>
+<span id="cb19-1709"><a href="#cb19-1709" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(students<span class="sc">$</span>age <span class="sc">&lt;</span> lower <span class="sc">|</span> students<span class="sc">$</span>age <span class="sc">&gt;</span> upper)</span>
+<span id="cb19-1710"><a href="#cb19-1710" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1711"><a href="#cb19-1711" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1712"><a href="#cb19-1712" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Open example 18 in the R practical</span><span class="co">](../practicals/descriptive-statistics-r-practical.html#use-iqr-fences-to-flag-potential-outliers)</span>.</span>
 <span id="cb19-1713"><a href="#cb19-1713" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1714"><a href="#cb19-1714" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Open example 18 in the R practical</span><span class="co">](../practicals/descriptive-statistics-r-practical.html#use-iqr-fences-to-flag-potential-outliers)</span>.</span>
-<span id="cb19-1715"><a href="#cb19-1715" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1716"><a href="#cb19-1716" aria-hidden="true" tabindex="-1"></a>::::</span>
-<span id="cb19-1717"><a href="#cb19-1717" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="re">END</span><span class="co"> TRY IN R 79 --&gt;</span></span>
+<span id="cb19-1714"><a href="#cb19-1714" aria-hidden="true" tabindex="-1"></a>::::</span>
+<span id="cb19-1715"><a href="#cb19-1715" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="re">END</span><span class="co"> TRY IN R 79 --&gt;</span></span>
+<span id="cb19-1716"><a href="#cb19-1716" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1717"><a href="#cb19-1717" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb19-1718"><a href="#cb19-1718" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1719"><a href="#cb19-1719" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb19-1719"><a href="#cb19-1719" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 80 --&gt;</span></span>
 <span id="cb19-1720"><a href="#cb19-1720" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1721"><a href="#cb19-1721" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 80 --&gt;</span></span>
+<span id="cb19-1721"><a href="#cb19-1721" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-80}</span>
 <span id="cb19-1722"><a href="#cb19-1722" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1723"><a href="#cb19-1723" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-80}</span>
+<span id="cb19-1723"><a href="#cb19-1723" aria-hidden="true" tabindex="-1"></a><span class="fu">### Outliers {#source-title-80}</span></span>
 <span id="cb19-1724"><a href="#cb19-1724" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1725"><a href="#cb19-1725" aria-hidden="true" tabindex="-1"></a><span class="fu">### Outliers {#source-title-80}</span></span>
+<span id="cb19-1725"><a href="#cb19-1725" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb19-1726"><a href="#cb19-1726" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1727"><a href="#cb19-1727" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb19-1727"><a href="#cb19-1727" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 81 --&gt;</span></span>
 <span id="cb19-1728"><a href="#cb19-1728" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1729"><a href="#cb19-1729" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 81 --&gt;</span></span>
+<span id="cb19-1729"><a href="#cb19-1729" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-81}</span>
 <span id="cb19-1730"><a href="#cb19-1730" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1731"><a href="#cb19-1731" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-81}</span>
+<span id="cb19-1731"><a href="#cb19-1731" aria-hidden="true" tabindex="-1"></a><span class="fu">### Impacts of Outliers {#source-title-81}</span></span>
 <span id="cb19-1732"><a href="#cb19-1732" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1733"><a href="#cb19-1733" aria-hidden="true" tabindex="-1"></a><span class="fu">### Impacts of Outliers {#source-title-81}</span></span>
-<span id="cb19-1734"><a href="#cb19-1734" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1735"><a href="#cb19-1735" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
-<span id="cb19-1736"><a href="#cb19-1736" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
-<span id="cb19-1737"><a href="#cb19-1737" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p&gt;&lt;strong&gt;1. Negative Impacts&lt;/strong&gt;&lt;/p&gt;</span></span>
-<span id="cb19-1738"><a href="#cb19-1738" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Influence on Measures of Central Tendency: A single extreme outlier can pull the mean in its direction, making it unrepresentative of the majority of the data.&lt;/p&gt;</span></span>
-<span id="cb19-1739"><a href="#cb19-1739" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Impact on Dispersion Measures: The presence of outliers can inflate the measures like the standard deviation and the interquartile range (IQR), making them larger than they would be without outliers.&lt;/p&gt;</span></span>
-<span id="cb19-1740"><a href="#cb19-1740" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Skewing Data Distributions: Positive outliers can result in right-skewed distributions, while negative outliers can result in left-skewed distributions. This can affect the interpretation of the data.&lt;/p&gt;</span></span>
-<span id="cb19-1741"><a href="#cb19-1741" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Misleading Summary Statistics: Outliers can distort the interpretation of summary statistics.&lt;/p&gt;</span></span>
-<span id="cb19-1742"><a href="#cb19-1742" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Impact on Hypothesis Testing: Outliers can affect the results of hypothesis tests. They can lead to incorrect conclusions, such as detecting significant differences when none exist or failing to detect real differences when outliers mask them.&lt;/p&gt;</span></span>
-<span id="cb19-1743"><a href="#cb19-1743" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p&gt;&lt;strong&gt;2. Positive Impacts&lt;/strong&gt;&lt;/p&gt;</span></span>
-<span id="cb19-1744"><a href="#cb19-1744" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Detection of Anomalies: Outliers can signal the presence of anomalies or rare events in a dataset. Identifying these anomalies can be valuable in various fields, including fraud detection, quality control, and outlier detection in scientific experiments.&lt;/p&gt;</span></span>
-<span id="cb19-1745"><a href="#cb19-1745" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Robust Modeling: In some cases, outliers can be genuine observations that are important to model. For example, in financial modeling, extreme stock price movements may contain valuable information for predicting market trends.&lt;/p&gt;</span></span>
-<span id="cb19-1746"><a href="#cb19-1746" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
-<span id="cb19-1747"><a href="#cb19-1747" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1733"><a href="#cb19-1733" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb19-1734"><a href="#cb19-1734" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
+<span id="cb19-1735"><a href="#cb19-1735" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p&gt;&lt;strong&gt;1. Negative Impacts&lt;/strong&gt;&lt;/p&gt;</span></span>
+<span id="cb19-1736"><a href="#cb19-1736" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Influence on Measures of Central Tendency: A single extreme outlier can pull the mean in its direction, making it unrepresentative of the majority of the data.&lt;/p&gt;</span></span>
+<span id="cb19-1737"><a href="#cb19-1737" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Impact on Dispersion Measures: The presence of outliers can inflate the measures like the standard deviation and the interquartile range (IQR), making them larger than they would be without outliers.&lt;/p&gt;</span></span>
+<span id="cb19-1738"><a href="#cb19-1738" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Skewing Data Distributions: Positive outliers can result in right-skewed distributions, while negative outliers can result in left-skewed distributions. This can affect the interpretation of the data.&lt;/p&gt;</span></span>
+<span id="cb19-1739"><a href="#cb19-1739" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Misleading Summary Statistics: Outliers can distort the interpretation of summary statistics.&lt;/p&gt;</span></span>
+<span id="cb19-1740"><a href="#cb19-1740" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Impact on Hypothesis Testing: Outliers can affect the results of hypothesis tests. They can lead to incorrect conclusions, such as detecting significant differences when none exist or failing to detect real differences when outliers mask them.&lt;/p&gt;</span></span>
+<span id="cb19-1741"><a href="#cb19-1741" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p&gt;&lt;strong&gt;2. Positive Impacts&lt;/strong&gt;&lt;/p&gt;</span></span>
+<span id="cb19-1742"><a href="#cb19-1742" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Detection of Anomalies: Outliers can signal the presence of anomalies or rare events in a dataset. Identifying these anomalies can be valuable in various fields, including fraud detection, quality control, and outlier detection in scientific experiments.&lt;/p&gt;</span></span>
+<span id="cb19-1743"><a href="#cb19-1743" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Robust Modeling: In some cases, outliers can be genuine observations that are important to model. For example, in financial modeling, extreme stock price movements may contain valuable information for predicting market trends.&lt;/p&gt;</span></span>
+<span id="cb19-1744"><a href="#cb19-1744" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb19-1745"><a href="#cb19-1745" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1746"><a href="#cb19-1746" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1747"><a href="#cb19-1747" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb19-1748"><a href="#cb19-1748" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1749"><a href="#cb19-1749" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb19-1749"><a href="#cb19-1749" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 82 --&gt;</span></span>
 <span id="cb19-1750"><a href="#cb19-1750" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1751"><a href="#cb19-1751" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 82 --&gt;</span></span>
+<span id="cb19-1751"><a href="#cb19-1751" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-82}</span>
 <span id="cb19-1752"><a href="#cb19-1752" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1753"><a href="#cb19-1753" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-82}</span>
+<span id="cb19-1753"><a href="#cb19-1753" aria-hidden="true" tabindex="-1"></a><span class="fu">### Methods to screen for outliers in a dataset {#source-title-82}</span></span>
 <span id="cb19-1754"><a href="#cb19-1754" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1755"><a href="#cb19-1755" aria-hidden="true" tabindex="-1"></a><span class="fu">### Methods to screen for outliers in a dataset {#source-title-82}</span></span>
+<span id="cb19-1755"><a href="#cb19-1755" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-82-graphic-01.png)</span>{width=&quot;72%&quot; fig-alt=&quot;Original graphic from slide 82&quot;}</span>
 <span id="cb19-1756"><a href="#cb19-1756" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1757"><a href="#cb19-1757" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-82-graphic-01.png)</span>{width=&quot;72%&quot; fig-alt=&quot;Original graphic from slide 82&quot;}</span>
-<span id="cb19-1758"><a href="#cb19-1758" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1759"><a href="#cb19-1759" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
-<span id="cb19-1760"><a href="#cb19-1760" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
-<span id="cb19-1761"><a href="#cb19-1761" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;There are several methods to screen for outliers in a dataset, ranging from graphical techniques to statistical tests. Here are some commonly used methods:&lt;/p&gt;</span></span>
-<span id="cb19-1762"><a href="#cb19-1762" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Box Plots (Box-and-Whisker Plots):&lt;br&gt; Box plots provide a visual representation of the distribution of data, including the identification of potential outliers. In a box plot, outliers are typically shown as individual data points beyond the whiskers of the plot.&lt;/p&gt;</span></span>
-<span id="cb19-1763"><a href="#cb19-1763" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
-<span id="cb19-1764"><a href="#cb19-1764" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1757"><a href="#cb19-1757" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb19-1758"><a href="#cb19-1758" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
+<span id="cb19-1759"><a href="#cb19-1759" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;There are several methods to screen for outliers in a dataset, ranging from graphical techniques to statistical tests. Here are some commonly used methods:&lt;/p&gt;</span></span>
+<span id="cb19-1760"><a href="#cb19-1760" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Box Plots (Box-and-Whisker Plots):&lt;br&gt; Box plots provide a visual representation of the distribution of data, including the identification of potential outliers. In a box plot, outliers are typically shown as individual data points beyond the whiskers of the plot.&lt;/p&gt;</span></span>
+<span id="cb19-1761"><a href="#cb19-1761" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb19-1762"><a href="#cb19-1762" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1763"><a href="#cb19-1763" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1764"><a href="#cb19-1764" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb19-1765"><a href="#cb19-1765" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1766"><a href="#cb19-1766" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb19-1766"><a href="#cb19-1766" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 83 --&gt;</span></span>
 <span id="cb19-1767"><a href="#cb19-1767" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1768"><a href="#cb19-1768" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 83 --&gt;</span></span>
+<span id="cb19-1768"><a href="#cb19-1768" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-83}</span>
 <span id="cb19-1769"><a href="#cb19-1769" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1770"><a href="#cb19-1770" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-83}</span>
+<span id="cb19-1770"><a href="#cb19-1770" aria-hidden="true" tabindex="-1"></a><span class="fu">### Methods to screen for outliers in a dataset {#source-title-83}</span></span>
 <span id="cb19-1771"><a href="#cb19-1771" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1772"><a href="#cb19-1772" aria-hidden="true" tabindex="-1"></a><span class="fu">### Methods to screen for outliers in a dataset {#source-title-83}</span></span>
+<span id="cb19-1772"><a href="#cb19-1772" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-83-graphic-01.png)</span>{width=&quot;41%&quot; fig-alt=&quot;Original graphic from slide 83&quot;}</span>
 <span id="cb19-1773"><a href="#cb19-1773" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1774"><a href="#cb19-1774" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-83-graphic-01.png)</span>{width=&quot;41%&quot; fig-alt=&quot;Original graphic from slide 83&quot;}</span>
-<span id="cb19-1775"><a href="#cb19-1775" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1776"><a href="#cb19-1776" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
-<span id="cb19-1777"><a href="#cb19-1777" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
-<span id="cb19-1778"><a href="#cb19-1778" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p&gt;Scatterplots:&lt;/p&gt;</span></span>
-<span id="cb19-1779"><a href="#cb19-1779" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Scatterplots are particularly useful for identifying outliers in bivariate or multivariate data.&lt;/p&gt;</span></span>
-<span id="cb19-1780"><a href="#cb19-1780" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Outliers can appear as data points that are far from the main cluster of points in the scatterplot.&lt;/p&gt;</span></span>
-<span id="cb19-1781"><a href="#cb19-1781" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
-<span id="cb19-1782"><a href="#cb19-1782" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1774"><a href="#cb19-1774" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb19-1775"><a href="#cb19-1775" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
+<span id="cb19-1776"><a href="#cb19-1776" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p&gt;Scatterplots:&lt;/p&gt;</span></span>
+<span id="cb19-1777"><a href="#cb19-1777" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Scatterplots are particularly useful for identifying outliers in bivariate or multivariate data.&lt;/p&gt;</span></span>
+<span id="cb19-1778"><a href="#cb19-1778" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Outliers can appear as data points that are far from the main cluster of points in the scatterplot.&lt;/p&gt;</span></span>
+<span id="cb19-1779"><a href="#cb19-1779" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb19-1780"><a href="#cb19-1780" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1781"><a href="#cb19-1781" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1782"><a href="#cb19-1782" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb19-1783"><a href="#cb19-1783" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1784"><a href="#cb19-1784" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb19-1784"><a href="#cb19-1784" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 84 --&gt;</span></span>
 <span id="cb19-1785"><a href="#cb19-1785" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1786"><a href="#cb19-1786" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 84 --&gt;</span></span>
+<span id="cb19-1786"><a href="#cb19-1786" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-84}</span>
 <span id="cb19-1787"><a href="#cb19-1787" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1788"><a href="#cb19-1788" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-84}</span>
+<span id="cb19-1788"><a href="#cb19-1788" aria-hidden="true" tabindex="-1"></a><span class="fu">### Methods to screen for outliers in a dataset {#source-title-84}</span></span>
 <span id="cb19-1789"><a href="#cb19-1789" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1790"><a href="#cb19-1790" aria-hidden="true" tabindex="-1"></a><span class="fu">### Methods to screen for outliers in a dataset {#source-title-84}</span></span>
-<span id="cb19-1791"><a href="#cb19-1791" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1792"><a href="#cb19-1792" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
-<span id="cb19-1793"><a href="#cb19-1793" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
-<span id="cb19-1794"><a href="#cb19-1794" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Z-Scores:&lt;br&gt; Z-scores (standard scores) measure how many standard deviations a data point is away from the mean. Data points with high absolute Z-scores (typically greater than 2 or 3) are often considered potential outliers.&lt;/p&gt;</span></span>
-<span id="cb19-1795"><a href="#cb19-1795" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;IQR (Interquartile Range) Method:&lt;br&gt; The IQR method involves calculating the interquartile range (IQR = Q3 – Q1) and then identifying values that fall below Q1 – 1.5 × IQR or above Q3 + 1.5 × IQR as potential outliers.&lt;/p&gt;</span></span>
-<span id="cb19-1796"><a href="#cb19-1796" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
-<span id="cb19-1797"><a href="#cb19-1797" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1790"><a href="#cb19-1790" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb19-1791"><a href="#cb19-1791" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
+<span id="cb19-1792"><a href="#cb19-1792" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Z-Scores:&lt;br&gt; Z-scores (standard scores) measure how many standard deviations a data point is away from the mean. Data points with high absolute Z-scores (typically greater than 2 or 3) are often considered potential outliers.&lt;/p&gt;</span></span>
+<span id="cb19-1793"><a href="#cb19-1793" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;IQR (Interquartile Range) Method:&lt;br&gt; The IQR method involves calculating the interquartile range (IQR = Q3 – Q1) and then identifying values that fall below Q1 – 1.5 × IQR or above Q3 + 1.5 × IQR as potential outliers.&lt;/p&gt;</span></span>
+<span id="cb19-1794"><a href="#cb19-1794" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb19-1795"><a href="#cb19-1795" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1796"><a href="#cb19-1796" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1797"><a href="#cb19-1797" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb19-1798"><a href="#cb19-1798" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1799"><a href="#cb19-1799" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb19-1799"><a href="#cb19-1799" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 85 --&gt;</span></span>
 <span id="cb19-1800"><a href="#cb19-1800" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1801"><a href="#cb19-1801" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 85 --&gt;</span></span>
+<span id="cb19-1801"><a href="#cb19-1801" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-85}</span>
 <span id="cb19-1802"><a href="#cb19-1802" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1803"><a href="#cb19-1803" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-85}</span>
+<span id="cb19-1803"><a href="#cb19-1803" aria-hidden="true" tabindex="-1"></a><span class="fu">### Methods to screen for outliers in a dataset {#source-title-85}</span></span>
 <span id="cb19-1804"><a href="#cb19-1804" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1805"><a href="#cb19-1805" aria-hidden="true" tabindex="-1"></a><span class="fu">### Methods to screen for outliers in a dataset {#source-title-85}</span></span>
-<span id="cb19-1806"><a href="#cb19-1806" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1807"><a href="#cb19-1807" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
-<span id="cb19-1808"><a href="#cb19-1808" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
-<span id="cb19-1809"><a href="#cb19-1809" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p&gt;Visual Inspection:&lt;/p&gt;</span></span>
-<span id="cb19-1810"><a href="#cb19-1810" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Sometimes, simple visual inspection of the data through histograms, QQ plots (quantile-quantile plots), or other visualization techniques can reveal the presence of outliers.&lt;/p&gt;</span></span>
-<span id="cb19-1811"><a href="#cb19-1811" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
-<span id="cb19-1812"><a href="#cb19-1812" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1805"><a href="#cb19-1805" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb19-1806"><a href="#cb19-1806" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
+<span id="cb19-1807"><a href="#cb19-1807" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p&gt;Visual Inspection:&lt;/p&gt;</span></span>
+<span id="cb19-1808"><a href="#cb19-1808" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Sometimes, simple visual inspection of the data through histograms, QQ plots (quantile-quantile plots), or other visualization techniques can reveal the presence of outliers.&lt;/p&gt;</span></span>
+<span id="cb19-1809"><a href="#cb19-1809" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb19-1810"><a href="#cb19-1810" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1811"><a href="#cb19-1811" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1812"><a href="#cb19-1812" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-85-graphic-02.png)</span>{width=&quot;45%&quot; fig-alt=&quot;Original graphic from slide 85&quot;}</span>
 <span id="cb19-1813"><a href="#cb19-1813" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1814"><a href="#cb19-1814" aria-hidden="true" tabindex="-1"></a><span class="al">![](../assets/descriptive-statistics/slide-85-graphic-02.png)</span>{width=&quot;45%&quot; fig-alt=&quot;Original graphic from slide 85&quot;}</span>
+<span id="cb19-1814"><a href="#cb19-1814" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb19-1815"><a href="#cb19-1815" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1816"><a href="#cb19-1816" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb19-1816"><a href="#cb19-1816" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 86 --&gt;</span></span>
 <span id="cb19-1817"><a href="#cb19-1817" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1818"><a href="#cb19-1818" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 86 --&gt;</span></span>
+<span id="cb19-1818"><a href="#cb19-1818" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-86}</span>
 <span id="cb19-1819"><a href="#cb19-1819" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1820"><a href="#cb19-1820" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-86}</span>
+<span id="cb19-1820"><a href="#cb19-1820" aria-hidden="true" tabindex="-1"></a><span class="fu">### Handling Outliers in Datasets {#source-title-86}</span></span>
 <span id="cb19-1821"><a href="#cb19-1821" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1822"><a href="#cb19-1822" aria-hidden="true" tabindex="-1"></a><span class="fu">### Handling Outliers in Datasets {#source-title-86}</span></span>
-<span id="cb19-1823"><a href="#cb19-1823" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1824"><a href="#cb19-1824" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
-<span id="cb19-1825"><a href="#cb19-1825" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
-<span id="cb19-1826"><a href="#cb19-1826" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Handling outliers is an important step in data preprocessing to ensure they do not unduly influence the results of analysis or modeling. The approach depends on the nature of the data, the context of the analysis, and the specific objectives. Here are several methods for handling outliers:&lt;/p&gt;</span></span>
-<span id="cb19-1827"><a href="#cb19-1827" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;&lt;strong&gt;Data Truncation or Removal:&lt;/strong&gt;&lt;/p&gt;</span></span>
-<span id="cb19-1828"><a href="#cb19-1828" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Simply remove outliers from the dataset.&lt;/p&gt;</span></span>
-<span id="cb19-1829"><a href="#cb19-1829" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Should be done cautiously, especially if the outliers represent valid and important observations.&lt;/p&gt;</span></span>
-<span id="cb19-1830"><a href="#cb19-1830" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Appropriate when outliers are likely due to data entry or measurement errors.&lt;/p&gt;</span></span>
-<span id="cb19-1831"><a href="#cb19-1831" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;&lt;strong&gt;Data Transformation:&lt;/strong&gt;&lt;/p&gt;</span></span>
-<span id="cb19-1832"><a href="#cb19-1832" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Transforming the data can mitigate the impact of outliers.&lt;/p&gt;</span></span>
-<span id="cb19-1833"><a href="#cb19-1833" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Common transformations: logarithmic, square root, or inverse.&lt;/p&gt;</span></span>
-<span id="cb19-1834"><a href="#cb19-1834" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;These compress the range of extreme values.&lt;/p&gt;</span></span>
-<span id="cb19-1835"><a href="#cb19-1835" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;&lt;strong&gt;Winsorization:&lt;/strong&gt;&lt;/p&gt;</span></span>
-<span id="cb19-1836"><a href="#cb19-1836" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Involves capping or limiting extreme values by replacing them with a specified percentile value.&lt;/p&gt;</span></span>
-<span id="cb19-1837"><a href="#cb19-1837" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Example: Replace values above the 95th percentile with the value at the 95th percentile.&lt;/p&gt;</span></span>
-<span id="cb19-1838"><a href="#cb19-1838" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;&lt;strong&gt;Imputation:&lt;/strong&gt;&lt;/p&gt;</span></span>
-<span id="cb19-1839"><a href="#cb19-1839" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;For missing values (not extreme outliers), impute using methods like:&lt;/p&gt;</span></span>
-<span id="cb19-1840"><a href="#cb19-1840" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-2&quot;&gt;Mean imputation&lt;/p&gt;</span></span>
-<span id="cb19-1841"><a href="#cb19-1841" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-2&quot;&gt;Median imputation&lt;/p&gt;</span></span>
-<span id="cb19-1842"><a href="#cb19-1842" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-2&quot;&gt;Advanced methods (e.g., regression imputation).&lt;/p&gt;</span></span>
-<span id="cb19-1843"><a href="#cb19-1843" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
-<span id="cb19-1844"><a href="#cb19-1844" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1822"><a href="#cb19-1822" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb19-1823"><a href="#cb19-1823" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
+<span id="cb19-1824"><a href="#cb19-1824" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;Handling outliers is an important step in data preprocessing to ensure they do not unduly influence the results of analysis or modeling. The approach depends on the nature of the data, the context of the analysis, and the specific objectives. Here are several methods for handling outliers:&lt;/p&gt;</span></span>
+<span id="cb19-1825"><a href="#cb19-1825" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;&lt;strong&gt;Data Truncation or Removal:&lt;/strong&gt;&lt;/p&gt;</span></span>
+<span id="cb19-1826"><a href="#cb19-1826" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Simply remove outliers from the dataset.&lt;/p&gt;</span></span>
+<span id="cb19-1827"><a href="#cb19-1827" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Should be done cautiously, especially if the outliers represent valid and important observations.&lt;/p&gt;</span></span>
+<span id="cb19-1828"><a href="#cb19-1828" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Appropriate when outliers are likely due to data entry or measurement errors.&lt;/p&gt;</span></span>
+<span id="cb19-1829"><a href="#cb19-1829" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;&lt;strong&gt;Data Transformation:&lt;/strong&gt;&lt;/p&gt;</span></span>
+<span id="cb19-1830"><a href="#cb19-1830" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Transforming the data can mitigate the impact of outliers.&lt;/p&gt;</span></span>
+<span id="cb19-1831"><a href="#cb19-1831" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Common transformations: logarithmic, square root, or inverse.&lt;/p&gt;</span></span>
+<span id="cb19-1832"><a href="#cb19-1832" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;These compress the range of extreme values.&lt;/p&gt;</span></span>
+<span id="cb19-1833"><a href="#cb19-1833" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;&lt;strong&gt;Winsorization:&lt;/strong&gt;&lt;/p&gt;</span></span>
+<span id="cb19-1834"><a href="#cb19-1834" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Involves capping or limiting extreme values by replacing them with a specified percentile value.&lt;/p&gt;</span></span>
+<span id="cb19-1835"><a href="#cb19-1835" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Example: Replace values above the 95th percentile with the value at the 95th percentile.&lt;/p&gt;</span></span>
+<span id="cb19-1836"><a href="#cb19-1836" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;&lt;strong&gt;Imputation:&lt;/strong&gt;&lt;/p&gt;</span></span>
+<span id="cb19-1837"><a href="#cb19-1837" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;For missing values (not extreme outliers), impute using methods like:&lt;/p&gt;</span></span>
+<span id="cb19-1838"><a href="#cb19-1838" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-2&quot;&gt;Mean imputation&lt;/p&gt;</span></span>
+<span id="cb19-1839"><a href="#cb19-1839" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-2&quot;&gt;Median imputation&lt;/p&gt;</span></span>
+<span id="cb19-1840"><a href="#cb19-1840" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-2&quot;&gt;Advanced methods (e.g., regression imputation).&lt;/p&gt;</span></span>
+<span id="cb19-1841"><a href="#cb19-1841" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb19-1842"><a href="#cb19-1842" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1843"><a href="#cb19-1843" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1844"><a href="#cb19-1844" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb19-1845"><a href="#cb19-1845" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1846"><a href="#cb19-1846" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb19-1846"><a href="#cb19-1846" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 87 --&gt;</span></span>
 <span id="cb19-1847"><a href="#cb19-1847" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1848"><a href="#cb19-1848" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Original slide 87 --&gt;</span></span>
+<span id="cb19-1848"><a href="#cb19-1848" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-87}</span>
 <span id="cb19-1849"><a href="#cb19-1849" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1850"><a href="#cb19-1850" aria-hidden="true" tabindex="-1"></a>::: {.source-slide #slide-87}</span>
+<span id="cb19-1850"><a href="#cb19-1850" aria-hidden="true" tabindex="-1"></a><span class="fu">### Handling Outliers in Datasets {#source-title-87}</span></span>
 <span id="cb19-1851"><a href="#cb19-1851" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1852"><a href="#cb19-1852" aria-hidden="true" tabindex="-1"></a><span class="fu">### Handling Outliers in Datasets {#source-title-87}</span></span>
-<span id="cb19-1853"><a href="#cb19-1853" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1854"><a href="#cb19-1854" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
-<span id="cb19-1855"><a href="#cb19-1855" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
-<span id="cb19-1856"><a href="#cb19-1856" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;&lt;strong&gt;Robust Statistics:&lt;/strong&gt;&lt;/p&gt;</span></span>
-<span id="cb19-1857"><a href="#cb19-1857" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Use statistical methods less sensitive to outliers.&lt;/p&gt;</span></span>
-<span id="cb19-1858"><a href="#cb19-1858" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Examples:&lt;/p&gt;</span></span>
-<span id="cb19-1859"><a href="#cb19-1859" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-2&quot;&gt;Replace mean with median.&lt;/p&gt;</span></span>
-<span id="cb19-1860"><a href="#cb19-1860" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-2&quot;&gt;Use interquartile range (IQR) instead of standard deviation.&lt;/p&gt;</span></span>
-<span id="cb19-1861"><a href="#cb19-1861" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;&lt;strong&gt;Model-Based Approaches:&lt;/strong&gt;&lt;/p&gt;</span></span>
-<span id="cb19-1862"><a href="#cb19-1862" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;In predictive modeling, use algorithms less sensitive to outliers.&lt;/p&gt;</span></span>
-<span id="cb19-1863"><a href="#cb19-1863" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Examples: robust regression methods, ensemble methods (e.g., random forests).&lt;/p&gt;</span></span>
-<span id="cb19-1864"><a href="#cb19-1864" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;&lt;strong&gt;Domain Knowledge:&lt;/strong&gt;&lt;/p&gt;</span></span>
-<span id="cb19-1865"><a href="#cb19-1865" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Rely on domain expertise to interpret outliers.&lt;/p&gt;</span></span>
-<span id="cb19-1866"><a href="#cb19-1866" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;What looks like an outlier may actually be an important and valid data point.&lt;/p&gt;</span></span>
-<span id="cb19-1867"><a href="#cb19-1867" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;&lt;strong&gt;Reporting and Transparency:&lt;/strong&gt;&lt;/p&gt;</span></span>
-<span id="cb19-1868"><a href="#cb19-1868" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Clearly document how outliers were handled.&lt;/p&gt;</span></span>
-<span id="cb19-1869"><a href="#cb19-1869" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Ensures reproducibility and interpretability of results.&lt;/p&gt;</span></span>
-<span id="cb19-1870"><a href="#cb19-1870" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
-<span id="cb19-1871"><a href="#cb19-1871" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb19-1872"><a href="#cb19-1872" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-1873"><a href="#cb19-1873" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal><i class="bi"></i></button></div>
+<span id="cb19-1852"><a href="#cb19-1852" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb19-1853"><a href="#cb19-1853" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&quot;source-text&quot;&gt;</span></span>
+<span id="cb19-1854"><a href="#cb19-1854" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;&lt;strong&gt;Robust Statistics:&lt;/strong&gt;&lt;/p&gt;</span></span>
+<span id="cb19-1855"><a href="#cb19-1855" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Use statistical methods less sensitive to outliers.&lt;/p&gt;</span></span>
+<span id="cb19-1856"><a href="#cb19-1856" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Examples:&lt;/p&gt;</span></span>
+<span id="cb19-1857"><a href="#cb19-1857" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-2&quot;&gt;Replace mean with median.&lt;/p&gt;</span></span>
+<span id="cb19-1858"><a href="#cb19-1858" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-2&quot;&gt;Use interquartile range (IQR) instead of standard deviation.&lt;/p&gt;</span></span>
+<span id="cb19-1859"><a href="#cb19-1859" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;&lt;strong&gt;Model-Based Approaches:&lt;/strong&gt;&lt;/p&gt;</span></span>
+<span id="cb19-1860"><a href="#cb19-1860" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;In predictive modeling, use algorithms less sensitive to outliers.&lt;/p&gt;</span></span>
+<span id="cb19-1861"><a href="#cb19-1861" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Examples: robust regression methods, ensemble methods (e.g., random forests).&lt;/p&gt;</span></span>
+<span id="cb19-1862"><a href="#cb19-1862" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;&lt;strong&gt;Domain Knowledge:&lt;/strong&gt;&lt;/p&gt;</span></span>
+<span id="cb19-1863"><a href="#cb19-1863" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Rely on domain expertise to interpret outliers.&lt;/p&gt;</span></span>
+<span id="cb19-1864"><a href="#cb19-1864" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;What looks like an outlier may actually be an important and valid data point.&lt;/p&gt;</span></span>
+<span id="cb19-1865"><a href="#cb19-1865" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-0&quot;&gt;&lt;strong&gt;Reporting and Transparency:&lt;/strong&gt;&lt;/p&gt;</span></span>
+<span id="cb19-1866"><a href="#cb19-1866" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Clearly document how outliers were handled.&lt;/p&gt;</span></span>
+<span id="cb19-1867"><a href="#cb19-1867" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p class=&quot;source-bullet source-level-1&quot;&gt;Ensures reproducibility and interpretability of results.&lt;/p&gt;</span></span>
+<span id="cb19-1868"><a href="#cb19-1868" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb19-1869"><a href="#cb19-1869" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-1870"><a href="#cb19-1870" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-1871"><a href="#cb19-1871" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});

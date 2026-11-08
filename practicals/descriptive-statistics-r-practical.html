@@ -2515,7 +2515,7 @@ table { width: 100% !important; max-width: 100% !important; table-layout: fixed;
   <li><a href="#range-mean-absolute-deviation-variance-and-standard-deviation" id="toc-range-mean-absolute-deviation-variance-and-standard-deviation" class="nav-link" data-scroll-target="#range-mean-absolute-deviation-variance-and-standard-deviation">11. Range, mean absolute deviation, variance and standard deviation</a></li>
   <li><a href="#coefficient-of-variation" id="toc-coefficient-of-variation" class="nav-link" data-scroll-target="#coefficient-of-variation">12. Coefficient of variation</a></li>
   <li><a href="#covariance-and-pearson-correlation" id="toc-covariance-and-pearson-correlation" class="nav-link" data-scroll-target="#covariance-and-pearson-correlation">13. Covariance and Pearson correlation</a></li>
-  <li><a href="#adjusted-sample-skewness" id="toc-adjusted-sample-skewness" class="nav-link" data-scroll-target="#adjusted-sample-skewness">14. Adjusted sample skewness</a></li>
+  <li><a href="#skewness-of-age" id="toc-skewness-of-age" class="nav-link" data-scroll-target="#skewness-of-age">14. Skewness of age</a></li>
   <li><a href="#the-90th-percentile" id="toc-the-90th-percentile" class="nav-link" data-scroll-target="#the-90th-percentile">15. The 90th percentile</a></li>
   <li><a href="#first-and-second-quartiles" id="toc-first-and-second-quartiles" class="nav-link" data-scroll-target="#first-and-second-quartiles">16. First and second quartiles</a></li>
   <li><a href="#boxplots-and-group-comparisons" id="toc-boxplots-and-group-comparisons" class="nav-link" data-scroll-target="#boxplots-and-group-comparisons">17. Boxplots and group comparisons</a></li>
@@ -2552,7 +2552,7 @@ table { width: 100% !important; max-width: 100% !important; table-layout: fixed;
 <li>Use this notebook after explaining the descriptive-statistics slides, or return to the matching section after each topic.</li>
 <li>Open <code>Applied-Statistics.Rproj</code> first and keep the working directory at the project root.</li>
 <li>Work through the code cells from top to bottom in RStudio. Run the import cell first; later cells reuse its <code>students</code> data frame.</li>
-<li>These examples use base R. No additional R package is needed to run the analysis cells; rendering the notebook requires Quarto, knitr and rmarkdown.</li>
+<li>These examples use base R, plus the e1071 package for skewness. Install it once with <code>install.packages(&quot;e1071&quot;)</code> in the R console; rendering the notebook also requires Quarto, knitr and rmarkdown.</li>
 <li>Each section identifies the matching source slide, introduces the calculation and explains how to read its output. The worked code and its original comments are retained in full.</li>
 <li>Before running a cell, predict what it will display. Afterwards, connect the result to the corresponding table, chart or definition in the slides.</li>
 </ul>
@@ -2857,19 +2857,17 @@ sample_standard_deviation
 </div>
 </div>
 </section>
-<section id="adjusted-sample-skewness" class="level2">
-<h2 class="anchored" data-anchor-id="adjusted-sample-skewness">14. Adjusted sample skewness</h2>
+<section id="skewness-of-age" class="level2">
+<h2 class="anchored" data-anchor-id="skewness-of-age">14. Skewness of age</h2>
 <ul>
 <li><strong>Slides:</strong> <a href="../lessons/02-descriptive-statistics.html#slide-68">source slide 68</a>.</li>
-<li><strong>What we are doing:</strong> Quantify the asymmetry of the age distribution with the adjusted sample skewness used by Excel SKEW. The code standardizes each age using the sample standard deviation, cubes those standardized distances and applies the sample-size correction.</li>
+<li><strong>What we are doing:</strong> Quantify the asymmetry of the age distribution with <code>skewness()</code> from the e1071 package. The <code>::</code> notation selects the function from that package. The argument <code>type = 2</code> selects the sample-size correction used by Excel SKEW; the observations are unchanged.</li>
 <li><strong>How to read the result:</strong> A positive value indicates a longer right tail; a negative value indicates a longer left tail. Compare the sign with the histogram rather than treating this statistic as a complete description of shape. The formula requires more than two observations and nonzero variation.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># length() supplies n; sum() adds cubed standardized deviations, using sample sd() with n-1.</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># n/((n-1)*(n-2)) gives adjusted sample skewness, corresponding to Excel SKEW for n&gt;2.</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> students<span class="sc">$</span>age</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(age)</span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>n <span class="sc">/</span> ((n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> (n <span class="sc">-</span> <span class="dv">2</span>)) <span class="sc">*</span> <span class="fu">sum</span>(((age <span class="sc">-</span> <span class="fu">mean</span>(age)) <span class="sc">/</span> <span class="fu">sd</span>(age))<span class="sc">^</span><span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># e1071::skewness() measures asymmetry; type=2 selects the correction used by Excel SKEW.</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Keep type=2: the function defaults to a different method (type=3).</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>e1071<span class="sc">::</span><span class="fu">skewness</span>(students<span class="sc">$</span>age, <span class="at">type =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4.427823</code></pre>
 </div>
@@ -2880,7 +2878,7 @@ sample_standard_deviation
 <ul>
 <li><strong>Slides:</strong> <a href="../lessons/02-descriptive-statistics.html#slide-72">source slide 72</a>.</li>
 <li><strong>What we are doing:</strong> Find the height value associated with the 90th percentile. Percentiles locate values within the ordered data; interpolation conventions can produce different numerical answers.</li>
-<li><strong>How to read the result:</strong> The first output uses R type 7, corresponding to Excel PERCENTILE.INC. The second uses type 6, corresponding to PERCENTILE.EXC for this sample and probability. Both outputs are in centimetres. State which convention you use.</li>
+<li><strong>How to read the result:</strong> The first output uses R type 7, corresponding to Excel PERCENTILE.INC. The second uses type 6, corresponding to PERCENTILE.EXC for this sample and probability. Both outputs are in centimetres. Here, <code>type</code> is a function argument selecting the percentile calculation method, not a data type. R defaults to type 7, so omitting <code>type = 7</code> gives the same result; keep <code>type = 6</code> when comparing the exclusive convention. These method numbers are specific to <code>quantile()</code> and are separate from the skewness methods.</li>
 </ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># quantile() finds the requested percentile; probs=0.90 means the 90th percentile of height in cm.</span></span>
@@ -2983,7 +2981,6 @@ sample_standard_deviation
 <li>Which dispersion measures retain the original units, and which do not?</li>
 <li>Why should percentile conventions be stated when comparing R and Excel results?</li>
 <li>Why does an outlier flag call for investigation rather than automatic deletion?</li>
-<li>Return to the <a href="../lessons/02-descriptive-statistics.html">Part 2 slides</a> for the definitions and Excel instructions. For a separate business application, use the <a href="../extended-cases/superstore/index.html">Superstore extended case</a>.</li>
 </ul>
 </section>
 
