@@ -4290,6 +4290,10 @@ table { width: 100% !important; max-width: 100% !important; table-layout: fixed;
 .table td, .table th { padding: .35rem; overflow-wrap: anywhere; font-size: 8.5pt; }
 .cell-output-display img { max-width: 100% !important; height: auto !important; }
 }
+
+@media screen and (max-width: 600px) {
+.inferential-practical main table { display: block; max-width: 100%; overflow-x: auto; }
+}
 </style>
 <style type="text/css">
 .course-navigation { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 1.25rem; margin: 1.5rem 0 2rem; }

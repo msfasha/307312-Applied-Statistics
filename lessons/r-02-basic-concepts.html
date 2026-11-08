@@ -4325,6 +4325,10 @@ table { width: 100% !important; max-width: 100% !important; table-layout: fixed;
 .table td, .table th { padding: .35rem; overflow-wrap: anywhere; font-size: 8.5pt; }
 .cell-output-display img { max-width: 100% !important; height: auto !important; }
 }
+
+@media screen and (max-width: 600px) {
+.inferential-practical main table { display: block; max-width: 100%; overflow-x: auto; }
+}
 </style>
 <style type="text/css">
 .course-navigation { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 1.25rem; margin: 1.5rem 0 2rem; }
@@ -5139,12 +5143,12 @@ main .btn { white-space: normal; margin-bottom: .5rem; }
 <span id="cb117-19"><a href="#cb117-19" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(vectorized_time)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-  0.070   0.132   0.202 </code></pre>
+  0.083   0.118   0.201 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(de_vectorized_time)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-  2.741   0.184   2.925 </code></pre>
+  2.739   0.194   2.933 </code></pre>
 </div>
 </div>
 </section>
