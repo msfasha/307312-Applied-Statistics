@@ -7,10 +7,10 @@ This supersedes the earlier local-only instruction.
 
 ## Active student material
 
-`scripts/course_documents.py` is the authoritative list of sixteen notebook/PDF pairs:
+`scripts/course_documents.py` is the authoritative list of eighteen notebook/PDF pairs:
 
-- Six lesson notebooks under `lessons/`: the four supplied Part 1 R notebooks, Part 2 descriptive slides and Part 3 inferential slides.
-- One companion notebook, `practicals/descriptive-statistics-r-practical.qmd`, containing all eighteen Part 2 R examples in slide order, with original code/comments and explanatory introductions.
+- Seven lesson notebooks under `lessons/`: the four supplied Part 1 R notebooks, Part 2 descriptive slides, Part 3 inferential slides and the revised probability-distributions section.
+- Two companion notebooks: `practicals/descriptive-statistics-r-practical.qmd` (the eighteen Part 2 R examples) and `practicals/inferential-statistics-r-practical.qmd` (seven explained probability examples, simulation and independent tasks; later inference topics remain explicitly forthcoming).
 - Three Superstore notebooks under `extended-cases/superstore/`, grouped by `index.qmd`.
 - Six numbered extended cases under `extended-cases/`: Springville, Oxford, BLK, Parachute, Potato and Harnswell.
 
@@ -23,7 +23,7 @@ corresponding practical section. The practical remains the code source: run
 The local builder checks that the slide references match. These references appear
 in the lesson HTML and PDF without a separate PowerPoint copy. Downloads stay on
 the Part 2 landing page rather than a repeated link row in the practical.
-Across all sixteen notebooks, omit repeated PDF/ZIP download rows and Part 1's
+Across all eighteen notebooks, omit repeated PDF/ZIP download rows and Part 1's
 repeated four-lesson menu. Keep individual downloads on the part/scenario landing
 pages and identify bundled data files by path in notebooks. Preserve source
 citations and links that connect a specific teaching example to its explanation.
@@ -42,7 +42,7 @@ The home page and navbar distinguish the core practical from extended cases.
 python3 scripts/build-course.py
 ```
 
-This command runs R checks, rebuilds HTML, exports all sixteen PDFs, rebuilds both
+This command runs R checks, rebuilds HTML, exports all eighteen PDFs, rebuilds both
 student bundles and validates completeness, links and exclusions. It only writes
 local build files; it never pushes or publishes. The publishing command calls
 this same builder before uploading the generated website.
@@ -62,7 +62,7 @@ extended cases directly, with the shared Petra burgundy and gray theme.
 
 PDFs are printed from executed HTML to preserve diagrams, tables, images,
 formula notation and results. Chrome/Chromium is required; Ghostscript optionally
-compresses images at 180 dpi while retaining vector text. All sixteen PDFs go
+compresses images at 180 dpi while retaining vector text. All eighteen PDFs go
 under `_build/website/pdf/`, with both ZIPs under `_build/website/downloads/`.
 Check PDF text and representative rendered pages. Extract the student RStudio ZIP
 into a fresh directory and render the complete project to verify independence
@@ -71,10 +71,10 @@ master `../petra_theme/petra_theme.md` when changing the shared theme.
 
 ## Student resources and exclusions
 
-Both bundles include all sixteen approved documents. The RStudio ZIP contains
+Both bundles include all eighteen approved documents. The RStudio ZIP contains
 editable notebooks, required shared fragments, theme assets, project configuration,
 build helpers and setup instructions. The PDF ZIP contains exactly one PDF per
-approved notebook. The home page links all sixteen PDFs and both bundles.
+approved notebook. The home page links all eighteen PDFs and both bundles.
 
 Only explicitly listed `data/` resources in `_quarto.yml` enter the website and
 student project: original descriptive/inferential teaching CSVs and guides,
@@ -104,7 +104,7 @@ python3 scripts/publish-course.py
 python3 scripts/verify-live-course.py
 ```
 
-The publisher rebuilds HTML, all sixteen PDFs and both ZIPs, validates slide IDs,
+The publisher rebuilds HTML, all eighteen PDFs and both ZIPs, validates slide IDs,
 navigation, bundle contents and exclusions, and pushes a normal commit to `gh-pages`.
 It preserves branch history and never force pushes. `--skip-render` is only for a
 completed, verified HTML build; it refreshes the independent practical pages and
@@ -119,4 +119,19 @@ The user explicitly authorized the current push and website update.
 
 ## Simplified interface
 
-The home page has a Course material heading with three plain part links, followed by Other Downloads with both bundles and Extended scenarios. The navbar Course link opens the home page; course/index.qmd remains a compatible entry page. Part landing pages collect their own HTML/PDF and practical resources, ending with only a Home link to the main page. Part 3 practical is coming soon, without a placeholder download. NAVIGATION_PAGES in scripts/course_documents.py tracks the landing pages for packaging and validation. These do not add PDFs to the sixteen-document contract.
+The home page has a Course material heading with three plain part links, followed by Other Downloads with both bundles and Extended scenarios. The navbar Course link opens the home page; course/index.qmd remains a compatible entry page. Part landing pages collect their own HTML/PDF and practical resources, ending with only a Home link to the main page. Part 3 links the original slides, the revised probability section, and the developing inferential R practical with online/PDF/Quarto downloads. NAVIGATION_PAGES in scripts/course_documents.py tracks the landing pages for packaging and validation. These do not add PDFs to the eighteen-document contract.
+
+## Part 3 probability and developing practical — 8 November 2026
+
+The user authorized building and publishing the reviewed probability section and
+its course-long practical. Keep the original 141-slide lesson available; the
+new probability section is a separate 23-slide notebook. It adds an explicit
+d/p/q/r function-family slide and reproducible rnorm() simulation.
+
+The practical currently covers probability only and identifies later sections
+as forthcoming. Part 3 offers an individual editable Quarto download under
+`downloads/inferential-statistics-r-practical.qmd`. This is the sole approved
+public .qmd exception; preserve the exclusions for all other source files.
+Both student bundles include all eighteen approved notebook/PDF pairs and
+the shared draft stylesheet. The live verifier checks the individual notebook
+byte-for-byte as well as the pages, PDFs, data and bundles.

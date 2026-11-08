@@ -19,7 +19,7 @@ def validate(site):
     import re
     required += re.findall(r'^    - (data/[^\n]+)', (ROOT/'_quarto.yml').read_text(), re.M)
     required += ['data/business/'+p for p in ['superstore-lines.csv','cola.csv','consumer.csv','README.md']]
-    required += ['downloads/applied-statistics-rstudio.zip','downloads/applied-statistics-pdfs.zip']
+    required += ['downloads/applied-statistics-rstudio.zip','downloads/applied-statistics-pdfs.zip', 'downloads/inferential-statistics-r-practical.qmd']
     for name in required:
         if not (site/name).exists():raise RuntimeError('Missing generated page: '+name)
     forbidden=[p for p in site.rglob('*') if p.is_file() and (any(t in p.relative_to(site).parts for t in ['instructor','archived','books','sources','_includes']) or p.suffix.lower() in ['.xlsx','.xls'])]

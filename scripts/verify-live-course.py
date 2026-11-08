@@ -38,7 +38,7 @@ if __name__ == '__main__':
         time.sleep(15)
     names = [n+'.html' for n in NAVIGATION_PAGES] + [folder+'/'+name+'.html' for folder, name in DOCUMENTS]
     names += ['pdf/'+name+'.pdf' for _, name in DOCUMENTS]
-    names += ['downloads/applied-statistics-rstudio.zip', 'downloads/applied-statistics-pdfs.zip']
+    names += ['downloads/applied-statistics-rstudio.zip', 'downloads/applied-statistics-pdfs.zip', 'downloads/inferential-statistics-r-practical.qmd']
     names += re.findall(r'^    - (data/[^\n]+)', (ROOT/'_quarto.yml').read_text(), re.M)
     verified = []
     for name in names:
@@ -56,4 +56,4 @@ if __name__ == '__main__':
     output = ROOT/'_build/extended-review/live-verification.json'
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, indent=2)+'\n')
-    print('Verified live revision, 16 notebook pages, 16 PDFs, both ZIPs and all approved data.', flush=True)
+    print(f'Verified live revision, {len(DOCUMENTS)} notebook pages, {len(DOCUMENTS)} PDFs, both ZIPs, editable Part 3 practical and all approved data.', flush=True)

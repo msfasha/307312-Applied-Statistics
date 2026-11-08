@@ -3,11 +3,16 @@ title: "Part 3: Inferential Statistics"
 toc: false
 ---
 
-Read the slides on probability distributions, estimation, hypothesis testing and regression.
+Read the slides on probability distributions, estimation, hypothesis testing and regression. Use the R practical alongside the topics as we work through Part 3.
 
 | Resource | Read online | Download |
 |---|---|---|
-| Inferential Statistics slides | [Read](../lessons/03-inferential-statistics.qmd) | [PDF](../pdf/03-inferential-statistics.pdf) |
-| [R practical]{#practical} | Coming soon | — |
+| Inferential Statistics — original core slides | [Read](../lessons/03-inferential-statistics.qmd) | [PDF](../pdf/03-inferential-statistics.pdf) |
+| Revised 3.1 — Probability Distributions | [Read](../lessons/inferential-31-probability-distributions-draft.qmd) | [PDF](../pdf/inferential-31-probability-distributions-draft.pdf) |
+| [Inferential Statistics — R practical]{#practical} | [Open practical](../practicals/inferential-statistics-r-practical.html) | [Quarto notebook](../downloads/inferential-statistics-r-practical.qmd){download="inferential-statistics-r-practical.qmd"} · [PDF](../pdf/inferential-statistics-r-practical.pdf) |
+
+The practical currently covers probability distributions, explains the R functions and includes simulated-data activities. We will extend the same notebook with estimation, hypothesis testing, power and regression as those sections are developed.
+
+The complete editable course project is available under **Other Downloads** on the home page.
 
 [Home](../index.qmd)

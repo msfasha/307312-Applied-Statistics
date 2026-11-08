@@ -39,6 +39,23 @@ def verify_data():
 
 if __name__ == '__main__':
     verify_data()
+    def visible_probability_cells(path):
+        cells = re.findall(r'^```\{r\}[^\n]*\n(.*?)^```\s*$', path.read_text(), re.M | re.S)
+        return {re.search(r'#\| label: (.+)', c)[1]: c.strip() for c in cells
+                if '#| echo: false' not in c and '#| include: false' not in c}
+    probability_cells = visible_probability_cells(ROOT/'lessons/inferential-31-probability-distributions-draft.qmd')
+    practical_cells = visible_probability_cells(ROOT/'practicals/inferential-statistics-r-practical.qmd')
+    assert len(probability_cells) == 7 and practical_cells == probability_cells, 'Part 3 practical must match the seven explained lesson examples'
+    run_r('''
+cutoff <- qnorm(p=0.90, mean=70, sd=6)
+stopifnot(abs(cutoff - 77.6893093933) < 1e-9,
+          abs(pnorm(q=cutoff, mean=70, sd=6) - 0.90) < 1e-12)
+set.seed(312)
+a <- rnorm(n=12, mean=70, sd=6)
+set.seed(312)
+b <- rnorm(n=12, mean=70, sd=6)
+stopifnot(length(a) == 12, identical(a, b), all(is.finite(a)))
+''', ROOT)
     checks = 0
     for notebook in NOTEBOOKS:
         chunks = re.findall(r'^```\{r\}[^\n]*\n(.*?)^```\s*$', notebook.read_text(), re.M | re.S)
@@ -49,6 +66,13 @@ if __name__ == '__main__':
             continue  # Original R lessons are verified by a full Quarto execution (including expected-error demonstrations).
         if notebook.name == '02-descriptive-statistics.qmd':
             assert not worked, 'Descriptive R examples must stay in the companion practical'
+            continue
+        if notebook.name in ['inferential-31-probability-distributions-draft.qmd',
+                             'inferential-statistics-r-practical.qmd']:
+            assert worked and not imports, notebook.name
+            run_r('\n'.join(worked), ROOT)
+            checks += 1
+            print('Passed probability-model R cells (no CSV required):', notebook.name, flush=True)
             continue
         assert imports and worked, notebook.name
         for import_cell in imports:

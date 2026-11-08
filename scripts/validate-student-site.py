@@ -50,12 +50,14 @@ if __name__ == '__main__':
             assert path.exists(), (page.name, href)
             if target.fragment and path.suffix == '.html':
                 assert unquote(target.fragment) in parsed[path].ids, (page.name, href, 'missing fragment')
+    assert (SITE/'downloads/inferential-statistics-r-practical.qmd').read_bytes() == (ROOT/'practicals/inferential-statistics-r-practical.qmd').read_bytes()
     assert not (SITE/'data/practicals').exists(), 'Retired practical data leaked into site'
     for path in SITE.rglob('*'):
         if not path.is_file():
             continue
         assert not set(path.relative_to(SITE).parts) & {'instructor', 'books', 'sources', 'archived', '_includes'}, path
-        assert path.suffix.lower() not in {'.xls', '.xlsx', '.pptx', '.qmd', '.r'}, path
+        if path.relative_to(SITE).as_posix() != 'downloads/inferential-statistics-r-practical.qmd':
+            assert path.suffix.lower() not in {'.xls', '.xlsx', '.pptx', '.qmd', '.r'}, path
     with zipfile.ZipFile(SITE/'downloads/applied-statistics-pdfs.zip') as bundle:
         assert set(bundle.namelist()) == {n+'.pdf' for _, n in DOCUMENTS}
     with zipfile.ZipFile(SITE/'downloads/applied-statistics-rstudio.zip') as bundle:
@@ -82,4 +84,4 @@ if __name__ == '__main__':
                 'data/inferential-statistics/houses.csv'} <= names
         assert not any(set(Path(n).parts) & {'instructor', 'books', 'sources', 'archived', '_build'} for n in names)
         assert not any(Path(n).suffix.lower() in {'.xls', '.xlsx', '.pptx'} for n in names)
-    print('Student site links, sixteen-PDF bundle and complete RStudio package verified.')
+    print(f'Student site links, {len(DOCUMENTS)}-PDF bundle and complete RStudio package verified.')

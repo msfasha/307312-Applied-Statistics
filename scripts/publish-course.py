@@ -12,7 +12,7 @@ if args.skip_render:
 subprocess.run(build_args, cwd=ROOT, check=True)
 site=ROOT/'_build/website'
 source=run('git','rev-parse','HEAD')
-(site/'deployment.json').write_text(json.dumps({'source_commit':source,'course':'307312 Applied Statistics - Masters Level','published_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat()},indent=2)+'\n')
+(site/'deployment.json').write_text(json.dumps({'source_commit':source,'course':'307312 Applied Statistics','published_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat()},indent=2)+'\n')
 (site/'.nojekyll').touch()
 run('git','fetch','origin','gh-pages')
 with tempfile.TemporaryDirectory(prefix='307312-pages-') as temp:
@@ -25,7 +25,7 @@ with tempfile.TemporaryDirectory(prefix='307312-pages-') as temp:
             else:p.unlink()
         shutil.copytree(site,checkout,dirs_exist_ok=True)
         run('git','add','--all',cwd=checkout)
-        run('git','commit','-m','Publish course with six extended business cases and refreshed downloads',cwd=checkout)
+        run('git','commit','-m','Publish Part 3 probability section, R practical and refreshed downloads',cwd=checkout)
         print(run('git','push','origin','HEAD:gh-pages',cwd=checkout))
         print('Published source commit:',source)
         print('Website: https://msfasha.github.io/307312-Applied-Statistics/')

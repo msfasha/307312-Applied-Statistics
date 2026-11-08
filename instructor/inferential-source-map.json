@@ -1,0 +1,882 @@
+{
+  "source_book": "Berenson, Levine and Krehbiel, Basic Business Statistics: Concepts and Applications, ninth edition",
+  "printed_to_pdf_page_offset": 26,
+  "scope": "39 core units (power parent H4a expanded as PW1–PW6), four optional modules and two optional enrichments",
+  "mapping_rows": [
+    {
+      "id": "P1",
+      "title": "Why inferential statistics?",
+      "book": "§1.1 p. 2; §1.2 p. 4; §1.7 pp. 11–16; COLA study p. 336",
+      "example": "Original probability slides 3–6; FORCE and COLA as introductory questions.",
+      "r_activity": "No compulsory code.",
+      "treatment": "Retain original orientation; book supports sampling and study-design distinctions.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "P2",
+      "title": "Random variables and probability models",
+      "book": "§1.8 p. 17; §5.1 pp. 166–168; §6.1 pp. 196–199",
+      "example": "Original probability slides 7–13: counts and measurements. No raw observations required.",
+      "r_activity": "One probability-mass/density diagram if needed.",
+      "treatment": "Retain and correct original explanation; mass/density distinction explicit.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "P3",
+      "title": "Discrete uniform distribution",
+      "book": "§5.1 pp. 166–168 supplies discrete-distribution principles, not a claim of this exact die exercise.",
+      "example": "Original slides 14–15: fair six-sided die; model probabilities.",
+      "r_activity": "rep(), sum(), event selection.",
+      "treatment": "Retained course example; not represented as a book exercise.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "P4",
+      "title": "Binomial distribution",
+      "book": "§5.3 pp. 173–179; book’s tagged-order illustration pp. 174–177 is a reference alternative.",
+      "example": "Original slides 16–17: 80 cars, p=.02; coin tosses as short illustration. Stipulated model.",
+      "r_activity": "dbinom(), pbinom(), probability plot.",
+      "treatment": "Retain the clear original business example; book supplies method.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "P5",
+      "title": "Poisson distribution",
+      "book": "§5.5 pp. 183–186; bank-arrival calculation p. 184.",
+      "example": "Book mean three arrivals/minute; exactly two and more than two. No observed arrival dataset.",
+      "r_activity": "dpois(), ppois(); define the time unit.",
+      "treatment": "Adopt book example; replace/consolidate original Poisson calculations.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "P6",
+      "title": "Continuous uniform distribution",
+      "book": "§6.3 pp. 218–221.",
+      "example": "Original slides 21–22: deliveries 8–12 and diameters 9.8–10.2 mm. Model assumptions.",
+      "r_activity": "punif(); a density diagram.",
+      "treatment": "Retain original examples, correct midpoint/peak interpretation.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "P7",
+      "title": "Normal distribution and empirical rule",
+      "book": "§6.1 pp. 196–211; normality assessment §6.2 pp. 212–218; empirical rule also p. 108.",
+      "example": "Original slides 23–26 and 28: 280 students, mean 74, SD 8, approximate counts.",
+      "r_activity": "dnorm() plot; compare rounded empirical-rule and exact pnorm() counts.",
+      "treatment": "Retain and correct original example; explicitly assume approximate normality.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "P8",
+      "title": "Standard scores",
+      "book": "§6.1 standardisation p. 199 onward.",
+      "example": "Original slides 27,29–30: Khalid’s score of 90 in two courses.",
+      "r_activity": "Direct standardisation in R.",
+      "treatment": "Retain original comparison; no claim it is a book case.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "P9",
+      "title": "Normal probabilities",
+      "book": "§6.1 pp. 199–211; software Appendix 6 pp. 226–229.",
+      "example": "Original slides 32–37: score above 75, mean 70, SD 6. Consistent threshold throughout.",
+      "r_activity": "pnorm(); table/Excel comparison with rounding explained.",
+      "treatment": "Retain and correct original example and probability/percentage wording.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "E1",
+      "title": "Sampling variation",
+      "book": "§7.1 pp. 232–242.",
+      "example": "A course-authored simulated population; distinguish it from book observations.",
+      "r_activity": "set.seed(), repeated sampling and histogram of means.",
+      "treatment": "Book concept; new explicitly labeled simulation.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "E2",
+      "title": "Standard error and CLT",
+      "book": "§7.1 pp. 232–242.",
+      "example": "Same simulated population, with two sample sizes; individual SD versus SD of means.",
+      "r_activity": "replicate(); compare sample size, sampling spread and estimated SE.",
+      "treatment": "Book concept; new simulation, not a proof.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "E3",
+      "title": "Point estimation: product strength",
+      "book": "§8.2, Example 8.3, p. 262, Table 8.2.",
+      "example": "FORCE: 30 insulator breaking-force observations, pounds. CSV insulator-force.csv.",
+      "r_activity": "read.csv(); length(), mean(), sd().",
+      "treatment": "Adopt verified book data and context.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "E4",
+      "title": "Confidence-interval reasoning",
+      "book": "§8.1 pp. 255–258; §8.2 pp. 259–264.",
+      "example": "Continue strength question; coverage visual is a labeled model illustration.",
+      "r_activity": "Repeated-interval simulation or static coverage diagram.",
+      "treatment": "Book interpretation; course-authored visual, no invented production observations.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "E5",
+      "title": "Known-SD normal interval",
+      "book": "§8.1 p. 255 and following coverage examples.",
+      "example": "Cereal summary/model: n=25, mean 362.3 g, known sigma=15 g. No raw box data.",
+      "r_activity": "qnorm(); SE and endpoints; Excel CONFIDENCE.NORM.",
+      "treatment": "Adopt book summary example, keep known-SD assumption explicit.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "E6",
+      "title": "Unknown-SD t interval",
+      "book": "§8.2 pp. 259–264; Example 8.3 p. 262.",
+      "example": "Reuse FORCE, 30 measured strengths.",
+      "r_activity": "t.test() confidence interval, qqnorm(); same-data 90/95/99% comparison.",
+      "treatment": "Adopt book worked example; outputs recomputed from observations.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "E7",
+      "title": "Confidence interval for a proportion",
+      "book": "§8.3 pp. 265–267.",
+      "example": "Retain source satisfaction counts: 140 of 200. Aggregate counts, provenance limited.",
+      "r_activity": "Compute the book’s large-sample normal interval explicitly; label a Wilson comparison separately if included.",
+      "treatment": "Book method applied to existing course counts; do not silently equate different interval methods.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "E8",
+      "title": "Precision-based sample-size planning",
+      "book": "§8.4 pp. 268–273.",
+      "example": "Strength-planning scenario with explicitly hypothetical planning SD 90 lb and chosen margin.",
+      "r_activity": "qnorm(), ceiling(); change one planning input at a time.",
+      "treatment": "Book planning method; hypothetical course inputs, not another sample.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "H1",
+      "title": "Claims and hypotheses",
+      "book": "§9.1 pp. 296–300.",
+      "example": "Original hypothesis slides 3,6–7: logistics mean benchmark three days.",
+      "r_activity": "No compulsory code.",
+      "treatment": "Retain original business question and correct hypothesis wording.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "H2",
+      "title": "Evidence, decisions and errors",
+      "book": "§9.1 pp. 296–300; §9.3 pp. 306–309; §9.7 pp. 324–326.",
+      "example": "Original slides 9–18, explained through one ongoing question.",
+      "r_activity": "Null-distribution/rejection-region plot only where useful.",
+      "treatment": "Book-supported concepts; original explanations corrected.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "H3",
+      "title": "One-sample two-sided delivery test",
+      "book": "§9.4 pp. 310–316.",
+      "example": "Original slides 21–22: n=40, mean=3.4 days, sample variance=1.887179487 days squared. Summary inputs only.",
+      "r_activity": "Summary t statistic and pt(); two-sided interval.",
+      "treatment": "Retain original summary example; no fabricated delivery records.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "H4",
+      "title": "One-sided strength test",
+      "book": "§9.3 pp. 306–309; §9.4 p. 310 onward; Exercise 9.103 p. 329.",
+      "example": "Reuse FORCE; benchmark 1,500 lb, upper-tail mean test.",
+      "r_activity": "t.test(force, mu=1500, alternative=\"greater\").",
+      "treatment": "Adopt book exercise; reuse earlier dataset.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "PW1",
+      "title": "Why might a test miss an effect?",
+      "book": "§9.8 CD supplement, CD9-1 onward; §9.1 errors.",
+      "example": "Link to H3; define beta and power at a specified alternative, not retrospective observed power.",
+      "r_activity": "No numerical calculation required.",
+      "treatment": "Book power concept, core addition; parent unit H4a.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "PW2",
+      "title": "Specify the effect worth detecting",
+      "book": "§9.8, cereal example CD9-1 onward.",
+      "example": "Null boundary 368 g, assumed true mean 360 g, known sigma 15 g. Source scenario, not independently approved tolerance.",
+      "r_activity": "Set named model inputs; no raw sample invented.",
+      "treatment": "Adopt book model; parent H4a.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "PW3",
+      "title": "Visualising power",
+      "book": "§9.8, Figures 9.27–9.28 and cereal calculation.",
+      "example": "Same lower-tail normal mean model; n=25, alpha=.05.",
+      "r_activity": "dnorm(), qnorm(), pnorm(); two sampling curves and a common cutoff.",
+      "treatment": "Book model, newly drawn teaching visual; parent H4a.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "PW4",
+      "title": "What changes power?",
+      "book": "§9.8 introductory explanation and operating-characteristic/power discussion.",
+      "example": "Vary n, alpha, effect and SD in the same stipulated cereal model.",
+      "r_activity": "Grid of power probabilities and curves.",
+      "treatment": "Book-supported comparison with labeled course-chosen scenarios; parent H4a.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "PW5",
+      "title": "Planning n for a target power",
+      "book": "§9.8 supplies power model; §8.4 supplies sample-size planning principles.",
+      "example": "Target .80 power, 8 g reduction, sigma 15 g; illustrative alpha .05/.01.",
+      "r_activity": "Invert the known-SD normal power expression and round up; verify power at integer n.",
+      "treatment": "Course-derived planning calculation using book assumptions; not attributed to an unverified numbered book example; parent H4a.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "PW6",
+      "title": "Interpreting a power plan",
+      "book": "§9.8; §9.7 pitfalls.",
+      "example": "Change one input; explain design assumptions, cost and false-positive trade-offs.",
+      "r_activity": "Small independent planning task; optional power.t.test introduction clearly distinguished from known-sigma model.",
+      "treatment": "Course synthesis; parent H4a.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "H5",
+      "title": "Paired software comparison",
+      "book": "§10.3 pp. 354–359; Table 10.5 p. 356.",
+      "example": "COMPTIME: ten matched financial projects; current/new seconds. CSV software-times.csv.",
+      "r_activity": "Differences, plot, paired t.test; one-sided test and separately labeled interval.",
+      "treatment": "Adopt book worked example and data.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "H6",
+      "title": "Independent display comparison",
+      "book": "§10.1 pp. 336–346; Table 10.1 p. 338.",
+      "example": "COLA: 20 stores, ten per randomized display; cases sold in one week. CSV cola-displays.csv.",
+      "r_activity": "Group summaries/plot, pooled t.test; Welch sensitivity comparison.",
+      "treatment": "Adopt book independent-groups example; selected stores are not a random sample of all stores.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "H7",
+      "title": "Welch comparison: training",
+      "book": "§10.1; Exercise 10.13 p. 346 explicitly compares pooled and nonpooled methods.",
+      "example": "TRAINING: 42 employees, 21 assigned per method; assembly seconds. CSV assembly-training.csv.",
+      "r_activity": "Group spread plot; t.test(var.equal=FALSE), two-sided at 5%.",
+      "treatment": "Adopt book exercise and direction/alpha; differs from old one-sided salary example.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "H8",
+      "title": "One population proportion",
+      "book": "§9.5 pp. 317–319.",
+      "example": "Reuse 140/200 against .75, original slide 36.",
+      "r_activity": "Null-based z; prop.test(correct=FALSE), with method/continuity setting explained.",
+      "treatment": "Book method applied to retained aggregate course example.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "H9",
+      "title": "Two independent proportions",
+      "book": "§12.1 pp. 448–452; worked hotel counts pp. 449–450.",
+      "example": "Beachcomber 163/227; Windsurfer 154/262 likely to return. CSV hotel-return-counts.csv.",
+      "r_activity": "prop.test(correct=FALSE); pooled null SE and difference in percentage points.",
+      "treatment": "Adopt book aggregate example; voluntary checkout responses limit inference.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "H10",
+      "title": "Chi-square independence",
+      "book": "§12.4 pp. 466–471.",
+      "example": "Original slides 44–49 beverage preference by age; six cells, 200 respondents. CSV beverage-preferences.csv.",
+      "r_activity": "chisq.test(), expected counts and row percentages.",
+      "treatment": "Retain simpler original table; book supplies method, not these exact counts.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "H11",
+      "title": "One-way ANOVA",
+      "book": "§11.1 pp. 388–402; Exercise 11.13 pp. 402–403.",
+      "example": "LOCATE: 18 independent assigned stores, three aisle locations, monthly sales in $000. CSV aisle-location.csv.",
+      "r_activity": "aov(), residual checks and TukeyHSD with appropriate assumptions.",
+      "treatment": "Adopt book case; omit unexplained Height variable from this one-way exercise.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "H12",
+      "title": "Choosing a method",
+      "book": "Chapters 9–12 and their summary diagrams.",
+      "example": "Questions drawn from completed examples; no new observed dataset.",
+      "r_activity": "Students choose a method and justify it before code.",
+      "treatment": "Course synthesis, not a claim of a numbered book exercise.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "R1",
+      "title": "Regression question and variables",
+      "book": "§13.1 pp. 484–486; Exercise 13.7 p. 493.",
+      "example": "RENT: 25 apartments, monthly dollars and square feet; one neighbourhood. CSV apartment-rent.csv.",
+      "r_activity": "Inspect variables and scatterplot.",
+      "treatment": "Adopt book context and data, historical period not invented.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "R2",
+      "title": "Line, residuals and least squares",
+      "book": "§13.2 pp. 487–493; §13.10 pp. 523–528 for optional arithmetic.",
+      "example": "Same RENT data; use identified observations to illustrate residuals.",
+      "r_activity": "Plot line and vertical deviations; no new statistical sample.",
+      "treatment": "Book method applied consistently to RENT.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "R3",
+      "title": "Fit and interpret rental model",
+      "book": "§13.2; Exercise 13.7 p. 493; Appendix 13 pp. 538–540 supports software orientation.",
+      "example": "Same RENT; interpreting a 100-square-foot change.",
+      "r_activity": "lm(); coefficients and fitted line; matching Excel setup.",
+      "treatment": "Book exercise, new R implementation.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "R4",
+      "title": "Assumptions and residual checks",
+      "book": "§13.4 p. 498; §13.5 pp. 499–503; §13.6 pp. 503–508.",
+      "example": "RENT; Exercise 13.21 p. 498 and Exercise 13.33 p. 503 revisit the case.",
+      "r_activity": "Residual-versus-fitted and Q-Q plots; independence assessed from design, not invented row chronology.",
+      "treatment": "Book-supported diagnostics; no claim a plot proves assumptions.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "R5",
+      "title": "Fit statistics",
+      "book": "§13.3 pp. 494–497; RENT Exercise 13.18 p. 498.",
+      "example": "Same RENT; R-squared and residual SE in dollars.",
+      "r_activity": "summary(lm()); compact annotated output.",
+      "treatment": "Book concepts; correct original Multiple R/MAE confusion.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "R6",
+      "title": "Slope inference and regression ANOVA",
+      "book": "§13.7 pp. 509–515; RENT Exercise 13.41 p. 514.",
+      "example": "Same RENT; slope units, SE, test and interval.",
+      "r_activity": "summary(), confint(), anova().",
+      "treatment": "Adopt book progression on the same dataset.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "R7",
+      "title": "Mean response and individual prediction",
+      "book": "§13.8 pp. 516–519; pitfalls §13.9 p. 520; RENT follow-up Exercise 13.55 p. 520 (source target 1,000 square feet).",
+      "example": "RENT at 1,200 square feet, within its observed range; the selected prediction target is a course choice.",
+      "r_activity": "predict(interval=\"confidence\") versus predict(interval=\"prediction\").",
+      "treatment": "Book method; explicitly distinguish chosen course input from exact source exercise request.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "R8",
+      "title": "Multiple regression: price and promotion",
+      "book": "§14.1 pp. 542–549; Table 14.1 p. 543; §14.2 p. 550; §§14.3–14.4 pp. 552–556.",
+      "example": "OMNI: 34 stores; monthly bars, price cents, promotion dollars. CSV omnipower.csv.",
+      "r_activity": "lm() with two predictors, partial slopes, output and residual checks.",
+      "treatment": "Adopt book main worked case; causal assignment not established by reviewed text.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "R9",
+      "title": "Collinearity, influence and conclusions",
+      "book": "§15.3 pp. 602–604; §15.4 pp. 605–606; §13.9 p. 520; §15.6 p. 618.",
+      "example": "Continue OMNI; no additional compulsory dataset.",
+      "r_activity": "VIF interpretation and cooks.distance(); sensitivity without automatic deletion.",
+      "treatment": "Selected advanced concepts adapted to existing model, not full Chapter 15 coverage.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "TS1",
+      "title": "Forecasting question and horizon",
+      "book": "§16.1 p. 630; §16.8 p. 670.",
+      "example": "WALMART: 36 fiscal quarters, 1994–2002; revenue $millions. Data sheet verified.",
+      "r_activity": "Time-series construction with verified fiscal-quarter labels.",
+      "treatment": "Adopt book historical data; CSV export still to prepare.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "TS2",
+      "title": "Trend and seasonality",
+      "book": "§16.2 pp. 631–632; §16.8 pp. 670–677; Table 16.4 p. 671.",
+      "example": "Same WALMART; fiscal fourth quarter ends in January.",
+      "r_activity": "Time plot, quarter comparisons.",
+      "treatment": "Book concepts and case; preserve fiscal periods.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "TS3",
+      "title": "Baseline forecasts",
+      "book": "§16.1 and §16.7 p. 666 support forecast purpose/comparison; specific naive benchmarks are course additions.",
+      "example": "Same WALMART; last-value and seasonal-naive baselines.",
+      "r_activity": "Training-only naive and seasonal-naive forecasts.",
+      "treatment": "Authored benchmarking addition; not a claimed book exercise.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "TS4",
+      "title": "Moving averages and exponential smoothing",
+      "book": "§16.3 pp. 633–638.",
+      "example": "WALMART as a method illustration; simple smoothing alone does not address all seasonality/trend.",
+      "r_activity": "Trailing mean and simple exponential smoothing; avoid look-ahead.",
+      "treatment": "Book methods transferred to selected series; limitations explicit.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "TS5",
+      "title": "Trend regression",
+      "book": "§16.4 pp. 639–651.",
+      "example": "Same WALMART; historical quarterly trend.",
+      "r_activity": "lm(revenue ~ time), training data only.",
+      "treatment": "Book method, adapted data application.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "TS6",
+      "title": "Seasonal modelling",
+      "book": "§16.8 pp. 670–677; WALMART worked case p. 671 onward.",
+      "example": "Same WALMART; quarter labels and scale retained.",
+      "r_activity": "Quarter indicator model; optional decomposition with scale/assumptions stated.",
+      "treatment": "Book case, newly implemented in R.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "TS7",
+      "title": "Chronological evaluation",
+      "book": "§16.7 pp. 666–669 and §16.10 pp. 685 onward; explicit holdout protocol is a course addition.",
+      "example": "Last eight WALMART quarters held out; earlier 28 used for fitting.",
+      "r_activity": "Same-horizon errors, MAE/RMSE; no random split or fitting on holdout.",
+      "treatment": "Authored evaluation design using book data; limited test sample.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "TS8",
+      "title": "Autoregressive illustration",
+      "book": "§16.6 pp. 655–665.",
+      "example": "WALMART or its appropriately detrended/differenced form; no raw-trend stationary AR claim.",
+      "r_activity": "Lag plot, ACF, modest AR(1) fit with training-only transformations.",
+      "treatment": "Book method illustration; specific R specification to be checked during authoring.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "TS9",
+      "title": "Forecast uncertainty",
+      "book": "§16.4 and §16.6; §16.10 pitfalls p. 685.",
+      "example": "Same series; point forecasts, conditional prediction intervals and shocks.",
+      "r_activity": "Compare intervals and holdout outcomes without claiming validated nominal coverage.",
+      "treatment": "Book-supported discussion with a course validation exercise.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "TS10",
+      "title": "Index numbers and rebasing",
+      "book": "§16.9 pp. 678–684; Table 16.5 p. 679.",
+      "example": "GASOLINE: 23 annual prices 1980–2002, 1980-base index. Workbook Data verified.",
+      "r_activity": "price/base*100; rebase to 1995; distinguish index points and percentage change.",
+      "treatment": "Adopt book historical index example; CSV export to prepare.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "DA1",
+      "title": "Actions, states and consequences",
+      "book": "§17.1 pp. 696–699; Example 17.1 p. 697.",
+      "example": "Television market/do-not-market, success/failure. Source payoff table, not field observations.",
+      "r_activity": "Define payoff matrix labels; no required code.",
+      "treatment": "Book decision model.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "DA2",
+      "title": "Payoff table",
+      "book": "§17.1, Example 17.1 and Table 17.1 p. 697.",
+      "example": "Market payoffs +45/-36; do-not-market -3/-3, $millions, as printed.",
+      "r_activity": "matrix() with named actions and states; retain source accounting.",
+      "treatment": "Source values checked; do not subtract the prior $3m a second time.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "DA3",
+      "title": "Criteria without agreed probabilities",
+      "book": "No verified matching section for maximax/maximin/minimax in this edition; §17.2 p. 700 instead develops EMV/EOL/return-to-risk.",
+      "example": "Reuse the TV payoff table; decision rules are a labeled course extension.",
+      "r_activity": "Row maxima/minima and regret matrix, with profit/cost convention.",
+      "treatment": "Authored extension, not misattributed to the book.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "DA4",
+      "title": "Expected monetary value",
+      "book": "§17.2, Example 17.4 and Table 17.5 p. 701.",
+      "example": "TV prior success probability .40, failure .60; source payoffs retained.",
+      "r_activity": "Probability-weighted payoffs; compare actions.",
+      "treatment": "Book worked example; probabilities are specified model inputs.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "DA5",
+      "title": "Decision tree and rollback",
+      "book": "§17.1, Example 17.2 and Figure 17.1 p. 697; §17.2 expected-value criterion.",
+      "example": "Same TV actions and outcomes.",
+      "r_activity": "One consistent tree and rollback arithmetic; R checks expected values.",
+      "treatment": "Book representation plus course teaching graphic.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "DA6",
+      "title": "Perfect information value",
+      "book": "§17.2 expected opportunity loss/perfect-information discussion pp. 702–704.",
+      "example": "Same verified TV payoff matrix and prior probabilities.",
+      "r_activity": "Expected best statewise payoff minus best prior EMV; subtract information cost separately.",
+      "treatment": "Book method applied to ongoing case; preserve $millions.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "DA7",
+      "title": "Imperfect information and updating",
+      "book": "§4.3 pp. 154–157; §17.3 Example 17.7 pp. 708–709.",
+      "example": "Prior success .40; P(favorable|success)=.80, P(favorable|failure)=.30, source p. 154. Favorable posterior .64; full binary signal model verified.",
+      "r_activity": "Bayes update for both report outcomes; ex-ante EVSI; compare with EVPI and subtract a separately stated research cost.",
+      "treatment": "Book inputs verified; ex-ante EVSI is an explicit course extension from those inputs, not confused with a conditional EMV.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "DA8",
+      "title": "Utility and risk preference",
+      "book": "§17.4 pp. 713–714.",
+      "example": "Book fair-coin small-versus-large stakes; an additional utility function must be labeled hypothetical.",
+      "r_activity": "Expected utility under specified illustrative function; compare with utility of expected payoff.",
+      "treatment": "Book concepts and example; no inferred real person’s utility.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "DA9",
+      "title": "Sensitivity and decision recommendation",
+      "book": "§17.2 and §17.3; question/threshold grid is a course synthesis.",
+      "example": "Reuse verified TV inputs; vary one input explicitly as a scenario.",
+      "r_activity": "Probability/payoff switching thresholds and information-cost sensitivity.",
+      "treatment": "Authored task, not newly observed business data.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "QM1",
+      "title": "Quality and customer requirements",
+      "book": "§18.1 pp. 720–722; Harnswell case pp. 752–754.",
+      "example": "Existing Harnswell CSV: 150 roller diameters, 30 batches of five.",
+      "r_activity": "Read data and identify unit, subgroup and specification.",
+      "treatment": "Book case and already prepared data; source discrepancy retained.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "QM2",
+      "title": "Common and special causes",
+      "book": "§18.3 p. 724; §18.5 pp. 731–732.",
+      "example": "Harnswell plus explicitly conceptual examples; do not invent actual process history.",
+      "r_activity": "Simple ordered plot if needed.",
+      "treatment": "Book concepts; no random cause assigned to batch 17.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "QM3",
+      "title": "Six Sigma and DMAIC",
+      "book": "§18.2 pp. 723–724.",
+      "example": "Apply Define/Measure/Analyse/Improve/Control to the roller question.",
+      "r_activity": "No obligatory code; statistical tools placed in improvement cycle.",
+      "treatment": "Book topic; no certification or 3.4-defects claim without stated convention.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "QM4",
+      "title": "Control-chart structure",
+      "book": "§18.3 p. 724; §18.7 pp. 736–742.",
+      "example": "Same Harnswell batch order.",
+      "r_activity": "Centre line, limits and prespecified signaling rule.",
+      "treatment": "Book methods, existing case.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "QM5",
+      "title": "Control limits versus specifications",
+      "book": "§18.7 and §18.8 pp. 743–748.",
+      "example": "Harnswell specifications from source case; chart limits estimated from data.",
+      "r_activity": "Label the two types of limits separately.",
+      "treatment": "Book concepts; avoid confusing process behaviour and requirements.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "QM6",
+      "title": "X-bar and R charts",
+      "book": "§18.7 pp. 736–742; Harnswell pp. 752–754.",
+      "example": "30 subgroups of five, not 25 of six. Existing extended-harnswell.csv.",
+      "r_activity": "Subgroup means/ranges and verified n=5 chart constants.",
+      "treatment": "Book design and canonical data checked; stability not assumed.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "QM7",
+      "title": "p and c charts",
+      "book": "§18.4 pp. 725–730; §18.6 pp. 733–735.",
+      "example": "COLASPC: 22 days, cans filled and unacceptable cans, source p. 730, workbook verified. c-chart input example may be explicitly hypothetical.",
+      "r_activity": "p-chart limits account for daily denominators; c chart needs constant opportunity.",
+      "treatment": "Book raw data available for p; illustrative c counts require clear hypothetical label.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "QM8",
+      "title": "Signals and investigation",
+      "book": "§18.3 and §18.7; Harnswell case pp. 752–754.",
+      "example": "Retain batch 17 and all measurements.",
+      "r_activity": "Plot signals; investigate context; optional labeled sensitivity.",
+      "treatment": "Book case reviewed; chart is not a causal diagnosis.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "QM9",
+      "title": "Retrospective baseline and future monitoring",
+      "book": "§18.3 and §18.7 support chart use; explicit baseline/monitoring workflow is a course elaboration.",
+      "example": "Same Harnswell; initial process signals mean no stable baseline has yet been established.",
+      "r_activity": "No automatic removal/re-estimation; document any justified monitoring phase.",
+      "treatment": "Methodological elaboration; no invented stable history.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "QM10",
+      "title": "Capability after stability",
+      "book": "§18.8 pp. 743–748.",
+      "example": "Use formulas plus an explicitly hypothetical stable process; not an unconditional Harnswell capability claim.",
+      "r_activity": "Cp/Cpk calculation with a clearly identified within-process sigma estimate and assumptions.",
+      "treatment": "Book formulas; hypothetical inputs until a justified stable phase exists.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "QM11",
+      "title": "Quality-improvement recommendation",
+      "book": "Chapter 18 summary and Harnswell pp. 752–754.",
+      "example": "Actual workbook has 56 above-spec measurements; narrative says 55. Preserve discrepancy and data.",
+      "r_activity": "Brief evidence-based report and proposed follow-up measurement.",
+      "treatment": "Course synthesis; no automatic exclusion or claimed process improvement.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "NP1",
+      "title": "Why nonparametric methods?",
+      "book": "§10.4 p. 361; §10.5 p. 367; §11.4 p. 424; §11.5 p. 428.",
+      "example": "Core independent, paired and multiple-group designs.",
+      "r_activity": "No automatic switch based only on normality-test p.",
+      "treatment": "Book concepts with explicit modern interpretation cautions.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "NP2",
+      "title": "Ranks, ties and zeros",
+      "book": "§10.4 pp. 361–365; §10.5 pp. 367–371; §11.5 p. 428 onward.",
+      "example": "Identified small subsets from existing data, not a new random sample.",
+      "r_activity": "rank(ties.method=\"average\"); signed absolute ranks and within-block ranks.",
+      "treatment": "Book methods; exact/asymptotic settings and conventions stated.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "NP3",
+      "title": "Independent Wilcoxon rank-sum",
+      "book": "§10.4 pp. 361–365; COLA worked example.",
+      "example": "Reuse COLA independent store groups.",
+      "r_activity": "wilcox.test(paired=FALSE); account for ties and state approximation/continuity settings.",
+      "treatment": "Book case; distribution/location claim, not a generic mean test or unconditional median test.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "NP4",
+      "title": "Paired Wilcoxon signed-rank",
+      "book": "§10.5 pp. 367–371; COMPTIME explicitly revisited p. 368.",
+      "example": "Same ten software pairs, including a zero difference and ties.",
+      "r_activity": "wilcox.test(paired=TRUE); explicit symmetry and tie/zero treatment.",
+      "treatment": "Book case; no deletion of valid observations merely to avoid ties.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "NP5",
+      "title": "Kruskal–Wallis independent groups",
+      "book": "§11.4 pp. 424–428; Exercise 11.43 p. 428.",
+      "example": "Reuse LOCATE 18 stores across three aisle locations.",
+      "r_activity": "kruskal.test; compare interpretations with one-way mean ANOVA.",
+      "treatment": "Book exercise; omnibus rank/distribution result, not automatic pairwise median claims.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "NP6",
+      "title": "Friedman blocked comparison",
+      "book": "§11.5 pp. 428–432; Exercise 11.50 p. 432; design Exercise 11.25 p. 411.",
+      "example": "REAPPR3: 12 houses each appraised by three agents, values in $000. Data sheet verified.",
+      "r_activity": "friedman.test on house-by-agent matrix; houses are blocks.",
+      "treatment": "Book exercise and local data verified; CSV export still to prepare.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "NP7",
+      "title": "Interpretation and sensitivity",
+      "book": "§10.4–10.5 and §11.4–11.5; side-by-side teaching comparison is course synthesis.",
+      "example": "Reuse COLA or COMPTIME, not a new context.",
+      "r_activity": "Compare effect descriptions and assumptions rather than choosing the smaller p-value.",
+      "treatment": "Course interpretation exercise; median/location interpretation requires added conditions.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "NP8",
+      "title": "Choosing a rank-based method",
+      "book": "Same four book sections and their design distinctions.",
+      "example": "Independent/paired; two groups/multiple groups; meaningful response scale.",
+      "r_activity": "Short method-selection and interpretation task.",
+      "treatment": "Course synthesis; nonparametric does not mean assumption-free.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "OX1",
+      "title": "Two-way ANOVA extension",
+      "book": "§11.3 pp. 412–423; Exercise 11.71 Part II p. 436.",
+      "example": "COMPUTERS2: 32 historical downloads, 2 browsers × 2 computers, eight per cell. CSV historical-downloads.csv.",
+      "r_activity": "aov(response ~ browser*computer); interaction plot.",
+      "treatment": "Optional existing extension; historical labels and independence limits retained.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    },
+    {
+      "id": "OX2",
+      "title": "Distribution fitting enrichment",
+      "book": "§6.2 p. 212 supplies model-assessment context, not the automatic fitter demonstration.",
+      "example": "Explicit simulated normal observations, not measured business data.",
+      "r_activity": "Optional candidate-model AIC comparison; identify the limited candidate set.",
+      "treatment": "Authored enrichment; not attributed to a verified book procedure.",
+      "status": "Book section/page matched; exact example and input verification stated in the row"
+    }
+  ],
+  "data_catalogue": [
+    {
+      "key": "FORCE",
+      "workbook": "books/2-Basic business statistics  concepts and applications/Data-9th e/browse/Data_Files/Excel/FORCE.xls",
+      "sheet": "Data",
+      "observations": "30 insulators; pounds",
+      "csv": "data/inferential-review/insulator-force.csv",
+      "kind": "Raw measurements",
+      "sha256": "5314ab29d1c36a64f6ab60c570b4df5d5404727e77158976ac3b4d51c667b598"
+    },
+    {
+      "key": "COMPTIME",
+      "workbook": "books/2-Basic business statistics  concepts and applications/Data-9th e/browse/Data_Files/Excel/COMPTIME.xls",
+      "sheet": "Data",
+      "observations": "10 matched projects; seconds",
+      "csv": "data/inferential-review/software-times.csv",
+      "kind": "Raw paired measurements",
+      "sha256": "b7f84c84b6171e4bd587252625b990a0f89627952ff3f43501bb8fc124c7e165"
+    },
+    {
+      "key": "COLA",
+      "workbook": "books/2-Basic business statistics  concepts and applications/Data-9th e/browse/Data_Files/Excel/COLA.XLS",
+      "sheet": "Data",
+      "observations": "20 independent stores; cases/week",
+      "csv": "data/inferential-review/cola-displays.csv",
+      "kind": "Raw independent-group observations",
+      "sha256": "0278a35a8d309ff9d03b76041f1588d2a1a77e4d1605736f5285c6029c3cb1c9"
+    },
+    {
+      "key": "TRAINING",
+      "workbook": "books/2-Basic business statistics  concepts and applications/Data-9th e/browse/Data_Files/Excel/training.xls",
+      "sheet": "Data",
+      "observations": "42 employees; assembly seconds",
+      "csv": "data/inferential-review/assembly-training.csv",
+      "kind": "Raw assigned-group observations",
+      "sha256": "f70d2a7db0e6e353bc383da226eddda3fec45f96ae4c427a5572c0db22d37e71"
+    },
+    {
+      "key": "RENT",
+      "workbook": "books/2-Basic business statistics  concepts and applications/Data-9th e/browse/Data_Files/Excel/rent.xls",
+      "sheet": "Data",
+      "observations": "25 apartments; monthly dollars and square feet",
+      "csv": "data/inferential-review/apartment-rent.csv",
+      "kind": "Raw observations",
+      "sha256": "5f54dae185acf31a775a8e91bb78c4b8b1a2b85572a8d9c586a91b68e8dad5e7"
+    },
+    {
+      "key": "OMNI",
+      "workbook": "books/2-Basic business statistics  concepts and applications/Data-9th e/browse/Data_Files/Excel/OMNI.xls",
+      "sheet": "Data",
+      "observations": "34 stores; monthly bars, cents and promotion dollars",
+      "csv": "data/inferential-review/omnipower.csv",
+      "kind": "Raw observations",
+      "sha256": "939933d1f7242f8c6588f60f36defc4fade2a82abc0dafe5eb2acb5a437a4f32"
+    },
+    {
+      "key": "LOCATE",
+      "workbook": "books/2-Basic business statistics  concepts and applications/Data-9th e/browse/Data_Files/Excel/LOCATE.xls",
+      "sheet": "Data",
+      "observations": "18 stores; one-month sales in $000",
+      "csv": "data/inferential-review/aisle-location.csv",
+      "kind": "Raw observations; Height not used",
+      "sha256": "ee9e7902905840de82858d583527f339b02f50a29b0c72adc9d2cb1dc4e2616c"
+    },
+    {
+      "key": "WALMART",
+      "workbook": "books/2-Basic business statistics  concepts and applications/Data-9th e/browse/Data_Files/Excel/WALMART.XLS",
+      "sheet": "Data",
+      "observations": "36 fiscal quarters, 1994–2002; revenue $millions",
+      "csv": "Not exported for proposed optional section yet",
+      "kind": "Raw historical time series",
+      "sha256": "053a76404ef49da0117ebec7a1057abfa364f306f36550d37cc87f155ff36cb6"
+    },
+    {
+      "key": "GASOLINE",
+      "workbook": "books/2-Basic business statistics  concepts and applications/Data-9th e/browse/Data_Files/Excel/GASOLINE.XLS",
+      "sheet": "Data",
+      "observations": "23 annual prices/index rows, 1980–2002",
+      "csv": "Not exported for proposed optional section yet",
+      "kind": "Historical prices and index",
+      "sha256": "1b279dd8147b9b8facdd306bb9f6a1806d01bdbb154ccb4dc6af212685bfc3ca"
+    },
+    {
+      "key": "COLASPC",
+      "workbook": "books/2-Basic business statistics  concepts and applications/Data-9th e/browse/Data_Files/Excel/COLASPC.xls",
+      "sheet": "Data",
+      "observations": "22 days; total and unacceptable cans",
+      "csv": "Not exported for proposed optional section yet",
+      "kind": "Historical daily counts",
+      "sha256": "7d4633124e87982f540c1dc4f41c72d9ea6c5df435da0d230c8cc6eb97648bbc"
+    },
+    {
+      "key": "REAPPR3",
+      "workbook": "books/2-Basic business statistics  concepts and applications/Data-9th e/browse/Data_Files/Excel/reappr3.xls",
+      "sheet": "Data",
+      "observations": "12 houses × 3 agents; appraisals in $000",
+      "csv": "Not exported for proposed optional section yet",
+      "kind": "Raw blocked measurements",
+      "sha256": "143d428ca0a5a0b5990a480d5365bbf9df506eb7b99f7b25b53a0c9a82e33275"
+    },
+    {
+      "key": "COMPUTERS2",
+      "workbook": "books/2-Basic business statistics  concepts and applications/Data-9th e/browse/Data_Files/Excel/COMPUTERS2.XLS",
+      "sheet": "first sheet",
+      "observations": "32 downloads; 2×2×8; seconds",
+      "csv": "data/inferential-review/historical-downloads.csv",
+      "kind": "Raw historical repeated downloads",
+      "sha256": "0eb79e3f3ec82a3e0c4e5393286fa8b2be6f01c253b85a067d655108b4c10c14"
+    },
+    {
+      "key": "HARNSWELL",
+      "workbook": "books/2-Basic business statistics  concepts and applications/Data-9th e/browse/Data_Files/Excel/HARNSWELL.xls",
+      "sheet": "Data",
+      "observations": "150 diameters; 30 batches × 5",
+      "csv": "data/business/extended-harnswell.csv",
+      "kind": "Existing approved extended-case export",
+      "sha256": "7ff20ff23e9358ffb8056d945f519d4903e1011c191bc4a8328e45801a923827"
+    }
+  ]
+}

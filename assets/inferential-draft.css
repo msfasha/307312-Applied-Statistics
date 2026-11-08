@@ -1,0 +1,34 @@
+/* Layout of the source-mapped draft; shared Petra files define all colors. */
+.inferential-draft .teaching-slide { padding: 0 0 1.5rem; margin: 1.8rem 0 2.4rem; }
+.inferential-draft .teaching-slide > h2 { font-size: 1.55rem; }
+.inferential-draft .teaching-slide li { margin-bottom: .45rem; }
+.inferential-draft .teaching-slide p, .inferential-draft .teaching-slide li { line-height: 1.55; }
+.inferential-draft .cell-output-display img { width: min(80%, 650px); max-height: 355px; object-fit: contain; margin: .8rem auto; }
+.inferential-draft .teaching-slide .math.display { display: block; font-size: 1.06em; margin: .8rem auto; max-width: 100%; }
+.inferential-draft p:has(math[display="block"]), .inferential-draft .cell-output-display:has(table) { max-width: 100%; overflow-x: auto; }
+.inferential-draft table { width: 100%; font-size: .95rem; }
+.inferential-draft .cell, .inferential-draft .sourceCode { min-width: 0; max-width: 100%; }
+.inferential-draft pre, .inferential-draft pre code, .inferential-draft pre * { white-space: pre-wrap !important; overflow-wrap: anywhere; }
+.inferential-draft :not(pre) > code { white-space: normal; overflow-wrap: anywhere; }
+.inferential-draft .slide-footer, .inferential-draft .source-note { color: #666666; font-size: .82rem; line-height: 1.45; margin-top: 1.2rem; }
+.inferential-draft .lesson-path { margin-top: 1.2rem; font-size: .9rem; line-height: 1.8; }
+.inferential-draft .question-note { border-left: 3px solid #A3A3A3; padding: .55rem .9rem; background: #F7F7F7; margin-top: 1.1rem; }
+@media (max-width: 600px) {
+  .inferential-draft .cell-output-display img { width: 100%; }
+  .inferential-draft table { display: block; overflow-x: auto; font-size: .86rem; }
+}
+@media print {
+  .inferential-draft .teaching-slide { break-before: page; break-inside: avoid; margin: 0; padding: 0; border: 0; }
+  .inferential-draft #pd-01 { break-before: avoid; }
+  .inferential-draft .teaching-slide > h2 { font-size: 16pt; margin: 0 0 1rem; }
+  .inferential-draft .teaching-slide p, .inferential-draft .teaching-slide li { font-size: 11pt; line-height: 1.5; }
+  .inferential-draft .teaching-slide li { margin-bottom: .4rem; }
+  .inferential-draft .cell-output-display img { width: 140mm; max-height: 85mm; }
+  .inferential-draft .teaching-slide table { font-size: 10pt; table-layout: auto; }
+  .inferential-draft .teaching-slide th, .inferential-draft .teaching-slide td { padding: .45rem; }
+  .inferential-draft .slide-footer, .inferential-draft .source-note { font-size: 8pt; line-height: 1.4; }
+  .inferential-draft .slide-footer { border-top: 1px solid #D6D6D6; padding-top: .4rem; }
+  .inferential-draft .lesson-path { font-size: 8.5pt; }
+  .inferential-draft p:has(math[display="block"]), .inferential-draft .cell-output-display:has(table) { overflow: visible; }
+  .inferential-draft .teaching-slide .math.display { font-size: 12pt; }
+}

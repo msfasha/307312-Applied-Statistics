@@ -1,0 +1,3474 @@
+[
+  {
+    "part": 1,
+    "source": "sources/slides/307102-inferential-01-original.pptx",
+    "sha256": "563e8b1abcb56cfa751095a98382b653347644606c95c5025ab3af31eb2d63b7",
+    "slide_count": 37,
+    "section_title": "Introduction to Probability Distributions",
+    "slides": [
+      {
+        "slide": 1,
+        "title_text": [
+          "307102\nDescriptive Statistics for Business"
+        ],
+        "title_lines": [
+          "307102",
+          "Descriptive Statistics for Business"
+        ],
+        "subtitle_text": [
+          "Introduction to Probability Distributions"
+        ],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "ctrTitle",
+            "text": "307102\nDescriptive Statistics for Business"
+          },
+          {
+            "placeholder_type": "subTitle",
+            "text": "Introduction to Probability Distributions"
+          }
+        ]
+      },
+      {
+        "slide": 2,
+        "title_text": [
+          "Content"
+        ],
+        "title_lines": [
+          "Content"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Content"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Introduction to Inferential Statistics\nRandom Variables and Probability Distributions\nDiscrete Random Variables\nContinuous Random Variables\nThe Normal Distribution\nThe Empirical Rule\nThe Standard Normal Distribution and the Standard Scores (Z-Scores)\nUsing the Z-Tables"
+          }
+        ]
+      },
+      {
+        "slide": 3,
+        "title_text": [
+          "Introduction to Inferential Statistics"
+        ],
+        "title_lines": [
+          "Introduction to Inferential Statistics"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "Definition",
+          "Objective"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Introduction to Inferential Statistics"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Definition: Inferential statistics is the branch of statistics that involves making inferences or predictions about a population based on sample data.\nObjective: The main goal of inferential statistics is to draw conclusions, make predictions, or test hypotheses about a population using information obtained from a sample."
+          }
+        ]
+      },
+      {
+        "slide": 4,
+        "title_text": [
+          "Inferential Statistics Uses"
+        ],
+        "title_lines": [
+          "Inferential Statistics Uses"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "Scientific Research",
+          "Business and Economics",
+          "Healthcare and Medicine",
+          "Education",
+          "Market Research and Data Analysis",
+          "Finance and Investment",
+          "Criminal Justice and Criminology",
+          "Sports and Athletics"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Inferential Statistics Uses"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Inferential statistics is used in various fields and contexts to make predictions, draw conclusions, and make inferences about populations based on sample data. Here are some common areas and applications where inferential statistics is used:\nScientific Research: Inferential statistics is fundamental in scientific research across disciplines such as biology, physics, chemistry, and environmental science. Researchers use statistical tests to analyze data and draw conclusions about hypotheses.\nBusiness and Economics: Businesses use inferential statistics for market research, sales forecasting, quality control, and decision-making. Econometric models are employed to analyze economic data and make policy recommendations.\nHealthcare and Medicine: Medical researchers and healthcare professionals use inferential statistics to study the effectiveness of treatments, analyze patient data, and draw conclusions about disease prevalence. Clinical trials rely heavily on inferential statistics.\nEducation: In the field of education, inferential statistics are used to assess the effectiveness of teaching methods, evaluate standardized test scores, and make policy decisions about educational programs.\nMarket Research and Data Analysis: Market researchers use inferential statistics to make predictions about consumer preferences, market trends, and the impact of marketing campaigns.\nFinance and Investment: In finance, inferential statistics are used to assess investment risk, analyze stock market data, and estimate future asset prices. Portfolio optimization and risk management rely on statistical modeling.\nCriminal Justice and Criminology: Researchers and law enforcement agencies use inferential statistics to analyze crime data, study crime patterns, and evaluate the effectiveness of criminal justice programs.\nSports and Athletics:  In sports analytics, inferential statistics are used to analyze player performance, predict game outcomes, and make strategic decisions in sports management."
+          }
+        ]
+      },
+      {
+        "slide": 5,
+        "title_text": [
+          "Introduction to Inferential Statistics"
+        ],
+        "title_lines": [
+          "Introduction to Inferential Statistics"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "Key Concepts",
+          "Population",
+          "Sample",
+          "Parameter",
+          "Statistic"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Introduction to Inferential Statistics"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Key Concepts:\nPopulation: The entire group of individuals or items of interest that we want to study.\nSample: A subset of the population from which data is collected and analyzed.\nParameter: A numerical characteristic of a population (e.g., mean, proportion).\nStatistic: A numerical characteristic of a sample (e.g., sample mean, sample proportion)."
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "https://medium.com/towards-data-science/what-is-p-value-370056b8244d"
+          }
+        ]
+      },
+      {
+        "slide": 6,
+        "title_text": [
+          "Types of Inferential Statistics"
+        ],
+        "title_lines": [
+          "Types of Inferential Statistics"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Types of Inferential Statistics"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Estimation\nPoint Estimation: Provides a single best guess about a population parameter (e.g., the mean, proportion).\nInterval Estimation (Confidence Intervals): Gives a range of values for a population parameter with a certain level of confidence.\nHypothesis Testing\nA statistical method that uses sample data to evaluate a hypothesis about a population parameter, determining whether there is sufficient evidence to accept or reject a given hypothesis about that population.\nRegression Analysis\nAssesses the linear relationship between one continuous dependent variable and one or more independent variables."
+          }
+        ]
+      },
+      {
+        "slide": 7,
+        "title_text": [
+          "Introduction to Random Variables"
+        ],
+        "title_lines": [
+          "Introduction to Random Variables"
+        ],
+        "subtitle_text": [
+          "Understanding the Basics of Probability in Statistics"
+        ],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Introduction to Random Variables"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Understanding the Basics of Probability in Statistics"
+          }
+        ]
+      },
+      {
+        "slide": 8,
+        "title_text": [
+          "What is a Random Variable? "
+        ],
+        "title_lines": [
+          "What is a Random Variable? "
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "body",
+            "text": "A random variable is a variable whose possible values are outcomes of a random process."
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "A random process is a process or event or where the outcome cannot be predicted with certainty, and each possible outcome has an associated probability.\nIt can be classified as discrete or continuous depending on the range of values that it assumes. \nA discrete random variable assumes a countable number of distinct values, whereas a continuous random variable is characterized by measurable (uncountable) values. \nExample: Flipping a coin (discrete), measuring the amount of rain in a day (continuous)"
+          },
+          {
+            "placeholder_type": "title",
+            "text": "What is a Random Variable? "
+          }
+        ]
+      },
+      {
+        "slide": 9,
+        "title_text": [
+          "Discrete Random Variables"
+        ],
+        "title_lines": [
+          "Discrete Random Variables"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "body",
+            "text": "A Discrete Random Variable is a variable which can take on only a countable number of distinct values like 0, 1, 2, 3, 4, 5…100, 1 million, etc. \nExamples of discrete random variables:\nThe number of cars that passes through a toll booth everyday in a given day.\nThe number of times a coin lands on tails after being flipped 20 times.\nThe number of defective widgets in a box of 50 widgets.\nNumber of Calls Received by a Call Center.\nNumber of Emails Received in a Day"
+          },
+          {
+            "placeholder_type": "title",
+            "text": "Discrete Random Variables"
+          }
+        ]
+      },
+      {
+        "slide": 10,
+        "title_text": [
+          "Continuous Random Variables"
+        ],
+        "title_lines": [
+          "Continuous Random Variables"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "body",
+            "text": "A Continuous Random Variable is a variable which can take on an infinite number of possible values. \nExamples of continuous random variables:\nBusiness profits.\nThe height of a tree.\nThe weight of an animal.\nArrival times of airlines.\nTime required to run a marathon.\nThe weight of a chocolate bar on a production line."
+          },
+          {
+            "placeholder_type": "title",
+            "text": "Continuous Random Variables"
+          }
+        ]
+      },
+      {
+        "slide": 11,
+        "title_text": [
+          "Introduction to Probability Distributions"
+        ],
+        "title_lines": [
+          "Introduction to Probability Distributions"
+        ],
+        "subtitle_text": [
+          "Discrete and Continuous Probability Distributions"
+        ],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Introduction to Probability Distributions"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Discrete and Continuous Probability Distributions"
+          }
+        ]
+      },
+      {
+        "slide": 12,
+        "title_text": [
+          "Discrete Probabilities Distributions"
+        ],
+        "title_lines": [
+          "Discrete Probabilities Distributions"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Discrete Probabilities Distributions"
+          }
+        ]
+      },
+      {
+        "slide": 13,
+        "title_text": [
+          "Introduction to Probability Distributions"
+        ],
+        "title_lines": [
+          "Introduction to Probability Distributions"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Introduction to Probability Distributions"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Probability distributions are mathematical functions that describe the likelihood of various outcomes in a statistical experiment.\nThey provide a mathematical framework for modeling random phenomena.\nDiscrete vs. Continuous Probability Distributions\nDiscrete distributions: Outcomes are countable and have finite or countably infinite values.\nContinuous distributions: Outcomes are uncountable and have an infinite range of values.\nFor a probability distribution to be valid, it must satisfy the following two criteria:\nThe probability for each outcome must be between 0 and 1.\nThe sum of all the probabilities must add up to 1."
+          }
+        ]
+      },
+      {
+        "slide": 14,
+        "title_text": [
+          "Discrete Probability Distributions\nThe Discrete Uniform Distribution"
+        ],
+        "title_lines": [
+          "Discrete Probability Distributions",
+          "The Discrete Uniform Distribution"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Discrete Probability Distributions\nThe Discrete Uniform Distribution"
+          }
+        ]
+      },
+      {
+        "slide": 15,
+        "title_text": [
+          "Discrete Uniform – PMF Uses"
+        ],
+        "title_lines": [
+          "Discrete Uniform – PMF Uses"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "Calculating individual probabilities",
+          "Finding probabilities of events",
+          "Range probabilities"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Discrete Uniform – PMF Uses"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Calculating individual probabilities\nExample: For a fair die (U(1,6)), the probability of rolling a 3 is:\nP(X = 3) = 1/(6-1+1) = 1/6 ≈ 0.167\nFinding probabilities of events\nFor multiple outcomes: Sum the individual probabilities\nExample: Probability of rolling an even number:\nP(X ∈ {2,4,6}) = P(X=2) + P(X=4) + P(X=6) = 1/6 + 1/6 + 1/6 = 3/6 = 0.5\nRange probabilities\nExample: Probability of rolling between 2 and 5 inclusive:\nP(2 ≤ X ≤ 5) = (5-2+1)/(6-1+1) = 4/6 = 0.667"
+          }
+        ]
+      },
+      {
+        "slide": 16,
+        "title_text": [
+          "Discrete Probability Distributions\nThe Binomial Distribution"
+        ],
+        "title_lines": [
+          "Discrete Probability Distributions",
+          "The Binomial Distribution"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Discrete Probability Distributions\nThe Binomial Distribution"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Example: The defect ratio in a car factory is 2% and the factory produces 80 cars in a month,. We can use the binomial distribution to answer questions similar to: \nwhat is the probability that exactly 2 cars are defective?\nwhat is the probability that less than 2 cars are defective?\nwhat is the probability that more than 2 cars are defective?\nWhat is the probability that all cars produced in a month will have no defects?"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "Models the number of successes in a fixed number of independent Bernoulli trials.\nBernoulli trial is the experiment that has only two outcomes (Yes and No).\nParameters:  (number of trials) and  (probability of success on each trial)."
+          }
+        ]
+      },
+      {
+        "slide": 17,
+        "title_text": [
+          "The Binomial Distribution"
+        ],
+        "title_lines": [
+          "The Binomial Distribution"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "The Binomial Distribution"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "Excel Function\n=BINOM.DIST(2,10,0.5,FALSE)"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "The larger the number of trials (e.g. ask 100 students) the more the distribution will look like normal distribution."
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "What is the probability of having 2 Heads ONLY out of 10 trials, knowing that the probability of Head = 50%?"
+          }
+        ]
+      },
+      {
+        "slide": 18,
+        "title_text": [
+          "Discrete Probability Distributions\nThe Poisson Distribution"
+        ],
+        "title_lines": [
+          "Discrete Probability Distributions",
+          "The Poisson Distribution"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Discrete Probability Distributions\nThe Poisson Distribution"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Example: Suppose that Zein call center receives 1000 calls/hour on average, and that data center has a capacity of receiving 1100 calls/hours. \nUse the Poisson Distribution to find the probability that the number of calls will exceed the call center's capacity, which will require additional temporary staff?"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "Poisson Distribution can be used to model the number of times an event occurs within a specified time period or in a given space. \nIt's particularly useful for estimating the likelihood of rare events over short intervals.\nThe key feature of the Poisson distribution is that it is defined by just one parameter, λ (lambda), which represents the average rate at which events occur."
+          }
+        ]
+      },
+      {
+        "slide": 19,
+        "title_text": [
+          "Poisson Distribution"
+        ],
+        "title_lines": [
+          "Poisson Distribution"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "text box",
+            "text": "Excel Function\n=POISSON.DIST(15,20,FALSE)"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "The larger the average rate λ, the more the distribution will look like normal distribution."
+          },
+          {
+            "placeholder_type": "title",
+            "text": "Poisson Distribution"
+          }
+        ]
+      },
+      {
+        "slide": 20,
+        "title_text": [
+          "Continuous Probabilities Distributions"
+        ],
+        "title_lines": [
+          "Continuous Probabilities Distributions"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Continuous Probabilities Distributions"
+          }
+        ]
+      },
+      {
+        "slide": 21,
+        "title_text": [
+          "The Continuous Uniform Distribution"
+        ],
+        "title_lines": [
+          "The Continuous Uniform Distribution"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "The Continuous Uniform Distribution"
+          }
+        ]
+      },
+      {
+        "slide": 22,
+        "title_text": [
+          "The Continuous Uniform Distribution\nBusiness Cases Studies"
+        ],
+        "title_lines": [
+          "The Continuous Uniform Distribution",
+          "Business Cases Studies"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "Inventory Arrival",
+          "Manufacturing"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "The Continuous Uniform Distribution\nBusiness Cases Studies"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Inventory Arrival\nA retailer's deliveries arrive uniformly between 8 AM and 12 PM."
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "Manufacturing\nA machine produces widgets with diameters uniformly distributed between 9.8mm and 10.2mm."
+          }
+        ]
+      },
+      {
+        "slide": 23,
+        "title_text": [
+          "The Normal Distribution"
+        ],
+        "title_lines": [
+          "The Normal Distribution"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "The Normal Distribution"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "The normal distribution is the most extensively used probability distribution in statistical work.\nIt is also known as the Gaussian distribution and the Bell Curve.\nThe x-axis represents the outcomes of the normal process (e.g. students scores, heights, salaries…etc.).\nThe AREA UNDER THE CURVE represents the probability of the outcome.\nThe normal distribution has a symmetric distribution where most of the observations cluster around the central peak.\nTheoretically, a normal random variable can assume any value between minus infinity and plus infinity.\nNormal Distribution Main Features:\nSymmetrically distributed\nLong Tails / Bell Shaped\nMean/ Mode and Median are the same"
+          }
+        ]
+      },
+      {
+        "slide": 24,
+        "title_text": [
+          "Parameters of the Normal Distribution"
+        ],
+        "title_lines": [
+          "Parameters of the Normal Distribution"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "body",
+            "text": "The normal distribution is completely described by two parameters, the Mean and the Standard Deviation. \nWhere X is a continuous random variable (the expected outcome of a continuous random process).\nμ = The Mean of the Outcomes of the Random Process.\nσ = The Standard Deviation of the Outcomes of the Random Process.\nπ is approximately 3.14159.\ne is approximately 2.71828."
+          },
+          {
+            "placeholder_type": "title",
+            "text": "Parameters of the Normal Distribution"
+          }
+        ]
+      },
+      {
+        "slide": 25,
+        "title_text": [
+          "The Empirical Rule for the Normal Distribution"
+        ],
+        "title_lines": [
+          "The Empirical Rule for the Normal Distribution"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "The Empirical Rule for the Normal Distribution"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "The Empirical Rule describes how data (continuous outcomes) are spread in a normal distribution.\nThe proportion of the area that falls under the curve between two points on a probability distribution indicates the probability that a value will fall within that interval. \nIf we know that the data are drawn from a relatively symmetric and bell-shaped distribution - perhaps by a visual inspection of its histogram, then we can make statements about the percentage of observations that fall within certain intervals."
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "Approximately 68% of data fall within one standard deviation (σ) of the mean (μ).\nAround 95% are within two standard deviations.\nAbout 99.7% lie within three standard deviations."
+          }
+        ]
+      },
+      {
+        "slide": 26,
+        "title_text": [
+          "Empirical Rule Example"
+        ],
+        "title_lines": [
+          "Empirical Rule Example"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "text box",
+            "text": "A large lecture class has 280 students. The professor has announced that the mean score in an exam is 74 with a standard deviation of 8. \nUse the Empirical Rule to answer the following:\nApproximately how many students within 58 and 90?\nApproximately how many students scored higher than 90?"
+          },
+          {
+            "placeholder_type": "title",
+            "text": "Empirical Rule Example"
+          }
+        ]
+      },
+      {
+        "slide": 27,
+        "title_text": [
+          "The Z - Score"
+        ],
+        "title_lines": [
+          "The Z - Score"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "text box",
+            "text": "Interpretation:\nA z-score of 0 corresponds to a data point that is exactly at the mean.\nPositive z-scores indicate values above the mean.\nNegative z-scores indicate values below the mean."
+          },
+          {
+            "placeholder_type": "title",
+            "text": "The Z - Score"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Definition: Z-Score represents the number of standard deviations a data point is from the mean of its distribution.\nFormula: "
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "Where X is a data point, μ is the mean, and σ is the standard deviation."
+          }
+        ]
+      },
+      {
+        "slide": 28,
+        "title_text": [
+          "Back to our Empirical Rule Example"
+        ],
+        "title_lines": [
+          "Back to our Empirical Rule Example"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "Solution for part (a)",
+          "Solution for part (b)"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "text box",
+            "text": "A large lecture class has 280 students. The professor has announced that the mean score in an exam is 74 with a standard deviation of 8. \nUse the Empirical Rule to answer the following:\nApproximately how many students within 58 and 90?\nApproximately how many students scored higher than 90?"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "Solution for part (a) \nFirst, we find the z-scores corresponding to 58 and 90.\nZ for 58 = (58 – 74) / 8 = -16/8 = -2, Z for 90 = (58 – 74) / 8 = 16/8 = +2\nUsing the empirical rule, we know that 95% of observations falls within 2 standard deviations (each side) from the mean, therefore, the number of students under this criteria = 280 x .95 = 266 students."
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "Solution for part (b) \nThe score 90 is 2 standard deviations above the mean.\nTherefore, 97.5% of students are below that value and 2.5% are above it.\nConsequently, 2.5/100 * 280 = 7 students are above 90."
+          },
+          {
+            "placeholder_type": "title",
+            "text": "Back to our Empirical Rule Example"
+          }
+        ]
+      },
+      {
+        "slide": 29,
+        "title_text": [
+          "Z-Scores Uses in Statistics"
+        ],
+        "title_lines": [
+          "Z-Scores Uses in Statistics"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "Standardization",
+          "Identification of Outliers",
+          "Compare values",
+          "Probabilities and Percentiles"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Z-Scores Uses in Statistics"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Standardization: Z-scores standardize different distributions to be comparable by converting them to a common scale.\nIdentification of Outliers: Data points with z-scores less than -2 or greater than 2 are often considered outliers.\nCompare values from different populations (e.g. exam results between courses).\nProbabilities and Percentiles: Z-scores link data points to their probabilities and percentiles in a normal distribution. E.g., a z-score of 1.96 corresponds to the 97.5th percentile."
+          }
+        ]
+      },
+      {
+        "slide": 30,
+        "title_text": [
+          "Z-Scores Example – Comparing Values"
+        ],
+        "title_lines": [
+          "Z-Scores Example – Comparing Values"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Z-Scores Example – Comparing Values"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Khalid achieved 90 in both Python & Database exams. The mean μ for the Python exam was 70 and σ = 10, The μ for the Database exam was 80 and σ = 10.\nUse standard scores to determine where did Khalid achieve a better score."
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "Standard score for the Python Exam: (90−70)/10 =2\nStandard score for the Database Exam: (90−80)/10 =1\nKhalid's Z-score for the Python exam is 2, which means his score was 2 standard deviations above the mean. \nHis Z-score for the Database exam is 1, indicating his score was 1 standard deviation above the mean.\nKhalid performed better on the Python exam than Database exam since his Z-score is higher for that exam. "
+          }
+        ]
+      },
+      {
+        "slide": 31,
+        "title_text": [
+          "How to Find the Right Distribution"
+        ],
+        "title_lines": [
+          "How to Find the Right Distribution"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "How to Find the Right Distribution"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "from distfit import distfit\nimport numpy as np\n\n# Let's say you have some data\nmy_data = np.random.normal(25, 8, 2000) # 2000 data points\n\n# Set up the distribution fitter\nfitter = distfit(method='parametric')\n\n# Let it try different distributions and find the best fit\nfitter.fit_transform(my_data)\n\n# See what it found\nprint(\"Best fit:\", fitter.model['name'])\nprint(\"Parameters:\", fitter.model['params'])"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "Distfit library tests around 90 different distributions automatically. \nIt's like having a statistician who's willing to try every possible option and tell you which one works best."
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "https://medium.com/data-science-collective/how-to-find-the-right-distribution-for-your-data-a-practical-guide-for-non-statistician-with-two-dc2aa0ed707f"
+          }
+        ]
+      },
+      {
+        "slide": 32,
+        "title_text": [
+          "Z-Tables"
+        ],
+        "title_lines": [
+          "Z-Tables"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "Visible divider title in an ordinary text box, verified against the source render.",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "text box",
+            "text": "Z-Tables"
+          }
+        ]
+      },
+      {
+        "slide": 33,
+        "title_text": [
+          "The Z-Tables"
+        ],
+        "title_lines": [
+          "The Z-Tables"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "The Z-Tables"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "The area under the curve in continuous probability distributions represents the probability of outcome occurrence.\nThe Empirical Rule has pre-defined areas for certain Z-Scores.\nWhat can we do if we need the area between other Z-Scores e.g. +1.25, -2.33?\nIt will be hard to compute the integral for different intervals:\nA simpler solution would be to use a table of pre-computed areas (The Z-Table).\nBut we need to compute that area ONCE. Therefore, we need to create a Standard Distribution."
+          }
+        ]
+      },
+      {
+        "slide": 34,
+        "title_text": [
+          "Standard Normal Distribution and Standard Z Scores"
+        ],
+        "title_lines": [
+          "Standard Normal Distribution and Standard Z Scores"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Standard Normal Distribution and Standard Z Scores"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "The standard normal distribution is a special case of the normal distribution where the mean is zero and the standard deviation is 1. \nThis distribution is also known as the Z-distribution.\nA value on the standard normal distribution is known as a standard score or a Z-score. \nA standard score represents the number of standard deviations above or below the mean that a specific observation falls. \nFor example, a standard score of 1.5 indicates that the observation is 1.5 standard deviations above the mean. \nOn the other hand, a negative score represents a value below the average. \nThe mean has a Z-score of 0."
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "https://medium.com/towards-data-science/what-is-p-value-370056b8244d"
+          }
+        ]
+      },
+      {
+        "slide": 35,
+        "title_text": [
+          "Z-Table for Z Values above 0"
+        ],
+        "title_lines": [
+          "Z-Table for Z Values above 0"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "Z-Table for Z Values below 0"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Z-Table for Z Values above 0"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "Z-Table for Z Values below 0"
+          }
+        ]
+      },
+      {
+        "slide": 36,
+        "title_text": [
+          "Z-Tables Example"
+        ],
+        "title_lines": [
+          "Z-Tables Example"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Z-Tables Example"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "The average score for the MID exam in Descriptive Statistics course was 70. The standard Deviation for that exam was 6.\nKnowing that the exam scores are normally distributed, what is the probability of having a score higher than 75 in that exam?"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "First, we need to find the standard position (z-score) for the 75 score.\nZ score for (75) = (75 – 70) / 6 = 5/6 = .833\nUsing the z table, the closest value for .833 is: 0.7967 which corresponds to 79.67% of scores are below 75.\nTo find the probability of having a score over 75, we subtract 79.67% out of the total probability of 100%:\n100 – 79.67 = 20.33%"
+          }
+        ]
+      },
+      {
+        "slide": 37,
+        "title_text": [
+          "Z-Tables using Excel Functions"
+        ],
+        "title_lines": [
+          "Z-Tables using Excel Functions"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Z-Tables using Excel Functions"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "The average score for the MID exam in Descriptive Statistics course was 70. The standard Deviation for that exam was 6.\nWhat is the probability of having a score higher than 90 in that exam?\nWe can use Excel NORM.DIST function. This function expects 4 values, the value we want to find its probability, the mean, the standard deviation and we set cumulative = TRUE.\nNORM.DIST(75,70,6,True) = 0.797672 \nTherefore, the probability of having a score > 75 = 1 - .797672 = .2023% ~ 20%"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "part": 2,
+    "source": "sources/slides/307102-inferential-02-original.pptx",
+    "sha256": "e5f9c87cd98ca110428aa201a3ea9cb105066dda4bb5d0bf657df617cb6b872d",
+    "slide_count": 26,
+    "section_title": "Introduction to Estimation in Statistics",
+    "slides": [
+      {
+        "slide": 1,
+        "title_text": [
+          "307102\nDescriptive Statistics for Business"
+        ],
+        "title_lines": [
+          "307102",
+          "Descriptive Statistics for Business"
+        ],
+        "subtitle_text": [
+          "Introduction to Estimation in Statistics"
+        ],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "307102\nDescriptive Statistics for Business"
+          },
+          {
+            "placeholder_type": "subTitle",
+            "text": "Introduction to Estimation in Statistics"
+          }
+        ]
+      },
+      {
+        "slide": 2,
+        "title_text": [
+          "Content"
+        ],
+        "title_lines": [
+          "Content"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Content"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Introduction to Inferential Statistics\nEstimation in Statistics (Point Estimate and Interval Estimate)\nThe Central Limit Theorem (CLT)\nConfidence Intervals – Using Z-Tables\nConfidence Intervals – Using T-Tables"
+          }
+        ]
+      },
+      {
+        "slide": 3,
+        "title_text": [
+          "Estimation in Statistics"
+        ],
+        "title_lines": [
+          "Estimation in Statistics"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Estimation in Statistics"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Often in statistics we’re interested in measuring population parameters.\nTwo of the most common population parameters are:\nPopulation mean: the mean value of some variable in a population (e.g. the mean height of males in the U.S.)\nPopulation proportion: the proportion of some variable in a population (e.g. the proportion of residents in a county who support a certain law)\nAlthough we’re interested in measuring these parameters, it’s usually too costly and time-consuming to go around and collect data on every individual in a population in order to calculate the population parameter.\nInstead, we typically take a random sample from the overall population and use data from the sample to estimate the population parameter."
+          }
+        ]
+      },
+      {
+        "slide": 4,
+        "title_text": [
+          "Point vs. Interval"
+        ],
+        "title_lines": [
+          "Point vs. Interval"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Point vs. Interval"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "A point estimate is a single value estimate of a parameter. For instance, a sample mean is a point estimate of a population mean. \nAn interval estimate gives you a range of values where the parameter is expected to lie. \nBoth types of estimates are important for gathering a clear idea of where a parameter is likely to lie."
+          }
+        ]
+      },
+      {
+        "slide": 5,
+        "title_text": [
+          "Point Estimates"
+        ],
+        "title_lines": [
+          "Point Estimates"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Point Estimates"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Suppose we want to estimate the mean weight of a students in the university.\nSince there are thousands of students in the university, it would be extremely time-consuming and costly to go around and weigh each individual student.\nInstead, we might take a random sample of 50 students and use the mean weight of the students in this sample to estimate the true population mean."
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "In this case, the mean weight  of the sample is called a Point Estimate for the true mean weight of the population."
+          }
+        ]
+      },
+      {
+        "slide": 6,
+        "title_text": [
+          "Interval Estimates - Confidence Intervals"
+        ],
+        "title_lines": [
+          "Interval Estimates - Confidence Intervals"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Interval Estimates - Confidence Intervals"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "The problem with the previous example is that the mean weight of students in the sample is not guaranteed to exactly match the mean weight of students in the whole population. \nFor example, we might just happen to pick a sample full of low-weight students or perhaps a sample full of heavy students.\nTo capture this uncertainty, we can create an Interval Estimate or a confidence interval around our point estimate."
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "The confidence interval gives us a range of values that are likely to contain the true population parameter."
+          }
+        ]
+      },
+      {
+        "slide": 7,
+        "title_text": [
+          "Computing Confidence Intervals"
+        ],
+        "title_lines": [
+          "Computing Confidence Intervals"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Computing Confidence Intervals"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "https://medium.com/@ashisharora2204/hypothesis-testing-confidence-interval-level-margin-of-error-39aa7c7ddcd2"
+          }
+        ]
+      },
+      {
+        "slide": 8,
+        "title_text": [
+          "The Significance Level Alpha (α) and The Confidence Level"
+        ],
+        "title_lines": [
+          "The Significance Level Alpha (α) and The Confidence Level"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "The Significance Level Alpha (α) and The Confidence Level"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "To compute the confidence interval, we need to define the Significance Level Alpha (α) or the Confidence Level.\nThe two terms are related to each other according to the following equation:\nConfidence level= 1 – α\nCommon values for these notations are listed in the table"
+          }
+        ]
+      },
+      {
+        "slide": 9,
+        "title_text": [
+          "The Significance Level Alpha (α) and The Confidence Level"
+        ],
+        "title_lines": [
+          "The Significance Level Alpha (α) and The Confidence Level"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "The Significance Level Alpha (α) and The Confidence Level"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "The confidence level (e.g. 95%) means that if we collected 100 samples and created confidence intervals for each of these samples, we would expect that 95% of these confidence intervals will contain the true population parameter. \nIt's important to note that this is a theoretical long-term proportion—it's about what we'd expect to happen over many repetitions of the same process, not a guarantee for any individual interval."
+          }
+        ]
+      },
+      {
+        "slide": 10,
+        "title_text": [
+          "Relationship Between Confidence Level and Significance Level in Statistics"
+        ],
+        "title_lines": [
+          "Relationship Between Confidence Level and Significance Level in Statistics"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "Relationship:",
+          "Formula:",
+          "Example:"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Relationship Between Confidence Level and Significance Level in Statistics"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "The confidence level and the significance level (α) are inverse and complementary concepts in statistical inference and hypothesis testing.\nRelationship:\nThe two are complementary, meaning that if you increase one, you decrease the other, and vice versa.\nA higher confidence level corresponds to a lower significance level, while a lower confidence level corresponds to a higher significance level.\nFormula:\nConfidence Level=1−α\nExample:\nA 95% confidence level means the significance level is 0.05 (α = 5%).\nA 99% confidence level means the significance level is 0.01 (α = 1%)."
+          }
+        ]
+      },
+      {
+        "slide": 11,
+        "title_text": [
+          "Where did the Standard Error Come From?\nThe Central Limit Theorem"
+        ],
+        "title_lines": [
+          "Where did the Standard Error Come From?",
+          "The Central Limit Theorem"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Where did the Standard Error Come From?\nThe Central Limit Theorem"
+          }
+        ]
+      },
+      {
+        "slide": 12,
+        "title_text": [
+          "The Central Limit Theorem"
+        ],
+        "title_lines": [
+          "The Central Limit Theorem"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "The Central Limit Theorem"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "The Central Limit Theorem (CLT) states that samples means created from large number of samples will be approximately normally distribution although the distribution we sample from might not be normal.\nWhen we collect large number of samples and we compute the average for each of these samples, we call the generated means as the Sampling Distribution of the means.\nThe distribution of samples means becomes more normal when the samples size increases.\nAccording to CLT:\n1- The mean of the sampling distribution would be equal to the mean of the original distribution.\n2- The variance of the sampling distribution of the sample mean would be equal to the variance of the original distribution divided by n, where n is the size of the samples."
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "Click here for a CLT simulator."
+          }
+        ]
+      },
+      {
+        "slide": 13,
+        "title_text": [
+          "Inference: Turning the Sampling Model Around"
+        ],
+        "title_lines": [
+          "Inference: Turning the Sampling Model Around"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Inference: Turning the Sampling Model Around"
+          }
+        ]
+      },
+      {
+        "slide": 14,
+        "title_text": [
+          "The Symmetry IThe Symmetry Idea Behind Confidence Intervalsdea Behind Confidence Intervals"
+        ],
+        "title_lines": [
+          "The Symmetry IThe Symmetry Idea Behind Confidence Intervalsdea Behind Confidence Intervals"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "Duplicated/corrupted title text is present in the original; preserved verbatim.",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "The Symmetry IThe Symmetry Idea Behind Confidence Intervalsdea Behind Confidence Intervals"
+          }
+        ]
+      },
+      {
+        "slide": 15,
+        "title_text": [
+          "From CLT to Confidence Intervals"
+        ],
+        "title_lines": [
+          "From CLT to Confidence Intervals"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "From CLT to Confidence Intervals"
+          }
+        ]
+      },
+      {
+        "slide": 16,
+        "title_text": [
+          "Empirical Proof that Standard Error is an Approximate for the True SD of Sample Means"
+        ],
+        "title_lines": [
+          "Empirical Proof that Standard Error is an Approximate for the True SD of Sample Means"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Empirical Proof that Standard Error is an Approximate for the True SD of Sample Means"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "import numpy as np\nimport matplotlib.pyplot as plt\n\n# Set population parameters\npopulation = np.random.normal(loc=50, scale=10, size=1000000)\ntrue_sigma = np.std(population)\n\n# Simulation setup\nsample_size = 30\nnum_samples = 1000\nsample_means = []\nsample_sds = []\n\nfor _ in range(num_samples):\n    sample = np.random.choice(population, sample_size)\n    sample_means.append(np.mean(sample))\n    sample_sds.append(np.std(sample, ddof=1))\n\n# Calculate actual SD of sample means\nsd_of_sample_means = np.std(sample_means)\n\n# Calculate average standard error estimate\naverage_se = np.mean([s / np.sqrt(sample_size) for s in sample_sds])\n\nprint(f\"True SD of sample means: {sd_of_sample_means:.4f}\")\nprint(f\"Average estimated SE:     {average_se:.4f}\")\n\n# Optional: plot histogram\nplt.hist(sample_means, bins=30, edgecolor='black')\nplt.title('Distribution of Sample Means')\nplt.xlabel('Sample Mean')\nplt.ylabel('Frequency')\nplt.show()"
+          }
+        ]
+      },
+      {
+        "slide": 17,
+        "title_text": [
+          "Confidence Intervals Example"
+        ],
+        "title_lines": [
+          "Confidence Intervals Example"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Confidence Intervals Example"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Suppose we randomly collected a sample of students with the following information:\nSample size n = 50\nSample mean weight x = 73.16 kg\nPopulation standard deviation s = 8.63\nWhat is the 90% confidence interval for the true population mean weight?"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "To find the upper bound z-score for the 90% CI, we need to look for area 95% in the z table i.e. 90% + 5% (Look at the Figure)\nTherefore, according to the z-table, the upper bound z-score for the 90% Confidence Interval = 1.64 i.e. lower bound is -1.64.\nThe Margin of Error = 1.64 * (8.63/√50) = ~2\nTherefore, the 90% CI = 73.16 ± 2 = [71.16, 75.16]"
+          }
+        ]
+      },
+      {
+        "slide": 18,
+        "title_text": [
+          "Confidence Intervals Example"
+        ],
+        "title_lines": [
+          "Confidence Intervals Example"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Confidence Intervals Example"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "We interpret this 90% confidence interval as follows:\nThe interval [71.16 kgs to 75.16 kgs] gives us a good estimate of where the mean lies, based on the collective information from our samples. \nThe 90% means that if we estimate the population parameter and computed the confidence intervals 100 times, we expect that 90% of these intervals will contain our parameter."
+          }
+        ]
+      },
+      {
+        "slide": 19,
+        "title_text": [
+          "Solving Confidence Intervals using Excel Functions"
+        ],
+        "title_lines": [
+          "Solving Confidence Intervals using Excel Functions"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Solving Confidence Intervals using Excel Functions"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Suppose we randomly collected a sample of students with the following information:\nSample size n = 50\nSample mean weight x = 73.16 kg\nSample standard deviation s = 8.63\nWhat is the 90% confidence interval for the true population mean weight?"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "We can compute the confidence interval using Excel CONFIDENCE.NORM function.\nThis function computes the margin of error.\nCONFIDENCE.NORM(.1 , 8.63 , 50) = 2.0074 ~ 2\nTherefore, the 90% CI = 73.16 ± 2 = [71.16, 75.16]"
+          }
+        ]
+      },
+      {
+        "slide": 20,
+        "title_text": [
+          "Transitioning to T-Distribution"
+        ],
+        "title_lines": [
+          "Transitioning to T-Distribution"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Transitioning to T-Distribution"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "The T-distribution, like the normal distribution, is bell-shaped and symmetric but has heavier tails.\nThis means there is more probability in the tails and less in the center compared to a normal distribution.\nThe exact shape of the T-distribution depends on the degrees of freedom (df), which are related to the sample size.\nDegrees of freedom in the context of the T-distribution refer to the number of independent values in a calculation of a statistic that are free to vary.\nFor a confidence interval, df is equal to the sample size (n) minus 1 (df = n - 1).\nAs the sample size increases, the T-distribution approaches the normal Z-distribution."
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "https://www.scribbr.com/statistics/t-distribution/"
+          }
+        ]
+      },
+      {
+        "slide": 21,
+        "title_text": [
+          "When to use T-Distribution"
+        ],
+        "title_lines": [
+          "When to use T-Distribution"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "When to use T-Distribution"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "We can use the Z-distribution when the population variance is known or when our data is large enough (n > 30).\nHowever, real-world data often doesn't come with this information.\nIn practice, the population variance is unknown, and we usually estimate the population variance using the sample variance, which introduces more variability into our statistics.\nThe T-distribution accommodates this additional uncertainty and is especially useful for small sample sizes.\nThe T-distribution often serves as a safer alternative because it accounts for the additional uncertainty from estimating the population variance."
+          }
+        ]
+      },
+      {
+        "slide": 22,
+        "title_text": [
+          "The T Table"
+        ],
+        "title_lines": [
+          "The T Table"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "The T Table"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "The first column, denoted \"v,\" lists the degrees of freedom. \nDegrees of freedom typically equal the sample size minus one (n-1) and relate to the number of independent values in a set of observations.\nThe top row lists different significance levels (α), like the probabilities in z-table.\nThe intersection of a row and column gives the t-value or t score, which is the cutoff point on the t-distribution. \nThe table lists the areas (probability) on the right side, of the t-scores (opposite to the z-tables), therefore, to find a t scores for confident intervals we split α by 2 and look out the resulting value in the table.\nFor example, to find the 90% confidence interval for a sample of 20 observations, we find α which is 1 - .9 = .1\nWe split α by 2 = .1 / 2 = 0.05 and we lookout that value in the table = 1.729"
+          }
+        ]
+      },
+      {
+        "slide": 23,
+        "title_text": [
+          "Confidence Intervals Using T-Distribution"
+        ],
+        "title_lines": [
+          "Confidence Intervals Using T-Distribution"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Confidence Intervals Using T-Distribution"
+          }
+        ]
+      },
+      {
+        "slide": 24,
+        "title_text": [
+          "Interval Estimates - Confidence Intervals"
+        ],
+        "title_lines": [
+          "Interval Estimates - Confidence Intervals"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Interval Estimates - Confidence Intervals"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Suppose we randomly collected a sample of students with the following information:\nSample size n = 20\nSample mean weight x = 72.94 kg\nSamples standard deviation s = 8.3946\nWhat is the 90% confidence interval for the true population mean weight?"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "Confidence Interval 90%  α = 1 - 0.9 = 0.1  α/2 = 0.05\nAccording to the t-table, the t-score for the 0.05 with df 20 – 1 =  19  t score = 1.729\nThe Margin of Error = 1.729 * (8.3946/√20) = 3.25 \nTherefore, the 90% CI = 72.94 ± 3.25 = [69.69, 76.19]"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "What is the difference between the 90% Confidence Interval of the Z-Distribution and the 90% Confidence Interval of the T-Distribution?"
+          }
+        ]
+      },
+      {
+        "slide": 25,
+        "title_text": [
+          "Solving Confidence Intervals using Excel Functions"
+        ],
+        "title_lines": [
+          "Solving Confidence Intervals using Excel Functions"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Solving Confidence Intervals using Excel Functions"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Suppose we randomly collected a sample of students with the following information:\nSample size n = 20\nSample mean weight x = 72.94 kg\nSamples standard deviation s = 8.3946\nWhat is the 90% confidence interval for the true population mean weight?"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "We can compute the confidence interval using Excel CONFIDENCE.T function.\nThis function computes the margin of error.\nCONFIDENCE.T(.1 , 8. 39 , 20) = 3.24 ~ 2\nTherefore, the 90% CI = 72.94 ± 3.24 = [69.69, 76.19]"
+          }
+        ]
+      },
+      {
+        "slide": 26,
+        "title_text": [
+          "Steps to Calculate the Needed Sample Size"
+        ],
+        "title_lines": [
+          "Steps to Calculate the Needed Sample Size"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "Estimate population variability (σ),",
+          "Select the type of sampling",
+          "Choose the statistical test or analysis",
+          "Use a sample size formula or software tool",
+          "Consider practical constraints"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Steps to Calculate the Needed Sample Size"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Define your research objectives and questions.\nChoose a significance level (α) and desired margin of error (E).\nEstimate population variability (σ), or use conservative estimates if unknown.\nDetermine the population size (N).\nSelect the type of sampling (random or stratified).\nChoose the statistical test or analysis that will be applied.\nUse a sample size formula or software tool to calculate the required sample size.\nConsider practical constraints and adjust for potential non-response.\nConduct the study, analyze data, and interpret results."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "part": 3,
+    "source": "sources/slides/307102-inferential-03-original.pptx",
+    "sha256": "65a62f1456d967e67093d4f72abc934465ab369d14b6ca9a9409f52b67480de5",
+    "slide_count": 57,
+    "section_title": "Introduction to Hypothesis Testing",
+    "slides": [
+      {
+        "slide": 1,
+        "title_text": [
+          "307102\nDescriptive Statistics for Business"
+        ],
+        "title_lines": [
+          "307102",
+          "Descriptive Statistics for Business"
+        ],
+        "subtitle_text": [
+          "Introduction to Hypothesis Testing"
+        ],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "ctrTitle",
+            "text": "307102\nDescriptive Statistics for Business"
+          },
+          {
+            "placeholder_type": "subTitle",
+            "text": "Introduction to Hypothesis Testing"
+          }
+        ]
+      },
+      {
+        "slide": 2,
+        "title_text": [
+          "Content"
+        ],
+        "title_lines": [
+          "Content"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Content"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Introduction to Hypothesis Testing\nBusiness Examples\nSignificance Level – Alpha\nComputing T-Statistic\nCritical Value Approach vs P-Value Approach\nType I and Type II Errors\nT-Test: Used for normally distributed data when the variance is unknown.\nOne-sample t-test: Tests the mean of a single group against a known mean.\nTwo-sample t-test: Compares the means of two dependent groups (paired test).\nTwo-sample t-test: Compares the means of two independent groups (variance assumed to be equal).\nTwo-sample t-test: Compares the means of two independent groups (variance assumed to be not equal).\nProportion Test: Compare sample proportion to a benchmark (e.g., open rate, conversion rate).\nANOVA (Analysis of Variance): Used to compare the means of three or more samples.\nOne Way ANOVA\nTwo Way ANOVA\nChi-square test: Tests for relationships between categorical variables."
+          }
+        ]
+      },
+      {
+        "slide": 3,
+        "title_text": [
+          "Hypothesis Testing"
+        ],
+        "title_lines": [
+          "Hypothesis Testing"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "Hypothesis Testing"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Hypothesis Testing"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Hypothesis Testing is a statistical method that uses sample data to evaluate a hypothesis about a population parameter.\nA hypothesis is a claim about a population parameter that can be examined.\nThe purpose of hypothesis testing is to determine whether there is enough evidence in a sample of data to support a particular belief about a population.\nExamples of claims that can be checked:\nTesting if a new marketing campaign increases customer engagement.\nChecking whether a redesigned website improves conversion rates.\nEvaluating if a new product packaging affects sales volume.\nDetermining if weekend promotions boost in-store foot traffic.\nAssessing whether remote work impacts employee productivity.\nComparing customer satisfaction between two service locations.\nTesting if a loyalty program increases repeat purchase rates.\nSeeing if a price change affects total revenue.\nChecking whether a new supplier leads to fewer product defects.\nMeasuring if training improves sales team performance."
+          }
+        ]
+      },
+      {
+        "slide": 4,
+        "title_text": [
+          "Business Related Examples in Hypothesis Testing"
+        ],
+        "title_lines": [
+          "Business Related Examples in Hypothesis Testing"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "Marketing",
+          "Sales & Revenue"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Business Related Examples in Hypothesis Testing"
+          }
+        ]
+      },
+      {
+        "slide": 5,
+        "title_text": [],
+        "title_lines": [],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "Operations",
+          "Customer Behavior",
+          "Human Resources"
+        ],
+        "note": "No slide title. Continuation of the business-example table on slide 4; verified against the source render.",
+        "native_text_blocks": []
+      },
+      {
+        "slide": 6,
+        "title_text": [
+          "Key Concepts"
+        ],
+        "title_lines": [
+          "Key Concepts"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "Null Hypothesis (H₀):",
+          "Alternative Hypothesis (H₁ or Ha):",
+          "Significance Level (α):",
+          "p-value:",
+          "Test Statistic:"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Key Concepts"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Null Hypothesis (H₀): A statement of no effect or no difference (usually we want to test this null state against a difference made by an intervention)\nAlternative Hypothesis (H₁ or Ha): What you want to prove – a statement of effect or difference.\nSignificance Level (α): Probability of rejecting H₀ when it is actually true. Common choices: 0.05, 0.01.\np-value: Probability of observing a result at least as extreme as the one obtained, assuming H₀ is true.\nTest Statistic: A value calculated from the sample to decide whether to reject H₀."
+          }
+        ]
+      },
+      {
+        "slide": 7,
+        "title_text": [
+          "The Null and The Alternative Hypothesis"
+        ],
+        "title_lines": [
+          "The Null and The Alternative Hypothesis"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "The Null hypothesis 𝐻₀:",
+          "The Alternative hypothesis 𝐻ₐ:"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "The Null and The Alternative Hypothesis"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "When formulating a hypothesis test, we define two hypotheses: the null hypothesis (𝐻₀) and the alternative hypothesis (𝐻₁ or 𝐻ₐ).\nThese two hypotheses complement each other—only one of them can be valid.\nFor example, suppose a company claims that the average delivery time of its orders is 3 days. \nTo test this claim, the company defines the hypotheses as following:\nThe Null hypothesis 𝐻₀: The average delivery time IS EQUAL TO 3 days.\nThe Alternative hypothesis 𝐻ₐ: The average delivery time IS NOT 3 days.\nHypotheses are often expressed with symbols like this:\n𝐻₀: μ = 3 days\n𝐻ₐ: μ ≠ 3 days\nNotice that the null hypothesis sets a baseline assuming no difference or effect—in this context, that the mean delivery time is not different from 3 days.\nThe burden of proof lies with the alternative hypothesis, which must show sufficient evidence that the average delivery time is different from 3 days."
+          }
+        ]
+      },
+      {
+        "slide": 8,
+        "title_text": [
+          "Choosing the Right Test"
+        ],
+        "title_lines": [
+          "Choosing the Right Test"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "One-sample z-test or t-test",
+          "Proportion test",
+          "Two-sample t-test",
+          "Chi-square test",
+          "ANOVA Test:"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Choosing the Right Test"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "One-sample z-test or t-test: Compare sample mean to a known value.\nProportion test: Compare sample proportion to a benchmark (e.g., open rate, conversion rate).\nTwo-sample t-test: Compare means between two groups (e.g., control vs test).\nChi-square test: Compare categorical variables (e.g., customer satisfaction vs region).\nANOVA Test: Compare means between three or more groups."
+          }
+        ]
+      },
+      {
+        "slide": 9,
+        "title_text": [
+          "The Process"
+        ],
+        "title_lines": [
+          "The Process"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "Formulate Hypotheses",
+          "Null hypothesis (H₀):",
+          "Alternative hypothesis (Hₐ):",
+          "Choose a Significance Level (α)",
+          "Collect and Analyze Data",
+          "Calculate the Test Statistic",
+          "Determine the Critical Region",
+          "Compare the Test Statistic to Critical Values",
+          "Calculate the P-Value (Alternative Approach)",
+          "Decision rule:",
+          "Make a Decision",
+          "Reject H₀:",
+          "Fail to reject H₀:",
+          "Interpret Results"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "The Process"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Formulate Hypotheses\nNull hypothesis (H₀): A statement of no effect or no difference. It represents the default assumption being tested.\nAlternative hypothesis (Hₐ): The hypothesis you want to provide evidence for, suggesting there is an effect, difference, or relationship in the population.\nChoose a Significance Level (α)\nSelect the probability of making a Type I error (rejecting H₀ when it is true).\nCommon choices: 0.05 (5%) or 0.01 (1%).\nCollect and Analyze Data\nGather sample data relevant to your research question.\nPerform an appropriate statistical analysis (e.g., t-test, chi-square test, ANOVA) depending on your study design.\nCalculate the Test Statistic\nCompute the test statistic based on sample data and H₀.\nThis quantifies how different the sample is from what is expected under H₀.\nDetermine the Critical Region\nIdentify the rejection region in the probability distribution of the test statistic.\nIf the statistic falls within this region, H₀ will be rejected."
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "Compare the Test Statistic to Critical Values\nIf the calculated test statistic falls into the critical region, reject H₀.\nOtherwise, fail to reject H₀.\nCalculate the P-Value (Alternative Approach)\nThe p-value is the probability of observing a test statistic as extreme as, or more extreme than, the one obtained, assuming H₀ is true.\nDecision rule:\nIf p ≤ α → reject H₀\nIf p > α → fail to reject H₀\nMake a Decision\nReject H₀: Conclude there is evidence supporting Hₐ.\nFail to reject H₀: Conclude there is insufficient evidence to support Hₐ.\nInterpret Results\nExplain findings in the context of the research question.\nDiscuss practical significance and implications of the results.\nWould you like me to also turn this into a step-by-step flowchart or visual diagram for easier understanding?"
+          }
+        ]
+      },
+      {
+        "slide": 10,
+        "title_text": [
+          "The Process in Brief"
+        ],
+        "title_lines": [
+          "The Process in Brief"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "State",
+          "Choose",
+          "Collect data",
+          "Compute",
+          "Compare",
+          "Decision:"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "The Process in Brief"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "State H₀ and Ha.\nChoose α (e.g., 0.05).\nCollect data and compute a test statistic.\nCompute the p-value.\nCompare p-value to α.\nDecision: Reject or fail to reject H₀."
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "Note: We cannot we accept the null hypothesis, we can only reject it or fail to reject it. \nThe basis for this testing process comes from logic. \nFor example, if our null hypothesis = All students live in Amman, it will be challenging to check if all students live in Amman. \nOn the other hand, it will be much easier to find just one student who does not live in Amman and therefore reject the null hypothesis.\nRejecting is much easier that proving or accepting the hypothesis."
+          }
+        ]
+      },
+      {
+        "slide": 11,
+        "title_text": [
+          "More about Hypothesis Testing Core Concepts"
+        ],
+        "title_lines": [
+          "More about Hypothesis Testing Core Concepts"
+        ],
+        "subtitle_text": [
+          "Alpha value, The Test Statistic and Critical Values, P-Value, Type I and Type II Errors"
+        ],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "More about Hypothesis Testing Core Concepts"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Alpha value, The Test Statistic and Critical Values, P-Value, Type I and Type II Errors"
+          }
+        ]
+      },
+      {
+        "slide": 12,
+        "title_text": [
+          "The Significance Level α"
+        ],
+        "title_lines": [
+          "The Significance Level α"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "The Significance Level α"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Before conducting the test, we need to set the significance level α.\nThe significance level is a measure of the strength of the evidence that must be present in our sample to reject the null hypothesis and conclude that the effect is statistically significant.\nTypical significance levels are: α=0.1 (10%), α=0.05 (5%), α=0.01 (1%)\nA lower significance level means that the evidence in the data needs to be stronger to reject the null hypothesis."
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "There is no \"correct\" significance level - it only states the amount of uncertainty of the conclusion.\nA 5% significance level means that we expect to reject a true null hypothesis 5 out of 100 times (Type I Error)."
+          }
+        ]
+      },
+      {
+        "slide": 13,
+        "title_text": [
+          "The Test Statistic"
+        ],
+        "title_lines": [
+          "The Test Statistic"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "The Test Statistic"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "The test statistic is the value we compute based on the sample data that we collect.\nThe test statistic is used to decide the outcome of the hypothesis test.\nWe standardize test statistic using:\nZ Standard Normal Distribution for large samples or when the variance is known.\nThe Student's T-Distribution (T) for small samples and the population variance is unknown."
+          }
+        ]
+      },
+      {
+        "slide": 14,
+        "title_text": [
+          "Computing the Test Statistic Dependence on our Knowledge about Variance"
+        ],
+        "title_lines": [
+          "Computing the Test Statistic Dependence on our Knowledge about Variance"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Computing the Test Statistic Dependence on our Knowledge about Variance"
+          }
+        ]
+      },
+      {
+        "slide": 15,
+        "title_text": [
+          "The Critical Value and the p-Value Approach to Hypothesis Testing"
+        ],
+        "title_lines": [
+          "The Critical Value and the p-Value Approach to Hypothesis Testing"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "The critical value approach"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "The Critical Value and the p-Value Approach to Hypothesis Testing"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "To decide whether to reject the null hypothesis, a test statistic is calculated. \nThe decision is made based on the numerical value of that test statistic. \nThere are two approaches how to arrive at that decision: The critical value approach and the p-value approach.\nThe critical value approach\nBy applying the critical value approach, it is determined, whether the observed test statistic is more extreme than a defined critical value. \nTherefore, the observed test statistic (calculated based on sample data) is compared to the critical value (a kind of cutoff value). \nIf the test statistic is more extreme than the critical value, the null hypothesis is rejected. \nIf the test statistic is not as extreme as the critical value, the null hypothesis is not rejected. \nThe critical value is computed based on the given significance level α  and the type of probability distribution of the idealized model. \nThe critical value divides the area under the probability distribution curve in rejection region(s) and non-rejection region."
+          }
+        ]
+      },
+      {
+        "slide": 16,
+        "title_text": [
+          "The Critical Value Approach to Hypothesis Testing"
+        ],
+        "title_lines": [
+          "The Critical Value Approach to Hypothesis Testing"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "The Critical Value Approach to Hypothesis Testing"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "The following three figures show a two tailed test, a left tailed test and a right sided test.\nIn a two-sided test the null hypothesis is rejected if the test statistic is either too small or too large. Thus, the rejection region for such a test consists of two parts: one on the left and one on the right.\nFor a left-tailed test the null hypothesis is rejected, if the test statistic is too small. Thus, the rejection region for such a test consists of one part, which is left from the center.\nFor a right-tailed test the null hypothesis is rejected, if the test statistic is too large. Thus, the rejection region for such a test consists of one part, which is right from the center.\nNote: if p≤α , reject  ; otherwise, if p>α , do not reject  "
+          }
+        ]
+      },
+      {
+        "slide": 17,
+        "title_text": [
+          "The p-Value Approach to Hypothesis Testing"
+        ],
+        "title_lines": [
+          "The p-Value Approach to Hypothesis Testing"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "The p-Value Approach to Hypothesis Testing"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "The p-value represents:\nThe probability of observing the sample data or more extreme values, given that the null hypothesis is true. \nThe amount of evidence against the null hypothesis, the smaller (closer to 0) the p-value, the stronger is the evidence against the null hypothesis.\nIf the p-value (Green Area) is less than or equal to the specified significance level α (Yellow Area) , the null hypothesis is rejected. Otherwise, we fail to reject the null hypothesis."
+          }
+        ]
+      },
+      {
+        "slide": 18,
+        "title_text": [
+          "Type I and Type II Errors"
+        ],
+        "title_lines": [
+          "Type I and Type II Errors"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Type I and Type II Errors"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Type I and Type II errors are two potential forms of incorrect conclusions in hypothesis testing. \nType I Error (False Positive): Rejecting  when it is actually true.\nType II Error (False Negative): Failing to reject  when it is false.\nThe acceptable level of Type I error is designated by alpha (α), while the acceptable level of Type II error is designated beta (β)."
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "A Type I error occurs when the null hypothesis is incorrectly rejected when it is actually true. \nConversely, a Type II error happens when the null hypothesis is not rejected when it is in fact false, akin to a false negative, where we fail to detect a true effect or difference.\nConsider a pharmaceutical company deciding whether a new drug is effective. A Type I error would occur if the company concludes the drug works when it does not, potentially leading to a costly recall and reputation damage when the truth emerges. \nOn the other hand, a Type II error would be failing to recognize the drug's efficacy, missing out on the opportunity to bring a beneficial product to market, which can result in lost revenue and competitive disadvantage. The company must balance these risks, often prioritizing the avoidance of one type of error over the other based on the potential costs and impacts associated with each."
+          }
+        ]
+      },
+      {
+        "slide": 19,
+        "title_text": [
+          "Hypothesis Testing Examples"
+        ],
+        "title_lines": [
+          "Hypothesis Testing Examples"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "ctrTitle",
+            "text": "Hypothesis Testing Examples"
+          }
+        ]
+      },
+      {
+        "slide": 20,
+        "title_text": [
+          "Z Test vs T Test"
+        ],
+        "title_lines": [
+          "Z Test vs T Test"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Z Test vs T Test"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "A z-test is used to test a Null Hypothesis if the popula on variance is known, or if the sample size is larger than 30, for an unknown popula on variance. \nA t-test is used when the sample size is less than 30 and the popula on variance is unknown.\nIn our work, we will focus on T-Tests"
+          }
+        ]
+      },
+      {
+        "slide": 21,
+        "title_text": [
+          "One Sample Test – Testing for Two Tails"
+        ],
+        "title_lines": [
+          "One Sample Test – Testing for Two Tails"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "Scenario:"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "One Sample Test – Testing for Two Tails"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Scenario: A logistics company believe that its average delivery time is equal to 3 days. The company wants to test this belief.\nThe company collected a sample data of 40 delivery times to test if  there enough evidence (at α = .05) to conclude that the population mean delivery time for the company is equal to 3 days?\nH₀: μ = 3\nHa: μ ≠ 3\nUsing the collected data, the t-statistic will be computed:\nIf the test statistic is within the rejection region, we reject the null hypothesis, otherwise we fail to reject the null hypothesis noting that the sample data did not show enough evidence against the null hypothesis."
+          }
+        ]
+      },
+      {
+        "slide": 22,
+        "title_text": [
+          "Implement the Test Using Excel Data Analysis Add In"
+        ],
+        "title_lines": [
+          "Implement the Test Using Excel Data Analysis Add In"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Implement the Test Using Excel Data Analysis Add In"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "1"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "2"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "According to the test results, we fail to reject the null hypothesis which states that the mean delivery time is equal to 3 days.\nThe collected sample data did not provide us with sufficient evidence to conclude that the mean delivery time is different from 3.\nWe reached this conclusion because the t statistic falls inside the non-rejection region.\nWe also reached that conclusion because the p-value (0.07315) which is greater than alpha 0.05.\nComputing t-statistic manually, t = (3.4 - 3) / (1.37 / √40) ≈ 1.84"
+          }
+        ]
+      },
+      {
+        "slide": 23,
+        "title_text": [
+          "One Sample – One Tail Test – Upper Tail"
+        ],
+        "title_lines": [
+          "One Sample – One Tail Test – Upper Tail"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "Business Context:",
+          "Hypothesis Formulation:"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "One Sample – One Tail Test – Upper Tail"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Business Context:\nA manufacturing company believes that its daily production output is larger than 500 units. \nThe company collect sample outputs for 30 days.\nHypothesis Formulation:\nNull Hypothesis (H₀): μ ≤ 500 (Baseline)\nAlternative Hypothesis (H₁): μ > 500 (Output is larger)\nThis setup calls for a one-tailed (upper-tailed) t-test, as the interest lies specifically in detecting an increase in the mean output."
+          }
+        ]
+      },
+      {
+        "slide": 24,
+        "title_text": [
+          "Implement the Test Using Excel Data Analysis Add In"
+        ],
+        "title_lines": [
+          "Implement the Test Using Excel Data Analysis Add In"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Implement the Test Using Excel Data Analysis Add In"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "T statistic is above the critical value and P-Value is very small < alpha, therefore we reject the null hypothesis"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "1"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "2"
+          }
+        ]
+      },
+      {
+        "slide": 25,
+        "title_text": [
+          "Two Sample T-Tests"
+        ],
+        "title_lines": [
+          "Two Sample T-Tests"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Two Sample T-Tests"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Two-sample t-test: Compares the means of two dependent groups (Paired t test).\nTwo-sample t-test: Compares the means of two independent groups (variance assumed to be equal).\nTwo-sample t-test: Compares the means of two independent groups (variance assumed to be not equal)."
+          }
+        ]
+      },
+      {
+        "slide": 26,
+        "title_text": [
+          "Two Samples T-Test – Testing Dependent Groups (Paired T Test)"
+        ],
+        "title_lines": [
+          "Two Samples T-Test – Testing Dependent Groups (Paired T Test)"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Two Samples T-Test – Testing Dependent Groups (Paired T Test)"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "The dependent samples T-test (or paired samples t-test) is a statistical test that determines whether there is a difference between two dependent groups or samples.\nWe need the paired t-test whenever we survey the same group or sample at two points in time. \nThis can be the case, for example, in longitudinal studies with several measurement points (time series analyses) or in intervention studies with experimental designs (before-after measurement).\nAn example of dependent sampling is when the weight of a group of people is measured at two points in time (before and after going into a diet).\nThe weight of a person can be measured individually before and after going into the diet, and the difference in the measured values can be calculated in each case."
+          }
+        ]
+      },
+      {
+        "slide": 27,
+        "title_text": [
+          "Two Samples T-Test – Testing Dependent Groups (Paired T Test)"
+        ],
+        "title_lines": [
+          "Two Samples T-Test – Testing Dependent Groups (Paired T Test)"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Two Samples T-Test – Testing Dependent Groups (Paired T Test)"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "We are interested in the question whether an online statistics learning tutorial helps students improve their grades. \nThere are three variables of interest in the student's data set (score1, score2 and online.tutorial).\nThe variables score1 and score2 show the grades (0-100) for two exams on mathematics after attending online training. The higher the value the better the student performed. \nThe variable online.tutorial is a binary variable, which is 1  if the student completed the online statistics learning tutorial, or 0  otherwise. \nThe first exam takes place before the students attended the online statistics learning tutorial. \nThe participation in the online statistics learning tutorial is not mandatory, however the two exams are obligatory for all students. \nWe want to examine if the group of students, which attended the online statistics learning tutorial, performs better on the second exam compared to the first exam."
+          }
+        ]
+      },
+      {
+        "slide": 28,
+        "title_text": [
+          "Two Samples T-Test – Testing Dependent Groups (Paired T Test)"
+        ],
+        "title_lines": [
+          "Two Samples T-Test – Testing Dependent Groups (Paired T Test)"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Two Samples T-Test – Testing Dependent Groups (Paired T Test)"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "1"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "2"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "3"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "Based on the sample data and the test statistic, we found that there is a statistically significant difference between the before and after score, the after score (score2) is higher than score1.\nThis finding is supported by the test statistic and the p-value, therefore we REJECT the null hypothesis, and we conclude that the online tutorial helped students in enhancing their exam performance."
+          }
+        ]
+      },
+      {
+        "slide": 29,
+        "title_text": [
+          "Two Samples T-Test – Testing Independent Groups (Unpaired T Test)\n(variance assumed to be equal)"
+        ],
+        "title_lines": [
+          "Two Samples T-Test – Testing Independent Groups (Unpaired T Test)",
+          "(variance assumed to be equal)"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Two Samples T-Test – Testing Independent Groups (Unpaired T Test)\n(variance assumed to be equal)"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "In this section we perform a hypothesis test for the means of two populations. \nWe examine the mean annual salary (in Euro) of graduates.\nThe first population consist of male students and the second population of female students. \nThe standard deviations of the two populations are unknown but assumed to be equal.\nThe question is, whether there is a difference (at α 5%) in the mean annual salary of graduates related to gender (two tailed test)"
+          }
+        ]
+      },
+      {
+        "slide": 30,
+        "title_text": [
+          "Two Samples T-Test – Testing Independent Groups (Unpaired T Test)\n(variance assumed to be equal)"
+        ],
+        "title_lines": [
+          "Two Samples T-Test – Testing Independent Groups (Unpaired T Test)",
+          "(variance assumed to be equal)"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Two Samples T-Test – Testing Independent Groups (Unpaired T Test)\n(variance assumed to be equal)"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "Based on the sample data and the test statistic, we found that there is a statistically significant difference between male salaries and female salaries.\nThis finding is supported by the test statistic and the p-value, therefore we REJECT the null hypothesis, and we conclude that the salaries of male graduates and female graduates are not equal."
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "1"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "2"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "3"
+          }
+        ]
+      },
+      {
+        "slide": 31,
+        "title_text": [
+          "Two Samples T-Test – Testing Independent Groups (Unpaired T Test)\n(variance assumed to be NOT equal)"
+        ],
+        "title_lines": [
+          "Two Samples T-Test – Testing Independent Groups (Unpaired T Test)",
+          "(variance assumed to be NOT equal)"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Two Samples T-Test – Testing Independent Groups (Unpaired T Test)\n(variance assumed to be NOT equal)"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "In this section we perform a hypothesis test for the means of two populations. \nTo showcase the non-pooled t-test we test a claim that states that the annual salaries for political science female students is higher than the annual salaries of the social science female students. \nThe standard deviations of the two populations are unknown and assumed to be unequal.\nWe want to test at α 1%, whether the mean political science salary is higher than the mean salary of the social science (one tail test, upper tail)."
+          }
+        ]
+      },
+      {
+        "slide": 32,
+        "title_text": [
+          "Two Samples T-Test – Testing Independent Groups (Unpaired T Test)\n(variance assumed to be NOT equal)"
+        ],
+        "title_lines": [
+          "Two Samples T-Test – Testing Independent Groups (Unpaired T Test)",
+          "(variance assumed to be NOT equal)"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Two Samples T-Test – Testing Independent Groups (Unpaired T Test)\n(variance assumed to be NOT equal)"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "1"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "2"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "Based on the sample data and the test statistic, we found that there is no statistically significant difference (at α 1%) between the salaries of political science and social science.\nThis finding is supported by the test statistic and the p-value, therefore we FAIL TO REJECT the null hypothesis which states that the salaries of political science and social science are equal for female graduates."
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "3"
+          }
+        ]
+      },
+      {
+        "slide": 33,
+        "title_text": [
+          "Testing Proportions"
+        ],
+        "title_lines": [
+          "Testing Proportions"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Testing Proportions"
+          }
+        ]
+      },
+      {
+        "slide": 34,
+        "title_text": [
+          "Introduction to Proportion Tests"
+        ],
+        "title_lines": [
+          "Introduction to Proportion Tests"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "A Proportion",
+          "Key Differences from t-tests:"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Introduction to Proportion Tests"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "A Proportion is a fraction or percentage of a population exhibiting a specific trait (e.g., success/failure).\nProportion tests allow us to infer population parameters from sample data.\nKey Differences from t-tests:\nApplied to categorical data (e.g., success/failure), not continuous variables.\nUses the normal approximation to the binomial distribution. The central limit theorem says: if the sample size is large enough, the binomial distribution starts to look like a normal distribution. \nTherefore, to use the normal distribution as an approximation for the binomial, both of these must be true:\n𝑛.𝑝 ≥ 10 \n𝑛.(1−𝑝) ≥ 10\nWhere:\n𝑛 = sample size\n𝑝 = hypothesized population proportion (under the null hypothesis)"
+          }
+        ]
+      },
+      {
+        "slide": 35,
+        "title_text": [
+          "One-Sample Proportion Test"
+        ],
+        "title_lines": [
+          "One-Sample Proportion Test"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "One-Sample Proportion Test"
+          }
+        ]
+      },
+      {
+        "slide": 36,
+        "title_text": [
+          "Example"
+        ],
+        "title_lines": [
+          "Example"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Example"
+          }
+        ]
+      },
+      {
+        "slide": 37,
+        "title_text": [
+          "Two-Samples Proportion Test"
+        ],
+        "title_lines": [
+          "Two-Samples Proportion Test"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Two-Samples Proportion Test"
+          }
+        ]
+      },
+      {
+        "slide": 38,
+        "title_text": [
+          "Example: Does the New Treatment Work?"
+        ],
+        "title_lines": [
+          "Example: Does the New Treatment Work?"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Example: Does the New Treatment Work?"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "This is a one-tailed test for comparing two proportions"
+          }
+        ]
+      },
+      {
+        "slide": 39,
+        "title_text": [
+          "Hypothesis Testing for Categorical Data"
+        ],
+        "title_lines": [
+          "Hypothesis Testing for Categorical Data"
+        ],
+        "subtitle_text": [
+          "Chi-Square Tests"
+        ],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "ctrTitle",
+            "text": "Hypothesis Testing for Categorical Data"
+          },
+          {
+            "placeholder_type": "subTitle",
+            "text": "Chi-Square Tests"
+          }
+        ]
+      },
+      {
+        "slide": 40,
+        "title_text": [
+          "Introduction to Chi-Square Tests"
+        ],
+        "title_lines": [
+          "Introduction to Chi-Square Tests"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Introduction to Chi-Square Tests"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Definition: Chi-square tests are statistical methods used to determine whether there's a significant association between categorical variables or whether observed data differs significantly from expected values.\nTypes of Chi-Square Tests:\nTest of Independence: Determines if two or more categories are independent.\nGoodness of Fit Test: Determines if a sample matches an expected distribution."
+          }
+        ]
+      },
+      {
+        "slide": 41,
+        "title_text": [
+          "Examples"
+        ],
+        "title_lines": [
+          "Examples"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "Test of Independence",
+          "Marketing",
+          "HR Analytics",
+          "Retail",
+          "Healthcare Management",
+          "Customer Service"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Examples"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Test of Independence\nMarketing: Is customer gender associated with product preference?\nHR Analytics: Is employee department linked to job satisfaction level?\nRetail: Does store location affect the type of payment method used?\nHealthcare Management: Is patient age group related to preferred appointment times?\nCustomer Service: Is complaint category associated with region?"
+          }
+        ]
+      },
+      {
+        "slide": 42,
+        "title_text": [
+          "Chi-Square Steps – Test of Independence"
+        ],
+        "title_lines": [
+          "Chi-Square Steps – Test of Independence"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "3. Compute Chi-Square statistic using the formula"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Chi-Square Steps – Test of Independence"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Step-by-Step Process:\n1. Set a contingency table to show the expected frequencies and the observed frequencies.\n2. Calculate the expected frequencies for each cell using the following formula."
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "3. Compute Chi-Square statistic using the formula"
+          }
+        ]
+      },
+      {
+        "slide": 43,
+        "title_text": [
+          "Chi-Square Steps – Test of Independence"
+        ],
+        "title_lines": [
+          "Chi-Square Steps – Test of Independence"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Chi-Square Steps – Test of Independence"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "4. Use the Chi-Square distribution to find the Chi-Square statistic and compare it to the critical values at common significance level e.g. (0.05)"
+          }
+        ]
+      },
+      {
+        "slide": 44,
+        "title_text": [
+          "Example: Product Preference Across Age Groups"
+        ],
+        "title_lines": [
+          "Example: Product Preference Across Age Groups"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "Task:"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Example: Product Preference Across Age Groups"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "A company wants to determine if there is a significant association between the age group of its customers and their preference for one of two new beverage products. \nThe marketing team has conducted a survey and collected data from different age groups.\nThe table below shows the observed frequency table based on the survey:"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "Task: Perform a Chi-Square Test of Independence to determine if there's a significant relationship between age group and product preference."
+          }
+        ]
+      },
+      {
+        "slide": 45,
+        "title_text": [
+          "State the Null and the Alternative Hypothesis"
+        ],
+        "title_lines": [
+          "State the Null and the Alternative Hypothesis"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "Null Hypothesis (H₀):",
+          "Alternative Hypothesis (H₁):"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "State the Null and the Alternative Hypothesis"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "For a Chi-Square Test of Independence, the hypotheses are defined in terms of whether the two categorical variables are related.\nNull Hypothesis (H₀): There is no association between customer age group and beverage product preference.\nEquivalently, product preference is independent of age group.\nAlternative Hypothesis (H₁): There is an association between customer age group and beverage product preference.\nEquivalently, product preference is not independent of age group.\nThese hypotheses set up the test to evaluate whether the observed differences in product preference across age groups are due to random variation or reflect a statistically significant relationship."
+          }
+        ]
+      },
+      {
+        "slide": 46,
+        "title_text": [
+          "Steps to Solve in Excel"
+        ],
+        "title_lines": [
+          "Steps to Solve in Excel"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Steps to Solve in Excel"
+          }
+        ]
+      },
+      {
+        "slide": 47,
+        "title_text": [
+          "Calculate Chi-Square Value"
+        ],
+        "title_lines": [
+          "Calculate Chi-Square Value"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Calculate Chi-Square Value"
+          }
+        ]
+      },
+      {
+        "slide": 48,
+        "title_text": [
+          "Steps to Solve in Excel"
+        ],
+        "title_lines": [
+          "Steps to Solve in Excel"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "Interpretation"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Steps to Solve in Excel"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "Interpretation\nAfter calculating the Chi-Square statistic and comparing it with the critical value from a Chi-Square distribution table (or using p-value), you can conclude whether there is a statistically significant association between age group and product preference."
+          }
+        ]
+      },
+      {
+        "slide": 49,
+        "title_text": [
+          "Check the Solution in The Excel File"
+        ],
+        "title_lines": [
+          "Check the Solution in The Excel File"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Check the Solution in The Excel File"
+          }
+        ]
+      },
+      {
+        "slide": 50,
+        "title_text": [
+          "Hypothesis Testing for More than Two Populations Means"
+        ],
+        "title_lines": [
+          "Hypothesis Testing for More than Two Populations Means"
+        ],
+        "subtitle_text": [
+          "One Way ANOVA"
+        ],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "ctrTitle",
+            "text": "Hypothesis Testing for More than Two Populations Means"
+          },
+          {
+            "placeholder_type": "subTitle",
+            "text": "One Way ANOVA"
+          }
+        ]
+      },
+      {
+        "slide": 51,
+        "title_text": [
+          "Introduction to One-Way ANOVA"
+        ],
+        "title_lines": [
+          "Introduction to One-Way ANOVA"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "Definition:",
+          "Purpose:"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Introduction to One-Way ANOVA"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Definition: One-Way ANOVA is a statistical test that compares the means of three or more independent groups to determine if at least one group mean is statistically different from the others.\nPurpose: To test for significant differences between the means of multiple groups when you have one categorical independent variable and one continuous dependent variable.\nAppropriate Use Cases:\nComparing customer satisfaction levels across different store locations.\nExamining student performance across different teaching methods.\nKey Advantage:\nAllows simultaneous comparison of more than two groups, providing a broader analysis than t-tests."
+          }
+        ]
+      },
+      {
+        "slide": 52,
+        "title_text": [
+          "One Way ANOVA"
+        ],
+        "title_lines": [
+          "One Way ANOVA"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "One Way ANOVA"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Hypothesis in One-Way ANOVA:\nNull Hypothesis (H0): All group means are equal.\nAlternative Hypothesis (H1): At least one group mean is different from the others.\nHow to Calculate?\nCalculate Group Means and Overall Mean\nCompute Sum of Squares:\nTotal Sum of Squares (SST): Variability of all data points around the overall mean.\nWithin-Group Sum of Squares (SSW): Variability within each group.\nBetween-Group Sum of Squares (SSB): Variability due to the interaction between the groups.\nCalculate Mean Squares:\nMean Square Between (MSB): SSB divided by the degrees of freedom between groups (k-1).\nMean Square Within (MSW): SSW divided by the degrees of freedom within groups (N-k).\nF-Statistic:\nF = MSB / MSW"
+          }
+        ]
+      },
+      {
+        "slide": 53,
+        "title_text": [
+          "ANOVA Example"
+        ],
+        "title_lines": [
+          "ANOVA Example"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "ANOVA Example"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Scenario: A school tests three different teaching methods to determine which one results in the best performance on a standardized test. \nThe students are randomly assigned to one of three groups, each receiving instruction through a different method. \nTheir scores on a standardized test are recorded.\nVariables:\nGroup: The teaching method group (A, B, C)\nScore: The score each student received on the standardized test."
+          }
+        ]
+      },
+      {
+        "slide": 54,
+        "title_text": [
+          "Interpreting Results"
+        ],
+        "title_lines": [
+          "Interpreting Results"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Interpreting Results"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "F-Statistic and P-Value:\nAn F-Statistic higher than the critical value or a P-value less than the alpha level (e.g., 0.05) indicates significant differences between group means.\nIn our example, both the F-Statistic and the P-value indicate significant difference between groups means, therefore we reject the null hypothesis.\nPost Hoc Tests: If the ANOVA is significant, perform post hoc tests (e.g., Tukey’s HSD) to determine which specific groups differ from each other."
+          }
+        ]
+      },
+      {
+        "slide": 55,
+        "title_text": [
+          "2-Way ANOVA"
+        ],
+        "title_lines": [
+          "2-Way ANOVA"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "Case Study: Effect of Teaching Method and Gender on Student Performance",
+          "Objective:",
+          "Teaching method",
+          "Student gender"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "2-Way ANOVA"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Case Study: Effect of Teaching Method and Gender on Student Performance\nObjective:\nA school administrator wants to investigate whether student performance is affected by:\nTeaching method (Traditional vs. Online)\nStudent gender (Male vs. Female)\nThis leads to a 2x2 factorial design:\nFactor A: Teaching Method (Traditional, Online)\nFactor B: Gender (Male, Female)\nResponse Variable: Final Exam Score (numerical)"
+          }
+        ]
+      },
+      {
+        "slide": 56,
+        "title_text": [
+          "2-Way ANOVA"
+        ],
+        "title_lines": [
+          "2-Way ANOVA"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "2-Way ANOVA"
+          }
+        ]
+      },
+      {
+        "slide": 57,
+        "title_text": [
+          "How to Select Test Type"
+        ],
+        "title_lines": [
+          "How to Select Test Type"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "How to Select Test Type"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "part": 4,
+    "source": "sources/slides/307102-inferential-04-original.pptx",
+    "sha256": "7def7abc1607a8fc20d78af97cc77163f8c6712df1e1b4e0ca8e8e6c9175ae27",
+    "slide_count": 21,
+    "section_title": "Introduction to Linear Regression",
+    "slides": [
+      {
+        "slide": 1,
+        "title_text": [
+          "307102\nDescriptive Statistics for Business"
+        ],
+        "title_lines": [
+          "307102",
+          "Descriptive Statistics for Business"
+        ],
+        "subtitle_text": [
+          "Introduction to Linear Regression"
+        ],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "ctrTitle",
+            "text": "307102\nDescriptive Statistics for Business"
+          },
+          {
+            "placeholder_type": "subTitle",
+            "text": "Introduction to Linear Regression"
+          }
+        ]
+      },
+      {
+        "slide": 2,
+        "title_text": [
+          "Introduction to Regression Analysis"
+        ],
+        "title_lines": [
+          "Introduction to Regression Analysis"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Introduction to Regression Analysis"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Definition: Regression analysis is a powerful statistical method used for predicting a dependent variable based on one or more independent variables.\nPurpose: To understand how the typical value of the dependent variable changes when any one of the independent variables is varied, while the other independent variables are held fixed"
+          }
+        ]
+      },
+      {
+        "slide": 3,
+        "title_text": [
+          "Types of Regression"
+        ],
+        "title_lines": [
+          "Types of Regression"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Types of Regression"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Simple Linear Regression: Involves one independent variable and one dependent variable and the relationship between them is modeled by a linear function.\nMultiple Linear Regression (Focus of this presentation): Involves multiple independent variables influencing a single dependent variable.\nOther Types: Logistic regression, polynomial regression, Ridge Regression, Lasso Regression etc., used for more specific types of data and relationships."
+          }
+        ]
+      },
+      {
+        "slide": 4,
+        "title_text": [
+          "The Regression Equation"
+        ],
+        "title_lines": [
+          "The Regression Equation"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "The Regression Equation"
+          }
+        ]
+      },
+      {
+        "slide": 5,
+        "title_text": [
+          "Finding the Best Fit Line"
+        ],
+        "title_lines": [
+          "Finding the Best Fit Line"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Finding the Best Fit Line"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "The goal of the linear regression algorithm is to get the best values for B0 and B1 to find the best fit line.\nThe best fit line is the line that has the least error which means the error between predicted values and actual values should be minimum.\nIn regression, the difference between the observed value of the dependent variable(Yi) and the predicted value(predicted) is called the residuals."
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "εi =  Y Predicted –   Yi\nWhere Y Predicted =   B0 + B1 * Xi\nIn simple terms, the best fit line is a line that fits the given scatter plot in the best way. Mathematically, the best fit line is obtained by minimizing the Residual Sum of Squares(RSS)."
+          }
+        ]
+      },
+      {
+        "slide": 6,
+        "title_text": [
+          "Finding the Best Fit Line"
+        ],
+        "title_lines": [
+          "Finding the Best Fit Line"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Finding the Best Fit Line"
+          }
+        ]
+      },
+      {
+        "slide": 7,
+        "title_text": [
+          "Evaluating the Model"
+        ],
+        "title_lines": [
+          "Evaluating the Model"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Evaluating the Model"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "R-squared (The Goodness of Fit): Proportion of variance in the dependent variable that is predictable from the independent variables.\nAdjusted R-squared: Modified version of R-squared adjusted for the number of predictors.\nF-Statistic: Tests whether at least one predictor variable has a non-zero coefficient.\nt-Tests on Coefficients: Each beta coefficient has an associated t-test to determine if the variable is statistically significant."
+          }
+        ]
+      },
+      {
+        "slide": 8,
+        "title_text": [
+          "Linear Regression Example"
+        ],
+        "title_lines": [
+          "Linear Regression Example"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Linear Regression Example"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Scenario: A real estate company wants to predict the selling price of houses based on various features.\nVariables:\nPrice: Selling price of the house (in thousands of dollars).\nSize: Size of the house in square feet.\nBedrooms: Number of bedrooms.\nAge: Age of the house in years.\nLocation: Categorical variable indicating the neighborhood quality (1 = Low, 2 = Medium, 3 = High)."
+          }
+        ]
+      },
+      {
+        "slide": 9,
+        "title_text": [
+          "Simple Linear Regression"
+        ],
+        "title_lines": [
+          "Simple Linear Regression"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Simple Linear Regression"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "1"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "2"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "3"
+          }
+        ]
+      },
+      {
+        "slide": 10,
+        "title_text": [
+          "Regression Statistics"
+        ],
+        "title_lines": [
+          "Regression Statistics"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "Multiple R (0.946288)",
+          "R Square (0.895461)",
+          "Adjusted R Square (0.882394)",
+          "Standard Error (24.46997)",
+          "Observations (10)"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Regression Statistics"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Multiple R (0.946288):\nThis is the correlation coefficient, showing the strength and direction of the linear relationship between the independent variable (Size) and the dependent variable (Price).\nValue close to 1 or -1 indicates a strong linear relationship.\nR Square (0.895461):\nThe coefficient of determination, indicating how much of the variation in the dependent variable (Price) is explained by the independent variable (Size).\nIn this case, ~89.55% of the variance in price is explained by size.\nAdjusted R Square (0.882394):\nAdjusted for the number of predictors in the model.\nUseful when comparing models with different numbers of predictors; penalizes for adding non-significant predictors.\nStandard Error (24.46997):\nThe standard deviation of the residuals. Smaller values indicate better model fit, as residuals are closer to zero.\nObservations (10):\nThe number of data points used in the regression analysis."
+          }
+        ]
+      },
+      {
+        "slide": 11,
+        "title_text": [
+          "ANOVA (Analysis of Variance):"
+        ],
+        "title_lines": [
+          "ANOVA (Analysis of Variance):"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "df (Degrees of Freedom)",
+          "SS (Sum of Squares)",
+          "Regression SS (41032.27)",
+          "Residual SS (4790.234)",
+          "Total SS (45822.5)",
+          "MS (Mean Square)",
+          "Regression MS (41032.27)",
+          "Residual MS (598.7793)",
+          "F (68.52653)",
+          "Significance F (3.41185E-05)"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "ANOVA (Analysis of Variance):"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "The ANOVA table tests whether the regression model as a whole is statistically significant.\ndf (Degrees of Freedom):\nRegression: Number of predictors (1) + Intercept (0) = 1.\nResidual: Total observations (10) - Number of predictors (1) - 1 = 8.\nTotal: n−1=9n - 1 = 9n−1=9.\nSS (Sum of Squares):\nRegression SS (41032.27): Variation in the dependent variable explained by the model.\nResidual SS (4790.234): Variation not explained by the model (errors).\nTotal SS (45822.5): Total variation in the dependent variable.\nMS (Mean Square):\nRegression MS (41032.27): Regression SS divided by its df: 41032.27 ÷ 1\nResidual MS (598.7793): Residual SS divided by its df: 4790.234 ÷ 8\nF (68.52653):\nThe F-statistic, which tests whether the regression model explains a significant proportion of the variation in the dependent variable.\nLarger values indicate the model is a good fit.\nSignificance F (3.41185E-05):\nThe p-value for the F-test. A small value (e.g., <0.05) indicates the model is statistically significant."
+          }
+        ]
+      },
+      {
+        "slide": 12,
+        "title_text": [
+          "Coefficients Table"
+        ],
+        "title_lines": [
+          "Coefficients Table"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "Intercept (-217.422)",
+          "Size Coefficient (0.31406)",
+          "Standard Error (62.32294 for Intercept, 0.037939 for Size)",
+          "t Stat (-3.48863 for Intercept, 8.278075 for Size)",
+          "P-value (0.008215 for Intercept, 3.411E-05 for Size)",
+          "Lower 95% and Upper 95%"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Coefficients Table"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "Intercept (-217.422):\nThe value of the dependent variable (Price) when the independent variable (Size) is zero.\nSize Coefficient (0.31406):\nThe slope of the regression line. For every unit increase in size, the price increases by 0.31406 units.\nStandard Error (62.32294 for Intercept, 0.037939 for Size):\nMeasures the variability in the coefficient estimates. Smaller values indicate more precise estimates.\nThe standard error of a coefficient measures the variability in the estimate of that coefficient if we repeatedly sampled data from the population and fitted the regression model each time.\nt Stat (-3.48863 for Intercept, 8.278075 for Size):\nThe t-test statistic, used to test whether the coefficient is significantly different from zero.\nP-value (0.008215 for Intercept, 3.411E-05 for Size):\nTests the null hypothesis that the coefficient is zero (no effect).\nA small p-value (<0.05) means the coefficient is statistically significant.\nThe smaller the value, the better the predictor – note value like 9.3499E-5 = 9.3 X 10 ^-5 = 0.00000934\nLower 95% and Upper 95%:\nThe confidence interval for the coefficient. For example, the coefficient for Size (0.31406) is likely between 0.22657 and 0.40155, with 95% confidence."
+          }
+        ]
+      },
+      {
+        "slide": 13,
+        "title_text": [
+          "Conclusion"
+        ],
+        "title_lines": [
+          "Conclusion"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "What Does Standard Error Mean in Regression?"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Conclusion"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "The model is statistically significant (Significance F < 0.05), and Size has a significant positive effect on Price (p-value for Size is very small).\nThe model explains ~89.55% of the variation in Price (R² = 0.895461), which is strong.\nThe residuals have a standard error of 24.47, indicating the average prediction error.\nWhat Does Standard Error Mean in Regression?\nIn regression, the standard error (SE) reported in the output refers to the standard deviation of the residuals, also known as the residual standard error (RSE) or simply the \"standard error of the regression.\" It measures how far the observed data points (dependent variable values) are from the predicted values, on average.\nIn our example, the standard error value indicates that, on average, the predictions made by your regression model are off by 24.47 units (the units of your dependent variable, likely apartment prices).\nIt tells you how much variability (or error) remains unexplained by your model."
+          }
+        ]
+      },
+      {
+        "slide": 14,
+        "title_text": [
+          "Multiple Linear Regression"
+        ],
+        "title_lines": [
+          "Multiple Linear Regression"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Multiple Linear Regression"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "1"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "2"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "3"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "Smaller P-Value  Best Predictor"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "Overall model p-value (significance), small value  good model"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "Overall Model Accuracy"
+          }
+        ]
+      },
+      {
+        "slide": 15,
+        "title_text": [
+          "Assumptions of Linear Regression"
+        ],
+        "title_lines": [
+          "Assumptions of Linear Regression"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "1. Linearity",
+          "Example"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Assumptions of Linear Regression"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "1. Linearity\nThe relationship between the independent variables (predictors) and the dependent variable (response) should be linear. \nThis means that the change in the dependent variable is proportional to the change in the independent variable.\nExample: If you are predicting house prices (dependent variable) based on the size of the house (independent variable), a linear relationship implies that each additional square foot of the house size increases the price by a constant amount."
+          }
+        ]
+      },
+      {
+        "slide": 16,
+        "title_text": [
+          "Assumptions of Linear Regression"
+        ],
+        "title_lines": [
+          "Assumptions of Linear Regression"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "How to Test Linearity"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Assumptions of Linear Regression"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "How to Test Linearity: Plot the residuals vs. predicted using a scatter plot, look for a random distribution (no patterns)."
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "To check if the relationship between the independent variable (Size) and the dependent variable (Price) is linear, we look for patterns in the residuals, a random scatter indicates a linear relationship while curves or trends suggest a non-linear relationship."
+          }
+        ]
+      },
+      {
+        "slide": 17,
+        "title_text": [
+          "Assumptions of Linear Regression"
+        ],
+        "title_lines": [
+          "Assumptions of Linear Regression"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "2. Independence",
+          "How to Test"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Assumptions of Linear Regression"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "2. Independence\nObservations should be independent of each other. This means that the residuals (errors) should not be correlated across observations. This assumption is important for the validity of standard statistical tests.\nExample: In a study measuring the effect of a new drug on blood pressure, each patient's measurement should be independent. If measurements from the same patient at different times are used, they are not independent.\nHow to Test: Use the Durbin-Watson test to check for autocorrelation in residuals, particularly for time-series data. This test calculates a test statistic (range 0-4). A value around 2 indicates no autocorrelation, values <2 suggest positive autocorrelation, and >2 indicate negative autocorrelation."
+          }
+        ]
+      },
+      {
+        "slide": 18,
+        "title_text": [
+          "Assumptions of Linear Regression"
+        ],
+        "title_lines": [
+          "Assumptions of Linear Regression"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "3. Homoscedasticity",
+          "Example:"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Assumptions of Linear Regression"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "3. Homoscedasticity\nThe variance of the error terms (residuals) should be constant across all levels of the independent variables. \nIf this assumption is violated, it indicates heteroscedasticity, meaning the spread of residuals varies at different levels of the independent variables.\nExample: When plotting residuals against fitted values in a regression analysis of apartment prices against apartment size, the spread of residuals should be roughly constant. If residuals spread out more as apartment size increases, this indicates heteroscedasticity."
+          }
+        ]
+      },
+      {
+        "slide": 19,
+        "title_text": [
+          "Assumptions of Linear Regression"
+        ],
+        "title_lines": [
+          "Assumptions of Linear Regression"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "How to Test Homoscedasticity",
+          "Good Residual Spead",
+          "Good Linear Relation",
+          "Not a Good Residual Spead",
+          "Not a Good Linear Relation",
+          "Funnel shape note good",
+          "الشكل مثل القمع يبين بأن العلاقة الخطية غير مناسبة",
+          "التوزيع العشوائي للنقاط حول الصفر على طول المدى هو التوزيع الأفضل الذي يبين أن الموديل الخطي مناسب"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Assumptions of Linear Regression"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "How to Test Homoscedasticity : Plot residuals vs. predicted values. The spread of residuals variance should be consistent (no funnel-shaped patterns)."
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "Good Residual Spead\nGood Linear Relation"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "Not a Good Residual Spead\nNot a Good Linear Relation"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "Funnel shape note good\nالشكل مثل القمع يبين بأن العلاقة الخطية غير مناسبة"
+          },
+          {
+            "placeholder_type": "text box",
+            "text": "التوزيع العشوائي للنقاط حول الصفر على طول المدى هو التوزيع الأفضل الذي يبين أن الموديل الخطي مناسب"
+          }
+        ]
+      },
+      {
+        "slide": 20,
+        "title_text": [
+          "Assumptions of Linear Regression"
+        ],
+        "title_lines": [
+          "Assumptions of Linear Regression"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "4. Normal Distribution of Errors"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Assumptions of Linear Regression"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "4. Normal Distribution of Errors\nThe error terms should be normally distributed. This assumption is especially important for small sample sizes because it affects the validity of confidence intervals and hypothesis tests.\nExample: After fitting a regression model predicting apartment price based on apartment size, plotting a histogram or a Q-Q plot of the residuals should show that they follow a normal distribution."
+          }
+        ]
+      },
+      {
+        "slide": 21,
+        "title_text": [
+          "Assumptions of Linear Regression"
+        ],
+        "title_lines": [
+          "Assumptions of Linear Regression"
+        ],
+        "subtitle_text": [],
+        "internal_heading_labels": [
+          "5. No Multicollinearity",
+          "How to Test"
+        ],
+        "note": "",
+        "native_text_blocks": [
+          {
+            "placeholder_type": "title",
+            "text": "Assumptions of Linear Regression"
+          },
+          {
+            "placeholder_type": "body",
+            "text": "5. No Multicollinearity\nIndependent variables should not be too highly correlated with each other. High correlation between predictors (multicollinearity) can inflate the variances of the coefficient estimates and make the model unstable.\nExample: In a regression model predicting salary based on education level and years of experience, if education level and years of experience are highly correlated, it could cause multicollinearity issues. Checking the Variance Inflation Factor (VIF) can help detect this.\nHow to Test: Calculate Variance Inflation Factor (VIF). VIF values above 10 (or sometimes 5) indicate high multicollinearity. A VIF >10 (or sometimes >5) indicates problematic multicollinearity."
+          }
+        ]
+      }
+    ]
+  }
+]

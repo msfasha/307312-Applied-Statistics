@@ -307,3 +307,25 @@
 ## Remove Minard opening example — 7 November 2026
 
 - User removed the opening Grammar of Graphics subsection containing Minard's map and its historical discussion from lessons/r-04-ggplot2.qmd. Start the introduction with What is ggplot2?; preserve subsequent explanations and executable examples. Neighboring original course sources remain unchanged.
+
+## Clarity in proposed inference material — 8 November 2026
+
+- In the separate proposed inference drafts, each slide must answer its title directly or define its key concept before listing properties, formulas or examples. Do not make the reader infer the central idea from a list or table.
+- Explain notation and connect calculated results to their meaning in context. Keep explanations concise and explicit.
+- Do not place navigation-link chains inside teaching slides. Use the side contents panel for navigation.
+- This direction applies to proposed authored material; it does not authorize replacing the adopted core lessons or publishing drafts.
+
+## Explain R before using it — 8 November 2026
+
+- In proposed teaching material, review every visible R example, not only examples flagged by the user. Before first use, explain the function's purpose, each argument used, relevant operators, and how to read its output in context.
+- Do not assume familiarity with distribution prefixes, cumulative probabilities, `lower.tail`, logical averaging, `c()` or positional arguments. Prefer named arguments in introductory examples.
+- A code block that runs correctly is not sufficient: students must be able to understand why it answers the question.
+
+## Publish probability section and developing inference practical — 8 November 2026
+
+- User authorized build and publication of the revised probability section alongside the original Part 3 slides, linked from course/part-3.qmd. Preserve the original core lesson and URLs.
+- The revised section has 23 teaching slides, including a d/p/q/r introduction with dnorm/pnorm/qnorm/rnorm, explained arguments and reproducible simulated data.
+- practicals/inferential-statistics-r-practical.qmd is the developing course-long companion: seven explained probability examples, independent work and simulation now; estimation, testing/power and regression explicitly forthcoming.
+- scripts/course_documents.py now lists eighteen notebook/PDF pairs. Include both new notebooks and assets/inferential-draft.css in student bundles.
+- The only individually published Quarto source is downloads/inferential-statistics-r-practical.qmd, explicitly requested by the user. Validate it against the canonical practical; keep all other source/instructor/book exclusions.
+- Build, commit, push, publish and verify the full release, including the direct practical download.
