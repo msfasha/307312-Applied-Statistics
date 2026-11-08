@@ -60,6 +60,13 @@ def main():
             shutil.rmtree(site)
         quarto = shutil.which('quarto') or '/usr/lib/rstudio/resources/app/bin/quarto/bin/quarto'
         subprocess.run([quarto, 'render', '--quiet'], cwd=ROOT, check=True)
+    # Re-stage the explicit data allowlist even when Quarto reuses a resource cache.
+    # A previous partial render may have removed files that the cache marks copied.
+    import re
+    for name in re.findall(r'^    - (data/[^\n]+)', (ROOT/'_quarto.yml').read_text(), re.M):
+        target = ROOT/'_build/website'/name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(ROOT/name, target)
     subprocess.run(['python3', str(ROOT/'scripts/build-student-downloads.py')], cwd=ROOT, check=True)
     validate(ROOT/'_build/website')
     subprocess.run(['python3', str(ROOT/'scripts/validate-student-site.py')], cwd=ROOT, check=True)
