@@ -35,7 +35,6 @@ knitr::opts_knit$set(root.dir = normalizePath(".."))
 
 ## The data and our purpose
 
-- **Source:** the original 307102 Descriptive Statistics teaching material used for Part 2; the original PDF, PowerPoint and workbook remain unchanged reference files.
 - **Data:** `data/descriptive-statistics/students.csv` and `data/descriptive-statistics/README.md`, containing 8,239 records and six variables.
 - **Unit:** one record in the supplied student example, rather than a product line, order or customer.
 - **Categorical variables:** `gender`, `country` and `major`, with the original labels retained.

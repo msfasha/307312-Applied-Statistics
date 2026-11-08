@@ -27,7 +27,7 @@ Keep the working directory at the project root. In RStudio, use Tools → Global
 - `extended-cases/`: all six approved standalone business cases.
 - `assets/`: shared Petra burgundy/gray CSS and the tracked theme specification.
 - `instructor/`: source reviews, provenance, validation and answer keys; excluded from student exports.
-- `sources/slides/`: unchanged original 307102 reference decks.
+- `sources/slides/`: unchanged original reference decks.
 - `books/`: unchanged local reference books/workbooks; ignored by Git and never published.
 - `scripts/`: validation, rendering and publication tools.
 - `_build/`: generated output; not editable sources.
