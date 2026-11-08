@@ -13,6 +13,6 @@ toc: false
 
 ## Other Downloads
 
-- [RStudio files (.zip)](downloads/applied-statistics-rstudio.zip)
+- [RStudio files (.zip)](downloads/applied-statistics-rstudio.zip?v=20261108-clean)
 - [PDF collection (.zip)](downloads/applied-statistics-pdfs.zip)
 - [Extended scenarios](extended-cases/index.qmd){#extended-business-cases}

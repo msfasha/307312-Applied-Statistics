@@ -72,65 +72,6 @@ shutil.copy2(ROOT/'practicals/inferential-statistics-r-practical.qmd',
              SITE/'downloads/inferential-statistics-r-practical.qmd')
 with zipfile.ZipFile(SITE/'downloads/applied-statistics-pdfs.zip','w',zipfile.ZIP_DEFLATED) as z:
     for _, part in DOCUMENTS:z.write(SITE/'pdf'/(part+'.pdf'),part+'.pdf')
-with zipfile.ZipFile(SITE/'downloads/applied-statistics-rstudio.zip','w',zipfile.ZIP_DEFLATED) as z:
-    # No instructor files, archives, original slides, books, or build caches.
-    names=['assets/inferential-draft.css','assets/petra-theme.md','assets/practical-print.css','assets/petra-brand.css','assets/source-slides.css','Applied-Statistics.Rproj','_quarto.yml','index.qmd']+['lessons/'+p+'.qmd' for p in PARTS]+['practicals/'+p+'.qmd' for p in PRACTICALS]+['practicals/_quarto.yml','practicals/practical-01-cereals.qmd','practicals/_includes/petra-plots.R','lessons/_includes/course-tools.R','scripts/finalize-preview.py','scripts/finalize-practical-preview.py','scripts/preview-practicals.py']
-    names += [folder+'/'+p+'.qmd' for folder, p in DOCUMENTS]
-    names += [n+'.qmd' for n in NAVIGATION_PAGES]
-    names += ['assets/course-navigation.css', 'scripts/course_documents.py']
-    names += ['practicals/'+p+'.qmd' for p in SUPERSTORE]
-    for folder in ['data/r-introduction', 'assets/introduction-to-r', 'data/business', 'data/descriptive-statistics', 'data/inferential-statistics',
-                   'assets/descriptive-statistics', 'assets/inferential-statistics', 'lessons/_includes']:
-        names.extend(str(p.relative_to(ROOT)) for p in (ROOT/folder).rglob('*') if p.is_file() and p.suffix.lower() in ['.gif','.png','.jpg','.jpeg','.svg','.css','.qmd','.csv','.json','.md','.R'])
-    # Resources must be restricted to the same explicit teaching files as the site.
-    import re
-    allowed=set(re.findall(r'^    - (data/[^\n]+)',(ROOT/'_quarto.yml').read_text(),re.M))
-    names=[n for n in names if not n.startswith('data/') or n in allowed]
-    for name in sorted(set(names)):
-        if name.endswith('.qmd'):
-            text=(ROOT/name).read_text()
-            text=text.replace('](../../pdf/','](https://msfasha.github.io/307312-Applied-Statistics/pdf/')
-            text=text.replace('](../../downloads/','](https://msfasha.github.io/307312-Applied-Statistics/downloads/')
-            text=text.replace('](../pdf/','](https://msfasha.github.io/307312-Applied-Statistics/pdf/')
-            text=text.replace('](../downloads/','](https://msfasha.github.io/307312-Applied-Statistics/downloads/')
-            text=text.replace('](pdf/','](https://msfasha.github.io/307312-Applied-Statistics/pdf/')
-            text=text.replace('](downloads/','](https://msfasha.github.io/307312-Applied-Statistics/downloads/')
-            z.writestr(name,text)
-        else:z.write(ROOT/name,name)
-    # The packaged project stages practicals after a website render, just like the publisher.
-    z.write(ROOT/'scripts/stage-practicals.py', 'scripts/stage-practicals.py')
-    z.writestr('README.md','''# 307312 Applied Statistics - student project
-
-1. Install R, RStudio, and Quarto.
-2. Extract this whole ZIP to a folder and open Applied-Statistics.Rproj.
-3. Run this once in the R console:
-   install.packages(c("knitr", "rmarkdown", "dplyr", "ggplot2", "readr", "tidyr", "zoo", "e1071"))
-4. Open lessons/01-introduction-to-r.qmd, followed by r-02-basic-concepts.qmd, r-03-dplyr.qmd and r-04-ggplot2.qmd, then Parts 2 and 3. Run code chunks in order.
-5. After the Part 2 slides, open practicals/descriptive-statistics-r-practical.qmd.
-   Run its 18 worked examples in order; these use the original student teaching CSV.
-6. For Part 3, open practicals/inferential-statistics-r-practical.qmd alongside
-   lessons/inferential-31-probability-distributions-draft.qmd. The probability
-   activities are available now; later sections will be added as developed.
-   Choose Render to view a notebook. Run `quarto render practicals` for practicals.
-7. Run `quarto render` to build the lesson website.
-8. Choose optional activities in extended-cases/. Superstore is grouped under
-   extended-cases/superstore/; start with its index.qmd. Each case lists prerequisites.
-   Run `quarto render extended-cases/case-02-oxford-cereal.qmd` for one case.
-
-Parts 2 and 3 preserve the original slide-based lessons and Excel instructions.
-Part 2 R examples are collected in the separate descriptive R practical; Part 3
-keeps its labeled R examples. Their original teaching CSVs and diagrams are included.
-The Superstore extended case uses the US 2023–2025 extract.
-The extended cases add historical ninth-edition business cases and summary inputs.
-All eighteen notebooks are included; choose the extended cases assigned by your instructor.
-See data/business/README.md for provenance, units and limitations.
-The six numbered extended cases provide separate business applications of course concepts.
-Python 3 is needed for the small HTML post-render step.
-PDF and ZIP download links point to the published website; local rendering creates HTML.
-Keep the complete folder structure. Open Applied-Statistics.Rproj and keep the
-working directory at the project root. In RStudio, set Tools > Global Options >
-R Markdown > Evaluate chunks in directory to Project. Read CSVs using their
-data/ paths. All teaching data is CSV.
-Website: https://msfasha.github.io/307312-Applied-Statistics/
-''')
+from student_project import build_student_project
+build_student_project(SITE/'downloads/applied-statistics-rstudio.zip')
 print('Created student RStudio project and PDF bundle.',flush=True)

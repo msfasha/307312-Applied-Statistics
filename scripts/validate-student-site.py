@@ -7,9 +7,11 @@ from urllib.parse import urlsplit, unquote
 import re
 import zipfile
 import hashlib
+import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / '_build/website'
+from student_project import student_path, RSTUDIO_DOCUMENTS, project_files
 from course_documents import LESSONS, PRACTICALS, EXTENDED, DOCUMENTS, SUPERSTORE, NAVIGATION_PAGES
 
 class Links(HTMLParser):
@@ -62,26 +64,36 @@ if __name__ == '__main__':
         assert set(bundle.namelist()) == {n+'.pdf' for _, n in DOCUMENTS}
     with zipfile.ZipFile(SITE/'downloads/applied-statistics-rstudio.zip') as bundle:
         names = set(bundle.namelist())
-        assert {n+'.qmd' for n in NAVIGATION_PAGES} <= names
-        assert 'assets/course-navigation.css' in names
-        assert {f'practicals/{n}.qmd' for n in PRACTICALS} <= names
-        assert {f'{folder}/{n}.qmd' for folder, n in DOCUMENTS} <= names
-        assert 'extended-cases/superstore/index.qmd' in names
-        allowed_data = set(re.findall(r'^    - (data/[^\n]+)', (ROOT/'_quarto.yml').read_text(), re.M))
+        assert names == {student_path(n) for n in project_files()} | {'README.md', '_quarto.yml'}
+        config = yaml.safe_load(bundle.read('_quarto.yml'))
+        assert 'website' not in config
+        assert config['project']['execute-dir'] == 'project'
+        assert set(config['project']['render']) == {student_path(f'{f}/{n}.qmd') for f,n in RSTUDIO_DOCUMENTS}
+        assert {student_path(f'practicals/{n}.qmd') for n in PRACTICALS} <= names
+        assert {student_path(f'{folder}/{n}.qmd') for folder, n in RSTUDIO_DOCUMENTS} <= names
+        # Packaging may relocate helper paths, but must preserve teaching R code.
+        for folder, notebook in RSTUDIO_DOCUMENTS:
+            source = f'{folder}/{notebook}.qmd'
+            def teaching_chunks(text):
+                return [c for c in re.findall(r'```\{r[^\n]*\}\n(.*?)```', text, re.S)
+                        if 'label: render-project-root' not in c]
+            original = teaching_chunks((ROOT/source).read_text())
+            original = [c.replace('lessons/_includes/', 'support/') for c in original]
+            assert original == teaching_chunks(bundle.read(student_path(source)).decode()), source
+        allowed_data = {n for n in project_files() if n.startswith('data/')}
+        assert allowed_data <= set(re.findall(r'^    - (data/[^\n]+)', (ROOT/'_quarto.yml').read_text(), re.M))
         assert {n for n in names if n.startswith('data/')} == allowed_data
         for name in allowed_data:
             expected = hashlib.sha256((ROOT/name).read_bytes()).digest()
             assert hashlib.sha256(bundle.read(name)).digest() == expected, (name, 'ZIP data mismatch')
             assert hashlib.sha256((SITE/name).read_bytes()).digest() == expected, (name, 'site data mismatch')
-        assert {'data/business/superstore-lines.csv', 'data/business/cola.csv', 'data/business/consumer.csv',
-                'data/business/README.md', 'lessons/_includes/course-tools.R',
-                'practicals/_includes/petra-plots.R', 'assets/practical-print.css', 'scripts/stage-practicals.py',
-                'scripts/preview-practicals.py', 'scripts/finalize-practical-preview.py'} <= names
+        assert {'data/business/superstore-lines.csv', 'data/business/cola.csv',
+                'data/business/README.md', 'support/course-tools.R',
+                'assets/practical-print.css'} <= names
+        assert not any(n.startswith(('lessons/', 'practicals/', 'scripts/', 'course/')) for n in names)
+        assert {n for n in names if n.endswith('.qmd') and not n.startswith('support/')} == {student_path(f'{f}/{n}.qmd') for f,n in RSTUDIO_DOCUMENTS}
         assert not any(n.startswith('data/practicals/') for n in names)
-        assert {'lessons/_includes/data-collection-and-surveys.qmd',
-                'lessons/_includes/diagrams/09-types-of-data.qmd',
-                'data/descriptive-statistics/students.csv',
-                'data/inferential-statistics/houses.csv'} <= names
+        assert 'data/descriptive-statistics/students.csv' in names
         assert not any(set(Path(n).parts) & {'instructor', 'books', 'sources', 'archived', '_build'} for n in names)
         assert not any(Path(n).suffix.lower() in {'.xls', '.xlsx', '.pptx'} for n in names)
-    print(f'Student site links, {len(DOCUMENTS)}-PDF bundle and complete RStudio package verified.')
+    print(f'Student site links, {len(DOCUMENTS)}-PDF bundle and {len(RSTUDIO_DOCUMENTS)}-notebook RStudio package verified.')

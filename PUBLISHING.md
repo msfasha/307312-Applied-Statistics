@@ -14,7 +14,8 @@ This supersedes the earlier local-only instruction.
 - Three Superstore notebooks under `extended-cases/superstore/`, grouped by `index.qmd`.
 - Six numbered extended cases under `extended-cases/`: Springville, Oxford, BLK, Parachute, Potato and Harnswell.
 
-Part 2 retains all 87 approved source slides, their figures, Excel instructions,
+Part 2 retains 82 approved source slides after the 8 November duplicate review,
+their figures, Excel instructions,
 the collection/survey supplement and the authorized diagram/CV corrections.
 Its executable R cells live in the companion practical. Each of the 18 matching
 slides also shows a **Try this in R** code reference and one direct link to the
@@ -29,7 +30,8 @@ pages and identify bundled data files by path in notebooks. Preserve source
 citations and links that connect a specific teaching example to its explanation.
 Part 3 retains all 141
 source slides and its labeled R equivalents. Original PPTX/PDF files remain unchanged.
-The publisher checks all retained slide IDs and rejects reintroduction of slide 88.
+The publisher checks all 82 retained descriptive slide IDs and rejects reintroduction
+of removed slides 77, 80, 83, 84, 85 and 88.
 
 The Superstore move preserves its three existing PDF names. Old HTML URLs under
 `practicals/` remain compatibility entry pages, pointing to the relocated notebooks.
@@ -71,21 +73,22 @@ master `../petra_theme/petra_theme.md` when changing the shared theme.
 
 ## Student resources and exclusions
 
-Both bundles include all eighteen approved documents. The RStudio ZIP contains
-editable notebooks, required shared fragments, theme assets, project configuration,
-build helpers and setup instructions. The PDF ZIP contains exactly one PDF per
+The PDF bundle includes all eighteen approved documents. The RStudio ZIP contains fifteen runnable notebooks (four R introductions, two practicals and nine extended cases), plus required data, introductory images, a shared R helper, theme assets,
+project configuration and setup instructions. The PDF ZIP contains exactly one PDF per
 approved notebook. The home page links all eighteen PDFs and both bundles.
 
 Only explicitly listed `data/` resources in `_quarto.yml` enter the website and
 student project: original descriptive/inferential teaching CSVs and guides,
 canonical business CSVs and guide, and the supplied historical R-introduction
-Superstore CSV and guide. The 2014–2017 R-introduction dataset is distinct from
+Superstore CSV and guide. The RStudio ZIP takes only the data used by its fifteen notebooks
+and the corresponding guides from this allowlist. The 2014–2017 R-introduction dataset is distinct from
 the pinned US 2023–2025 business Superstore extract. Keep the only editable data
 under root `data/`; read fixed paths from the project root in interactive RStudio cells.
 
 Exclude books, instructor notes/answers, provenance manifests, archives, original
 student measurement workbooks, publisher workbooks, source decks and build caches.
-Original instructional image assets and approved editable diagrams remain included.
+The website retains original instructional images and approved editable diagrams.
+The RStudio ZIP includes only images needed by its runnable notebooks.
 The Superstore workbook and publisher workbooks stay unchanged and local-only.
 Do not infer random sampling, causal discount effects or refund accounting.
 
@@ -119,7 +122,7 @@ The user explicitly authorized the current push and website update.
 
 ## Simplified interface
 
-The home page has a Course material heading with three plain part links, followed by Other Downloads with both bundles and Extended scenarios. The navbar Course link opens the home page; course/index.qmd remains a compatible entry page. Part landing pages collect their own HTML/PDF and practical resources, ending with only a Home link to the main page. Part 3 links the original slides, the revised probability section, and the developing inferential R practical with online/PDF/Quarto downloads. NAVIGATION_PAGES in scripts/course_documents.py tracks the landing pages for packaging and validation. These do not add PDFs to the eighteen-document contract.
+The home page has a Course material heading with three plain part links, followed by Other Downloads with both bundles and Extended scenarios. The navbar Course link opens the home page; course/index.qmd remains a compatible entry page. Part landing pages collect their own HTML/PDF and practical resources, ending with only a Home link to the main page. Part 3 links the original slides, the revised probability section, and the developing inferential R practical with online/PDF/Quarto downloads. NAVIGATION_PAGES in scripts/course_documents.py tracks the website landing pages for validation. These do not add PDFs to the eighteen-document contract.
 
 ## Part 3 probability and developing practical — 8 November 2026
 
@@ -132,6 +135,28 @@ The practical currently covers probability only and identifies later sections
 as forthcoming. Part 3 offers an individual editable Quarto download under
 `downloads/inferential-statistics-r-practical.qmd`. This is the sole approved
 public .qmd exception; preserve the exclusions for all other source files.
-Both student bundles include all eighteen approved notebook/PDF pairs and
-the shared draft stylesheet. The live verifier checks the individual notebook
+The PDF bundle includes all eighteen approved PDFs. The RStudio bundle contains only the fifteen runnable R notebooks and required support files. The live verifier checks the individual notebook
 byte-for-byte as well as the pages, PDFs, data and bundles.
+
+## Student ZIP organization — 8 November 2026
+
+The website source folders are not the student project layout. `scripts/student_project.py`
+packages the fifteen runnable notebooks into `part-1-introduction-to-r/`,
+`part-2-descriptive-statistics/`, `part-3-inferential-statistics/` and `extended-cases/`.
+Part 1 contains its four R introductions; Parts 2 and 3 each contain their R practical.
+`support/` contains only the required shared R helper; data and image paths retain their root folders. Links, include paths and
+R helper paths are rewritten in the ZIP only. Website URLs and canonical sources stay
+unchanged. The ZIP uses one root Quarto project with project-root execution, no nested
+practical project or Python render helpers, and no website navigation pages, slide-lesson sources or obsolete compatibility notebooks.
+Links to omitted teaching lessons open the published website. The README identifies the developing probability companion.
+Validate a fresh extraction with a complete `quarto render` before release.
+
+
+## Combined release — 8 November 2026
+
+Publish the runnable-only RStudio ZIP and the approved descriptive ending cleanup together.
+The five repeated/empty outlier slides (77, 80, 83, 84, 85) are removed, with distinct
+screening explanations consolidated on slide 82; source IDs and practical links remain.
+Rebuild all eighteen PDFs and both ZIPs. Keep the existing download URL; the home-page
+RStudio link adds `?v=20261108-clean` to refresh previously cached downloads.
+Unpublished inference-review files remain outside this release.

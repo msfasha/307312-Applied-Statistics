@@ -329,3 +329,18 @@
 - scripts/course_documents.py now lists eighteen notebook/PDF pairs. Include both new notebooks and assets/inferential-draft.css in student bundles.
 - The only individually published Quarto source is downloads/inferential-statistics-r-practical.qmd, explicitly requested by the user. Validate it against the canonical practical; keep all other source/instructor/book exclusions.
 - Build, commit, push, publish and verify the full release, including the direct practical download.
+
+## Runnable-only RStudio ZIP — 8 November 2026
+
+- User explicitly removed website navigation and slide-lesson sources from the RStudio ZIP.
+- Package fifteen runnable notebooks: four R introductions, two R practicals, six numbered extended cases and three Superstore cases. Group the introductions and practicals under Part 1–3 folders; cases remain under extended-cases/.
+- Exclude course/index/part navigation QMDs, descriptive/inferential slide QMDs, the separate probability lesson QMD, and supporting slide diagrams. Retain only needed data, introductory images, theme files, shared R helper and root project configuration.
+- `scripts/student_project.py` builds this student-only layout, rewriting omitted lesson links to public HTML and preserving teaching R code. Validate a fresh extraction and full render.
+- Website teaching material, original PPTX references and the eighteen-PDF bundle remain unchanged by this packaging decision.
+
+## Publish ZIP cleanup and duplicate-slide review — 8 November 2026
+
+- User explicitly authorized publication of the cleaned RStudio download together with the duplicate-slide update.
+- Retain 82 descriptive slide positions: omit repeated/empty source slides 77, 80, 83, 84, 85 as well as previously removed 88. Distinct screening explanations from 83–85 are consolidated on 82. Keep all 141 inferential slide positions.
+- Publish the fifteen-notebook RStudio ZIP and refresh all eighteen PDFs and the PDF ZIP. Keep existing public URLs; the home/course-index ZIP link uses a cache-refresh query.
+- Separate unapproved inference-review files remain local and unpublished.

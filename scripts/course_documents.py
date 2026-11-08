@@ -9,5 +9,5 @@ DOCUMENTS = ([('lessons', n) for n in LESSONS] + [('practicals', n) for n in PRA
              + [('extended-cases', n) for n in EXTENDED]
              + [('extended-cases/superstore', n) for n in SUPERSTORE])
 
-# Navigation pages are included in the website and editable student project, without extra PDFs.
+# Navigation pages are included in the website only, without extra PDFs.
 NAVIGATION_PAGES = ['index', 'course/index', 'course/part-1', 'course/part-2', 'course/part-3', 'extended-cases/index', 'extended-cases/superstore/index']

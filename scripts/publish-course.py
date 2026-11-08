@@ -25,7 +25,7 @@ with tempfile.TemporaryDirectory(prefix='307312-pages-') as temp:
             else:p.unlink()
         shutil.copytree(site,checkout,dirs_exist_ok=True)
         run('git','add','--all',cwd=checkout)
-        run('git','commit','-m','Publish Part 3 probability section, R practical and refreshed downloads',cwd=checkout)
+        run('git','commit','-m','Publish cleaned student project and descriptive duplicate-slide review',cwd=checkout)
         print(run('git','push','origin','HEAD:gh-pages',cwd=checkout))
         print('Published source commit:',source)
         print('Website: https://msfasha.github.io/307312-Applied-Statistics/')

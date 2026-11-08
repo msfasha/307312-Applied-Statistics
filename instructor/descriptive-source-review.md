@@ -67,3 +67,25 @@ does not establish or repair these claims.
   and removal of source slide 88 (different course's Practice Datasets/QR code).
 - The slide 47 source claim that variance is universally better than MAD is
   still a source issue; the diagram replacement does not validate it.
+
+
+## Ending duplicate review — 8 November 2026
+
+User authorized retaining the better versions of repeated closing material.
+Five slide wrappers were removed from the active lesson (82 retained positions):
+
+- 77: repeated outlier definition and screening overview; retain the earlier
+  definition/caution on 32 and the more specific illustrations on 79 and 82.
+- 80: title-only “Outliers” slide, with no teaching content.
+- 83: separate scatterplot screening slide; its two explanatory sentences move
+  to 82. The scatterplot teaching and example on 33 remain.
+- 84: repeated IQR screening rule; retain the fuller worked explanation and R
+  reference on 79. Move the distinct Z-score explanation to 82.
+- 85: repeated graphical screening overview; move its visual-inspection/QQ-plot
+  explanation to 82. The earlier histogram teaching remains.
+
+Keep 82's enlarged boxplot illustration. Slides 81, 86 and 87 have distinct
+impacts/handling content and remain; their pre-existing source issues above
+are not validated by this duplicate review. Repeated titles alone do not mean
+identical content. Original slide IDs are retained for provenance and existing
+R-practical references. Source PPTX/PDF and extracted image files are unchanged.

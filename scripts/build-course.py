@@ -35,10 +35,13 @@ def validate(site):
             raise RuntimeError('Incomplete course: '+page)
     # Guard the restored core against future replacement by practical/case rewrites.
     descriptive = (site/'lessons/02-descriptive-statistics.html').read_text()
-    if any(f'id="slide-{i:02d}"' not in descriptive for i in range(1, 88)):
+    # Five redundant/empty outlier slides removed after the 8 November review.
+    removed_descriptive = {77, 80, 83, 84, 85, 88}
+    if any(f'id="slide-{i:02d}"' not in descriptive
+           for i in range(1, 89) if i not in removed_descriptive):
         raise RuntimeError('Incomplete retained descriptive slides')
-    if 'id="slide-88"' in descriptive:
-        raise RuntimeError('Removed cross-course Practice Datasets slide reintroduced')
+    if any(f'id="slide-{i:02d}"' in descriptive for i in removed_descriptive):
+        raise RuntimeError('Removed redundant or cross-course descriptive slide reintroduced')
     inferential = (site/'lessons/03-inferential-statistics.html').read_text()
     if any(f'id="part3-{k:02d}-slide-{i:02d}"' not in inferential
            for k, count in enumerate([37, 26, 57, 21], 1) for i in range(1, count+1)):

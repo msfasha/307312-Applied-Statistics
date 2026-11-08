@@ -1628,27 +1628,6 @@ boxplot(height ~ country, data = males, ylab = "Height (cm)", col = "#D4D4D4")
 
 :::
 
-<!-- Original slide 77 -->
-
-::: {.source-slide #slide-77}
-
-### Outliers {#source-title-77}
-
-```{=html}
-<div class="source-text">
-<p class="source-bullet source-level-0">An outlier is an observation that lies an abnormal distance from other values in a random sample from a population. </p>
-<p class="source-bullet source-level-0">We can identify potential outliers using Histograms, scatter plots, boxplots…etc.</p>
-</div>
-```
-
-![](../assets/descriptive-statistics/slide-77-graphic-02.png){width="43%" fig-alt="Original graphic from slide 77"}
-
-![](../assets/descriptive-statistics/slide-77-graphic-03.png){width="38%" fig-alt="Original graphic from slide 77"}
-
-![](../assets/descriptive-statistics/slide-77-graphic-04.png){width="28%" fig-alt="Original graphic from slide 77"}
-
-:::
-
 <!-- Original slide 78 -->
 
 ::: {.source-slide #slide-78}
@@ -1711,14 +1690,6 @@ sum(students$age < lower | students$age > upper)
 
 :::
 
-<!-- Original slide 80 -->
-
-::: {.source-slide #slide-80}
-
-### Outliers {#source-title-80}
-
-:::
-
 <!-- Original slide 81 -->
 
 ::: {.source-slide #slide-81}
@@ -1751,60 +1722,12 @@ sum(students$age < lower | students$age > upper)
 
 ```{=html}
 <div class="source-text">
-<p class="source-bullet source-level-0">There are several methods to screen for outliers in a dataset, ranging from graphical techniques to statistical tests. Here are some commonly used methods:</p>
 <p class="source-bullet source-level-0">Box Plots (Box-and-Whisker Plots):<br> Box plots provide a visual representation of the distribution of data, including the identification of potential outliers. In a box plot, outliers are typically shown as individual data points beyond the whiskers of the plot.</p>
-</div>
-```
-
-:::
-
-<!-- Original slide 83 -->
-
-::: {.source-slide #slide-83}
-
-### Methods to screen for outliers in a dataset {#source-title-83}
-
-![](../assets/descriptive-statistics/slide-83-graphic-01.png){width="41%" fig-alt="Original graphic from slide 83"}
-
-```{=html}
-<div class="source-text">
-<p>Scatterplots:</p>
-<p class="source-bullet source-level-0">Scatterplots are particularly useful for identifying outliers in bivariate or multivariate data.</p>
-<p class="source-bullet source-level-0">Outliers can appear as data points that are far from the main cluster of points in the scatterplot.</p>
-</div>
-```
-
-:::
-
-<!-- Original slide 84 -->
-
-::: {.source-slide #slide-84}
-
-### Methods to screen for outliers in a dataset {#source-title-84}
-
-```{=html}
-<div class="source-text">
+<p class="source-bullet source-level-0">Scatterplots are particularly useful for identifying outliers in bivariate or multivariate data. Outliers can appear as data points that are far from the main cluster of points in the scatterplot.</p>
 <p class="source-bullet source-level-0">Z-Scores:<br> Z-scores (standard scores) measure how many standard deviations a data point is away from the mean. Data points with high absolute Z-scores (typically greater than 2 or 3) are often considered potential outliers.</p>
-<p class="source-bullet source-level-0">IQR (Interquartile Range) Method:<br> The IQR method involves calculating the interquartile range (IQR = Q3 – Q1) and then identifying values that fall below Q1 – 1.5 × IQR or above Q3 + 1.5 × IQR as potential outliers.</p>
+<p class="source-bullet source-level-0">Visual Inspection:<br> Sometimes, simple visual inspection of the data through histograms, QQ plots (quantile-quantile plots), or other visualization techniques can reveal the presence of outliers.</p>
 </div>
 ```
-
-:::
-
-<!-- Original slide 85 -->
-
-::: {.source-slide #slide-85}
-
-### Methods to screen for outliers in a dataset {#source-title-85}
-
-```{=html}
-<div class="source-text">
-<p>Visual Inspection:</p>
-<p class="source-bullet source-level-0">Sometimes, simple visual inspection of the data through histograms, QQ plots (quantile-quantile plots), or other visualization techniques can reveal the presence of outliers.</p>
-</div>
-```
-
-![](../assets/descriptive-statistics/slide-85-graphic-02.png){width="45%" fig-alt="Original graphic from slide 85"}
 
 :::
 
