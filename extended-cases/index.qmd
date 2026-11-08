@@ -30,3 +30,5 @@ Cases 1–6 draw on Berenson, Levine and Krehbiel's *Basic Business Statistics: 
 
 - [RStudio files (.zip)](../downloads/applied-statistics-rstudio.zip) — editable notebooks and data for running the code.
 - [PDF collection (.zip)](../downloads/applied-statistics-pdfs.zip) — all lessons and scenarios for reading.
+
+[Home](../index.qmd)
