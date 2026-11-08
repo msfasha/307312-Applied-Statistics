@@ -2861,15 +2861,14 @@ sample_standard_deviation
 <h2 class="anchored" data-anchor-id="skewness-of-age">14. Skewness of age</h2>
 <ul>
 <li><strong>Slides:</strong> <a href="../lessons/02-descriptive-statistics.html#slide-68">source slide 68</a>.</li>
-<li><strong>What we are doing:</strong> Quantify the asymmetry of the age distribution with <code>skewness()</code> from the e1071 package. The <code>::</code> notation selects the function from that package. The argument <code>type = 2</code> selects the sample-size correction used by Excel SKEW; the observations are unchanged.</li>
-<li><strong>How to read the result:</strong> A positive value indicates a longer right tail; a negative value indicates a longer left tail. Compare the sign with the histogram rather than treating this statistic as a complete description of shape. The formula requires more than two observations and nonzero variation.</li>
+<li><strong>What we are doing:</strong> Quantify the asymmetry of the age distribution with <code>skewness()</code> from the e1071 package, using its default method. The <code>::</code> notation selects the function from that package.</li>
+<li><strong>How to read the result:</strong> A positive value indicates a longer right tail; a negative value indicates a longer left tail. Compare the sign with the histogram rather than treating this statistic as a complete description of shape.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># e1071::skewness() measures asymmetry; type=2 selects the correction used by Excel SKEW.</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Keep type=2: the function defaults to a different method (type=3).</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>e1071<span class="sc">::</span><span class="fu">skewness</span>(students<span class="sc">$</span>age, <span class="at">type =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># e1071::skewness() measures the asymmetry of the age distribution.</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>e1071<span class="sc">::</span><span class="fu">skewness</span>(students<span class="sc">$</span>age)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.427823</code></pre>
+<pre><code>[1] 4.42621</code></pre>
 </div>
 </div>
 </section>
@@ -2877,18 +2876,12 @@ sample_standard_deviation
 <h2 class="anchored" data-anchor-id="the-90th-percentile">15. The 90th percentile</h2>
 <ul>
 <li><strong>Slides:</strong> <a href="../lessons/02-descriptive-statistics.html#slide-72">source slide 72</a>.</li>
-<li><strong>What we are doing:</strong> Find the height value associated with the 90th percentile. Percentiles locate values within the ordered data; interpolation conventions can produce different numerical answers.</li>
-<li><strong>How to read the result:</strong> The first output uses R type 7, corresponding to Excel PERCENTILE.INC. The second uses type 6, corresponding to PERCENTILE.EXC for this sample and probability. Both outputs are in centimetres. Here, <code>type</code> is a function argument selecting the percentile calculation method, not a data type. R defaults to type 7, so omitting <code>type = 7</code> gives the same result; keep <code>type = 6</code> when comparing the exclusive convention. These method numbers are specific to <code>quantile()</code> and are separate from the skewness methods.</li>
+<li><strong>What we are doing:</strong> Find the height value associated with the 90th percentile using R’s default calculation.</li>
+<li><strong>How to read the result:</strong> The output is in centimetres. About 90% of the recorded heights are at or below this value.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># quantile() finds the requested percentile; probs=0.90 means the 90th percentile of height in cm.</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># type=7 matches Excel PERCENTILE.INC; type=6 matches PERCENTILE.EXC for this sample and probability.</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(students<span class="sc">$</span>height, <span class="at">probs =</span> <span class="fl">0.90</span>, <span class="at">type =</span> <span class="dv">7</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>90% 
-186 </code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(students<span class="sc">$</span>height, <span class="at">probs =</span> <span class="fl">0.90</span>, <span class="at">type =</span> <span class="dv">6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># quantile() finds percentiles; probs=0.90 requests the 90th percentile of height in cm.</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(students<span class="sc">$</span>height, <span class="at">probs =</span> <span class="fl">0.90</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>90% 
 186 </code></pre>
@@ -2899,18 +2892,12 @@ sample_standard_deviation
 <h2 class="anchored" data-anchor-id="first-and-second-quartiles">16. First and second quartiles</h2>
 <ul>
 <li><strong>Slides:</strong> <a href="../lessons/02-descriptive-statistics.html#slide-74">source slide 74</a>.</li>
-<li><strong>What we are doing:</strong> Locate the 25th and 50th percentiles of height. These are the first quartile and median, respectively, and divide the ordered observations into interpretable portions.</li>
-<li><strong>How to read the result:</strong> Each output contains Q1 and Q2 in centimetres. Compare the inclusive and exclusive conventions. The chosen probabilities are valid for both conventions with this dataset; differences reflect interpolation rules rather than a change in the observations.</li>
+<li><strong>What we are doing:</strong> Locate the 25th and 50th percentiles of height: the first quartile and median.</li>
+<li><strong>How to read the result:</strong> The output gives Q1 and Q2 in centimetres. About 25% of recorded heights are at or below Q1; about 50% are at or below the median.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># quantile(probs=c(0.25,0.50)) returns the first and second quartiles of height in cm.</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co"># type=7 uses Excel&#39;s inclusive convention; type=6 uses its exclusive convention for these probabilities.</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(students<span class="sc">$</span>height, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.50</span>), <span class="at">type =</span> <span class="dv">7</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>25% 50% 
-163 171 </code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(students<span class="sc">$</span>height, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.50</span>), <span class="at">type =</span> <span class="dv">6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># quantile(probs=c(0.25,0.50)) returns the first quartile and median of height in cm.</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(students<span class="sc">$</span>height, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.50</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>25% 50% 
 163 171 </code></pre>
@@ -2922,12 +2909,12 @@ sample_standard_deviation
 <ul>
 <li><strong>Slides:</strong> <a href="../lessons/02-descriptive-statistics.html#slide-76">source slide 76</a>.</li>
 <li><strong>What we are doing:</strong> Compare height distributions first by gender and then, among males, by the two selected country labels. Boxplots summarize the centre and spread and mark observations beyond the whiskers.</li>
-<li><strong>How to read the result:</strong> Read the median line, box and whiskers together. R uses boxplot hinges, which can differ from type-7 quartiles; whiskers reach the most extreme observations within 1.5 IQR of the hinges. The original label <code>Russa</code> is retained for the Russian category. Group differences here are descriptive, with no causal or population inference implied.</li>
+<li><strong>How to read the result:</strong> Read the median line, box and whiskers together. R uses boxplot hinges, which can differ from the quartiles returned by quantile(); whiskers reach the most extreme observations within 1.5 IQR of the hinges. The original label <code>Russa</code> is retained for the Russian category. Group differences here are descriptive, with no causal or population inference implied.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># boxplot(height~gender) compares groups; whiskers extend to the last data within 1.5 IQR of the hinges.</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="co"># subset() selects Turkish/Russian males; R&#39;s default boxplot hinges can differ from type-7 quartiles.</span></span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(height <span class="sc">~</span> gender, <span class="at">data =</span> students, <span class="at">ylab =</span> <span class="st">&quot;Height (cm)&quot;</span>, <span class="at">col =</span> <span class="st">&quot;#D4D4D4&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># boxplot(height~gender) compares groups; whiskers extend to the last data within 1.5 IQR of the hinges.</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co"># subset() selects Turkish/Russian males; R&#39;s default boxplot hinges can differ from the quartiles returned by quantile().</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(height <span class="sc">~</span> gender, <span class="at">data =</span> students, <span class="at">ylab =</span> <span class="st">&quot;Height (cm)&quot;</span>, <span class="at">col =</span> <span class="st">&quot;#D4D4D4&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2935,9 +2922,9 @@ sample_standard_deviation
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The source spells Russia as &quot;Russa&quot;; match that original label without changing the data.</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>males <span class="ot">&lt;-</span> <span class="fu">subset</span>(students, gender <span class="sc">==</span> <span class="st">&quot;Male&quot;</span> <span class="sc">&amp;</span> country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Turkey&quot;</span>, <span class="st">&quot;Russa&quot;</span>))</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(height <span class="sc">~</span> country, <span class="at">data =</span> males, <span class="at">ylab =</span> <span class="st">&quot;Height (cm)&quot;</span>, <span class="at">col =</span> <span class="st">&quot;#D4D4D4&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The source spells Russia as &quot;Russa&quot;; match that original label without changing the data.</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>males <span class="ot">&lt;-</span> <span class="fu">subset</span>(students, gender <span class="sc">==</span> <span class="st">&quot;Male&quot;</span> <span class="sc">&amp;</span> country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Turkey&quot;</span>, <span class="st">&quot;Russa&quot;</span>))</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(height <span class="sc">~</span> country, <span class="at">data =</span> males, <span class="at">ylab =</span> <span class="st">&quot;Height (cm)&quot;</span>, <span class="at">col =</span> <span class="st">&quot;#D4D4D4&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2951,22 +2938,22 @@ sample_standard_deviation
 <h2 class="anchored" data-anchor-id="use-iqr-fences-to-flag-potential-outliers">18. Use IQR fences to flag potential outliers</h2>
 <ul>
 <li><strong>Slides:</strong> <a href="../lessons/02-descriptive-statistics.html#slide-79">source slide 79</a>.</li>
-<li><strong>What we are doing:</strong> Calculate inclusive first and third age quartiles, their interquartile range and the lower and upper 1.5-IQR fences. Then count records outside those fences.</li>
+<li><strong>What we are doing:</strong> Calculate the first and third age quartiles, their interquartile range and the lower and upper 1.5-IQR fences. Then count records outside those fences.</li>
 <li><strong>How to read the result:</strong> The first output gives the fences in years; the second gives the number of flagged records. The strict comparisons flag ages below the lower fence or above the upper fence. Investigate flagged values in context; the code preserves every observation and does not automatically remove records.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># quantile(type=7) supplies inclusive quartiles; the 1.5-IQR fences flag values for investigation.</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sum() counts TRUE flags and does not remove observations; these age fences are measured in years.</span></span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>q <span class="ot">&lt;-</span> <span class="fu">quantile</span>(students<span class="sc">$</span>age, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>), <span class="at">type =</span> <span class="dv">7</span>)</span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>iqr <span class="ot">&lt;-</span> q[<span class="dv">2</span>] <span class="sc">-</span> q[<span class="dv">1</span>]</span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>lower <span class="ot">&lt;-</span> q[<span class="dv">1</span>] <span class="sc">-</span> <span class="fl">1.5</span> <span class="sc">*</span> iqr</span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>upper <span class="ot">&lt;-</span> q[<span class="dv">2</span>] <span class="sc">+</span> <span class="fl">1.5</span> <span class="sc">*</span> iqr</span>
-<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">lower_fence =</span> <span class="fu">unname</span>(lower), <span class="at">upper_fence =</span> <span class="fu">unname</span>(upper))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># quantile() supplies quartiles; the 1.5-IQR fences flag values for investigation.</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sum() counts TRUE flags and does not remove observations; these age fences are measured in years.</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>q <span class="ot">&lt;-</span> <span class="fu">quantile</span>(students<span class="sc">$</span>age, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>))</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>iqr <span class="ot">&lt;-</span> q[<span class="dv">2</span>] <span class="sc">-</span> q[<span class="dv">1</span>]</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>lower <span class="ot">&lt;-</span> q[<span class="dv">1</span>] <span class="sc">-</span> <span class="fl">1.5</span> <span class="sc">*</span> iqr</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>upper <span class="ot">&lt;-</span> q[<span class="dv">2</span>] <span class="sc">+</span> <span class="fl">1.5</span> <span class="sc">*</span> iqr</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">lower_fence =</span> <span class="fu">unname</span>(lower), <span class="at">upper_fence =</span> <span class="fu">unname</span>(upper))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>lower_fence upper_fence 
        15.5        27.5 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(students<span class="sc">$</span>age <span class="sc">&lt;</span> lower <span class="sc">|</span> students<span class="sc">$</span>age <span class="sc">&gt;</span> upper)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(students<span class="sc">$</span>age <span class="sc">&lt;</span> lower <span class="sc">|</span> students<span class="sc">$</span>age <span class="sc">&gt;</span> upper)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 429</code></pre>
 </div>
@@ -2979,7 +2966,7 @@ sample_standard_deviation
 <li>Which charts suit categorical data, and which suit numerical data?</li>
 <li>How do the mean and median describe different aspects of the same distribution?</li>
 <li>Which dispersion measures retain the original units, and which do not?</li>
-<li>Why should percentile conventions be stated when comparing R and Excel results?</li>
+<li>What do the 90th percentile and the quartiles tell us about the data?</li>
 <li>Why does an outlier flag call for investigation rather than automatic deletion?</li>
 </ul>
 </section>
