@@ -94,3 +94,11 @@ Named all arguments in the introductory binomial, Poisson, uniform and normal ca
 - The simulation creates twelve generated scores using set.seed(312), data.frame() and rnorm(), with every argument explained. Inputs specify a model, not an exact realised sample mean/SD or collected student records.
 - Added the separate developing inferential practical, with probability examples and independent tasks. Later estimation/testing/power/regression sections are marked forthcoming, not presented as finished.
 - User explicitly authorized publication; the original core slide lesson remains available unchanged.
+
+## Illustrative visual revision — 10 November 2026
+
+- User requested more appealing, representative images. Reused three unchanged images from the original probability deck: source slide 8 dice (new slide 1), source slide 3 population/sample diagram (new slide 2), source slide 9 component inspection photo (new slide 3).
+- Added two course-authored vector illustrations: discrete probability mass versus continuous interval area (slide 4) and the normal d/p/q/r function family (slide 14). Reproduce with scripts/create-probability-illustrations.R.
+- The function-family illustration replaces the previous table while retaining its definitions and argument meanings. Its generated observations use exactly the same seed and model as the executable example. The practical retains its full function table and unchanged executable code.
+- Kept 23 teaching pages, all explicit R explanations, source attributions and seven visible R examples. Original core slides and source images are unchanged. No internet imagery was needed.
+- Updated the isolated preview builder and review ZIP to include every illustration. Verified the isolated visual review first, then included this revision in the course build/publication under the standing instruction to build and publish when finished.

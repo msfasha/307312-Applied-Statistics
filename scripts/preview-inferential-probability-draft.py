@@ -8,7 +8,12 @@ PROJECT=BUILD/'project'
 OUT=BUILD/'preview'
 NAME='inferential-31-probability-distributions-draft'
 QUARTO=shutil.which('quarto') or '/usr/lib/rstudio/resources/app/bin/quarto/bin/quarto'
-ASSETS=['petra-brand.css','source-slides.css','inferential-draft.css']
+ASSETS=['petra-brand.css','source-slides.css','inferential-draft.css',
+    'inferential-illustrations/mass-and-density.svg',
+    'inferential-illustrations/r-distribution-functions.svg',
+    'inferential-statistics/part-01-slide-03-graphic-02.png',
+    'inferential-statistics/part-01-slide-08-graphic-01.png',
+    'inferential-statistics/part-01-slide-09-graphic-03.png']
 
 def check_cells():
     source=(ROOT/'lessons'/f'{NAME}.qmd').read_text()
@@ -48,7 +53,9 @@ def main():
     OUT.mkdir(parents=True,exist_ok=True)
     result=check_cells()
     shutil.copy2(ROOT/'lessons'/f'{NAME}.qmd',PROJECT/'lessons'/f'{NAME}.qmd')
-    for name in ASSETS:shutil.copy2(ROOT/'assets'/name,PROJECT/'assets'/name)
+    for name in ASSETS:
+        (PROJECT/'assets'/name).parent.mkdir(parents=True,exist_ok=True)
+        shutil.copy2(ROOT/'assets'/name,PROJECT/'assets'/name)
     config=f'''project:
   type: default
   output-dir: ../preview
@@ -72,7 +79,7 @@ def main():
     (PROJECT/'README.md').write_text('''# 3.1 Probability Distributions — proposed teaching draft
 
 Open probability-distributions-draft.html or the PDF to review the section.
-This is a separate proposal. It has not replaced the adopted course or been published.
+This preview is built independently for review. The preview builder does not publish or replace the original core slides.
 
 The 23 teaching slides implement units P1–P9 of the agreed source map.
 The probability inputs are stipulated models; this section needs no external CSV.

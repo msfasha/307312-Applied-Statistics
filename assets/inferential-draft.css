@@ -32,3 +32,31 @@
   .inferential-draft p:has(math[display="block"]), .inferential-draft .cell-output-display:has(table) { overflow: visible; }
   .inferential-draft .teaching-slide .math.display { font-size: 12pt; }
 }
+
+/* Illustrations support the definition and retain their natural proportions. */
+.inferential-draft .teaching-illustration { margin: .9rem auto; text-align: center; }
+.inferential-draft .teaching-illustration img { display: block; width: 95%; height: auto; margin: 0 auto; }
+.inferential-draft .population-picture img { width: 75%; }
+.inferential-draft .inspection-picture img { width: 60%; }
+.inferential-draft .visual-credit { color: #666; font-size: .8rem; line-height: 1.4; margin: .4rem auto .7rem; text-align: left; }
+@media screen and (max-width: 600px) {
+ .inferential-draft .teaching-illustration img { width: 100%; }
+}
+@media print {
+ .inferential-draft .teaching-illustration { margin: .55rem auto; break-inside: avoid; }
+ .inferential-draft .teaching-illustration img { width: 160mm; }
+ .inferential-draft .population-picture img { width: 125mm; }
+ .inferential-draft .inspection-picture img { width: 100mm; }
+ .inferential-draft .r-functions-picture img { width: 157mm; }
+ .inferential-draft .visual-credit { font-size: 8pt; line-height: 1.35; }
+}
+
+.inferential-draft .dice-picture img { width: 55%; }
+@media print {
+ .inferential-draft .dice-picture img { width: 88mm; }
+}
+@media screen and (max-width: 600px) {
+ .inferential-draft .mass-density-picture, .inferential-draft .r-functions-picture { overflow-x: auto; }
+ .inferential-draft .mass-density-picture img { min-width: 540px; }
+ .inferential-draft .r-functions-picture img { min-width: 620px; }
+}

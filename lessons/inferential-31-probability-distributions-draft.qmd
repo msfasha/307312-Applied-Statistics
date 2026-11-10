@@ -50,6 +50,14 @@ A **probability model** describes the possible outcomes of an uncertain process 
 - How many customers might arrive in the next minute?
 - What proportion of measurements might exceed a threshold?
 
+::: {.teaching-illustration .dice-picture}
+<img src="../assets/inferential-statistics/part-01-slide-08-graphic-01.png" alt="Two dice illustrate the six equally likely faces of a fair die.">
+
+::: {.visual-credit}
+A fair die is a simple example of a probability model: each of its six faces has probability 1/6. Dice illustration retained from original probability slides, source slide 8.
+:::
+:::
+
 **By the end of this section, you should be able to:**
 
 1. Define a random variable, including its units and observation window.
@@ -67,6 +75,14 @@ A **probability model** describes the possible outcomes of an uncertain process 
 ## What does statistical inference do?
 
 **Statistical inference uses sample data to draw conclusions about a population and quantify the uncertainty in those conclusions.** It helps us estimate unknown features, test claims and assess relationships.
+
+::: {.teaching-illustration .population-picture}
+<img src="../assets/inferential-statistics/part-01-slide-03-graphic-02.png" alt="A population is sampled; statistical inference uses the sample to draw conclusions about the population.">
+
+::: {.visual-credit}
+Original probability slides, source slide 3. Sampling moves from population to sample; inference reasons back to the population.
+:::
+:::
 
 - **Population:** the group or process we want to understand.
 - **Sample:** the observations we actually collect.
@@ -104,6 +120,14 @@ A **random variable** assigns a numerical value to each outcome of an uncertain 
 | $T$ | Waiting time in minutes | Continuous measurement |
 | $D$ | Component diameter in millimetres | Continuous measurement |
 
+::: {.teaching-illustration .inspection-picture}
+<img src="../assets/inferential-statistics/part-01-slide-09-graphic-03.png" alt="Inspection of manufactured components connects counts of components with measurements such as diameter.">
+
+::: {.visual-credit}
+A batch gives a **count** of components; an individual component has a **measured diameter**. Photo retained from original probability slides, source slide 9.
+:::
+:::
+
 - Discrete values form a finite or countable set.
 - A continuous model describes measurements over an interval.
 - Recorded measurements may be rounded even when the underlying model is continuous.
@@ -140,7 +164,13 @@ $$P(a<X<b)=\int_a^b f(x)\,dx.$$
 - Including or excluding an endpoint does not change a continuous interval probability.
 - The probability of a nonzero-width interval can be positive.
 
-**Example:** for a fair die, $P(X=3)=1/6$ is a mass at one outcome. For uniform arrival times from 8 a.m. to noon, the density is $0.25$ per hour, while the probability of arrival between 8 and 9 a.m. is the area $1\times0.25=0.25$.
+::: {.teaching-illustration .mass-density-picture}
+<img src="../assets/inferential-illustrations/mass-and-density.svg" alt="Discrete die model: the probability at outcome 3 is one sixth. Continuous uniform arrival model: probability between 8 and 9 is the shaded area, one hour times density 0.25 per hour, giving 0.25.">
+
+::: {.visual-credit}
+**Read the contrast:** a bar gives a probability at a discrete value; the shaded **area**, rather than the curve's height, gives a continuous interval probability. Course illustration using the stated models.
+:::
+:::
 
 ::: {.slide-footer}
 04 / 23 · Probability mass and density · Book §§5.1 and 6.1
@@ -472,12 +502,12 @@ A normal model has unbounded tails. It may approximate some bounded measurements
 
 R provides **four related functions** for many distributions. The prefix tells us the task; the ending identifies the distribution. For the normal model, the ending is `norm`.
 
-| Function | What it returns | Main input |
-|---|---|---|
-| `dnorm(x, mean, sd)` | Density height at a value; **not** the probability of that exact value. | Value `x` |
-| `pnorm(q, mean, sd)` | Probability at or below a cutoff, $P(X\leq q)$. | Cutoff `q` |
-| `qnorm(p, mean, sd)` | The cutoff with cumulative probability `p` below it; a **quantile**. | Probability `p`, between 0 and 1 |
-| `rnorm(n, mean, sd)` | `n` simulated observations from the specified normal model. | Number of observations `n` |
+::: {.teaching-illustration .r-functions-picture}
+<img src="../assets/inferential-illustrations/r-distribution-functions.svg" alt="Four normal-distribution functions: dnorm maps a value to a density height; pnorm maps a cutoff to a cumulative probability; qnorm maps a cumulative probability to a cutoff; rnorm generates the requested number of simulated observations.">
+:::
+
+- `mean` and `sd` specify the normal model in all four functions. `x` is a value; `q` is a cutoff; `p` is a probability; `n` is the number of generated values.
+- All panels use mean 70 and SD 6. The dots show the 12 simulated scores generated below.
 
 **Create a small simulated dataset**
 
@@ -493,9 +523,7 @@ head(simulated_scores)
 
 **Read the output:** each row is one simulated observation. These are generated values, not collected student records. The model mean is 70 and SD is 6; a sample of 12 will generally have a different mean and SD.
 
-**Predict before trying:** `qnorm(p=0.90, mean=70, sd=6)` returns the score below which the model places 90% of values. It reverses the question answered by `pnorm()`.
-
-The same naming pattern applies to `dbinom`/`pbinom`/`qbinom`/`rbinom`, `dpois`/`ppois`/`qpois`/`rpois` and `dunif`/`punif`/`qunif`/`runif`. For discrete models, `d` returns probability mass.
+Other distribution families use the same prefixes: `binom` (binomial), `pois` (Poisson) and `unif` (uniform). For discrete models, `d` gives probability mass.
 
 ::: {.slide-footer}
 14 / 23 · R distribution functions and simulated data · Course R activity

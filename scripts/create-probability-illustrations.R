@@ -1,0 +1,55 @@
+# Course-authored vector illustrations; stipulated models, not observed datasets.
+# Run from the course root. Reference slide images remain unchanged.
+out <- 'assets/inferential-illustrations'
+dir.create(out, recursive=TRUE, showWarnings=FALSE)
+ink <- '#303030'; accent <- '#763D52'; gray <- '#D4D4D4'
+svg(file.path(out, 'mass-and-density.svg'), width=10, height=2.55, pointsize=15, bg='white')
+par(mfrow=c(1,2),mar=c(3,3.2,2.5,.7),mgp=c(1.8,.55,0),tcl=-.2,col=ink,col.axis=ink,col.lab=ink)
+x <- 1:6
+plot(x,rep(1/6,6),type='h',lwd=7,col='#999999',ylim=c(0,.23),
+     xlab='Die outcome',ylab='Probability',main='Discrete: add probabilities',yaxt='n')
+axis(2,at=c(0,1/6),labels=c('0','1/6'),las=1)
+segments(3,0,3,1/6,lwd=7,col=accent)
+text(4.5,.205,'P(X = 3) = 1/6',col=accent,cex=.85)
+plot(c(8,12),c(0,.25),type='n',xlim=c(7.7,12.3),ylim=c(0,.36),
+     xlab='Arrival hour',ylab='Density per hour',main='Continuous: find an area',yaxt='n')
+axis(2,at=c(0,.25),labels=c('0','0.25'),las=1)
+rect(8,0,9,.25,col=gray,border=NA)
+lines(c(8,8,12,12),c(0,.25,.25,0),lwd=2,col=ink)
+text(10,.32,'P(8 < T < 9) = 1 hour × 0.25 = 0.25',cex=.73,col=accent)
+text(8.5,.12,'25%',col=accent,cex=.85)
+dev.off()
+
+svg(file.path(out, 'r-distribution-functions.svg'),width=10,height=4.35,pointsize=19,bg='white')
+par(mfrow=c(2,2),mar=c(3,2.5,3,.8),mgp=c(1.6,.4,0),tcl=-.2,col=ink,col.axis=ink,col.lab=ink)
+z <- seq(48,92,length.out=500)
+curve_panel <- function(title, subtitle) {
+ plot(z,dnorm(z,70,6),type='l',lwd=2,col=ink,xlab='',ylab='',yaxt='n',ylim=c(0,.078),cex.axis=.7)
+ title(main=title,cex.main=.92,line=1.6)
+ mtext(subtitle,side=3,line=.35,cex=.8)
+}
+curve_panel('dnorm(x, mean, sd)','Value x → density (not probability)')
+segments(75,0,75,dnorm(75,70,6),col=accent,lwd=2)
+points(75,dnorm(75,70,6),col=accent,pch=19)
+text(82,.052,'x = 75',cex=.65,col=accent)
+curve_panel('pnorm(q, mean, sd)','Cutoff q → probability P(X ≤ q)')
+a <- seq(48,75,length.out=200)
+polygon(c(48,a,75),c(0,dnorm(a,70,6),0),col=gray,border=NA)
+lines(z,dnorm(z,70,6),lwd=2,col=ink)
+abline(v=75,lty=2,col=accent)
+text(63,.025,'79.77%',cex=.7,col=accent)
+curve_panel('qnorm(p, mean, sd)','Cumulative probability p → quantile cutoff')
+cutoff <- qnorm(.9,70,6)
+a <- seq(48,cutoff,length.out=200)
+polygon(c(48,a,cutoff),c(0,dnorm(a,70,6),0),col=gray,border=NA)
+lines(z,dnorm(z,70,6),lwd=2,col=ink)
+abline(v=cutoff,lty=2,col=accent)
+text(64,.025,'90%',cex=.7,col=accent)
+text(83,.052,'77.69',cex=.7,col=accent)
+set.seed(312)
+scores <- rnorm(12,70,6)
+plot(seq_along(scores),scores,pch=19,col=accent,ylim=c(50,90),xlab='Observation number',ylab='Score',cex.axis=.7,cex.lab=.7)
+title(main='rnorm(n, mean, sd)',cex.main=.92,line=1.6)
+mtext('Number n → n simulated observations',side=3,line=.35,cex=.8)
+abline(h=70,col='#999999',lty=2)
+dev.off()
