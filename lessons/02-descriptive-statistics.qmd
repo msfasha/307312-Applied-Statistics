@@ -565,11 +565,91 @@ barplot(table(students$gender, students$country), beside = TRUE, legend.text = T
 
 :::
 
+<!-- Added teaching slide: line chart -->
+
+::: {.source-slide #slide-added-line-chart}
+
+### Line charts: change over time {#line-charts}
+
+- A **line chart** joins numerical observations in time order to show how a quantity changes over time.
+- **Horizontal axis:** time. **Vertical axis:** the measured quantity, with its units.
+- Use it to identify an overall trend, recurring patterns and periods of increase or decline.
+- Connect observations only when the sequence is meaningful; do not connect unordered country categories or unrelated student records.
+
+![Monthly international airline passenger totals, 1949–1960, in thousands.](../assets/descriptive-statistics/added-line-chart.svg){width="75%"}
+
+- Each point represents one month. A value of 400 means 400,000 passengers in that month.
+- The overall level rises, with recurring peaks and troughs. Connecting lines do not establish causes or measure the values between months.
+- **Source:** R's built-in [AirPassengers dataset](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/AirPassengers.html); historical international airline passenger totals, not student data.
+
+- **R:** `plot()` draws the stored monthly series supplied as `x`; `type = "o"` overlays points and lines. `pch = 16` gives filled circles; `cex = 0.4` shrinks them. `col` sets colour; `xlab`, `ylab` and `main` label the axes and title.
+
+<!-- BEGIN TRY IN R added-line-chart -->
+:::: {.try-in-r #try-r-added-line-chart}
+
+#### Try this in R {.unlisted}
+
+**Example 7a: Line chart: passengers over time**
+
+```r
+# The time-series object supplies the monthly time order; no CSV import is needed.
+plot(x = AirPassengers, type = "o", pch = 16, cex = 0.4,
+     col = "#595959", xlab = "Year", ylab = "Passengers (thousands)",
+     main = "Monthly international airline passengers")
+```
+
+[Open example 7a in the R practical](../practicals/descriptive-statistics-r-practical.html#line-chart).
+
+::::
+<!-- END TRY IN R added-line-chart -->
+
+:::
+
 <!-- Original slide 27 -->
 
 ::: {.source-slide #slide-27}
 
 ### Visualizing Quantitative Data, Frequency Distributions and Histograms {#source-title-27}
+
+:::
+
+<!-- Added teaching slide: dot plot -->
+
+::: {.source-slide #slide-added-dot-plot}
+
+### Dot plots: individual numerical observations {#dot-plots}
+
+- A **stacked dot plot** places one dot per observation on a numerical axis; repeated values stack above the same position.
+- **Horizontal position:** the observed value. **Dots in each stack:** its frequency.
+- Useful for small datasets: see repeated values, clusters, gaps and possible unusual observations while retaining individual values.
+
+![Stacked ages from the first 30 student records; one dot represents one record.](../assets/descriptive-statistics/added-dot-plot.svg){width="75%"}
+
+- **Example:** ages in years from the first 30 rows of the supplied student CSV, in original file order. This subset is not a random sample.
+- A dot plot shows individual observations; a histogram groups values into intervals and is more manageable for large datasets.
+- This is a one-variable display: stack height counts repeats, rather than measuring a second variable as a scatterplot does.
+
+- **R:** `<-` assigns a result; `$age` selects ages. `head(x = students$age, n = 30)` takes the first 30. `stripchart()` plots these values as `x`; `method = "stack"` stacks repeats and `offset = 0.7` spaces dots. `pch = 16` gives filled circles; `col`, `xlab` and `main` set colour, axis label and title.
+
+<!-- BEGIN TRY IN R added-dot-plot -->
+:::: {.try-in-r #try-r-added-dot-plot}
+
+#### Try this in R {.unlisted}
+
+**Example 7b: Dot plot: individual ages**
+
+```r
+# Keep original row order; these records are not a random sample.
+age_small <- head(x = students$age, n = 30)
+stripchart(x = age_small, method = "stack", offset = 0.7, pch = 16,
+           col = "#595959", xlab = "Age (years)",
+           main = "Ages in the first 30 student records")
+```
+
+[Open example 7b in the R practical](../practicals/descriptive-statistics-r-practical.html#dot-plot).
+
+::::
+<!-- END TRY IN R added-dot-plot -->
 
 :::
 

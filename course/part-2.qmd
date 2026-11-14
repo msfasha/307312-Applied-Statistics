@@ -3,7 +3,7 @@ title: "Part 2: Descriptive Statistics"
 toc: false
 ---
 
-Read the slides, then work through the 18 R examples in the practical using the supplied student dataset.
+Read the slides, then work through the 20 R examples in the practical, using the supplied student dataset plus a historical airline time series.
 
 | Resource | Read online | Download |
 |---|---|---|

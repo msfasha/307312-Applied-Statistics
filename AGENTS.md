@@ -344,3 +344,10 @@
 - Retain 82 descriptive slide positions: omit repeated/empty source slides 77, 80, 83, 84, 85 as well as previously removed 88. Distinct screening explanations from 83–85 are consolidated on 82. Keep all 141 inferential slide positions.
 - Publish the fifteen-notebook RStudio ZIP and refresh all eighteen PDFs and the PDF ZIP. Keep existing public URLs; the home/course-index ZIP link uses a cache-refresh query.
 - Separate unapproved inference-review files remain local and unpublished.
+
+## Line and dot plots — 14 November 2026
+
+- User authorized adding line charts and stacked dot plots to the descriptive slides and R practical; stem-and-leaf was not adopted.
+- Preserve 82 retained original slide positions and the 18 original R examples. Additions have separate slide IDs and practical numbers 7a/7b.
+- Line chart: R's built-in AirPassengers monthly totals, 1949–1960, in thousands; dot plot: first 30 student ages in file order, not a random sample.
+- Reproduce added SVGs from canonical practical cells with scripts/render-descriptive-chart-additions.py; synchronize all 20 displayed R references.

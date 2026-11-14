@@ -30,7 +30,7 @@ knitr::opts_knit$set(root.dir = normalizePath(".."))
 - Open `Applied-Statistics.Rproj` first and keep the working directory at the project root.
 - Work through the code cells from top to bottom in RStudio. Run the import cell first; later cells reuse its `students` data frame.
 - These examples use base R, plus the e1071 package for skewness. Install it once with `install.packages("e1071")` in the R console; rendering the notebook also requires Quarto, knitr and rmarkdown.
-- Each section identifies the matching source slide, introduces the calculation and explains how to read its output. The worked code and its original comments are retained in full.
+- Each section identifies the matching source slide or added chart section, introduces the calculation and explains how to read its output. The original eighteen examples and their comments are retained in full; Examples 7a and 7b add line and dot plots.
 - Before running a cell, predict what it will display. Afterwards, connect the result to the corresponding table, chart or definition in the slides.
 
 ## The data and our purpose
@@ -139,6 +139,46 @@ pie(table(students$country))
 barplot(table(students$gender, students$country), beside = TRUE, legend.text = TRUE,
         col = c("#356B8C", "#C47735"), ylab = "Number of students", las = 2)
 ```
+
+## 7a. Line chart: passengers over time {#line-chart}
+
+- **Slides:** [Line charts](../lessons/02-descriptive-statistics.qmd#slide-added-line-chart), added after source slide 26.
+- **Purpose:** A line chart joins numerical observations in time order, showing how a quantity changes over time. Do not join unordered categories or unrelated student records.
+- **Data:** R's built-in `AirPassengers` series contains 144 monthly totals of international airline passengers, January 1949–December 1960, in thousands. Each observation represents one month, not one passenger. It is separate from the student CSV.
+- **Source:** [R datasets documentation: AirPassengers](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/AirPassengers.html). These are historical totals; we are describing the series, not forecasting demand or identifying causes.
+- **R explained:** `plot()` draws a chart. `x = AirPassengers` supplies the built-in time-series object, which already stores monthly time positions. `type = "o"` overlays points and connecting lines; `pch = 16` selects filled circles, and `cex = 0.4` makes them smaller. `col` sets the colour; `xlab`, `ylab` and `main` set the axis labels and title.
+
+```{r}
+#| label: r-slide-added-line-chart
+#| fig-cap: "Monthly international airline passengers, 1949–1960 (thousands)."
+# The time-series object supplies the monthly time order; no CSV import is needed.
+plot(x = AirPassengers, type = "o", pch = 16, cex = 0.4,
+     col = "#595959", xlab = "Year", ylab = "Passengers (thousands)",
+     main = "Monthly international airline passengers")
+```
+
+- **Read the chart:** The overall level rises and recurring within-year peaks and troughs are visible. The size of those fluctuations also increases. A point at 400 represents 400,000 passengers in that month.
+- **Try independently:** Identify one interval of decline despite the overall upward pattern. Why would a histogram of these totals fail to show when the declines occurred?
+
+## 7b. Dot plot: individual ages {#dot-plot}
+
+- **Slides:** [Dot plots](../lessons/02-descriptive-statistics.qmd#slide-added-dot-plot), added before the histogram on source slide 28.
+- **Purpose:** A stacked dot plot displays individual numerical observations. Each dot represents one record; dots at the same age stack vertically so repeated values remain visible.
+- **Data:** The first 30 rows of `students`, using age in years. This is a convenient small subset in original file order, not a random sample or a summary of all 8,239 records. Run Example 1 first.
+- **R explained:** `<-` assigns a result to a name. `head(x = students$age, n = 30)` takes the first 30 ages; `$age` selects the age column. `stripchart()` draws individual values. `x` supplies the ages, `method = "stack"` stacks repeats, and `offset = 0.7` controls the spacing between stacked dots. `pch = 16` selects filled circles; `col`, `xlab` and `main` set the colour, horizontal-axis label and title. Stack height counts repeats; it is not a second measured variable.
+
+```{r}
+#| label: r-slide-added-dot-plot
+#| fig-cap: "One dot per record, using the first 30 student ages in file order."
+# Keep original row order; these records are not a random sample.
+age_small <- head(x = students$age, n = 30)
+stripchart(x = age_small, method = "stack", offset = 0.7, pch = 16,
+           col = "#595959", xlab = "Age (years)",
+           main = "Ages in the first 30 student records")
+```
+
+- **Read the chart:** Position gives age; the number of dots in a stack gives the number of records at that age. Look for repeated values, gaps and the range without grouping ages into intervals.
+- **Try independently:** Which age has the tallest stack? Count the dots and compare with `table(age_small)`: `table()` counts each distinct age. Why would this display become crowded for all 8,239 records?
 
 ## 8. Histogram of ages
 
@@ -304,6 +344,7 @@ sum(students$age < lower | students$age > upper)
 
 - Which tables summarize a single variable, and which compare two variables?
 - Which charts suit categorical data, and which suit numerical data?
+- When should observations be joined by a line? How does a dot plot differ from a histogram?
 - How do the mean and median describe different aspects of the same distribution?
 - Which dispersion measures retain the original units, and which do not?
 - What do the 90th percentile and the quartiles tell us about the data?

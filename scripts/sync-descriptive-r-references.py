@@ -11,21 +11,28 @@ PRACTICAL = ROOT / 'practicals/descriptive-statistics-r-practical.qmd'
 
 def synchronize(check=False):
     original = LESSON.read_text()
-    result = re.sub(r'\n<!-- BEGIN TRY IN R \d+ -->.*?<!-- END TRY IN R \d+ -->\n',
+    result = re.sub(r'\n<!-- BEGIN TRY IN R [\w-]+ -->.*?<!-- END TRY IN R [\w-]+ -->\n',
                     '', original, flags=re.S)
     sections = re.findall(
-        r'^## (\d+)\. ([^\n]+)\n(.*?)(?=^## |\Z)',
+        r'^## (\d+[ab]?)\. ([^\n]+)\n(.*?)(?=^## |\Z)',
         PRACTICAL.read_text(), re.M | re.S)
-    if len(sections) != 18:
-        raise RuntimeError('Expected all 18 descriptive R examples')
+    if len(sections) != 20:
+        raise RuntimeError('Expected 18 original descriptive R examples and two added charts')
     for number, title, body in sections:
-        match = re.search(r'^```\{r\}\n#\| label: r-slide-(\d+)\n(.*?)^```',
+        match = re.search(r'^```\{r\}\n#\| label: r-slide-([\w-]+)\n(.*?)^```',
                           body, re.M | re.S)
         if not match:
             raise RuntimeError('Missing R code for example ' + number)
         slide, code = match.groups()
+        explicit_anchor = re.search(r' \{#([\w-]+)\}$', title)
+        if explicit_anchor:
+            title = title[:explicit_anchor.start()]
+        # Figure captions belong to executed output, not displayed reference code.
+        code = re.sub(r'^#\| fig-cap:.*\n', '', code, flags=re.M)
         anchor = re.sub(r'[^\w\s-]', '', title.lower())
         anchor = re.sub(r'\s+', '-', anchor)
+        if explicit_anchor:
+            anchor = explicit_anchor[1]
         panel = (
             f'\n<!-- BEGIN TRY IN R {slide} -->\n'
             f':::: {{.try-in-r #try-r-{slide}}}\n\n'
@@ -46,7 +53,7 @@ def synchronize(check=False):
             raise RuntimeError('Slide R references need refreshing: run scripts/sync-descriptive-r-references.py')
     else:
         LESSON.write_text(result)
-    print('Verified 18 slide R references.' if check else 'Updated 18 slide R references.')
+    print('Verified 20 slide R references.' if check else 'Updated 20 slide R references.')
 
 
 if __name__ == '__main__':

@@ -42,6 +42,9 @@ def validate(site):
         raise RuntimeError('Incomplete retained descriptive slides')
     if any(f'id="slide-{i:02d}"' in descriptive for i in removed_descriptive):
         raise RuntimeError('Removed redundant or cross-course descriptive slide reintroduced')
+    for addition in ['line-chart', 'dot-plot']:
+        if f'id="slide-added-{addition}"' not in descriptive:
+            raise RuntimeError('Missing added descriptive chart: ' + addition)
     inferential = (site/'lessons/03-inferential-statistics.html').read_text()
     if any(f'id="part3-{k:02d}-slide-{i:02d}"' not in inferential
            for k, count in enumerate([37, 26, 57, 21], 1) for i in range(1, count+1)):
@@ -52,6 +55,7 @@ def main():
     parser.add_argument('--skip-render', action='store_true',
                         help='Reuse a completed full HTML build; refresh practicals and all downloads.')
     args = parser.parse_args()
+    subprocess.run(['python3', str(ROOT/'scripts/render-descriptive-chart-additions.py')], cwd=ROOT, check=True)
     subprocess.run(['python3', str(ROOT/'scripts/sync-descriptive-r-references.py'), '--check'], cwd=ROOT, check=True)
     subprocess.run(['python3', str(ROOT/'scripts/check-practicals.py')], cwd=ROOT, check=True)
     if args.skip_render:

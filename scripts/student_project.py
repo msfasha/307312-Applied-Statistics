@@ -99,7 +99,7 @@ install.packages(c("knitr", "rmarkdown", "dplyr", "ggplot2", "readr", "tidyr", "
 Open the folders in this order:
 
 1. **part-1-introduction-to-r/** — four R notebooks, in order: 01, r-02, r-03, r-04.
-2. **part-2-descriptive-statistics/** — runnable descriptive R practical (18 examples).
+2. **part-2-descriptive-statistics/** — runnable descriptive R practical (20 examples, including line and dot plots).
 3. **part-3-inferential-statistics/** — developing inference R practical (probability available; estimation, testing and regression forthcoming).
 4. **extended-cases/** — optional business applications, including Superstore.
 

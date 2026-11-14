@@ -10,7 +10,7 @@ This supersedes the earlier local-only instruction.
 `scripts/course_documents.py` is the authoritative list of eighteen notebook/PDF pairs:
 
 - Seven lesson notebooks under `lessons/`: the four supplied Part 1 R notebooks, Part 2 descriptive slides, Part 3 inferential slides and the revised probability-distributions section.
-- Two companion notebooks: `practicals/descriptive-statistics-r-practical.qmd` (the eighteen Part 2 R examples) and `practicals/inferential-statistics-r-practical.qmd` (seven explained probability examples, simulation and independent tasks; later inference topics remain explicitly forthcoming).
+- Two companion notebooks: `practicals/descriptive-statistics-r-practical.qmd` (the eighteen original Part 2 R examples plus line-chart and dot-plot examples) and `practicals/inferential-statistics-r-practical.qmd` (seven explained probability examples, simulation and independent tasks; later inference topics remain explicitly forthcoming).
 - Three Superstore notebooks under `extended-cases/superstore/`, grouped by `index.qmd`.
 - Six numbered extended cases under `extended-cases/`: Springville, Oxford, BLK, Parachute, Potato and Harnswell.
 
@@ -160,3 +160,15 @@ screening explanations consolidated on slide 82; source IDs and practical links 
 Rebuild all eighteen PDFs and both ZIPs. Keep the existing download URL; the home-page
 RStudio link adds `?v=20261108-clean` to refresh previously cached downloads.
 Unpublished inference-review files remain outside this release.
+
+## Descriptive chart additions — 14 November 2026
+
+Two added teaching slides supplement the 82 retained source slides: line charts
+after source slide 26 and dot plots before source slide 28. The companion has
+20 examples; 7a and 7b preserve the numbering and anchors of all 18 originals.
+The line chart uses R's built-in AirPassengers monthly series (1949–1960, thousands);
+the dot plot uses the first 30 student ages in unchanged file order, without
+claiming random selection. Original source decks remain unchanged.
+`scripts/render-descriptive-chart-additions.py` reproduces the SVG slide charts
+from the practical's R cells; the local builder runs it before rendering.
+`scripts/sync-descriptive-r-references.py` synchronizes all 20 reference panels.

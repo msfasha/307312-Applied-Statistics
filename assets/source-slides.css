@@ -148,3 +148,8 @@
 
 /* Supplied Part 1 instructional images; logos retain their original sizes. */
 .r-introduction main p > img { display: block; margin-inline: auto; min-width: 50%; max-width: 100%; height: auto; }
+
+/* Keep the added chart definitions and figures together at the start of a print page. */
+@media print {
+  #slide-added-line-chart, #slide-added-dot-plot { break-before: page; }
+}
