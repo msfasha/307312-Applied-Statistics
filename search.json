@@ -312,7 +312,7 @@
     "href": "extended-cases/superstore/practical-01-categorical-business-data.html#continue",
     "title": "Practical 1 — Superstore product mix",
     "section": "8. Continue",
-    "text": "8. Continue\n\nKeep your tables and briefing in your RStudio project.\nContinue to Practical 2: Order size.\nSource definitions and extract limits: data/business/README.md."
+    "text": "8. Continue\n\nKeep your tables and briefing in your Positron workspace.\nContinue to Practical 2: Order size.\nSource definitions and extract limits: data/business/README.md."
   },
   {
     "objectID": "lessons/inferential-31-probability-distributions-draft.html",
@@ -487,7 +487,7 @@
     "href": "lessons/02-descriptive-statistics.html",
     "title": "Part 2: Descriptive Statistics",
     "section": "",
-    "text": "The Try this in R sections show the code for the matching R practical examples. To execute it in RStudio, open practicals/descriptive-statistics-r-practical.qmd in the student project. Run Example 1 first to load students; later examples reuse it. Each section has one link to the matching worked example."
+    "text": "The Try this in R sections show the code for the matching R practical examples. To execute it in Positron, open practicals/descriptive-statistics-r-practical.qmd in the student project. Run Example 1 first to load students; later examples reuse it. Each section has one link to the matching worked example."
   },
   {
     "objectID": "lessons/02-descriptive-statistics.html#source-title-01",
@@ -564,14 +564,14 @@
     "href": "lessons/01-introduction-to-r.html",
     "title": "Introduction to R",
     "section": "",
-    "text": "R is a free language and environment for statistical computing and graphics.\nRoss Ihaka and Robert Gentleman began developing R at the University of Auckland in the early 1990s. It is now maintained by the R Core team and contributors.\nThis introduction covers the essentials: storing values, selecting data, making decisions, repeating instructions, preparing tables and drawing plots.\n\n\n\n\nR runs your calculations. RStudio provides an editor, Console, Environment pane and plot viewer.\nInstall R from CRAN, then RStudio Desktop from Posit.\nOpen the course project, Applied-Statistics.Rproj. Keep the working directory at the project root so the supplied data/... paths work.\nIn RStudio, the Console runs a command immediately. A script saves commands in a .R file. A Quarto notebook saves explanations and executable R cells together in a .qmd file.\nRun notebook cells in order. Render runs the document and produces a reading copy with results.\n\n\n\n\nRStudio interface from the original R introduction material. Pane positions may differ in your installation.\n\n\n\n\n\nprint() displays its argument, the value inside its parentheses. Quotation marks identify text.\n\nprint(\"Hello, World!\")\n\n[1] \"Hello, World!\"\n\n\nThe output prefix [1] marks the position of the first value on that output line; it is not part of your text."
+    "text": "R is a free language and environment for statistical computing and graphics.\nRoss Ihaka and Robert Gentleman began developing R at the University of Auckland in the early 1990s. It is now maintained by the R Core team and contributors.\nThis introduction covers the essentials: storing values, selecting data, making decisions, repeating instructions, preparing tables and drawing plots.\n\n\n\n\nR runs your calculations. Positron provides a source editor, R Console, Variables pane and Plots pane.\nInstall R from CRAN, Positron and Quarto.\nExtract the complete course ZIP. In Positron, use File &gt; Open Folder and choose the top-level folder containing _quarto.yml and data/.\nSelect your installed R interpreter to start an R Console. Keep its working directory at the course root so the supplied data/... paths work.\nIn Positron, the Console runs a command immediately. A script saves commands in a .R file. A Quarto notebook saves explanations and executable R cells together in a .qmd file.\nThe supplied workspace sends code cells to the R Console. Run cells in order; the Variables and Plots panes let you inspect the results.\nUse Preview to render the notebook as a reading copy with its explanations, code, results and plots.\n\n\n\n\nPositron workspace overview. This schematic identifies the main areas; your layout may differ.\n\n\n\n\n\nprint() displays its argument, the value inside its parentheses. Quotation marks identify text.\n\nprint(\"Hello, World!\")\n\n[1] \"Hello, World!\"\n\n\nThe output prefix [1] marks the position of the first value on that output line; it is not part of your text."
   },
   {
     "objectID": "lessons/01-introduction-to-r.html#getting-started",
     "href": "lessons/01-introduction-to-r.html#getting-started",
     "title": "Introduction to R",
     "section": "",
-    "text": "R is a free language and environment for statistical computing and graphics.\nRoss Ihaka and Robert Gentleman began developing R at the University of Auckland in the early 1990s. It is now maintained by the R Core team and contributors.\nThis introduction covers the essentials: storing values, selecting data, making decisions, repeating instructions, preparing tables and drawing plots.\n\n\n\n\nR runs your calculations. RStudio provides an editor, Console, Environment pane and plot viewer.\nInstall R from CRAN, then RStudio Desktop from Posit.\nOpen the course project, Applied-Statistics.Rproj. Keep the working directory at the project root so the supplied data/... paths work.\nIn RStudio, the Console runs a command immediately. A script saves commands in a .R file. A Quarto notebook saves explanations and executable R cells together in a .qmd file.\nRun notebook cells in order. Render runs the document and produces a reading copy with results.\n\n\n\n\nRStudio interface from the original R introduction material. Pane positions may differ in your installation.\n\n\n\n\n\nprint() displays its argument, the value inside its parentheses. Quotation marks identify text.\n\nprint(\"Hello, World!\")\n\n[1] \"Hello, World!\"\n\n\nThe output prefix [1] marks the position of the first value on that output line; it is not part of your text."
+    "text": "R is a free language and environment for statistical computing and graphics.\nRoss Ihaka and Robert Gentleman began developing R at the University of Auckland in the early 1990s. It is now maintained by the R Core team and contributors.\nThis introduction covers the essentials: storing values, selecting data, making decisions, repeating instructions, preparing tables and drawing plots.\n\n\n\n\nR runs your calculations. Positron provides a source editor, R Console, Variables pane and Plots pane.\nInstall R from CRAN, Positron and Quarto.\nExtract the complete course ZIP. In Positron, use File &gt; Open Folder and choose the top-level folder containing _quarto.yml and data/.\nSelect your installed R interpreter to start an R Console. Keep its working directory at the course root so the supplied data/... paths work.\nIn Positron, the Console runs a command immediately. A script saves commands in a .R file. A Quarto notebook saves explanations and executable R cells together in a .qmd file.\nThe supplied workspace sends code cells to the R Console. Run cells in order; the Variables and Plots panes let you inspect the results.\nUse Preview to render the notebook as a reading copy with its explanations, code, results and plots.\n\n\n\n\nPositron workspace overview. This schematic identifies the main areas; your layout may differ.\n\n\n\n\n\nprint() displays its argument, the value inside its parentheses. Quotation marks identify text.\n\nprint(\"Hello, World!\")\n\n[1] \"Hello, World!\"\n\n\nThe output prefix [1] marks the position of the first value on that output line; it is not part of your text."
   },
   {
     "objectID": "lessons/01-introduction-to-r.html#variables-and-atomic-data-types",
@@ -641,7 +641,7 @@
     "href": "lessons/01-introduction-to-r.html#summarise-data-then-draw-a-bar-chart",
     "title": "Introduction to R",
     "section": "Summarise data then draw a bar chart",
-    "text": "Summarise data then draw a bar chart\nQuestion: What is the total sales value for each product category?\n\ngroup_by(Category) and summarise() produce one row per category. sum(Sales) / 1000 expresses each total in thousands of US dollars, stored in the new column sales_thousands.\nThe next pipe sends this summary table to ggplot(). Map Category to x and sales_thousands to y.\ngeom_col() uses the supplied y values as bar heights. In contrast, geom_bar() counts rows by default; on this three-row summary table, that would count one row per category instead of showing sales totals.\n\n\nsuperstore %&gt;%\n  group_by(Category) %&gt;%\n  summarise(sales_thousands = sum(Sales) / 1000, .groups = \"drop\") %&gt;%\n  ggplot(mapping = aes(x = Category, y = sales_thousands)) +\n  geom_col(fill = \"gray65\") +\n  labs(title = \"Total sales by category\",\n       x = \"Product category\", y = \"Sales in US$ thousands\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\nThe bars show sales totals across all tutorial order lines in each category; a height of 800 means US$800,000. This differs from the earlier bar plot of category line counts. fill sets the same grey for every bar.\n\nCheck your understanding\n\nCreate a numeric vector with c(). Check its type and select positions 2 to 4.\nUse a logical condition to keep values above a threshold. Write an if and else for one value.\nWrite a for loop that prints the squares of 1 to 5.\nFilter Superstore to Furniture lines and calculate their total sales.\nDraw a histogram of Profit. Explain what one bar represents.\nAdapt the piped histogram to Furniture lines. Keep the quantity intervals unchanged.\nAdapt the grouped bar chart to total Profit by Category. Update the title and vertical-axis label.\n\n\n\nSources\nCondensed and adapted from the four supplied 307307 R introduction notebooks and their images, retained in the course reference history. The Superstore CSV is unchanged tutorial data supplied with those materials.\nOfficial references: R project contributors, Introduction to R, dplyr, ggplot2, and Quarto with R."
+    "text": "Summarise data then draw a bar chart\nQuestion: What is the total sales value for each product category?\n\ngroup_by(Category) and summarise() produce one row per category. sum(Sales) / 1000 expresses each total in thousands of US dollars, stored in the new column sales_thousands.\nThe next pipe sends this summary table to ggplot(). Map Category to x and sales_thousands to y.\ngeom_col() uses the supplied y values as bar heights. In contrast, geom_bar() counts rows by default; on this three-row summary table, that would count one row per category instead of showing sales totals.\n\n\nsuperstore %&gt;%\n  group_by(Category) %&gt;%\n  summarise(sales_thousands = sum(Sales) / 1000, .groups = \"drop\") %&gt;%\n  ggplot(mapping = aes(x = Category, y = sales_thousands)) +\n  geom_col(fill = \"gray65\") +\n  labs(title = \"Total sales by category\",\n       x = \"Product category\", y = \"Sales in US$ thousands\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\nThe bars show sales totals across all tutorial order lines in each category; a height of 800 means US$800,000. This differs from the earlier bar plot of category line counts. fill sets the same grey for every bar.\n\nCheck your understanding\n\nCreate a numeric vector with c(). Check its type and select positions 2 to 4.\nUse a logical condition to keep values above a threshold. Write an if and else for one value.\nWrite a for loop that prints the squares of 1 to 5.\nFilter Superstore to Furniture lines and calculate their total sales.\nDraw a histogram of Profit. Explain what one bar represents.\nAdapt the piped histogram to Furniture lines. Keep the quantity intervals unchanged.\nAdapt the grouped bar chart to total Profit by Category. Update the title and vertical-axis label.\n\n\n\nSources\nCondensed and adapted from the four supplied 307307 R introduction notebooks and their images, retained in the course reference history. The Superstore CSV is unchanged tutorial data supplied with those materials.\nOfficial references: R project contributors, Introduction to R, dplyr, ggplot2, and Quarto with R, and Positron workspace layout."
   },
   {
     "objectID": "course/part-3.html",
@@ -655,7 +655,7 @@
     "href": "course/part-1.html",
     "title": "Part 1: Introduction to R",
     "section": "",
-    "text": "One concise, runnable notebook covers R and RStudio, basic programming, data frames, dplyr, conventional plots and ggplot2 pipelines.\n\n\n\nNotebook\nRead online\nDownload\n\n\n\n\nIntroduction to R\nRead\nPDF\n\n\n\nHome"
+    "text": "One concise, runnable notebook covers R and Positron, basic programming, data frames, dplyr, conventional plots and ggplot2 pipelines.\n\n\n\nNotebook\nRead online\nDownload\n\n\n\n\nIntroduction to R\nRead\nPDF\n\n\n\nHome"
   },
   {
     "objectID": "index.html",
@@ -676,7 +676,7 @@
     "href": "index.html#other-downloads",
     "title": "307312 Applied Statistics",
     "section": "Other Downloads",
-    "text": "Other Downloads\n\nRStudio files (.zip)\nPDF collection (.zip)\nExtended scenarios"
+    "text": "Other Downloads\n\nPositron files (.zip)\nPDF collection (.zip)\nExtended scenarios"
   },
   {
     "objectID": "course/index.html",
@@ -697,7 +697,7 @@
     "href": "course/index.html#other-downloads",
     "title": "307312 Applied Statistics",
     "section": "Other Downloads",
-    "text": "Other Downloads\n\nRStudio files (.zip)\nPDF collection (.zip)\nExtended scenarios"
+    "text": "Other Downloads\n\nPositron files (.zip)\nPDF collection (.zip)\nExtended scenarios"
   },
   {
     "objectID": "course/part-2.html",
@@ -718,7 +718,7 @@
     "href": "extended-cases/index.html#downloads",
     "title": "Extended scenarios",
     "section": "Downloads",
-    "text": "Downloads\n\nRStudio files (.zip) — editable notebooks and data for running the code.\nPDF collection (.zip) — all lessons and scenarios for reading.\n\nHome"
+    "text": "Downloads\n\nPositron files (.zip) — editable notebooks and data for running the code.\nPDF collection (.zip) — all lessons and scenarios for reading.\n\nHome"
   },
   {
     "objectID": "lessons/r-02-basic-concepts.html",
@@ -767,7 +767,7 @@
     "href": "extended-cases/superstore/index.html",
     "title": "Superstore — Extended Business Case",
     "section": "",
-    "text": "Start after: Part 2 slides and the Descriptive Statistics R Practical.\nBusiness: Superstore, Tableau’s fictitious retailer; the fixed official extract downloaded 6 November 2026 contains US orders placed in 2023–2025.\nScope: 6,682 product lines, 3,322 orders and 782 customer IDs. Keep these observational units distinct.\nWork through the three notebooks in order. Each includes explained R code, worked results and independent business tasks.\nRStudio files (.zip) contain the editable notebooks, data and data guide.\n\n\n\n\nNotebook\nFocus\nDownload\n\n\n\n\n1. Product mix\nCategories, frequencies, percentages and charts\nPDF\n\n\n2. Order size\nCentre, spread, percentiles and boxplots\nPDF\n\n\n3. Discounts, profit and groups\nAssociation and group comparisons\nPDF\n\n\n\n\nReturn status means membership in the source Returns sheet, not verified refund accounting.\nThe analyses are descriptive; they do not establish causal discount effects or represent actual retailers.\nAll extended business cases."
+    "text": "Start after: Part 2 slides and the Descriptive Statistics R Practical.\nBusiness: Superstore, Tableau’s fictitious retailer; the fixed official extract downloaded 6 November 2026 contains US orders placed in 2023–2025.\nScope: 6,682 product lines, 3,322 orders and 782 customer IDs. Keep these observational units distinct.\nWork through the three notebooks in order. Each includes explained R code, worked results and independent business tasks.\nPositron files (.zip) contain the editable notebooks, data and data guide.\n\n\n\n\nNotebook\nFocus\nDownload\n\n\n\n\n1. Product mix\nCategories, frequencies, percentages and charts\nPDF\n\n\n2. Order size\nCentre, spread, percentiles and boxplots\nPDF\n\n\n3. Discounts, profit and groups\nAssociation and group comparisons\nPDF\n\n\n\n\nReturn status means membership in the source Returns sheet, not verified refund accounting.\nThe analyses are descriptive; they do not establish causal discount effects or represent actual retailers.\nAll extended business cases."
   },
   {
     "objectID": "extended-cases/superstore/practical-02-numerical-business-data.html",

@@ -4368,6 +4368,7 @@ body.r-introduction { font-size: 10pt; line-height: 1.25; }
 .r-introduction #quarto-document-content li { margin-bottom: .15rem; }
 .r-introduction pre { font-size: 8.5pt; line-height: 1.2; padding: .4rem; }
 .r-introduction .cell { margin-bottom: .6rem; }
+.r-introduction .cell-output { break-before: avoid; }
 .r-introduction .quarto-figure img { max-height: 70mm; width: auto; object-fit: contain; }
 }
 </style>
@@ -6650,7 +6651,7 @@ main .btn { white-space: normal; margin-bottom: .5rem; }
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read.csv() loads the exact 30 paired observations printed in the source slide.</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co"># paired=TRUE tests within-student changes; greater tests whether score2 exceeds score1.</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Open Applied-Statistics.Rproj; paths start in the project folder.</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Open the course folder in Positron; paths start in that folder.</span></span>
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>paired <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/inferential-statistics/paired_scores.csv&quot;</span>)</span>
 <span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(paired<span class="sc">$</span>score2, paired<span class="sc">$</span>score1, <span class="at">paired=</span><span class="cn">TRUE</span>, <span class="at">alternative=</span><span class="st">&quot;greater&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -6886,7 +6887,7 @@ mean difference
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read.csv() loads the exact printed salary samples; the source currency labels conflict (Euro narrative, dollar table).</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co"># var.equal=TRUE uses the source&#39;s pooled-variance assumption; the default alternative is two-sided.</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Open Applied-Statistics.Rproj; paths start in the project folder.</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Open the course folder in Positron; paths start in that folder.</span></span>
 <span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>salaries <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/inferential-statistics/graduate_salaries.csv&quot;</span>)</span>
 <span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(salaries<span class="sc">$</span>male, salaries<span class="sc">$</span>female, <span class="at">var.equal=</span><span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -7121,7 +7122,7 @@ mean of x mean of y
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read.csv() preserves the two exact printed female-graduate salary samples.</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co"># var.equal=FALSE uses Welch&#39;s test; greater tests Political Science &gt; Social Science, with 99% confidence.</span></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Open Applied-Statistics.Rproj; paths start in the project folder.</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Open the course folder in Positron; paths start in that folder.</span></span>
 <span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>majors <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/inferential-statistics/female_major_salaries.csv&quot;</span>)</span>
 <span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(majors<span class="sc">$</span>political_science, majors<span class="sc">$</span>social_science,</span>
 <span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative=</span><span class="st">&quot;greater&quot;</span>, <span class="at">var.equal=</span><span class="cn">FALSE</span>, <span class="at">conf.level=</span><span class="fl">0.99</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -7672,7 +7673,7 @@ Over 50         25        25</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read.csv() loads the exact 15 scores printed for the three teaching methods.</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="co"># aov(score~group) fits one-way ANOVA; summary() reports its F test under independent normal errors and equal variances.</span></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Open Applied-Statistics.Rproj; paths start in the project folder.</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Open the course folder in Positron; paths start in that folder.</span></span>
 <span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>methods <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/inferential-statistics/teaching_methods.csv&quot;</span>)</span>
 <span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">aov</span>(score<span class="sc">~</span>group,<span class="at">data=</span>methods))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -7810,7 +7811,7 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># factor() treats gender and method as categories in the exact eight printed observations.</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="co"># gender*method includes both main effects and their interaction; aov() assumes independent, equal-variance normal errors.</span></span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Open Applied-Statistics.Rproj; paths start in the project folder.</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Open the course folder in Positron; paths start in that folder.</span></span>
 <span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>teaching <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/inferential-statistics/teaching_gender.csv&quot;</span>)</span>
 <span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>teaching<span class="sc">$</span>gender <span class="ot">&lt;-</span> <span class="fu">factor</span>(teaching<span class="sc">$</span>gender)</span>
 <span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>teaching<span class="sc">$</span>method <span class="ot">&lt;-</span> <span class="fu">factor</span>(teaching<span class="sc">$</span>method)</span>
@@ -8005,7 +8006,7 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read.csv() imports the ten houses printed in the source; price is in thousands of dollars and size in square feet.</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lm(price~size) fits least squares with an intercept; summary() reports coefficients, R-squared, and inference.</span></span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Open Applied-Statistics.Rproj; paths start in the project folder.</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Open the course folder in Positron; paths start in that folder.</span></span>
 <span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>houses <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/inferential-statistics/houses.csv&quot;</span>)</span>
 <span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>simple <span class="ot">&lt;-</span> <span class="fu">lm</span>(price<span class="sc">~</span>size,<span class="at">data=</span>houses)</span>
 <span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(simple)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -11232,7 +11233,7 @@ F-statistic: 43.09 on 5 and 4 DF,  p-value: 0.001427</code></pre>
 <span id="cb63-2225"><a href="#cb63-2225" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: inferential-3-27</span></span>
 <span id="cb63-2226"><a href="#cb63-2226" aria-hidden="true" tabindex="-1"></a><span class="co"># read.csv() loads the exact 30 paired observations printed in the source slide.</span></span>
 <span id="cb63-2227"><a href="#cb63-2227" aria-hidden="true" tabindex="-1"></a><span class="co"># paired=TRUE tests within-student changes; greater tests whether score2 exceeds score1.</span></span>
-<span id="cb63-2228"><a href="#cb63-2228" aria-hidden="true" tabindex="-1"></a><span class="co"># Open Applied-Statistics.Rproj; paths start in the project folder.</span></span>
+<span id="cb63-2228"><a href="#cb63-2228" aria-hidden="true" tabindex="-1"></a><span class="co"># Open the course folder in Positron; paths start in that folder.</span></span>
 <span id="cb63-2229"><a href="#cb63-2229" aria-hidden="true" tabindex="-1"></a>paired <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/inferential-statistics/paired_scores.csv&quot;</span>)</span>
 <span id="cb63-2230"><a href="#cb63-2230" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(paired<span class="sc">$</span>score2, paired<span class="sc">$</span>score1, <span class="at">paired=</span><span class="cn">TRUE</span>, <span class="at">alternative=</span><span class="st">&quot;greater&quot;</span>)</span>
 <span id="cb63-2231"><a href="#cb63-2231" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
@@ -11314,7 +11315,7 @@ F-statistic: 43.09 on 5 and 4 DF,  p-value: 0.001427</code></pre>
 <span id="cb63-2309"><a href="#cb63-2309" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: inferential-3-29</span></span>
 <span id="cb63-2310"><a href="#cb63-2310" aria-hidden="true" tabindex="-1"></a><span class="co"># read.csv() loads the exact printed salary samples; the source currency labels conflict (Euro narrative, dollar table).</span></span>
 <span id="cb63-2311"><a href="#cb63-2311" aria-hidden="true" tabindex="-1"></a><span class="co"># var.equal=TRUE uses the source&#39;s pooled-variance assumption; the default alternative is two-sided.</span></span>
-<span id="cb63-2312"><a href="#cb63-2312" aria-hidden="true" tabindex="-1"></a><span class="co"># Open Applied-Statistics.Rproj; paths start in the project folder.</span></span>
+<span id="cb63-2312"><a href="#cb63-2312" aria-hidden="true" tabindex="-1"></a><span class="co"># Open the course folder in Positron; paths start in that folder.</span></span>
 <span id="cb63-2313"><a href="#cb63-2313" aria-hidden="true" tabindex="-1"></a>salaries <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/inferential-statistics/graduate_salaries.csv&quot;</span>)</span>
 <span id="cb63-2314"><a href="#cb63-2314" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(salaries<span class="sc">$</span>male, salaries<span class="sc">$</span>female, <span class="at">var.equal=</span><span class="cn">TRUE</span>)</span>
 <span id="cb63-2315"><a href="#cb63-2315" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
@@ -11395,7 +11396,7 @@ F-statistic: 43.09 on 5 and 4 DF,  p-value: 0.001427</code></pre>
 <span id="cb63-2392"><a href="#cb63-2392" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: inferential-3-31</span></span>
 <span id="cb63-2393"><a href="#cb63-2393" aria-hidden="true" tabindex="-1"></a><span class="co"># read.csv() preserves the two exact printed female-graduate salary samples.</span></span>
 <span id="cb63-2394"><a href="#cb63-2394" aria-hidden="true" tabindex="-1"></a><span class="co"># var.equal=FALSE uses Welch&#39;s test; greater tests Political Science &gt; Social Science, with 99% confidence.</span></span>
-<span id="cb63-2395"><a href="#cb63-2395" aria-hidden="true" tabindex="-1"></a><span class="co"># Open Applied-Statistics.Rproj; paths start in the project folder.</span></span>
+<span id="cb63-2395"><a href="#cb63-2395" aria-hidden="true" tabindex="-1"></a><span class="co"># Open the course folder in Positron; paths start in that folder.</span></span>
 <span id="cb63-2396"><a href="#cb63-2396" aria-hidden="true" tabindex="-1"></a>majors <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/inferential-statistics/female_major_salaries.csv&quot;</span>)</span>
 <span id="cb63-2397"><a href="#cb63-2397" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(majors<span class="sc">$</span>political_science, majors<span class="sc">$</span>social_science,</span>
 <span id="cb63-2398"><a href="#cb63-2398" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative=</span><span class="st">&quot;greater&quot;</span>, <span class="at">var.equal=</span><span class="cn">FALSE</span>, <span class="at">conf.level=</span><span class="fl">0.99</span>)</span>
@@ -11833,7 +11834,7 @@ F-statistic: 43.09 on 5 and 4 DF,  p-value: 0.001427</code></pre>
 <span id="cb63-2838"><a href="#cb63-2838" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: inferential-3-53</span></span>
 <span id="cb63-2839"><a href="#cb63-2839" aria-hidden="true" tabindex="-1"></a><span class="co"># read.csv() loads the exact 15 scores printed for the three teaching methods.</span></span>
 <span id="cb63-2840"><a href="#cb63-2840" aria-hidden="true" tabindex="-1"></a><span class="co"># aov(score~group) fits one-way ANOVA; summary() reports its F test under independent normal errors and equal variances.</span></span>
-<span id="cb63-2841"><a href="#cb63-2841" aria-hidden="true" tabindex="-1"></a><span class="co"># Open Applied-Statistics.Rproj; paths start in the project folder.</span></span>
+<span id="cb63-2841"><a href="#cb63-2841" aria-hidden="true" tabindex="-1"></a><span class="co"># Open the course folder in Positron; paths start in that folder.</span></span>
 <span id="cb63-2842"><a href="#cb63-2842" aria-hidden="true" tabindex="-1"></a>methods <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/inferential-statistics/teaching_methods.csv&quot;</span>)</span>
 <span id="cb63-2843"><a href="#cb63-2843" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">aov</span>(score<span class="sc">~</span>group,<span class="at">data=</span>methods))</span>
 <span id="cb63-2844"><a href="#cb63-2844" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
@@ -11901,7 +11902,7 @@ F-statistic: 43.09 on 5 and 4 DF,  p-value: 0.001427</code></pre>
 <span id="cb63-2908"><a href="#cb63-2908" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: inferential-3-56</span></span>
 <span id="cb63-2909"><a href="#cb63-2909" aria-hidden="true" tabindex="-1"></a><span class="co"># factor() treats gender and method as categories in the exact eight printed observations.</span></span>
 <span id="cb63-2910"><a href="#cb63-2910" aria-hidden="true" tabindex="-1"></a><span class="co"># gender*method includes both main effects and their interaction; aov() assumes independent, equal-variance normal errors.</span></span>
-<span id="cb63-2911"><a href="#cb63-2911" aria-hidden="true" tabindex="-1"></a><span class="co"># Open Applied-Statistics.Rproj; paths start in the project folder.</span></span>
+<span id="cb63-2911"><a href="#cb63-2911" aria-hidden="true" tabindex="-1"></a><span class="co"># Open the course folder in Positron; paths start in that folder.</span></span>
 <span id="cb63-2912"><a href="#cb63-2912" aria-hidden="true" tabindex="-1"></a>teaching <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/inferential-statistics/teaching_gender.csv&quot;</span>)</span>
 <span id="cb63-2913"><a href="#cb63-2913" aria-hidden="true" tabindex="-1"></a>teaching<span class="sc">$</span>gender <span class="ot">&lt;-</span> <span class="fu">factor</span>(teaching<span class="sc">$</span>gender)</span>
 <span id="cb63-2914"><a href="#cb63-2914" aria-hidden="true" tabindex="-1"></a>teaching<span class="sc">$</span>method <span class="ot">&lt;-</span> <span class="fu">factor</span>(teaching<span class="sc">$</span>method)</span>
@@ -12088,7 +12089,7 @@ F-statistic: 43.09 on 5 and 4 DF,  p-value: 0.001427</code></pre>
 <span id="cb63-3097"><a href="#cb63-3097" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: inferential-4-9</span></span>
 <span id="cb63-3098"><a href="#cb63-3098" aria-hidden="true" tabindex="-1"></a><span class="co"># read.csv() imports the ten houses printed in the source; price is in thousands of dollars and size in square feet.</span></span>
 <span id="cb63-3099"><a href="#cb63-3099" aria-hidden="true" tabindex="-1"></a><span class="co"># lm(price~size) fits least squares with an intercept; summary() reports coefficients, R-squared, and inference.</span></span>
-<span id="cb63-3100"><a href="#cb63-3100" aria-hidden="true" tabindex="-1"></a><span class="co"># Open Applied-Statistics.Rproj; paths start in the project folder.</span></span>
+<span id="cb63-3100"><a href="#cb63-3100" aria-hidden="true" tabindex="-1"></a><span class="co"># Open the course folder in Positron; paths start in that folder.</span></span>
 <span id="cb63-3101"><a href="#cb63-3101" aria-hidden="true" tabindex="-1"></a>houses <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/inferential-statistics/houses.csv&quot;</span>)</span>
 <span id="cb63-3102"><a href="#cb63-3102" aria-hidden="true" tabindex="-1"></a>simple <span class="ot">&lt;-</span> <span class="fu">lm</span>(price<span class="sc">~</span>size,<span class="at">data=</span>houses)</span>
 <span id="cb63-3103"><a href="#cb63-3103" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(simple)</span>

@@ -23,9 +23,9 @@ execute:
 
 - **Purpose:** build a record of calculations, interpretations and independent work as we progress through Part 3.
 - **Available now:** probability distributions, including seven worked R examples and an independent activity. Estimation, testing and regression will be added as those sections are developed.
-- **Setup:** install R, RStudio and Quarto. Rendering requires knitr and rmarkdown; these calculations use base R and need no extra statistics package or CSV.
-- **Using the course project:** open `Applied-Statistics.Rproj`, then this notebook under `practicals/`. Keep the project folder as your working directory.
-- **Using the individual download:** save the Quarto file in a working folder and open it in RStudio. This probability section is self-contained.
+- **Setup:** install R, Positron and Quarto. Rendering requires knitr and rmarkdown; these calculations use base R and need no extra statistics package or CSV.
+- **Using the course project:** use File > Open Folder in Positron to open the course root, then this notebook under `practicals/`. Keep the project folder as your working directory.
+- **Using the individual download:** save the Quarto file in a working folder and open it in Positron. This probability section is self-contained.
 - **Each time:** read the explanation, predict the result, run the cell, then write a sentence interpreting the output. Keep your written responses in your copy of the notebook.
 - **Data:** die outcomes are enumerated; distribution inputs are stipulated models. Simulated scores are generated values, not observed student records.
 
