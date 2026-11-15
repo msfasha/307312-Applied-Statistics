@@ -65,6 +65,11 @@ if __name__ == '__main__':
     with zipfile.ZipFile(SITE/'downloads'/STUDENT_PROJECT_ZIP) as bundle:
         names = set(bundle.namelist())
         assert '.vscode/settings.json' in names
+        for image in ['pipe_operator.png', 'clipboard-834917176.png']:
+            original = 'assets/introduction-to-r/' + image
+            assert original in names, original
+            assert bundle.read(original) == (ROOT/original).read_bytes(), original
+
         import json
         settings = json.loads(bundle.read('.vscode/settings.json'))
         assert settings['quarto.inlineOutput.enabled'] is False

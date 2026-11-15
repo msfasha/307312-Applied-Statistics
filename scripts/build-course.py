@@ -27,7 +27,7 @@ def validate(site):
     forbidden=[p for p in site.rglob('*') if p.is_file() and (any(t in p.relative_to(site).parts for t in ['instructor','archived','books','sources','_includes']) or p.suffix.lower() in ['.xlsx','.xls'])]
     if forbidden:raise RuntimeError('Local-only files in generated site: '+str(forbidden[:5]))
     expected = {
-        'lessons/01-introduction-to-r.html': ['Getting started', 'Variables and atomic data types', 'Preparing data with dplyr', 'Filter data then draw a histogram', 'Summarise data then draw a bar chart'],
+        'lessons/01-introduction-to-r.html': ['Getting started', 'Variables and atomic data types', 'Working with a classical data frame', 'Preparing data with dplyr', 'Build a meaningful business pipeline', 'Understanding ggplot2', 'Map a group to colour and shape', 'Filter data then draw a histogram', 'Summarise data then draw a bar chart'],
         'lessons/02-descriptive-statistics.html': ['What is Statistics?', 'source-title-87'],
         'lessons/03-inferential-statistics.html': ['part3-01-slide-01', 'part3-04-slide-21'],
     }

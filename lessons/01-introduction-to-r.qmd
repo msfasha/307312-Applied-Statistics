@@ -13,8 +13,8 @@ execute:
   error: false
   warning: true
   message: false
-  fig-width: 6
-  fig-height: 2.1
+  fig-width: 7
+  fig-height: 3.4
   fig-align: center
   dpi: 200
 editor: source
@@ -204,11 +204,11 @@ for (number in 1:3) {
 
 The results are `1`, `4` and `9`. For this calculation, `(1:3)^2` also works directly on the vector. A loop is useful when each repetition requires several instructions.
 
-## Working with a data frame
+## Working with a classical data frame
 
-A data frame is a table: rows contain observations and columns contain variables. Columns can have different types, but they must have the same number of rows.
+A **data frame** is R's standard table object: rows are observations, columns are variables, and each column has the same number of entries. Different columns can have different types. A data frame exists in base R; dplyr is a separate package that operates on it.
 
-### A small example
+### Create a small data frame
 
 `data.frame()` combines named columns into a table. Here, each row represents one person; the values are illustrative.
 
@@ -220,13 +220,102 @@ people <- data.frame(
 people
 ```
 
-- `people$age` extracts the `age` column as a vector.
-- `people[1:2, ]` selects the first two rows. A blank column position means all columns.
-- `str(people)` reports the column names, types and example values.
+### Inspect an existing data frame
 
-### Reading the supplied CSV
+For numerical plots we use **mtcars**, the built-in data from the 1974 *Motor Trend* magazine: 32 car models from 1973–1974. It was also used in the original R introduction. Each row represents a car model, not a driver or journey.
 
-`read.csv()` imports a comma-separated file. Its `file` argument gives the path relative to the course project root. `head(x, n = 3)` displays only the first three rows of `x`.
+| Column | Meaning | Unit or coding |
+|:---|:---|:---|
+| `mpg` | Fuel economy | Miles per US gallon; a higher value means more distance per gallon |
+| `wt` | Vehicle weight | Thousands of pounds |
+| `cyl` | Recorded cylinder group | 4, 6 or 8; a grouping variable |
+
+`car_data <- mtcars` creates our working object, leaving the supplied dataset unchanged. No package or CSV import is needed for this built-in dataset.
+
+```{r}
+car_data <- mtcars
+```
+
+These base R functions help us understand a table before analysing it:
+
+| Function | What it tells us |
+|:---|:---|
+| `class(x)` | The kind of object; here, `"data.frame"` |
+| `dim(x)` | Number of rows followed by number of columns |
+| `nrow(x)` and `ncol(x)` | Row count and column count separately |
+| `names(x)` | Column names |
+| `head(x, n = 3)` and `tail(x, n = 2)` | First three or last two rows |
+| `str(object)` | Column types and a compact preview |
+| `summary(object)` | Summaries for each selected column |
+
+```{r}
+class(car_data)
+dim(car_data)
+nrow(car_data)
+ncol(car_data)
+names(car_data)
+```
+
+The table has **32 rows and 11 columns**. `dim()` reports these in that order. The row names identify the car models.
+
+### Extract columns and select rows
+
+- `$` extracts a named column as a vector, such as `car_data$mpg`.
+- `car_data["mpg"]` keeps a one-column **data frame**; `car_data[["mpg"]]` extracts the column as a **vector**. The double brackets matter when a function expects a vector.
+- In `car_data[rows, columns]`, the comma separates row selection from column selection. Leaving one side blank means all rows or all columns on that side.
+- Use `:` for consecutive positions and `c()` for a chosen set of column names or positions.
+
+```{r}
+car_data[1:3, c("mpg", "wt", "cyl")]
+class(car_data["mpg"])
+class(car_data[["mpg"]])
+```
+
+The two classes are `"data.frame"` and `"numeric"`. A table and one of its columns are different objects.
+
+Before running the next cell, note that `head()` and `tail()` receive the table first and `n` gives the number of rows to display.
+
+```{r}
+head(x = car_data[c("mpg", "wt", "cyl")], n = 3)
+tail(x = car_data[c("mpg", "wt", "cyl")], n = 2)
+```
+
+`str()` identifies the selected columns' types. `summary()` reports their minimum, quartiles, median, mean and maximum; it does not print the individual observations.
+
+```{r}
+str(object = car_data[c("mpg", "wt", "cyl")])
+summary(object = car_data[c("mpg", "wt")])
+```
+
+### Add a column and filter with base R
+
+We can assign a calculated vector directly to a new column with `$`. Since `wt` is in thousands of pounds, multiplying it by **453.59237** converts it to kilograms.
+
+```{r}
+car_data$weight_kg <- car_data$wt * 453.59237
+head(x = car_data[c("wt", "weight_kg")], n = 3)
+```
+
+A logical condition can select whole rows. Here, `mpg >= 25` identifies cars that travel at least 25 miles per US gallon. The column-name vector keeps just the variables needed to inspect them.
+
+```{r}
+efficient_cars <- car_data[
+  car_data$mpg >= 25, c("mpg", "weight_kg", "cyl")
+]
+efficient_cars
+```
+
+`order(x)` returns the positions that would sort `x`, ascending by default. Using those positions as row indices sorts our selected table by weight.
+
+```{r}
+efficient_cars[order(efficient_cars$weight_kg), ]
+```
+
+We have selected and sorted rows using base R alone. Later, `filter()`, `select()` and `arrange()` express these table operations with dplyr verbs.
+
+### Read the supplied business CSV
+
+`read.csv()` imports a comma-separated file into a classical data frame. Its `file` argument is a path relative to the opened course root. We use Superstore for the business-data preparation examples below.
 
 ```{r}
 superstore <- read.csv(file = "data/r-introduction/superstore.csv")
@@ -234,10 +323,10 @@ head(x = superstore[c("Category", "Sales", "Profit")], n = 3)
 ```
 
 - This is the original fictitious Superstore tutorial data with 2014–2017 order dates, separate from the 2023–2025 practical data.
-- Each row is an order line, not necessarily a distinct order or customer.
-- `read.csv()` makes names containing spaces syntactically valid; for example, `Order ID` becomes `Order.ID`. The three names used here are unchanged.
+- Each row is an order line, not necessarily a distinct order or customer. Sales and Profit are recorded in US dollars.
+- `read.csv()` converts spaces in column names to dots; for example, `Order ID` becomes `Order.ID`. The three names used here are unchanged.
 
-### Missing values
+### Recognise missing values
 
 - `NA` represents a missing value. Test it with `is.na(x)`, not `x == NA`.
 - `mean(x, na.rm = TRUE)` calculates the arithmetic mean after omitting missing values. Omitting values changes which observations enter the calculation.
@@ -248,11 +337,11 @@ is.na(values)
 mean(x = values, na.rm = TRUE)
 ```
 
-The missingness check returns `FALSE TRUE FALSE`; the mean of the two observed values is `15`.
+The check returns `FALSE TRUE FALSE`; the mean of the two observed values is `15`. For a table column, use the same pattern, such as `is.na(superstore$Sales)`.
 
 ## Preparing data with dplyr
 
-`dplyr` supplies functions for selecting, filtering, sorting, transforming and summarising tables.
+**dplyr is a toolkit for working with tables.** It does not replace the data frame: its functions take a data frame or tibble as input and return a new table. A **tibble** is a data-frame subclass with compact printing; it is not an atomic data type.
 
 ### Install once and load each session
 
@@ -270,130 +359,307 @@ install.packages(pkgs = c("dplyr", "ggplot2"))
 library(dplyr)
 ```
 
-### Select filter sort and calculate
+### Choose the verb that answers your question
 
-Each function below receives a table first. Subsequent arguments name columns, supply a condition or define a calculation.
+Each function below receives the table as its first argument. Within these functions, use column names directly; quote a text value such as `"Technology"` when comparing values.
 
-- `select()` keeps columns; `filter()` keeps rows satisfying its condition.
-- `arrange()` sorts rows. `desc()` requests descending order.
-- `mutate()` adds or changes a column. Here, the new column expresses each line's sales after an illustrative 10 percent increase; it is not an observed value.
+| Verb | Task | Meaning in this example |
+|:---|:---|:---|
+| `select()` | Choose columns | Keep Category, Sales and Profit |
+| `filter()` | Choose rows | Keep Technology order lines |
+| `arrange()` | Sort rows | Put the largest line sales first |
+| `mutate()` | Add or change a column | Express each line's sales in thousands of dollars |
+| `rename()` | Rename a column | Give Sales an explicit unit label |
+| `group_by()` | Define groups | Prepare a separate calculation for each category |
+| `summarise()` | Calculate group results | Return counts or totals, rather than the original lines |
+
+### Select filter and sort
+
+- `select(superstore, Category, Sales, Profit)` keeps three columns and all rows.
+- `filter(..., Category == "Technology")` keeps the rows satisfying the condition.
+- `arrange(..., desc(Sales))` sorts rows by Sales, largest first; `desc()` requests descending order.
+- `head(..., n = 3)` lets us inspect the first three resulting rows.
 
 ```{r}
 sales_columns <- select(superstore, Category, Sales, Profit)
 technology <- filter(sales_columns, Category == "Technology")
 largest_first <- arrange(technology, desc(Sales))
-sales_example <- mutate(largest_first, Sales_plus_10pct = Sales * 1.10)
+head(x = largest_first, n = 3)
 ```
 
-### Group and summarise
+The result contains the three Technology order lines with the largest recorded sales. These are individual lines, not totals by product or order.
 
-- `%>%` passes the result on its left into the first argument of the next function. Read it as “then”. It becomes available when dplyr is loaded.
-- `group_by(Category)` forms a group for each category.
-- `summarise()` returns one summary row per group here. `n()` counts order lines; `sum(Sales)` totals their sales. `.groups = "drop"` removes grouping from the result.
+### Calculate and rename columns
+
+`mutate()` uses `new_name = calculation`. Dividing by 1000 changes the reporting unit; it does not change the recorded transaction.
 
 ```{r}
-category_totals <- superstore %>%
-  group_by(Category) %>%
-  summarise(lines = n(), total_sales = sum(Sales), .groups = "drop")
-category_totals
+sales_units <- mutate(largest_first, Sales_thousands = Sales / 1000)
+head(x = sales_units, n = 3)
 ```
 
-Each row reports a category's line count and sales total, not its distinct order count. These calculations assume the relevant values are observed; investigate missing data before summarising a new file.
+`rename()` uses **new name = existing name**. It changes the heading, not the values.
+
+```{r}
+labelled_sales <- rename(sales_columns, Sales_USD = Sales)
+head(x = labelled_sales, n = 3)
+```
+
+The original `superstore` object is unchanged because we assigned each result to another name.
+
+### Make instructions flow through a pipe
+
+`%>%` takes the result on its left and supplies it as the **first argument** of the function on its right. Read it as **then**. dplyr makes this operator available when loaded.
+
+![Original pipe illustration retained from the supplied R material. Follow the data through filter, mutate, group_by and summarise.](../assets/introduction-to-r/pipe_operator.png){width=6.5in}
+
+A pipe passes the resulting object onward; it does not automatically save or print every intermediate table. Save the final result with `<-`, or write its name to inspect it.
+
+These three forms express the same instruction: keep Technology rows, then choose three columns. Each saves its result, so printing the full table does not overwhelm the notebook. `identical(x, y)` checks whether two objects agree exactly; the two comparisons should both return `TRUE`.
+
+```{r}
+# Nested calls: read the innermost operation first
+nested_technology <- select(
+  filter(superstore, Category == "Technology"), Category, Sales, Profit
+)
+
+# Intermediate table: store each step
+technology <- filter(superstore, Category == "Technology")
+step_technology <- select(technology, Category, Sales, Profit)
+
+# Pipeline: read the operations from top to bottom
+piped_technology <- superstore %>%
+  filter(Category == "Technology") %>%
+  select(Category, Sales, Profit)
+
+identical(x = nested_technology, y = piped_technology)
+identical(x = step_technology, y = piped_technology)
+head(x = piped_technology, n = 3)
+```
+
+### Build a meaningful business pipeline
+
+**Question:** Among order lines with at least two units, which categories account for the greatest recorded sales?
+
+Follow the diagram's sequence:
+
+1. **Filter:** `Quantity >= 2` selects the order lines specified by the question.
+2. **Mutate:** `Sales / 1000` creates a column measured in thousands of US dollars.
+3. **Group:** `group_by(Category)` defines separate category calculations.
+4. **Summarise:** `n()` counts lines; `sum()` totals their sales. `.groups = "drop"` removes grouping from the result.
+5. **Arrange:** sort the category totals from largest to smallest.
+
+```{r}
+multi_unit_totals <- superstore %>%
+  filter(Quantity >= 2) %>%
+  mutate(Sales_thousands = Sales / 1000) %>%
+  group_by(Category) %>%
+  summarise(lines = n(),
+            sales_thousands = sum(Sales_thousands),
+            .groups = "drop") %>%
+  arrange(desc(sales_thousands))
+multi_unit_totals
+```
+
+- Read the output as **one row per category**, with a line count and a sales total in thousands of dollars.
+- These totals describe the selected lines only. They are not the full company's sales totals or counts of distinct orders.
+- The tibble headings `<int>` and `<dbl>` identify integer and double columns. They describe storage types, not additional observations.
+- The order of operations matters: filtering first decides which records enter the calculation; summarising first would discard the individual Quantity values needed for that filter.
+- Investigate missing values before summarising a new file; `sum()` without `na.rm = TRUE` returns `NA` when a group contains missing values.
 
 ## Conventional plots in base R
 
-Base R includes plotting functions without an additional package. Choose a plot to match the variable and question.
+Base R includes plotting functions without an additional package. Choose variables that match a clear question, and read the axes before interpreting the pattern.
 
-### Histogram of a numerical variable
+### Histogram of fuel economy
 
-`hist()` groups numerical values into intervals and plots their frequencies. `x` supplies the observations; `breaks` suggests a number of intervals; `main` sets the title and `xlab` labels the horizontal axis. Actual interval boundaries can differ from the suggested count.
+**Question:** What fuel-economy values occur among the 32 car models?
+
+`hist()` groups numerical values into intervals and plots their frequencies. `x` supplies the observations; `breaks` suggests a number of intervals; `main` sets the title and `xlab` labels the horizontal axis. Actual interval boundaries can differ from the suggested count. `col` sets the fill colour.
 
 ```{r}
 #| echo: !expr -1
-par(mar = c(3.2, 4.5, 2, 1), mgp = c(2.2, 0.7, 0), las = 0, cex = 0.75)
-hist(x = superstore$Quantity, breaks = 10,
-     main = "Quantity per order line", xlab = "Quantity", col = "gray75")
+par(mar = c(4.2, 4.7, 2.5, 0.8), mgp = c(2.8, 0.7, 0), las = 1, cex = 0.9)
+hist(x = car_data$mpg, breaks = 6,
+     main = "Fuel economy of 32 car models",
+     xlab = "Miles per US gallon", col = "gray75")
 ```
 
-`col` controls the fill colour. Read the horizontal axis as quantity and the vertical axis as the number of order lines in each interval. Quantity is a discrete numerical variable.
+The values extend from 10.4 to 33.9 miles per US gallon. Each bar counts car models in a numerical interval; it does not represent a category such as cylinder group.
 
 ### Bar plot of category counts
+
+**Question:** How many Superstore order lines fall in each product category?
 
 `table()` counts observations in each category. `barplot()` uses those counts as bar heights; `height` supplies the counts, and `ylab` labels the vertical axis.
 
 ```{r}
 #| echo: !expr -1
-par(mar = c(3.2, 4.5, 2, 1), mgp = c(2.2, 0.7, 0), las = 0, cex = 0.75)
+par(mar = c(4.2, 4.7, 2.5, 0.8), mgp = c(2.8, 0.7, 0), las = 1, cex = 0.9)
 category_counts <- table(superstore$Category)
 barplot(height = category_counts, main = "Order lines by category",
         ylab = "Number of order lines", col = "gray75")
 ```
 
-Compare the separate bars to compare categories. A bar chart represents categories; a histogram represents numerical intervals.
+Office Supplies has the most lines in this file. This is a comparison of categories; the histogram above describes numerical intervals. Neither chart counts distinct customers or distinct orders.
 
 ## Boxplots and scatter plots
 
-### Boxplot of a numerical variable
+### Compare fuel economy across cylinder groups
 
-`boxplot()` summarises a distribution. `x` supplies the values and `ylab` labels the numerical axis.
+**Question:** How do the centres and spreads of fuel economy differ between the recorded 4-, 6- and 8-cylinder groups?
+
+- `factor(x)` marks values as categories. The numeric codes 4, 6 and 8 identify groups here, rather than positions on a continuous measurement axis.
+- `boxplot()` can use a **formula**: `mpg ~ cylinders` means “compare mpg across cylinder groups”. `data` supplies the table containing those columns.
+- `xlab` and `ylab` give the axis labels; `col` sets the box fill.
+
+```{r}
+car_data$cylinders <- factor(x = car_data$cyl)
+```
 
 ```{r}
 #| echo: !expr -1
-par(mar = c(3.2, 4.5, 2, 1), mgp = c(2.2, 0.7, 0), las = 0, cex = 0.75)
-boxplot(x = superstore$Sales, main = "Sales per order line",
-        ylab = "Sales in US dollars", col = "gray75")
+#| fig-height: 3.8
+par(mar = c(4.2, 4.7, 2.5, 0.8), mgp = c(2.8, 0.7, 0), las = 1, cex = 0.9)
+boxplot(mpg ~ cylinders, data = car_data,
+        main = "Fuel economy by cylinder group",
+        xlab = "Recorded cylinder group", ylab = "Miles per US gallon",
+        col = "gray80")
 ```
 
-- The line inside the box is the median; the box spans the middle half of the observations.
-- Default whiskers reach the most extreme observations within 1.5 box lengths of the box edges. Values beyond them appear separately.
-- Separate points indicate potentially unusual values, not proven errors. Large sales values stretch this plot's scale.
+- The median lines are **26.0**, **19.7** and **15.2** miles per US gallon for the 4-, 6- and 8-cylinder groups respectively.
+- Each box spans the middle half of its group's observations. Default whiskers extend to the most extreme values within 1.5 box lengths of its edges; more distant values appear separately.
+- The group sizes are 11, 7 and 14 car models. These small, unequal groups describe this historical dataset, not all cars.
+- The pattern shows a group association. It does not establish that changing a car's cylinder count would cause the observed change in fuel economy.
 
-### Scatter plot of two numerical variables
+### Relate vehicle weight to fuel economy
 
-`plot(x, y)` places each order line at its sales value horizontally and profit value vertically. `pch = 16` selects filled circles; `cex = 0.4` reduces their size.
+**Question:** Do heavier car models tend to travel fewer miles per gallon?
+
+`plot(x, y)` places weight on the horizontal axis and fuel economy on the vertical axis. `pch = 16` selects filled circles; `cex = 1` uses their standard size; `col` sets their colour.
 
 ```{r}
 #| echo: !expr -1
-par(mar = c(3.2, 4.5, 2, 1), mgp = c(2.2, 0.7, 0), las = 0, cex = 0.75)
-plot(x = superstore$Sales, y = superstore$Profit,
-     main = "Sales and profit by order line",
-     xlab = "Sales in US dollars", ylab = "Profit in US dollars",
-     pch = 16, cex = 0.4, col = "gray45")
+#| fig-height: 3.8
+par(mar = c(4.2, 4.7, 2.5, 0.8), mgp = c(2.8, 0.7, 0), las = 1, cex = 0.9)
+plot(x = car_data$weight_kg, y = car_data$mpg,
+     main = "Vehicle weight and fuel economy",
+     xlab = "Vehicle weight in kilograms", ylab = "Miles per US gallon",
+     pch = 16, cex = 1, col = "gray35")
 ```
 
-Look for patterns, negative profits and unusual lines. Points may overlap. An association in these fictitious observational records does not establish a causal relationship.
+Each point is one car model; all 32 are included. The downward pattern indicates that heavier models generally have lower fuel economy in this dataset. Other design characteristics also differ between models, so this is an association rather than a causal experiment.
 
-## A brief introduction to ggplot2
+## Understanding ggplot2
 
-`ggplot2` builds a plot by combining data, mappings and drawing layers. We use the same sales and profit columns as in the base R scatter plot.
+**ggplot2 describes how data become a graph.** Choose a table, map its columns to visual properties, and add layers that draw marks or calculate summaries. The same data can support different graphs depending on the question.
+
+![Original Grammar of Graphics diagram retained from the supplied R material. Read the stack from data upward.](../assets/introduction-to-r/clipboard-834917176.png){width=6.5in}
+
+### Read the layers in the diagram
+
+| Component | What it controls | Example in this introduction |
+|:---|:---|:---|
+| Data | Which observations enter the plot | The 32 rows of `car_data` |
+| Aesthetic mappings | Which variables control positions, colours or symbols | Weight on x; mpg on y; cylinder group as colour |
+| Geometries | Which marks represent observations or summaries | Points, boxes, bars |
+| Statistics | What is calculated before drawing | Counts for a histogram; quartiles for a boxplot |
+| Scales | How values become axis positions, colours or symbols | Numerical axis ticks and category legends |
+| Coordinates | How the plotting space is arranged | Ordinary horizontal and vertical axes |
+| Facets | How data are split into separate panels | One panel per group, when comparisons need separate views |
+| Theme | How non-data elements look | Fonts, grid lines and background |
+
+- **An aesthetic is a visual property**, such as x position, y position, colour, size or shape. `aes()` specifies which variable controls that property.
+- Scales then translate variable values into displayed positions, colours or symbols. Mapping and scales are related but distinct ideas.
+- A drawing layer normally combines a geometry and a statistical operation. `geom_point()` uses observations directly; `geom_boxplot()` calculates a summary before drawing.
+- Layers inherit the data and mappings specified in `ggplot()` unless a layer supplies its own.
+
+### Build a scatter plot in three steps
+
+`library(ggplot2)` loads the package installed earlier. We will construct the same weight–fuel-economy plot as in base R.
 
 ```{r}
 library(ggplot2)
 ```
 
-Before running the next cell:
-
-- `ggplot(data = superstore)` supplies the table.
-- `mapping = aes(x = Sales, y = Profit)` maps columns to the horizontal and vertical axes. `aes()` describes how data control visual positions or appearance.
-- `+` adds a layer to a ggplot. `geom_point()` draws one point per row; `size` controls point size and `colour` sets one fixed colour.
-- `labs()` supplies the title and axis labels. `theme_minimal()` simplifies the background.
+**Step 1 — declare the data and mappings.** `data = car_data` supplies the table. `mapping = aes(x = weight_kg, y = mpg)` connects the two columns to axes. Store the plot definition in `p`; without a drawing layer, this definition has no points.
 
 ```{r}
-ggplot(data = superstore, mapping = aes(x = Sales, y = Profit)) +
-  geom_point(size = 0.6, colour = "gray45") +
-  labs(title = "Sales and profit by order line",
-       x = "Sales in US dollars", y = "Profit in US dollars") +
+p <- ggplot(data = car_data,
+            mapping = aes(x = weight_kg, y = mpg))
+```
+
+**Step 2 — add the marks.** `geom_point()` adds one point per row. `size = 2` sets a fixed point size and `colour = "gray35"` sets a fixed colour. Here, `+` combines plot components; it is not numerical addition. Assign the updated plot back to `p`.
+
+```{r}
+p <- p + geom_point(size = 2, colour = "gray35")
+```
+
+**Step 3 — label and display it.** `labs()` supplies the title and axis labels. `theme_minimal()` simplifies the background without changing the data. This final expression displays the completed plot.
+
+```{r}
+p +
+  labs(title = "Vehicle weight and fuel economy",
+       x = "Vehicle weight in kilograms", y = "Miles per US gallon") +
   theme_minimal()
 ```
 
-Read this plot in the same way as the base R scatter plot. The main new idea is assembling a graph from layers.
+Read the downward relationship exactly as in the base R plot. A different plotting system changes how we specify the graph, not the observations or their meaning.
 
-### Combining dplyr and ggplot2
+### Map a group to colour and shape
 
-- First prepare the table with dplyr, then pass it into `ggplot()` using `%>%`.
-- The pipe supplies the table as ggplot's first argument, `data`. You can therefore omit `data = ...` in the piped call.
-- Use `%>%` to pass a table between functions; use `+` to add layers after `ggplot()` has created the plot.
-- The next two examples use this same workflow: **prepare data, map variables, draw the plot, add labels**.
+**Question:** Where do the cylinder groups lie within the weight–fuel-economy relationship?
+
+- Put `colour = cylinders` and `shape = cylinders` **inside `aes()`** so each group controls those visual properties.
+- ggplot2 assigns a colour and symbol to each factor level and supplies a legend. Colour and shape together make groups easier to distinguish.
+- `size = 2.5` remains outside `aes()` because every point uses the same size.
+- `labs(colour = ..., shape = ...)` labels the two mappings; matching titles allow their legends to be combined.
+
+```{r}
+ggplot(data = car_data,
+       mapping = aes(x = weight_kg, y = mpg,
+                     colour = cylinders, shape = cylinders)) +
+  geom_point(size = 2.5) +
+  labs(title = "Weight and fuel economy by cylinder group",
+       x = "Vehicle weight in kilograms", y = "Miles per US gallon",
+       colour = "Cylinders", shape = "Cylinders") +
+  theme_minimal()
+```
+
+The recorded 8-cylinder models are generally heavier and have lower mpg; 4-cylinder models generally occupy the lighter, higher-mpg end. There is overlap between groups. These joint differences help explain why the first scatter plot cannot isolate a causal effect of weight.
+
+**Mapping versus setting:** `aes(colour = cylinders)` means colour varies by a data column. `geom_point(colour = "gray35")` means use one fixed colour. Putting the text `"gray35"` inside `aes()` would instead treat it as a mapped label and can produce an unwanted legend.
+
+### Combine a boxplot layer with the individual observations
+
+We can show both the group summaries and all 32 observations on one plot.
+
+- `aes(x = cylinders, y = mpg)` puts the categories on x and the measured fuel economy on y.
+- `geom_boxplot()` draws the group summaries; `fill` sets their fixed interior colour.
+- `outlier.shape = NA` hides only the boxplot layer's separate outlier symbols, so those observations are not drawn twice. All observations remain in the point layer.
+- `position_jitter(width = 0.12, height = 0, seed = 312)` spreads overlapping points horizontally within their group. It leaves measured mpg unchanged because the vertical offset is zero. The seed makes these display offsets reproducible.
+- `geom_point()` draws the actual observations using that position rule, a fixed `size` and a fixed `colour`.
+
+```{r}
+#| fig-height: 3.8
+ggplot(data = car_data, mapping = aes(x = cylinders, y = mpg)) +
+  geom_boxplot(fill = "gray85", outlier.shape = NA) +
+  geom_point(position = position_jitter(width = 0.12, height = 0, seed = 312),
+             size = 1.6, colour = "gray30") +
+  labs(title = "Fuel economy by group with all 32 observations",
+       x = "Recorded cylinder group", y = "Miles per US gallon") +
+  theme_minimal()
+```
+
+Compare the medians, the middle-half spread and the amount of overlap. The visible points also reveal the unequal group sizes. For small samples, base R and ggplot2 may use slightly different conventions for box edges; the observations and group medians here are the same.
+
+### Connect dplyr to ggplot2
+
+- `%>%` passes a prepared **table** into the first argument of `ggplot()`, which is `data`.
+- `+` then adds components to the **plot**. Do not substitute a pipe for the plus between drawing layers.
+- dplyr decides **which data or summaries** enter the graph; ggplot2 decides **how they are represented**.
+
+The next examples use the same business table as the dplyr section, first at order-line level and then at category-summary level.
 
 ## Filter data then draw a histogram
 
@@ -444,18 +710,19 @@ superstore %>%
 
 The bars show sales totals across all tutorial order lines in each category; a height of 800 means US$800,000. This differs from the earlier bar plot of category line counts. `fill` sets the same grey for every bar.
 
-### Check your understanding
+## Check your understanding
 
 1. Create a numeric vector with `c()`. Check its type and select positions 2 to 4.
-2. Use a logical condition to keep values above a threshold. Write an `if` and `else` for one value.
-3. Write a `for` loop that prints the squares of 1 to 5.
-4. Filter Superstore to Furniture lines and calculate their total sales.
-5. Draw a histogram of Profit. Explain what one bar represents.
-6. Adapt the piped histogram to Furniture lines. Keep the quantity intervals unchanged.
-7. Adapt the grouped bar chart to total Profit by Category. Update the title and vertical-axis label.
+2. Use a logical condition to keep values above a threshold. Write an `if` and `else` for one value, then a `for` loop that prints the squares of 1 to 5.
+3. Use `dim()`, `names()` and `str()` to inspect `car_data`. Explain the difference between `car_data["mpg"]` and `car_data[["mpg"]]`.
+4. With base R, select car models with at least 25 mpg and display only mpg and weight in kilograms.
+5. Adapt the business pipeline to lines with at least three units. Explain why its totals change.
+6. Explain what each point and each box represents in the car plots. Describe one association and one limit on its interpretation.
+7. Change the ggplot scatter plot to gross horsepower (`hp`) on x and mpg on y. Update the labels; describe what you see without claiming causation.
+8. Adapt the piped histogram to Furniture lines and the grouped bar chart to total Profit by Category. Update the titles, labels and units.
 
-### Sources
+## Sources
 
-Condensed and adapted from the four supplied 307307 R introduction notebooks and their images, retained in the course reference history. The Superstore CSV is unchanged tutorial data supplied with those materials.
+Condensed and adapted from the four supplied 307307 R introduction notebooks and their images, retained in the course reference history. The Superstore CSV is unchanged tutorial data supplied with those materials. The original pipe and Grammar of Graphics illustrations are retained unchanged from the supplied 307307 material. The car examples use the built-in R `datasets::mtcars` data and the units/provenance documented in `?mtcars`.
 
-Official references: [R project contributors](https://www.r-project.org/contributors.html), [Introduction to R](https://cran.r-project.org/doc/manuals/r-release/R-intro.html), [dplyr](https://dplyr.tidyverse.org/), [ggplot2](https://ggplot2.tidyverse.org/), and [Quarto with R](https://quarto.org/docs/computations/r.html), and [Positron workspace layout](https://positron.posit.co/layout.html).
+Official references: [R project contributors](https://www.r-project.org/contributors.html), [Introduction to R](https://cran.r-project.org/doc/manuals/r-release/R-intro.html), [dplyr](https://dplyr.tidyverse.org/), [ggplot2](https://ggplot2.tidyverse.org/), [Quarto with R](https://quarto.org/docs/computations/r.html), and [Positron workspace layout](https://positron.posit.co/layout.html).

@@ -13,6 +13,6 @@ toc: false
 
 ## Other Downloads
 
-- [Positron files (.zip)](downloads/applied-statistics-positron.zip?v=20261115-positron)
+- [Positron files (.zip)](downloads/applied-statistics-positron.zip?v=20261115-r-intro-review)
 - [PDF collection (.zip)](downloads/applied-statistics-pdfs.zip)
 - [Extended scenarios](extended-cases/index.qmd){#extended-business-cases}

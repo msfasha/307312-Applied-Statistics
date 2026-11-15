@@ -217,3 +217,20 @@ The shared Petra theme remains active.
 
 Workspace behaviour references: [Positron folder workspaces](https://positron.posit.co/rstudio-rproj-file.html)
 and [Quarto inline-output working directories](https://positron.posit.co/quarto-inline-output.html#working-directory).
+
+## R introduction content review — 15 November 2026
+
+The combined introduction now includes classical data-frame functions, a fully
+explained dplyr pipeline with nested/intermediate/piped equivalence, both original
+pipe/layer diagrams, and a more developed Grammar of Graphics explanation.
+Keep `pipe_operator.png` and `clipboard-834917176.png` unchanged and include both
+in the student ZIP; validation checks their exact bytes against the source assets.
+
+Numerical boxplots/scatter plots use all 32 models in the built-in `mtcars` data
+from the original ggplot material, not clipped Superstore Sales/Profit axes. The
+notebook explains historical provenance, units, recorded group sizes, medians,
+mapping versus setting, and a boxplot/point layer that shows every observation.
+The business pipelines still use the unchanged historical Superstore CSV.
+No additional CSV or package is required. The R checker verifies the stated
+car-data facts and equivalence of the three pipeline forms. Preserve all other
+course material and the fifteen-PDF/twelve-notebook download contract.

@@ -63,7 +63,14 @@ stopifnot(length(a) == 12, identical(a, b), all(is.finite(a)))
         worked = [c for c in worked if 'label: render-project-root' not in c]
         imports = [c for c in worked if 'read.csv(' in c]
         if notebook.name == '01-introduction-to-r.qmd':
-            run_r('\n'.join(worked), ROOT)
+            run_r('\n'.join(worked) + '''
+stopifnot(nrow(car_data) == 32, !anyNA(car_data[c('weight_kg', 'mpg', 'cylinders')]),
+          identical(as.integer(table(car_data$cylinders)), c(11L, 7L, 14L)),
+          isTRUE(all.equal(car_data$weight_kg, mtcars$wt * 453.59237)),
+          all(abs(tapply(car_data$mpg, car_data$cylinders, median) - c(26, 19.7, 15.2)) < 1e-10),
+          identical(nested_technology, piped_technology),
+          identical(step_technology, piped_technology))
+''', ROOT)
             checks += 1
             print('Passed combined R introduction:', notebook.name, flush=True)
             continue
