@@ -4344,6 +4344,8 @@ body.r-introduction { font-size: 10pt; line-height: 1.25; }
 .r-introduction pre { font-size: 8.5pt; line-height: 1.2; padding: .4rem; }
 .r-introduction .cell { margin-bottom: .6rem; }
 .r-introduction .cell-output { break-before: avoid; }
+.r-introduction .cell:has(.cell-output-display) { break-inside: avoid; }
+.r-introduction .cell-output-display img { max-height: none; }
 .r-introduction .quarto-figure img { max-height: 70mm; width: auto; object-fit: contain; }
 }
 </style>
