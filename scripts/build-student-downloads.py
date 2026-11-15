@@ -6,7 +6,7 @@ from urllib.parse import urljoin, urlsplit
 from html import unescape, escape
 ROOT=Path(__file__).resolve().parents[1]
 SITE=ROOT/'_build/website'
-from course_documents import LESSONS as PARTS, PRACTICALS, EXTENDED, SUPERSTORE, DOCUMENTS, NAVIGATION_PAGES, R_INTRODUCTION_ALIASES
+from course_documents import LESSONS as PARTS, PRACTICALS, EXTENDED, SUPERSTORE, DOCUMENTS, NAVIGATION_PAGES, R_INTRODUCTION_ALIASES, STUDENT_PROJECT_ZIP, LEGACY_STUDENT_PROJECT_ZIP
 chrome=shutil.which('google-chrome') or shutil.which('chromium')
 if not chrome: raise RuntimeError('Google Chrome or Chromium is required to export the lesson PDFs.')
 (SITE/'pdf').mkdir(exist_ok=True)
@@ -76,5 +76,6 @@ shutil.copy2(ROOT/'practicals/inferential-statistics-r-practical.qmd',
 with zipfile.ZipFile(SITE/'downloads/applied-statistics-pdfs.zip','w',zipfile.ZIP_DEFLATED) as z:
     for _, part in DOCUMENTS:z.write(SITE/'pdf'/(part+'.pdf'),part+'.pdf')
 from student_project import build_student_project
-build_student_project(SITE/'downloads/applied-statistics-rstudio.zip')
-print('Created student RStudio project and PDF bundle.',flush=True)
+build_student_project(SITE/'downloads'/STUDENT_PROJECT_ZIP)
+shutil.copy2(SITE/'downloads'/STUDENT_PROJECT_ZIP, SITE/'downloads'/LEGACY_STUDENT_PROJECT_ZIP)
+print('Created student Positron workspace and PDF bundle.',flush=True)

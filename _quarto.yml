@@ -26,6 +26,7 @@ project:
     - data/business/extended-potato.csv
     - data/business/extended-harnswell.csv
     - "!archived/**"
+    - "!.vscode/**"
     - "!instructor/**"
     - "!books/**"
     - "!sources/**"

@@ -9,7 +9,7 @@ import re
 import subprocess
 import time
 
-from course_documents import DOCUMENTS, NAVIGATION_PAGES, R_INTRODUCTION_ALIASES
+from course_documents import DOCUMENTS, NAVIGATION_PAGES, R_INTRODUCTION_ALIASES, STUDENT_PROJECT_ZIP, LEGACY_STUDENT_PROJECT_ZIP
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT/'_build/website'
@@ -39,8 +39,9 @@ if __name__ == '__main__':
     names = [n+'.html' for n in NAVIGATION_PAGES] + [folder+'/'+name+'.html' for folder, name in DOCUMENTS]
     names += ['pdf/'+name+'.pdf' for _, name in DOCUMENTS]
     names += ['pdf/'+name+'.pdf' for name in R_INTRODUCTION_ALIASES]
-    names += ['downloads/applied-statistics-rstudio.zip', 'downloads/applied-statistics-pdfs.zip', 'downloads/inferential-statistics-r-practical.qmd']
+    names += ['downloads/'+STUDENT_PROJECT_ZIP, 'downloads/applied-statistics-pdfs.zip', 'downloads/inferential-statistics-r-practical.qmd']
     names += re.findall(r'^    - (data/[^\n]+)', (ROOT/'_quarto.yml').read_text(), re.M)
+    names += ['downloads/'+LEGACY_STUDENT_PROJECT_ZIP]
     verified = []
     for name in names:
         data = fetch(name, revision)

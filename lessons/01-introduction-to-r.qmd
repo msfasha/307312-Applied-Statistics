@@ -31,15 +31,17 @@ knitr::opts_chunk$set(message = FALSE, dpi = 200)
 - Ross Ihaka and Robert Gentleman began developing R at the University of Auckland in the early 1990s. It is now maintained by the R Core team and contributors.
 - This introduction covers the essentials: storing values, selecting data, making decisions, repeating instructions, preparing tables and drawing plots.
 
-### R and RStudio
+### R and Positron
 
-- **R** runs your calculations. **RStudio** provides an editor, Console, Environment pane and plot viewer.
-- Install R from [CRAN](https://cran.r-project.org/), then RStudio Desktop from [Posit](https://posit.co/download/rstudio-desktop/).
-- Open the course project, `Applied-Statistics.Rproj`. Keep the working directory at the project root so the supplied `data/...` paths work.
-- In RStudio, the **Console** runs a command immediately. A **script** saves commands in a `.R` file. A **Quarto notebook** saves explanations and executable R cells together in a `.qmd` file.
-- Run notebook cells in order. **Render** runs the document and produces a reading copy with results.
+- **R** runs your calculations. **Positron** provides a source editor, R Console, Variables pane and Plots pane.
+- Install R from [CRAN](https://cran.r-project.org/), [Positron](https://positron.posit.co/download.html) and [Quarto](https://quarto.org/docs/get-started/).
+- Extract the complete course ZIP. In Positron, use **File > Open Folder** and choose the top-level folder containing `_quarto.yml` and `data/`.
+- Select your installed R interpreter to start an R Console. Keep its working directory at the course root so the supplied `data/...` paths work.
+- In Positron, the **Console** runs a command immediately. A **script** saves commands in a `.R` file. A **Quarto notebook** saves explanations and executable R cells together in a `.qmd` file.
+- The supplied workspace sends code cells to the R Console. Run cells in order; the Variables and Plots panes let you inspect the results.
+- Use **Preview** to render the notebook as a reading copy with its explanations, code, results and plots.
 
-![RStudio interface from the original R introduction material. Pane positions may differ in your installation.](../assets/introduction-to-r/rstudio.png){width=4.5in}
+![Positron workspace overview. This schematic identifies the main areas; your layout may differ.](../assets/introduction-to-r/positron-workspace.svg){width=6in}
 
 ### Your first command
 
@@ -456,4 +458,4 @@ The bars show sales totals across all tutorial order lines in each category; a h
 
 Condensed and adapted from the four supplied 307307 R introduction notebooks and their images, retained in the course reference history. The Superstore CSV is unchanged tutorial data supplied with those materials.
 
-Official references: [R project contributors](https://www.r-project.org/contributors.html), [Introduction to R](https://cran.r-project.org/doc/manuals/r-release/R-intro.html), [dplyr](https://dplyr.tidyverse.org/), [ggplot2](https://ggplot2.tidyverse.org/), and [Quarto with R](https://quarto.org/docs/computations/r.html).
+Official references: [R project contributors](https://www.r-project.org/contributors.html), [Introduction to R](https://cran.r-project.org/doc/manuals/r-release/R-intro.html), [dplyr](https://dplyr.tidyverse.org/), [ggplot2](https://ggplot2.tidyverse.org/), and [Quarto with R](https://quarto.org/docs/computations/r.html), and [Positron workspace layout](https://positron.posit.co/layout.html).

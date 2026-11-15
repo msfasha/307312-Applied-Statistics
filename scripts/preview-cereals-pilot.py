@@ -5,7 +5,7 @@ import shutil
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
-QUARTO = shutil.which('quarto') or '/usr/lib/rstudio/resources/app/bin/quarto/bin/quarto'
+QUARTO = shutil.which('quarto') or 'quarto'
 if __name__ == '__main__':
     for name in ['practical-02-numerical-business-data.qmd', 'practical-01-cereals.qmd']:
         subprocess.run([QUARTO, 'render', str(Path('practicals') / name), '--to', 'html'],

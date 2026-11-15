@@ -17,7 +17,7 @@ execute:
   message: false
 ---
 
-The **Try this in R** sections show the code for the matching R practical examples. To execute it in RStudio, open `practicals/descriptive-statistics-r-practical.qmd` in the student project. Run Example 1 first to load `students`; later examples reuse it. Each section has one link to the matching worked example.
+The **Try this in R** sections show the code for the matching R practical examples. To execute it in Positron, open `practicals/descriptive-statistics-r-practical.qmd` in the student project. Run Example 1 first to load `students`; later examples reuse it. Each section has one link to the matching worked example.
 
 <div class="original-branding"><img src="../assets/descriptive-statistics/original-branding.png" alt="Institute of Analytics and University of Petra" width="230"></div>
 
@@ -263,7 +263,7 @@ The **Try this in R** sections show the code for the matching R practical exampl
 ```r
 # read.csv() imports the supplied CSV; stringsAsFactors=FALSE keeps category labels as text.
 # head() previews six rows; height is in cm, weight in kg, and age in years.
-# Open Applied-Statistics.Rproj; paths start in the project folder.
+# Open the course folder in Positron; paths start in that folder.
 students <- read.csv("data/descriptive-statistics/students.csv", stringsAsFactors = FALSE)
 head(students)
 ```

@@ -7,7 +7,7 @@ BUILD=ROOT/'_build/inferential-probability-draft'
 PROJECT=BUILD/'project'
 OUT=BUILD/'preview'
 NAME='inferential-31-probability-distributions-draft'
-QUARTO=shutil.which('quarto') or '/usr/lib/rstudio/resources/app/bin/quarto/bin/quarto'
+QUARTO=shutil.which('quarto') or 'quarto'
 ASSETS=['petra-brand.css','source-slides.css','inferential-draft.css',
     'inferential-illustrations/mass-and-density.svg',
     'inferential-illustrations/r-distribution-functions.svg',
@@ -75,7 +75,9 @@ def main():
             '--disable-gpu','--no-pdf-header-footer','--allow-file-access-from-files',
             '--virtual-time-budget=4000','--user-data-dir='+tmp,
             '--print-to-pdf='+str(pdf),html.as_uri()],check=True,capture_output=True,timeout=180)
-    (PROJECT/'Probability-Draft.Rproj').write_text('Version: 1.0\nRestoreWorkspace: No\nSaveWorkspace: No\nEncoding: UTF-8\nRMarkdownRoot: Project\n')
+    (PROJECT/'.vscode').mkdir(exist_ok=True)
+    shutil.copy2(ROOT/'.vscode/settings.json', PROJECT/'.vscode/settings.json')
+    (PROJECT/'Probability-Draft.Rproj').unlink(missing_ok=True)
     (PROJECT/'README.md').write_text('''# 3.1 Probability Distributions — proposed teaching draft
 
 Open probability-distributions-draft.html or the PDF to review the section.
@@ -85,7 +87,7 @@ The 23 teaching slides implement units P1–P9 of the agreed source map.
 The probability inputs are stipulated models; this section needs no external CSV.
 Observed datasets enter the later estimation/testing/regression sections.
 
-To edit: open Probability-Draft.Rproj in RStudio, then the notebook under lessons/.
+To edit: use File > Open Folder in Positron to open this folder, then the notebook under lessons/.
 Install knitr and rmarkdown if needed. R examples use base R and knitr tables.
 Keep assets/ beside lessons/. Run quarto render to rebuild the HTML.
 The PDF is a snapshot printed from executed HTML; print the new HTML to refresh it.
@@ -96,7 +98,7 @@ Instructor answers and validation logs are intentionally not included.
         z.write(PROJECT/'lessons'/f'{NAME}.qmd',f'lessons/{NAME}.qmd')
         for name in ASSETS:z.write(PROJECT/'assets'/name,'assets/'+name)
         z.writestr('_quarto.yml',config.replace('../preview','preview'))
-        for name in ['README.md','Probability-Draft.Rproj']:z.write(PROJECT/name,name)
+        for name in ['README.md','.vscode/settings.json']:z.write(PROJECT/name,name)
         z.write(html,html.name);z.write(pdf,pdf.name)
     (BUILD/'validation.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result,indent=2))

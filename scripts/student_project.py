@@ -5,10 +5,10 @@ import re
 import zipfile
 import yaml
 from urllib.parse import unquote
-from course_documents import DOCUMENTS
+from course_documents import DOCUMENTS, STUDENT_PROJECT_ZIP
 
-# Website/PDF documents remain unchanged; the RStudio ZIP contains runnable work only.
-RSTUDIO_DOCUMENTS = [(f, n) for f, n in DOCUMENTS
+# Website/PDF documents remain unchanged; the Positron ZIP contains runnable work only.
+RUNNABLE_DOCUMENTS = [(f, n) for f, n in DOCUMENTS
                      if f != "lessons" or n in {"01-introduction-to-r"}]
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -26,9 +26,9 @@ def student_path(name):
     return name
 
 def project_files():
-    names = {f'{folder}/{n}.qmd' for folder,n in RSTUDIO_DOCUMENTS}
-    names.update(['Applied-Statistics.Rproj', 'lessons/_includes/course-tools.R'])
-    for folder, notebook in RSTUDIO_DOCUMENTS:
+    names = {f'{folder}/{n}.qmd' for folder,n in RUNNABLE_DOCUMENTS}
+    names.update(['.vscode/settings.json', 'lessons/_includes/course-tools.R'])
+    for folder, notebook in RUNNABLE_DOCUMENTS:
         text = (ROOT/folder/(notebook+'.qmd')).read_text()
         for target in re.findall(r'(?:src="|!\[[^\]]*\]\()([^"\)]+)', text):
             path = posixpath.normpath(posixpath.join(folder, unquote(target)))
@@ -77,7 +77,7 @@ def build_student_project(output):
     config.pop('website', None)
     config['project']['type'] = 'default'
     config['project']['post-render'] = []
-    config['project']['render'] = [student_path(f'{f}/{n}.qmd') for f,n in RSTUDIO_DOCUMENTS]
+    config['project']['render'] = [student_path(f'{f}/{n}.qmd') for f,n in RUNNABLE_DOCUMENTS]
     config['format']['html']['css'] = ['assets/petra-brand.css', 'assets/source-slides.css', 'assets/practical-print.css']
     config['project']['resources'] = sorted(n for n in names if n.startswith('data/'))
     with zipfile.ZipFile(output, 'w', zipfile.ZIP_DEFLATED) as z:
@@ -89,8 +89,9 @@ def build_student_project(output):
         z.writestr('_quarto.yml', yaml.safe_dump(config, sort_keys=False, allow_unicode=True))
         z.writestr('README.md', '''# 307312 Applied Statistics — start here
 
-Extract the whole ZIP and open Applied-Statistics.Rproj in RStudio.
-Install R, RStudio and Quarto, then run once in the R console:
+Extract the whole ZIP. In Positron, choose File > Open Folder and open the extracted
+folder containing _quarto.yml, data/ and .vscode/. Keep that folder structure intact.
+Install R, Positron and Quarto, then run once in the R console:
 
 ```r
 install.packages(c("knitr", "rmarkdown", "dplyr", "ggplot2", "readr", "tidyr", "zoo", "e1071"))
@@ -110,8 +111,11 @@ Keep data/, assets/ and support/ in place: they contain required data, images an
 shared R helper. There are 12 runnable notebooks. Website navigation pages, slide-lesson
 sources, obsolete redirects and unpublished review notebooks are excluded.
 
-Keep the project root as the working directory. In RStudio, set Tools > Global Options >
-R Markdown > Evaluate chunks in directory to Project. Run chunks in order, or use Render.
+Keep the project root as the working directory. Open the top-level course folder in Positron and select an R interpreter.
+The supplied workspace runs Quarto cells in the R Console from the course root.
+Run cells in order; use Preview to render the notebook with its outputs.
+If a CSV cannot be found, use getwd() in the R Console to check that the working
+folder contains data/. Reopen the top-level course folder if needed.
 Run `quarto render` from the project root to render all material. No Python is required.
 PDF/download links use the website.
 
@@ -120,4 +124,4 @@ Website: https://msfasha.github.io/307312-Applied-Statistics/
     return output
 
 if __name__ == '__main__':
-    print(build_student_project(ROOT/'_build/website/downloads/applied-statistics-rstudio.zip'))
+    print(build_student_project(ROOT/'_build/website/downloads'/STUDENT_PROJECT_ZIP))

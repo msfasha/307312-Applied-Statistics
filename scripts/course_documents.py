@@ -15,3 +15,7 @@ NAVIGATION_PAGES = ['index', 'course/index', 'course/part-1', 'course/part-2', '
 # Old bookmarks and PDF links open the new combined R introduction.
 R_INTRODUCTION_ALIASES = ['r-02-basic-concepts', 'r-03-dplyr', 'r-04-ggplot2']
 NAVIGATION_PAGES += ['lessons/' + n for n in R_INTRODUCTION_ALIASES]
+
+STUDENT_PROJECT_ZIP = 'applied-statistics-positron.zip'
+# Unadvertised compatibility URL for previous bookmarks; contents are Positron-only.
+LEGACY_STUDENT_PROJECT_ZIP = 'applied-statistics-rstudio.zip'

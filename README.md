@@ -1,4 +1,4 @@
-# 307312 Applied Statistics — Masters Level
+# 307312 Applied Statistics
 
 [Open the student course](https://msfasha.github.io/307312-Applied-Statistics/).
 The core descriptive and inferential lessons preserve the original slides.
@@ -6,25 +6,28 @@ R practicals and six extended business cases apply the concepts separately.
 
 ## Course sequence
 
-1. **Introduction to R:** import Superstore, prepare a category summary and explain a chart.
-2. **Descriptive Statistics:** the original slide sequence (87 retained slides; the cross-course final slide is omitted), original examples, diagrams, Excel instructions, labeled R equivalents and the approved survey section.
+1. **Introduction to R:** one concise notebook covering Positron setup, base R foundations, dplyr and ggplot2 pipelines.
+2. **Descriptive Statistics:** the original slide sequence (82 retained source slides plus the approved line-chart and dot-plot additions), original examples, diagrams, Excel instructions, labeled R equivalents and the approved survey section.
 3. **Inferential Statistics:** all 141 original slides in order: probability distributions, estimation, hypothesis testing and regression, with original Excel/Python source examples and labeled R equivalents.
 
-Three published practicals develop Superstore categorical analysis, order-size summaries,
-and discount/profit comparisons. Six extended business cases remain available
-separately. All twelve notebooks have PDF downloads.
+The descriptive R practical and developing inference R practical accompany the core
+lessons. Three Superstore applications and six standalone business cases remain
+under Extended scenarios. All fifteen approved documents have PDF downloads.
 
 ## Work locally
 
-Extract the full student project ZIP from the website and open `Applied-Statistics.Rproj`.
+Extract the full student project ZIP from the website and open the extracted folder in Positron using File > Open Folder.
 Install `knitr`, `rmarkdown`, `dplyr`, `ggplot2` and `e1071`; MASS is used by the original inference examples. Install Quarto to render notebooks.
-Keep the working directory at the project root. In RStudio, use Tools → Global Options → R Markdown → Evaluate chunks in directory → Project. CSV paths start with `data/`; no path-finding code is needed.
+Keep the R Console working directory at the project root. The supplied workspace
+settings send Quarto cells to that Console; use Preview for rendered results. CSV paths start with `data/`; no path-finding code is needed.
 
-- `lessons/`: the three active notebooks; `_includes/course-tools.R` holds shared aggregation and chart styling.
-- `practicals/`: three active Superstore practicals and a compatibility entry page.
-- `data/business/`: datasets for the R introduction, practicals and extended cases.
+- `.vscode/settings.json`: portable Positron workspace settings, included in the student ZIP.
+- `lessons/`: combined R introduction, original core slides and the separate probability section; `_includes/course-tools.R` holds shared aggregation and chart styling.
+- `practicals/`: descriptive and developing inferential R companions, plus old URL entry pages.
+- `data/r-introduction/`: unchanged historical 2014–2017 Superstore tutorial data.
+- `data/business/`: pinned business practical and extended-case data.
 - `data/descriptive-statistics/` and `data/inferential-statistics/`: original lesson teaching CSVs.
-- `extended-cases/`: all six approved standalone business cases.
+- `extended-cases/`: six standalone business cases and the three Superstore applications.
 - `assets/`: shared Petra burgundy/gray CSS and the tracked theme specification.
 - `instructor/`: source reviews, provenance, validation and answer keys; excluded from student exports.
 - `sources/slides/`: unchanged original reference decks.
@@ -43,7 +46,7 @@ Do not substitute a different Superstore version without explicitly reviewing re
 
 The original descriptive lesson uses the previously approved de-identified student
 teaching CSV, and the inferential lesson uses observations printed in its source
-slides. Include these required CSVs in the website and RStudio project. Original
+slides. Include these required CSVs in the website and Positron workspace. Original
 workbooks and instructor/source provenance stay excluded. Funds/cereals remain historical.
 The pre-revision notebooks are preserved under
 `archived/2026-11-06-before-superstore/`. Original decks remain unchanged.
@@ -52,9 +55,9 @@ they do not overwrite the authored active notebooks.
 
 ## Verify and publish
 
-- `python3 scripts/check-practicals.py`: all twelve notebooks, isolated imports, source-cell checks and teaching results.
+- `python3 scripts/check-practicals.py`: worked R cells, isolated imports, source-cell checks and teaching results.
 - `quarto render`: full site and independently rendered practicals.
-- `python3 scripts/publish-course.py`: fresh HTML, twelve PDFs, both ZIPs, validation and normal push to gh-pages.
+- `python3 scripts/publish-course.py`: fresh HTML, fifteen PDFs, both ZIPs, validation and normal push to gh-pages.
 - See [PUBLISHING.md](PUBLISHING.md) for publication and live verification requirements.
 
 The source branch can contain instructor notes; exclusion from the student website

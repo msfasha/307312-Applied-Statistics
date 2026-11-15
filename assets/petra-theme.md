@@ -172,6 +172,6 @@ representative PDF pages. Confirm image centering, readable figures and labels,
 correct group-color mappings, adequate contrast and no clipped content.
 
 In Applied Statistics, follow `PUBLISHING.md`: rebuild all six approved lesson and
-practical PDFs and both student bundles, test the extracted RStudio project, and
+practical PDFs and both student bundles, test the extracted Positron workspace, and
 verify the live website and downloads. A source push alone is not publication.
-The RStudio bundle includes the tracked theme guide for future reference.
+The Positron bundle includes the tracked theme guide for future reference.

@@ -49,10 +49,10 @@ student bundles and validates completeness, links and exclusions. It only writes
 local build files; it never pushes or publishes. The publishing command calls
 this same builder before uploading the generated website.
 
-Use the configured RStudio Quarto executable if `quarto` is not on PATH.
+Install the standalone Quarto CLI and ensure `quarto` is on PATH; no IDE-bundled executable is required.
 The R checks verify fresh-session imports and all worked cells from the course
-project root. Open `Applied-Statistics.Rproj` and use project-root chunk execution
-in RStudio. All examples read fixed `data/` paths, including nested Superstore notebooks. They verify pinned hashes, source-cell
+project root. In Positron, open the top-level course folder with File > Open Folder
+and use its R Console for project-root chunk execution. All examples read fixed `data/` paths, including nested Superstore notebooks. They verify pinned hashes, source-cell
 equivalence when original local workbooks are available, and key teaching results.
 The combined Part 1 notebook is checked in a fresh R session and through full Quarto execution. It introduces base R first, then dplyr and ggplot2 pipelines.
 
@@ -65,29 +65,29 @@ PDFs are printed from executed HTML to preserve diagrams, tables, images,
 formula notation and results. Chrome/Chromium is required; Ghostscript optionally
 compresses images at 180 dpi while retaining vector text. All fifteen PDFs go
 under `_build/website/pdf/`, with both ZIPs under `_build/website/downloads/`.
-Check PDF text and representative rendered pages. Extract the student RStudio ZIP
+Check PDF text and representative rendered pages. Extract the student Positron ZIP
 into a fresh directory and render the complete project to verify independence
 from maintainer files. Keep `assets/petra-theme.md` synchronized with the portable
 master `../petra_theme/petra_theme.md` when changing the shared theme.
 
 ## Student resources and exclusions
 
-The PDF bundle includes all fifteen approved documents. The RStudio ZIP contains twelve runnable notebooks (one combined R introduction, two practicals and nine extended cases), plus required data, introductory images, a shared R helper, theme assets,
+The PDF bundle includes all fifteen approved documents. The Positron ZIP contains twelve runnable notebooks (one combined R introduction, two practicals and nine extended cases), plus required data, introductory images, a shared R helper, theme assets,
 project configuration and setup instructions. The PDF ZIP contains exactly one PDF per
 approved notebook. The home page links all fifteen PDFs and both bundles.
 
 Only explicitly listed `data/` resources in `_quarto.yml` enter the website and
 student project: original descriptive/inferential teaching CSVs and guides,
 canonical business CSVs and guide, and the supplied historical R-introduction
-Superstore CSV and guide. The RStudio ZIP takes only the data used by its twelve notebooks
+Superstore CSV and guide. The Positron ZIP takes only the data used by its twelve notebooks
 and the corresponding guides from this allowlist. The 2014–2017 R-introduction dataset is distinct from
 the pinned US 2023–2025 business Superstore extract. Keep the only editable data
-under root `data/`; read fixed paths from the project root in interactive RStudio cells.
+under root `data/`; read fixed paths from the project root in interactive Positron Console cells.
 
 Exclude books, instructor notes/answers, provenance manifests, archives, original
 student measurement workbooks, publisher workbooks, source decks and build caches.
 The website retains original instructional images and approved editable diagrams.
-The RStudio ZIP includes only images needed by its runnable notebooks.
+The Positron ZIP includes only images needed by its runnable notebooks.
 The Superstore workbook and publisher workbooks stay unchanged and local-only.
 Do not infer random sampling, causal discount effects or refund accounting.
 
@@ -134,7 +134,7 @@ The practical currently covers probability only and identifies later sections
 as forthcoming. Part 3 offers an individual editable Quarto download under
 `downloads/inferential-statistics-r-practical.qmd`. This is the sole approved
 public .qmd exception; preserve the exclusions for all other source files.
-The PDF bundle includes all fifteen approved PDFs. The RStudio bundle contains only the twelve runnable R notebooks and required support files. The live verifier checks the individual notebook
+The PDF bundle includes all fifteen approved PDFs. The Positron bundle contains only the twelve runnable R notebooks and required support files. The live verifier checks the individual notebook
 byte-for-byte as well as the pages, PDFs, data and bundles.
 
 ## Student ZIP organization — 8 November 2026
@@ -153,11 +153,11 @@ Validate a fresh extraction with a complete `quarto render` before release.
 
 ## Combined release — 8 November 2026
 
-Publish the runnable-only RStudio ZIP and the approved descriptive ending cleanup together.
+Publish the runnable-only Positron ZIP and the approved descriptive ending cleanup together.
 The five repeated/empty outlier slides (77, 80, 83, 84, 85) are removed, with distinct
 screening explanations consolidated on slide 82; source IDs and practical links remain.
 Rebuild all fifteen PDFs and both ZIPs. Keep the existing download URL; the home-page
-RStudio link adds `?v=20261108-clean` to refresh previously cached downloads.
+Positron link adds `?v=20261108-clean` to refresh previously cached downloads.
 Unpublished inference-review files remain outside this release.
 
 ## Descriptive chart additions — 14 November 2026
@@ -190,6 +190,30 @@ check the aliases as well as the canonical resources. Original reference decks
 and all Parts 2–3, practicals and extended-case teaching content remain unchanged.
 
 No standalone public Part 1 QMD download is added. The runnable combined
-introduction is included in the student RStudio project. The separate Word
+introduction is included in the student Positron workspace. The separate Word
 review draft and all instructor drafts remain local-only. This change is
 authorized for commit, source push, website publication and live verification.
+
+## Positron folder workspace — 15 November 2026
+
+The user replaced the RStudio workflow with Positron. Open the top-level folder
+containing `_quarto.yml` and `data/` through File > Open Folder. The old root
+R project file is archived under `archived/2026-11-15-before-positron/`; it is
+not shipped in the student project. `.vscode/settings.json` is tracked and
+included explicitly in the student ZIP, but excluded from website resources.
+Its `quarto.inlineOutput.enabled: false` setting sends interactive Quarto cells
+to the R Console, which uses the opened course root. This preserves fixed
+`data/...` imports: Positron's per-document inline kernels otherwise start
+in the notebook folder. Do not silently enable inline kernels while keeping
+root-relative imports. Quarto renders still execute at the project root.
+
+The visible project download is `downloads/applied-statistics-positron.zip`.
+The previous `applied-statistics-rstudio.zip` URL serves an identical Positron ZIP
+for compatibility only; no active page advertises it. Both URLs are validated
+and checked live. The student project retains twelve runnable notebooks; all
+fifteen PDFs and the PDF bundle are refreshed. No statistical teaching content
+is changed beyond setup instructions and the matching R code comments.
+The shared Petra theme remains active.
+
+Workspace behaviour references: [Positron folder workspaces](https://positron.posit.co/rstudio-rproj-file.html)
+and [Quarto inline-output working directories](https://positron.posit.co/quarto-inline-output.html#working-directory).

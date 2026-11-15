@@ -4,7 +4,7 @@ from pathlib import Path
 import argparse
 import shutil
 import subprocess
-from course_documents import EXTENDED, DOCUMENTS, NAVIGATION_PAGES, R_INTRODUCTION_ALIASES
+from course_documents import EXTENDED, DOCUMENTS, NAVIGATION_PAGES, R_INTRODUCTION_ALIASES, STUDENT_PROJECT_ZIP, LEGACY_STUDENT_PROJECT_ZIP
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -20,7 +20,8 @@ def validate(site):
     import re
     required += re.findall(r'^    - (data/[^\n]+)', (ROOT/'_quarto.yml').read_text(), re.M)
     required += ['data/business/'+p for p in ['superstore-lines.csv','cola.csv','consumer.csv','README.md']]
-    required += ['downloads/applied-statistics-rstudio.zip','downloads/applied-statistics-pdfs.zip', 'downloads/inferential-statistics-r-practical.qmd']
+    required += ['downloads/'+STUDENT_PROJECT_ZIP,'downloads/applied-statistics-pdfs.zip', 'downloads/inferential-statistics-r-practical.qmd']
+    required += ['downloads/'+LEGACY_STUDENT_PROJECT_ZIP]
     for name in required:
         if not (site/name).exists():raise RuntimeError('Missing generated page: '+name)
     forbidden=[p for p in site.rglob('*') if p.is_file() and (any(t in p.relative_to(site).parts for t in ['instructor','archived','books','sources','_includes']) or p.suffix.lower() in ['.xlsx','.xls'])]
@@ -66,7 +67,7 @@ def main():
         site = ROOT/'_build/website'
         if site.exists():
             shutil.rmtree(site)
-        quarto = shutil.which('quarto') or '/usr/lib/rstudio/resources/app/bin/quarto/bin/quarto'
+        quarto = shutil.which('quarto') or 'quarto'
         subprocess.run([quarto, 'render', '--quiet'], cwd=ROOT, check=True)
     # Re-stage the explicit data allowlist even when Quarto reuses a resource cache.
     # A previous partial render may have removed files that the cache marks copied.

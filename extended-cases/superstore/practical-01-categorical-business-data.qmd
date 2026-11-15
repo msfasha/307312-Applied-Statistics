@@ -190,6 +190,6 @@ The regional manager asks for a one-page summary.
 
 ## 8. Continue
 
-- Keep your tables and briefing in your RStudio project.
+- Keep your tables and briefing in your Positron workspace.
 - Continue to [Practical 2: Order size](practical-02-numerical-business-data.qmd).
 - Source definitions and extract limits: `data/business/README.md`.

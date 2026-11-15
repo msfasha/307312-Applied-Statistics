@@ -3,7 +3,7 @@ title: "Part 1: Introduction to R"
 toc: false
 ---
 
-One concise, runnable notebook covers R and RStudio, basic programming, data frames, dplyr, conventional plots and ggplot2 pipelines.
+One concise, runnable notebook covers R and Positron, basic programming, data frames, dplyr, conventional plots and ggplot2 pipelines.
 
 | Notebook | Read online | Download |
 |---|---|---|

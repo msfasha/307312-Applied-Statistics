@@ -27,8 +27,8 @@ knitr::opts_knit$set(root.dir = normalizePath(".."))
 ## Before we begin
 
 - Use this notebook after explaining the descriptive-statistics slides, or return to the matching section after each topic.
-- Open `Applied-Statistics.Rproj` first and keep the working directory at the project root.
-- Work through the code cells from top to bottom in RStudio. Run the import cell first; later cells reuse its `students` data frame.
+- Open the course root folder in Positron first and keep the working directory at the project root.
+- Work through the code cells from top to bottom in Positron. Run the import cell first; later cells reuse its `students` data frame.
 - These examples use base R, plus the e1071 package for skewness. Install it once with `install.packages("e1071")` in the R console; rendering the notebook also requires Quarto, knitr and rmarkdown.
 - Each section identifies the matching source slide or added chart section, introduces the calculation and explains how to read its output. The original eighteen examples and their comments are retained in full; Examples 7a and 7b add line and dot plots.
 - Before running a cell, predict what it will display. Afterwards, connect the result to the corresponding table, chart or definition in the slides.
@@ -46,13 +46,13 @@ knitr::opts_knit$set(root.dir = normalizePath(".."))
 
 - **Slides:** [source slide 16](../lessons/02-descriptive-statistics.qmd#slide-16).
 - **What we are doing:** Load the same student dataset used in the descriptive slides. Each row is one record; the six variables are gender, age, height, weight, country and major. The first six rows let us check the column names and see how the values are recorded.
-- **How to read the result:** Run this cell first. It creates `students`, which the later examples use. Open `Applied-Statistics.Rproj` first; the CSV path starts in the project folder. Height is in centimetres, weight in kilograms and age in years. No names or student IDs are included.
+- **How to read the result:** Run this cell first. It creates `students`, which the later examples use. Open the course root folder in Positron first; the CSV path starts in the project folder. Height is in centimetres, weight in kilograms and age in years. No names or student IDs are included.
 
 ```{r}
 #| label: r-slide-16
 # read.csv() imports the supplied CSV; stringsAsFactors=FALSE keeps category labels as text.
 # head() previews six rows; height is in cm, weight in kg, and age in years.
-# Open Applied-Statistics.Rproj; paths start in the project folder.
+# Open the course folder in Positron; paths start in that folder.
 students <- read.csv("data/descriptive-statistics/students.csv", stringsAsFactors = FALSE)
 head(students)
 ```

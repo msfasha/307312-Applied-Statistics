@@ -360,3 +360,12 @@
 - Prior Part 1 notebooks are preserved under `archived/2026-11-15-four-part-r-introduction/`. Three old lesson URLs are compatibility entry pages and their old PDF URLs serve copies of the combined PDF.
 - `scripts/course_documents.py` now tracks fifteen canonical notebook/PDF pairs. The RStudio ZIP contains twelve runnable notebooks, including only one Part 1 notebook; the PDF ZIP contains fifteen PDFs without duplicate compatibility copies. Verify canonical and compatibility live URLs and both bundles.
 - Word review drafts and unapproved inference-review work remain unpublished. No individual public Part 1 QMD download was requested; the QMD is available inside the student RStudio project.
+
+## Positron folder workflow — 15 November 2026
+
+- User replaced RStudio with Positron throughout active course setup and student packaging, authorizing build and publication in the ongoing release workflow.
+- Open the top-level course folder containing `_quarto.yml` and `data/` with File > Open Folder. There is no active `.Rproj` requirement; the old project file is preserved in `archived/2026-11-15-before-positron/`.
+- Track `.vscode/settings.json` and include it explicitly in the student ZIP. Keep `quarto.inlineOutput.enabled` false: course cells execute in the R Console from the course root. Positron's inline kernels start in the notebook directory, which conflicts with the approved fixed `data/...` paths. Keep project-root Quarto rendering and the independent practical render setup.
+- Public student setup, screenshots/diagrams and notebook import comments must describe Positron. Preserve statistical code and content. Original reference decks, images, historical archives and unapproved review drafts remain unchanged.
+- The canonical student ZIP is `downloads/applied-statistics-positron.zip`; retain the former RStudio-named ZIP URL as an unadvertised identical compatibility copy. No `.Rproj` file or obsolete IDE image enters the student ZIP. Preserve fifteen canonical PDFs, twelve runnable notebooks, all prior lesson/PDF links and the shared Petra theme.
+- Keep unapproved inference-review work local and excluded. Verify fresh extraction/full rendering and all live project/PDF downloads.
