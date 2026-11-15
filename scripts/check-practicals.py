@@ -62,8 +62,11 @@ stopifnot(length(a) == 12, identical(a, b), all(is.finite(a)))
         worked = [c for c in chunks if not re.search(r'^#\|\s*eval:\s*false', c, re.M)]
         worked = [c for c in worked if 'label: render-project-root' not in c]
         imports = [c for c in worked if 'read.csv(' in c]
-        if notebook.name in ['01-introduction-to-r.qmd', 'r-02-basic-concepts.qmd', 'r-03-dplyr.qmd', 'r-04-ggplot2.qmd']:
-            continue  # Original R lessons are verified by a full Quarto execution (including expected-error demonstrations).
+        if notebook.name == '01-introduction-to-r.qmd':
+            run_r('\n'.join(worked), ROOT)
+            checks += 1
+            print('Passed combined R introduction:', notebook.name, flush=True)
+            continue
         if notebook.name == '02-descriptive-statistics.qmd':
             assert not worked, 'Descriptive R examples must stay in the companion practical'
             continue

@@ -28,3 +28,16 @@
 @media screen and (max-width: 600px) {
   .inferential-practical main table { display: block; max-width: 100%; overflow-x: auto; }
 }
+
+/* The combined R introduction is a compact handout as well as an executable notebook. */
+@media print {
+  body.r-introduction { font-size: 10pt; line-height: 1.25; }
+  .r-introduction #quarto-document-content h2 { margin-top: 1rem; padding: .35rem .6rem; }
+  .r-introduction #quarto-document-content :is(h3, h4) { margin-top: .7rem; margin-bottom: .35rem; padding: .3rem .6rem; }
+  .r-introduction #quarto-document-content p { margin-bottom: .5rem; }
+  .r-introduction #quarto-document-content li { margin-bottom: .15rem; }
+  .r-introduction pre { font-size: 8.5pt; line-height: 1.2; padding: .4rem; }
+  .r-introduction .cell { margin-bottom: .6rem; }
+  .r-introduction .cell-output { break-before: avoid; }
+  .r-introduction .quarto-figure img { max-height: 70mm; width: auto; object-fit: contain; }
+}

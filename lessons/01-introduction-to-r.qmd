@@ -1,6 +1,6 @@
 ---
-title: "1. Introduction to R"
-subtitle: "Part 1: Introduction to R"
+title: "Introduction to R"
+subtitle: "307312 Applied Statistics"
 format:
   html:
     embed-resources: true
@@ -10,185 +10,450 @@ format:
     toc-depth: 2
     body-classes: r-introduction
 execute:
-  warning: false
+  error: false
+  warning: true
   message: false
-editor: visual
-include-before: |
-  <div class="original-branding" style="text-align: center;">
-    <img src="../assets/introduction-to-r/department_logo.png" width="169" />
-    <img src="../assets/introduction-to-r/ioa_logo.png" width="122" />
-    <img src="../assets/introduction-to-r/petra_logo.png" width="52" />
-  </div>
+  fig-width: 6
+  fig-height: 2.1
+  fig-align: center
+  dpi: 200
+editor: source
 ---
 
-R is a powerful language and environment for statistical computing and graphics.
+```{r}
+#| include: false
+knitr::opts_chunk$set(message = FALSE, dpi = 200)
+```
 
--   It is widely used among statisticians and data analysts for developing statistical software and data analysis.
+## Getting started
 
--   R is open source and freely available under the GNU General Public License, making it an accessible tool for data analysis, statistical modeling, and graphical representation.
+- R is a free language and environment for statistical computing and graphics.
+- Ross Ihaka and Robert Gentleman began developing R at the University of Auckland in the early 1990s. It is now maintained by the R Core team and contributors.
+- This introduction covers the essentials: storing values, selecting data, making decisions, repeating instructions, preparing tables and drawing plots.
 
-### History of R
+### R and RStudio
 
--   R was created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand, in the early 1990s.
+- **R** runs your calculations. **RStudio** provides an editor, Console, Environment pane and plot viewer.
+- Install R from [CRAN](https://cran.r-project.org/), then RStudio Desktop from [Posit](https://posit.co/download/rstudio-desktop/).
+- Open the course project, `Applied-Statistics.Rproj`. Keep the working directory at the project root so the supplied `data/...` paths work.
+- In RStudio, the **Console** runs a command immediately. A **script** saves commands in a `.R` file. A **Quarto notebook** saves explanations and executable R cells together in a `.qmd` file.
+- Run notebook cells in order. **Render** runs the document and produces a reading copy with results.
 
--   It was conceived as an implementation of the S programming language combined with lexical scoping semantics inspired by Scheme.
+![RStudio interface from the original R introduction material. Pane positions may differ in your installation.](../assets/introduction-to-r/rstudio.png){width=4.5in}
 
--   The name 'R' was partly derived from the first letters of the creators' first names, as well as a play on the name of S.
+### Your first command
 
--   R's official release to the public came in 1995, and since then, it has evolved with contributions from many statisticians and programmers worldwide.
+`print()` displays its argument, the value inside its parentheses. Quotation marks identify text.
 
-### Main Features of R
+```{r}
+print("Hello, World!")
+```
 
--   **Comprehensive Statistical Analysis Tool:** R provides a wide array of statistical techniques including linear and nonlinear modeling, classical statistical tests, time-series analysis, classification, clustering, and more.
--   **Graphical Capabilities:** R excels in creating quality plots and graphs, offering a vast number of techniques to visualize data, from basic charts to complex graphics.
--   **Extensible:** One of R's most powerful features is its package system, which allows users to create and share sets of functions, data, and compiled code. The Comprehensive R Archive Network (CRAN) hosts thousands of packages covering a wide range of statistical, graphical, and data manipulation techniques.
--   **Programming Features:** R includes conditional statements, loops, user-defined recursive functions, and input and output facilities.
--   **Data Handling and Storage:** R handles various data types, including vectors, matrices, arrays, data frames, and lists. It provides facilities for data manipulation, calculation, and storage.
--   **Community and Support:** R benefits from a large and active community. Users can seek help and share knowledge through forums, mailing lists, blogs, and user-contributed documentation.
+The output prefix `[1]` marks the position of the first value on that output line; it is not part of your text.
 
-### Advantages of R
+## Variables and atomic data types
 
--   **Open Source and Free:** Being open-source, R is freely available, and users can inspect, modify, and distribute the source code.
--   **Cross-Platform:** R runs on various operating systems including Windows, MacOS, and Linux.
--   **Active Community:** The vibrant community supports users at all levels, contributing packages, tools, and documentation.
--   **Integration:** R can be integrated with other programming languages (like C, C++, and Python), enabling the use of R in diverse environments and applications.
+- A variable is a name that refers to a stored object. `<-` assigns the value on the right to the name on the left.
+- R is case sensitive: `age` and `Age` are different names.
+- `#` starts a comment; R ignores the rest of that line.
 
-### Data Science and R
+```{r}
+age <- 25          # Store a number
+name <- "Alice"    # Store text
+is_registered <- TRUE
+age
+```
 
--   **Versatile Tool for Data Manipulation:** R provides powerful libraries (dplyr, tidyr) for data cleaning, transformation, and preparation.
--   **Advanced Statistical Analysis:** With its origins in statistics, R excels at performing complex statistical computations essential for data science.
--   **Data Visualization:** R's ggplot2 and other plotting packages offer superior data visualization capabilities, allowing for the creation of professional and informative graphics.
+### The types you will use most
 
-### Career Opportunities with R
+An atomic vector holds values of one underlying type. A single value is a vector of length one.
 
-Careers that utilize R span across various industries, leveraging its powerful capabilities in data analysis, statistical modeling, visualization, and more. Here's a list of careers where proficiency in R is highly valued:
+| Type | Example | Meaning |
+|:---|:---|:---|
+| Double | `72.5` or `25` | Numbers, including decimal values |
+| Integer | `25L` | Whole numbers stored as integers |
+| Character | `"Alice"` | Text inside quotation marks |
+| Logical | `TRUE`, `FALSE` | Truth values used in conditions |
 
-1.  **Data Analyst:** Analyzes data to help businesses make informed decisions. Uses R for data cleaning, preparation, and visualization.
+These are the main types needed here. R also supports complex and raw atomic types.
 
-2.  **Data Scientist:** Uses statistical models and machine learning algorithms to analyze complex datasets. R is crucial for data manipulation, analysis, and predictive modeling.
+### Finding the type
 
-3.  **Quantitative Analyst:** Works primarily in finance, using R to develop complex models that inform investment strategies, risk management, and financial forecasting.
+- `typeof(x)` reports the underlying storage type of object `x`.
+- `class(x)` reports the object's class, which helps determine how R handles it.
+- `str(object)` displays a compact overview of an object's structure.
 
-4.  **Statistician:** Applies mathematical and statistical techniques to solve real-world problems. Uses R for statistical testing, data analysis, and experiment design.
+```{r}
+typeof(age)
+class(age)
+typeof(25L)
+typeof(name)
+typeof(is_registered)
+```
 
-5.  **Bioinformatician/Biostatistician:** Uses R in the analysis of biological data, such as genetic sequencing, drug development, and epidemiological studies.
+For `age`, `typeof()` returns `"double"` and `class()` returns `"numeric"`. These describe the same object in different ways.
 
-6.  **Market Research Analyst:** Analyzes market conditions to examine potential sales of a product or service. Uses R for survey analysis, consumer behavior studies, and trend forecasting.
+### Calling a function
 
-7.  **Machine Learning Engineer:** Develops algorithms that enable computers to learn from and make decisions based on data. R is used for prototyping and developing statistical models.
+In `round(x = 12.345, digits = 2)`, `round` is the function, `x` is the number and `digits` specifies decimal places. Named arguments make each input's role explicit.
 
-8.  **Econometrician:** Specializes in econometrics, using R to analyze economic data, forecast economic trends, and develop economic models.
+```{r}
+round(x = 12.345, digits = 2)
+```
 
-9.  **Environmental Scientist:** Uses R for analyzing environmental data, modeling environmental processes, and evaluating the impacts of environmental policies.
+The result is `12.35`. Use `?round` in the Console to open the function's help page.
 
-10. **Public Health Analyst:** Utilizes R in the analysis of health data to inform public health policy, program decisions, and research on health trends.
+## Vectors sequences and selection
 
-11. **Educational Researcher:** Employs R for analyzing educational data, evaluating the effectiveness of educational programs, and researching teaching methods and outcomes.
+### Combining values
 
-12. **Actuary:** Uses R for analyzing risk in the insurance and finance industries, helping companies set policies' prices and provisions.
+`c()` combines its comma-separated arguments into a vector. `length(x)` counts the elements of vector `x`.
 
-13. **Operations Research Analyst:** Applies mathematical and analytical methods to help organizations investigate complex issues, identify and solve problems, and make better decisions. R is used for optimization, simulation, and decision analysis.
+```{r}
+ages <- c(20, 22, 25, 28, 30)
+length(ages)
+```
 
-14. **Sports Analyst:** Analyzes sports data to improve team performance, develop game strategies, and evaluate player performance. R is used for statistical analysis and predictive modeling in sports analytics.
+- The result is `5`: five ages are stored.
+- Atomic vectors have one type. `c(20, "Alice")` converts the number to text so both elements can be character values.
+- Arithmetic works element by element: `ages + 1` adds one to every age; `ages * 2` doubles every age. `^` raises values to a power.
 
-15. **Clinical Researcher:** Utilizes R in the design, execution, and analysis of clinical trials, including statistical analysis to interpret study results.
+### Creating sequences
 
-These careers demonstrate the broad applicability of R across different sectors, emphasizing the importance of data-driven decision-making in today’s world. Proficiency in R can open doors to a wide range of job opportunities where data analysis and statistical modeling are crucial.
+- `:` makes a sequence in steps of one, upwards or downwards.
+- `seq()` allows another step size: `from` is the start, `to` is the limit and `by` is the step.
+- `rep()` repeats values: `x` supplies the value and `times` gives the number of repetitions.
 
-### Installing R: A Step-by-Step Guide
+```{r}
+1:5
+seq(from = 2, to = 10, by = 2)
+rep(x = 0, times = 3)
+```
 
-Installing R is straightforward, whether you're using Windows, macOS, or a Linux distribution. Below is a step-by-step guide to help you through the process, which you can use to instruct your course attendees.
+### Selecting elements
 
-#### For Windows Users
+Square brackets `[]` select positions. **R starts counting at 1.**
 
-1.  **Download R:**
-    -   Visit the Comprehensive R Archive Network (CRAN) at <https://cran.r-project.org/>.
-    -   Click on "Download R for Windows".
-    -   Go to "install R for the first time" and click on "Download R x.x.x for Windows" (x.x.x denotes the latest version).
-2.  **Install R:**
-    -   Run the downloaded `.exe` file and follow the installation instructions.
-    -   Choose your preferred installation directory.
-    -   Select components to install (you can keep the default settings).
-    -   Choose the start menu folder (or accept the default), and decide whether to create a desktop icon or Quick Launch shortcut.
-    -   Review the installation options and click 'Finish' once the installation is complete.
+```{r}
+ages[3]           # Third value: 25
+ages[2:4]         # Positions 2, 3 and 4: 22, 25, 28
+ages[c(1, 5)]     # First and fifth values: 20, 30
+```
 
-#### For macOS Users
+`2:4` creates the position vector; `ages[2:4]` uses it to select values. The colon itself does not perform selection.
 
-1.  **Download R:**
-    -   Visit CRAN at <https://cran.r-project.org/>.
-    -   Click on "Download R for (Mac) OS X".
-    -   Select the latest version of R and download the `.pkg` file suitable for your version of macOS.
-2.  **Install R:**
-    -   Open the downloaded `.pkg` file.
-    -   Follow the installation instructions provided by the installer.
-    -   If you encounter a warning about software from an unidentified developer, go to your system preferences under "Security & Privacy" and allow the R installation.
+### Selecting with a condition
 
-#### For Linux Users
+`>=` means greater than or equal to. The comparison produces one logical result for each age. Inside `[]`, R retains the positions marked `TRUE`.
 
--   The installation process for R on Linux varies depending on the distribution. Below is a general guide for Debian/Ubuntu-based systems. For other distributions, refer to the official documentation or community forums for specific instructions.
+```{r}
+ages >= 25
+ages[ages >= 25]
+```
 
-1.  **Open Terminal.**
+The selected ages are `25`, `28` and `30`.
 
-2.  **Add CRAN to your repository list (optional, for the latest versions):**
+## Logic decisions and repetition
 
-    -   For Ubuntu, add a CRAN repository by typing `sudo add-apt-repository 'deb https://<my.favorite.cran.mirror>/bin/linux/ubuntu <ubuntu_version_codename>/'` in the terminal. Replace `<my.favorite.cran.mirror>` with your preferred CRAN mirror and `<ubuntu_version_codename>` with your Ubuntu version codename (e.g., bionic, focal).
+### Comparing values
 
-3.  **Update package lists:**
+| Operator | Meaning | Operator | Meaning |
+|:---:|:---|:---:|:---|
+| `>` | Greater than | `<` | Less than |
+| `>=` | At least | `<=` | At most |
+| `==` | Equal to | `!=` | Not equal to |
+| `&` | Elementwise AND | &#124; | Elementwise OR |
+| `!` | NOT | | |
 
-    -   Run `sudo apt update`.
+- Use `<-` to assign a value and `==` to compare values.
+- AND requires both conditions; OR requires at least one; NOT reverses a logical value.
+- Use full `TRUE` and `FALSE`, rather than their reassignable shortcuts `T` and `F`.
 
-4.  **Install R:**
+```{r}
+ages[(ages >= 22) & (ages <= 28)]
+```
 
-    -   Install R by running `sudo apt install r-base`.
+This keeps the ages between 22 and 28 inclusive: `22`, `25` and `28`.
 
-#### Additional Steps for All Users
+### Conditional branching
 
--   **Install RStudio (Optional):**
-    -   For a more user-friendly interface, download and install RStudio, a popular IDE for R, from <https://www.rstudio.com/products/rstudio/download/>.
-    -   Choose the appropriate installer for your operating system, download it, and run the installation file, following the on-screen instructions.
--   **Verify Installation:**
-    -   Open R or RStudio and type `sessionInfo()` in the console. This command will display your R session information, confirming that R is installed correctly.
+`if` evaluates one condition. When it is `TRUE`, the first block runs; otherwise the `else` block runs. Braces `{}` group instructions. The condition must be a single, nonmissing logical value.
 
-------------------------------------------------------------------------
+```{r}
+score <- 65
+if (score >= 50) {
+  print("Pass")
+} else {
+  print("Below the pass mark")
+}
+```
 
-### Presenting the R Console
+The output is `"Pass"`. Add `else if (another_condition)` before `else` when you need a further branch. For two single-value conditions in an `if`, use `&&` for AND or `||` for OR.
 
-Click on start menu and scroll to find R folder
+### Repetition with a for loop
 
-![](../assets/introduction-to-r/rfolder.png)
+`for` takes each value from a vector in turn. Here, `number` becomes 1, then 2, then 3. Each time, the block squares it and prints the result.
 
-Then open the R Console
+```{r}
+for (number in 1:3) {
+  print(number^2)
+}
+```
 
-![](../assets/introduction-to-r/rconsole.png)
+The results are `1`, `4` and `9`. For this calculation, `(1:3)^2` also works directly on the vector. A loop is useful when each repetition requires several instructions.
 
-### Presenting the R Studio
+## Working with a data frame
 
-![](../assets/introduction-to-r/rstudio.png)
+A data frame is a table: rows contain observations and columns contain variables. Columns can have different types, but they must have the same number of rows.
 
-### Settings - Working Directory
+### A small example
 
-Select General in the left panel of the “Options” dialog, then enter the path to the directory you created into the Default working directory box
+`data.frame()` combines named columns into a table. Here, each row represents one person; the values are illustrative.
 
-![](../assets/introduction-to-r/settings_1.png)
+```{r}
+people <- data.frame(
+  name = c("Alice", "Bob", "Eva"),
+  age = c(25, 30, 22)
+)
+people
+```
 
-Set the default working directory to your preferred folder.
+- `people$age` extracts the `age` column as a vector.
+- `people[1:2, ]` selects the first two rows. A blank column position means all columns.
+- `str(people)` reports the column names, types and example values.
 
-![](../assets/introduction-to-r/settings_2.png)
+### Reading the supplied CSV
 
-We can also change the working directory from the sessions menu.
+`read.csv()` imports a comma-separated file. Its `file` argument gives the path relative to the course project root. `head(x, n = 3)` displays only the first three rows of `x`.
 
-![](../assets/introduction-to-r/settings_3.png)
+```{r}
+superstore <- read.csv(file = "data/r-introduction/superstore.csv")
+head(x = superstore[c("Category", "Sales", "Profit")], n = 3)
+```
 
-### References
+- This is the original fictitious Superstore tutorial data with 2014–2017 order dates, separate from the 2023–2025 practical data.
+- Each row is an order line, not necessarily a distinct order or customer.
+- `read.csv()` makes names containing spaces syntactically valid; for example, `Order ID` becomes `Order.ID`. The three names used here are unchanged.
 
-Gen AI.
+### Missing values
 
-In addition, we will be using the following sources for the next sections.
+- `NA` represents a missing value. Test it with `is.na(x)`, not `x == NA`.
+- `mean(x, na.rm = TRUE)` calculates the arithmetic mean after omitting missing values. Omitting values changes which observations enter the calculation.
 
-<https://online.stat.psu.edu/stat484/>
+```{r}
+values <- c(10, NA, 20)
+is.na(values)
+mean(x = values, na.rm = TRUE)
+```
 
-<https://online.stat.psu.edu/statprogram/sites/statprogram/files/EssentialR.pdf>
+The missingness check returns `FALSE TRUE FALSE`; the mean of the two observed values is `15`.
 
-[https://www.cyclismo.org/tutorial/R/index.html](https://www.cyclismo.org/tutorial/R/index.html#)
+## Preparing data with dplyr
 
-R for Data Analysis in easy steps R Programming Essentials - Mike McGrath
+`dplyr` supplies functions for selecting, filtering, sorting, transforming and summarising tables.
+
+### Install once and load each session
+
+`install.packages()` downloads packages named in its `pkgs` argument. Run this cell once in an internet-connected session. Installation is excluded when rendering this document.
+
+```{r}
+#| eval: false
+install.packages(pkgs = c("dplyr", "ggplot2"))
+```
+
+`library()` makes an installed package available in the current session.
+
+```{r}
+#| message: false
+library(dplyr)
+```
+
+### Select filter sort and calculate
+
+Each function below receives a table first. Subsequent arguments name columns, supply a condition or define a calculation.
+
+- `select()` keeps columns; `filter()` keeps rows satisfying its condition.
+- `arrange()` sorts rows. `desc()` requests descending order.
+- `mutate()` adds or changes a column. Here, the new column expresses each line's sales after an illustrative 10 percent increase; it is not an observed value.
+
+```{r}
+sales_columns <- select(superstore, Category, Sales, Profit)
+technology <- filter(sales_columns, Category == "Technology")
+largest_first <- arrange(technology, desc(Sales))
+sales_example <- mutate(largest_first, Sales_plus_10pct = Sales * 1.10)
+```
+
+### Group and summarise
+
+- `%>%` passes the result on its left into the first argument of the next function. Read it as “then”. It becomes available when dplyr is loaded.
+- `group_by(Category)` forms a group for each category.
+- `summarise()` returns one summary row per group here. `n()` counts order lines; `sum(Sales)` totals their sales. `.groups = "drop"` removes grouping from the result.
+
+```{r}
+category_totals <- superstore %>%
+  group_by(Category) %>%
+  summarise(lines = n(), total_sales = sum(Sales), .groups = "drop")
+category_totals
+```
+
+Each row reports a category's line count and sales total, not its distinct order count. These calculations assume the relevant values are observed; investigate missing data before summarising a new file.
+
+## Conventional plots in base R
+
+Base R includes plotting functions without an additional package. Choose a plot to match the variable and question.
+
+### Histogram of a numerical variable
+
+`hist()` groups numerical values into intervals and plots their frequencies. `x` supplies the observations; `breaks` suggests a number of intervals; `main` sets the title and `xlab` labels the horizontal axis. Actual interval boundaries can differ from the suggested count.
+
+```{r}
+#| echo: !expr -1
+par(mar = c(3.2, 4.5, 2, 1), mgp = c(2.2, 0.7, 0), las = 0, cex = 0.75)
+hist(x = superstore$Quantity, breaks = 10,
+     main = "Quantity per order line", xlab = "Quantity", col = "gray75")
+```
+
+`col` controls the fill colour. Read the horizontal axis as quantity and the vertical axis as the number of order lines in each interval. Quantity is a discrete numerical variable.
+
+### Bar plot of category counts
+
+`table()` counts observations in each category. `barplot()` uses those counts as bar heights; `height` supplies the counts, and `ylab` labels the vertical axis.
+
+```{r}
+#| echo: !expr -1
+par(mar = c(3.2, 4.5, 2, 1), mgp = c(2.2, 0.7, 0), las = 0, cex = 0.75)
+category_counts <- table(superstore$Category)
+barplot(height = category_counts, main = "Order lines by category",
+        ylab = "Number of order lines", col = "gray75")
+```
+
+Compare the separate bars to compare categories. A bar chart represents categories; a histogram represents numerical intervals.
+
+## Boxplots and scatter plots
+
+### Boxplot of a numerical variable
+
+`boxplot()` summarises a distribution. `x` supplies the values and `ylab` labels the numerical axis.
+
+```{r}
+#| echo: !expr -1
+par(mar = c(3.2, 4.5, 2, 1), mgp = c(2.2, 0.7, 0), las = 0, cex = 0.75)
+boxplot(x = superstore$Sales, main = "Sales per order line",
+        ylab = "Sales in US dollars", col = "gray75")
+```
+
+- The line inside the box is the median; the box spans the middle half of the observations.
+- Default whiskers reach the most extreme observations within 1.5 box lengths of the box edges. Values beyond them appear separately.
+- Separate points indicate potentially unusual values, not proven errors. Large sales values stretch this plot's scale.
+
+### Scatter plot of two numerical variables
+
+`plot(x, y)` places each order line at its sales value horizontally and profit value vertically. `pch = 16` selects filled circles; `cex = 0.4` reduces their size.
+
+```{r}
+#| echo: !expr -1
+par(mar = c(3.2, 4.5, 2, 1), mgp = c(2.2, 0.7, 0), las = 0, cex = 0.75)
+plot(x = superstore$Sales, y = superstore$Profit,
+     main = "Sales and profit by order line",
+     xlab = "Sales in US dollars", ylab = "Profit in US dollars",
+     pch = 16, cex = 0.4, col = "gray45")
+```
+
+Look for patterns, negative profits and unusual lines. Points may overlap. An association in these fictitious observational records does not establish a causal relationship.
+
+## A brief introduction to ggplot2
+
+`ggplot2` builds a plot by combining data, mappings and drawing layers. We use the same sales and profit columns as in the base R scatter plot.
+
+```{r}
+library(ggplot2)
+```
+
+Before running the next cell:
+
+- `ggplot(data = superstore)` supplies the table.
+- `mapping = aes(x = Sales, y = Profit)` maps columns to the horizontal and vertical axes. `aes()` describes how data control visual positions or appearance.
+- `+` adds a layer to a ggplot. `geom_point()` draws one point per row; `size` controls point size and `colour` sets one fixed colour.
+- `labs()` supplies the title and axis labels. `theme_minimal()` simplifies the background.
+
+```{r}
+ggplot(data = superstore, mapping = aes(x = Sales, y = Profit)) +
+  geom_point(size = 0.6, colour = "gray45") +
+  labs(title = "Sales and profit by order line",
+       x = "Sales in US dollars", y = "Profit in US dollars") +
+  theme_minimal()
+```
+
+Read this plot in the same way as the base R scatter plot. The main new idea is assembling a graph from layers.
+
+### Combining dplyr and ggplot2
+
+- First prepare the table with dplyr, then pass it into `ggplot()` using `%>%`.
+- The pipe supplies the table as ggplot's first argument, `data`. You can therefore omit `data = ...` in the piped call.
+- Use `%>%` to pass a table between functions; use `+` to add layers after `ggplot()` has created the plot.
+- The next two examples use this same workflow: **prepare data, map variables, draw the plot, add labels**.
+
+## Filter data then draw a histogram
+
+**Question:** How does quantity per order line vary within Technology?
+
+- `filter(Category == "Technology")` keeps only Technology lines. The incoming table is supplied by `%>%`.
+- `ggplot(mapping = aes(x = Quantity))` receives that filtered table and maps Quantity to the horizontal axis.
+- `geom_histogram()` counts observations within numerical intervals. `binwidth = 1` sets intervals one unit wide; `boundary = 0.5` places their edges at half units so each integer quantity has its own interval.
+- `fill` sets one fixed bar colour; `colour` sets the bar outlines. These settings sit outside `aes()` because they do not depend on a variable.
+
+```{r}
+superstore %>%
+  filter(Category == "Technology") %>%
+  ggplot(mapping = aes(x = Quantity)) +
+  geom_histogram(binwidth = 1, boundary = 0.5,
+                 fill = "gray75", colour = "white") +
+  labs(title = "Quantity on Technology order lines",
+       x = "Quantity", y = "Number of order lines") +
+  theme_minimal()
+```
+
+- Each bar counts Technology order lines with that quantity; it does not count distinct orders.
+- The original `superstore` table is unchanged: the pipeline passes its filtered result directly to the plot.
+- `labs()` and `theme_minimal()` work just as in the earlier scatter plot. The change is in the data preparation and drawing layer.
+
+### Read the pipeline aloud
+
+“Take Superstore, keep Technology lines, use Quantity on the horizontal axis, draw a histogram, then add labels and a simple theme.”
+
+## Summarise data then draw a bar chart
+
+**Question:** What is the total sales value for each product category?
+
+- `group_by(Category)` and `summarise()` produce one row per category. `sum(Sales) / 1000` expresses each total in thousands of US dollars, stored in the new column `sales_thousands`.
+- The next pipe sends this summary table to `ggplot()`. Map Category to `x` and sales_thousands to `y`.
+- `geom_col()` uses the supplied `y` values as bar heights. In contrast, `geom_bar()` counts rows by default; on this three-row summary table, that would count one row per category instead of showing sales totals.
+
+```{r}
+superstore %>%
+  group_by(Category) %>%
+  summarise(sales_thousands = sum(Sales) / 1000, .groups = "drop") %>%
+  ggplot(mapping = aes(x = Category, y = sales_thousands)) +
+  geom_col(fill = "gray65") +
+  labs(title = "Total sales by category",
+       x = "Product category", y = "Sales in US$ thousands") +
+  theme_minimal()
+```
+
+The bars show sales totals across all tutorial order lines in each category; a height of 800 means US$800,000. This differs from the earlier bar plot of category line counts. `fill` sets the same grey for every bar.
+
+### Check your understanding
+
+1. Create a numeric vector with `c()`. Check its type and select positions 2 to 4.
+2. Use a logical condition to keep values above a threshold. Write an `if` and `else` for one value.
+3. Write a `for` loop that prints the squares of 1 to 5.
+4. Filter Superstore to Furniture lines and calculate their total sales.
+5. Draw a histogram of Profit. Explain what one bar represents.
+6. Adapt the piped histogram to Furniture lines. Keep the quantity intervals unchanged.
+7. Adapt the grouped bar chart to total Profit by Category. Update the title and vertical-axis label.
+
+### Sources
+
+Condensed and adapted from the four supplied 307307 R introduction notebooks and their images, retained in the course reference history. The Superstore CSV is unchanged tutorial data supplied with those materials.
+
+Official references: [R project contributors](https://www.r-project.org/contributors.html), [Introduction to R](https://cran.r-project.org/doc/manuals/r-release/R-intro.html), [dplyr](https://dplyr.tidyverse.org/), [ggplot2](https://ggplot2.tidyverse.org/), and [Quarto with R](https://quarto.org/docs/computations/r.html).

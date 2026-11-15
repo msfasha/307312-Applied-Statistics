@@ -12,7 +12,7 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / '_build/website'
 from student_project import student_path, RSTUDIO_DOCUMENTS, project_files
-from course_documents import LESSONS, PRACTICALS, EXTENDED, DOCUMENTS, SUPERSTORE, NAVIGATION_PAGES
+from course_documents import LESSONS, PRACTICALS, EXTENDED, DOCUMENTS, SUPERSTORE, NAVIGATION_PAGES, R_INTRODUCTION_ALIASES
 
 class Links(HTMLParser):
     def __init__(self):
@@ -38,11 +38,7 @@ if __name__ == '__main__':
         parsed[path.resolve()] = links
     for page in pages:
         text = page.read_text()
-        if page.name == 'r-02-basic-concepts.html':
-            # Two explicit error=T source demonstrations emit three expected errors.
-            assert text.count('class="cell-output cell-output-error"') == 3, page
-        else:
-            assert 'class="cell-output cell-output-error"' not in text, page
+        assert 'class="cell-output cell-output-error"' not in text, page
         links = parsed[page.resolve()]
         for href in links.hrefs:
             target = urlsplit(unescape(href))
@@ -52,6 +48,9 @@ if __name__ == '__main__':
             assert path.exists(), (page.name, href)
             if target.fragment and path.suffix == '.html':
                 assert unquote(target.fragment) in parsed[path].ids, (page.name, href, 'missing fragment')
+    for alias in R_INTRODUCTION_ALIASES:
+        assert (SITE/'pdf'/(alias+'.pdf')).read_bytes() == (SITE/'pdf/01-introduction-to-r.pdf').read_bytes(), alias
+        assert '01-introduction-to-r.html' in (SITE/'lessons'/(alias+'.html')).read_text(), alias
     assert (SITE/'downloads/inferential-statistics-r-practical.qmd').read_bytes() == (ROOT/'practicals/inferential-statistics-r-practical.qmd').read_bytes()
     assert not (SITE/'data/practicals').exists(), 'Retired practical data leaked into site'
     for path in SITE.rglob('*'):

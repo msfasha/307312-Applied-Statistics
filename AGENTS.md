@@ -351,3 +351,12 @@
 - Preserve 82 retained original slide positions and the 18 original R examples. Additions have separate slide IDs and practical numbers 7a/7b.
 - Line chart: R's built-in AirPassengers monthly totals, 1949–1960, in thousands; dot plot: first 30 student ages in file order, not a random sample.
 - Reproduce added SVGs from canonical practical cells with scripts/render-descriptive-chart-additions.py; synchronize all 20 displayed R references.
+
+## Combined Part 1 R introduction — 15 November 2026
+
+- User approved replacing the four R introduction documents with one concise executable Quarto notebook, `lessons/01-introduction-to-r.qmd`, followed by build, commit, push and publication.
+- Teach base R foundations first: variables/types, functions, vectors, sequences, selection, logic, branching and a for loop. Use dplyr for table operations; introduce conventional plots briefly, then ggplot2 with explained filter-to-histogram and group/summarise-to-column-chart pipelines.
+- Keep the short R history, RStudio image, original 2014–2017 tutorial Superstore data and accurate source attribution. Omit the former optional extensions. Preserve Parts 2–3, their practicals and all extended cases.
+- Prior Part 1 notebooks are preserved under `archived/2026-11-15-four-part-r-introduction/`. Three old lesson URLs are compatibility entry pages and their old PDF URLs serve copies of the combined PDF.
+- `scripts/course_documents.py` now tracks fifteen canonical notebook/PDF pairs. The RStudio ZIP contains twelve runnable notebooks, including only one Part 1 notebook; the PDF ZIP contains fifteen PDFs without duplicate compatibility copies. Verify canonical and compatibility live URLs and both bundles.
+- Word review drafts and unapproved inference-review work remain unpublished. No individual public Part 1 QMD download was requested; the QMD is available inside the student RStudio project.

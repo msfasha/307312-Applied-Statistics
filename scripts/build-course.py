@@ -4,7 +4,7 @@ from pathlib import Path
 import argparse
 import shutil
 import subprocess
-from course_documents import EXTENDED, DOCUMENTS, NAVIGATION_PAGES
+from course_documents import EXTENDED, DOCUMENTS, NAVIGATION_PAGES, R_INTRODUCTION_ALIASES
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -13,6 +13,7 @@ def validate(site):
     required += ['index.html','lessons/02-descriptive-statistics.html','lessons/03-inferential-statistics.html','lessons/01-introduction-to-r.html']
     required += [f'{folder}/{name}.html' for folder, name in DOCUMENTS]
     required += ['pdf/'+name+'.pdf' for _, name in DOCUMENTS]
+    required += ['pdf/'+name+'.pdf' for name in R_INTRODUCTION_ALIASES]
     required += ['pdf/'+p+'.pdf' for p in ['01-introduction-to-r','02-descriptive-statistics','03-inferential-statistics']]
     required += ['extended-cases/superstore/index.html']
     required += ['extended-cases/'+p+'.html' for p in EXTENDED]+['pdf/'+p+'.pdf' for p in EXTENDED]
@@ -25,7 +26,7 @@ def validate(site):
     forbidden=[p for p in site.rglob('*') if p.is_file() and (any(t in p.relative_to(site).parts for t in ['instructor','archived','books','sources','_includes']) or p.suffix.lower() in ['.xlsx','.xls'])]
     if forbidden:raise RuntimeError('Local-only files in generated site: '+str(forbidden[:5]))
     expected = {
-        'lessons/01-introduction-to-r.html': ['History of R', 'Installing R'],
+        'lessons/01-introduction-to-r.html': ['Getting started', 'Variables and atomic data types', 'Preparing data with dplyr', 'Filter data then draw a histogram', 'Summarise data then draw a bar chart'],
         'lessons/02-descriptive-statistics.html': ['What is Statistics?', 'source-title-87'],
         'lessons/03-inferential-statistics.html': ['part3-01-slide-01', 'part3-04-slide-21'],
     }

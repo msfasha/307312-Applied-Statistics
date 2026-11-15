@@ -9,7 +9,7 @@ import re
 import subprocess
 import time
 
-from course_documents import DOCUMENTS, NAVIGATION_PAGES
+from course_documents import DOCUMENTS, NAVIGATION_PAGES, R_INTRODUCTION_ALIASES
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT/'_build/website'
@@ -38,6 +38,7 @@ if __name__ == '__main__':
         time.sleep(15)
     names = [n+'.html' for n in NAVIGATION_PAGES] + [folder+'/'+name+'.html' for folder, name in DOCUMENTS]
     names += ['pdf/'+name+'.pdf' for _, name in DOCUMENTS]
+    names += ['pdf/'+name+'.pdf' for name in R_INTRODUCTION_ALIASES]
     names += ['downloads/applied-statistics-rstudio.zip', 'downloads/applied-statistics-pdfs.zip', 'downloads/inferential-statistics-r-practical.qmd']
     names += re.findall(r'^    - (data/[^\n]+)', (ROOT/'_quarto.yml').read_text(), re.M)
     verified = []

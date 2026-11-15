@@ -6,7 +6,7 @@ from urllib.parse import urljoin, urlsplit
 from html import unescape, escape
 ROOT=Path(__file__).resolve().parents[1]
 SITE=ROOT/'_build/website'
-from course_documents import LESSONS as PARTS, PRACTICALS, EXTENDED, SUPERSTORE, DOCUMENTS, NAVIGATION_PAGES
+from course_documents import LESSONS as PARTS, PRACTICALS, EXTENDED, SUPERSTORE, DOCUMENTS, NAVIGATION_PAGES, R_INTRODUCTION_ALIASES
 chrome=shutil.which('google-chrome') or shutil.which('chromium')
 if not chrome: raise RuntimeError('Google Chrome or Chromium is required to export the lesson PDFs.')
 (SITE/'pdf').mkdir(exist_ok=True)
@@ -66,6 +66,9 @@ for folder, part in DOCUMENTS:
     if not output.exists() or output.stat().st_size<10000 or output.read_bytes()[:5]!=b'%PDF-':
         raise RuntimeError('PDF export failed: '+part)
     print('Created',output.name,flush=True)
+# Preserve old individual R PDF URLs without duplicating them in the PDF ZIP.
+for alias in R_INTRODUCTION_ALIASES:
+    shutil.copy2(SITE/'pdf/01-introduction-to-r.pdf', SITE/'pdf'/(alias+'.pdf'))
 (SITE/'downloads').mkdir(exist_ok=True)
 # Explicitly approved editable Part 3 practical, also included in the full project.
 shutil.copy2(ROOT/'practicals/inferential-statistics-r-practical.qmd',

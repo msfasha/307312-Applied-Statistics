@@ -9,7 +9,7 @@ from course_documents import DOCUMENTS
 
 # Website/PDF documents remain unchanged; the RStudio ZIP contains runnable work only.
 RSTUDIO_DOCUMENTS = [(f, n) for f, n in DOCUMENTS
-                     if f != "lessons" or n in {"01-introduction-to-r", "r-02-basic-concepts", "r-03-dplyr", "r-04-ggplot2"}]
+                     if f != "lessons" or n in {"01-introduction-to-r"}]
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = 'https://msfasha.github.io/307312-Applied-Statistics/'
@@ -18,7 +18,7 @@ def student_path(name):
     if name.startswith('lessons/_includes/'):
         return name.replace('lessons/_includes/', 'support/', 1)
     if name.startswith('lessons/'):
-        part = 'part-1-introduction-to-r' if Path(name).stem in ['01-introduction-to-r', 'r-02-basic-concepts', 'r-03-dplyr', 'r-04-ggplot2'] else ('part-2-descriptive-statistics' if Path(name).stem == '02-descriptive-statistics' else 'part-3-inferential-statistics')
+        part = 'part-1-introduction-to-r' if Path(name).stem in ['01-introduction-to-r'] else ('part-2-descriptive-statistics' if Path(name).stem == '02-descriptive-statistics' else 'part-3-inferential-statistics')
         return part+'/'+Path(name).name
     if name.startswith('practicals/'):
         part = 'part-2-descriptive-statistics' if 'descriptive-statistics-r-practical' in name else 'part-3-inferential-statistics'
@@ -98,7 +98,7 @@ install.packages(c("knitr", "rmarkdown", "dplyr", "ggplot2", "readr", "tidyr", "
 
 Open the folders in this order:
 
-1. **part-1-introduction-to-r/** — four R notebooks, in order: 01, r-02, r-03, r-04.
+1. **part-1-introduction-to-r/** — one combined Introduction to R notebook, from basic R to dplyr and ggplot2.
 2. **part-2-descriptive-statistics/** — runnable descriptive R practical (20 examples, including line and dot plots).
 3. **part-3-inferential-statistics/** — developing inference R practical (probability available; estimation, testing and regression forthcoming).
 4. **extended-cases/** — optional business applications, including Superstore.
@@ -107,7 +107,7 @@ Teaching slides and the revised probability lesson are available on the course w
 and as PDFs. Links to those lessons open the website; their sources are not in this ZIP.
 
 Keep data/, assets/ and support/ in place: they contain required data, images and a
-shared R helper. There are 15 runnable notebooks. Website navigation pages, slide-lesson
+shared R helper. There are 12 runnable notebooks. Website navigation pages, slide-lesson
 sources, obsolete redirects and unpublished review notebooks are excluded.
 
 Keep the project root as the working directory. In RStudio, set Tools > Global Options >

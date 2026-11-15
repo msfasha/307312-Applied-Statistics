@@ -43,6 +43,7 @@ project:
     - course/part-3.qmd
     - extended-cases/index.qmd
     - lessons/01-introduction-to-r.qmd
+    # Compatibility entry pages for the former three separate R lessons.
     - lessons/r-02-basic-concepts.qmd
     - lessons/r-03-dplyr.qmd
     - lessons/r-04-ggplot2.qmd
