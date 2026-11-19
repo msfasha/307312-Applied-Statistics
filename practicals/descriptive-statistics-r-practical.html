@@ -2440,6 +2440,12 @@ a { text-decoration: none !important; }
 .source-slide img.compact-logo { width: 18%; min-width: 0; max-width: 120px; }
 #part3-01-slide-12 { display: none; }
 .source-slide img.compact-dice { width: 25%; min-width: 0; max-width: 180px; }
+
+.continuous-examples { display: grid; grid-template-columns: minmax(0, 1fr) 120px; gap: 1.25rem; align-items: start; }
+.continuous-examples > p { margin: 1rem 0; }
+.source-slide img.compact-marathon { width: 100%; min-width: 0; max-width: 120px; }
+@media print { .continuous-examples { break-inside: avoid; grid-template-columns: minmax(0, 1fr) 28mm; } }
+@media screen and (max-width: 450px) { .continuous-examples { grid-template-columns: minmax(0, 1fr) 85px; gap: .75rem; } }
 </style>
 <style type="text/css">
 #quarto-document-content li { margin-bottom: .45rem; }

@@ -212,6 +212,8 @@ Read the teaching slides and run the **Try this in R** examples beside the match
 
 ![](../assets/inferential-statistics/part-01-slide-10-graphic-01.png){width="30%" fig-alt="Original graphic, section 3.1, slide 10"}
 
+:::: {.continuous-examples}
+
 ```{=html}
 <div class="source-text">
 <p>A Continuous Random Variable is a variable which can take on an infinite number of possible values. </p>
@@ -225,7 +227,10 @@ Read the teaching slides and run the **Try this in R** examples beside the match
 </div>
 ```
 
-![](../assets/inferential-statistics/part-01-slide-10-graphic-03.png){width="30%" fig-alt="Original graphic, section 3.1, slide 10"}
+![](../assets/inferential-statistics/part-01-slide-10-graphic-03.png){.compact-marathon width="100%" fig-alt="Marathon finishing time: a continuous measurement"}
+
+
+::::
 
 :::
 
