@@ -4,7 +4,7 @@ from pathlib import Path
 import argparse
 import shutil
 import subprocess
-from course_documents import EXTENDED, DOCUMENTS, NAVIGATION_PAGES, R_INTRODUCTION_ALIASES, DESCRIPTIVE_PRACTICAL_ALIAS, STUDENT_PROJECT_ZIP, LEGACY_STUDENT_PROJECT_ZIP
+from course_documents import EXTENDED, DOCUMENTS, NAVIGATION_PAGES, R_INTRODUCTION_ALIASES, DESCRIPTIVE_PRACTICAL_ALIAS, INFERENTIAL_REDIRECTS, INFERENTIAL_PDF_ALIASES, INFERENTIAL_SOURCE_DOWNLOADS, STUDENT_PROJECT_ZIP, LEGACY_STUDENT_PROJECT_ZIP
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -15,13 +15,15 @@ def validate(site):
     required += ['pdf/'+name+'.pdf' for _, name in DOCUMENTS]
     required += ['pdf/'+name+'.pdf' for name in R_INTRODUCTION_ALIASES]
     required += ['pdf/'+DESCRIPTIVE_PRACTICAL_ALIAS+'.pdf']
+    required += ['pdf/'+n+'.pdf' for n in INFERENTIAL_PDF_ALIASES]
     required += ['pdf/'+p+'.pdf' for p in ['01-introduction-to-r','02-descriptive-statistics','03-inferential-statistics']]
     required += ['extended-cases/superstore/index.html']
     required += ['extended-cases/'+p+'.html' for p in EXTENDED]+['pdf/'+p+'.pdf' for p in EXTENDED]
     import re
     required += re.findall(r'^    - (data/[^\n]+)', (ROOT/'_quarto.yml').read_text(), re.M)
     required += ['data/business/'+p for p in ['superstore-lines.csv','cola.csv','consumer.csv','README.md']]
-    required += ['downloads/'+STUDENT_PROJECT_ZIP,'downloads/applied-statistics-pdfs.zip', 'downloads/inferential-statistics-r-practical.qmd']
+    required += ['downloads/'+STUDENT_PROJECT_ZIP,'downloads/applied-statistics-pdfs.zip']
+    required += ['downloads/'+n for n in INFERENTIAL_SOURCE_DOWNLOADS]
     required += ['downloads/'+LEGACY_STUDENT_PROJECT_ZIP]
     for name in required:
         if not (site/name).exists():raise RuntimeError('Missing generated page: '+name)
@@ -57,6 +59,10 @@ def validate(site):
     if any(f'id="part3-{k:02d}-slide-{i:02d}"' not in inferential
            for k, count in enumerate([37, 26, 57, 21], 1) for i in range(1, count+1)):
         raise RuntimeError('Incomplete original inferential slides: expected 141')
+    if len(re.findall(r'<!-- BEGIN R EXAMPLE [\d-]+ -->',inferential)) != 36:
+        raise RuntimeError('Part 3 must include 36 executable R examples')
+    if any(term in (site/'course/part-3.html').read_text() for term in ['original core slides','Revised 3.1','Open practical','coming soon','forthcoming']):
+        raise RuntimeError('Part 3 must present one combined resource')
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
@@ -66,6 +72,7 @@ def main():
     subprocess.run(['python3', str(ROOT/'scripts/render-descriptive-chart-additions.py')], cwd=ROOT, check=True)
     subprocess.run(['python3', str(ROOT/'scripts/sync-descriptive-r-references.py'), '--check'], cwd=ROOT, check=True)
     subprocess.run(['python3', str(ROOT/'scripts/check-practicals.py')], cwd=ROOT, check=True)
+    shutil.rmtree(ROOT/'_build/practicals', ignore_errors=True)
     if args.skip_render:
         subprocess.run(['python3', str(ROOT/'scripts/preview-practicals.py')], cwd=ROOT, check=True)
         subprocess.run(['python3', str(ROOT/'scripts/stage-practicals.py')], cwd=ROOT, check=True)

@@ -1,79 +1,64 @@
 # 307312 Applied Statistics
 
 [Open the student course](https://msfasha.github.io/307312-Applied-Statistics/).
-The core descriptive and inferential lessons preserve the original slides.
-Part 2 integrates its R applications directly; the developing inference practical and extended business cases remain separate.
 
-## Course sequence
+## Course material
 
-1. **Introduction to R:** one concise notebook covering Positron setup, base R foundations, dplyr and ggplot2 pipelines.
-2. **Descriptive Statistics:** the original slide sequence (82 retained source slides plus the approved line-chart and dot-plot additions), original examples, diagrams, Excel instructions, labeled R equivalents and the approved survey section.
-3. **Inferential Statistics:** all 141 original slides in order: probability distributions, estimation, hypothesis testing and regression, with original Excel/Python source examples and labeled R equivalents.
+1. **Introduction to R:** one notebook covering Positron setup, base R, data frames, dplyr and ggplot2.
+2. **Descriptive Statistics:** the original teaching sequence, approved figures/survey additions and 20 executable R examples together.
+3. **Inferential Statistics:** the original probability → estimation → hypothesis testing → regression slides, with explained executable R in place of spreadsheet instructions. All 141 teaching positions remain.
 
-All 20 descriptive R examples run directly in the combined Part 2 notebook. The
-developing inference R practical accompanies Part 3. Three Superstore applications and six standalone business cases remain
-under Extended scenarios. All fourteen approved documents have PDF downloads.
+Each part has one Quarto source for its HTML, PDF and Positron notebook. There
+are twelve canonical documents: these three parts, three Superstore applications
+and six extended cases. Both bundles contain each canonical document once.
+There is no separate inferential practical or alternative probability lesson.
 
 ## Work locally
 
-Extract the full student project ZIP from the website and open the extracted folder in Positron using File > Open Folder.
-Install `knitr`, `rmarkdown`, `dplyr`, `ggplot2` and `e1071`; MASS is used by the original inference examples. Install Quarto to render notebooks.
-Keep the R Console working directory at the project root. The supplied workspace
-settings send Quarto cells to that Console; use Preview for rendered results. CSV paths start with `data/`; no path-finding code is needed.
+Extract the complete Positron ZIP and open its top-level folder with File > Open
+Folder. Keep the R Console at the folder containing `_quarto.yml` and `data/`.
+Shared `.vscode/settings.json` sends interactive chunks to that Console.
+Install R, Quarto and the R packages listed in the student README; MASS supports
+the source distribution-fitting example. Run cells in order, then preview.
 
-- `.vscode/settings.json`: portable Positron workspace settings, included in the student ZIP.
-- `lessons/`: combined R introduction, original core slides and the separate probability section; `_includes/course-tools.R` holds shared aggregation and chart styling.
-- `practicals/`: developing inferential R companion and old URL entry pages.
-- `data/r-introduction/`: unchanged historical 2014–2017 Superstore tutorial data.
-- `data/business/`: pinned business practical and extended-case data.
-- `data/descriptive-statistics/` and `data/inferential-statistics/`: original lesson teaching CSVs.
-- `extended-cases/`: six standalone business cases and the three Superstore applications.
-- `assets/`: shared Petra burgundy/gray CSS and the tracked theme specification.
-- `instructor/`: source reviews, provenance, validation and answer keys; excluded from student exports.
-- `sources/slides/`: unchanged original reference decks.
-- `books/`: unchanged local reference books/workbooks; ignored by Git and never published.
-- `scripts/`: validation, rendering and publication tools.
-- `_build/`: generated output; not editable sources.
-- `archived/`: historical course versions; not active render targets.
+- `lessons/`: the three course notebooks and shared Part 2 fragments/R helper.
+- `extended-cases/`: the nine separate business applications.
+- `practicals/`: small compatibility entry pages for earlier links.
+- `data/`: canonical CSVs and guides; only the configured allowlist is published.
+- `assets/`: required teaching images and the shared Petra burgundy/gray theme.
+- `instructor/`: source reviews, checks and solutions; excluded from student exports.
+- `sources/slides/`: untouched original PPTX/PDF references.
+- `books/`: unchanged local-only source books/workbooks, ignored by Git.
+- `scripts/`: active build, check, packaging, reference conversion and publishing tools.
+- `archived/`: historical editable material, outside the active course.
+- `_build/`: generated outputs, not editable sources.
+
+Historical reference converters write under `_build/reference-conversions/` and
+must not overwrite the active authored notebooks. Retired material is historical,
+not an instruction to restore it. Old public URLs forward to current material;
+they are not parallel course versions.
 
 ## Data and interpretation
 
-Superstore is Tableau's fictitious sample company. We pin its US orders placed in
-2023–2025: 6,682 lines, 3,322 orders and 782 customer IDs. COLA has 20 store-week
-observations in two randomized conditions. Consumer has 50 household records.
-Read [the data guide](data/business/README.md) for units, selections and limits.
-Do not substitute a different Superstore version without explicitly reviewing results.
+The R introduction uses its original 2014–2017 tutorial Superstore data. Business
+applications use the pinned fictitious US 2023–2025 Superstore extract (6,682
+lines, 3,322 orders and 782 customer IDs). Their definitions are separate.
 
-The original descriptive lesson uses the previously approved de-identified student
-teaching CSV, and the inferential lesson uses observations printed in its source
-slides. Include these required CSVs in the website and Positron workspace. Original
-workbooks and instructor/source provenance stay excluded. Funds/cereals remain historical.
-The pre-revision notebooks are preserved under
-`archived/2026-11-06-before-superstore/`. Original decks remain unchanged.
-Historical slide converters now write only under `_build/reference-conversions/`;
-they do not overwrite the authored active notebooks.
+Part 2 uses the supplied de-identified student teaching CSV; its original
+collection provenance is not established. Part 3 uses the original printed
+teaching data. Keep source units, dates and design limits. Original workbooks,
+private measurements and instructor resources remain local-only.
 
-## Verify and publish
+Source issues are documented under `instructor/`; retaining historical wording
+does not validate every source interpretation. R implementations explain their
+assumptions and distinguish an estimate, a probability and a causal conclusion.
 
-- `python3 scripts/check-practicals.py`: worked R cells, isolated imports, source-cell checks and teaching results.
-- `quarto render`: full site and independently rendered practicals.
-- `python3 scripts/publish-course.py`: fresh HTML, fourteen PDFs, both ZIPs, validation and normal push to gh-pages.
-- See [PUBLISHING.md](PUBLISHING.md) for publication and live verification requirements.
+## Build and publish
 
-The source branch can contain instructor notes; exclusion from the student website
-and ZIP does not make the public Git repository private. Keep original instructor
-resources and private measurements local-only.
+- `python3 scripts/build-course.py`: check and build all twelve documents, PDFs and both bundles locally.
+- `python3 scripts/publish-course.py`: build and deploy the current committed source.
+- `python3 scripts/verify-live-course.py`: verify the release and actual download bytes.
+- See [PUBLISHING.md](PUBLISHING.md) for the workflow, exclusions and compatibility policy.
 
-## Shared teaching theme
-
-Use [assets/petra-theme.md](assets/petra-theme.md), synchronized with the portable
-`../petra_theme/petra_theme.md`. Keep burgundy heading bands, neutral content surfaces,
-centred charts and labelled analytical group colors. No notebook-specific theme overrides.
-
-## Recovery — 7 November 2026
-
-Commit `491f030` replaced the original core lessons during the Superstore rebuild.
-The user requested the original slides back while retaining the R practicals and
-all six extended cases. Parts 2 and 3 are restored byte-for-byte from `70bf7ee`.
-Core lessons must not be rewritten as part of future practical/case changes.
-The pre-restoration revision remains on `codex/backup-before-original-course-restore-20261107`.
+The public source repository can contain course-authored instructor notes; this
+does not make it a private store for publisher or personal material.

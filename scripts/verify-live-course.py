@@ -9,7 +9,7 @@ import re
 import subprocess
 import time
 
-from course_documents import DOCUMENTS, NAVIGATION_PAGES, R_INTRODUCTION_ALIASES, DESCRIPTIVE_PRACTICAL_ALIAS, STUDENT_PROJECT_ZIP, LEGACY_STUDENT_PROJECT_ZIP
+from course_documents import DOCUMENTS, NAVIGATION_PAGES, R_INTRODUCTION_ALIASES, DESCRIPTIVE_PRACTICAL_ALIAS, INFERENTIAL_REDIRECTS, INFERENTIAL_PDF_ALIASES, INFERENTIAL_SOURCE_DOWNLOADS, STUDENT_PROJECT_ZIP, LEGACY_STUDENT_PROJECT_ZIP
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT/'_build/website'
@@ -40,7 +40,9 @@ if __name__ == '__main__':
     names += ['pdf/'+name+'.pdf' for _, name in DOCUMENTS]
     names += ['pdf/'+name+'.pdf' for name in R_INTRODUCTION_ALIASES]
     names += ['pdf/'+DESCRIPTIVE_PRACTICAL_ALIAS+'.pdf']
-    names += ['downloads/'+STUDENT_PROJECT_ZIP, 'downloads/applied-statistics-pdfs.zip', 'downloads/inferential-statistics-r-practical.qmd']
+    names += ['pdf/'+n+'.pdf' for n in INFERENTIAL_PDF_ALIASES]
+    names += ['downloads/'+STUDENT_PROJECT_ZIP, 'downloads/applied-statistics-pdfs.zip']
+    names += ['downloads/'+n for n in INFERENTIAL_SOURCE_DOWNLOADS]
     names += re.findall(r'^    - (data/[^\n]+)', (ROOT/'_quarto.yml').read_text(), re.M)
     names += ['downloads/'+LEGACY_STUDENT_PROJECT_ZIP]
     verified = []
@@ -59,4 +61,4 @@ if __name__ == '__main__':
     output = ROOT/'_build/extended-review/live-verification.json'
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, indent=2)+'\n')
-    print(f'Verified live revision, {len(DOCUMENTS)} notebook pages, {len(DOCUMENTS)} PDFs, both ZIPs, editable Part 3 practical and all approved data.', flush=True)
+    print(f'Verified live revision, {len(DOCUMENTS)} notebook pages, {len(DOCUMENTS)} PDFs, both ZIPs, single-source Part 3 notebook and all approved data.', flush=True)

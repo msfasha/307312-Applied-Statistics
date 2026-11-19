@@ -12,7 +12,7 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / '_build/website'
 from student_project import student_path, RUNNABLE_DOCUMENTS, project_files
-from course_documents import LESSONS, PRACTICALS, EXTENDED, DOCUMENTS, SUPERSTORE, NAVIGATION_PAGES, R_INTRODUCTION_ALIASES, DESCRIPTIVE_PRACTICAL_ALIAS, STUDENT_PROJECT_ZIP, LEGACY_STUDENT_PROJECT_ZIP
+from course_documents import LESSONS, PRACTICALS, EXTENDED, DOCUMENTS, SUPERSTORE, NAVIGATION_PAGES, R_INTRODUCTION_ALIASES, DESCRIPTIVE_PRACTICAL_ALIAS, INFERENTIAL_REDIRECTS, INFERENTIAL_PDF_ALIASES, INFERENTIAL_SOURCE_DOWNLOADS, STUDENT_PROJECT_ZIP, LEGACY_STUDENT_PROJECT_ZIP
 
 class Links(HTMLParser):
     def __init__(self):
@@ -52,20 +52,31 @@ if __name__ == '__main__':
         assert (SITE/'pdf'/(alias+'.pdf')).read_bytes() == (SITE/'pdf/01-introduction-to-r.pdf').read_bytes(), alias
         assert '01-introduction-to-r.html' in (SITE/'lessons'/(alias+'.html')).read_text(), alias
     assert (SITE/'pdf'/(DESCRIPTIVE_PRACTICAL_ALIAS+'.pdf')).read_bytes() == (SITE/'pdf/02-descriptive-statistics.pdf').read_bytes()
-    assert (SITE/'downloads/inferential-statistics-r-practical.qmd').read_bytes() == (ROOT/'practicals/inferential-statistics-r-practical.qmd').read_bytes()
+    for name in INFERENTIAL_SOURCE_DOWNLOADS:
+        assert (SITE/'downloads'/name).read_bytes() == (ROOT/'lessons/03-inferential-statistics.qmd').read_bytes()
+    for name in INFERENTIAL_PDF_ALIASES:
+        assert (SITE/'pdf'/(name+'.pdf')).read_bytes() == (SITE/'pdf/03-inferential-statistics.pdf').read_bytes()
+    for alias in INFERENTIAL_REDIRECTS:
+        text=(SITE/(alias+'.html')).read_text()
+        assert 'location.replace' in text and '03-inferential-statistics.html' in text
+        assert 'source-slide' not in text
+    assert len(DOCUMENTS)==12 and len(RUNNABLE_DOCUMENTS)==12
     assert not (SITE/'.vscode').exists(), 'Editor preferences belong in the student ZIP only'
     assert not (SITE/'data/practicals').exists(), 'Retired practical data leaked into site'
     for path in SITE.rglob('*'):
         if not path.is_file():
             continue
         assert not set(path.relative_to(SITE).parts) & {'instructor', 'books', 'sources', 'archived', '_includes'}, path
-        if path.relative_to(SITE).as_posix() != 'downloads/inferential-statistics-r-practical.qmd':
+        if path.relative_to(SITE).as_posix() not in {'downloads/'+n for n in INFERENTIAL_SOURCE_DOWNLOADS}:
             assert path.suffix.lower() not in {'.xls', '.xlsx', '.pptx', '.qmd', '.r', '.rproj'}, path
     with zipfile.ZipFile(SITE/'downloads/applied-statistics-pdfs.zip') as bundle:
         assert set(bundle.namelist()) == {n+'.pdf' for _, n in DOCUMENTS}
     with zipfile.ZipFile(SITE/'downloads'/STUDENT_PROJECT_ZIP) as bundle:
         names = set(bundle.namelist())
         assert '.vscode/settings.json' in names
+        part3=student_path('lessons/03-inferential-statistics.qmd')
+        assert bundle.read(part3)==(ROOT/'lessons/03-inferential-statistics.qmd').read_bytes(), 'Part 3 must be the exact same source in the ZIP'
+        assert not any('inferential-statistics-r-practical' in n or 'probability-distributions-draft' in n or 'inferential-statistics-integrated' in n for n in names)
         for image in ['pipe_operator.png', 'clipboard-834917176.png']:
             original = 'assets/introduction-to-r/' + image
             assert original in names, original

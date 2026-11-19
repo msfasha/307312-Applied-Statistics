@@ -110,3 +110,15 @@ Reclaimed 2.45 GiB of generated previews/caches. No tracked source file was dele
 - Current build, package, publication and live-verification scripts.
 
 The old expanded probability work and the new integrated inferential course are not silently included in this descriptive/cleanup release.
+
+
+## Final Part 3 consolidation
+
+The user subsequently chose the original slide-based Part 3 with explained R
+instead of spreadsheet instructions. Removed the competing probability lesson,
+separate practical, authored redesign, draft datasets/styles/builders and proposal
+plans from the active folder/repository. The canonical Part 3 has all 141 original
+teaching positions and 36 R cells. Its HTML, PDF, direct source download and
+Positron notebook now use one source; compatibility entries are redirects/copies
+rather than additional course material. The public contract is twelve canonical
+PDFs and twelve runnable notebooks. Original source decks remain unchanged.

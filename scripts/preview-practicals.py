@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render the independent Part 2 practicals without publishing them."""
+"""Render compatibility entry pages without publishing them."""
 from pathlib import Path
 import shutil
 import subprocess

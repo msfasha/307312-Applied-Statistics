@@ -1,18 +1,15 @@
-# Superstore practicals
+# Compatibility entry pages
 
-1. `practical-01-categorical-business-data.qmd`: product mix, conditional percentages, shipping and return-list denominators.
-2. `practical-02-numerical-business-data.qmd`: order sales, centre/spread, percentiles, unusual records and revenue concentration.
-3. `practical-03-association-and-groups.qmd`: discounts, margins, category/subcategory comparisons and noncausal interpretation.
+The core R examples are part of the course notebooks:
 
-These are published companions to Part 2, included in all student downloads.
-Inference activities using Superstore, COLA and Consumer are integrated into Part 3.
+- Part 2: `lessons/02-descriptive-statistics.qmd`.
+- Part 3: `lessons/03-inferential-statistics.qmd`.
 
-Run `python3 scripts/preview-practicals.py` for independent HTML previews.
-The root website render stages only approved pages and current business CSVs.
-All import cells work from the root or practicals folder. Shared R functions and
-chart styling live in `lessons/_includes/course-tools.R`; the legacy practical helper
-is a compatibility wrapper. Instructor guidance is in `instructor/business-course-review.md`
-and `instructor/business-course-answer-key.md`.
+This folder only retains small entry pages for older links. The three Superstore
+applications live under `extended-cases/superstore/`, with their working CSVs
+under `data/business/`. They remain separate business applications, not a second
+version of a course part.
 
-The old cereals URL is retained only as an entry page to the current sequence.
-Pre-revision practicals are preserved in the dated archive and Git history.
+`python3 scripts/preview-practicals.py` renders these compatibility pages; the
+root build stages them. Use the course root for all interactive R and Quarto
+execution. Shared R functions/styles are in `lessons/_includes/course-tools.R`.

@@ -396,3 +396,13 @@
 - Removed regenerable old previews/caches only after checking that they contain no tracked source files. Keep original decks, books, private source data, historical editable sources and unfinished drafts.
 - `.posit/` is local session state and is ignored; `.vscode/settings.json` remains the shared student configuration.
 - Cleanup inventory and decisions are recorded in `instructor/repository-cleanup-2026-11-19.md`.
+
+
+## Original Part 3 with R only — 19 November 2026
+
+- Latest user clarification supersedes the proposed authored inference redesign: keep the original slide-based Part 3, its teaching sequence, questions, data and non-software figures. Incorporate explained executable R in place of spreadsheet instructions; no separate practical or alternative probability lesson.
+- `lessons/03-inferential-statistics.qmd` is the single canonical source for the HTML, PDF and byte-identical Part 3 notebook in the Positron ZIP. Preserve all 141 source positions. Spreadsheet software steps/screenshots and standalone Python listings are adapted to R, with source issues documented separately.
+- The canonical course has twelve notebook/PDF pairs and twelve runnable student notebooks: three parts and nine extended applications. Part 3 navigation shows one resource row. Old probability/practical URLs only redirect or serve byte-identical compatibility downloads, outside the bundles.
+- Remove the unused authored alternatives, separate inference practical, draft-specific data/assets/scripts and proposal plans. Do not restore them automatically. Original PPTX/PDF files remain untouched reference copies; Git history retains removed tracked drafts.
+- `scripts/check-inferential.py` checks all 36 R cells, their original-slide order and the non-software content manifest. Source/model limitations remain in `instructor/inferential-source-review.md` and the R adaptation review.
+- Rebuild, commit, push, publish and verify the consolidated website, all twelve PDFs, both bundles and the same-source Part 3 downloads.
