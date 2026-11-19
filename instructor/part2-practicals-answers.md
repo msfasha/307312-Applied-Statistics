@@ -1,5 +1,7 @@
 # Part 2 practical answers and assessment guidance
 
+Historical FUNDS2002/CEREALS support is now under `archived/2026-11-19-deprecated-support/`. These activities are not part of the current course.
+
 Instructor material, 6 November 2026. Use alongside the three practical notebooks.
 Do not include this file in student previews or assessed distributions.
 Calculations use the canonical course CSVs, R sample SD and type-7 quantiles.

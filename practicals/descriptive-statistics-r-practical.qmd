@@ -1,6 +1,9 @@
 ---
 title: "Descriptive Statistics — Combined Notebook"
 toc: false
+format:
+  html:
+    embed-resources: true
 ---
 
 The descriptive slides and all 20 R examples are now in one notebook.

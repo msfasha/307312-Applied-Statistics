@@ -98,3 +98,6 @@ __pycache__/
 # Original private source data and generated rendering dependencies
 /archived/**/_instructor/source-data/
 /site_libs/
+
+# Positron local session state; shared preferences are in .vscode/settings.json
+/.posit/

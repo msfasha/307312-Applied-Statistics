@@ -1,5 +1,7 @@
 # CEREALS pilot — instructor notes
 
+Historical FUNDS2002/CEREALS support is now under `archived/2026-11-19-deprecated-support/`. These activities are not part of the current course.
+
 Historical notes for the shorter pilot. The current expanded activity is
 `practicals/practical-02-numerical-business-data.qmd`; see
 `instructor/part2-practicals-answers.md` for current tasks and answers.

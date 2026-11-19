@@ -1,5 +1,7 @@
 # Part 2 practical source review
 
+Historical FUNDS2002/CEREALS support is now under `archived/2026-11-19-deprecated-support/`. These activities are not part of the current course.
+
 Reviewed 6 November 2026. Stages 1–3 produce three local practical companions;
 they do not adopt the optional extension cases or publish the practicals.
 Existing lesson text and source decks are unchanged by this work.

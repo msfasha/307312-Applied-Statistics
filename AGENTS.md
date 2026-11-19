@@ -387,3 +387,12 @@
 - Publication now has fourteen canonical notebook/PDF pairs; the Positron project still has twelve runnable notebooks. Part 2 includes its required images and editable supporting fragments under support/. Exclude duplicate compatibility sources/PDFs from bundles.
 - `scripts/sync-descriptive-r-references.py --check` retains its command name but now validates the single set of 20 executable examples. Chart generation reads the combined notebook.
 - Keep the unapproved inferential expansion/design local; do not include those unrelated working changes in this release.
+
+
+## Repository cleanup — 19 November 2026
+
+- User requested reviewing the GitHub repository and local folder, removing unused/deprecated items and publishing the combined Part 2 in the website and Positron ZIP.
+- Superseded support assets, retired FUNDS/CEREALS CSVs/manifests and two obsolete pilot helpers are preserved under `archived/2026-11-19-deprecated-support/`, outside active folders and bundles.
+- Removed regenerable old previews/caches only after checking that they contain no tracked source files. Keep original decks, books, private source data, historical editable sources and unfinished drafts.
+- `.posit/` is local session state and is ignored; `.vscode/settings.json` remains the shared student configuration.
+- Cleanup inventory and decisions are recorded in `instructor/repository-cleanup-2026-11-19.md`.
