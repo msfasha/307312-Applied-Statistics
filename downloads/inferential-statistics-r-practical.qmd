@@ -65,9 +65,7 @@ Read the teaching slides and run the **Try this in R** examples beside the match
 </div>
 ```
 
-```{=html}
-<figure class="petra-diagram inference-diagram"><div class="inference-flow"><div class="inference-card"><strong>Population</strong><div>Entire group of interest</div></div><div class="inference-arrow">Sampling<br><span aria-hidden="true">→</span></div><div class="inference-card"><strong>Sample</strong><div>Selected observations<br>↓<br>Descriptive statistics</div></div></div><figcaption>← Inferential statistics: use sample evidence to draw conclusions about the population, with uncertainty.</figcaption></figure>
-```
+![](../assets/inferential-statistics/part-01-slide-03-graphic-02.png){width="68%" fig-alt="Original graphic, section 3.1, slide 3"}
 
 :::
 
@@ -99,9 +97,7 @@ Read the teaching slides and run the **Try this in R** examples beside the match
 
 ### Introduction to Inferential Statistics {#part3-title-01-05}
 
-```{=html}
-<figure class="petra-diagram inference-diagram"><div class="inference-flow"><div class="inference-card"><strong>Population</strong><div>Entire group<br>↓<br><b>Parameter</b><br>Numerical population characteristic</div></div><div class="inference-arrow">Sampling<br><span aria-hidden="true">→</span></div><div class="inference-card"><strong>Sample</strong><div>Observed subset<br>↓ Calculate<br><b>Statistic (estimator)</b></div></div></div><figcaption>← Estimation: use a sample statistic to estimate a population parameter.</figcaption></figure>
-```
+![](../assets/inferential-statistics/part-01-slide-05-graphic-01.png){width="54%" fig-alt="Original graphic, section 3.1, slide 5"}
 
 ```{=html}
 <div class="source-text">
@@ -119,9 +115,7 @@ Read the teaching slides and run the **Try this in R** examples beside the match
 </div>
 ```
 
-```{=html}
-<figure class="petra-diagram inference-diagram"><div class="inference-flow"><div class="inference-card"><strong>Population mean</strong><div><span class="inference-symbol">μ</span><br>mu · parameter</div></div><div class="inference-arrow">Sampling<br><span aria-hidden="true">→</span></div><div class="inference-card"><strong>Sample mean</strong><div><span class="inference-symbol">x̄</span><br>x-bar · statistic</div></div></div><figcaption>The population mean μ is fixed. The sample mean x̄ can vary from sample to sample and is used to estimate μ.</figcaption></figure>
-```
+![](../assets/inferential-statistics/part-01-slide-05-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.1, slide 5"}
 
 :::
 
@@ -167,7 +161,7 @@ Read the teaching slides and run the **Try this in R** examples beside the match
 
 ### What is a Random Variable?  {#part3-title-01-08}
 
-![](../assets/inferential-statistics/part-01-slide-08-graphic-01.png){width="30%" fig-alt="Original graphic, section 3.1, slide 8"}
+![](../assets/inferential-statistics/part-01-slide-08-graphic-01.png){.compact-dice width="25%" fig-alt="Two dice"}
 
 ```{=html}
 <div class="source-text">
