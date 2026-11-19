@@ -419,3 +419,7 @@
 
 - User rejected the three newly drawn opening population/sample, parameter/statistic and population/sample-mean diagrams. Restore their original image references on source slides 1-3 and 1-5. This supersedes the replacement authorization for those three figures only.
 - Keep the other approved distribution/formula/R-chart changes and compact logos. Reduce the dice illustration on source slide 1-8 as explicitly requested. Refresh the website, PDFs and student bundles together.
+
+## Compact marathon illustration — 19 November 2026
+
+- User requested minimizing the marathon photo and keeping it on the preceding teaching slide/page. Keep it beside its continuous-variable examples within source slide 1-10, using a compact shared layout that stays together in print. Do not move the continuous running-time example into the discrete-variable slide.
