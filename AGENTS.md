@@ -414,3 +414,8 @@
 - These diagrams are inline in the canonical Part 3 QMD to preserve byte identity with the Positron copy; styling is shared in assets/source-slides.css. Historical reference decks/assets remain unchanged. Preserve other original theory and all 141 source positions; the redundant title-only position is hidden.
 - Guard explicitly authorized changes separately in the original-content manifest. Refresh HTML/PDF/student bundles together and verify publication.
 - The same authorization includes editable continuous-uniform theory/business examples and original R probability/area plots replacing Poisson calculator/QR screenshots. Preserve the distinction between density and probability and between bell-shaped discrete models and continuous normal distributions. The source staffing-at-the-mean claim is corrected and recorded in instructor review.
+
+## Restore opening Part 3 figures — 19 November 2026
+
+- User rejected the three newly drawn opening population/sample, parameter/statistic and population/sample-mean diagrams. Restore their original image references on source slides 1-3 and 1-5. This supersedes the replacement authorization for those three figures only.
+- Keep the other approved distribution/formula/R-chart changes and compact logos. Reduce the dice illustration on source slide 1-8 as explicitly requested. Refresh the website, PDFs and student bundles together.

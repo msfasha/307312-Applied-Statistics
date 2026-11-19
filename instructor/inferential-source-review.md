@@ -92,3 +92,8 @@ observations are invented. Formula-only examples use source summary statistics.
 - The content manifest retains historical baseline hashes and separately checks the explicitly authorized updated slide bodies.
 - Replaced the Poisson calculator/QR image with explained R comparisons at lambda 2 and 20, highlighting P(X=15) at lambda 20 and distinguishing a bell-shaped discrete model from a continuous normal distribution.
 - Rebuilt continuous-uniform theory and both arrival/diameter calculation screenshots as editable math with original R density/area charts. Corrected the source's unsupported claim that staffing should peak at the mean arrival time: equal-length intervals have equal probability under a uniform model. Density heights need not be probabilities or lie below 1.
+
+### Subsequent user review — 19 November 2026
+
+- Restored all three original opening diagrams at the user's request (section 3.1, slides 3 and 5). Their untouched historical slide bodies again pass the original baseline hashes; the replacement diagrams and their unused styles are removed.
+- Reduced the dice illustration on source slide 8; other approved changes remain.
