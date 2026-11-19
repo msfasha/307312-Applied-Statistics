@@ -487,7 +487,7 @@
     "href": "lessons/02-descriptive-statistics.html",
     "title": "Part 2: Descriptive Statistics",
     "section": "",
-    "text": "The Try this in R sections show the code for the matching R practical examples. To execute it in Positron, open practicals/descriptive-statistics-r-practical.qmd in the student project. Run Example 1 first to load students; later examples reuse it. Each section has one link to the matching worked example."
+    "text": "This notebook combines the descriptive-statistics teaching material with all 20 executable R examples. Read each topic, then run its Try this in R example in Positron. Open the top-level course folder first and run Example 1 to load students; later examples reuse it."
   },
   {
     "objectID": "lessons/02-descriptive-statistics.html#source-title-01",
@@ -551,6 +551,13 @@
     "title": "Part 2: Descriptive Statistics",
     "section": "Percentiles, Quartiles and Boxplots",
     "text": "Percentiles, Quartiles and Boxplots"
+  },
+  {
+    "objectID": "lessons/02-descriptive-statistics.html#review-together",
+    "href": "lessons/02-descriptive-statistics.html#review-together",
+    "title": "Part 2: Descriptive Statistics",
+    "section": "Review together",
+    "text": "Review together\n\nWhich tables summarize a single variable, and which compare two variables?\nWhich charts suit categorical data, and which suit numerical data?\nWhen should observations be joined by a line? How does a dot plot differ from a histogram?\nHow do the mean and median describe different aspects of the same distribution?\nWhich dispersion measures retain the original units, and which do not?\nWhat do the 90th percentile and the quartiles tell us about the data?\nWhy does an outlier flag call for investigation rather than automatic deletion?"
   },
   {
     "objectID": "lessons/r-03-dplyr.html",
@@ -718,7 +725,7 @@
     "href": "course/part-2.html",
     "title": "Part 2: Descriptive Statistics",
     "section": "",
-    "text": "Read the slides, then work through the 20 R examples in the practical, using the supplied student dataset plus a historical airline time series.\n\n\n\nResource\nRead online\nDownload\n\n\n\n\nDescriptive Statistics slides\nRead\nPDF\n\n\nR practical\nRead\nPDF\n\n\n\nHome"
+    "text": "Read the explanations and run the 20 R examples in one notebook. The examples use the supplied student dataset and a historical airline time series.\n\n\n\nResource\nRead online\nDownload\n\n\n\n\nDescriptive Statistics — explanations and R examples\nRead\nPDF\n\n\n\nHome"
   },
   {
     "objectID": "extended-cases/index.html",
@@ -781,7 +788,7 @@
     "href": "extended-cases/superstore/index.html",
     "title": "Superstore — Extended Business Case",
     "section": "",
-    "text": "Start after: Part 2 slides and the Descriptive Statistics R Practical.\nBusiness: Superstore, Tableau’s fictitious retailer; the fixed official extract downloaded 6 November 2026 contains US orders placed in 2023–2025.\nScope: 6,682 product lines, 3,322 orders and 782 customer IDs. Keep these observational units distinct.\nWork through the three notebooks in order. Each includes explained R code, worked results and independent business tasks.\nPositron files (.zip) contain the editable notebooks, data and data guide.\n\n\n\n\nNotebook\nFocus\nDownload\n\n\n\n\n1. Product mix\nCategories, frequencies, percentages and charts\nPDF\n\n\n2. Order size\nCentre, spread, percentiles and boxplots\nPDF\n\n\n3. Discounts, profit and groups\nAssociation and group comparisons\nPDF\n\n\n\n\nReturn status means membership in the source Returns sheet, not verified refund accounting.\nThe analyses are descriptive; they do not establish causal discount effects or represent actual retailers.\nAll extended business cases."
+    "text": "Start after: Part 2: Descriptive Statistics and its R examples.\nBusiness: Superstore, Tableau’s fictitious retailer; the fixed official extract downloaded 6 November 2026 contains US orders placed in 2023–2025.\nScope: 6,682 product lines, 3,322 orders and 782 customer IDs. Keep these observational units distinct.\nWork through the three notebooks in order. Each includes explained R code, worked results and independent business tasks.\nPositron files (.zip) contain the editable notebooks, data and data guide.\n\n\n\n\nNotebook\nFocus\nDownload\n\n\n\n\n1. Product mix\nCategories, frequencies, percentages and charts\nPDF\n\n\n2. Order size\nCentre, spread, percentiles and boxplots\nPDF\n\n\n3. Discounts, profit and groups\nAssociation and group comparisons\nPDF\n\n\n\n\nReturn status means membership in the source Returns sheet, not verified refund accounting.\nThe analyses are descriptive; they do not establish causal discount effects or represent actual retailers.\nAll extended business cases."
   },
   {
     "objectID": "extended-cases/superstore/practical-02-numerical-business-data.html",
