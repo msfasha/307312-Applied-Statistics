@@ -2433,6 +2433,25 @@ a { text-decoration: none !important; }
 @media print {
 #slide-added-line-chart, #slide-added-dot-plot { break-before: page; }
 }
+
+.inference-diagram { max-width: 760px; margin-inline: auto; }
+.inference-flow { display: grid; grid-template-columns: 1fr 130px 1fr; gap: 1rem; align-items: center; }
+.inference-card { background: #f4f4f4; border: 1px solid #ccc; border-radius: 5px; text-align: center; overflow: hidden; }
+.inference-card > strong { display: block; background: #e6e6e6; padding: .65rem; font-size: 1.15rem; }
+.inference-card > div { padding: 1rem; line-height: 1.7; }
+.inference-arrow { text-align: center; color: #542638; font-weight: 600; }
+.inference-arrow span { font-size: 2.5rem; line-height: 1; }
+.inference-symbol { font-family: Georgia, serif; font-size: 2.3rem; color: #542638; }
+.inference-diagram figcaption { text-align: center; }
+.uniform-chart { max-width: 620px; margin-inline: auto; }
+.uniform-chart svg { width: 100%; height: auto; font-family: inherit; font-size: 18px; fill: #333; }
+.source-slide img.compact-coin { width: 25%; min-width: 0; max-width: 180px; }
+.source-slide img.compact-logo { width: 18%; min-width: 0; max-width: 120px; }
+#part3-01-slide-12 { display: none; }
+@media (max-width: 550px) {
+.inference-flow { grid-template-columns: 1fr; gap: .65rem; }
+.inference-arrow span { display: inline-block; transform: rotate(90deg); }
+}
 </style>
 <style type="text/css">
 #quarto-document-content li { margin-bottom: .45rem; }
