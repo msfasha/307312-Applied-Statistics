@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """Stage the descriptive practical and compatibility links to relocated Superstore cases."""
 from pathlib import Path
-from course_documents import PRACTICALS, SUPERSTORE
+from course_documents import PRACTICALS, SUPERSTORE, DESCRIPTIVE_PRACTICAL_ALIAS
 ROOT = Path(__file__).resolve().parents[1]
 if __name__ == '__main__':
     destination = ROOT / '_build/website/practicals'
     destination.mkdir(parents=True, exist_ok=True)
-    for name in PRACTICALS + SUPERSTORE + ['practical-01-cereals']:
+    for name in PRACTICALS + SUPERSTORE + [DESCRIPTIVE_PRACTICAL_ALIAS, 'practical-01-cereals']:
         source = ROOT / '_build/practicals' / (name + '.html')
         text = source.read_text()
         text = text.replace('href="data/', 'href="../data/')

@@ -16,3 +16,16 @@
 - The practical PDF has thirteen A4 pages. All pages were visually reviewed in a contact sheet, with representative pages inspected at larger size.
 - All non-R descriptive slide content was compared against the preceding committed lesson and is identical, apart from the added companion-practical link.
 - A freshly extracted final student ZIP rendered all sixteen notebooks successfully. Page, CSV and fragment navigation passed independently; no source QMDs leaked into the generated student site.
+
+
+## Combined Part 2 — 19 November 2026
+
+At the user's request, move all 20 practical examples into the matching Try this
+in R panels of the descriptive lesson, including explanations and executable
+outputs. Migration checked every original executable code line/comment against
+the prior practical, in example order, and verified that stripping R panels
+leaves the original source-slide material byte-identical. The collection/survey
+include and approved diagrams remain unchanged. Former practical URLs/anchors
+and PDF remain compatible; the combined source/PDF is the sole canonical Part 2
+resource in navigation and bundles. No source deck or unrelated inference
+material is part of this change.

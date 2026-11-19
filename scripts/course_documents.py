@@ -2,7 +2,9 @@
 LESSONS = ['01-introduction-to-r', '02-descriptive-statistics', '03-inferential-statistics', 'inferential-31-probability-distributions-draft']
 SUPERSTORE = ['practical-01-categorical-business-data', 'practical-02-numerical-business-data',
               'practical-03-association-and-groups']
-PRACTICALS = ['descriptive-statistics-r-practical', 'inferential-statistics-r-practical']
+PRACTICALS = ['inferential-statistics-r-practical']
+# The former separate Part 2 practical opens the combined lesson; its PDF is an alias.
+DESCRIPTIVE_PRACTICAL_ALIAS = 'descriptive-statistics-r-practical'
 EXTENDED = ['case-01-springville-herald', 'case-02-oxford-cereal', 'case-03-retail-display',
             'case-04-perfect-parachute', 'case-05-mountain-states-potato', 'case-06-harnswell-quality']
 DOCUMENTS = ([('lessons', n) for n in LESSONS] + [('practicals', n) for n in PRACTICALS]
@@ -15,6 +17,7 @@ NAVIGATION_PAGES = ['index', 'course/index', 'course/part-1', 'course/part-2', '
 # Old bookmarks and PDF links open the new combined R introduction.
 R_INTRODUCTION_ALIASES = ['r-02-basic-concepts', 'r-03-dplyr', 'r-04-ggplot2']
 NAVIGATION_PAGES += ['lessons/' + n for n in R_INTRODUCTION_ALIASES]
+NAVIGATION_PAGES += ['practicals/' + DESCRIPTIVE_PRACTICAL_ALIAS]
 
 STUDENT_PROJECT_ZIP = 'applied-statistics-positron.zip'
 # Unadvertised compatibility URL for previous bookmarks; contents are Positron-only.

@@ -9,7 +9,7 @@ from course_documents import DOCUMENTS, STUDENT_PROJECT_ZIP
 
 # Website/PDF documents remain unchanged; the Positron ZIP contains runnable work only.
 RUNNABLE_DOCUMENTS = [(f, n) for f, n in DOCUMENTS
-                     if f != "lessons" or n in {"01-introduction-to-r"}]
+                     if f != "lessons" or n in {"01-introduction-to-r", "02-descriptive-statistics"}]
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = 'https://msfasha.github.io/307312-Applied-Statistics/'
@@ -39,12 +39,27 @@ def project_files():
             guide = str(Path(data).parent/'README.md')
             if (ROOT/guide).exists():
                 names.add(guide)
+    # The combined Part 2 needs its editable diagrams and survey supplement.
+    pending = [n for n in names if n.endswith('.qmd')]
+    seen = set()
+    while pending:
+        source = pending.pop()
+        if source in seen:
+            continue
+        seen.add(source)
+        text = (ROOT/source).read_text()
+        for target in re.findall(r'{{< include ([^\s]+)', text):
+            included = posixpath.normpath(posixpath.join(posixpath.dirname(source), target))
+            if not included.startswith('lessons/_includes/') or not (ROOT/included).is_file():
+                raise RuntimeError('Unexpected student include: '+included)
+            names.add(included)
+            pending.append(included)
     names.update('assets/'+n for n in ['petra-theme.md', 'petra-brand.css', 'source-slides.css', 'practical-print.css'])
 
     return names
 
 def rewrite(name, text, names):
-    def relative(target):
+    def relative(target, include=False):
         base, sep, fragment = target.partition('#')
         resolved = posixpath.normpath(posixpath.join(posixpath.dirname(name), base))
         if resolved.startswith(('pdf/', 'downloads/')):
@@ -54,12 +69,12 @@ def rewrite(name, text, names):
             return PUBLIC+source[:-4]+'.html'+(sep+fragment if sep else '')
         if source in names:
             destination = student_path(source)
-            if destination.endswith('.qmd'):
+            if destination.endswith('.qmd') and not include:
                 destination = destination[:-4]+'.html'
             return posixpath.relpath(destination, posixpath.dirname(student_path(name)))+(sep+fragment if sep else '')
         return target
     text = re.sub(r'(?<=\]\()([^\s)]+)', lambda m: relative(m[0]), text)
-    text = re.sub(r'({{< include )([^\s]+)', lambda m: m[1]+relative(m[2]), text)
+    text = re.sub(r'({{< include )([^\s]+)', lambda m: m[1]+relative(m[2], include=True), text)
     # Literal project-root paths in R source() calls and student instructions.
     for source in sorted(names, key=len, reverse=True):
         if source != student_path(source):
@@ -100,16 +115,18 @@ install.packages(c("knitr", "rmarkdown", "dplyr", "ggplot2", "readr", "tidyr", "
 Open the folders in this order:
 
 1. **part-1-introduction-to-r/** — one combined Introduction to R notebook, from basic R to dplyr and ggplot2.
-2. **part-2-descriptive-statistics/** — runnable descriptive R practical (20 examples, including line and dot plots).
+2. **part-2-descriptive-statistics/** — combined Descriptive Statistics notebook: explanations, diagrams and 20 runnable R examples, including line and dot plots.
 3. **part-3-inferential-statistics/** — developing inference R practical (probability available; estimation, testing and regression forthcoming).
 4. **extended-cases/** — optional business applications, including Superstore.
 
-Teaching slides and the revised probability lesson are available on the course website
-and as PDFs. Links to those lessons open the website; their sources are not in this ZIP.
+The original inferential slides and revised probability lesson are available on the
+course website and as PDFs. Links to those lessons open the website; their sources
+are not in this ZIP. Part 2 includes its teaching explanations and R examples together.
 
 Keep data/, assets/ and support/ in place: they contain required data, images and a
-shared R helper. There are 12 runnable notebooks. Website navigation pages, slide-lesson
-sources, obsolete redirects and unpublished review notebooks are excluded.
+shared R helper. There are 12 runnable notebooks. Supporting editable Part 2
+diagrams are under support/. Website navigation pages, non-runnable inferential
+slide sources, obsolete redirects and unpublished review notebooks are excluded.
 
 Keep the project root as the working directory. Open the top-level course folder in Positron and select an R interpreter.
 The supplied workspace runs Quarto cells in the R Console from the course root.

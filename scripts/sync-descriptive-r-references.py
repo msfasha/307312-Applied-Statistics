@@ -1,62 +1,34 @@
 #!/usr/bin/env python3
-"""Copy the companion's R code into slide reference panels, without executing it."""
+"""Validate the 20 executable R examples in the combined descriptive lesson.
+
+The historical command name is retained for existing build workflows. There is
+one canonical notebook now, so there is no second code copy to synchronize.
+"""
 import argparse
 from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
 LESSON = ROOT / 'lessons/02-descriptive-statistics.qmd'
-PRACTICAL = ROOT / 'practicals/descriptive-statistics-r-practical.qmd'
-
+EXPECTED = ['16','17','18','19','23','24','26','added-line-chart','added-dot-plot',
+            '28','33','42','50','55','63','68','72','74','76','79']
 
 def synchronize(check=False):
-    original = LESSON.read_text()
-    result = re.sub(r'\n<!-- BEGIN TRY IN R [\w-]+ -->.*?<!-- END TRY IN R [\w-]+ -->\n',
-                    '', original, flags=re.S)
-    sections = re.findall(
-        r'^## (\d+[ab]?)\. ([^\n]+)\n(.*?)(?=^## |\Z)',
-        PRACTICAL.read_text(), re.M | re.S)
-    if len(sections) != 20:
-        raise RuntimeError('Expected 18 original descriptive R examples and two added charts')
-    for number, title, body in sections:
-        match = re.search(r'^```\{r\}\n#\| label: r-slide-([\w-]+)\n(.*?)^```',
-                          body, re.M | re.S)
-        if not match:
-            raise RuntimeError('Missing R code for example ' + number)
-        slide, code = match.groups()
-        explicit_anchor = re.search(r' \{#([\w-]+)\}$', title)
-        if explicit_anchor:
-            title = title[:explicit_anchor.start()]
-        # Figure captions belong to executed output, not displayed reference code.
-        code = re.sub(r'^#\| fig-cap:.*\n', '', code, flags=re.M)
-        anchor = re.sub(r'[^\w\s-]', '', title.lower())
-        anchor = re.sub(r'\s+', '-', anchor)
-        if explicit_anchor:
-            anchor = explicit_anchor[1]
-        panel = (
-            f'\n<!-- BEGIN TRY IN R {slide} -->\n'
-            f':::: {{.try-in-r #try-r-{slide}}}\n\n'
-            f'#### Try this in R {{.unlisted}}\n\n'
-            f'**Example {number}: {title}**\n\n'
-            f'```r\n{code}```\n\n'
-            f'[Open example {number} in the R practical]'
-            f'(../practicals/descriptive-statistics-r-practical.html#{anchor}).\n\n'
-            f'::::\n<!-- END TRY IN R {slide} -->\n'
-        )
-        pattern = rf'(::: {{\.source-slide #slide-{slide}}}\n.*?)(\n:::\n)'
-        result, count = re.subn(pattern, lambda m: m[1] + panel + m[2],
-                                result, count=1, flags=re.S)
-        if count != 1:
-            raise RuntimeError('Missing source slide ' + slide)
-    if check:
-        if result != original:
-            raise RuntimeError('Slide R references need refreshing: run scripts/sync-descriptive-r-references.py')
-    else:
-        LESSON.write_text(result)
-    print('Verified 20 slide R references.' if check else 'Updated 20 slide R references.')
-
+    text = LESSON.read_text()
+    labels = re.findall(r'^#\| label: r-slide-([\w-]+)$', text, re.M)
+    assert labels == EXPECTED, ('Missing or reordered descriptive R examples', labels)
+    assert re.findall(r'<!-- BEGIN TRY IN R ([\w-]+) -->', text) == EXPECTED
+    assert len(re.findall(r'^```\{r\}$', text, re.M)) == 20
+    assert not re.search(r'^```r$', text, re.M), 'R examples must be executable Quarto cells'
+    assert 'Open example ' not in text, 'Examples must not send students to a separate practical'
+    for slide in EXPECTED:
+        panel = re.search(rf'<!-- BEGIN TRY IN R {slide} -->(.*?)<!-- END TRY IN R {slide} -->',text,re.S)[1]
+        assert ('**What we are doing:**' in panel or '**Purpose:**' in panel), slide
+        assert ('**How to read the result:**' in panel or '**Read the chart:**' in panel), slide
+        assert f'#| label: r-slide-{slide}' in panel, slide
+    print('Verified 20 explained executable R examples in the combined Part 2 notebook.')
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--check', action='store_true')
+    parser.add_argument('--check', action='store_true', help='Check the combined notebook (the default).')
     synchronize(parser.parse_args().check)

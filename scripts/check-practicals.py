@@ -75,8 +75,7 @@ stopifnot(nrow(car_data) == 32, !anyNA(car_data[c('weight_kg', 'mpg', 'cylinders
             print('Passed combined R introduction:', notebook.name, flush=True)
             continue
         if notebook.name == '02-descriptive-statistics.qmd':
-            assert not worked, 'Descriptive R examples must stay in the companion practical'
-            continue
+            assert len(worked) == 20, 'The combined descriptive notebook must execute all 20 examples'
         if notebook.name in ['inferential-31-probability-distributions-draft.qmd',
                              'inferential-statistics-r-practical.qmd']:
             assert worked and not imports, notebook.name

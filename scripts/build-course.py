@@ -4,7 +4,7 @@ from pathlib import Path
 import argparse
 import shutil
 import subprocess
-from course_documents import EXTENDED, DOCUMENTS, NAVIGATION_PAGES, R_INTRODUCTION_ALIASES, STUDENT_PROJECT_ZIP, LEGACY_STUDENT_PROJECT_ZIP
+from course_documents import EXTENDED, DOCUMENTS, NAVIGATION_PAGES, R_INTRODUCTION_ALIASES, DESCRIPTIVE_PRACTICAL_ALIAS, STUDENT_PROJECT_ZIP, LEGACY_STUDENT_PROJECT_ZIP
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -14,6 +14,7 @@ def validate(site):
     required += [f'{folder}/{name}.html' for folder, name in DOCUMENTS]
     required += ['pdf/'+name+'.pdf' for _, name in DOCUMENTS]
     required += ['pdf/'+name+'.pdf' for name in R_INTRODUCTION_ALIASES]
+    required += ['pdf/'+DESCRIPTIVE_PRACTICAL_ALIAS+'.pdf']
     required += ['pdf/'+p+'.pdf' for p in ['01-introduction-to-r','02-descriptive-statistics','03-inferential-statistics']]
     required += ['extended-cases/superstore/index.html']
     required += ['extended-cases/'+p+'.html' for p in EXTENDED]+['pdf/'+p+'.pdf' for p in EXTENDED]
@@ -47,6 +48,11 @@ def validate(site):
     for addition in ['line-chart', 'dot-plot']:
         if f'id="slide-added-{addition}"' not in descriptive:
             raise RuntimeError('Missing added descriptive chart: ' + addition)
+    if len(re.findall(r'<!-- BEGIN TRY IN R [\w-]+ -->', descriptive)) != 20:
+        raise RuntimeError('Combined Part 2 must contain 20 executed R examples')
+    landing = (site/'course/part-2.html').read_text()
+    if 'descriptive-statistics-r-practical.html' in landing:
+        raise RuntimeError('Part 2 landing page still presents a separate practical')
     inferential = (site/'lessons/03-inferential-statistics.html').read_text()
     if any(f'id="part3-{k:02d}-slide-{i:02d}"' not in inferential
            for k, count in enumerate([37, 26, 57, 21], 1) for i in range(1, count+1)):

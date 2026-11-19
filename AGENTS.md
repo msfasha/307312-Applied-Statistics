@@ -377,3 +377,13 @@
 - Restore the original `assets/introduction-to-r/pipe_operator.png` and `clipboard-834917176.png` unchanged. Explain a purposeful filter/mutate/group/summarise/sort workflow, nested/intermediate/piped equivalence, and ggplot data, mappings, aesthetics, geometries, statistics, scales, coordinates, facets and themes. All visible code examples must be explained and runnable.
 - Replace compressed Superstore Sales boxplots and Sales/Profit scatter plots with the original material's built-in mtcars data: all 32 historical car models, weight in kg versus mpg, and mpg across recorded cylinder groups. State 1973–1974 model provenance and US-gallon units; group sizes are 11, 7 and 14 with medians 26.0, 19.7 and 15.2 mpg. Do not invent data, trim observations or claim causation. Show all observations alongside the ggplot boxplots.
 - Keep Superstore's original 2014–2017 tutorial data for business pipelines and the quantity/category charts. Retain the fifteen-PDF/twelve-notebook contract, packaging of both original diagrams and source attribution; rebuild/publish/verify the ongoing course correction. Preserve other lessons, practicals, reference decks and unapproved drafts.
+
+
+## Combined descriptive lesson and R examples — 19 November 2026
+
+- User requested combining the two Part 2 resources into one. The canonical runnable notebook is `lessons/02-descriptive-statistics.qmd`, containing all 20 R examples, their explanations and executed results at the matching teaching positions.
+- Preserve all non-R slide text, figures, Excel instructions, survey additions and approved corrections. All original R code lines/comments remain unchanged. Do not recreate a second canonical R practical.
+- Part 2 has one resource row and one canonical PDF. Former descriptive practical HTML/example anchors and PDF URLs remain compatibility aliases to the combined notebook/PDF.
+- Publication now has fourteen canonical notebook/PDF pairs; the Positron project still has twelve runnable notebooks. Part 2 includes its required images and editable supporting fragments under support/. Exclude duplicate compatibility sources/PDFs from bundles.
+- `scripts/sync-descriptive-r-references.py --check` retains its command name but now validates the single set of 20 executable examples. Chart generation reads the combined notebook.
+- Keep the unapproved inferential expansion/design local; do not include those unrelated working changes in this release.

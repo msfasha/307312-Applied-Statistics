@@ -12,7 +12,7 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / '_build/website'
 from student_project import student_path, RUNNABLE_DOCUMENTS, project_files
-from course_documents import LESSONS, PRACTICALS, EXTENDED, DOCUMENTS, SUPERSTORE, NAVIGATION_PAGES, R_INTRODUCTION_ALIASES, STUDENT_PROJECT_ZIP, LEGACY_STUDENT_PROJECT_ZIP
+from course_documents import LESSONS, PRACTICALS, EXTENDED, DOCUMENTS, SUPERSTORE, NAVIGATION_PAGES, R_INTRODUCTION_ALIASES, DESCRIPTIVE_PRACTICAL_ALIAS, STUDENT_PROJECT_ZIP, LEGACY_STUDENT_PROJECT_ZIP
 
 class Links(HTMLParser):
     def __init__(self):
@@ -51,6 +51,7 @@ if __name__ == '__main__':
     for alias in R_INTRODUCTION_ALIASES:
         assert (SITE/'pdf'/(alias+'.pdf')).read_bytes() == (SITE/'pdf/01-introduction-to-r.pdf').read_bytes(), alias
         assert '01-introduction-to-r.html' in (SITE/'lessons'/(alias+'.html')).read_text(), alias
+    assert (SITE/'pdf'/(DESCRIPTIVE_PRACTICAL_ALIAS+'.pdf')).read_bytes() == (SITE/'pdf/02-descriptive-statistics.pdf').read_bytes()
     assert (SITE/'downloads/inferential-statistics-r-practical.qmd').read_bytes() == (ROOT/'practicals/inferential-statistics-r-practical.qmd').read_bytes()
     assert not (SITE/'.vscode').exists(), 'Editor preferences belong in the student ZIP only'
     assert not (SITE/'data/practicals').exists(), 'Retired practical data leaked into site'

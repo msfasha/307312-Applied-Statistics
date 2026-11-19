@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Reproduce the added slide charts from the practical's canonical R cells."""
+"""Reproduce the added slide charts from the combined lesson's canonical R cells."""
 from pathlib import Path
 import re
 import subprocess
@@ -7,7 +7,7 @@ import subprocess
 ROOT = Path(__file__).resolve().parents[1]
 
 def render():
-    notebook = (ROOT/'practicals/descriptive-statistics-r-practical.qmd').read_text()
+    notebook = (ROOT/'lessons/02-descriptive-statistics.qmd').read_text()
     commands = ['students <- read.csv("data/descriptive-statistics/students.csv", stringsAsFactors = FALSE)']
     for kind in ['line-chart', 'dot-plot']:
         code = re.search(r'^```\{r\}\n#\| label: r-slide-added-' + kind + r'\n(.*?)^```', notebook, re.M | re.S)[1]

@@ -7,24 +7,25 @@ This supersedes the earlier local-only instruction.
 
 ## Active student material
 
-`scripts/course_documents.py` is the authoritative list of fifteen notebook/PDF pairs:
+`scripts/course_documents.py` is the authoritative list of fourteen notebook/PDF pairs:
 
 - Four lesson notebooks under `lessons/`: the combined Part 1 R introduction, Part 2 descriptive slides, Part 3 inferential slides and the revised probability-distributions section.
-- Two companion notebooks: `practicals/descriptive-statistics-r-practical.qmd` (the eighteen original Part 2 R examples plus line-chart and dot-plot examples) and `practicals/inferential-statistics-r-practical.qmd` (seven explained probability examples, simulation and independent tasks; later inference topics remain explicitly forthcoming).
+- One companion notebook: `practicals/inferential-statistics-r-practical.qmd` (seven explained probability examples, simulation and independent tasks; later inference topics remain explicitly forthcoming).
 - Three Superstore notebooks under `extended-cases/superstore/`, grouped by `index.qmd`.
 - Six numbered extended cases under `extended-cases/`: Springville, Oxford, BLK, Parachute, Potato and Harnswell.
 
 Part 2 retains 82 approved source slides after the 8 November duplicate review,
 their figures, Excel instructions,
 the collection/survey supplement and the authorized diagram/CV corrections.
-Its executable R cells live in the companion practical. Each of the 18 matching
-slides also shows a **Try this in R** code reference and one direct link to the
-corresponding practical section. The practical remains the code source: run
-`python3 scripts/sync-descriptive-r-references.py` after editing its R examples.
-The local builder checks that the slide references match. These references appear
-in the lesson HTML and PDF without a separate PowerPoint copy. Downloads stay on
-the Part 2 landing page rather than a repeated link row in the practical.
-Across all fifteen notebooks, omit repeated PDF/ZIP download rows and Part 1's
+All 20 executable R examples, their explanations and rendered results now live
+in `lessons/02-descriptive-statistics.qmd`, alongside their matching topics.
+The former practical HTML URL forwards to this combined notebook, preserving
+example fragments; its PDF URL serves an identical copy of the combined PDF.
+The canonical PDF ZIP contains only one Part 2 PDF. Run
+`python3 scripts/sync-descriptive-r-references.py --check` to validate the 20
+explained executable examples; there is no separate code copy to synchronize.
+Downloads stay on the Part 2 landing page, which has one combined resource row.
+Across all fourteen notebooks, omit repeated PDF/ZIP download rows and Part 1's
 repeated four-lesson menu. Keep individual downloads on the part/scenario landing
 pages and identify bundled data files by path in notebooks. Preserve source
 citations and links that connect a specific teaching example to its explanation.
@@ -44,7 +45,7 @@ The home page and navbar distinguish the core practical from extended cases.
 python3 scripts/build-course.py
 ```
 
-This command runs R checks, rebuilds HTML, exports all fifteen PDFs, rebuilds both
+This command runs R checks, rebuilds HTML, exports all fourteen PDFs, rebuilds both
 student bundles and validates completeness, links and exclusions. It only writes
 local build files; it never pushes or publishes. The publishing command calls
 this same builder before uploading the generated website.
@@ -63,7 +64,7 @@ extended cases directly, with the shared Petra burgundy and gray theme.
 
 PDFs are printed from executed HTML to preserve diagrams, tables, images,
 formula notation and results. Chrome/Chromium is required; Ghostscript optionally
-compresses images at 180 dpi while retaining vector text. All fifteen PDFs go
+compresses images at 180 dpi while retaining vector text. All fourteen PDFs go
 under `_build/website/pdf/`, with both ZIPs under `_build/website/downloads/`.
 Check PDF text and representative rendered pages. Extract the student Positron ZIP
 into a fresh directory and render the complete project to verify independence
@@ -72,9 +73,9 @@ master `../petra_theme/petra_theme.md` when changing the shared theme.
 
 ## Student resources and exclusions
 
-The PDF bundle includes all fifteen approved documents. The Positron ZIP contains twelve runnable notebooks (one combined R introduction, two practicals and nine extended cases), plus required data, introductory images, a shared R helper, theme assets,
+The PDF bundle includes all fourteen approved documents. The Positron ZIP contains twelve runnable notebooks (one combined R introduction, one combined descriptive lesson, one inference practical and nine extended cases), plus required data, introductory images, a shared R helper, theme assets,
 project configuration and setup instructions. The PDF ZIP contains exactly one PDF per
-approved notebook. The home page links all fifteen PDFs and both bundles.
+approved notebook. The home page links all fourteen PDFs and both bundles.
 
 Only explicitly listed `data/` resources in `_quarto.yml` enter the website and
 student project: original descriptive/inferential teaching CSVs and guides,
@@ -87,7 +88,7 @@ under root `data/`; read fixed paths from the project root in interactive Positr
 Exclude books, instructor notes/answers, provenance manifests, archives, original
 student measurement workbooks, publisher workbooks, source decks and build caches.
 The website retains original instructional images and approved editable diagrams.
-The Positron ZIP includes only images needed by its runnable notebooks.
+The Positron ZIP includes the images and editable fragments needed by its runnable notebooks, including the combined descriptive material.
 The Superstore workbook and publisher workbooks stay unchanged and local-only.
 Do not infer random sampling, causal discount effects or refund accounting.
 
@@ -95,7 +96,7 @@ The extension source reviews and answer keys remain under `instructor/`.
 `scripts/prepare-extended-data.py` regenerates approved extension CSVs only when
 intentionally requested; it must not silently change source measurements.
 Historical slide converters write `_build/reference-conversions/` and must not
-overwrite authored lessons or reinsert Part 2 R cells into the active slide lesson.
+overwrite authored lessons or overwrite the combined Part 2 notebook.
 
 ## Authorized publication
 
@@ -106,7 +107,7 @@ python3 scripts/publish-course.py
 python3 scripts/verify-live-course.py
 ```
 
-The publisher rebuilds HTML, all fifteen PDFs and both ZIPs, validates slide IDs,
+The publisher rebuilds HTML, all fourteen PDFs and both ZIPs, validates slide IDs,
 navigation, bundle contents and exclusions, and pushes a normal commit to `gh-pages`.
 It preserves branch history and never force pushes. `--skip-render` is only for a
 completed, verified HTML build; it refreshes the independent practical pages and
@@ -121,7 +122,7 @@ The user explicitly authorized the current push and website update.
 
 ## Simplified interface
 
-The home page has a Course material heading with three plain part links, followed by Other Downloads with both bundles and Extended scenarios. The navbar Course link opens the home page; course/index.qmd remains a compatible entry page. Part landing pages collect their own HTML/PDF and practical resources, ending with only a Home link to the main page. Part 3 links the original slides, the revised probability section, and the developing inferential R practical with online/PDF/Quarto downloads. NAVIGATION_PAGES in scripts/course_documents.py tracks the website landing pages for validation. These do not add PDFs to the fifteen-document contract.
+The home page has a Course material heading with three plain part links, followed by Other Downloads with both bundles and Extended scenarios. The navbar Course link opens the home page; course/index.qmd remains a compatible entry page. Part landing pages collect their own HTML/PDF and practical resources, ending with only a Home link to the main page. Part 3 links the original slides, the revised probability section, and the developing inferential R practical with online/PDF/Quarto downloads. NAVIGATION_PAGES in scripts/course_documents.py tracks the website landing pages for validation. These do not add PDFs to the fourteen-document contract.
 
 ## Part 3 probability and developing practical — 8 November 2026
 
@@ -134,7 +135,7 @@ The practical currently covers probability only and identifies later sections
 as forthcoming. Part 3 offers an individual editable Quarto download under
 `downloads/inferential-statistics-r-practical.qmd`. This is the sole approved
 public .qmd exception; preserve the exclusions for all other source files.
-The PDF bundle includes all fifteen approved PDFs. The Positron bundle contains only the twelve runnable R notebooks and required support files. The live verifier checks the individual notebook
+The PDF bundle includes all fourteen approved PDFs. The Positron bundle contains only the twelve runnable R notebooks and required support files. The live verifier checks the individual notebook
 byte-for-byte as well as the pages, PDFs, data and bundles.
 
 ## Student ZIP organization — 8 November 2026
@@ -142,11 +143,10 @@ byte-for-byte as well as the pages, PDFs, data and bundles.
 The website source folders are not the student project layout. `scripts/student_project.py`
 packages the twelve runnable notebooks into `part-1-introduction-to-r/`,
 `part-2-descriptive-statistics/`, `part-3-inferential-statistics/` and `extended-cases/`.
-Part 1 contains the combined R introduction; Parts 2 and 3 each contain their R practical.
+Part 1 contains the combined R introduction; Part 2 contains the combined descriptive lesson and R examples; Part 3 contains its developing R practical.
 `support/` contains only the required shared R helper; data and image paths retain their root folders. Links, include paths and
-R helper paths are rewritten in the ZIP only. Website URLs and canonical sources stay
-unchanged. The ZIP uses one root Quarto project with project-root execution, no nested
-practical project or Python render helpers, and no website navigation pages, slide-lesson sources or obsolete compatibility notebooks.
+R helper paths are rewritten in the ZIP only. The descriptive lesson is now the canonical Part 2 notebook; the old practical HTML/PDF URLs remain compatibility aliases. The ZIP uses one root Quarto project with project-root execution, no nested
+practical project or Python render helpers, and no website navigation pages, non-runnable inferential slide sources or obsolete compatibility notebooks. The combined Part 2 includes its required editable diagrams and survey fragment under support/.
 Links to omitted teaching lessons open the published website. The README identifies the developing probability companion.
 Validate a fresh extraction with a complete `quarto render` before release.
 
@@ -156,7 +156,7 @@ Validate a fresh extraction with a complete `quarto render` before release.
 Publish the runnable-only Positron ZIP and the approved descriptive ending cleanup together.
 The five repeated/empty outlier slides (77, 80, 83, 84, 85) are removed, with distinct
 screening explanations consolidated on slide 82; source IDs and practical links remain.
-Rebuild all fifteen PDFs and both ZIPs. Keep the existing download URL; the home-page
+Rebuild all fourteen PDFs and both ZIPs. Keep the existing download URL; the home-page
 Positron link adds `?v=20261108-clean` to refresh previously cached downloads.
 Unpublished inference-review files remain outside this release.
 
@@ -169,8 +169,8 @@ The line chart uses R's built-in AirPassengers monthly series (1949–1960, thou
 the dot plot uses the first 30 student ages in unchanged file order, without
 claiming random selection. Original source decks remain unchanged.
 `scripts/render-descriptive-chart-additions.py` reproduces the SVG slide charts
-from the practical's R cells; the local builder runs it before rendering.
-`scripts/sync-descriptive-r-references.py` synchronizes all 20 reference panels.
+from the combined notebook's R cells; the local builder runs it before rendering.
+`scripts/sync-descriptive-r-references.py` now validates all 20 executable example panels in the combined notebook.
 
 ## Combined R introduction — 15 November 2026
 
@@ -180,11 +180,11 @@ pipelines. Base R covers programming foundations; dplyr is the main table
 manipulation approach; conventional plots precede the ggplot2 introduction.
 Prior notebooks are preserved under `archived/2026-11-15-four-part-r-introduction/`.
 
-There are now fifteen canonical notebook/PDF pairs and twelve runnable student
+There are now fourteen canonical notebook/PDF pairs and twelve runnable student
 notebooks. Part 1 links only the combined notebook and its PDF. The old three
 lesson URLs remain compatibility entry pages, and their old individual PDF URLs
 serve identical copies of the combined introduction PDF. Compatibility PDFs
-are excluded from the fifteen-document PDF ZIP. `R_INTRODUCTION_ALIASES` in
+are excluded from the fourteen-document PDF ZIP. `R_INTRODUCTION_ALIASES` in
 `scripts/course_documents.py` controls these URLs; build and live verification
 check the aliases as well as the canonical resources. Original reference decks
 and all Parts 2–3, practicals and extended-case teaching content remain unchanged.
@@ -211,7 +211,7 @@ The visible project download is `downloads/applied-statistics-positron.zip`.
 The previous `applied-statistics-rstudio.zip` URL serves an identical Positron ZIP
 for compatibility only; no active page advertises it. Both URLs are validated
 and checked live. The student project retains twelve runnable notebooks; all
-fifteen PDFs and the PDF bundle are refreshed. No statistical teaching content
+fourteen PDFs and the PDF bundle are refreshed. No statistical teaching content
 is changed beyond setup instructions and the matching R code comments.
 The shared Petra theme remains active.
 
@@ -233,4 +233,25 @@ mapping versus setting, and a boxplot/point layer that shows every observation.
 The business pipelines still use the unchanged historical Superstore CSV.
 No additional CSV or package is required. The R checker verifies the stated
 car-data facts and equivalence of the three pipeline forms. Preserve all other
-course material and the fifteen-PDF/twelve-notebook download contract.
+course material and the fourteen-PDF/twelve-notebook download contract.
+
+
+## Combined Part 2 — 19 November 2026
+
+The user requested combining the two Part 2 resources into one. Preserve every
+non-R source-slide passage, approved diagram, Excel example and survey addition.
+Move the complete 20 practical sections into their matching lesson positions,
+including all original R code/comments, explanations, captions and executed
+results. The combined source is `lessons/02-descriptive-statistics.qmd`.
+
+There are fourteen canonical HTML/PDF pairs and twelve runnable student
+notebooks. `practicals/descriptive-statistics-r-practical.html` forwards to the
+combined lesson with its query/fragment; all former example anchors are retained.
+`pdf/descriptive-statistics-r-practical.pdf` is an identical compatibility copy
+of `pdf/02-descriptive-statistics.pdf`, excluded from the PDF ZIP. The Part 2
+landing page presents one resource. The student ZIP includes the combined source
+and its required images, editable diagrams and survey supplement.
+
+The separate unapproved inference redesign/expansion remains local. Build a
+release from the committed source, preserving the previously approved Part 3
+material rather than deploying unrelated uncommitted review changes.

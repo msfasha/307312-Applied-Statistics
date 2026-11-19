@@ -2,7 +2,7 @@
 
 [Open the student course](https://msfasha.github.io/307312-Applied-Statistics/).
 The core descriptive and inferential lessons preserve the original slides.
-R practicals and six extended business cases apply the concepts separately.
+Part 2 integrates its R applications directly; the developing inference practical and extended business cases remain separate.
 
 ## Course sequence
 
@@ -10,9 +10,9 @@ R practicals and six extended business cases apply the concepts separately.
 2. **Descriptive Statistics:** the original slide sequence (82 retained source slides plus the approved line-chart and dot-plot additions), original examples, diagrams, Excel instructions, labeled R equivalents and the approved survey section.
 3. **Inferential Statistics:** all 141 original slides in order: probability distributions, estimation, hypothesis testing and regression, with original Excel/Python source examples and labeled R equivalents.
 
-The descriptive R practical and developing inference R practical accompany the core
-lessons. Three Superstore applications and six standalone business cases remain
-under Extended scenarios. All fifteen approved documents have PDF downloads.
+All 20 descriptive R examples run directly in the combined Part 2 notebook. The
+developing inference R practical accompanies Part 3. Three Superstore applications and six standalone business cases remain
+under Extended scenarios. All fourteen approved documents have PDF downloads.
 
 ## Work locally
 
@@ -23,7 +23,7 @@ settings send Quarto cells to that Console; use Preview for rendered results. CS
 
 - `.vscode/settings.json`: portable Positron workspace settings, included in the student ZIP.
 - `lessons/`: combined R introduction, original core slides and the separate probability section; `_includes/course-tools.R` holds shared aggregation and chart styling.
-- `practicals/`: descriptive and developing inferential R companions, plus old URL entry pages.
+- `practicals/`: developing inferential R companion and old URL entry pages.
 - `data/r-introduction/`: unchanged historical 2014–2017 Superstore tutorial data.
 - `data/business/`: pinned business practical and extended-case data.
 - `data/descriptive-statistics/` and `data/inferential-statistics/`: original lesson teaching CSVs.
@@ -57,7 +57,7 @@ they do not overwrite the authored active notebooks.
 
 - `python3 scripts/check-practicals.py`: worked R cells, isolated imports, source-cell checks and teaching results.
 - `quarto render`: full site and independently rendered practicals.
-- `python3 scripts/publish-course.py`: fresh HTML, fifteen PDFs, both ZIPs, validation and normal push to gh-pages.
+- `python3 scripts/publish-course.py`: fresh HTML, fourteen PDFs, both ZIPs, validation and normal push to gh-pages.
 - See [PUBLISHING.md](PUBLISHING.md) for publication and live verification requirements.
 
 The source branch can contain instructor notes; exclusion from the student website
