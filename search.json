@@ -315,256 +315,130 @@
     "text": "8. Continue\n\nKeep your tables and briefing in your Positron workspace.\nContinue to Practical 2: Order size.\nSource definitions and extract limits: data/business/README.md."
   },
   {
-    "objectID": "lessons/inferential-31-probability-distributions-draft.html",
-    "href": "lessons/inferential-31-probability-distributions-draft.html",
-    "title": "3.1 Probability Distributions",
+    "objectID": "lessons/03-inferential-statistics.html",
+    "href": "lessons/03-inferential-statistics.html",
+    "title": "Part 3: Inferential Statistics",
     "section": "",
-    "text": "A probability model describes the possible outcomes of an uncertain process and assigns probabilities to events. Here we use given model inputs to calculate how likely different outcomes are; later, inference will use samples to learn about unknown population features.\n\nHow many cars might be defective in the next production batch?\nHow many customers might arrive in the next minute?\nWhat proportion of measurements might exceed a threshold?\n\n\n\n\nA fair die is a simple example of a probability model: each of its six faces has probability 1/6. Dice illustration retained from original probability slides, source slide 8.\n\n\nBy the end of this section, you should be able to:\n\nDefine a random variable, including its units and observation window.\nChoose a plausible model and state its assumptions.\nCalculate an exact-count, cumulative or interval probability.\nExplain the result in the context of the question.\n\n\n01 / 23 · Learning route"
+    "text": "Read the teaching slides and run the Try this in R examples beside the matching topics. The same notebook produces this page, its PDF and the Part 3 file in the Positron project."
   },
   {
-    "objectID": "lessons/inferential-31-probability-distributions-draft.html#probability-models-before-inference",
-    "href": "lessons/inferential-31-probability-distributions-draft.html#probability-models-before-inference",
-    "title": "3.1 Probability Distributions",
-    "section": "",
-    "text": "A probability model describes the possible outcomes of an uncertain process and assigns probabilities to events. Here we use given model inputs to calculate how likely different outcomes are; later, inference will use samples to learn about unknown population features.\n\nHow many cars might be defective in the next production batch?\nHow many customers might arrive in the next minute?\nWhat proportion of measurements might exceed a threshold?\n\n\n\n\nA fair die is a simple example of a probability model: each of its six faces has probability 1/6. Dice illustration retained from original probability slides, source slide 8.\n\n\nBy the end of this section, you should be able to:\n\nDefine a random variable, including its units and observation window.\nChoose a plausible model and state its assumptions.\nCalculate an exact-count, cumulative or interval probability.\nExplain the result in the context of the question.\n\n\n01 / 23 · Learning route"
+    "objectID": "lessons/03-inferential-statistics.html#part3-01",
+    "href": "lessons/03-inferential-statistics.html#part3-01",
+    "title": "Part 3: Inferential Statistics",
+    "section": "3.1 Introduction to Probability Distributions",
+    "text": "3.1 Introduction to Probability Distributions"
   },
   {
-    "objectID": "lessons/inferential-31-probability-distributions-draft.html#what-does-statistical-inference-do",
-    "href": "lessons/inferential-31-probability-distributions-draft.html#what-does-statistical-inference-do",
-    "title": "3.1 Probability Distributions",
-    "section": "What does statistical inference do?",
-    "text": "What does statistical inference do?\nStatistical inference uses sample data to draw conclusions about a population and quantify the uncertainty in those conclusions. It helps us estimate unknown features, test claims and assess relationships.\n\n\n\nOriginal probability slides, source slide 3. Sampling moves from population to sample; inference reasons back to the population.\n\n\n\nPopulation: the group or process we want to understand.\nSample: the observations we actually collect.\nParameter: a population feature, such as mean product strength, μ\\mu.\nStatistic: a sample calculation, such as sample mean strength, x‾\\bar x.\n\n\n\n\n\n\n\n\nQuestion\nWhat inference contributes\n\n\n\n\nWhat is the mean product strength?\nAn estimate and an uncertainty interval.\n\n\nDoes a store display change sales?\nEvidence from a comparison designed to answer that question.\n\n\nHow does price relate to sales?\nAn estimated relationship, with assumptions and limits.\n\n\n\nHow the data are obtained affects the conclusion\n\nRandom sampling helps a sample represent a defined population.\nRandom assignment helps isolate a treatment comparison in an experiment.\n\nSampling supports conclusions about a population; assignment supports a causal comparison. Neither is established merely by calculating a probability.\n\n02 / 23 · Inference · Berenson et al., ninth ed., §§1.1–1.2, 1.7; p. 336"
+    "objectID": "lessons/03-inferential-statistics.html#part3-02",
+    "href": "lessons/03-inferential-statistics.html#part3-02",
+    "title": "Part 3: Inferential Statistics",
+    "section": "3.2 Introduction to Estimation in Statistics",
+    "text": "3.2 Introduction to Estimation in Statistics"
   },
   {
-    "objectID": "lessons/inferential-31-probability-distributions-draft.html#define-the-random-variable-first",
-    "href": "lessons/inferential-31-probability-distributions-draft.html#define-the-random-variable-first",
-    "title": "3.1 Probability Distributions",
-    "section": "Define the random variable first",
-    "text": "Define the random variable first\nA random variable assigns a numerical value to each outcome of an uncertain process. For example, the number of defective cars in the next batch is unknown before inspection; its possible values are 0, 1, 2, and so on up to 80.\n\n\n\nVariable\nDefinition\nType\n\n\n\n\nXX\nDefective cars among the next 80 cars\nDiscrete count\n\n\nYY\nCustomer arrivals during one minute\nDiscrete count\n\n\nTT\nWaiting time in minutes\nContinuous measurement\n\n\nDD\nComponent diameter in millimetres\nContinuous measurement\n\n\n\n\n\n\nA batch gives a count of components; an individual component has a measured diameter. Photo retained from original probability slides, source slide 9.\n\n\n\nDiscrete values form a finite or countable set.\nA continuous model describes measurements over an interval.\nRecorded measurements may be rounded even when the underlying model is continuous.\n\nBefore calculating: state what is measured, on which unit, over what window, and in which units.\n\nA branch records the number of arrivals and each customer’s waiting time. Why do these require different kinds of probability models?\n\n\n03 / 23 · Random variables · Book §§1.8, 5.1 and 6.1"
+    "objectID": "lessons/03-inferential-statistics.html#part3-03",
+    "href": "lessons/03-inferential-statistics.html#part3-03",
+    "title": "Part 3: Inferential Statistics",
+    "section": "3.3 Introduction to Hypothesis Testing",
+    "text": "3.3 Introduction to Hypothesis Testing"
   },
   {
-    "objectID": "lessons/inferential-31-probability-distributions-draft.html#probability-mass-and-probability-density",
-    "href": "lessons/inferential-31-probability-distributions-draft.html#probability-mass-and-probability-density",
-    "title": "3.1 Probability Distributions",
-    "section": "Probability mass and probability density",
-    "text": "Probability mass and probability density\nA probability mass function assigns a probability to each possible value of a discrete random variable: p(x)=P(X=x)p(x)=P(X=x).\nA probability density function describes how probability is spread across the values of a continuous random variable. A height f(x)f(x) is not a probability: the area under the curve over an interval is its probability.\n\n\n\n\n\n\n\nDiscrete model\nContinuous model\n\n\n\n\np(x)=P(X=x)p(x)=P(X=x) is a probability.\nf(x)f(x) is a density height.\n\n\nAdd masses for the outcomes in an event.\nFind the area over an interval.\n\n\nEach mass is between 0 and 1.\nA density height can exceed 1.\n\n\nAll masses sum to 1.\nThe total area under the density is 1.\n\n\n\nP(a&lt;X&lt;b)=∫abf(x)dx.P(a&lt;X&lt;b)=\\int_a^b f(x)\\,dx.\n\nFor a continuous model, P(X=x)=0P(X=x)=0 at one exact point.\nIncluding or excluding an endpoint does not change a continuous interval probability.\nThe probability of a nonzero-width interval can be positive.\n\n\n\n\nRead the contrast: a bar gives a probability at a discrete value; the shaded area, rather than the curve’s height, gives a continuous interval probability. Course illustration using the stated models.\n\n\n\n04 / 23 · Probability mass and density · Book §§5.1 and 6.1"
+    "objectID": "lessons/03-inferential-statistics.html#part3-04",
+    "href": "lessons/03-inferential-statistics.html#part3-04",
+    "title": "Part 3: Inferential Statistics",
+    "section": "3.4 Introduction to Linear Regression",
+    "text": "3.4 Introduction to Linear Regression"
   },
   {
-    "objectID": "lessons/inferential-31-probability-distributions-draft.html#discrete-uniform-equally-likely-outcomes",
-    "href": "lessons/inferential-31-probability-distributions-draft.html#discrete-uniform-equally-likely-outcomes",
-    "title": "3.1 Probability Distributions",
-    "section": "Discrete uniform: equally likely outcomes",
-    "text": "Discrete uniform: equally likely outcomes\nA discrete uniform distribution assigns the same probability to each of a finite set of possible values. For a fair six-sided die, each outcome has probability 1/61/6.\n\n\n\nEvent\nIncluded outcomes\nProbability\n\n\n\n\nRoll a 3\n3\n1/6=0.16671/6=0.1667\n\n\nRoll an even number\n2, 4, 6\n3/6=0.53/6=0.5\n\n\nRoll from 2 to 5, inclusive\n2, 3, 4, 5\n4/6=0.66674/6=0.6667\n\n\n\nFor equally likely integers a,a+1,…,ba,a+1,\\ldots,b:\np(x)=1b−a+1.p(x)=\\frac{1}{b-a+1}.\nHow to read the R code\n\noutcomes &lt;- 1:6 stores the six possible values (1 through 6) in outcomes; &lt;- means “assign.”\noutcomes == 3 checks each value and returns FALSE FALSE TRUE FALSE FALSE FALSE. == tests equality.\nmean() treats TRUE as 1 and FALSE as 0. Here it gives (0+0+1+0+0+0)/6=1/6(0+0+1+0+0+0)/6=1/6: the proportion satisfying the condition, not the mean die score.\n%% gives the remainder after division: outcomes %% 2 == 0 selects even values. & requires both conditions to hold; &gt;= and &lt;= include the endpoints.\nc() combines results into one vector. Labels such as roll_3 = name the results in the output.\n\nThese proportions are probabilities because all six outcomes are equally likely.\n\noutcomes &lt;- 1:6\nc(roll_3 = mean(outcomes == 3),\n  even = mean(outcomes %% 2 == 0),\n  from_2_to_5 = mean(outcomes &gt;= 2 & outcomes &lt;= 5))\n\n     roll_3        even from_2_to_5 \n   0.166667    0.500000    0.666667 \n\n\nEquivalent calculation: sum(outcomes == 3) / length(outcomes) counts the matching values and divides by the total number of values. sum() adds the 1s and 0s; length() counts all entries.\nFairness is stipulated here; it is not established by one roll.\n\n05 / 23 · Original probability deck, slides 14–15; probability principles: book §5.1"
-  },
-  {
-    "objectID": "lessons/inferential-31-probability-distributions-draft.html#binomial-defective-cars-in-a-batch",
-    "href": "lessons/inferential-31-probability-distributions-draft.html#binomial-defective-cars-in-a-batch",
-    "title": "3.1 Probability Distributions",
-    "section": "Binomial: defective cars in a batch",
-    "text": "Binomial: defective cars in a batch\nA binomial distribution describes the number of successes in a fixed number of independent trials, each with the same success probability. Here, “success” means a car is classified as defective; it does not mean a desirable outcome.\nQuestion: how many of 80 cars might be defective if the defect probability is 2%?\nLet X=X= number of defective cars among the 80 cars.\nX∼Binomial⁡(n=80,p=0.02).X\\sim\\operatorname{Binomial}(n=80,p=0.02).\nThe binomial model assumes:\n\nA fixed number of trials: 80 cars.\nTwo outcomes for each trial: defective or not defective, under a defined rule.\nThe same defect probability for each car: 0.02.\nIndependence between cars’ defect outcomes.\n\nWhat could undermine it? A shared production fault might cause several cars to be defective together.\nModel input: 2% is the assumed probability in this exercise, not a new estimate from observed factory records.\n\n06 / 23 · Original probability deck, slide 16; binomial method: book §5.3"
-  },
-  {
-    "objectID": "lessons/inferential-31-probability-distributions-draft.html#binomial-translate-the-wording-into-an-event",
-    "href": "lessons/inferential-31-probability-distributions-draft.html#binomial-translate-the-wording-into-an-event",
-    "title": "3.1 Probability Distributions",
-    "section": "Binomial: translate the wording into an event",
-    "text": "Binomial: translate the wording into an event\nAn exact-count probability concerns one value, such as X=2X=2. A cumulative probability adds the probabilities of all counts up to a cutoff, such as P(X≤2)P(X\\leq2). For the same car model, n=80n=80 and p=0.02p=0.02.\nP(X=x)=(nx)px(1−p)n−x.P(X=x)=\\binom{n}{x}p^x(1-p)^{n-x}.\n\n\n\nQuestion\nEvent\nProbability\n\n\n\n\nExactly two defective cars\nX=2X=2\n0.26145\n\n\nFewer than two\nX=0X=0 or X=1X=1\n0.52297\n\n\nMore than two\nX≥3X\\geq3\n0.21558\n\n\nNo defective cars\nX=0X=0\n0.19865\n\n\n\nInterpretation: exactly two defects has a probability of about 26.14% for a batch under this model. “More than two” starts at three, so it excludes two.\nR functions: what they calculate\n\ndbinom(x, size, prob) returns P(X=x)P(X=x): the probability of exactly x successes. binom identifies the binomial distribution; R uses the d prefix for mass/density functions. Here the result is a probability mass.\npbinom(q, size, prob) returns P(X≤q)P(X\\leq q) by default: the cumulative probability up to and including cutoff q. The p prefix identifies a cumulative probability function.\nsize=80 is the number of trials; prob=0.02 is the success probability on each trial, not the requested batch probability.\nlower.tail=FALSE changes the cumulative calculation to P(X&gt;q)P(X&gt;q). Thus “fewer than two” uses cutoff 1, while “more than two” uses cutoff 2 and the upper tail.\nc() combines the four answers; the names before = label the output.\n\n\nc(exactly_2 = dbinom(x=2, size=80, prob=0.02),\n  fewer_than_2 = pbinom(q=1, size=80, prob=0.02),\n  more_than_2 = pbinom(q=2, size=80, prob=0.02,\n                       lower.tail=FALSE),\n  no_defects = dbinom(x=0, size=80, prob=0.02))\n\n   exactly_2 fewer_than_2  more_than_2   no_defects \n    0.261445     0.522974     0.215581     0.198649 \n\n\nExcel: BINOM.DIST(2,80,0.02,FALSE) gives exactly two. Use TRUE for the cumulative probability P(X≤x)P(X\\leq x).\n\n07 / 23 · Binomial count probabilities · Book §5.3"
-  },
-  {
-    "objectID": "lessons/inferential-31-probability-distributions-draft.html#a-binomial-distribution-need-not-look-normal",
-    "href": "lessons/inferential-31-probability-distributions-draft.html#a-binomial-distribution-need-not-look-normal",
-    "title": "3.1 Probability Distributions",
-    "section": "A binomial distribution need not look normal",
-    "text": "A binomial distribution need not look normal\nA binomial model can be skewed when successes are rare. With only 1.6 defective cars expected per batch, this model places most probability near zero, even though the batch contains 80 cars.\nHere, E(X)E(X) is the expected (long-run mean) count and SD(X)SD(X) measures its spread:\nE(X)=np=1.6,SD(X)=np(1−p)≈1.252.E(X)=np=1.6,\\qquad SD(X)=\\sqrt{np(1-p)}\\approx1.252.\n\n\n\n\n\n\n\n\n\n\nMost probability is concentrated at a few small counts; there is also a very small tail beyond the displayed counts.\nThe shape is right-skewed even though n=80n=80.\nA normal approximation needs both npnp and n(1−p)n(1-p) to be sufficiently large; “large nn” alone is not enough.\nThe mean of 1.6 is a long-run average, not a possible count for a single batch.\n\n\n08 / 23 · Binomial shape and interpretation · Book §5.3"
-  },
-  {
-    "objectID": "lessons/inferential-31-probability-distributions-draft.html#poisson-arrivals-during-a-minute",
-    "href": "lessons/inferential-31-probability-distributions-draft.html#poisson-arrivals-during-a-minute",
-    "title": "3.1 Probability Distributions",
-    "section": "Poisson: arrivals during a minute",
-    "text": "Poisson: arrivals during a minute\nA Poisson distribution models the number of events in a fixed interval. Its parameter λ\\lambda is the expected count in that interval; it must match the interval used in the question.\nBook example: a bank’s assumed arrival rate during its lunch period is three customers per minute.\nLet X=X= number of arrivals in one specified minute.\nX∼Poisson⁡(λ=3).X\\sim\\operatorname{Poisson}(\\lambda=3).\n\nCount events over a defined time or space interval.\nState the unit of the rate: three per minute, not three per hour.\nA homogeneous Poisson model assumes a suitable constant rate and independent event occurrences.\nGroups arriving together or a strong change in the rate may require a different model.\n\nQuestion: what is the probability of exactly two arrivals? More than two?\nArrival volume alone does not determine queue length or required staffing; service times also matter.\n\n09 / 23 · Bank-arrival model · Book §5.5, pp. 183–184"
-  },
-  {
-    "objectID": "lessons/inferential-31-probability-distributions-draft.html#poisson-exact-counts-and-the-complement",
-    "href": "lessons/inferential-31-probability-distributions-draft.html#poisson-exact-counts-and-the-complement",
-    "title": "3.1 Probability Distributions",
-    "section": "Poisson: exact counts and the complement",
-    "text": "Poisson: exact counts and the complement\nThe complement rule gives an event’s probability by subtracting the probability of everything outside it from 1. For the bank model with λ=3\\lambda=3, “more than two” is the complement of “two or fewer.”\nP(X=x)=e−λλxx!.P(X=x)=e^{-\\lambda}\\frac{\\lambda^x}{x!}.\n\nExactly two: P(X=2)=0.22404P(X=2)=0.22404, approximately 22.40%.\nMore than two: P(X&gt;2)=1−P(X≤2)=0.57681P(X&gt;2)=1-P(X\\leq2)=0.57681, approximately 57.68%.\n\nR functions: exact count versus cumulative probability\n\ndpois(x, lambda) returns P(X=x)P(X=x): exactly x events. pois identifies the Poisson distribution; d gives its probability mass.\nppois(q, lambda) returns P(X≤q)P(X\\leq q) by default. p means cumulative probability; lower.tail=FALSE instead returns P(X&gt;q)P(X&gt;q).\nlambda=3 is the expected number of arrivals in one minute. The first answer uses count x=2; the second uses cutoff q=2. c() collects and labels the answers.\n\n\nc(exactly_2 = dpois(x=2, lambda=3),\n  more_than_2 = ppois(q=2, lambda=3, lower.tail=FALSE))\n\n  exactly_2 more_than_2 \n   0.224042    0.576810 \n\n\n\n\n\n\n\n\n\n\n\nExcel: POISSON.DIST(2,3,FALSE) and 1-POISSON.DIST(2,3,TRUE).\nInterpretation: under this model, about 57.68% of one-minute intervals have more than two arrivals in the long run. “More than two” excludes two; “two or more” includes it.\n\n10 / 23 · Poisson probabilities · Book p. 184"
-  },
-  {
-    "objectID": "lessons/inferential-31-probability-distributions-draft.html#continuous-uniform-probability-is-interval-length",
-    "href": "lessons/inferential-31-probability-distributions-draft.html#continuous-uniform-probability-is-interval-length",
-    "title": "3.1 Probability Distributions",
-    "section": "Continuous uniform: probability is interval length",
-    "text": "Continuous uniform: probability is interval length\nA continuous uniform distribution spreads probability evenly over an interval. The probability of a subinterval equals its length divided by the full interval length; the density is constant throughout.\nAssume arrival time TT is uniform from 8 a.m. to noon:\nT∼U(8,12),f(t)=112−8=0.25 per hour.T\\sim U(8,12),\\qquad f(t)=\\frac{1}{12-8}=0.25\\text{ per hour}.\n\n\n\n\n\n\n\n\n\nP(T&lt;9)=9−812−8=0.25.P(T&lt;9)=\\frac{9-8}{12-8}=0.25.\nInterpretation: the model assigns a 25% chance to arrival before 9 a.m.; this covers one hour of the four-hour window.\n\nEqual-length intervals have equal probabilities.\nThe mean is (8+12)/2=10(8+12)/2=10 a.m.; 10 a.m. is not a peak.\nThere is no basis here for saying that 10 a.m. requires especially high staffing.\n\n\n11 / 23 · Original probability deck, slide 22; uniform method: book §6.3"
-  },
-  {
-    "objectID": "lessons/inferential-31-probability-distributions-draft.html#continuous-uniform-component-diameters",
-    "href": "lessons/inferential-31-probability-distributions-draft.html#continuous-uniform-component-diameters",
-    "title": "3.1 Probability Distributions",
-    "section": "Continuous uniform: component diameters",
-    "text": "Continuous uniform: component diameters\nUnder a uniform model, the proportion above a threshold equals the length of the interval above that threshold divided by the full interval length. We now apply that rule to a measurement in millimetres.\nAssume component diameter DD is uniform from 9.8 to 10.2 mm.\nQuestion: what proportion exceeds 10.1 mm?\nP(D&gt;10.1)=10.2−10.110.2−9.8=0.25.P(D&gt;10.1)=\\frac{10.2-10.1}{10.2-9.8}=0.25.\n\n\n\nQuantity\nCalculation\nResult\n\n\n\n\nMean diameter\n(9.8+10.2)/2(9.8+10.2)/2\n10.0 mm\n\n\nDiameter variance\n(10.2−9.8)2/12(10.2-9.8)^2/12\n0.013333 mm²\n\n\nAbove 10.1 mm\nInterval length 0.1 divided by 0.4\n25%\n\n\n\nR function: cumulative uniform probability\n\npunif(q, min, max) returns the probability at or below cutoff q under a continuous uniform model. p means cumulative probability; unif identifies the uniform distribution.\nmin and max are the model’s lower and upper limits, not values R estimates from data. For arrival time, q=9, min=8 and max=12 are hours.\nlower.tail=FALSE requests the probability above q. For diameters, all three values are in millimetres.\nFor a continuous model, including the cutoff does not change the probability. c() combines two separate answers, both 0.25; the labels identify their contexts.\n\n\nc(arrival_before_9 = punif(q=9, min=8, max=12),\n  diameter_above_10_1 = punif(q=10.1, min=9.8, max=10.2,\n                             lower.tail=FALSE))\n\n   arrival_before_9 diameter_above_10_1 \n               0.25                0.25 \n\n\n\nUniformity is stipulated, not established by the fact that a machine made the components.\n“Above 10.1 mm” is not automatically a defect definition; a specification must be supplied separately.\n\n\n12 / 23 · Original probability deck, slide 22; uniform method: book §6.3"
-  },
-  {
-    "objectID": "lessons/inferential-31-probability-distributions-draft.html#the-normal-distribution-centre-and-spread",
-    "href": "lessons/inferential-31-probability-distributions-draft.html#the-normal-distribution-centre-and-spread",
-    "title": "3.1 Probability Distributions",
-    "section": "The normal distribution: centre and spread",
-    "text": "The normal distribution: centre and spread\nThe normal distribution is a continuous, symmetric, bell-shaped probability model. Its mean μ\\mu locates the centre, and its standard deviation σ\\sigma controls the spread.\nX∼N(μ,σ2).X\\sim N(\\mu,\\sigma^2).\n\nA symmetric, bell-shaped model with mean μ\\mu and SD σ\\sigma.\nMean, median and mode coincide.\nThe second parameter in this notation is the variance; R’s normal functions ask for the SD.\n\n\n\n\n\n\n\n\n\n\nA normal model has unbounded tails. It may approximate some bounded measurements when impossible tail values are negligible. Salaries, profits and waiting times are not automatically normal.\n\n13 / 23 · Normal model · Book §6.1; assessing normality §6.2"
-  },
-  {
-    "objectID": "lessons/inferential-31-probability-distributions-draft.html#four-r-functions-density-probability-cutoff-and-simulation",
-    "href": "lessons/inferential-31-probability-distributions-draft.html#four-r-functions-density-probability-cutoff-and-simulation",
-    "title": "3.1 Probability Distributions",
-    "section": "Four R functions: density, probability, cutoff and simulation",
-    "text": "Four R functions: density, probability, cutoff and simulation\nR provides four related functions for many distributions. The prefix tells us the task; the ending identifies the distribution. For the normal model, the ending is norm.\n\n\n\n\nmean and sd specify the normal model in all four functions. x is a value; q is a cutoff; p is a probability; n is the number of generated values.\nAll panels use mean 70 and SD 6. The dots show the 12 simulated scores generated below.\n\nCreate a small simulated dataset\n\nset.seed(312) makes the random sequence reproducible when this code is rerun in the same R setup. The seed is a chosen starting value, not a sample size.\nrnorm(n=12, mean=70, sd=6) generates 12 scores. data.frame(score=...) puts them in a table with one column named score; &lt;- stores that table as simulated_scores. head() displays its first six rows.\n\n\nset.seed(312)\nsimulated_scores &lt;- data.frame(score=rnorm(n=12, mean=70, sd=6))\nhead(simulated_scores)\n\n    score\n1 74.8729\n2 79.0483\n3 75.4896\n4 65.5290\n5 69.4101\n6 63.7773\n\n\nRead the output: each row is one simulated observation. These are generated values, not collected student records. The model mean is 70 and SD is 6; a sample of 12 will generally have a different mean and SD.\nOther distribution families use the same prefixes: binom (binomial), pois (Poisson) and unif (uniform). For discrete models, d gives probability mass.\n\n14 / 23 · R distribution functions and simulated data · Course R activity"
-  },
-  {
-    "objectID": "lessons/inferential-31-probability-distributions-draft.html#the-empirical-rule-approximate-normal-areas",
-    "href": "lessons/inferential-31-probability-distributions-draft.html#the-empirical-rule-approximate-normal-areas",
-    "title": "3.1 Probability Distributions",
-    "section": "The empirical rule: approximate normal areas",
-    "text": "The empirical rule: approximate normal areas\nThe empirical rule states that, under a normal model, approximately 68%, 95% and 99.7% of values lie within one, two and three standard deviations of the mean, respectively.\n\n\n\nInterval\nApproximate share under a normal model\n\n\n\n\nμ±σ\\mu\\pm\\sigma\n68%\n\n\nμ±2σ\\mu\\pm2\\sigma\n95%\n\n\nμ±3σ\\mu\\pm3\\sigma\n99.7%\n\n\n\n\n\n\n\n\n\n\n\n\n\nUse this rule when a roughly normal shape is defensible.\nThese are rounded model percentages, not guarantees for every sample.\nFor example, the exact normal area within two SDs is approximately 95.45%.\n\n\n15 / 23 · Empirical rule · Book §6.1 and p. 108"
-  },
-  {
-    "objectID": "lessons/inferential-31-probability-distributions-draft.html#worked-example-expected-exam-score-counts",
-    "href": "lessons/inferential-31-probability-distributions-draft.html#worked-example-expected-exam-score-counts",
-    "title": "3.1 Probability Distributions",
-    "section": "Worked example: expected exam-score counts",
-    "text": "Worked example: expected exam-score counts\nAn expected count is the model’s predicted average number in a group: multiply the group size by the probability of the event. We use the rounded empirical-rule percentages here.\nA class has 280 students. Assume scores are approximately normal with mean 74 and SD 8.\n1. Between 58 and 90\n58=74−2(8),90=74+2(8).58=74-2(8),\\qquad90=74+2(8).\n\nBoth limits are two SDs from the mean.\nApproximate count: 280×0.95=266280\\times0.95=266 students.\n\n2. Above 90\n\nThe upper tail beyond two SDs is approximately (1−0.95)/2=0.025(1-0.95)/2=0.025.\nApproximate count: 280×0.025=7280\\times0.025=7 students.\n\nInterpretation: these are approximate model-based expected counts. They are not the observed class counts or a guarantee about this class.\nCheck the reasoning: why do we divide the remaining 5% by two?\n\n16 / 23 · Original probability deck, slides 26 and 28; empirical rule: book §6.1"
-  },
-  {
-    "objectID": "lessons/inferential-31-probability-distributions-draft.html#z-scores-expressing-position-in-sd-units",
-    "href": "lessons/inferential-31-probability-distributions-draft.html#z-scores-expressing-position-in-sd-units",
-    "title": "3.1 Probability Distributions",
-    "section": "z-scores: expressing position in SD units",
-    "text": "z-scores: expressing position in SD units\nA z-score tells us how many standard deviations a value lies above or below the mean. Subtract the mean from the value, then divide by the standard deviation; a positive result is above the mean.\nz=x−μσ.z=\\frac{x-\\mu}{\\sigma}.\n\n\n\nz-score\nInterpretation\n\n\n\n\n0\nAt the mean\n\n\n+1\nOne SD above the mean\n\n\n−2\nTwo SDs below the mean\n\n\n\nFor the exam example:\nz58=58−748=−2,z90=90−748=2.z_{58}=\\frac{58-74}{8}=-2,\\qquad\nz_{90}=\\frac{90-74}{8}=2.\n\nStandardisation cancels the measurement units.\nYou can calculate a standard score without assuming normality.\nConverting that score into a standard normal probability requires a normal model.\nA z-score rule can flag an observation for investigation; it is not a reason to delete it automatically.\n\n\n17 / 23 · Standard scores · Book §6.1, p. 199 onward"
-  },
-  {
-    "objectID": "lessons/inferential-31-probability-distributions-draft.html#comparing-relative-performance",
-    "href": "lessons/inferential-31-probability-distributions-draft.html#comparing-relative-performance",
-    "title": "3.1 Probability Distributions",
-    "section": "Comparing relative performance",
-    "text": "Comparing relative performance\nComparing z-scores shows how far each result lies above or below its own group’s mean. This lets us compare relative positions when the groups have different means or spreads.\nKhalid scores 90 in both Python and Database.\n\n\n\nCourse\nMean\nSD\nScore\nz-score\n\n\n\n\nPython\n70\n10\n90\n(90−70)/10=2(90-70)/10=2\n\n\nDatabase\n80\n10\n90\n(90−80)/10=1(90-80)/10=1\n\n\n\n\nHis score is two SDs above the Python mean, compared with one SD above the Database mean. His relative position is higher in Python.\nThe same raw score need not indicate the same relative position.\nThis comparison does not show that the examinations measured identical knowledge or had equal difficulty.\n\nReading the R calculation: (score - mean) / SD implements the z-score formula; parentheses make the subtraction happen before division. c() puts the two calculated values into one vector, with Python and Database as output labels. It does not fit a model or calculate probabilities.\n\nc(Python = (90-70)/10, Database = (90-80)/10)\n\n  Python Database \n       2        1 \n\n\nInterpret in one sentence: what does a z-score of 2 tell us here?\n\n18 / 23 · Original probability deck, slide 30; standardisation: book §6.1"
-  },
-  {
-    "objectID": "lessons/inferential-31-probability-distributions-draft.html#normal-probability-start-with-the-event",
-    "href": "lessons/inferential-31-probability-distributions-draft.html#normal-probability-start-with-the-event",
-    "title": "3.1 Probability Distributions",
-    "section": "Normal probability: start with the event",
-    "text": "Normal probability: start with the event\nUnder a normal model, the probability of exceeding a threshold is the area to its right under the density curve. Standardising the threshold lets us find that same area on the standard normal distribution, which has mean 0 and SD 1.\nAssume exam score XX is normal with mean 70 and SD 6.\nQuestion: what is the probability of a score above 75?\nP(X&gt;75)=P(Z&gt;75−706)=P(Z&gt;0.83333).P(X&gt;75)=P\\left(Z&gt;\\frac{75-70}{6}\\right)\n=P(Z&gt;0.83333).\n\n\n\n\n\n\n\n\n\nWorkflow: define the event → locate its area → standardise → calculate → interpret.\n\n19 / 23 · Original probability deck, slide 36; normal probabilities: book §6.1"
-  },
-  {
-    "objectID": "lessons/inferential-31-probability-distributions-draft.html#reading-a-left-cumulative-z-table",
-    "href": "lessons/inferential-31-probability-distributions-draft.html#reading-a-left-cumulative-z-table",
-    "title": "3.1 Probability Distributions",
-    "section": "Reading a left-cumulative z table",
-    "text": "Reading a left-cumulative z table\nA left-cumulative z table gives the probability that a standard normal variable is at or below a specified z-score: Φ(z)=P(Z≤z)\\Phi(z)=P(Z\\leq z). To find an upper-tail probability, subtract this table value from 1.\nFor z=0.83z=0.83, read row 0.8 and column 0.03.\n\n\n\nLeft-cumulative standard normal probabilities\n\n\n\n0.00\n0.01\n0.02\n0.03\n0.04\n\n\n\n\n0.7\n0.7580\n0.7611\n0.7642\n0.7673\n0.7704\n\n\n0.8\n0.7881\n0.7910\n0.7939\n0.7967\n0.7995\n\n\n0.9\n0.8159\n0.8186\n0.8212\n0.8238\n0.8264\n\n\n\n\n\n\nThe table gives approximately 0.7967 below z=0.83z=0.83.\nThe required upper tail is 1−0.7967=0.20331-0.7967=0.2033, approximately 20.33%.\nOur unrounded z-score is 0.83333; software will give a slightly different result.\nCheck the table convention: some tables show area between zero and z instead.\n\n\n\n\nNeeded area\nLeft-cumulative calculation\n\n\n\n\nBelow z\nΦ(z)\\Phi(z)\n\n\nAbove z\n1−Φ(z)1-\\Phi(z)\n\n\nBetween a and b\nΦ(b)−Φ(a)\\Phi(b)-\\Phi(a)\n\n\n\n\n20 / 23 · Standard normal table · Book §6.1"
-  },
-  {
-    "objectID": "lessons/inferential-31-probability-distributions-draft.html#the-same-probability-in-excel-and-r",
-    "href": "lessons/inferential-31-probability-distributions-draft.html#the-same-probability-in-excel-and-r",
-    "title": "3.1 Probability Distributions",
-    "section": "The same probability in Excel and R",
-    "text": "The same probability in Excel and R\nExcel and R calculate normal probabilities directly from a threshold, mean and SD. Both normally return the area below the threshold; to answer “above 75,” request the upper tail or subtract the lower-tail probability from 1.\nThe question remains score above 75, with mean 70 and SD 6.\nExcel\n=1-NORM.DIST(75,70,6,TRUE)\nR: what the function and arguments mean\n\npnorm(q, mean, sd) returns the probability at or below cutoff q under a normal model. p means cumulative probability; norm identifies the normal distribution.\nq=75 is the score threshold, mean=70 sets the model’s centre and sd=6 sets its standard deviation, not its variance.\nlower.tail=FALSE requests P(X&gt;75)P(X&gt;75) instead of P(X≤75)P(X\\leq75). &lt;- stores the result in p; c() displays it alongside 100*p, its percentage.\n\n\np &lt;- pnorm(q=75, mean=70, sd=6, lower.tail=FALSE)\nc(probability=p,percentage=100*p)\n\nprobability  percentage \n   0.202328   20.232838 \n\n\nInterpretation: the model assigns a probability of approximately 0.20233, or 20.233%, to an exam score above 75.\n\nlower.tail=FALSE asks for the area above the threshold.\nA probability of 0.20233 is not 0.20233%.\nTable rounding explains 20.33% versus the unrounded software result of 20.23%.\nFor a normal interval, subtract two cumulative probabilities: for example, P(64&lt;X&lt;76)=Φ(1)−Φ(−1)≈0.68269P(64&lt;X&lt;76)=\\Phi(1)-\\Phi(-1)\\approx0.68269.\n\n\n21 / 23 · Normal probabilities · Book §6.1 and software Appendix 6"
-  },
-  {
-    "objectID": "lessons/inferential-31-probability-distributions-draft.html#your-turn-define-calculate-and-interpret",
-    "href": "lessons/inferential-31-probability-distributions-draft.html#your-turn-define-calculate-and-interpret",
-    "title": "3.1 Probability Distributions",
-    "section": "Your turn: define, calculate and interpret",
-    "text": "Your turn: define, calculate and interpret\nApply the same four steps to each question: define the event, state the assumptions, calculate the probability and interpret the result. Use the models and inputs given below.\n\nCar defects: among 80 cars with independent defect probability 0.02, find the probability of at least two defective cars. How does it differ from “more than two”?\nBank arrivals: under the Poisson model with mean three per minute, find the probability of no arrivals in one minute.\nDeliveries: under U(8,12)U(8,12), find the probability of an arrival between 10 and 11 a.m.\nExam scores: under the normal model with mean 70 and SD 6, find the probability of a score between 64 and 76.\n\nFor each question:\n\nDefine the random variable and event before opening R.\nState one model assumption that would matter in practice.\nCalculate using a suitable function.\nWrite a sentence giving the probability and its context.\n\nExplain: why does a correct software calculation not establish that the chosen model fits real observations?\n\n22 / 23 · Independent activity using the stated probability models"
-  },
-  {
-    "objectID": "lessons/inferential-31-probability-distributions-draft.html#choose-the-modeland-state-its-limits",
-    "href": "lessons/inferential-31-probability-distributions-draft.html#choose-the-modeland-state-its-limits",
-    "title": "3.1 Probability Distributions",
-    "section": "Choose the model—and state its limits",
-    "text": "Choose the model—and state its limits\nChoose a probability model by matching what is being counted or measured and how the process is assumed to work. A correct calculation is useful only when those assumptions are reasonable for the question.\n\n\n\n\n\n\n\n\nSituation\nModel in this section\nMain assumption to check\n\n\n\n\nEqually likely listed outcomes\nDiscrete uniform\nThe outcomes really are equally likely.\n\n\nSuccesses in a fixed number of trials\nBinomial\nIndependent trials, fixed n, common p.\n\n\nEvent counts in a defined interval\nPoisson\nA suitable stable-rate event process.\n\n\nMeasurement equally distributed over an interval\nContinuous uniform\nEqual-length intervals have equal probability.\n\n\nRoughly symmetric bell-shaped measurement\nNormal\nThe shape and tails are suitable for the question.\n\n\n\nWhat we can now do\n\nTranslate wording into a probability event.\nDistinguish an exact count from a cumulative probability or an interval area.\nConnect a calculation to its units, assumptions and business meaning.\n\nNext: sampling and estimation\nSo far, model parameters have been given. Next we ask how to estimate an unknown population parameter from a sample, and how much sampling uncertainty that estimate has.\n\nSources: original probability slides; Berenson, Levine and Krehbiel, Basic Business Statistics: Concepts and Applications, ninth edition, selected §§1.1–1.2, 1.7–1.8, 5.1, 5.3, 5.5 and 6.1–6.3. R examples and practice questions prepared for this course. No new observed business dataset is claimed in this section.\n\n\n23 / 23 · Summary and transition to sampling and estimation"
-  },
-  {
-    "objectID": "lessons/02-descriptive-statistics.html",
-    "href": "lessons/02-descriptive-statistics.html",
-    "title": "Part 2: Descriptive Statistics",
-    "section": "",
-    "text": "This notebook combines the descriptive-statistics teaching material with all 20 executable R examples. Read each topic, then run its Try this in R example in Positron. Open the top-level course folder first and run Example 1 to load students; later examples reuse it."
-  },
-  {
-    "objectID": "lessons/02-descriptive-statistics.html#source-title-01",
-    "href": "lessons/02-descriptive-statistics.html#source-title-01",
-    "title": "Part 2: Descriptive Statistics",
-    "section": "307312 Applied Statistics — Masters Level",
-    "text": "307312 Applied Statistics — Masters Level"
-  },
-  {
-    "objectID": "lessons/02-descriptive-statistics.html#source-title-07",
-    "href": "lessons/02-descriptive-statistics.html#source-title-07",
-    "title": "Part 2: Descriptive Statistics",
-    "section": "Types of Data & Levels of Measurements",
-    "text": "Types of Data & Levels of Measurements"
-  },
-  {
-    "objectID": "lessons/02-descriptive-statistics.html#data-collection-and-survey-quality",
-    "href": "lessons/02-descriptive-statistics.html#data-collection-and-survey-quality",
-    "title": "Part 2: Descriptive Statistics",
-    "section": "Data collection and survey quality",
-    "text": "Data collection and survey quality\nBefore summarizing data, ask how they were obtained.\n\nSource: Are suitable data already available, or must we collect them?\nSelection: Who or what should be included?\nMeasurement: How will we obtain comparable, trustworthy answers?\n\nBy the end of this section, you should be able to select a collection approach, justify a survey mode and sampling method, and identify likely survey errors."
-  },
-  {
-    "objectID": "lessons/02-descriptive-statistics.html#source-title-13",
-    "href": "lessons/02-descriptive-statistics.html#source-title-13",
-    "title": "Part 2: Descriptive Statistics",
-    "section": "Descriptive Statistics Tools",
-    "text": "Descriptive Statistics Tools"
-  },
-  {
-    "objectID": "lessons/02-descriptive-statistics.html#source-title-20",
-    "href": "lessons/02-descriptive-statistics.html#source-title-20",
-    "title": "Part 2: Descriptive Statistics",
-    "section": "Data Visualization",
-    "text": "Data Visualization"
-  },
-  {
-    "objectID": "lessons/02-descriptive-statistics.html#source-title-35",
-    "href": "lessons/02-descriptive-statistics.html#source-title-35",
-    "title": "Part 2: Descriptive Statistics",
-    "section": "Numerical Measures in Descriptive Statistics",
-    "text": "Numerical Measures in Descriptive Statistics"
-  },
-  {
-    "objectID": "lessons/02-descriptive-statistics.html#source-title-57",
-    "href": "lessons/02-descriptive-statistics.html#source-title-57",
-    "title": "Part 2: Descriptive Statistics",
-    "section": "Measures of Association",
-    "text": "Measures of Association\n\nCovariance and Coefficient of Correlation"
-  },
-  {
-    "objectID": "lessons/02-descriptive-statistics.html#source-title-65",
-    "href": "lessons/02-descriptive-statistics.html#source-title-65",
-    "title": "Part 2: Descriptive Statistics",
-    "section": "Measures of Distribution",
-    "text": "Measures of Distribution\n\nSymmetry and Skewness"
-  },
-  {
-    "objectID": "lessons/02-descriptive-statistics.html#source-title-70",
-    "href": "lessons/02-descriptive-statistics.html#source-title-70",
-    "title": "Part 2: Descriptive Statistics",
-    "section": "Percentiles, Quartiles and Boxplots",
-    "text": "Percentiles, Quartiles and Boxplots"
-  },
-  {
-    "objectID": "lessons/02-descriptive-statistics.html#review-together",
-    "href": "lessons/02-descriptive-statistics.html#review-together",
-    "title": "Part 2: Descriptive Statistics",
-    "section": "Review together",
-    "text": "Review together\n\nWhich tables summarize a single variable, and which compare two variables?\nWhich charts suit categorical data, and which suit numerical data?\nWhen should observations be joined by a line? How does a dot plot differ from a histogram?\nHow do the mean and median describe different aspects of the same distribution?\nWhich dispersion measures retain the original units, and which do not?\nWhat do the 90th percentile and the quartiles tell us about the data?\nWhy does an outlier flag call for investigation rather than automatic deletion?"
-  },
-  {
-    "objectID": "lessons/r-03-dplyr.html",
-    "href": "lessons/r-03-dplyr.html",
+    "objectID": "lessons/r-04-ggplot2.html",
+    "href": "lessons/r-04-ggplot2.html",
     "title": "Introduction to R",
     "section": "",
     "text": "The R introduction is now one concise notebook covering setup, basic R, dplyr, conventional plots and ggplot2.\nOpen the combined introduction\nDownload the combined PDF\nPart 1 resources"
+  },
+  {
+    "objectID": "lessons/r-02-basic-concepts.html",
+    "href": "lessons/r-02-basic-concepts.html",
+    "title": "Introduction to R",
+    "section": "",
+    "text": "The R introduction is now one concise notebook covering setup, basic R, dplyr, conventional plots and ggplot2.\nOpen the combined introduction\nDownload the combined PDF\nPart 1 resources"
+  },
+  {
+    "objectID": "extended-cases/index.html",
+    "href": "extended-cases/index.html",
+    "title": "Extended scenarios",
+    "section": "",
+    "text": "Apply the course methods to another business setting after the core practicals or the relevant Part 3 topics.\nEach case stays together as one notebook, with a worked analysis and independent business tasks.\nYour instructor may assign selected cases or sections; the extended cases are optional.\nANOVA, forecasting and process control include introductions and are marked as extensions.\nCases 1–6 draw on Berenson, Levine and Krehbiel’s Basic Business Statistics: Concepts and Applications, ninth edition. Each identifies its source, observational unit and limits; Oxford uses reported summary inputs rather than raw box weights."
+  },
+  {
+    "objectID": "extended-cases/index.html#downloads",
+    "href": "extended-cases/index.html#downloads",
+    "title": "Extended scenarios",
+    "section": "Downloads",
+    "text": "Downloads\n\nPositron files (.zip) — editable notebooks and data for running the code.\nPDF collection (.zip) — all lessons and scenarios for reading.\n\nHome"
+  },
+  {
+    "objectID": "course/part-2.html",
+    "href": "course/part-2.html",
+    "title": "Part 2: Descriptive Statistics",
+    "section": "",
+    "text": "Read the explanations and run the 20 R examples in one notebook. The examples use the supplied student dataset and a historical airline time series.\n\n\n\nResource\nRead online\nDownload\n\n\n\n\nDescriptive Statistics — explanations and R examples\nRead\nPDF\n\n\n\nHome"
+  },
+  {
+    "objectID": "course/index.html",
+    "href": "course/index.html",
+    "title": "307312 Applied Statistics",
+    "section": "",
+    "text": "Part 1 - Introduction to R\nPart 2 - Descriptive Statistics\nPart 3 - Inferential Statistics"
+  },
+  {
+    "objectID": "course/index.html#course-material",
+    "href": "course/index.html#course-material",
+    "title": "307312 Applied Statistics",
+    "section": "",
+    "text": "Part 1 - Introduction to R\nPart 2 - Descriptive Statistics\nPart 3 - Inferential Statistics"
+  },
+  {
+    "objectID": "course/index.html#other-downloads",
+    "href": "course/index.html#other-downloads",
+    "title": "307312 Applied Statistics",
+    "section": "Other Downloads",
+    "text": "Other Downloads\n\nPositron files (.zip)\nPDF collection (.zip)\nExtended scenarios"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "307312 Applied Statistics",
+    "section": "",
+    "text": "Part 1 - Introduction to R\nPart 2 - Descriptive Statistics\nPart 3 - Inferential Statistics"
+  },
+  {
+    "objectID": "index.html#course-material",
+    "href": "index.html#course-material",
+    "title": "307312 Applied Statistics",
+    "section": "",
+    "text": "Part 1 - Introduction to R\nPart 2 - Descriptive Statistics\nPart 3 - Inferential Statistics"
+  },
+  {
+    "objectID": "index.html#other-downloads",
+    "href": "index.html#other-downloads",
+    "title": "307312 Applied Statistics",
+    "section": "Other Downloads",
+    "text": "Other Downloads\n\nPositron files (.zip)\nPDF collection (.zip)\nExtended scenarios"
+  },
+  {
+    "objectID": "course/part-1.html",
+    "href": "course/part-1.html",
+    "title": "Part 1: Introduction to R",
+    "section": "",
+    "text": "One concise, runnable notebook covers R and Positron, basic programming, data frames, dplyr, conventional plots and ggplot2 pipelines.\n\n\n\nNotebook\nRead online\nDownload\n\n\n\n\nIntroduction to R\nRead\nPDF\n\n\n\nHome"
+  },
+  {
+    "objectID": "course/part-3.html",
+    "href": "course/part-3.html",
+    "title": "Part 3: Inferential Statistics",
+    "section": "",
+    "text": "Read the teaching slides and run the R examples in the same notebook: probability distributions, estimation, hypothesis testing and regression.\n\n\n\nResource\nRead online\nDownload\n\n\n\n\nInferential Statistics\nRead\nPDF · Quarto notebook\n\n\n\nHome"
   },
   {
     "objectID": "lessons/01-introduction-to-r.html",
@@ -665,123 +539,88 @@
     "text": "Sources\nCondensed and adapted from the four supplied 307307 R introduction notebooks and their images, retained in the course reference history. The Superstore CSV is unchanged tutorial data supplied with those materials. The original pipe and Grammar of Graphics illustrations are retained unchanged from the supplied 307307 material. The car examples use the built-in R datasets::mtcars data and the units/provenance documented in ?mtcars.\nOfficial references: R project contributors, Introduction to R, dplyr, ggplot2, Quarto with R, and Positron workspace layout."
   },
   {
-    "objectID": "course/part-3.html",
-    "href": "course/part-3.html",
-    "title": "Part 3: Inferential Statistics",
+    "objectID": "lessons/r-03-dplyr.html",
+    "href": "lessons/r-03-dplyr.html",
+    "title": "Introduction to R",
     "section": "",
-    "text": "Read the slides on probability distributions, estimation, hypothesis testing and regression. Use the R practical alongside the topics as we work through Part 3.\n\n\n\nResource\nRead online\nDownload\n\n\n\n\nInferential Statistics — original core slides\nRead\nPDF\n\n\nRevised 3.1 — Probability Distributions\nRead\nPDF\n\n\nInferential Statistics — R practical\nOpen practical\nQuarto notebook · PDF\n\n\n\nThe practical currently covers probability distributions, explains the R functions and includes simulated-data activities. We will extend the same notebook with estimation, hypothesis testing, power and regression as those sections are developed.\nThe complete editable course project is available under Other Downloads on the home page.\nHome"
+    "text": "The R introduction is now one concise notebook covering setup, basic R, dplyr, conventional plots and ggplot2.\nOpen the combined introduction\nDownload the combined PDF\nPart 1 resources"
   },
   {
-    "objectID": "course/part-1.html",
-    "href": "course/part-1.html",
-    "title": "Part 1: Introduction to R",
-    "section": "",
-    "text": "One concise, runnable notebook covers R and Positron, basic programming, data frames, dplyr, conventional plots and ggplot2 pipelines.\n\n\n\nNotebook\nRead online\nDownload\n\n\n\n\nIntroduction to R\nRead\nPDF\n\n\n\nHome"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "307312 Applied Statistics",
-    "section": "",
-    "text": "Part 1 - Introduction to R\nPart 2 - Descriptive Statistics\nPart 3 - Inferential Statistics"
-  },
-  {
-    "objectID": "index.html#course-material",
-    "href": "index.html#course-material",
-    "title": "307312 Applied Statistics",
-    "section": "",
-    "text": "Part 1 - Introduction to R\nPart 2 - Descriptive Statistics\nPart 3 - Inferential Statistics"
-  },
-  {
-    "objectID": "index.html#other-downloads",
-    "href": "index.html#other-downloads",
-    "title": "307312 Applied Statistics",
-    "section": "Other Downloads",
-    "text": "Other Downloads\n\nPositron files (.zip)\nPDF collection (.zip)\nExtended scenarios"
-  },
-  {
-    "objectID": "course/index.html",
-    "href": "course/index.html",
-    "title": "307312 Applied Statistics",
-    "section": "",
-    "text": "Part 1 - Introduction to R\nPart 2 - Descriptive Statistics\nPart 3 - Inferential Statistics"
-  },
-  {
-    "objectID": "course/index.html#course-material",
-    "href": "course/index.html#course-material",
-    "title": "307312 Applied Statistics",
-    "section": "",
-    "text": "Part 1 - Introduction to R\nPart 2 - Descriptive Statistics\nPart 3 - Inferential Statistics"
-  },
-  {
-    "objectID": "course/index.html#other-downloads",
-    "href": "course/index.html#other-downloads",
-    "title": "307312 Applied Statistics",
-    "section": "Other Downloads",
-    "text": "Other Downloads\n\nPositron files (.zip)\nPDF collection (.zip)\nExtended scenarios"
-  },
-  {
-    "objectID": "course/part-2.html",
-    "href": "course/part-2.html",
+    "objectID": "lessons/02-descriptive-statistics.html",
+    "href": "lessons/02-descriptive-statistics.html",
     "title": "Part 2: Descriptive Statistics",
     "section": "",
-    "text": "Read the explanations and run the 20 R examples in one notebook. The examples use the supplied student dataset and a historical airline time series.\n\n\n\nResource\nRead online\nDownload\n\n\n\n\nDescriptive Statistics — explanations and R examples\nRead\nPDF\n\n\n\nHome"
+    "text": "This notebook combines the descriptive-statistics teaching material with all 20 executable R examples. Read each topic, then run its Try this in R example in Positron. Open the top-level course folder first and run Example 1 to load students; later examples reuse it."
   },
   {
-    "objectID": "extended-cases/index.html",
-    "href": "extended-cases/index.html",
-    "title": "Extended scenarios",
-    "section": "",
-    "text": "Apply the course methods to another business setting after the core practicals or the relevant Part 3 topics.\nEach case stays together as one notebook, with a worked analysis and independent business tasks.\nYour instructor may assign selected cases or sections; the extended cases are optional.\nANOVA, forecasting and process control include introductions and are marked as extensions.\nCases 1–6 draw on Berenson, Levine and Krehbiel’s Basic Business Statistics: Concepts and Applications, ninth edition. Each identifies its source, observational unit and limits; Oxford uses reported summary inputs rather than raw box weights."
+    "objectID": "lessons/02-descriptive-statistics.html#source-title-01",
+    "href": "lessons/02-descriptive-statistics.html#source-title-01",
+    "title": "Part 2: Descriptive Statistics",
+    "section": "307312 Applied Statistics — Masters Level",
+    "text": "307312 Applied Statistics — Masters Level"
   },
   {
-    "objectID": "extended-cases/index.html#downloads",
-    "href": "extended-cases/index.html#downloads",
-    "title": "Extended scenarios",
-    "section": "Downloads",
-    "text": "Downloads\n\nPositron files (.zip) — editable notebooks and data for running the code.\nPDF collection (.zip) — all lessons and scenarios for reading.\n\nHome"
+    "objectID": "lessons/02-descriptive-statistics.html#source-title-07",
+    "href": "lessons/02-descriptive-statistics.html#source-title-07",
+    "title": "Part 2: Descriptive Statistics",
+    "section": "Types of Data & Levels of Measurements",
+    "text": "Types of Data & Levels of Measurements"
   },
   {
-    "objectID": "lessons/r-02-basic-concepts.html",
-    "href": "lessons/r-02-basic-concepts.html",
-    "title": "Introduction to R",
-    "section": "",
-    "text": "The R introduction is now one concise notebook covering setup, basic R, dplyr, conventional plots and ggplot2.\nOpen the combined introduction\nDownload the combined PDF\nPart 1 resources"
+    "objectID": "lessons/02-descriptive-statistics.html#data-collection-and-survey-quality",
+    "href": "lessons/02-descriptive-statistics.html#data-collection-and-survey-quality",
+    "title": "Part 2: Descriptive Statistics",
+    "section": "Data collection and survey quality",
+    "text": "Data collection and survey quality\nBefore summarizing data, ask how they were obtained.\n\nSource: Are suitable data already available, or must we collect them?\nSelection: Who or what should be included?\nMeasurement: How will we obtain comparable, trustworthy answers?\n\nBy the end of this section, you should be able to select a collection approach, justify a survey mode and sampling method, and identify likely survey errors."
   },
   {
-    "objectID": "lessons/r-04-ggplot2.html",
-    "href": "lessons/r-04-ggplot2.html",
-    "title": "Introduction to R",
-    "section": "",
-    "text": "The R introduction is now one concise notebook covering setup, basic R, dplyr, conventional plots and ggplot2.\nOpen the combined introduction\nDownload the combined PDF\nPart 1 resources"
+    "objectID": "lessons/02-descriptive-statistics.html#source-title-13",
+    "href": "lessons/02-descriptive-statistics.html#source-title-13",
+    "title": "Part 2: Descriptive Statistics",
+    "section": "Descriptive Statistics Tools",
+    "text": "Descriptive Statistics Tools"
   },
   {
-    "objectID": "lessons/03-inferential-statistics.html#part3-01",
-    "href": "lessons/03-inferential-statistics.html#part3-01",
-    "title": "Part 3: Inferential Statistics",
-    "section": "3.1 Introduction to Probability Distributions",
-    "text": "3.1 Introduction to Probability Distributions"
+    "objectID": "lessons/02-descriptive-statistics.html#source-title-20",
+    "href": "lessons/02-descriptive-statistics.html#source-title-20",
+    "title": "Part 2: Descriptive Statistics",
+    "section": "Data Visualization",
+    "text": "Data Visualization"
   },
   {
-    "objectID": "lessons/03-inferential-statistics.html#part3-02",
-    "href": "lessons/03-inferential-statistics.html#part3-02",
-    "title": "Part 3: Inferential Statistics",
-    "section": "3.2 Introduction to Estimation in Statistics",
-    "text": "3.2 Introduction to Estimation in Statistics"
+    "objectID": "lessons/02-descriptive-statistics.html#source-title-35",
+    "href": "lessons/02-descriptive-statistics.html#source-title-35",
+    "title": "Part 2: Descriptive Statistics",
+    "section": "Numerical Measures in Descriptive Statistics",
+    "text": "Numerical Measures in Descriptive Statistics"
   },
   {
-    "objectID": "lessons/03-inferential-statistics.html#part3-03",
-    "href": "lessons/03-inferential-statistics.html#part3-03",
-    "title": "Part 3: Inferential Statistics",
-    "section": "3.3 Introduction to Hypothesis Testing",
-    "text": "3.3 Introduction to Hypothesis Testing"
+    "objectID": "lessons/02-descriptive-statistics.html#source-title-57",
+    "href": "lessons/02-descriptive-statistics.html#source-title-57",
+    "title": "Part 2: Descriptive Statistics",
+    "section": "Measures of Association",
+    "text": "Measures of Association\n\nCovariance and Coefficient of Correlation"
   },
   {
-    "objectID": "lessons/03-inferential-statistics.html#part3-04",
-    "href": "lessons/03-inferential-statistics.html#part3-04",
-    "title": "Part 3: Inferential Statistics",
-    "section": "3.4 Introduction to Linear Regression",
-    "text": "3.4 Introduction to Linear Regression"
+    "objectID": "lessons/02-descriptive-statistics.html#source-title-65",
+    "href": "lessons/02-descriptive-statistics.html#source-title-65",
+    "title": "Part 2: Descriptive Statistics",
+    "section": "Measures of Distribution",
+    "text": "Measures of Distribution\n\nSymmetry and Skewness"
+  },
+  {
+    "objectID": "lessons/02-descriptive-statistics.html#source-title-70",
+    "href": "lessons/02-descriptive-statistics.html#source-title-70",
+    "title": "Part 2: Descriptive Statistics",
+    "section": "Percentiles, Quartiles and Boxplots",
+    "text": "Percentiles, Quartiles and Boxplots"
+  },
+  {
+    "objectID": "lessons/02-descriptive-statistics.html#review-together",
+    "href": "lessons/02-descriptive-statistics.html#review-together",
+    "title": "Part 2: Descriptive Statistics",
+    "section": "Review together",
+    "text": "Review together\n\nWhich tables summarize a single variable, and which compare two variables?\nWhich charts suit categorical data, and which suit numerical data?\nWhen should observations be joined by a line? How does a dot plot differ from a histogram?\nHow do the mean and median describe different aspects of the same distribution?\nWhich dispersion measures retain the original units, and which do not?\nWhat do the 90th percentile and the quartiles tell us about the data?\nWhy does an outlier flag call for investigation rather than automatic deletion?"
   },
   {
     "objectID": "extended-cases/superstore/index.html",
