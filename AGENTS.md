@@ -406,3 +406,11 @@
 - Remove the unused authored alternatives, separate inference practical, draft-specific data/assets/scripts and proposal plans. Do not restore them automatically. Original PPTX/PDF files remain untouched reference copies; Git history retains removed tracked drafts.
 - `scripts/check-inferential.py` checks all 36 R cells, their original-slide order and the non-software content manifest. Source/model limitations remain in `instructor/inferential-source-review.md` and the R adaptation review.
 - Rebuild, commit, push, publish and verify the consolidated website, all twelve PDFs, both bundles and the same-source Part 3 downloads.
+
+## Targeted Part 3 visual updates — 19 November 2026
+
+- User authorized updating the opening contents through regression, replacing the three population/sample/parameter/mean figures consistently, removing the duplicate discrete-distributions title, rebuilding the discrete-uniform/binomial/Poisson formula screenshots as editable content, and reducing the coin illustration and Tesla/Zain logos.
+- Binomial calculator/QR images are replaced by original executable R panels demonstrating n/p effects and the two-heads example. Explain all new R functions and arguments; keep canonical code JSON synchronized.
+- These diagrams are inline in the canonical Part 3 QMD to preserve byte identity with the Positron copy; styling is shared in assets/source-slides.css. Historical reference decks/assets remain unchanged. Preserve other original theory and all 141 source positions; the redundant title-only position is hidden.
+- Guard explicitly authorized changes separately in the original-content manifest. Refresh HTML/PDF/student bundles together and verify publication.
+- The same authorization includes editable continuous-uniform theory/business examples and original R probability/area plots replacing Poisson calculator/QR screenshots. Preserve the distinction between density and probability and between bell-shaped discrete models and continuous normal distributions. The source staffing-at-the-mean claim is corrected and recorded in instructor review.

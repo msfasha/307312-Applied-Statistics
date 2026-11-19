@@ -28,10 +28,15 @@ def check():
         if key in codes:
             assert panel and '**Before running:**' in panel[0] and '**Read the result:**' in panel[0],key
         if panel:block=block[:panel.start()]+block[panel.end():]
-        if key in manifest['unchanged_slide_bodies_excluding_R']:
+        if key in manifest.get('authorized_visual_updates', {}):
+            assert hashlib.sha256(block.strip().encode()).hexdigest()==manifest['authorized_visual_updates'][key]['sha256'],('Authorized slide changed',key)
+        elif key in manifest['unchanged_slide_bodies_excluding_R']:
             assert hashlib.sha256(block.strip().encode()).hexdigest()==manifest['unchanged_slide_bodies_excluding_R'][key],('Original theory changed',key)
     extra=r'''
 stopifnot(abs(dbinom(2,10,.5)-.0439453125)<1e-12)
+stopifnot(abs(dpois(x=15,lambda=20)-.0516488535317584)<1e-12)
+stopifnot(abs(punif(q=9,min=8,max=12)-.25)<1e-12)
+stopifnot(abs(punif(q=10.1,min=9.8,max=10.2,lower.tail=FALSE)-.25)<1e-12)
 stopifnot(abs(pnorm(90,70,6,lower.tail=FALSE)-.0004290603331968)<1e-12)
 stopifnot(nrow(paired)==30,nrow(salaries)==30,nrow(majors)==30)
 stopifnot(sum(beverages)==200,all(expected>5),abs(sum((beverages-expected)^2/expected)-8.42857142857143)<1e-10)
@@ -50,7 +55,7 @@ stopifnot(abs(summary(simple)$r.squared-.89546108625675147)<1e-10)
         result=subprocess.run(['Rscript','--vanilla',str(script)],cwd=ROOT,capture_output=True,text=True)
         (BUILD/'r-checks.log').write_text(result.stdout+result.stderr)
         if result.returncode:raise RuntimeError(result.stderr)
-    report={'original_slide_positions':141,'explained_R_cells':36,'unchanged_theory_bodies_checked':len(manifest['unchanged_slide_bodies_excluding_R']),'numerical_checks':'passed'}
+    report={'original_slide_positions':141,'explained_R_cells':36,'unchanged_theory_bodies_checked':len(set(manifest['unchanged_slide_bodies_excluding_R'])-set(manifest.get('authorized_visual_updates',{}))),'authorized_slide_bodies_checked':len(manifest.get('authorized_visual_updates',{})),'numerical_checks':'passed'}
     (BUILD/'validation.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report,indent=2),flush=True)
 

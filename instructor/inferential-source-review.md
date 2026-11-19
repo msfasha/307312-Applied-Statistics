@@ -81,3 +81,14 @@ native and graphic text runs, including AlternateContent fallbacks.
 Six CSVs are generated from the exact native slide tables, with round-trip
 cell checks after removing printed dollar symbols/thousands separators. No new
 observations are invented. Formula-only examples use source summary statistics.
+
+## Authorized visual and formula updates — 19 November 2026
+
+- Replaced the three requested population/sample/parameter/mean clipart diagrams with editable, consistently styled diagrams; reference decks remain unchanged.
+- Expanded the opening contents to cover all four existing sections through regression; suppressed the redundant discrete-distributions title-only position.
+- Recreated the discrete-uniform, binomial and Poisson screenshot panels as editable mathematics; retained their mathematical definitions. The two source uniform variance expressions are algebraically equivalent.
+- Replaced the binomial calculator and QR image with a four-panel executable R probability plot. Qualified the source's normal-approximation statement: both np and n(1-p) must be sufficiently large; larger n alone is not a universal guarantee.
+- Reduced the coin illustration and Tesla/Zain logos. Original asset files remain untouched.
+- The content manifest retains historical baseline hashes and separately checks the explicitly authorized updated slide bodies.
+- Replaced the Poisson calculator/QR image with explained R comparisons at lambda 2 and 20, highlighting P(X=15) at lambda 20 and distinguishing a bell-shaped discrete model from a continuous normal distribution.
+- Rebuilt continuous-uniform theory and both arrival/diameter calculation screenshots as editable math with original R density/area charts. Corrected the source's unsupported claim that staffing should peak at the mean arrival time: equal-length intervals have equal probability under a uniform model. Density heights need not be probabilities or lie below 1.

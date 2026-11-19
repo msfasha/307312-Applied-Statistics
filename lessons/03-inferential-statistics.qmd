@@ -39,19 +39,15 @@ Read the teaching slides and run the **Try this in R** examples beside the match
 
 ::: {.source-slide #part3-01-slide-02}
 
-### Content {#part3-title-01-02}
+### Contents — Part 3 {#part3-title-01-02}
 
 ```{=html}
-<div class="source-text">
-<p>Introduction to Inferential Statistics</p>
-<p>Random Variables and Probability Distributions</p>
-<p>Discrete Random Variables</p>
-<p>Continuous Random Variables</p>
-<p>The Normal Distribution</p>
-<p>The Empirical Rule</p>
-<p>The Standard Normal Distribution and the Standard Scores (Z-Scores)</p>
-<p>Using the Z-Tables</p>
-</div>
+<div class="source-text"><ol>
+<li><strong>Probability distributions:</strong> random variables, discrete and continuous distributions, expected value and variance, normal distribution and Z-scores.</li>
+<li><strong>Estimation:</strong> sampling, point estimates, standard errors and confidence intervals.</li>
+<li><strong>Hypothesis testing:</strong> hypotheses, significance and p-values; tests for means and proportions, chi-square tests and ANOVA.</li>
+<li><strong>Regression:</strong> simple and multiple linear regression, interpretation, prediction and model assumptions.</li>
+</ol><p>Explained, executable R examples accompany the original teaching sequence.</p></div>
 ```
 
 :::
@@ -69,7 +65,9 @@ Read the teaching slides and run the **Try this in R** examples beside the match
 </div>
 ```
 
-![](../assets/inferential-statistics/part-01-slide-03-graphic-02.png){width="68%" fig-alt="Original graphic, section 3.1, slide 3"}
+```{=html}
+<figure class="petra-diagram inference-diagram"><div class="inference-flow"><div class="inference-card"><strong>Population</strong><div>Entire group of interest</div></div><div class="inference-arrow">Sampling<br><span aria-hidden="true">→</span></div><div class="inference-card"><strong>Sample</strong><div>Selected observations<br>↓<br>Descriptive statistics</div></div></div><figcaption>← Inferential statistics: use sample evidence to draw conclusions about the population, with uncertainty.</figcaption></figure>
+```
 
 :::
 
@@ -101,7 +99,9 @@ Read the teaching slides and run the **Try this in R** examples beside the match
 
 ### Introduction to Inferential Statistics {#part3-title-01-05}
 
-![](../assets/inferential-statistics/part-01-slide-05-graphic-01.png){width="54%" fig-alt="Original graphic, section 3.1, slide 5"}
+```{=html}
+<figure class="petra-diagram inference-diagram"><div class="inference-flow"><div class="inference-card"><strong>Population</strong><div>Entire group<br>↓<br><b>Parameter</b><br>Numerical population characteristic</div></div><div class="inference-arrow">Sampling<br><span aria-hidden="true">→</span></div><div class="inference-card"><strong>Sample</strong><div>Observed subset<br>↓ Calculate<br><b>Statistic (estimator)</b></div></div></div><figcaption>← Estimation: use a sample statistic to estimate a population parameter.</figcaption></figure>
+```
 
 ```{=html}
 <div class="source-text">
@@ -119,7 +119,9 @@ Read the teaching slides and run the **Try this in R** examples beside the match
 </div>
 ```
 
-![](../assets/inferential-statistics/part-01-slide-05-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.1, slide 5"}
+```{=html}
+<figure class="petra-diagram inference-diagram"><div class="inference-flow"><div class="inference-card"><strong>Population mean</strong><div><span class="inference-symbol">μ</span><br>mu · parameter</div></div><div class="inference-arrow">Sampling<br><span aria-hidden="true">→</span></div><div class="inference-card"><strong>Sample mean</strong><div><span class="inference-symbol">x̄</span><br>x-bar · statistic</div></div></div><figcaption>The population mean μ is fixed. The sample mean x̄ can vary from sample to sample and is used to estimate μ.</figcaption></figure>
+```
 
 :::
 
@@ -155,7 +157,7 @@ Read the teaching slides and run the **Try this in R** examples beside the match
 </div>
 ```
 
-![](../assets/inferential-statistics/part-01-slide-07-graphic-02.png){width="30%" fig-alt="Original graphic, section 3.1, slide 7"}
+![](../assets/inferential-statistics/part-01-slide-07-graphic-02.png){.compact-coin width="25%" fig-alt="Coin toss"}
 
 :::
 
@@ -253,7 +255,7 @@ Read the teaching slides and run the **Try this in R** examples beside the match
 
 ::: {.source-slide #part3-01-slide-12}
 
-### Discrete Probabilities Distributions {#part3-title-01-12}
+<!-- Redundant title-only source slide omitted from display at the user’s request. -->
 
 :::
 
@@ -282,11 +284,22 @@ Read the teaching slides and run the **Try this in R** examples beside the match
 
 ::: {.source-slide #part3-01-slide-14}
 
-### Discrete Probability Distributions The Discrete Uniform Distribution {#part3-title-01-14}
+### Discrete Uniform Distribution {#part3-title-01-14}
 
-![](../assets/inferential-statistics/part-01-slide-14-graphic-01.png){width="54%" fig-alt="Original graphic, section 3.1, slide 14"}
+Equal probability is assigned to each integer from $a$ to $b$, where $a$ and $b$ are integers and $a \le b$.
 
-![](../assets/inferential-statistics/part-01-slide-14-graphic-02.png){width="45%" fig-alt="Original graphic, section 3.1, slide 14"}
+- **Notation:** $X \sim U\{a, a+1,\ldots,b\}$; there are $k=b-a+1$ possible outcomes.
+- **Probability mass function:** $P(X=x)=\dfrac{1}{b-a+1}=\dfrac{1}{k}$ for $x\in\{a,\ldots,b\}$; zero otherwise.
+- **Expected value:** $E(X)=\dfrac{a+b}{2}$.
+- **Variance:** $\operatorname{Var}(X)=\dfrac{(b-a+1)^2-1}{12}$.
+
+**Example — a fair six-sided die:** $a=1$, $b=6$. Each face has probability $1/6$, $E(X)=3.5$ and $\operatorname{Var}(X)=35/12\approx2.917$. The expected value is the long-run average; it need not be a possible single outcome.
+
+```{=html}
+<figure class="petra-diagram uniform-chart"><svg viewBox="0 0 640 230" role="img" aria-label="Fair die probability mass function: six outcomes, each with probability one sixth"><text x="24" y="24">P(X = x)</text><path d="M70 45V180H610" fill="none" stroke="#555" stroke-width="2"/><path d="M70 80H610" stroke="#bbb" stroke-dasharray="4 4"/><text x="30" y="85">1/6</text><path d="M154 180V80" stroke="#763D52" stroke-width="4"/><circle cx="154" cy="80" r="5" fill="#763D52"/><text x="154" y="205" text-anchor="middle">1</text><path d="M228 180V80" stroke="#763D52" stroke-width="4"/><circle cx="228" cy="80" r="5" fill="#763D52"/><text x="228" y="205" text-anchor="middle">2</text><path d="M302 180V80" stroke="#763D52" stroke-width="4"/><circle cx="302" cy="80" r="5" fill="#763D52"/><text x="302" y="205" text-anchor="middle">3</text><path d="M376 180V80" stroke="#763D52" stroke-width="4"/><circle cx="376" cy="80" r="5" fill="#763D52"/><text x="376" y="205" text-anchor="middle">4</text><path d="M450 180V80" stroke="#763D52" stroke-width="4"/><circle cx="450" cy="80" r="5" fill="#763D52"/><text x="450" y="205" text-anchor="middle">5</text><path d="M524 180V80" stroke="#763D52" stroke-width="4"/><circle cx="524" cy="80" r="5" fill="#763D52"/><text x="524" y="205" text-anchor="middle">6</text><text x="616" y="184">x</text></svg><figcaption>Fair die: all six outcomes have the same probability.</figcaption></figure>
+```
+
+
 
 :::
 
@@ -340,11 +353,25 @@ c(three = probability[3], even = sum(probability[outcomes %in% c(2,4,6)]),
 
 ::: {.source-slide #part3-01-slide-16}
 
-### Discrete Probability Distributions The Binomial Distribution {#part3-title-01-16}
+### Binomial Distribution {#part3-title-01-16}
 
-![](../assets/inferential-statistics/part-01-slide-16-graphic-01.png){width="64%" fig-alt="Original graphic, section 3.1, slide 16"}
+The binomial distribution models the **number of successes in $n$ independent Bernoulli trials**, each with the same success probability $p$. A Bernoulli trial has two outcomes: success or failure.
 
-![](../assets/inferential-statistics/part-01-slide-16-graphic-02.png){width="44%" fig-alt="Original graphic, section 3.1, slide 16"}
+- **Notation:** $X\sim\operatorname{Binomial}(n,p)$; $X$ counts successes.
+- **Parameters:** $n$ is the fixed number of trials; $p$ is the success probability on each trial.
+- **Probability mass function:**
+
+$$P(X=x)=\binom{n}{x}p^x(1-p)^{n-x},\qquad x=0,1,\ldots,n.$$
+
+Here $\binom{n}{x}$ counts the ways to choose $x$ successes among $n$ trials; $1-p$ is the failure probability.
+
+- **Expected value:** $E(X)=np$, the average number of successes over repeated sets of $n$ trials.
+- **Variance:** $\operatorname{Var}(X)=np(1-p)$, the spread of the success count in squared count units.
+
+**Example:** If 80 cars each independently have a 2% defect probability, $n=80$ and $p=0.02$. Counting a defect as a “success”, $E(X)=80(0.02)=1.6$ defective cars per group of 80 on average; $\operatorname{Var}(X)=80(0.02)(0.98)=1.568$.
+
+
+
 
 ```{=html}
 <div class="source-text">
@@ -356,7 +383,7 @@ c(three = probability[3], even = sum(probability[outcomes %in% c(2,4,6)]),
 </div>
 ```
 
-![](../assets/inferential-statistics/part-01-slide-16-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.1, slide 16"}
+![](../assets/inferential-statistics/part-01-slide-16-graphic-04.png){.compact-logo width="18%" fig-alt="Tesla logo"}
 
 <!-- BEGIN R EXAMPLE 1-16 -->
 :::: {.try-in-r #r-example-01-16}
@@ -387,10 +414,6 @@ c(exactly_2 = dbinom(2, size=80, prob=0.02), less_than_2 = pbinom(1,80,0.02),
 
 ### The Binomial Distribution {#part3-title-01-17}
 
-![](../assets/inferential-statistics/part-01-slide-17-graphic-01.png){width="45%" fig-alt="Original graphic, section 3.1, slide 17"}
-
-![](../assets/inferential-statistics/part-01-slide-17-graphic-02.png){width="30%" fig-alt="Original graphic, section 3.1, slide 17"}
-
 ```{=html}
 <div class="source-text">
 <p>What is the probability of having 2 Heads ONLY out of 10 trials, knowing that the probability of Head = 50%?</p>
@@ -399,7 +422,7 @@ c(exactly_2 = dbinom(2, size=80, prob=0.02), less_than_2 = pbinom(1,80,0.02),
 
 ```{=html}
 <div class="source-text">
-<p>The larger the number of trials (e.g. ask 100 students) the more the distribution will look like normal distribution.</p>
+<p>A binomial distribution is symmetric when p = 0.5 and skewed when p is close to 0 or 1. A normal approximation improves when both np and n(1 − p) are sufficiently large; increasing n alone is not a universal guarantee.</p>
 </div>
 ```
 
@@ -408,19 +431,40 @@ c(exactly_2 = dbinom(2, size=80, prob=0.02), less_than_2 = pbinom(1,80,0.02),
 
 #### Try this in R {.unlisted}
 
-- **Purpose:** Calculate exactly two heads and display the binomial model.
-- **Before running:** `0:10` lists possible head counts. `dbinom(x,10,0.5)` uses ten trials and a 0.5 head probability. `plot()` takes counts and their probabilities; `type="h"` draws vertical masses, `lwd` their width, `col` their colour and `xlab`/`ylab` label the axes.
+- **Purpose:** See how the number of trials $n$ and success probability $p$ affect the binomial shape.
+- **Before running:** `c()` combines values into vectors; `[i]` selects the ith value. `1:4` lists the four panel numbers, and the `for` loop repeats the plotting steps for each panel. `0:n` lists every possible success count from zero to $n$.
+- `dbinom(x, size, prob)` gives the probability at each count `x`; `size` is $n$ and `prob` is $p$. These are theoretical probabilities, not simulated data.
+- `par(mfrow = c(2, 2))` arranges two rows and two columns; `mar` sets bottom, left, top and right margins. Assigning its result to `old_par` saves the old settings; `par(old_par)` restores them.
+- `plot(x, y)` draws counts against probabilities. `type = "h"` draws vertical probability masses, `lwd` sets line width, `col` sets colour, `xlab`/`ylab` label axes and `main` sets a title. `paste()` joins the title text and parameter values.
+- `if` runs the highlighted step only when both conditions hold: `==` tests equality and `&&` means “and”. `segments()` draws the burgundy line from `(x0, y0)` to `(x1, y1)` at two successes.
 
 ```{r}
 #| label: inferential-1-17
-# dbinom() models the number of heads in ten independent fair-coin trials.
-# plot(type="h") draws vertical probability masses; this is a discrete, not continuous, distribution.
-x <- 0:10
-plot(x, dbinom(x,10,0.5), type="h", lwd=3, col="#595959", xlab="Heads", ylab="Probability")
-dbinom(2,10,0.5)
+# Compare success probabilities at n = 10, then increase n to 100.
+# Save the current plotting layout so it can be restored afterwards.
+old_par <- par(mfrow = c(2, 2), mar = c(4, 4, 3, 1))
+trial_counts <- c(10, 10, 10, 100)
+success_probs <- c(0.2, 0.5, 0.8, 0.5)
+for (i in 1:4) {
+  n <- trial_counts[i]
+  p <- success_probs[i]
+  x <- 0:n
+  probabilities <- dbinom(x = x, size = n, prob = p)
+  plot(x = x, y = probabilities, type = "h", lwd = 3,
+       col = "#595959", xlab = "Number of successes",
+       ylab = "Probability", main = paste("n =", n, "; p =", p))
+  if (n == 10 && p == 0.5) {
+    # Highlight the question: exactly two heads in ten fair tosses.
+    segments(x0 = 2, y0 = 0, x1 = 2,
+             y1 = dbinom(x = 2, size = n, prob = p),
+             col = "#763D52", lwd = 4)
+  }
+}
+par(old_par)
+dbinom(x = 2, size = 10, prob = 0.5)
 ```
 
-**Read the result:** Exactly two heads has probability 0.0439453, about 4.39%. A binomial shape depends on both the trial count and success probability.
+**Read the result:** At $n=10$, $p=0.2$ gives right skew, $p=0.5$ gives symmetry, and $p=0.8$ gives left skew. At $n=100$, $p=0.5$, the discrete shape is more bell-like and centred at $np=50$. In the ten-toss fair-coin panel, the burgundy line marks exactly two heads: probability 0.0439453, about 4.39%. Compare the axis scales as well as the shapes.
 
 ::::
 <!-- END R EXAMPLE 1-17 -->
@@ -441,7 +485,19 @@ dbinom(2,10,0.5)
 </div>
 ```
 
-![](../assets/inferential-statistics/part-01-slide-18-graphic-02.png){width="42%" fig-alt="Original graphic, section 3.1, slide 18"}
+**Poisson probability mass function**
+
+$$P(X=x)=\frac{\lambda^x e^{-\lambda}}{x!},\qquad x=0,1,2,\ldots.$$
+
+- $X$ counts occurrences in a specified time interval or region.
+- $\lambda>0$ is the expected number of occurrences in that interval or region.
+- $e\approx2.71828$ is Euler's number; $x!$ is the factorial of $x$, with $0!=1$.
+- **Expected value:** $E(X)=\lambda$.
+- **Variance:** $\operatorname{Var}(X)=\lambda$; the standard deviation is $\sqrt{\lambda}$.
+- **Model assumptions:** occurrences are independent, with a constant rate over the interval or region.
+
+**Example:** At an average of 1,000 calls per hour, a Poisson model has $\lambda=1000$ for a one-hour interval. Its expected count is 1,000 calls, variance 1,000 calls squared, and standard deviation approximately 31.62 calls.
+
 
 ```{=html}
 <div class="source-text">
@@ -450,7 +506,7 @@ dbinom(2,10,0.5)
 </div>
 ```
 
-![](../assets/inferential-statistics/part-01-slide-18-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.1, slide 18"}
+![](../assets/inferential-statistics/part-01-slide-18-graphic-04.png){.compact-logo width="14%" fig-alt="Zain logo"}
 
 <!-- BEGIN R EXAMPLE 1-18 -->
 :::: {.try-in-r #r-example-01-18}
@@ -480,13 +536,9 @@ ppois(1100, lambda=1000, lower.tail=FALSE)
 
 ### Poisson Distribution {#part3-title-01-19}
 
-![](../assets/inferential-statistics/part-01-slide-19-graphic-01.png){width="45%" fig-alt="Original graphic, section 3.1, slide 19"}
-
-![](../assets/inferential-statistics/part-01-slide-19-graphic-02.png){width="30%" fig-alt="Original graphic, section 3.1, slide 19"}
-
 ```{=html}
 <div class="source-text">
-<p>The larger the average rate <strong>λ, </strong>the more the distribution will look like normal distribution.</p>
+<p>A Poisson distribution models counts, not continuous measurements. Small λ gives a right-skewed shape. As λ increases, it becomes more symmetric and approximately bell-shaped, while its possible outcomes remain whole numbers.</p>
 </div>
 ```
 
@@ -495,16 +547,36 @@ ppois(1100, lambda=1000, lower.tail=FALSE)
 
 #### Try this in R {.unlisted}
 
-- **Purpose:** Calculate the probability of exactly 15 events.
-- **Before running:** `dpois(x=15, lambda=20)` gives probability mass at count 15; `lambda=20` is the expected count in the stated interval.
+- **Purpose:** Compare a visibly skewed Poisson distribution ($\lambda=2$) with the more symmetric $\lambda=20$ case, and calculate the probability of exactly 15 events.
+- **Before running:** `dpois(x, lambda)` gives the probability at each whole-number count `x`; `lambda` is the expected count for the interval. `qpois(p = 0.999, lambda)` gives the smallest count whose cumulative probability is at least 99.9%, setting a practical plotting limit. The distribution itself continues beyond that limit.
+- `c(2, 20)` combines the two parameter values; the `for` loop draws one panel per value. `0:` constructs the sequence of counts from zero to the chosen limit.
+- `par(mfrow = c(1, 2))` places two panels side by side; `mar` sets the bottom, left, top and right margins. Save these settings in `old_par`, then restore the previous layout with `par(old_par)`.
+- `plot(x, y)` draws counts against probabilities; `type = "h"` uses separate vertical masses, `lwd` sets width, `col` sets colour, `xlab`/`ylab` label axes and `main` supplies a title. `paste()` joins the title text with the parameter value.
+- `if (lambda == 20)` highlights only the second panel: `==` tests equality. `segments()` draws the burgundy line from `(x0, y0)` to `(x1, y1)` at 15 events.
 
 ```{r}
 #| label: inferential-1-19
-# Exact probability of 15 events when the expected count is 20 per interval.
-dpois(x=15, lambda=20)
+# Compare a small expected count with the calculator example, lambda = 20.
+old_par <- par(mfrow = c(1, 2), mar = c(4, 4, 3, 1))
+lambda_values <- c(2, 20)
+for (lambda in lambda_values) {
+  # Display counts through the 99.9th percentile; a small right tail is omitted.
+  x <- 0:qpois(p = 0.999, lambda = lambda)
+  probabilities <- dpois(x = x, lambda = lambda)
+  plot(x = x, y = probabilities, type = "h", lwd = 3,
+       col = "#595959", xlab = "Number of events",
+       ylab = "Probability", main = paste("Poisson: lambda =", lambda))
+  if (lambda == 20) {
+    segments(x0 = 15, y0 = 0, x1 = 15,
+             y1 = dpois(x = 15, lambda = lambda),
+             col = "#763D52", lwd = 4)
+  }
+}
+par(old_par)
+dpois(x = 15, lambda = 20)
 ```
 
-**Read the result:** The result is approximately 0.05165, or 5.16%, under this Poisson model.
+**Read the result:** The $\lambda=2$ panel is right-skewed; the $\lambda=20$ panel looks more bell-shaped. Both show **discrete Poisson probabilities**, not a continuous normal density. At $\lambda=20$, the burgundy line marks $P(X=15)\approx0.05165$, or 5.16%. Compare the different axis scales too.
 
 ::::
 <!-- END R EXAMPLE 1-19 -->
@@ -525,9 +597,21 @@ dpois(x=15, lambda=20)
 
 ### The Continuous Uniform Distribution {#part3-title-01-21}
 
-![](../assets/inferential-statistics/part-01-slide-21-graphic-01.png){width="65%" fig-alt="Original graphic, section 3.1, slide 21"}
+A continuous uniform distribution has **constant probability density** on the interval $[a,b]$, where $a<b$. Equal-length subintervals have equal probability.
 
-![](../assets/inferential-statistics/part-01-slide-21-graphic-02.png){width="47%" fig-alt="Original graphic, section 3.1, slide 21"}
+- **Notation:** $X\sim U(a,b)$.
+- **Density:** $f(x)=\dfrac{1}{b-a}$ for $a\le x\le b$, and zero otherwise.
+- **Expected value:** $E(X)=\dfrac{a+b}{2}$.
+- **Variance:** $\operatorname{Var}(X)=\dfrac{(b-a)^2}{12}$; standard deviation $\sigma=\dfrac{b-a}{\sqrt{12}}$.
+- **Interval probability:** $P(c\le X\le d)=\dfrac{d-c}{b-a}$ for $a\le c\le d\le b$.
+- **One exact value:** $P(X=x)=0$. Probabilities are areas, not density heights.
+
+**Example — delivery time from 2 to 5 days:** $E(X)=3.5$ days, variance $0.75$ days squared. Delivery between 3 and 4 days has probability $(4-3)/(5-2)=1/3$.
+
+
+```{=html}
+<figure class="petra-diagram uniform-chart"><svg viewBox="0 0 640 250" role="img" aria-label="Continuous uniform density between a and b, shaded interval c to d"><text x="20" y="28">Density f(x)</text><path d="M85 50V190H610" fill="none" stroke="#555" stroke-width="2"/><rect x="245" y="80" width="155" height="110" fill="#ddd"/><path d="M150 190V80H520V190" fill="none" stroke="#763D52" stroke-width="3"/><text x="15" y="85">1/(b−a)</text><text x="150" y="215" text-anchor="middle">a</text><text x="245" y="215" text-anchor="middle">c</text><text x="400" y="215" text-anchor="middle">d</text><text x="520" y="215" text-anchor="middle">b</text><text x="615" y="195">x</text><text x="320" y="135" text-anchor="middle">Probability = area</text></svg><figcaption>The shaded rectangle has width d − c and height 1/(b − a).</figcaption></figure>
+```
 
 :::
 
@@ -551,9 +635,20 @@ dpois(x=15, lambda=20)
 </div>
 ```
 
-![](../assets/inferential-statistics/part-01-slide-22-graphic-03.png){width="41%" fig-alt="Original graphic, section 3.1, slide 22"}
+**Delivery arrivals: $X\sim U(8,12)$, in hours on the clock**
 
-![](../assets/inferential-statistics/part-01-slide-22-graphic-04.png){width="49%" fig-alt="Original graphic, section 3.1, slide 22"}
+- **Mean arrival time:** $E(X)=(8+12)/2=10$, or 10 AM.
+- **Before 9 AM:** $P(X<9)=(9-8)/(12-8)=0.25=25\%$.
+- **Planning:** be ready from 8 AM. The uniform model gives the same arrival probability to every one-hour interval; 10 AM is not a predicted peak.
+
+
+**Widget diameter: $X\sim U(9.8,10.2)$, in millimetres**
+
+- **Mean diameter:** $E(X)=(9.8+10.2)/2=10.0$ mm.
+- **Above 10.1 mm:** $P(X>10.1)=(10.2-10.1)/(10.2-9.8)=0.25=25\%$.
+- **Variance:** $\operatorname{Var}(X)=(10.2-9.8)^2/12\approx0.01333$ mm squared.
+- **Quality interpretation:** under this model, 25% of widgets exceed 10.1 mm. This is not a defect rate unless 10.1 mm is the specified upper limit.
+
 
 <!-- BEGIN R EXAMPLE 1-22 -->
 :::: {.try-in-r #r-example-01-22}
@@ -561,13 +656,33 @@ dpois(x=15, lambda=20)
 #### Try this in R {.unlisted}
 
 - **Purpose:** Apply the two uniform models in the original examples.
-- **Before running:** `punif(q,min,max)` gives the area below q between the specified bounds. `lower.tail=FALSE` gives the area above q. Arrival values are hours; diameter values are millimetres. `c()` displays the labelled answers.
+- **Before running:** `punif(q, min, max)` returns the probability at or below cutoff `q`, with interval endpoints `min` and `max`. `lower.tail = FALSE` returns the probability above the cutoff. `c()` combines the labelled results.
+- `par(mfrow = c(1, 2))` places two charts side by side. `mar` sets bottom, left, top and right margins; save previous settings as `old_par` and restore them using `par(old_par)`.
+- `plot(x, y, type = "n")` sets up axes without drawing data; the two-element `x` and `y` vectors set the displayed ranges. `xlab`, `ylab` and `main` supply axis labels and the title.
+- `rect()` shades a rectangle bounded by `xleft`, `xright`, `ybottom` and `ytop`. `col` sets its fill; `border = NA` omits the border. `segments()` draws the horizontal density from `(x0, y0)` to `(x1, y1)`; `lwd` sets its width.
+- Arrival values are clock hours; diameters are millimetres. A density can exceed 1: its **area**, rather than its height, must total 1.
 
 ```{r}
 #| label: inferential-1-22
-# Uniform interval probabilities using the original arrival and diameter limits.
-c(arrival_before_9=punif(q=9, min=8, max=12),
-  diameter_above_10_1=punif(q=10.1, min=9.8, max=10.2, lower.tail=FALSE))
+# Exact interval probabilities from the two stated continuous uniform models.
+c(arrival_before_9 = punif(q = 9, min = 8, max = 12),
+  diameter_above_10_1 = punif(q = 10.1, min = 9.8, max = 10.2,
+                             lower.tail = FALSE))
+# Plot density heights; shaded areas represent the required probabilities.
+old_par <- par(mfrow = c(1, 2), mar = c(4, 4, 3, 1))
+plot(x = c(8, 12), y = c(0, 0.30), type = "n",
+     xlab = "Arrival hour", ylab = "Density", main = "Arrive before 9 AM")
+rect(xleft = 8, ybottom = 0, xright = 9, ytop = 1 / (12 - 8),
+     col = "#D8D8D8", border = NA)
+segments(x0 = 8, y0 = 0.25, x1 = 12, y1 = 0.25,
+         col = "#763D52", lwd = 3)
+plot(x = c(9.8, 10.2), y = c(0, 3), type = "n",
+     xlab = "Diameter (mm)", ylab = "Density", main = "Diameter above 10.1 mm")
+rect(xleft = 10.1, ybottom = 0, xright = 10.2, ytop = 1 / (10.2 - 9.8),
+     col = "#D8D8D8", border = NA)
+segments(x0 = 9.8, y0 = 2.5, x1 = 10.2, y1 = 2.5,
+         col = "#763D52", lwd = 3)
+par(old_par)
 ```
 
 **Read the result:** Both probabilities are 0.25. Uniformity means equal-length intervals have equal probability; the midpoint is not a peak.
