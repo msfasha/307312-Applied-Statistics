@@ -6,7 +6,7 @@ from urllib.parse import urljoin, urlsplit
 from html import unescape, escape
 ROOT=Path(__file__).resolve().parents[1]
 SITE=ROOT/'_build/website'
-from course_documents import LESSONS as PARTS, PRACTICALS, EXTENDED, SUPERSTORE, DOCUMENTS, NAVIGATION_PAGES, R_INTRODUCTION_ALIASES, DESCRIPTIVE_PRACTICAL_ALIAS, INFERENTIAL_PDF_ALIASES, INFERENTIAL_SOURCE_DOWNLOADS, STUDENT_PROJECT_ZIP, LEGACY_STUDENT_PROJECT_ZIP
+from course_documents import DOCUMENTS, INFERENTIAL_SOURCE_DOWNLOADS, STUDENT_PROJECT_ZIP
 chrome=shutil.which('google-chrome') or shutil.which('chromium')
 if not chrome: raise RuntimeError('Google Chrome or Chromium is required to export the lesson PDFs.')
 (SITE/'pdf').mkdir(exist_ok=True)
@@ -66,19 +66,11 @@ for folder, part in DOCUMENTS:
     if not output.exists() or output.stat().st_size<10000 or output.read_bytes()[:5]!=b'%PDF-':
         raise RuntimeError('PDF export failed: '+part)
     print('Created',output.name,flush=True)
-# Preserve old individual R PDF URLs without duplicating them in the PDF ZIP.
-for alias in R_INTRODUCTION_ALIASES:
-    shutil.copy2(SITE/'pdf/01-introduction-to-r.pdf', SITE/'pdf'/(alias+'.pdf'))
-shutil.copy2(SITE/'pdf/02-descriptive-statistics.pdf', SITE/'pdf'/(DESCRIPTIVE_PRACTICAL_ALIAS+'.pdf'))
 (SITE/'downloads').mkdir(exist_ok=True)
-# One Part 3 source; the old download name is an unadvertised compatibility alias.
-for name in INFERENTIAL_PDF_ALIASES:
-    shutil.copy2(SITE/'pdf/03-inferential-statistics.pdf', SITE/'pdf'/(name+'.pdf'))
 for name in INFERENTIAL_SOURCE_DOWNLOADS:
     shutil.copy2(ROOT/'lessons/03-inferential-statistics.qmd', SITE/'downloads'/name)
 with zipfile.ZipFile(SITE/'downloads/applied-statistics-pdfs.zip','w',zipfile.ZIP_DEFLATED) as z:
     for _, part in DOCUMENTS:z.write(SITE/'pdf'/(part+'.pdf'),part+'.pdf')
 from student_project import build_student_project
 build_student_project(SITE/'downloads'/STUDENT_PROJECT_ZIP)
-shutil.copy2(SITE/'downloads'/STUDENT_PROJECT_ZIP, SITE/'downloads'/LEGACY_STUDENT_PROJECT_ZIP)
 print('Created student Positron workspace and PDF bundle.',flush=True)

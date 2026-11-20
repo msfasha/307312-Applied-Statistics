@@ -24,7 +24,7 @@ Active course implementations:
 - `assets/petra-brand.css`: shared colors, title panels and semantic headings.
 - `assets/source-slides.css`: slide-like layout, editable diagrams and figure sizing.
 - `assets/practical-print.css`: practical readability and print layout.
-- `practicals/_includes/petra-plots.R`: shared R chart styling.
+- `lessons/_includes/course-tools.R`: shared R chart styling.
 
 Paths are relative to the Applied Statistics course root. References to `20261/`
 and the former `COURSE_STYLE.md` describe the retired course and are not active

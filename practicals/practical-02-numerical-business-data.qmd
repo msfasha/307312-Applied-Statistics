@@ -1,8 +1,0 @@
----
-title: "Superstore practical has moved"
-format:
-  html:
-    embed-resources: true
----
-
-Continue to the [Superstore extended case](../extended-cases/superstore/practical-02-numerical-business-data.qmd).

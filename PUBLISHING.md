@@ -41,9 +41,8 @@ slide positions, data, source equality and exclusions. It never pushes/publishes
   preserved non-software text and all 36 explained R cells/results.
 - `scripts/sync-descriptive-r-references.py --check` checks the 20 executable
   examples in the combined Part 2 notebook.
-- `scripts/check-practicals.py` checks all twelve notebooks, pinned data,
+- `scripts/check-course.py` checks all twelve notebooks, pinned data,
   project-root imports and teaching results.
-- The independent `practicals/` render contains compatibility entry pages only.
 - Validate a fresh extraction of the Positron ZIP by running `quarto render`.
 
 R, Quarto, Chrome/Chromium and the documented R packages are required. MASS is
@@ -62,23 +61,16 @@ The shared Petra theme is `assets/petra-theme.md`, synchronized with
 `../petra_theme/petra_theme.md`. Use the shared burgundy headings, neutral teaching
 surfaces, centred figures and consistent meaningful analytical colours.
 
-## Downloads and compatibility
+## Downloads
 
 Each part landing page has one resource row with its HTML/PDF; Part 3 also offers
 the editable canonical QMD at `downloads/03-inferential-statistics.qmd`.
 
-Old probability/practical HTML URLs contain only redirects to Part 3, not other
-teaching versions. Their PDF URLs serve identical copies of the canonical Part 3
-PDF. The old individual practical QMD download serves the current Part 3 source.
-These unadvertised compatibility aliases do not enter either bundle.
-
-The old descriptive practical URL similarly forwards to Part 2, with an identical
-PDF alias. Former split R-introduction URLs/PDFs forward to/copy Part 1. Old
-Superstore practical URLs open the relocated extended cases.
-
-The advertised project is `downloads/applied-statistics-positron.zip`. The former
-RStudio-named ZIP is an identical unadvertised compatibility copy. Refresh the
-home-page cache query when changing the download.
+The student project is `downloads/applied-statistics-positron.zip`; the PDF bundle
+is `downloads/applied-statistics-pdfs.zip`. Only the twelve canonical PDFs and
+current download names are generated. Superseded entry pages, redirects and
+duplicate downloads have been removed. Old external bookmarks may no longer work.
+Refresh the home-page cache query when changing the download.
 
 ## Data and exclusions
 
@@ -110,7 +102,7 @@ is only for a fully completed, checked HTML build and still refreshes downloads.
 Use a full build after structural changes. A source push alone is not publication.
 
 The live verifier checks the deployed source revision and actual bytes of all
-canonical pages/PDFs, data, source downloads, compatibility URLs and both bundles.
+canonical pages/PDFs, data, source downloads and both bundles.
 It writes `_build/extended-review/live-verification.json`. Confirm each Part page
 has one resource row and that the ZIP has one notebook per part.
 

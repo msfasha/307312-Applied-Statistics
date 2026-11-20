@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify all twelve business notebooks, pinned data and isolated interactive imports."""
+"""Verify the twelve course notebooks, pinned data and project-root imports."""
 import csv
 import hashlib
 import json

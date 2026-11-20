@@ -20,9 +20,6 @@ def student_path(name):
     if name.startswith('lessons/'):
         part = 'part-1-introduction-to-r' if Path(name).stem in ['01-introduction-to-r'] else ('part-2-descriptive-statistics' if Path(name).stem == '02-descriptive-statistics' else 'part-3-inferential-statistics')
         return part+'/'+Path(name).name
-    if name.startswith('practicals/'):
-        part = 'part-2-descriptive-statistics' if 'descriptive-statistics-r-practical' in name else 'part-3-inferential-statistics'
-        return part+'/'+Path(name).name
     return name
 
 def project_files():
@@ -79,9 +76,6 @@ def rewrite(name, text, names):
     for source in sorted(names, key=len, reverse=True):
         if source != student_path(source):
             text = text.replace(source, student_path(source))
-    text = text.replace('this notebook under `practicals/`', 'this notebook under `part-3-inferential-statistics/`')
-    if name.startswith('practicals/'):
-        text = re.sub(r'```\{r\}\n#\| label: render-project-root\n#\| include: false\nknitr::opts_knit\$set\(root.dir = normalizePath\("\.\."\)\)\n```', '', text)
     # Embedded images remain available without external lightbox image targets.
     text = text.replace('lightbox: true', 'lightbox: false')
     return text
@@ -125,7 +119,7 @@ and executable R examples together; there are no separate practical notebooks.
 
 Keep data/, assets/ and support/ in place: they contain required data, images and a
 shared R helper. There are 12 runnable notebooks. Supporting editable Part 2
-diagrams are under support/. Website navigation pages, compatibility entries and unused draft notebooks are excluded.
+diagrams are under support/. Website navigation pages and unused draft notebooks are excluded.
 
 Keep the project root as the working directory. Open the top-level course folder in Positron and select an R interpreter.
 The supplied workspace runs Quarto cells in the R Console from the course root.

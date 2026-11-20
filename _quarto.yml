@@ -30,24 +30,16 @@ project:
     - "!instructor/**"
     - "!books/**"
     - "!sources/**"
-    - "!practicals/**"
     - "!_build/**"
   post-render:
     - python3 scripts/finalize-preview.py
-    - python3 scripts/preview-practicals.py
-    - python3 scripts/stage-practicals.py
   render:
     - index.qmd
-    - course/index.qmd
     - course/part-1.qmd
     - course/part-2.qmd
     - course/part-3.qmd
     - extended-cases/index.qmd
     - lessons/01-introduction-to-r.qmd
-    # Compatibility entry pages for the former three separate R lessons.
-    - lessons/r-02-basic-concepts.qmd
-    - lessons/r-03-dplyr.qmd
-    - lessons/r-04-ggplot2.qmd
     - lessons/02-descriptive-statistics.qmd
     - lessons/03-inferential-statistics.qmd
     - extended-cases/superstore/index.qmd

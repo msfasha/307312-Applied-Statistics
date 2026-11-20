@@ -1,8 +1,0 @@
----
-title: "Descriptive Statistics practical"
-format:
-  html:
-    embed-resources: true
----
-
-Start with the [combined Part 2 notebook](../lessons/02-descriptive-statistics.qmd). The business application is available separately in the [Superstore extended case](../extended-cases/superstore/index.qmd).

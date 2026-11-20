@@ -4,7 +4,7 @@ from pathlib import Path
 import argparse
 import shutil
 import subprocess
-from course_documents import EXTENDED, DOCUMENTS, NAVIGATION_PAGES, R_INTRODUCTION_ALIASES, DESCRIPTIVE_PRACTICAL_ALIAS, INFERENTIAL_REDIRECTS, INFERENTIAL_PDF_ALIASES, INFERENTIAL_SOURCE_DOWNLOADS, STUDENT_PROJECT_ZIP, LEGACY_STUDENT_PROJECT_ZIP
+from course_documents import EXTENDED, DOCUMENTS, NAVIGATION_PAGES, INFERENTIAL_SOURCE_DOWNLOADS, STUDENT_PROJECT_ZIP
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -13,9 +13,6 @@ def validate(site):
     required += ['index.html','lessons/02-descriptive-statistics.html','lessons/03-inferential-statistics.html','lessons/01-introduction-to-r.html']
     required += [f'{folder}/{name}.html' for folder, name in DOCUMENTS]
     required += ['pdf/'+name+'.pdf' for _, name in DOCUMENTS]
-    required += ['pdf/'+name+'.pdf' for name in R_INTRODUCTION_ALIASES]
-    required += ['pdf/'+DESCRIPTIVE_PRACTICAL_ALIAS+'.pdf']
-    required += ['pdf/'+n+'.pdf' for n in INFERENTIAL_PDF_ALIASES]
     required += ['pdf/'+p+'.pdf' for p in ['01-introduction-to-r','02-descriptive-statistics','03-inferential-statistics']]
     required += ['extended-cases/superstore/index.html']
     required += ['extended-cases/'+p+'.html' for p in EXTENDED]+['pdf/'+p+'.pdf' for p in EXTENDED]
@@ -24,7 +21,6 @@ def validate(site):
     required += ['data/business/'+p for p in ['superstore-lines.csv','cola.csv','consumer.csv','README.md']]
     required += ['downloads/'+STUDENT_PROJECT_ZIP,'downloads/applied-statistics-pdfs.zip']
     required += ['downloads/'+n for n in INFERENTIAL_SOURCE_DOWNLOADS]
-    required += ['downloads/'+LEGACY_STUDENT_PROJECT_ZIP]
     for name in required:
         if not (site/name).exists():raise RuntimeError('Missing generated page: '+name)
     forbidden=[p for p in site.rglob('*') if p.is_file() and (any(t in p.relative_to(site).parts for t in ['instructor','archived','books','sources','_includes']) or p.suffix.lower() in ['.xlsx','.xls'])]
@@ -67,17 +63,13 @@ def validate(site):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--skip-render', action='store_true',
-                        help='Reuse a completed full HTML build; refresh practicals and all downloads.')
+                        help='Reuse a completed full HTML build; refresh all downloads.')
     args = parser.parse_args()
     subprocess.run(['python3', str(ROOT/'scripts/native_source_markdown.py')], cwd=ROOT, check=True)
     subprocess.run(['python3', str(ROOT/'scripts/render-descriptive-chart-additions.py')], cwd=ROOT, check=True)
     subprocess.run(['python3', str(ROOT/'scripts/sync-descriptive-r-references.py'), '--check'], cwd=ROOT, check=True)
-    subprocess.run(['python3', str(ROOT/'scripts/check-practicals.py')], cwd=ROOT, check=True)
-    shutil.rmtree(ROOT/'_build/practicals', ignore_errors=True)
-    if args.skip_render:
-        subprocess.run(['python3', str(ROOT/'scripts/preview-practicals.py')], cwd=ROOT, check=True)
-        subprocess.run(['python3', str(ROOT/'scripts/stage-practicals.py')], cwd=ROOT, check=True)
-    else:
+    subprocess.run(['python3', str(ROOT/'scripts/check-course.py')], cwd=ROOT, check=True)
+    if not args.skip_render:
         site = ROOT/'_build/website'
         if site.exists():
             shutil.rmtree(site)

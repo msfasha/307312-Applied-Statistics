@@ -12,7 +12,7 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / '_build/website'
 from student_project import student_path, RUNNABLE_DOCUMENTS, project_files
-from course_documents import LESSONS, PRACTICALS, EXTENDED, DOCUMENTS, SUPERSTORE, NAVIGATION_PAGES, R_INTRODUCTION_ALIASES, DESCRIPTIVE_PRACTICAL_ALIAS, INFERENTIAL_REDIRECTS, INFERENTIAL_PDF_ALIASES, INFERENTIAL_SOURCE_DOWNLOADS, STUDENT_PROJECT_ZIP, LEGACY_STUDENT_PROJECT_ZIP
+from course_documents import DOCUMENTS, NAVIGATION_PAGES, INFERENTIAL_SOURCE_DOWNLOADS, STUDENT_PROJECT_ZIP
 
 class Links(HTMLParser):
     def __init__(self):
@@ -30,7 +30,6 @@ class Links(HTMLParser):
 if __name__ == '__main__':
     pages = [SITE/(n+'.html') for n in NAVIGATION_PAGES]
     pages += [SITE/folder/(n+'.html') for folder, n in DOCUMENTS]
-    pages += [SITE/'practicals'/(n+'.html') for n in SUPERSTORE]
     parsed = {}
     for path in SITE.rglob('*.html'):
         links = Links()
@@ -48,19 +47,16 @@ if __name__ == '__main__':
             assert path.exists(), (page.name, href)
             if target.fragment and path.suffix == '.html':
                 assert unquote(target.fragment) in parsed[path].ids, (page.name, href, 'missing fragment')
-    for alias in R_INTRODUCTION_ALIASES:
-        assert (SITE/'pdf'/(alias+'.pdf')).read_bytes() == (SITE/'pdf/01-introduction-to-r.pdf').read_bytes(), alias
-        assert '01-introduction-to-r.html' in (SITE/'lessons'/(alias+'.html')).read_text(), alias
-    assert (SITE/'pdf'/(DESCRIPTIVE_PRACTICAL_ALIAS+'.pdf')).read_bytes() == (SITE/'pdf/02-descriptive-statistics.pdf').read_bytes()
     for name in INFERENTIAL_SOURCE_DOWNLOADS:
         assert (SITE/'downloads'/name).read_bytes() == (ROOT/'lessons/03-inferential-statistics.qmd').read_bytes()
-    for name in INFERENTIAL_PDF_ALIASES:
-        assert (SITE/'pdf'/(name+'.pdf')).read_bytes() == (SITE/'pdf/03-inferential-statistics.pdf').read_bytes()
-    for alias in INFERENTIAL_REDIRECTS:
-        text=(SITE/(alias+'.html')).read_text()
-        assert 'location.replace' in text and '03-inferential-statistics.html' in text
-        assert 'source-slide' not in text
     assert len(DOCUMENTS)==12 and len(RUNNABLE_DOCUMENTS)==12
+    assert not (SITE/'practicals').exists(), 'Obsolete practical entry pages returned'
+    assert {p.name for p in (SITE/'pdf').iterdir()} == {n+'.pdf' for _, n in DOCUMENTS}, 'Unexpected duplicate PDF downloads'
+    assert {p.name for p in (SITE/'downloads').iterdir()} == {STUDENT_PROJECT_ZIP, 'applied-statistics-pdfs.zip', *INFERENTIAL_SOURCE_DOWNLOADS}, 'Unexpected duplicate downloads'
+    for folder in ['lessons', 'course']:
+        expected = {SITE/(n+'.html') for n in NAVIGATION_PAGES if n.startswith(folder+'/')}
+        expected |= {SITE/f/(n+'.html') for f,n in DOCUMENTS if f == folder}
+        assert set((SITE/folder).glob('*.html')) == expected, 'Obsolete '+folder+' pages returned'
     assert not (SITE/'.vscode').exists(), 'Editor preferences belong in the student ZIP only'
     assert not (SITE/'data/practicals').exists(), 'Retired practical data leaked into site'
     for path in SITE.rglob('*'):
@@ -89,14 +85,12 @@ if __name__ == '__main__':
         for name in names:
             if Path(name).suffix.lower() in {'.qmd', '.r', '.md'}:
                 assert 'rstudio' not in bundle.read(name).decode().lower(), name
-        assert (SITE/'downloads'/STUDENT_PROJECT_ZIP).read_bytes() == (SITE/'downloads'/LEGACY_STUDENT_PROJECT_ZIP).read_bytes()
 
         assert names == {student_path(n) for n in project_files()} | {'README.md', '_quarto.yml'}
         config = yaml.safe_load(bundle.read('_quarto.yml'))
         assert 'website' not in config
         assert config['project']['execute-dir'] == 'project'
         assert set(config['project']['render']) == {student_path(f'{f}/{n}.qmd') for f,n in RUNNABLE_DOCUMENTS}
-        assert {student_path(f'practicals/{n}.qmd') for n in PRACTICALS} <= names
         assert {student_path(f'{folder}/{n}.qmd') for folder, n in RUNNABLE_DOCUMENTS} <= names
         # Packaging may relocate helper paths, but must preserve teaching R code.
         for folder, notebook in RUNNABLE_DOCUMENTS:

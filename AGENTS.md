@@ -432,3 +432,9 @@
 - Part 3's original/authorized historical hashes remain intact; `native_markdown_bodies` separately guards the equivalent native source bodies. Update that guard deliberately when future teaching changes are authorized.
 - Part 1 uses separate hidden setup cells with boolean `echo: false` for plot margins; visible chart cells retain their code. Do not use `echo: !expr -1`, which Positron's Quarto validator rejects.
 - Refresh the website, all twelve PDFs and both bundles, verify the extracted Positron project and live files. Maintain one canonical source for each part.
+
+## Remove obsolete compatibility content — 20 November 2026
+
+- User requested removing obsolete practicals and similar folders/content to simplify the course. This supersedes previous requirements to preserve compatibility entry pages and duplicate download URLs.
+- Remove `practicals/`, former split Part 1 entry pages, duplicate `course/index.qmd`, retired probability/practical redirects, root lesson redirects and old PDF/QMD/ZIP aliases. Do not regenerate them.
+- Keep three canonical lessons and nine active extended applications, their current navigation, twelve PDFs, canonical Part 3 QMD download and two student bundles. Historical sources/archives and unrelated working drafts remain unchanged.

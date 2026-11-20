@@ -9,7 +9,7 @@ import re
 import subprocess
 import time
 
-from course_documents import DOCUMENTS, NAVIGATION_PAGES, R_INTRODUCTION_ALIASES, DESCRIPTIVE_PRACTICAL_ALIAS, INFERENTIAL_REDIRECTS, INFERENTIAL_PDF_ALIASES, INFERENTIAL_SOURCE_DOWNLOADS, STUDENT_PROJECT_ZIP, LEGACY_STUDENT_PROJECT_ZIP
+from course_documents import DOCUMENTS, NAVIGATION_PAGES, INFERENTIAL_SOURCE_DOWNLOADS, STUDENT_PROJECT_ZIP
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT/'_build/website'
@@ -38,13 +38,9 @@ if __name__ == '__main__':
         time.sleep(15)
     names = [n+'.html' for n in NAVIGATION_PAGES] + [folder+'/'+name+'.html' for folder, name in DOCUMENTS]
     names += ['pdf/'+name+'.pdf' for _, name in DOCUMENTS]
-    names += ['pdf/'+name+'.pdf' for name in R_INTRODUCTION_ALIASES]
-    names += ['pdf/'+DESCRIPTIVE_PRACTICAL_ALIAS+'.pdf']
-    names += ['pdf/'+n+'.pdf' for n in INFERENTIAL_PDF_ALIASES]
     names += ['downloads/'+STUDENT_PROJECT_ZIP, 'downloads/applied-statistics-pdfs.zip']
     names += ['downloads/'+n for n in INFERENTIAL_SOURCE_DOWNLOADS]
     names += re.findall(r'^    - (data/[^\n]+)', (ROOT/'_quarto.yml').read_text(), re.M)
-    names += ['downloads/'+LEGACY_STUDENT_PROJECT_ZIP]
     verified = []
     for name in names:
         data = fetch(name, revision)
