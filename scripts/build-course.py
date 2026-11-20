@@ -69,6 +69,7 @@ def main():
     parser.add_argument('--skip-render', action='store_true',
                         help='Reuse a completed full HTML build; refresh practicals and all downloads.')
     args = parser.parse_args()
+    subprocess.run(['python3', str(ROOT/'scripts/native_source_markdown.py')], cwd=ROOT, check=True)
     subprocess.run(['python3', str(ROOT/'scripts/render-descriptive-chart-additions.py')], cwd=ROOT, check=True)
     subprocess.run(['python3', str(ROOT/'scripts/sync-descriptive-r-references.py'), '--check'], cwd=ROOT, check=True)
     subprocess.run(['python3', str(ROOT/'scripts/check-practicals.py')], cwd=ROOT, check=True)

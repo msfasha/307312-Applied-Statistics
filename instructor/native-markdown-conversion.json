@@ -1,0 +1,17 @@
+{
+  "purpose": "Format-only native Markdown conversion; wording/emphasis/table cells and R code checked",
+  "lessons": {
+    "02-descriptive-statistics.qmd": {
+      "text": 71,
+      "tables": 6,
+      "source_before_sha256": "f946cd44614098aa42615f7b7e0f3eea55727ac51b82617e6e160fbfbddb8bff",
+      "source_after_sha256": "4ab8a14e87f4f8f19620b83b48ad39d5123b8a580c95cd614ab0035faff41845"
+    },
+    "03-inferential-statistics.qmd": {
+      "text": 143,
+      "tables": 19,
+      "source_before_sha256": "0e5e775674f2d40ec18882c4a86b3c06c81db91be713780e1a15afb2e74e7a80",
+      "source_after_sha256": "0c1e9ceaae9e5847c5488dcf60cd3b5e7a1e60c395f29975c26fdfd4d283c133"
+    }
+  }
+}

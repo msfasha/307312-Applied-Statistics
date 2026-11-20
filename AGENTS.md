@@ -423,3 +423,12 @@
 ## Compact marathon illustration — 19 November 2026
 
 - User requested minimizing the marathon photo and keeping it on the preceding teaching slide/page. Keep it beside its continuous-variable examples within source slide 1-10, using a compact shared layout that stays together in print. Do not move the continuous running-time example into the discrete-variable slide.
+
+## Native Markdown and valid Positron chunk options — 20 November 2026
+
+- User authorized fixing and publishing Visual Editor/raw-HTML issues and the four invalid Part 1 `echo: !expr -1` settings.
+- Parts 2–3 teaching text and all 25 source tables use native Quarto paragraphs, lists, fenced divs and grid tables. Keep original wording, numbers, emphasis, source positions, images and executable R. Raw HTML remains for diagrams that require it.
+- `scripts/native_source_markdown.py` converts historical text/table panels with rendered-text, emphasis and table-cell fidelity checks; verifies R cells are unchanged. Historical conversion checksums are recorded in `instructor/native-markdown-conversion.json`.
+- Part 3's original/authorized historical hashes remain intact; `native_markdown_bodies` separately guards the equivalent native source bodies. Update that guard deliberately when future teaching changes are authorized.
+- Part 1 uses separate hidden setup cells with boolean `echo: false` for plot margins; visible chart cells retain their code. Do not use `echo: !expr -1`, which Positron's Quarto validator rejects.
+- Refresh the website, all twelve PDFs and both bundles, verify the extracted Positron project and live files. Maintain one canonical source for each part.

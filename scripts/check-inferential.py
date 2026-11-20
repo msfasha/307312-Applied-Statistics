@@ -28,7 +28,9 @@ def check():
         if key in codes:
             assert panel and '**Before running:**' in panel[0] and '**Read the result:**' in panel[0],key
         if panel:block=block[:panel.start()]+block[panel.end():]
-        if key in manifest.get('authorized_visual_updates', {}):
+        if key in manifest.get('native_markdown_bodies', {}):
+            assert hashlib.sha256(block.strip().encode()).hexdigest()==manifest['native_markdown_bodies'][key],('Native teaching content changed',key)
+        elif key in manifest.get('authorized_visual_updates', {}):
             assert hashlib.sha256(block.strip().encode()).hexdigest()==manifest['authorized_visual_updates'][key]['sha256'],('Authorized slide changed',key)
         elif key in manifest['unchanged_slide_bodies_excluding_R']:
             assert hashlib.sha256(block.strip().encode()).hexdigest()==manifest['unchanged_slide_bodies_excluding_R'][key],('Original theory changed',key)
@@ -55,7 +57,7 @@ stopifnot(abs(summary(simple)$r.squared-.89546108625675147)<1e-10)
         result=subprocess.run(['Rscript','--vanilla',str(script)],cwd=ROOT,capture_output=True,text=True)
         (BUILD/'r-checks.log').write_text(result.stdout+result.stderr)
         if result.returncode:raise RuntimeError(result.stderr)
-    report={'original_slide_positions':141,'explained_R_cells':36,'unchanged_theory_bodies_checked':len(set(manifest['unchanged_slide_bodies_excluding_R'])-set(manifest.get('authorized_visual_updates',{}))),'authorized_slide_bodies_checked':len(manifest.get('authorized_visual_updates',{})),'numerical_checks':'passed'}
+    report={'original_slide_positions':141,'explained_R_cells':36,'native_markdown_bodies_checked':len(manifest.get('native_markdown_bodies',{})),'unchanged_theory_bodies_checked':len(set(manifest['unchanged_slide_bodies_excluding_R'])-set(manifest.get('authorized_visual_updates',{}))),'authorized_slide_bodies_checked':len(manifest.get('authorized_visual_updates',{})),'numerical_checks':'passed'}
     (BUILD/'validation.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report,indent=2),flush=True)
 

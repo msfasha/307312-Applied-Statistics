@@ -113,3 +113,14 @@ The live verifier checks the deployed source revision and actual bytes of all
 canonical pages/PDFs, data, source downloads, compatibility URLs and both bundles.
 It writes `_build/extended-review/live-verification.json`. Confirm each Part page
 has one resource row and that the ZIP has one notebook per part.
+
+## Editing in Positron
+
+Parts 2 and 3 use native Markdown for teaching prose and source tables, so the
+Visual Editor can show editable text instead of raw `<div>`/`<p>` blocks. Diagram
+HTML/SVG remains where its layout requires it. Custom Petra styling appears in
+the rendered preview. `scripts/native_source_markdown.py` checks this convention;
+its one-time conversion report is local instructor material. Part 3 keeps the
+historical body checksums and a separate guard for the native-format equivalent.
+Part 1 plot setup uses boolean `echo: false` in separate hidden chunks, avoiding
+the invalid `echo: !expr -1` option while retaining visible chart code.

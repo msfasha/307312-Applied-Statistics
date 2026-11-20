@@ -478,8 +478,11 @@ Base R includes plotting functions without an additional package. Choose variabl
 `hist()` groups numerical values into intervals and plots their frequencies. `x` supplies the observations; `breaks` suggests a number of intervals; `main` sets the title and `xlab` labels the horizontal axis. Actual interval boundaries can differ from the suggested count. `col` sets the fill colour.
 
 ```{r}
-#| echo: !expr -1
+#| echo: false
 par(mar = c(4.2, 4.7, 2.5, 0.8), mgp = c(2.8, 0.7, 0), las = 1, cex = 0.9)
+```
+
+```{r}
 hist(x = car_data$mpg, breaks = 6,
      main = "Fuel economy of 32 car models",
      xlab = "Miles per US gallon", col = "gray75")
@@ -494,8 +497,11 @@ The values extend from 10.4 to 33.9 miles per US gallon. Each bar counts car mod
 `table()` counts observations in each category. `barplot()` uses those counts as bar heights; `height` supplies the counts, and `ylab` labels the vertical axis.
 
 ```{r}
-#| echo: !expr -1
+#| echo: false
 par(mar = c(4.2, 4.7, 2.5, 0.8), mgp = c(2.8, 0.7, 0), las = 1, cex = 0.9)
+```
+
+```{r}
 category_counts <- table(superstore$Category)
 barplot(height = category_counts, main = "Order lines by category",
         ylab = "Number of order lines", col = "gray75")
@@ -518,9 +524,12 @@ car_data$cylinders <- factor(x = car_data$cyl)
 ```
 
 ```{r}
-#| echo: !expr -1
-#| fig-height: 3.8
+#| echo: false
 par(mar = c(4.2, 4.7, 2.5, 0.8), mgp = c(2.8, 0.7, 0), las = 1, cex = 0.9)
+```
+
+```{r}
+#| fig-height: 3.8
 boxplot(mpg ~ cylinders, data = car_data,
         main = "Fuel economy by cylinder group",
         xlab = "Recorded cylinder group", ylab = "Miles per US gallon",
@@ -539,9 +548,12 @@ boxplot(mpg ~ cylinders, data = car_data,
 `plot(x, y)` places weight on the horizontal axis and fuel economy on the vertical axis. `pch = 16` selects filled circles; `cex = 1` uses their standard size; `col` sets their colour.
 
 ```{r}
-#| echo: !expr -1
-#| fig-height: 3.8
+#| echo: false
 par(mar = c(4.2, 4.7, 2.5, 0.8), mgp = c(2.8, 0.7, 0), las = 1, cex = 0.9)
+```
+
+```{r}
+#| fig-height: 3.8
 plot(x = car_data$weight_kg, y = car_data$mpg,
      main = "Vehicle weight and fuel economy",
      xlab = "Vehicle weight in kilograms", ylab = "Miles per US gallon",
