@@ -97,7 +97,10 @@ def convert(html):
     return markdown.strip()
 
 def sha(s):return hashlib.sha256(s.encode()).hexdigest()
-def without_r(block,key):return re.sub(r'\n<!-- BEGIN R EXAMPLE '+key+r' -->.*?<!-- END R EXAMPLE '+key+r' -->\n','',block,flags=re.S).strip()
+def without_r(block,key):
+    from course_sections import r_panel
+    panel = r_panel(block)
+    return (block[:panel.start()]+block[panel.end():] if panel else block).strip()
 
 def migrate():
     if not any(re.match(r'\s*<div class="source-(?:text|table)"', b)
@@ -127,8 +130,8 @@ def migrate():
     for path,new in prepared.items():path.write_text(new)
     part3=LESSONS[1].read_text();f=ROOT/'instructor/inferential-original-content-manifest.json';m=json.loads(f.read_text())
     m['native_markdown_bodies']={}
-    for b in re.split(r'(?=<!-- Original deck \d+, slide \d+ -->)',part3)[1:]:
-        found=re.match(r'<!-- Original deck (\d+), slide (\d+) -->',b);key='-'.join(found.groups())
+    from course_sections import inferential_blocks
+    for key,b in inferential_blocks(part3):
         m['native_markdown_bodies'][key]=sha(without_r(b,key))
     f.write_text(json.dumps(m,indent=2)+'\n');MANIFEST.write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report,indent=2))

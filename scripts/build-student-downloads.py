@@ -6,7 +6,7 @@ from urllib.parse import urljoin, urlsplit
 from html import unescape, escape
 ROOT=Path(__file__).resolve().parents[1]
 SITE=ROOT/'_build/website'
-from course_documents import DOCUMENTS, INFERENTIAL_SOURCE_DOWNLOADS, STUDENT_PROJECT_ZIP
+from course_documents import DOCUMENTS, R_CODE_DOWNLOADS, STUDENT_PROJECT_ZIP
 chrome=shutil.which('google-chrome') or shutil.which('chromium')
 if not chrome: raise RuntimeError('Google Chrome or Chromium is required to export the lesson PDFs.')
 (SITE/'pdf').mkdir(exist_ok=True)
@@ -67,8 +67,9 @@ for folder, part in DOCUMENTS:
         raise RuntimeError('PDF export failed: '+part)
     print('Created',output.name,flush=True)
 (SITE/'downloads').mkdir(exist_ok=True)
-for name in INFERENTIAL_SOURCE_DOWNLOADS:
-    shutil.copy2(ROOT/'lessons/03-inferential-statistics.qmd', SITE/'downloads'/name)
+from r_code_files import r_code_files
+for name, code in r_code_files().items():
+    (SITE/'downloads'/name).write_text(code)
 with zipfile.ZipFile(SITE/'downloads/applied-statistics-pdfs.zip','w',zipfile.ZIP_DEFLATED) as z:
     for _, part in DOCUMENTS:z.write(SITE/'pdf'/(part+'.pdf'),part+'.pdf')
 from student_project import build_student_project

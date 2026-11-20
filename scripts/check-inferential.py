@@ -22,9 +22,9 @@ def check():
     assert len(cells)==len(actual)==len(codes)==36
     assert actual=={k:v.strip() for k,v in codes.items()},'Canonical notebook R cells differ from the documented examples'
     manifest=json.loads((ROOT/'instructor/inferential-original-content-manifest.json').read_text())
-    for block in re.split(r'(?=<!-- Original deck \d+, slide \d+ -->)',source)[1:]:
-        m=re.match(r'<!-- Original deck (\d+), slide (\d+) -->',block);key='-'.join(m.groups())
-        panel=re.search(r'\n<!-- BEGIN R EXAMPLE '+key+r' -->.*?<!-- END R EXAMPLE '+key+r' -->\n',block,re.S)
+    from course_sections import inferential_blocks, r_panel
+    for key, block in inferential_blocks(source):
+        panel=r_panel(block)
         if key in codes:
             assert panel and '**Before running:**' in panel[0] and '**Read the result:**' in panel[0],key
         if panel:block=block[:panel.start()]+block[panel.end():]

@@ -95,6 +95,9 @@ def build_student_project(output):
                 z.writestr(student_path(name), rewrite(name, (ROOT/name).read_text(), names))
             else:
                 z.write(ROOT/name, student_path(name))
+        from r_code_files import r_code_files
+        for name, code in r_code_files().items():
+            z.writestr(student_path('lessons/'+name), code)
         z.writestr('_quarto.yml', yaml.safe_dump(config, sort_keys=False, allow_unicode=True))
         z.writestr('README.md', '''# 307312 Applied Statistics — start here
 
@@ -113,6 +116,8 @@ Open the folders in this order:
 3. **part-3-inferential-statistics/** — Inferential Statistics: the teaching slides and executable R examples together, from probability through regression.
 4. **extended-cases/** — optional business applications, including Superstore.
 
+Each course part has one notebook and a plain .R script containing its code.
+Run the .R scripts from the top-level folder with data/ in place.
 Each course part has one notebook. The same sources generate the website, PDFs
 and the notebooks in this project. Parts 2 and 3 include their teaching material
 and executable R examples together; there are no separate practical notebooks.

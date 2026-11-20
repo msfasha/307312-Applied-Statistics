@@ -4,7 +4,7 @@ from pathlib import Path
 import argparse
 import shutil
 import subprocess
-from course_documents import EXTENDED, DOCUMENTS, NAVIGATION_PAGES, INFERENTIAL_SOURCE_DOWNLOADS, STUDENT_PROJECT_ZIP
+from course_documents import EXTENDED, DOCUMENTS, NAVIGATION_PAGES, R_CODE_DOWNLOADS, STUDENT_PROJECT_ZIP
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -20,7 +20,7 @@ def validate(site):
     required += re.findall(r'^    - (data/[^\n]+)', (ROOT/'_quarto.yml').read_text(), re.M)
     required += ['data/business/'+p for p in ['superstore-lines.csv','cola.csv','consumer.csv','README.md']]
     required += ['downloads/'+STUDENT_PROJECT_ZIP,'downloads/applied-statistics-pdfs.zip']
-    required += ['downloads/'+n for n in INFERENTIAL_SOURCE_DOWNLOADS]
+    required += ['downloads/'+n for n in R_CODE_DOWNLOADS]
     for name in required:
         if not (site/name).exists():raise RuntimeError('Missing generated page: '+name)
     forbidden=[p for p in site.rglob('*') if p.is_file() and (any(t in p.relative_to(site).parts for t in ['instructor','archived','books','sources','_includes']) or p.suffix.lower() in ['.xlsx','.xls'])]
@@ -46,7 +46,7 @@ def validate(site):
     for addition in ['line-chart', 'dot-plot']:
         if f'id="slide-added-{addition}"' not in descriptive:
             raise RuntimeError('Missing added descriptive chart: ' + addition)
-    if len(re.findall(r'<!-- BEGIN TRY IN R [\w-]+ -->', descriptive)) != 20:
+    if len(re.findall(r'id="try-r-[\w-]+"', descriptive)) != 20:
         raise RuntimeError('Combined Part 2 must contain 20 executed R examples')
     landing = (site/'course/part-2.html').read_text()
     if 'descriptive-statistics-r-practical.html' in landing:
@@ -55,7 +55,7 @@ def validate(site):
     if any(f'id="part3-{k:02d}-slide-{i:02d}"' not in inferential
            for k, count in enumerate([37, 26, 57, 21], 1) for i in range(1, count+1)):
         raise RuntimeError('Incomplete original inferential slides: expected 141')
-    if len(re.findall(r'<!-- BEGIN R EXAMPLE [\d-]+ -->',inferential)) != 36:
+    if len(re.findall(r'id="r-example-[\d-]+"',inferential)) != 36:
         raise RuntimeError('Part 3 must include 36 executable R examples')
     if any(term in (site/'course/part-3.html').read_text() for term in ['original core slides','Revised 3.1','Open practical','coming soon','forthcoming']):
         raise RuntimeError('Part 3 must present one combined resource')

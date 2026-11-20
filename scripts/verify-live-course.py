@@ -9,7 +9,7 @@ import re
 import subprocess
 import time
 
-from course_documents import DOCUMENTS, NAVIGATION_PAGES, INFERENTIAL_SOURCE_DOWNLOADS, STUDENT_PROJECT_ZIP
+from course_documents import DOCUMENTS, NAVIGATION_PAGES, R_CODE_DOWNLOADS, STUDENT_PROJECT_ZIP
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT/'_build/website'
@@ -39,7 +39,7 @@ if __name__ == '__main__':
     names = [n+'.html' for n in NAVIGATION_PAGES] + [folder+'/'+name+'.html' for folder, name in DOCUMENTS]
     names += ['pdf/'+name+'.pdf' for _, name in DOCUMENTS]
     names += ['downloads/'+STUDENT_PROJECT_ZIP, 'downloads/applied-statistics-pdfs.zip']
-    names += ['downloads/'+n for n in INFERENTIAL_SOURCE_DOWNLOADS]
+    names += ['downloads/'+n for n in R_CODE_DOWNLOADS]
     names += re.findall(r'^    - (data/[^\n]+)', (ROOT/'_quarto.yml').read_text(), re.M)
     verified = []
     for name in names:
@@ -57,4 +57,4 @@ if __name__ == '__main__':
     output = ROOT/'_build/extended-review/live-verification.json'
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, indent=2)+'\n')
-    print(f'Verified live revision, {len(DOCUMENTS)} notebook pages, {len(DOCUMENTS)} PDFs, both ZIPs, single-source Part 3 notebook and all approved data.', flush=True)
+    print(f'Verified live revision, {len(DOCUMENTS)} notebook pages, {len(DOCUMENTS)} PDFs, both ZIPs, three core R scripts and all approved data.', flush=True)

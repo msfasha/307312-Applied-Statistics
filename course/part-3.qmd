@@ -1,5 +1,5 @@
 ---
-title: "Part 3: Inferential Statistics"
+title: "Inferential Statistics"
 toc: false
 ---
 
@@ -7,6 +7,6 @@ Read the teaching slides and run the R examples in the same notebook: probabilit
 
 | Resource | Read online | Download |
 |---|---|---|
-| [Inferential Statistics]{#practical} | [Read](../lessons/03-inferential-statistics.qmd) | [PDF](../pdf/03-inferential-statistics.pdf) · [Quarto notebook](../downloads/03-inferential-statistics.qmd){download="03-inferential-statistics.qmd"} |
+| [Inferential Statistics]{#practical} | [Read](../lessons/03-inferential-statistics.qmd) | [PDF](../pdf/03-inferential-statistics.pdf) · [Download R code files](../downloads/03-inferential-statistics.R){download="03-inferential-statistics.R"} |
 
 [Home](../index.qmd)

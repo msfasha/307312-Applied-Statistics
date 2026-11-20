@@ -7,6 +7,6 @@ One concise, runnable notebook covers R and Positron, basic programming, data fr
 
 | Notebook | Read online | Download |
 |---|---|---|
-| Introduction to R | [Read](../lessons/01-introduction-to-r.qmd) | [PDF](../pdf/01-introduction-to-r.pdf) |
+| Introduction to R | [Read](../lessons/01-introduction-to-r.qmd) | [PDF](../pdf/01-introduction-to-r.pdf) · [Download R code files](../downloads/01-introduction-to-r.R){download="01-introduction-to-r.R"} |
 
 [Home](../index.qmd)

@@ -12,7 +12,7 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / '_build/website'
 from student_project import student_path, RUNNABLE_DOCUMENTS, project_files
-from course_documents import DOCUMENTS, NAVIGATION_PAGES, INFERENTIAL_SOURCE_DOWNLOADS, STUDENT_PROJECT_ZIP
+from course_documents import DOCUMENTS, NAVIGATION_PAGES, R_CODE_DOWNLOADS, STUDENT_PROJECT_ZIP
 
 class Links(HTMLParser):
     def __init__(self):
@@ -47,12 +47,14 @@ if __name__ == '__main__':
             assert path.exists(), (page.name, href)
             if target.fragment and path.suffix == '.html':
                 assert unquote(target.fragment) in parsed[path].ids, (page.name, href, 'missing fragment')
-    for name in INFERENTIAL_SOURCE_DOWNLOADS:
-        assert (SITE/'downloads'/name).read_bytes() == (ROOT/'lessons/03-inferential-statistics.qmd').read_bytes()
+    from r_code_files import r_code_files
+    scripts = r_code_files()
+    for name, code in scripts.items():
+        assert (SITE/'downloads'/name).read_text() == code
     assert len(DOCUMENTS)==12 and len(RUNNABLE_DOCUMENTS)==12
     assert not (SITE/'practicals').exists(), 'Obsolete practical entry pages returned'
     assert {p.name for p in (SITE/'pdf').iterdir()} == {n+'.pdf' for _, n in DOCUMENTS}, 'Unexpected duplicate PDF downloads'
-    assert {p.name for p in (SITE/'downloads').iterdir()} == {STUDENT_PROJECT_ZIP, 'applied-statistics-pdfs.zip', *INFERENTIAL_SOURCE_DOWNLOADS}, 'Unexpected duplicate downloads'
+    assert {p.name for p in (SITE/'downloads').iterdir()} == {STUDENT_PROJECT_ZIP, 'applied-statistics-pdfs.zip', *R_CODE_DOWNLOADS}, 'Unexpected duplicate downloads'
     for folder in ['lessons', 'course']:
         expected = {SITE/(n+'.html') for n in NAVIGATION_PAGES if n.startswith(folder+'/')}
         expected |= {SITE/f/(n+'.html') for f,n in DOCUMENTS if f == folder}
@@ -63,7 +65,7 @@ if __name__ == '__main__':
         if not path.is_file():
             continue
         assert not set(path.relative_to(SITE).parts) & {'instructor', 'books', 'sources', 'archived', '_includes'}, path
-        if path.relative_to(SITE).as_posix() not in {'downloads/'+n for n in INFERENTIAL_SOURCE_DOWNLOADS}:
+        if path.relative_to(SITE).as_posix() not in {'downloads/'+n for n in R_CODE_DOWNLOADS}:
             assert path.suffix.lower() not in {'.xls', '.xlsx', '.pptx', '.qmd', '.r', '.rproj'}, path
     with zipfile.ZipFile(SITE/'downloads/applied-statistics-pdfs.zip') as bundle:
         assert set(bundle.namelist()) == {n+'.pdf' for _, n in DOCUMENTS}
@@ -86,7 +88,10 @@ if __name__ == '__main__':
             if Path(name).suffix.lower() in {'.qmd', '.r', '.md'}:
                 assert 'rstudio' not in bundle.read(name).decode().lower(), name
 
-        assert names == {student_path(n) for n in project_files()} | {'README.md', '_quarto.yml'}
+        script_paths = {student_path('lessons/'+n) for n in scripts}
+        assert names == {student_path(n) for n in project_files()} | {'README.md', '_quarto.yml'} | script_paths
+        for name, code in scripts.items():
+            assert bundle.read(student_path('lessons/'+name)).decode() == code
         config = yaml.safe_load(bundle.read('_quarto.yml'))
         assert 'website' not in config
         assert config['project']['execute-dir'] == 'project'

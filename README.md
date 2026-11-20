@@ -11,6 +11,8 @@
 Each part has one Quarto source for its HTML, PDF and Positron notebook. There
 are twelve canonical documents: these three parts, three Superstore applications
 and six extended cases. Both bundles contain each canonical document once.
+Each part page also offers its R code as a plain `.R` script. The complete course
+ZIP includes these scripts alongside the notebooks and required data.
 There is no separate inferential practical or alternative probability lesson.
 
 ## Work locally

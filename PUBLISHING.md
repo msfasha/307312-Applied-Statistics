@@ -63,8 +63,8 @@ surfaces, centred figures and consistent meaningful analytical colours.
 
 ## Downloads
 
-Each part landing page has one resource row with its HTML/PDF; Part 3 also offers
-the editable canonical QMD at `downloads/03-inferential-statistics.qmd`.
+Each part landing page has one resource row with its HTML/PDF; each part also offers
+a plain `.R` script exported from its executable notebook cells.
 
 The student project is `downloads/applied-statistics-positron.zip`; the PDF bundle
 is `downloads/applied-statistics-pdfs.zip`. Only the twelve canonical PDFs and

@@ -1,5 +1,5 @@
 ---
-title: "Part 3: Inferential Statistics"
+title: "Inferential Statistics"
 subtitle: "307312 Applied Statistics — Masters Level"
 format:
   html:
@@ -19,7 +19,7 @@ execute:
   fig-height: 4.5
 ---
 
-Read the teaching slides and run the **Try this in R** examples beside the matching topics. The same notebook produces this page, its PDF and the Part 3 file in the Positron project.
+Read each topic and run the **Try this in R** examples beside it.
 
 - Open the top-level course folder in Positron and keep the R Console at that project root.
 - Run the R cells in order; later comparisons and regression checks reuse the data and models introduced earlier.
@@ -27,19 +27,15 @@ Read the teaching slides and run the **Try this in R** examples beside the match
 
 <div class="original-branding"><img src="../assets/descriptive-statistics/original-branding.png" alt="Institute of Analytics and University of Petra" width="230"></div>
 
-<!-- Original deck 1, slide 1 -->
-
 :::::: {.source-slide #part3-01-slide-01}
 
 ## 3.1 Introduction to Probability Distributions {#part3-01}
 
 ::::::
 
-<!-- Original deck 1, slide 2 -->
-
 :::::: {.source-slide #part3-01-slide-02}
 
-### Contents — Part 3 {#part3-title-01-02}
+### Contents {#part3-title-01-02}
 
 ::: source-text
 1.  **Probability distributions:** random variables, discrete and continuous distributions, expected value and variance, normal distribution and Z-scores.
@@ -47,12 +43,9 @@ Read the teaching slides and run the **Try this in R** examples beside the match
 3.  **Hypothesis testing:** hypotheses, significance and p-values; tests for means and proportions, chi-square tests and ANOVA.
 4.  **Regression:** simple and multiple linear regression, interpretation, prediction and model assumptions.
 
-Explained, executable R examples accompany the original teaching sequence.
 :::
 
 ::::::
-
-<!-- Original deck 1, slide 3 -->
 
 :::::: {.source-slide #part3-01-slide-03}
 
@@ -64,11 +57,9 @@ Explained, executable R examples accompany the original teaching sequence.
 **Objective**: The main goal of inferential statistics is to draw conclusions, make predictions, or test hypotheses about a population using information obtained from a sample.
 :::
 
-![](../assets/inferential-statistics/part-01-slide-03-graphic-02.png){width="68%" fig-alt="Original graphic, section 3.1, slide 3"}
+![](../assets/inferential-statistics/part-01-slide-03-graphic-02.png){width="68%" fig-alt="Illustration: Introduction to Inferential Statistics"}
 
 ::::::
-
-<!-- Original deck 1, slide 4 -->
 
 :::::: {.source-slide #part3-01-slide-04}
 
@@ -96,13 +87,11 @@ Inferential statistics is used in various fields and contexts to make prediction
 
 ::::::
 
-<!-- Original deck 1, slide 5 -->
-
 :::::: {.source-slide #part3-01-slide-05}
 
 ### Introduction to Inferential Statistics {#part3-title-01-05}
 
-![](../assets/inferential-statistics/part-01-slide-05-graphic-01.png){width="54%" fig-alt="Original graphic, section 3.1, slide 5"}
+![](../assets/inferential-statistics/part-01-slide-05-graphic-01.png){width="54%" fig-alt="Illustration: Introduction to Inferential Statistics"}
 
 ::: source-text
 **Key** **Concepts**:
@@ -120,11 +109,9 @@ Inferential statistics is used in various fields and contexts to make prediction
 https://medium.com/towards-data-science/what-is-p-value-370056b8244d
 :::
 
-![](../assets/inferential-statistics/part-01-slide-05-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.1, slide 5"}
+![](../assets/inferential-statistics/part-01-slide-05-graphic-04.png){width="30%" fig-alt="Illustration: Introduction to Inferential Statistics"}
 
 ::::::
-
-<!-- Original deck 1, slide 6 -->
 
 :::::: {.source-slide #part3-01-slide-06}
 
@@ -148,8 +135,6 @@ Assesses the linear relationship between one continuous dependent variable and o
 
 ::::::
 
-<!-- Original deck 1, slide 7 -->
-
 :::::: {.source-slide #part3-01-slide-07}
 
 ### Introduction to Random Variables {#part3-title-01-07}
@@ -161,8 +146,6 @@ Understanding the Basics of Probability in Statistics
 ![](../assets/inferential-statistics/part-01-slide-07-graphic-02.png){.compact-coin width="25%" fig-alt="Coin toss"}
 
 ::::::
-
-<!-- Original deck 1, slide 8 -->
 
 :::::: {.source-slide #part3-01-slide-08}
 
@@ -186,8 +169,6 @@ Example: Flipping a coin (discrete), measuring the amount of rain in a day (cont
 
 ::::::
 
-<!-- Original deck 1, slide 9 -->
-
 :::::: {.source-slide #part3-01-slide-09}
 
 ### Discrete Random Variables {#part3-title-01-09}
@@ -208,19 +189,17 @@ Number of Calls Received by a Call Center.
 Number of Emails Received in a Day
 :::
 
-![](../assets/inferential-statistics/part-01-slide-09-graphic-02.png){width="34%" fig-alt="Original graphic, section 3.1, slide 9"}
+![](../assets/inferential-statistics/part-01-slide-09-graphic-02.png){width="34%" fig-alt="Illustration: Discrete Random Variables"}
 
-![](../assets/inferential-statistics/part-01-slide-09-graphic-03.png){width="34%" fig-alt="Original graphic, section 3.1, slide 9"}
+![](../assets/inferential-statistics/part-01-slide-09-graphic-03.png){width="34%" fig-alt="Illustration: Discrete Random Variables"}
 
 ::::::
-
-<!-- Original deck 1, slide 10 -->
 
 :::::: {.source-slide #part3-01-slide-10}
 
 ### Continuous Random Variables {#part3-title-01-10}
 
-![](../assets/inferential-statistics/part-01-slide-10-graphic-01.png){width="30%" fig-alt="Original graphic, section 3.1, slide 10"}
+![](../assets/inferential-statistics/part-01-slide-10-graphic-01.png){width="30%" fig-alt="Illustration: Continuous Random Variables"}
 
 :::: {.continuous-examples}
 
@@ -249,8 +228,6 @@ The weight of a chocolate bar on a production line.
 
 ::::::
 
-<!-- Original deck 1, slide 11 -->
-
 :::::: {.source-slide #part3-01-slide-11}
 
 ### Introduction to Probability Distributions {#part3-title-01-11}
@@ -259,19 +236,13 @@ The weight of a chocolate bar on a production line.
 Discrete and Continuous Probability Distributions
 :::
 
-![](../assets/inferential-statistics/part-01-slide-11-graphic-02.png){width="58%" fig-alt="Original graphic, section 3.1, slide 11"}
+![](../assets/inferential-statistics/part-01-slide-11-graphic-02.png){width="58%" fig-alt="Illustration: Introduction to Probability Distributions"}
 
 ::::::
-
-<!-- Original deck 1, slide 12 -->
 
 :::::: {.source-slide #part3-01-slide-12}
 
-<!-- Redundant title-only source slide omitted from display at the user’s request. -->
-
 ::::::
-
-<!-- Original deck 1, slide 13 -->
 
 :::::: {.source-slide #part3-01-slide-13}
 
@@ -297,8 +268,6 @@ The sum of all the probabilities must add up to 1.
 
 ::::::
 
-<!-- Original deck 1, slide 14 -->
-
 :::::: {.source-slide #part3-01-slide-14}
 
 ### Discrete Uniform Distribution {#part3-title-01-14}
@@ -319,8 +288,6 @@ Equal probability is assigned to each integer from $a$ to $b$, where $a$ and $b$
 
 
 ::::::
-
-<!-- Original deck 1, slide 15 -->
 
 :::::: {.source-slide #part3-01-slide-15}
 
@@ -348,7 +315,6 @@ Example: Probability of rolling between 2 and 5 inclusive:
 P(2 ≤ X ≤ 5) = (5-2+1)/(6-1+1) = 4/6 = 0.667
 :::
 
-<!-- BEGIN R EXAMPLE 1-15 -->
 :::: {.try-in-r #r-example-01-15}
 
 #### Try this in R {.unlisted}
@@ -369,11 +335,7 @@ c(three = probability[3], even = sum(probability[outcomes %in% c(2,4,6)]),
 **Read the result:** One specified face has probability 1/6, even faces 1/2 and values 2 through 5 have probability 2/3. Equal probabilities are assumed.
 
 ::::
-<!-- END R EXAMPLE 1-15 -->
-
 ::::::
-
-<!-- Original deck 1, slide 16 -->
 
 :::::: {.source-slide #part3-01-slide-16}
 
@@ -411,7 +373,6 @@ What is the probability that all cars produced in a month will have no defects?
 
 ![](../assets/inferential-statistics/part-01-slide-16-graphic-04.png){.compact-logo width="18%" fig-alt="Tesla logo"}
 
-<!-- BEGIN R EXAMPLE 1-16 -->
 :::: {.try-in-r #r-example-01-16}
 
 #### Try this in R {.unlisted}
@@ -430,11 +391,7 @@ c(exactly_2 = dbinom(2, size=80, prob=0.02), less_than_2 = pbinom(1,80,0.02),
 **Read the result:** Interpret each labelled probability as a batch event under the independent, common-probability model; an expected count is not a guaranteed batch result.
 
 ::::
-<!-- END R EXAMPLE 1-16 -->
-
 ::::::
-
-<!-- Original deck 1, slide 17 -->
 
 :::::: {.source-slide #part3-01-slide-17}
 
@@ -448,7 +405,6 @@ What is the probability of having 2 Heads ONLY out of 10 trials, knowing that th
 A binomial distribution is symmetric when p = 0.5 and skewed when p is close to 0 or 1. A normal approximation improves when both np and n(1 − p) are sufficiently large; increasing n alone is not a universal guarantee.
 :::
 
-<!-- BEGIN R EXAMPLE 1-17 -->
 :::: {.try-in-r #r-example-01-17}
 
 #### Try this in R {.unlisted}
@@ -489,11 +445,7 @@ dbinom(x = 2, size = 10, prob = 0.5)
 **Read the result:** At $n=10$, $p=0.2$ gives right skew, $p=0.5$ gives symmetry, and $p=0.8$ gives left skew. At $n=100$, $p=0.5$, the discrete shape is more bell-like and centred at $np=50$. In the ten-toss fair-coin panel, the burgundy line marks exactly two heads: probability 0.0439453, about 4.39%. Compare the axis scales as well as the shapes.
 
 ::::
-<!-- END R EXAMPLE 1-17 -->
-
 ::::::
-
-<!-- Original deck 1, slide 18 -->
 
 :::::: {.source-slide #part3-01-slide-18}
 
@@ -527,7 +479,6 @@ Use the Poisson Distribution to find the probability that the number of calls wi
 
 ![](../assets/inferential-statistics/part-01-slide-18-graphic-04.png){.compact-logo width="14%" fig-alt="Zain logo"}
 
-<!-- BEGIN R EXAMPLE 1-18 -->
 :::: {.try-in-r #r-example-01-18}
 
 #### Try this in R {.unlisted}
@@ -545,11 +496,7 @@ ppois(1100, lambda=1000, lower.tail=FALSE)
 **Read the result:** This is the chance of exceeding the threshold under the Poisson model; exactly 1,100 is excluded. A probability alone does not determine staffing.
 
 ::::
-<!-- END R EXAMPLE 1-18 -->
-
 ::::::
-
-<!-- Original deck 1, slide 19 -->
 
 :::::: {.source-slide #part3-01-slide-19}
 
@@ -559,7 +506,6 @@ ppois(1100, lambda=1000, lower.tail=FALSE)
 A Poisson distribution models counts, not continuous measurements. Small λ gives a right-skewed shape. As λ increases, it becomes more symmetric and approximately bell-shaped, while its possible outcomes remain whole numbers.
 :::
 
-<!-- BEGIN R EXAMPLE 1-19 -->
 :::: {.try-in-r #r-example-01-19}
 
 #### Try this in R {.unlisted}
@@ -596,19 +542,13 @@ dpois(x = 15, lambda = 20)
 **Read the result:** The $\lambda=2$ panel is right-skewed; the $\lambda=20$ panel looks more bell-shaped. Both show **discrete Poisson probabilities**, not a continuous normal density. At $\lambda=20$, the burgundy line marks $P(X=15)\approx0.05165$, or 5.16%. Compare the different axis scales too.
 
 ::::
-<!-- END R EXAMPLE 1-19 -->
-
 ::::::
-
-<!-- Original deck 1, slide 20 -->
 
 :::::: {.source-slide #part3-01-slide-20}
 
 ### Continuous Probabilities Distributions {#part3-title-01-20}
 
 ::::::
-
-<!-- Original deck 1, slide 21 -->
 
 :::::: {.source-slide #part3-01-slide-21}
 
@@ -631,8 +571,6 @@ A continuous uniform distribution has **constant probability density** on the in
 ```
 
 ::::::
-
-<!-- Original deck 1, slide 22 -->
 
 :::::: {.source-slide #part3-01-slide-22}
 
@@ -665,12 +603,11 @@ A machine produces widgets with diameters uniformly distributed between 9.8mm an
 - **Quality interpretation:** under this model, 25% of widgets exceed 10.1 mm. This is not a defect rate unless 10.1 mm is the specified upper limit.
 
 
-<!-- BEGIN R EXAMPLE 1-22 -->
 :::: {.try-in-r #r-example-01-22}
 
 #### Try this in R {.unlisted}
 
-- **Purpose:** Apply the two uniform models in the original examples.
+- **Purpose:** Apply the two uniform models.
 - **Before running:** `punif(q, min, max)` returns the probability at or below cutoff `q`, with interval endpoints `min` and `max`. `lower.tail = FALSE` returns the probability above the cutoff. `c()` combines the labelled results.
 - `par(mfrow = c(1, 2))` places two charts side by side. `mar` sets bottom, left, top and right margins; save previous settings as `old_par` and restore them using `par(old_par)`.
 - `plot(x, y, type = "n")` sets up axes without drawing data; the two-element `x` and `y` vectors set the displayed ranges. `xlab`, `ylab` and `main` supply axis labels and the title.
@@ -703,17 +640,13 @@ par(old_par)
 **Read the result:** Both probabilities are 0.25. Uniformity means equal-length intervals have equal probability; the midpoint is not a peak.
 
 ::::
-<!-- END R EXAMPLE 1-22 -->
-
 ::::::
-
-<!-- Original deck 1, slide 23 -->
 
 :::::: {.source-slide #part3-01-slide-23}
 
 ### The Normal Distribution {#part3-title-01-23}
 
-![](../assets/inferential-statistics/part-01-slide-23-graphic-01.png){width="44%" fig-alt="Original graphic, section 3.1, slide 23"}
+![](../assets/inferential-statistics/part-01-slide-23-graphic-01.png){width="44%" fig-alt="Illustration: The Normal Distribution"}
 
 ::: source-text
 The normal distribution is the most extensively used probability distribution in statistical work.
@@ -737,17 +670,15 @@ Long Tails / Bell Shaped
 Mean/ Mode and Median are the same
 :::
 
-![](../assets/inferential-statistics/part-01-slide-23-graphic-04.png){width="32%" fig-alt="Original graphic, section 3.1, slide 23"}
+![](../assets/inferential-statistics/part-01-slide-23-graphic-04.png){width="32%" fig-alt="Illustration: The Normal Distribution"}
 
 ::::::
-
-<!-- Original deck 1, slide 24 -->
 
 :::::: {.source-slide #part3-01-slide-24}
 
 ### Parameters of the Normal Distribution {#part3-title-01-24}
 
-![](../assets/inferential-statistics/part-01-slide-24-graphic-01.png){width="38%" fig-alt="Original graphic, section 3.1, slide 24"}
+![](../assets/inferential-statistics/part-01-slide-24-graphic-01.png){width="38%" fig-alt="Illustration: Parameters of the Normal Distribution"}
 
 ::: source-text
 The normal distribution is completely described by two parameters, the Mean and the Standard Deviation.
@@ -763,19 +694,17 @@ Where X is a continuous random variable (the expected outcome of a continuous ra
 e is approximately 2.71828.
 :::
 
-![](../assets/inferential-statistics/part-01-slide-24-graphic-03.png){width="35%" fig-alt="Original graphic, section 3.1, slide 24"}
+![](../assets/inferential-statistics/part-01-slide-24-graphic-03.png){width="35%" fig-alt="Illustration: Parameters of the Normal Distribution"}
 
-![](../assets/inferential-statistics/part-01-slide-24-graphic-04.png){width="38%" fig-alt="Original graphic, section 3.1, slide 24"}
+![](../assets/inferential-statistics/part-01-slide-24-graphic-04.png){width="38%" fig-alt="Illustration: Parameters of the Normal Distribution"}
 
 ::::::
-
-<!-- Original deck 1, slide 25 -->
 
 :::::: {.source-slide #part3-01-slide-25}
 
 ### The Empirical Rule for the Normal Distribution {#part3-title-01-25}
 
-![](../assets/inferential-statistics/part-01-slide-25-graphic-01.png){width="44%" fig-alt="Original graphic, section 3.1, slide 25"}
+![](../assets/inferential-statistics/part-01-slide-25-graphic-01.png){width="44%" fig-alt="Illustration: The Empirical Rule for the Normal Distribution"}
 
 ::: source-text
 The Empirical Rule describes how data (continuous outcomes) are spread in a normal distribution.
@@ -793,8 +722,6 @@ If we know that the data are drawn from a relatively symmetric and bell-shaped d
 
 ::::::
 
-<!-- Original deck 1, slide 26 -->
-
 :::::: {.source-slide #part3-01-slide-26}
 
 ### Empirical Rule Example {#part3-title-01-26}
@@ -808,19 +735,17 @@ Use the Empirical Rule to answer the following:
   - Approximately how many students scored higher than 90?
 :::
 
-![](../assets/inferential-statistics/part-01-slide-26-graphic-02.png){width="41%" fig-alt="Original graphic, section 3.1, slide 26"}
+![](../assets/inferential-statistics/part-01-slide-26-graphic-02.png){width="41%" fig-alt="Illustration: Empirical Rule Example"}
 
 ::::::
-
-<!-- Original deck 1, slide 27 -->
 
 :::::: {.source-slide #part3-01-slide-27}
 
 ### The Z - Score {#part3-title-01-27}
 
-![](../assets/inferential-statistics/part-01-slide-27-graphic-01.png){width="53%" fig-alt="Original graphic, section 3.1, slide 27"}
+![](../assets/inferential-statistics/part-01-slide-27-graphic-01.png){width="53%" fig-alt="Illustration: The Z - Score"}
 
-![](../assets/inferential-statistics/part-01-slide-27-graphic-02.png){width="59%" fig-alt="Original graphic, section 3.1, slide 27"}
+![](../assets/inferential-statistics/part-01-slide-27-graphic-02.png){width="59%" fig-alt="Illustration: The Z - Score"}
 
 ::: source-text
 Where X is a data point, μ is the mean, and σ is the standard deviation.
@@ -836,8 +761,6 @@ Interpretation:
 
 ::::::
 
-<!-- Original deck 1, slide 28 -->
-
 :::::: {.source-slide #part3-01-slide-28}
 
 ### Back to our Empirical Rule Example {#part3-title-01-28}
@@ -851,7 +774,7 @@ Use the Empirical Rule to answer the following:
   - Approximately how many students scored higher than 90?
 :::
 
-![](../assets/inferential-statistics/part-01-slide-28-graphic-02.png){width="41%" fig-alt="Original graphic, section 3.1, slide 28"}
+![](../assets/inferential-statistics/part-01-slide-28-graphic-02.png){width="41%" fig-alt="Illustration: Back to our Empirical Rule Example"}
 
 ::: source-text
 **Solution for part (a)**
@@ -861,7 +784,7 @@ Use the Empirical Rule to answer the following:
   - Using the empirical rule, we know that 95% of observations falls within 2 standard deviations (each side) from the mean, therefore, the number of students under this criteria = 280 x .95 = 266 students.
 :::
 
-![](../assets/inferential-statistics/part-01-slide-28-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.1, slide 28"}
+![](../assets/inferential-statistics/part-01-slide-28-graphic-04.png){width="30%" fig-alt="Illustration: Back to our Empirical Rule Example"}
 
 ::: source-text
 **Solution for part (b)**
@@ -871,7 +794,6 @@ Use the Empirical Rule to answer the following:
   - Consequently, 2.5/100 \* 280 = 7 students are above 90.
 :::
 
-<!-- BEGIN R EXAMPLE 1-28 -->
 :::: {.try-in-r #r-example-01-28}
 
 #### Try this in R {.unlisted}
@@ -889,11 +811,7 @@ c(between_58_and_90 = 280*0.95, above_90 = 280*0.025)
 **Read the result:** The approximate expected counts are 266 between the limits and 7 above the upper limit. These are not observed class totals.
 
 ::::
-<!-- END R EXAMPLE 1-28 -->
-
 ::::::
-
-<!-- Original deck 1, slide 29 -->
 
 :::::: {.source-slide #part3-01-slide-29}
 
@@ -906,11 +824,9 @@ c(between_58_and_90 = 280*0.95, above_90 = 280*0.025)
 - **Probabilities and Percentiles**: Z-scores link data points to their probabilities and percentiles in a normal distribution. E.g., a z-score of 1.96 corresponds to the 97.5th percentile.
 :::
 
-![](../assets/inferential-statistics/part-01-slide-29-graphic-02.png){width="61%" fig-alt="Original graphic, section 3.1, slide 29"}
+![](../assets/inferential-statistics/part-01-slide-29-graphic-02.png){width="61%" fig-alt="Illustration: Z-Scores Uses in Statistics"}
 
 ::::::
-
-<!-- Original deck 1, slide 30 -->
 
 :::::: {.source-slide #part3-01-slide-30}
 
@@ -922,7 +838,7 @@ Khalid achieved 90 in both Python & Database exams. The mean μ for the Python e
 Use standard scores to determine where did Khalid achieve a better score.
 :::
 
-![](../assets/inferential-statistics/part-01-slide-30-graphic-02.png){width="40%" fig-alt="Original graphic, section 3.1, slide 30"}
+![](../assets/inferential-statistics/part-01-slide-30-graphic-02.png){width="40%" fig-alt="Illustration: Z-Scores Example – Comparing Values"}
 
 ::: source-text
 - Standard score for the Python Exam: (90−70)/10 =2
@@ -932,7 +848,6 @@ Use standard scores to determine where did Khalid achieve a better score.
 - Khalid performed better on the Python exam than Database exam since his Z-score is higher for that exam.
 :::
 
-<!-- BEGIN R EXAMPLE 1-30 -->
 :::: {.try-in-r #r-example-01-30}
 
 #### Try this in R {.unlisted}
@@ -950,17 +865,12 @@ c(Python = (90-70)/10, Database = (90-80)/10)
 **Read the result:** The scores are 2 and 1 SDs above their respective means. This compares relative positions; it does not establish identical exam difficulty.
 
 ::::
-<!-- END R EXAMPLE 1-30 -->
-
 ::::::
-
-<!-- Original deck 1, slide 31 -->
 
 :::::: {.source-slide #part3-01-slide-31}
 
 ### How to Find the Right Distribution {#part3-title-01-31}
 
-<!-- BEGIN R EXAMPLE 1-31 -->
 :::: {.try-in-r #r-example-01-31}
 
 #### Try this in R {.unlisted}
@@ -986,11 +896,7 @@ aic
 **Read the result:** These are simulated values, not business observations. The comparison is limited to normal, logistic and Cauchy models; it does not establish a true distribution or check the data-collection design.
 
 ::::
-<!-- END R EXAMPLE 1-31 -->
-
 ::::::
-
-<!-- Original deck 1, slide 32 -->
 
 :::::: {.source-slide #part3-01-slide-32}
 
@@ -999,8 +905,6 @@ Z-Tables
 :::
 
 ::::::
-
-<!-- Original deck 1, slide 33 -->
 
 :::::: {.source-slide #part3-01-slide-33}
 
@@ -1020,19 +924,17 @@ A simpler solution would be to use a table of pre-computed areas (The Z-Table).
 But we need to compute that area ONCE. Therefore, we need to create a Standard Distribution.
 :::
 
-![](../assets/inferential-statistics/part-01-slide-33-graphic-02.png){width="45%" fig-alt="Original graphic, section 3.1, slide 33"}
+![](../assets/inferential-statistics/part-01-slide-33-graphic-02.png){width="45%" fig-alt="Illustration: The Z-Tables"}
 
-![](../assets/inferential-statistics/part-01-slide-33-graphic-03.png){width="33%" fig-alt="Original graphic, section 3.1, slide 33"}
+![](../assets/inferential-statistics/part-01-slide-33-graphic-03.png){width="33%" fig-alt="Illustration: The Z-Tables"}
 
 ::::::
-
-<!-- Original deck 1, slide 34 -->
 
 :::::: {.source-slide #part3-01-slide-34}
 
 ### Standard Normal Distribution and Standard Z Scores {#part3-title-01-34}
 
-![](../assets/inferential-statistics/part-01-slide-34-graphic-01.png){width="36%" fig-alt="Original graphic, section 3.1, slide 34"}
+![](../assets/inferential-statistics/part-01-slide-34-graphic-01.png){width="36%" fig-alt="Illustration: Standard Normal Distribution and Standard Z Scores"}
 
 ::: source-text
 The standard normal distribution is a special case of the normal distribution where the mean is zero and the standard deviation is 1.
@@ -1050,15 +952,13 @@ On the other hand, a negative score represents a value below the average.
 The mean has a Z-score of 0.
 :::
 
-![](../assets/inferential-statistics/part-01-slide-34-graphic-03.png){width="30%" fig-alt="Original graphic, section 3.1, slide 34"}
+![](../assets/inferential-statistics/part-01-slide-34-graphic-03.png){width="30%" fig-alt="Illustration: Standard Normal Distribution and Standard Z Scores"}
 
 ::: source-text
 https://medium.com/towards-data-science/what-is-p-value-370056b8244d
 :::
 
 ::::::
-
-<!-- Original deck 1, slide 35 -->
 
 :::::: {.source-slide #part3-01-slide-35}
 
@@ -1068,17 +968,15 @@ https://medium.com/towards-data-science/what-is-p-value-370056b8244d
 **Z-Table for Z Values below 0**
 :::
 
-![](../assets/inferential-statistics/part-01-slide-35-graphic-02.png){width="45%" fig-alt="Original graphic, section 3.1, slide 35"}
+![](../assets/inferential-statistics/part-01-slide-35-graphic-02.png){width="45%" fig-alt="Illustration: Z-Table for Z Values above 0"}
 
-![](../assets/inferential-statistics/part-01-slide-35-graphic-03.png){width="44%" fig-alt="Original graphic, section 3.1, slide 35"}
+![](../assets/inferential-statistics/part-01-slide-35-graphic-03.png){width="44%" fig-alt="Illustration: Z-Table for Z Values above 0"}
 
-![](../assets/inferential-statistics/part-01-slide-35-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.1, slide 35"}
+![](../assets/inferential-statistics/part-01-slide-35-graphic-04.png){width="30%" fig-alt="Illustration: Z-Table for Z Values above 0"}
 
-![](../assets/inferential-statistics/part-01-slide-35-graphic-05.png){width="30%" fig-alt="Original graphic, section 3.1, slide 35"}
+![](../assets/inferential-statistics/part-01-slide-35-graphic-05.png){width="30%" fig-alt="Illustration: Z-Table for Z Values above 0"}
 
 ::::::
-
-<!-- Original deck 1, slide 36 -->
 
 :::::: {.source-slide #part3-01-slide-36}
 
@@ -1090,7 +988,7 @@ The average score for the MID exam in Descriptive Statistics course was 70. The 
 Knowing that the exam scores are normally distributed, what is the probability of having a score higher than 75 in that exam?
 :::
 
-![](../assets/inferential-statistics/part-01-slide-36-graphic-03.png){width="45%" fig-alt="Original graphic, section 3.1, slide 36"}
+![](../assets/inferential-statistics/part-01-slide-36-graphic-03.png){width="45%" fig-alt="Illustration: Z-Tables Example"}
 
 ::: source-text
 First, we need to find the standard position (z-score) for the 75 score.
@@ -1104,7 +1002,6 @@ To find the probability of having a score over 75, we subtract 79.67% out of the
 100 -- 79.67 = 20.33%
 :::
 
-<!-- BEGIN R EXAMPLE 1-36 -->
 :::: {.try-in-r #r-example-01-36}
 
 #### Try this in R {.unlisted}
@@ -1122,11 +1019,7 @@ pnorm(75, mean=70, sd=6, lower.tail=FALSE)
 **Read the result:** The model probability is about 0.20233, or 20.233%. A probability and its percentage use different scales.
 
 ::::
-<!-- END R EXAMPLE 1-36 -->
-
 ::::::
-
-<!-- Original deck 1, slide 37 -->
 
 :::::: {.source-slide #part3-01-slide-37}
 
@@ -1138,7 +1031,6 @@ The average score for the MID exam in Descriptive Statistics course was 70. The 
 What is the probability of having a score higher than 90 in that exam?
 :::
 
-<!-- BEGIN R EXAMPLE 1-37 -->
 :::: {.try-in-r #r-example-01-37}
 
 #### Try this in R {.unlisted}
@@ -1156,19 +1048,13 @@ c(probability=p_above_90, percentage=100*p_above_90)
 **Read the result:** The result is about 0.000429, or 0.0429%. This follows the stated threshold 90; the former spreadsheet illustration used a different threshold.
 
 ::::
-<!-- END R EXAMPLE 1-37 -->
-
 ::::::
-
-<!-- Original deck 2, slide 1 -->
 
 :::::: {.source-slide #part3-02-slide-01}
 
 ## 3.2 Introduction to Estimation in Statistics {#part3-02}
 
 ::::::
-
-<!-- Original deck 2, slide 2 -->
 
 :::::: {.source-slide #part3-02-slide-02}
 
@@ -1183,8 +1069,6 @@ c(probability=p_above_90, percentage=100*p_above_90)
 :::
 
 ::::::
-
-<!-- Original deck 2, slide 3 -->
 
 :::::: {.source-slide #part3-02-slide-03}
 
@@ -1201,8 +1085,6 @@ c(probability=p_above_90, percentage=100*p_above_90)
 
 ::::::
 
-<!-- Original deck 2, slide 4 -->
-
 :::::: {.source-slide #part3-02-slide-04}
 
 ### Point vs. Interval {#part3-title-02-04}
@@ -1213,11 +1095,9 @@ c(probability=p_above_90, percentage=100*p_above_90)
 - Both types of estimates are important for gathering a clear idea of where a parameter is likely to lie.
 :::
 
-![](../assets/inferential-statistics/part-02-slide-04-graphic-02.png){width="42%" fig-alt="Original graphic, section 3.2, slide 4"}
+![](../assets/inferential-statistics/part-02-slide-04-graphic-02.png){width="42%" fig-alt="Illustration: Point vs. Interval"}
 
 ::::::
-
-<!-- Original deck 2, slide 5 -->
 
 :::::: {.source-slide #part3-02-slide-05}
 
@@ -1229,17 +1109,15 @@ c(probability=p_above_90, percentage=100*p_above_90)
 - Instead, we might take a random sample of 50 students and use the mean weight of the students in this sample to estimate the true population mean.
 :::
 
-![](../assets/inferential-statistics/part-02-slide-05-graphic-02.png){width="49%" fig-alt="Original graphic, section 3.2, slide 5"}
+![](../assets/inferential-statistics/part-02-slide-05-graphic-02.png){width="49%" fig-alt="Illustration: Point Estimates"}
 
-![](../assets/inferential-statistics/part-02-slide-05-graphic-03.png){width="30%" fig-alt="Original graphic, section 3.2, slide 5"}
+![](../assets/inferential-statistics/part-02-slide-05-graphic-03.png){width="30%" fig-alt="Illustration: Point Estimates"}
 
 ::: source-text
 - In this case, the mean weight of the sample is called a Point Estimate for the true mean weight of the population.
 :::
 
 ::::::
-
-<!-- Original deck 2, slide 6 -->
 
 :::::: {.source-slide #part3-02-slide-06}
 
@@ -1251,7 +1129,7 @@ c(probability=p_above_90, percentage=100*p_above_90)
 - To capture this uncertainty, we can create an Interval Estimate or a confidence interval around our point estimate**.**
 :::
 
-![](../assets/inferential-statistics/part-02-slide-06-graphic-02.png){width="60%" fig-alt="Original graphic, section 3.2, slide 6"}
+![](../assets/inferential-statistics/part-02-slide-06-graphic-02.png){width="60%" fig-alt="Illustration: Interval Estimates - Confidence Intervals"}
 
 ::: source-text
 - The confidence interval gives us a range of values that are likely to contain the true population parameter.
@@ -1259,23 +1137,19 @@ c(probability=p_above_90, percentage=100*p_above_90)
 
 ::::::
 
-<!-- Original deck 2, slide 7 -->
-
 :::::: {.source-slide #part3-02-slide-07}
 
 ### Computing Confidence Intervals {#part3-title-02-07}
 
-![](../assets/inferential-statistics/part-02-slide-07-graphic-01.png){width="47%" fig-alt="Original graphic, section 3.2, slide 7"}
+![](../assets/inferential-statistics/part-02-slide-07-graphic-01.png){width="47%" fig-alt="Illustration: Computing Confidence Intervals"}
 
-![](../assets/inferential-statistics/part-02-slide-07-graphic-02.png){width="52%" fig-alt="Original graphic, section 3.2, slide 7"}
+![](../assets/inferential-statistics/part-02-slide-07-graphic-02.png){width="52%" fig-alt="Illustration: Computing Confidence Intervals"}
 
 ::: source-text
 https://medium.com/@ashisharora2204/hypothesis-testing-confidence-interval-level-margin-of-error-39aa7c7ddcd2
 :::
 
 ::::::
-
-<!-- Original deck 2, slide 8 -->
 
 :::::: {.source-slide #part3-02-slide-08}
 
@@ -1302,8 +1176,6 @@ https://medium.com/@ashisharora2204/hypothesis-testing-confidence-interval-level
 
 ::::::
 
-<!-- Original deck 2, slide 9 -->
-
 :::::: {.source-slide #part3-02-slide-09}
 
 ### The Significance Level Alpha (α) and The Confidence Level {#part3-title-02-09}
@@ -1313,17 +1185,15 @@ https://medium.com/@ashisharora2204/hypothesis-testing-confidence-interval-level
 - It\'s important to note that this is a theoretical long-term proportion---it\'s about what we\'d expect to happen over many repetitions of the same process, not a guarantee for any individual interval.
 :::
 
-![](../assets/inferential-statistics/part-02-slide-09-graphic-02.png){width="47%" fig-alt="Original graphic, section 3.2, slide 9"}
+![](../assets/inferential-statistics/part-02-slide-09-graphic-02.png){width="47%" fig-alt="Illustration: The Significance Level Alpha (α) and The Confidence Level"}
 
 ::::::
-
-<!-- Original deck 2, slide 10 -->
 
 :::::: {.source-slide #part3-02-slide-10}
 
 ### Relationship Between Confidence Level and Significance Level in Statistics {#part3-title-02-10}
 
-![](../assets/inferential-statistics/part-02-slide-10-graphic-01.png){width="40%" fig-alt="Original graphic, section 3.2, slide 10"}
+![](../assets/inferential-statistics/part-02-slide-10-graphic-01.png){width="40%" fig-alt="Illustration: Relationship Between Confidence Level and Significance Level in Statistics"}
 
 ::: source-text
 The **confidence level** and the **significance level (α)** are inverse and complementary concepts in statistical inference and hypothesis testing.
@@ -1345,15 +1215,11 @@ The **confidence level** and the **significance level (α)** are inverse and com
 
 ::::::
 
-<!-- Original deck 2, slide 11 -->
-
 :::::: {.source-slide #part3-02-slide-11}
 
 ### Where did the Standard Error Come From? The Central Limit Theorem  {#part3-title-02-11}
 
 ::::::
-
-<!-- Original deck 2, slide 12 -->
 
 :::::: {.source-slide #part3-02-slide-12}
 
@@ -1371,11 +1237,11 @@ According to CLT:
 2- The variance of the sampling distribution of the sample mean would be equal to the variance of the original distribution divided by n, where n is the size of the samples.
 :::
 
-![](../assets/inferential-statistics/part-02-slide-12-graphic-02.png){width="47%" fig-alt="Original graphic, section 3.2, slide 12"}
+![](../assets/inferential-statistics/part-02-slide-12-graphic-02.png){width="47%" fig-alt="Illustration: The Central Limit Theorem"}
 
-![](../assets/inferential-statistics/part-02-slide-12-graphic-03.png){width="30%" fig-alt="Original graphic, section 3.2, slide 12"}
+![](../assets/inferential-statistics/part-02-slide-12-graphic-03.png){width="30%" fig-alt="Illustration: The Central Limit Theorem"}
 
-![](../assets/inferential-statistics/part-02-slide-12-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.2, slide 12"}
+![](../assets/inferential-statistics/part-02-slide-12-graphic-04.png){width="30%" fig-alt="Illustration: The Central Limit Theorem"}
 
 ::: source-text
 Click here for a CLT simulator.
@@ -1383,45 +1249,36 @@ Click here for a CLT simulator.
 
 ::::::
 
-<!-- Original deck 2, slide 13 -->
-
 :::::: {.source-slide #part3-02-slide-13}
 
 ### Inference: Turning the Sampling Model Around {#part3-title-02-13}
 
-![](../assets/inferential-statistics/part-02-slide-13-graphic-01.png){width="71%" fig-alt="Original graphic, section 3.2, slide 13"}
+![](../assets/inferential-statistics/part-02-slide-13-graphic-01.png){width="71%" fig-alt="Illustration: Inference: Turning the Sampling Model Around"}
 
 ::::::
-
-<!-- Original deck 2, slide 14 -->
 
 :::::: {.source-slide #part3-02-slide-14}
 
 ### The Symmetry IThe Symmetry Idea Behind Confidence Intervalsdea Behind Confidence Intervals {#part3-title-02-14}
 
-![](../assets/inferential-statistics/part-02-slide-14-graphic-01.png){width="50%" fig-alt="Original graphic, section 3.2, slide 14"}
+![](../assets/inferential-statistics/part-02-slide-14-graphic-01.png){width="50%" fig-alt="Illustration: The Symmetry IThe Symmetry Idea Behind Confidence Intervalsdea Behind Confidence Intervals"}
 
 ::::::
-
-<!-- Original deck 2, slide 15 -->
 
 :::::: {.source-slide #part3-02-slide-15}
 
 ### From CLT to Confidence Intervals {#part3-title-02-15}
 
-![](../assets/inferential-statistics/part-02-slide-15-graphic-01.png){width="70%" fig-alt="Original graphic, section 3.2, slide 15"}
+![](../assets/inferential-statistics/part-02-slide-15-graphic-01.png){width="70%" fig-alt="Illustration: From CLT to Confidence Intervals"}
 
 ::::::
-
-<!-- Original deck 2, slide 16 -->
 
 :::::: {.source-slide #part3-02-slide-16}
 
 ### Empirical Proof that Standard Error is an Approximate for the True SD of Sample Means {#part3-title-02-16}
 
-![](../assets/inferential-statistics/part-02-slide-16-graphic-02.png){width="48%" fig-alt="Original graphic, section 3.2, slide 16"}
+![](../assets/inferential-statistics/part-02-slide-16-graphic-02.png){width="48%" fig-alt="Illustration: Empirical Proof that Standard Error is an Approximate for the True SD of Sample Means"}
 
-<!-- BEGIN R EXAMPLE 2-16 -->
 :::: {.try-in-r #r-example-02-16}
 
 #### Try this in R {.unlisted}
@@ -1449,11 +1306,7 @@ hist(results[1,], breaks=30, col="#D4D4D4", main="Distribution of Sample Means",
 **Read the result:** Compare the SD across sample means with the average estimated SE. Agreement illustrates the model; simulation is not a proof. Observations per sample and simulation repetitions are different quantities.
 
 ::::
-<!-- END R EXAMPLE 2-16 -->
-
 ::::::
-
-<!-- Original deck 2, slide 17 -->
 
 :::::: {.source-slide #part3-02-slide-17}
 
@@ -1469,9 +1322,9 @@ Suppose we randomly collected a sample of students with the following informatio
 What is the 90% confidence interval for the true population mean weight?
 :::
 
-![](../assets/inferential-statistics/part-02-slide-17-graphic-02.png){width="30%" fig-alt="Original graphic, section 3.2, slide 17"}
+![](../assets/inferential-statistics/part-02-slide-17-graphic-02.png){width="30%" fig-alt="Illustration: Confidence Intervals Example"}
 
-![](../assets/inferential-statistics/part-02-slide-17-graphic-03.png){width="35%" fig-alt="Original graphic, section 3.2, slide 17"}
+![](../assets/inferential-statistics/part-02-slide-17-graphic-03.png){width="35%" fig-alt="Illustration: Confidence Intervals Example"}
 
 ::: source-text
 - To find the upper bound z-score for the 90% CI, we need to look for area 95% in the z table i.e. 90% + 5% (Look at the Figure)
@@ -1480,7 +1333,6 @@ What is the 90% confidence interval for the true population mean weight?
 - Therefore, the 90% CI = 73.16 ± 2 = \[71.16, 75.16\]
 :::
 
-<!-- BEGIN R EXAMPLE 2-17 -->
 :::: {.try-in-r #r-example-02-17}
 
 #### Try this in R {.unlisted}
@@ -1499,17 +1351,13 @@ xbar + c(-1,1)*qnorm(0.95)*sigma/sqrt(n)
 **Read the result:** The two output values are the lower and upper limits in kg. This calculation depends on the slide’s stated known-population-SD setting.
 
 ::::
-<!-- END R EXAMPLE 2-17 -->
-
 ::::::
-
-<!-- Original deck 2, slide 18 -->
 
 :::::: {.source-slide #part3-02-slide-18}
 
 ### Confidence Intervals Example {#part3-title-02-18}
 
-![](../assets/inferential-statistics/part-02-slide-18-graphic-01.png){width="46%" fig-alt="Original graphic, section 3.2, slide 18"}
+![](../assets/inferential-statistics/part-02-slide-18-graphic-01.png){width="46%" fig-alt="Illustration: Confidence Intervals Example"}
 
 ::: source-text
 We interpret this 90% confidence interval as follows:
@@ -1519,8 +1367,6 @@ We interpret this 90% confidence interval as follows:
 :::
 
 ::::::
-
-<!-- Original deck 2, slide 19 -->
 
 :::::: {.source-slide #part3-02-slide-19}
 
@@ -1539,7 +1385,6 @@ What is the 90% confidence interval for the true population mean weight?
 ::: source-text
 :::
 
-<!-- BEGIN R EXAMPLE 2-19 -->
 :::: {.try-in-r #r-example-02-19}
 
 #### Try this in R {.unlisted}
@@ -1557,11 +1402,7 @@ What is the 90% confidence interval for the true population mean weight?
 **Read the result:** Use t when population SD is unknown under suitable assumptions. This interval can differ from the preceding known-SD normal calculation.
 
 ::::
-<!-- END R EXAMPLE 2-19 -->
-
 ::::::
-
-<!-- Original deck 2, slide 20 -->
 
 :::::: {.source-slide #part3-02-slide-20}
 
@@ -1576,17 +1417,15 @@ What is the 90% confidence interval for the true population mean weight?
 - As the sample size increases, the T-distribution approaches the normal Z-distribution.
 :::
 
-![](../assets/inferential-statistics/part-02-slide-20-graphic-02.png){width="43%" fig-alt="Original graphic, section 3.2, slide 20"}
+![](../assets/inferential-statistics/part-02-slide-20-graphic-02.png){width="43%" fig-alt="Illustration: Transitioning to T-Distribution"}
 
-![](../assets/inferential-statistics/part-02-slide-20-graphic-03.png){width="39%" fig-alt="Original graphic, section 3.2, slide 20"}
+![](../assets/inferential-statistics/part-02-slide-20-graphic-03.png){width="39%" fig-alt="Illustration: Transitioning to T-Distribution"}
 
 ::: source-text
 https://www.scribbr.com/statistics/t-distribution/
 :::
 
 ::::::
-
-<!-- Original deck 2, slide 21 -->
 
 :::::: {.source-slide #part3-02-slide-21}
 
@@ -1602,13 +1441,11 @@ https://www.scribbr.com/statistics/t-distribution/
 
 ::::::
 
-<!-- Original deck 2, slide 22 -->
-
 :::::: {.source-slide #part3-02-slide-22}
 
 ### The T Table {#part3-title-02-22}
 
-![](../assets/inferential-statistics/part-02-slide-22-graphic-01.png){width="42%" fig-alt="Original graphic, section 3.2, slide 22"}
+![](../assets/inferential-statistics/part-02-slide-22-graphic-01.png){width="42%" fig-alt="Illustration: The T Table"}
 
 ::: source-text
 - The first column, denoted \"v,\" lists the degrees of freedom.
@@ -1622,25 +1459,21 @@ https://www.scribbr.com/statistics/t-distribution/
 
 ::::::
 
-<!-- Original deck 2, slide 23 -->
-
 :::::: {.source-slide #part3-02-slide-23}
 
 ### Confidence Intervals Using T-Distribution {#part3-title-02-23}
 
-![](../assets/inferential-statistics/part-02-slide-23-graphic-01.png){width="100%" fig-alt="Original graphic, section 3.2, slide 23"}
+![](../assets/inferential-statistics/part-02-slide-23-graphic-01.png){width="100%" fig-alt="Illustration: Confidence Intervals Using T-Distribution"}
 
-![](../assets/inferential-statistics/part-02-slide-23-graphic-02.png){width="30%" fig-alt="Original graphic, section 3.2, slide 23"}
+![](../assets/inferential-statistics/part-02-slide-23-graphic-02.png){width="30%" fig-alt="Illustration: Confidence Intervals Using T-Distribution"}
 
 ::::::
-
-<!-- Original deck 2, slide 24 -->
 
 :::::: {.source-slide #part3-02-slide-24}
 
 ### Interval Estimates - Confidence Intervals {#part3-title-02-24}
 
-![](../assets/inferential-statistics/part-02-slide-24-graphic-01.png){width="40%" fig-alt="Original graphic, section 3.2, slide 24"}
+![](../assets/inferential-statistics/part-02-slide-24-graphic-01.png){width="40%" fig-alt="Illustration: Interval Estimates - Confidence Intervals"}
 
 ::: source-text
 Suppose we randomly collected a sample of students with the following information:
@@ -1665,8 +1498,6 @@ What is the 90% confidence interval for the true population mean weight?
 
 ::::::
 
-<!-- Original deck 2, slide 25 -->
-
 :::::: {.source-slide #part3-02-slide-25}
 
 ### Solving Confidence Intervals using R {#part3-title-02-25}
@@ -1684,7 +1515,6 @@ What is the 90% confidence interval for the true population mean weight?
 ::: source-text
 :::
 
-<!-- BEGIN R EXAMPLE 2-25 -->
 :::: {.try-in-r #r-example-02-25}
 
 #### Try this in R {.unlisted}
@@ -1702,17 +1532,13 @@ What is the 90% confidence interval for the true population mean weight?
 **Read the result:** The limits are about 69.69 to 76.19 kg. A confidence interval concerns the population mean, not the range containing 90% of individual weights.
 
 ::::
-<!-- END R EXAMPLE 2-25 -->
-
 ::::::
-
-<!-- Original deck 2, slide 26 -->
 
 :::::: {.source-slide #part3-02-slide-26}
 
 ### Steps to Calculate the Needed Sample Size {#part3-title-02-26}
 
-![](../assets/inferential-statistics/part-02-slide-26-graphic-01.png){width="55%" fig-alt="Original graphic, section 3.2, slide 26"}
+![](../assets/inferential-statistics/part-02-slide-26-graphic-01.png){width="55%" fig-alt="Illustration: Steps to Calculate the Needed Sample Size"}
 
 ::: source-text
 - **Define your research objectives and questions.**
@@ -1728,15 +1554,11 @@ What is the 90% confidence interval for the true population mean weight?
 
 ::::::
 
-<!-- Original deck 3, slide 1 -->
-
 :::::: {.source-slide #part3-03-slide-01}
 
 ## 3.3 Introduction to Hypothesis Testing {#part3-03}
 
 ::::::
-
-<!-- Original deck 3, slide 2 -->
 
 :::::: {.source-slide #part3-03-slide-02}
 
@@ -1777,8 +1599,6 @@ Chi-square test: Tests for relationships between categorical variables.
 
 ::::::
 
-<!-- Original deck 3, slide 3 -->
-
 :::::: {.source-slide #part3-03-slide-03}
 
 ### Hypothesis Testing {#part3-title-03-03}
@@ -1805,8 +1625,6 @@ Examples of claims that can be checked:
 :::
 
 ::::::
-
-<!-- Original deck 3, slide 4 -->
 
 :::::: {.source-slide #part3-03-slide-04}
 
@@ -1849,8 +1667,6 @@ Examples of claims that can be checked:
 
 ::::::
 
-<!-- Original deck 3, slide 5 -->
-
 :::::: {.source-slide #part3-03-slide-05}
 
 ::: source-table
@@ -1888,8 +1704,6 @@ Examples of claims that can be checked:
 
 ::::::
 
-<!-- Original deck 3, slide 6 -->
-
 :::::: {.source-slide #part3-03-slide-06}
 
 ### Key Concepts {#part3-title-03-06}
@@ -1903,8 +1717,6 @@ Examples of claims that can be checked:
 :::
 
 ::::::
-
-<!-- Original deck 3, slide 7 -->
 
 :::::: {.source-slide #part3-03-slide-07}
 
@@ -1936,8 +1748,6 @@ The burden of proof lies with the alternative hypothesis, which must show suffic
 
 ::::::
 
-<!-- Original deck 3, slide 8 -->
-
 :::::: {.source-slide #part3-03-slide-08}
 
 ### Choosing the Right Test {#part3-title-03-08}
@@ -1953,8 +1763,6 @@ The burden of proof lies with the alternative hypothesis, which must show suffic
 :::
 
 ::::::
-
-<!-- Original deck 3, slide 9 -->
 
 :::::: {.source-slide #part3-03-slide-09}
 
@@ -2026,8 +1834,6 @@ If the statistic falls within this region, H₀ will be rejected.
 
 ::::::
 
-<!-- Original deck 3, slide 10 -->
-
 :::::: {.source-slide #part3-03-slide-10}
 
 ### The Process in Brief {#part3-title-03-10}
@@ -2051,8 +1857,6 @@ If the statistic falls within this region, H₀ will be rejected.
 
 ::::::
 
-<!-- Original deck 3, slide 11 -->
-
 :::::: {.source-slide #part3-03-slide-11}
 
 ### More about Hypothesis Testing Core Concepts {#part3-title-03-11}
@@ -2062,8 +1866,6 @@ Alpha value, The Test Statistic and Critical Values, P-Value, Type I and Type II
 :::
 
 ::::::
-
-<!-- Original deck 3, slide 12 -->
 
 :::::: {.source-slide #part3-03-slide-12}
 
@@ -2079,7 +1881,7 @@ Typical significance levels are: α=0.1 (10%), α=0.05 (5%), α=0.01 (1%)
 A lower significance level means that the evidence in the data needs to be stronger to reject the null hypothesis.
 :::
 
-![](../assets/inferential-statistics/part-03-slide-12-graphic-02.png){width="44%" fig-alt="Original graphic, section 3.3, slide 12"}
+![](../assets/inferential-statistics/part-03-slide-12-graphic-02.png){width="44%" fig-alt="Illustration: The Significance Level α"}
 
 ::: source-text
 There is no \"correct\" significance level - it only states the amount of uncertainty of the conclusion.
@@ -2088,8 +1890,6 @@ A 5% significance level means that we expect to reject a true null hypothesis 
 :::
 
 ::::::
-
-<!-- Original deck 3, slide 13 -->
 
 :::::: {.source-slide #part3-03-slide-13}
 
@@ -2109,17 +1909,13 @@ The Student\'s T-Distribution (T) for small samples and the population variance
 
 ::::::
 
-<!-- Original deck 3, slide 14 -->
-
 :::::: {.source-slide #part3-03-slide-14}
 
 ### Computing the Test Statistic Dependence on our Knowledge about Variance {#part3-title-03-14}
 
-![](../assets/inferential-statistics/part-03-slide-14-graphic-01.png){width="100%" fig-alt="Original graphic, section 3.3, slide 14"}
+![](../assets/inferential-statistics/part-03-slide-14-graphic-01.png){width="100%" fig-alt="Illustration: Computing the Test Statistic Dependence on our Knowledge about Variance"}
 
 ::::::
-
-<!-- Original deck 3, slide 15 -->
 
 :::::: {.source-slide #part3-03-slide-15}
 
@@ -2147,25 +1943,21 @@ The critical value is computed based on the given significance level α and the 
 The critical value divides the area under the probability distribution curve in rejection region(s) and non-rejection region.
 :::
 
-![](../assets/inferential-statistics/part-03-slide-15-graphic-02.png){width="30%" fig-alt="Original graphic, section 3.3, slide 15"}
+![](../assets/inferential-statistics/part-03-slide-15-graphic-02.png){width="30%" fig-alt="Illustration: The Critical Value and the p-Value Approach to Hypothesis Testing"}
 
 ::::::
-
-<!-- Original deck 3, slide 16 -->
 
 :::::: {.source-slide #part3-03-slide-16}
 
 ### The Critical Value Approach to Hypothesis Testing {#part3-title-03-16}
 
-![](../assets/inferential-statistics/part-03-slide-16-graphic-01.png){width="100%" fig-alt="Original graphic, section 3.3, slide 16"}
+![](../assets/inferential-statistics/part-03-slide-16-graphic-01.png){width="100%" fig-alt="Illustration: The Critical Value Approach to Hypothesis Testing"}
 
-![](../assets/inferential-statistics/part-03-slide-16-graphic-02.png){width="78%" fig-alt="Original graphic, section 3.3, slide 16"}
+![](../assets/inferential-statistics/part-03-slide-16-graphic-02.png){width="78%" fig-alt="Illustration: The Critical Value Approach to Hypothesis Testing"}
 
-![](../assets/inferential-statistics/part-03-slide-16-graphic-03.png){width="30%" fig-alt="Original graphic, section 3.3, slide 16"}
+![](../assets/inferential-statistics/part-03-slide-16-graphic-03.png){width="30%" fig-alt="Illustration: The Critical Value Approach to Hypothesis Testing"}
 
 ::::::
-
-<!-- Original deck 3, slide 17 -->
 
 :::::: {.source-slide #part3-03-slide-17}
 
@@ -2181,21 +1973,19 @@ The amount of evidence against the null hypothesis, the smaller (closer to 0) th
 If the p-value (**Green Area**) is less than or equal to the specified significance level α (**Yellow Area**) , the null hypothesis is rejected. Otherwise, we fail to reject the null hypothesis.
 :::
 
-![](../assets/inferential-statistics/part-03-slide-17-graphic-02.png){width="65%" fig-alt="Original graphic, section 3.3, slide 17"}
+![](../assets/inferential-statistics/part-03-slide-17-graphic-02.png){width="65%" fig-alt="Illustration: The p-Value Approach to Hypothesis Testing"}
 
-![](../assets/inferential-statistics/part-03-slide-17-graphic-03.png){width="30%" fig-alt="Original graphic, section 3.3, slide 17"}
+![](../assets/inferential-statistics/part-03-slide-17-graphic-03.png){width="30%" fig-alt="Illustration: The p-Value Approach to Hypothesis Testing"}
 
 ::::::
-
-<!-- Original deck 3, slide 18 -->
 
 :::::: {.source-slide #part3-03-slide-18}
 
 ### Type I and Type II Errors {#part3-title-03-18}
 
-![](../assets/inferential-statistics/part-03-slide-18-graphic-01.png){width="50%" fig-alt="Original graphic, section 3.3, slide 18"}
+![](../assets/inferential-statistics/part-03-slide-18-graphic-01.png){width="50%" fig-alt="Illustration: Type I and Type II Errors"}
 
-![](../assets/inferential-statistics/part-03-slide-18-graphic-02.png){width="57%" fig-alt="Original graphic, section 3.3, slide 18"}
+![](../assets/inferential-statistics/part-03-slide-18-graphic-02.png){width="57%" fig-alt="Illustration: Type I and Type II Errors"}
 
 ::: source-text
 A Type I error occurs when the null hypothesis is incorrectly rejected when it is actually true.
@@ -2209,15 +1999,11 @@ On the other hand, a Type II error would be failing to recognize the drug\'s eff
 
 ::::::
 
-<!-- Original deck 3, slide 19 -->
-
 :::::: {.source-slide #part3-03-slide-19}
 
 ### Hypothesis Testing Examples {#part3-title-03-19}
 
 ::::::
-
-<!-- Original deck 3, slide 20 -->
 
 :::::: {.source-slide #part3-03-slide-20}
 
@@ -2230,11 +2016,9 @@ On the other hand, a Type II error would be failing to recognize the drug\'s eff
 In our work, we will focus on T-Tests
 :::
 
-![](../assets/inferential-statistics/part-03-slide-20-graphic-02.png){width="50%" fig-alt="Original graphic, section 3.3, slide 20"}
+![](../assets/inferential-statistics/part-03-slide-20-graphic-02.png){width="50%" fig-alt="Illustration: Z Test vs T Test"}
 
 ::::::
-
-<!-- Original deck 3, slide 21 -->
 
 :::::: {.source-slide #part3-03-slide-21}
 
@@ -2253,13 +2037,11 @@ Ha: μ ≠ 3
 If the test statistic is within the rejection region, we reject the null hypothesis, otherwise we fail to reject the null hypothesis noting that the sample data did not show enough evidence against the null hypothesis.
 :::
 
-![](../assets/inferential-statistics/part-03-slide-21-graphic-02.png){width="34%" fig-alt="Original graphic, section 3.3, slide 21"}
+![](../assets/inferential-statistics/part-03-slide-21-graphic-02.png){width="34%" fig-alt="Illustration: One Sample Test – Testing for Two Tails"}
 
-![](../assets/inferential-statistics/part-03-slide-21-graphic-03.png){width="30%" fig-alt="Original graphic, section 3.3, slide 21"}
+![](../assets/inferential-statistics/part-03-slide-21-graphic-03.png){width="30%" fig-alt="Illustration: One Sample Test – Testing for Two Tails"}
 
 ::::::
-
-<!-- Original deck 3, slide 22 -->
 
 :::::: {.source-slide #part3-03-slide-22}
 
@@ -2299,7 +2081,6 @@ If the test statistic is within the rejection region, we reject the null hypothe
 - Computing t-statistic manually, t = (3.4 - 3) / (1.37 / √40) ≈ 1.84
 :::
 
-<!-- BEGIN R EXAMPLE 3-22 -->
 :::: {.try-in-r #r-example-03-22}
 
 #### Try this in R {.unlisted}
@@ -2318,11 +2099,7 @@ c(t=t_stat, df=n-1, p_value=2*pt(abs(t_stat),df=n-1,lower.tail=FALSE))
 **Read the result:** The p-value is about 0.0732, so at 5% we fail to reject the stated mean of three days. This does not prove equality.
 
 ::::
-<!-- END R EXAMPLE 3-22 -->
-
 ::::::
-
-<!-- Original deck 3, slide 23 -->
 
 :::::: {.source-slide #part3-03-slide-23}
 
@@ -2343,11 +2120,9 @@ Alternative Hypothesis (H₁): μ \> 500 (Output is larger)
 This setup calls for a **one-tailed (upper-tailed) t-test**, as the interest lies specifically in detecting an increase in the mean output.
 :::
 
-![](../assets/inferential-statistics/part-03-slide-23-graphic-02.png){width="40%" fig-alt="Original graphic, section 3.3, slide 23"}
+![](../assets/inferential-statistics/part-03-slide-23-graphic-02.png){width="40%" fig-alt="Illustration: One Sample – One Tail Test – Upper Tail"}
 
 ::::::
-
-<!-- Original deck 3, slide 24 -->
 
 :::::: {.source-slide #part3-03-slide-24}
 
@@ -2393,7 +2168,6 @@ This setup calls for a **one-tailed (upper-tailed) t-test**, as the interest lie
 T statistic is above the critical value and P-Value is very small \< alpha, therefore we reject the null hypothesis
 :::
 
-<!-- BEGIN R EXAMPLE 3-24 -->
 :::: {.try-in-r #r-example-03-24}
 
 #### Try this in R {.unlisted}
@@ -2412,11 +2186,7 @@ c(t=t_stat, p_value=pt(t_stat,df=29,lower.tail=FALSE))
 **Read the result:** The p-value is about 9.38 × 10⁻⁷, supporting rejection under the stated model. The supplied summaries are used directly; no observations are fabricated.
 
 ::::
-<!-- END R EXAMPLE 3-24 -->
-
 ::::::
-
-<!-- Original deck 3, slide 25 -->
 
 :::::: {.source-slide #part3-03-slide-25}
 
@@ -2429,8 +2199,6 @@ c(t=t_stat, p_value=pt(t_stat,df=29,lower.tail=FALSE))
 :::
 
 ::::::
-
-<!-- Original deck 3, slide 26 -->
 
 :::::: {.source-slide #part3-03-slide-26}
 
@@ -2448,15 +2216,13 @@ An example of dependent sampling is when the weight of a group of people is meas
 The weight of a person can be measured individually before and after going into the diet, and the difference in the measured values can be calculated in each case.
 :::
 
-![](../assets/inferential-statistics/part-03-slide-26-graphic-02.png){width="30%" fig-alt="Original graphic, section 3.3, slide 26"}
+![](../assets/inferential-statistics/part-03-slide-26-graphic-02.png){width="30%" fig-alt="Illustration: Two Samples T-Test – Testing Dependent Groups (Paired T Test)"}
 
-![](../assets/inferential-statistics/part-03-slide-26-graphic-03.png){width="43%" fig-alt="Original graphic, section 3.3, slide 26"}
+![](../assets/inferential-statistics/part-03-slide-26-graphic-03.png){width="43%" fig-alt="Illustration: Two Samples T-Test – Testing Dependent Groups (Paired T Test)"}
 
-![](../assets/inferential-statistics/part-03-slide-26-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.3, slide 26"}
+![](../assets/inferential-statistics/part-03-slide-26-graphic-04.png){width="30%" fig-alt="Illustration: Two Samples T-Test – Testing Dependent Groups (Paired T Test)"}
 
 ::::::
-
-<!-- Original deck 3, slide 27 -->
 
 :::::: {.source-slide #part3-03-slide-27}
 
@@ -2554,14 +2320,13 @@ We want to examine if the group of students, which attended the online statistic
 +---+------------------------------------------------------------------------+
 :::
 
-![](../assets/inferential-statistics/part-03-slide-27-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.3, slide 27"}
+![](../assets/inferential-statistics/part-03-slide-27-graphic-04.png){width="30%" fig-alt="Illustration: Two Samples T-Test – Testing Dependent Groups (Paired T Test)"}
 
-<!-- BEGIN R EXAMPLE 3-27 -->
 :::: {.try-in-r #r-example-03-27}
 
 #### Try this in R {.unlisted}
 
-- **Purpose:** Load the original paired scores and inspect their change.
+- **Purpose:** Load the paired scores and inspect their change.
 - **Before running:** `read.csv()` reads the supplied project-root CSV; `$` selects a column. `head()` previews rows; `nrow()` counts paired students. `mean(score2-score1)` averages within-student changes. Run this cell before the next test.
 
 ```{r}
@@ -2575,11 +2340,7 @@ c(n=nrow(paired), mean_change=mean(paired$score2 - paired$score1))
 **Read the result:** Each row is one student measured twice. The unit of the paired analysis is the within-student difference, not two independent groups.
 
 ::::
-<!-- END R EXAMPLE 3-27 -->
-
 ::::::
-
-<!-- Original deck 3, slide 28 -->
 
 :::::: {.source-slide #part3-03-slide-28}
 
@@ -2590,9 +2351,8 @@ c(n=nrow(paired), mean_change=mean(paired$score2 - paired$score1))
 - This finding is supported by the test statistic and the p-value, therefore we REJECT the null hypothesis, and we conclude that the online tutorial helped students in enhancing their exam performance.
 :::
 
-![](../assets/inferential-statistics/part-03-slide-28-graphic-08.png){width="30%" fig-alt="Original graphic, section 3.3, slide 28"}
+![](../assets/inferential-statistics/part-03-slide-28-graphic-08.png){width="30%" fig-alt="Illustration: Two Samples T-Test – Testing Dependent Groups (Paired T Test)"}
 
-<!-- BEGIN R EXAMPLE 3-28 -->
 :::: {.try-in-r #r-example-03-28}
 
 #### Try this in R {.unlisted}
@@ -2610,11 +2370,7 @@ t.test(x=paired$score2, y=paired$score1, paired=TRUE,
 **Read the result:** The test supports a positive average change under its assumptions. Pairing alone does not establish that the tutorial caused that change.
 
 ::::
-<!-- END R EXAMPLE 3-28 -->
-
 ::::::
-
-<!-- Original deck 3, slide 29 -->
 
 :::::: {.source-slide #part3-03-slide-29}
 
@@ -2698,7 +2454,7 @@ The standard deviations of the two populations are unknown but assumed to be equ
 The question is, whether there is a difference (at α 5%) in the mean annual salary of graduates related to gender (two tailed test)
 :::
 
-![](../assets/inferential-statistics/part-03-slide-29-graphic-03.png){width="30%" fig-alt="Original graphic, section 3.3, slide 29"}
+![](../assets/inferential-statistics/part-03-slide-29-graphic-03.png){width="30%" fig-alt="Illustration: Two Samples T-Test – Testing Independent Groups (Unpaired T Test) (variance assumed to be equal)"}
 
 ::: source-table
 +---+------------------------------------------------------------+
@@ -2708,14 +2464,13 @@ The question is, whether there is a difference (at α 5%) in the mean annual sal
 +---+------------------------------------------------------------+
 :::
 
-![](../assets/inferential-statistics/part-03-slide-29-graphic-05.png){width="30%" fig-alt="Original graphic, section 3.3, slide 29"}
+![](../assets/inferential-statistics/part-03-slide-29-graphic-05.png){width="30%" fig-alt="Illustration: Two Samples T-Test – Testing Independent Groups (Unpaired T Test) (variance assumed to be equal)"}
 
-<!-- BEGIN R EXAMPLE 3-29 -->
 :::: {.try-in-r #r-example-03-29}
 
 #### Try this in R {.unlisted}
 
-- **Purpose:** Load the two original salary samples and compare their means.
+- **Purpose:** Load the two salary samples and compare their means.
 - **Before running:** `read.csv()` loads the supplied CSV. `$male` and `$female` select the two samples; `mean()` calculates their averages. Keep the source currency-label inconsistency in mind.
 
 ```{r}
@@ -2728,11 +2483,7 @@ c(male_mean=mean(salaries$male), female_mean=mean(salaries$female))
 **Read the result:** These are independent-group sample means. The next cell tests their difference under the specified equal-variance model.
 
 ::::
-<!-- END R EXAMPLE 3-29 -->
-
 ::::::
-
-<!-- Original deck 3, slide 30 -->
 
 :::::: {.source-slide #part3-03-slide-30}
 
@@ -2743,9 +2494,8 @@ c(male_mean=mean(salaries$male), female_mean=mean(salaries$female))
 - This finding is supported by the test statistic and the p-value, therefore we REJECT the null hypothesis, and we conclude that the salaries of male graduates and female graduates are not equal.
 :::
 
-![](../assets/inferential-statistics/part-03-slide-30-graphic-09.png){width="30%" fig-alt="Original graphic, section 3.3, slide 30"}
+![](../assets/inferential-statistics/part-03-slide-30-graphic-09.png){width="30%" fig-alt="Illustration: Two Samples T-Test – Testing Independent Groups (Unpaired T Test) (variance assumed to be equal)"}
 
-<!-- BEGIN R EXAMPLE 3-30 -->
 :::: {.try-in-r #r-example-03-30}
 
 #### Try this in R {.unlisted}
@@ -2763,11 +2513,7 @@ t.test(x=salaries$male, y=salaries$female, var.equal=TRUE,
 **Read the result:** Read the estimated difference, interval and p-value together. Equal population variances and an appropriate independent sampling model are assumptions, not consequences of a small p-value.
 
 ::::
-<!-- END R EXAMPLE 3-30 -->
-
 ::::::
-
-<!-- Original deck 3, slide 31 -->
 
 :::::: {.source-slide #part3-03-slide-31}
 
@@ -2849,7 +2595,7 @@ We want to test at α 1%, whether the mean political science salary is higher th
 +----+---------------------------------+------------------------------+
 :::
 
-![](../assets/inferential-statistics/part-03-slide-31-graphic-03.png){width="30%" fig-alt="Original graphic, section 3.3, slide 31"}
+![](../assets/inferential-statistics/part-03-slide-31-graphic-03.png){width="30%" fig-alt="Illustration: Two Samples T-Test – Testing Independent Groups (Unpaired T Test) (variance assumed to be NOT equal)"}
 
 ::: source-table
 +---+------------------------------------------------------------------+
@@ -2859,14 +2605,13 @@ We want to test at α 1%, whether the mean political science salary is higher th
 +---+------------------------------------------------------------------+
 :::
 
-![](../assets/inferential-statistics/part-03-slide-31-graphic-05.png){width="30%" fig-alt="Original graphic, section 3.3, slide 31"}
+![](../assets/inferential-statistics/part-03-slide-31-graphic-05.png){width="30%" fig-alt="Illustration: Two Samples T-Test – Testing Independent Groups (Unpaired T Test) (variance assumed to be NOT equal)"}
 
-<!-- BEGIN R EXAMPLE 3-31 -->
 :::: {.try-in-r #r-example-03-31}
 
 #### Try this in R {.unlisted}
 
-- **Purpose:** Load the two original female-graduate salary samples.
+- **Purpose:** Load the two female-graduate salary samples.
 - **Before running:** `read.csv()` imports the CSV; `$` selects each subject’s salary column. `mean()` summarises each sample. Run this before the comparison on the following slide.
 
 ```{r}
@@ -2880,11 +2625,7 @@ c(political_science_mean=mean(majors$political_science),
 **Read the result:** The two displayed means describe these samples. Preserve the source units and avoid interpreting a sample difference as causal.
 
 ::::
-<!-- END R EXAMPLE 3-31 -->
-
 ::::::
-
-<!-- Original deck 3, slide 32 -->
 
 :::::: {.source-slide #part3-03-slide-32}
 
@@ -2895,9 +2636,8 @@ c(political_science_mean=mean(majors$political_science),
 - This finding is supported by the test statistic and the p-value, therefore we FAIL TO REJECT the null hypothesis which states that the salaries of political science and social science are equal for female graduates.
 :::
 
-![](../assets/inferential-statistics/part-03-slide-32-graphic-08.png){width="30%" fig-alt="Original graphic, section 3.3, slide 32"}
+![](../assets/inferential-statistics/part-03-slide-32-graphic-08.png){width="30%" fig-alt="Illustration: Two Samples T-Test – Testing Independent Groups (Unpaired T Test) (variance assumed to be NOT equal)"}
 
-<!-- BEGIN R EXAMPLE 3-32 -->
 :::: {.try-in-r #r-example-03-32}
 
 #### Try this in R {.unlisted}
@@ -2915,19 +2655,13 @@ t.test(x=majors$political_science, y=majors$social_science,
 **Read the result:** The one-sided p-value is about 0.0182, above 0.01; fail to reject at the stated level. Do not change direction or significance level after examining the result.
 
 ::::
-<!-- END R EXAMPLE 3-32 -->
-
 ::::::
-
-<!-- Original deck 3, slide 33 -->
 
 :::::: {.source-slide #part3-03-slide-33}
 
 ### Testing Proportions {#part3-title-03-33}
 
 ::::::
-
-<!-- Original deck 3, slide 34 -->
 
 :::::: {.source-slide #part3-03-slide-34}
 
@@ -2956,27 +2690,22 @@ Where:
 
 ::::::
 
-<!-- Original deck 3, slide 35 -->
-
 :::::: {.source-slide #part3-03-slide-35}
 
 ### One-Sample Proportion Test {#part3-title-03-35}
 
-![](../assets/inferential-statistics/part-03-slide-35-graphic-01.png){width="57%" fig-alt="Original graphic, section 3.3, slide 35"}
+![](../assets/inferential-statistics/part-03-slide-35-graphic-01.png){width="57%" fig-alt="Illustration: One-Sample Proportion Test"}
 
 ::::::
-
-<!-- Original deck 3, slide 36 -->
 
 :::::: {.source-slide #part3-03-slide-36}
 
 ### Example {#part3-title-03-36}
 
-![](../assets/inferential-statistics/part-03-slide-36-graphic-01.png){width="86%" fig-alt="Original graphic, section 3.3, slide 36"}
+![](../assets/inferential-statistics/part-03-slide-36-graphic-01.png){width="86%" fig-alt="Illustration: Example"}
 
-![](../assets/inferential-statistics/part-03-slide-36-graphic-02.png){width="69%" fig-alt="Original graphic, section 3.3, slide 36"}
+![](../assets/inferential-statistics/part-03-slide-36-graphic-02.png){width="69%" fig-alt="Illustration: Example"}
 
-<!-- BEGIN R EXAMPLE 3-36 -->
 :::: {.try-in-r #r-example-03-36}
 
 #### Try this in R {.unlisted}
@@ -2994,40 +2723,33 @@ prop.test(140,200,p=0.75,alternative="two.sided",correct=FALSE)
 **Read the result:** The sample rate is 70%. Compare p with the chosen significance level, under an appropriate independent sampling model; the result does not establish the null as true.
 
 ::::
-<!-- END R EXAMPLE 3-36 -->
-
 ::::::
-
-<!-- Original deck 3, slide 37 -->
 
 :::::: {.source-slide #part3-03-slide-37}
 
 ### Two-Samples Proportion Test {#part3-title-03-37}
 
-![](../assets/inferential-statistics/part-03-slide-37-graphic-01.png){width="57%" fig-alt="Original graphic, section 3.3, slide 37"}
+![](../assets/inferential-statistics/part-03-slide-37-graphic-01.png){width="57%" fig-alt="Illustration: Two-Samples Proportion Test"}
 
 ::::::
-
-<!-- Original deck 3, slide 38 -->
 
 :::::: {.source-slide #part3-03-slide-38}
 
 ### Example: Does the New Treatment Work? {#part3-title-03-38}
 
-![](../assets/inferential-statistics/part-03-slide-38-graphic-01.png){width="67%" fig-alt="Original graphic, section 3.3, slide 38"}
+![](../assets/inferential-statistics/part-03-slide-38-graphic-01.png){width="67%" fig-alt="Illustration: Example: Does the New Treatment Work?"}
 
 ::: source-text
 This is a one-tailed test for comparing two proportions
 :::
 
-![](../assets/inferential-statistics/part-03-slide-38-graphic-03.png){width="43%" fig-alt="Original graphic, section 3.3, slide 38"}
+![](../assets/inferential-statistics/part-03-slide-38-graphic-03.png){width="43%" fig-alt="Illustration: Example: Does the New Treatment Work?"}
 
-<!-- BEGIN R EXAMPLE 3-38 -->
 :::: {.try-in-r #r-example-03-38}
 
 #### Try this in R {.unlisted}
 
-- **Purpose:** Compare the original treatment success counts.
+- **Purpose:** Compare the treatment success counts.
 - **Before running:** The first `c()` supplies success counts and the second their group totals, in matching order. `alternative="greater"` tests the first rate above the second; `correct=FALSE` omits continuity correction.
 
 ```{r}
@@ -3040,11 +2762,7 @@ prop.test(c(65,50),c(100,100),alternative="greater",correct=FALSE)
 **Read the result:** The observed rates are 65% and 50%, a 15-percentage-point difference. Interpret the one-sided test under the study’s design and assumptions.
 
 ::::
-<!-- END R EXAMPLE 3-38 -->
-
 ::::::
-
-<!-- Original deck 3, slide 39 -->
 
 :::::: {.source-slide #part3-03-slide-39}
 
@@ -3055,8 +2773,6 @@ Chi-Square Tests
 :::
 
 ::::::
-
-<!-- Original deck 3, slide 40 -->
 
 :::::: {.source-slide #part3-03-slide-40}
 
@@ -3074,8 +2790,6 @@ Goodness of Fit Test: Determines if a sample matches an expected distribution.
 
 ::::::
 
-<!-- Original deck 3, slide 41 -->
-
 :::::: {.source-slide #part3-03-slide-41}
 
 ### Examples {#part3-title-03-41}
@@ -3092,8 +2806,6 @@ Goodness of Fit Test: Determines if a sample matches an expected distribution.
 
 ::::::
 
-<!-- Original deck 3, slide 42 -->
-
 :::::: {.source-slide #part3-03-slide-42}
 
 ### Chi-Square Steps – Test of Independence {#part3-title-03-42}
@@ -3106,17 +2818,15 @@ Step-by-Step Process:
 2\. Calculate the expected frequencies for each cell using the following formula.
 :::
 
-![](../assets/inferential-statistics/part-03-slide-42-graphic-02.png){width="34%" fig-alt="Original graphic, section 3.3, slide 42"}
+![](../assets/inferential-statistics/part-03-slide-42-graphic-02.png){width="34%" fig-alt="Illustration: Chi-Square Steps – Test of Independence"}
 
 ::: source-text
 3\. Compute Chi-Square statistic using the formula
 :::
 
-![](../assets/inferential-statistics/part-03-slide-42-graphic-04.png){width="30%" fig-alt="Original graphic, section 3.3, slide 42"}
+![](../assets/inferential-statistics/part-03-slide-42-graphic-04.png){width="30%" fig-alt="Illustration: Chi-Square Steps – Test of Independence"}
 
 ::::::
-
-<!-- Original deck 3, slide 43 -->
 
 :::::: {.source-slide #part3-03-slide-43}
 
@@ -3126,13 +2836,11 @@ Step-by-Step Process:
 4\. Use the Chi-Square distribution to find the Chi-Square statistic and compare it to the critical values at common significance level e.g. (0.05)
 :::
 
-![](../assets/inferential-statistics/part-03-slide-43-graphic-02.png){width="47%" fig-alt="Original graphic, section 3.3, slide 43"}
+![](../assets/inferential-statistics/part-03-slide-43-graphic-02.png){width="47%" fig-alt="Illustration: Chi-Square Steps – Test of Independence"}
 
-![](../assets/inferential-statistics/part-03-slide-43-graphic-03.png){width="100%" fig-alt="Original graphic, section 3.3, slide 43"}
+![](../assets/inferential-statistics/part-03-slide-43-graphic-03.png){width="100%" fig-alt="Illustration: Chi-Square Steps – Test of Independence"}
 
 ::::::
-
-<!-- Original deck 3, slide 44 -->
 
 :::::: {.source-slide #part3-03-slide-44}
 
@@ -3165,12 +2873,11 @@ The table below shows the **observed frequency** table based on the survey:
 **Task:** Perform a Chi-Square Test of Independence to determine if there\'s a significant relationship between age group and product preference.
 :::
 
-<!-- BEGIN R EXAMPLE 3-44 -->
 :::: {.try-in-r #r-example-03-44}
 
 #### Try this in R {.unlisted}
 
-- **Purpose:** Enter the original product-preference counts.
+- **Purpose:** Enter the product-preference counts.
 - **Before running:** `matrix()` arranges the values into `nrow=3` rows. `byrow=TRUE` fills each age-group row in order. `dimnames=list(...)` names the rows and columns; `c()` makes each label vector. Counts, rather than percentages, are entered.
 
 ```{r}
@@ -3185,11 +2892,7 @@ beverages
 **Read the result:** The table contains 200 observations. This cell defines beverages for the following expected-count and test calculations.
 
 ::::
-<!-- END R EXAMPLE 3-44 -->
-
 ::::::
-
-<!-- Original deck 3, slide 45 -->
 
 :::::: {.source-slide #part3-03-slide-45}
 
@@ -3209,13 +2912,10 @@ These hypotheses set up the test to evaluate whether the observed differences in
 
 ::::::
 
-<!-- Original deck 3, slide 46 -->
-
 :::::: {.source-slide #part3-03-slide-46}
 
 ### Calculate Expected Counts in R {#part3-title-03-46}
 
-<!-- BEGIN R EXAMPLE 3-46 -->
 :::: {.try-in-r #r-example-03-46}
 
 #### Try this in R {.unlisted}
@@ -3234,17 +2934,13 @@ expected
 **Read the result:** Expected counts describe the independence model, not newly observed people. Compare them with the observed table before testing.
 
 ::::
-<!-- END R EXAMPLE 3-46 -->
-
 ::::::
-
-<!-- Original deck 3, slide 47 -->
 
 :::::: {.source-slide #part3-03-slide-47}
 
 ### Calculate Chi-Square Value {#part3-title-03-47}
 
-![](../assets/inferential-statistics/part-03-slide-47-graphic-01.png){width="30%" fig-alt="Original graphic, section 3.3, slide 47"}
+![](../assets/inferential-statistics/part-03-slide-47-graphic-01.png){width="30%" fig-alt="Illustration: Calculate Chi-Square Value"}
 
 ::: source-table
 +-----------------------------------+------------------+------------------+---------+--------------+---------------+
@@ -3268,8 +2964,6 @@ expected
 
 ::::::
 
-<!-- Original deck 3, slide 48 -->
-
 :::::: {.source-slide #part3-03-slide-48}
 
 ### Calculate the Chi-Square Test in R {#part3-title-03-48}
@@ -3280,7 +2974,6 @@ expected
 After calculating the Chi-Square statistic and comparing it with the critical value from a Chi-Square distribution table (or using p-value), you can conclude whether there is a statistically significant association between age group and product preference.
 :::
 
-<!-- BEGIN R EXAMPLE 3-48 -->
 :::: {.try-in-r #r-example-03-48}
 
 #### Try this in R {.unlisted}
@@ -3298,17 +2991,12 @@ chi
 **Read the result:** The statistic is about 8.4286 on two degrees of freedom, with p≈0.0148. Under the sampling model this is evidence of association, not causation.
 
 ::::
-<!-- END R EXAMPLE 3-48 -->
-
 ::::::
-
-<!-- Original deck 3, slide 49 -->
 
 :::::: {.source-slide #part3-03-slide-49}
 
 ### Review the Calculation in R {#part3-title-03-49}
 
-<!-- BEGIN R EXAMPLE 3-49 -->
 :::: {.try-in-r #r-example-03-49}
 
 #### Try this in R {.unlisted}
@@ -3328,11 +3016,7 @@ c(chi_square=sum(contributions), df=unname(chi$parameter),
 **Read the result:** The contributions sum to the same chi-square statistic. Small rounding differences from the hand table are expected.
 
 ::::
-<!-- END R EXAMPLE 3-49 -->
-
 ::::::
-
-<!-- Original deck 3, slide 50 -->
 
 :::::: {.source-slide #part3-03-slide-50}
 
@@ -3343,8 +3027,6 @@ One Way ANOVA
 :::
 
 ::::::
-
-<!-- Original deck 3, slide 51 -->
 
 :::::: {.source-slide #part3-03-slide-51}
 
@@ -3367,8 +3049,6 @@ Allows simultaneous comparison of more than two groups, providing a broader anal
 :::
 
 ::::::
-
-<!-- Original deck 3, slide 52 -->
 
 :::::: {.source-slide #part3-03-slide-52}
 
@@ -3404,8 +3084,6 @@ F = MSB / MSW
 :::
 
 ::::::
-
-<!-- Original deck 3, slide 53 -->
 
 :::::: {.source-slide #part3-03-slide-53}
 
@@ -3461,12 +3139,11 @@ Score: The score each student received on the standardized test.
 +----------------+-----------+-----------+
 :::
 
-<!-- BEGIN R EXAMPLE 3-53 -->
 :::: {.try-in-r #r-example-03-53}
 
 #### Try this in R {.unlisted}
 
-- **Purpose:** Fit the one-way ANOVA for the original teaching-method scores.
+- **Purpose:** Fit the one-way ANOVA for the teaching-method scores.
 - **Before running:** `read.csv()` loads the 15 supplied scores. In `aov(score~group,data=methods)`, `~` means model score by group; `data` names the table. `summary()` displays the ANOVA F test.
 
 ```{r}
@@ -3481,17 +3158,13 @@ summary(aov(score~group,data=methods))
 **Read the result:** The omnibus test asks whether all population group means are equal. A rejection does not establish that every pair differs or identify one uniquely best method.
 
 ::::
-<!-- END R EXAMPLE 3-53 -->
-
 ::::::
-
-<!-- Original deck 3, slide 54 -->
 
 :::::: {.source-slide #part3-03-slide-54}
 
 ### Interpreting Results {#part3-title-03-54}
 
-![](../assets/inferential-statistics/part-03-slide-54-graphic-01.png){width="57%" fig-alt="Original graphic, section 3.3, slide 54"}
+![](../assets/inferential-statistics/part-03-slide-54-graphic-01.png){width="57%" fig-alt="Illustration: Interpreting Results"}
 
 ::: source-text
 F-Statistic and P-Value:
@@ -3504,8 +3177,6 @@ Post Hoc Tests: If the ANOVA is significant, perform post hoc tests (e.g., Tukey
 :::
 
 ::::::
-
-<!-- Original deck 3, slide 55 -->
 
 :::::: {.source-slide #part3-03-slide-55}
 
@@ -3529,8 +3200,6 @@ This leads to a **2x2 factorial design**:
 :::
 
 ::::::
-
-<!-- Original deck 3, slide 56 -->
 
 :::::: {.source-slide #part3-03-slide-56}
 
@@ -3570,12 +3239,11 @@ This leads to a **2x2 factorial design**:
 +--------+-------------+--------+--------+--------+
 :::
 
-<!-- BEGIN R EXAMPLE 3-56 -->
 :::: {.try-in-r #r-example-03-56}
 
 #### Try this in R {.unlisted}
 
-- **Purpose:** Fit both factors and their interaction for the original eight observations.
+- **Purpose:** Fit both factors and their interaction for the eight observations.
 - **Before running:** `factor()` treats the source gender/method values as categories. In the formula, `gender*method` includes both main effects and their interaction. `aov()` fits the model; `summary()` displays its tests.
 
 ```{r}
@@ -3592,29 +3260,21 @@ summary(aov(score~gender*method,data=teaching))
 **Read the result:** Read the main-effect and interaction rows separately, conditional on independent, common-variance normal errors. Eight observations give limited information for checking these assumptions.
 
 ::::
-<!-- END R EXAMPLE 3-56 -->
-
 ::::::
-
-<!-- Original deck 3, slide 57 -->
 
 :::::: {.source-slide #part3-03-slide-57}
 
 ### How to Select Test Type {#part3-title-03-57}
 
-![](../assets/inferential-statistics/part-03-slide-57-graphic-00.png){width="47%" fig-alt="Original graphic, section 3.3, slide 57"}
+![](../assets/inferential-statistics/part-03-slide-57-graphic-00.png){width="47%" fig-alt="Illustration: How to Select Test Type"}
 
 ::::::
-
-<!-- Original deck 4, slide 1 -->
 
 :::::: {.source-slide #part3-04-slide-01}
 
 ## 3.4 Introduction to Linear Regression {#part3-04}
 
 ::::::
-
-<!-- Original deck 4, slide 2 -->
 
 :::::: {.source-slide #part3-04-slide-02}
 
@@ -3627,8 +3287,6 @@ Purpose: To understand how the typical value of the dependent variable changes w
 :::
 
 ::::::
-
-<!-- Original deck 4, slide 3 -->
 
 :::::: {.source-slide #part3-04-slide-03}
 
@@ -3644,25 +3302,21 @@ Other Types: Logistic regression, polynomial regression, Ridge Regression, Lasso
 
 ::::::
 
-<!-- Original deck 4, slide 4 -->
-
 :::::: {.source-slide #part3-04-slide-04}
 
 ### The Regression Equation {#part3-title-04-04}
 
-![](../assets/inferential-statistics/part-04-slide-04-graphic-01.png){width="94%" fig-alt="Original graphic, section 3.4, slide 4"}
+![](../assets/inferential-statistics/part-04-slide-04-graphic-01.png){width="94%" fig-alt="Illustration: The Regression Equation"}
 
-![](../assets/inferential-statistics/part-04-slide-04-graphic-02.png){width="38%" fig-alt="Original graphic, section 3.4, slide 4"}
+![](../assets/inferential-statistics/part-04-slide-04-graphic-02.png){width="38%" fig-alt="Illustration: The Regression Equation"}
 
 ::::::
-
-<!-- Original deck 4, slide 5 -->
 
 :::::: {.source-slide #part3-04-slide-05}
 
 ### Finding the Best Fit Line {#part3-title-04-05}
 
-![](../assets/inferential-statistics/part-04-slide-05-graphic-01.png){width="53%" fig-alt="Original graphic, section 3.4, slide 5"}
+![](../assets/inferential-statistics/part-04-slide-05-graphic-01.png){width="53%" fig-alt="Illustration: Finding the Best Fit Line"}
 
 ::: source-text
 The goal of the linear regression algorithm is to get the best values for B0 and B1 to find the best fit line.
@@ -3682,21 +3336,17 @@ In simple terms, the best fit line is a line that fits the given scatter plot in
 
 ::::::
 
-<!-- Original deck 4, slide 6 -->
-
 :::::: {.source-slide #part3-04-slide-06}
 
 ### Finding the Best Fit Line {#part3-title-04-06}
 
-![](../assets/inferential-statistics/part-04-slide-06-graphic-01.png){width="57%" fig-alt="Original graphic, section 3.4, slide 6"}
+![](../assets/inferential-statistics/part-04-slide-06-graphic-01.png){width="57%" fig-alt="Illustration: Finding the Best Fit Line"}
 
-![](../assets/inferential-statistics/part-04-slide-06-graphic-02.png){width="30%" fig-alt="Original graphic, section 3.4, slide 6"}
+![](../assets/inferential-statistics/part-04-slide-06-graphic-02.png){width="30%" fig-alt="Illustration: Finding the Best Fit Line"}
 
-![](../assets/inferential-statistics/part-04-slide-06-graphic-03.png){width="43%" fig-alt="Original graphic, section 3.4, slide 6"}
+![](../assets/inferential-statistics/part-04-slide-06-graphic-03.png){width="43%" fig-alt="Illustration: Finding the Best Fit Line"}
 
 ::::::
-
-<!-- Original deck 4, slide 7 -->
 
 :::::: {.source-slide #part3-04-slide-07}
 
@@ -3713,8 +3363,6 @@ t-Tests on Coefficients: Each beta coefficient has an associated t-test to deter
 :::
 
 ::::::
-
-<!-- Original deck 4, slide 8 -->
 
 :::::: {.source-slide #part3-04-slide-08}
 
@@ -3737,8 +3385,6 @@ Location: Categorical variable indicating the neighborhood quality (1 = Low, 2 =
 :::
 
 ::::::
-
-<!-- Original deck 4, slide 9 -->
 
 :::::: {.source-slide #part3-04-slide-09}
 
@@ -3770,12 +3416,11 @@ Location: Categorical variable indicating the neighborhood quality (1 = Low, 2 =
 +--------------+-----------+----------+
 :::
 
-<!-- BEGIN R EXAMPLE 4-9 -->
 :::: {.try-in-r #r-example-04-09}
 
 #### Try this in R {.unlisted}
 
-- **Purpose:** Fit the original house-price regression.
+- **Purpose:** Fit the house-price regression.
 - **Before running:** `read.csv()` loads the ten houses; price is in thousands of dollars and size in square feet. `lm(price~size,data=houses)` fits a line with an intercept; `~` places the response on the left and predictor on the right. `summary()` displays coefficients and fit.
 
 ```{r}
@@ -3791,11 +3436,7 @@ summary(simple)
 **Read the result:** The slope is change in fitted price per square foot, in thousands of dollars. Read uncertainty and units; a fitted association is not evidence of causation.
 
 ::::
-<!-- END R EXAMPLE 4-9 -->
-
 ::::::
-
-<!-- Original deck 4, slide 10 -->
 
 :::::: {.source-slide #part3-04-slide-10}
 
@@ -3830,8 +3471,6 @@ The number of data points used in the regression analysis.
 :::
 
 ::::::
-
-<!-- Original deck 4, slide 11 -->
 
 :::::: {.source-slide #part3-04-slide-11}
 
@@ -3873,7 +3512,6 @@ Larger values indicate the model is a good fit.
 The **p-value** for the F-test. A small value (e.g., \<0.05) indicates the model is statistically significant.
 :::
 
-<!-- BEGIN R EXAMPLE 4-11 -->
 :::: {.try-in-r #r-example-04-11}
 
 #### Try this in R {.unlisted}
@@ -3891,11 +3529,7 @@ anova(simple)
 **Read the result:** The F test is conditional on the linear-model assumptions. It does not establish that the model is useful for every prediction task.
 
 ::::
-<!-- END R EXAMPLE 4-11 -->
-
 ::::::
-
-<!-- Original deck 4, slide 12 -->
 
 :::::: {.source-slide #part3-04-slide-12}
 
@@ -3921,8 +3555,6 @@ anova(simple)
 
 ::::::
 
-<!-- Original deck 4, slide 13 -->
-
 :::::: {.source-slide #part3-04-slide-13}
 
 ### Conclusion {#part3-title-04-13}
@@ -3942,8 +3574,6 @@ It tells you how much variability (or error) remains unexplained by your model.
 :::
 
 ::::::
-
-<!-- Original deck 4, slide 14 -->
 
 :::::: {.source-slide #part3-04-slide-14}
 
@@ -3987,12 +3617,11 @@ Smaller P-Value  Best Predictor
 Overall Model Accuracy
 :::
 
-<!-- BEGIN R EXAMPLE 4-14 -->
 :::: {.try-in-r #r-example-04-14}
 
 #### Try this in R {.unlisted}
 
-- **Purpose:** Fit the original multiple-regression specification.
+- **Purpose:** Fit the multiple-regression specification.
 - **Before running:** `factor(location)` makes the location codes categories. In `lm()`, `+` adds predictors; size, bedrooms, age and location are modelled together. `summary()` displays their partial slopes and uncertainty.
 
 ```{r}
@@ -4007,11 +3636,7 @@ summary(multiple)
 **Read the result:** Interpret a slope while holding the other model predictors fixed. Ten houses leave very few residual degrees of freedom; this is not evidence of a reliable general prediction system.
 
 ::::
-<!-- END R EXAMPLE 4-14 -->
-
 ::::::
-
-<!-- Original deck 4, slide 15 -->
 
 :::::: {.source-slide #part3-04-slide-15}
 
@@ -4029,8 +3654,6 @@ This means that the change in the dependent variable is proportional to the chan
 
 ::::::
 
-<!-- Original deck 4, slide 16 -->
-
 :::::: {.source-slide #part3-04-slide-16}
 
 ### Assumptions of Linear Regression {#part3-title-04-16}
@@ -4039,20 +3662,19 @@ This means that the change in the dependent variable is proportional to the chan
 **How to Test Linearity**: Plot the residuals vs. predicted using a scatter plot, look for a random distribution (no patterns).
 :::
 
-![](../assets/inferential-statistics/part-04-slide-16-graphic-02.png){width="46%" fig-alt="Original graphic, section 3.4, slide 16"}
+![](../assets/inferential-statistics/part-04-slide-16-graphic-02.png){width="46%" fig-alt="Illustration: Assumptions of Linear Regression"}
 
-![](../assets/inferential-statistics/part-04-slide-16-graphic-03.png){width="48%" fig-alt="Original graphic, section 3.4, slide 16"}
+![](../assets/inferential-statistics/part-04-slide-16-graphic-03.png){width="48%" fig-alt="Illustration: Assumptions of Linear Regression"}
 
 ::: source-text
 To check if the relationship between the independent variable (Size) and the dependent variable (Price) is linear, we look for patterns in the residuals, a random scatter indicates a linear relationship while curves or trends suggest a non-linear relationship.
 :::
 
-<!-- BEGIN R EXAMPLE 4-16 -->
 :::: {.try-in-r #r-example-04-16}
 
 #### Try this in R {.unlisted}
 
-- **Purpose:** Inspect residual pattern and spread in the original house model.
+- **Purpose:** Inspect residual pattern and spread in the house-price model.
 - **Before running:** `fitted(simple)` returns predicted prices and `resid(simple)` returns observed minus predicted prices. `plot(x,y)` draws them; `pch` sets point shape, `col` colour and `xlab`/`ylab` the axis labels. `abline(h=0,lty=2)` adds a dashed zero reference.
 
 ```{r}
@@ -4066,11 +3688,7 @@ abline(h=0,lty=2)
 **Read the result:** Look for curvature, changing spread or unusual points. A diagnostic can reveal problems but cannot prove model assumptions.
 
 ::::
-<!-- END R EXAMPLE 4-16 -->
-
 ::::::
-
-<!-- Original deck 4, slide 17 -->
 
 :::::: {.source-slide #part3-04-slide-17}
 
@@ -4088,8 +3706,6 @@ Example: In a study measuring the effect of a new drug on blood pressure, each p
 
 ::::::
 
-<!-- Original deck 4, slide 18 -->
-
 :::::: {.source-slide #part3-04-slide-18}
 
 ### Assumptions of Linear Regression {#part3-title-04-18}
@@ -4106,8 +3722,6 @@ If this assumption is violated, it indicates heteroscedasticity, meaning the spr
 
 ::::::
 
-<!-- Original deck 4, slide 19 -->
-
 :::::: {.source-slide #part3-04-slide-19}
 
 ### Assumptions of Linear Regression {#part3-title-04-19}
@@ -4116,7 +3730,7 @@ If this assumption is violated, it indicates heteroscedasticity, meaning the spr
 **How to Test Homoscedasticity** : Plot residuals vs. predicted values. The spread of residuals variance should be consistent (no funnel-shaped patterns).
 :::
 
-![](../assets/inferential-statistics/part-04-slide-19-graphic-02.png){width="66%" fig-alt="Original graphic, section 3.4, slide 19"}
+![](../assets/inferential-statistics/part-04-slide-19-graphic-02.png){width="66%" fig-alt="Illustration: Assumptions of Linear Regression"}
 
 ::: source-text
 **Good Residual Spead**
@@ -4142,8 +3756,6 @@ If this assumption is violated, it indicates heteroscedasticity, meaning the spr
 
 ::::::
 
-<!-- Original deck 4, slide 20 -->
-
 :::::: {.source-slide #part3-04-slide-20}
 
 ### Assumptions of Linear Regression {#part3-title-04-20}
@@ -4156,7 +3768,7 @@ The error terms should be normally distributed. This assumption is especially im
 Example: After fitting a regression model predicting apartment price based on apartment size, plotting a histogram or a Q-Q plot of the residuals should show that they follow a normal distribution.
 :::
 
-![](../assets/inferential-statistics/part-04-slide-20-graphic-02.png){width="45%" fig-alt="Original graphic, section 3.4, slide 20"}
+![](../assets/inferential-statistics/part-04-slide-20-graphic-02.png){width="45%" fig-alt="Illustration: Assumptions of Linear Regression"}
 
 ::: source-table
 +------------+--------------------+------+-------------+-----------------------+
@@ -4184,12 +3796,11 @@ Example: After fitting a regression model predicting apartment price based on ap
 +------------+--------------------+------+-------------+-----------------------+
 :::
 
-<!-- BEGIN R EXAMPLE 4-20 -->
 :::: {.try-in-r #r-example-04-20}
 
 #### Try this in R {.unlisted}
 
-- **Purpose:** Compare the original model’s residuals with a normal shape.
+- **Purpose:** Compare the model’s residuals with a normal shape.
 - **Before running:** `qqnorm()` plots ordered residuals against theoretical normal quantiles; `pch` and `col` control the points. `qqline()` adds a reference line.
 
 ```{r}
@@ -4203,11 +3814,7 @@ qqline(resid(simple))
 **Read the result:** Assess departures from the line, especially in the tails. Normality of errors is distinct from normality of the predictors.
 
 ::::
-<!-- END R EXAMPLE 4-20 -->
-
 ::::::
-
-<!-- Original deck 4, slide 21 -->
 
 :::::: {.source-slide #part3-04-slide-21}
 

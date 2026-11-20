@@ -438,3 +438,9 @@
 - User requested removing obsolete practicals and similar folders/content to simplify the course. This supersedes previous requirements to preserve compatibility entry pages and duplicate download URLs.
 - Remove `practicals/`, former split Part 1 entry pages, duplicate `course/index.qmd`, retired probability/practical redirects, root lesson redirects and old PDF/QMD/ZIP aliases. Do not regenerate them.
 - Keep three canonical lessons and nine active extended applications, their current navigation, twelve PDFs, canonical Part 3 QMD download and two student bundles. Historical sources/archives and unrelated working drafts remain unchanged.
+
+## Clean teaching sources and R code downloads — 20 November 2026
+
+- User removed “Part 3” from the inferential title/contents and requested removing source-tracking comments and similar authoring leftovers from teaching notebooks. Track slide order and code panels by existing Quarto identifiers; keep provenance in instructor material/reference decks.
+- All three part pages offer “Download R code files” linking to a plain `.R` script exported reproducibly from that part's code cells. The main page uses the same wording for the complete course ZIP, which includes these three scripts alongside the twelve notebooks, data and support files.
+- The former direct Part 3 QMD link/download is superseded by its R script. Preserve the byte-identical canonical Part 3 QMD inside the course ZIP and the twelve-PDF contract.
