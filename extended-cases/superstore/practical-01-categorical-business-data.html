@@ -4177,9 +4177,9 @@ color: var(--course-dark); margin: .8rem 0 1.4rem;
 .source-level-2 { margin-left: 2.4rem; }
 .source-table { overflow-x: auto; margin: 1.3rem 0; }
 .source-table table { border-collapse: collapse; width: 100%; }
-.source-table td { padding: .5rem .75rem; border-bottom: 1px solid #D6D6D6; }
-.source-table tr:first-child { background: var(--course-table-head-bg); font-weight: 600; }
-.source-table td p { margin: 0; }
+.source-table td, .source-table th { padding: .5rem .75rem; border-bottom: 1px solid #D6D6D6; }
+.source-table thead tr, .source-table table > tbody:first-child > tr:first-child { background: var(--course-table-head-bg); font-weight: 600; }
+.source-table td p, .source-table th p { margin: 0; }
 .source-slide-number { color: #56616D; font-size: .85rem; }
 .try-in-r { margin-top: 1.5rem; padding-top: .5rem; border-top: 1px solid #D6D6D6; }
 .try-in-r pre { margin-bottom: 1rem; }
@@ -4311,6 +4311,12 @@ a { text-decoration: none !important; }
 .source-slide img.compact-logo { width: 18%; min-width: 0; max-width: 120px; }
 #part3-01-slide-12 { display: none; }
 .source-slide img.compact-dice { width: 25%; min-width: 0; max-width: 180px; }
+
+.continuous-examples { display: grid; grid-template-columns: minmax(0, 1fr) 120px; gap: 1.25rem; align-items: start; }
+.continuous-examples > p { margin: 1rem 0; }
+.source-slide img.compact-marathon { width: 100%; min-width: 0; max-width: 120px; }
+@media print { .continuous-examples { break-inside: avoid; grid-template-columns: minmax(0, 1fr) 28mm; } }
+@media screen and (max-width: 450px) { .continuous-examples { grid-template-columns: minmax(0, 1fr) 85px; gap: .75rem; } }
 </style>
 <style type="text/css">
 #quarto-document-content li { margin-bottom: .45rem; }

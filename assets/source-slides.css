@@ -17,9 +17,9 @@
 .source-level-2 { margin-left: 2.4rem; }
 .source-table { overflow-x: auto; margin: 1.3rem 0; }
 .source-table table { border-collapse: collapse; width: 100%; }
-.source-table td { padding: .5rem .75rem; border-bottom: 1px solid #D6D6D6; }
-.source-table tr:first-child { background: var(--course-table-head-bg); font-weight: 600; }
-.source-table td p { margin: 0; }
+.source-table td, .source-table th { padding: .5rem .75rem; border-bottom: 1px solid #D6D6D6; }
+.source-table thead tr, .source-table table > tbody:first-child > tr:first-child { background: var(--course-table-head-bg); font-weight: 600; }
+.source-table td p, .source-table th p { margin: 0; }
 .source-slide-number { color: #56616D; font-size: .85rem; }
 .try-in-r { margin-top: 1.5rem; padding-top: .5rem; border-top: 1px solid #D6D6D6; }
 .try-in-r pre { margin-bottom: 1rem; }
