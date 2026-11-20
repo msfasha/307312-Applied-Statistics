@@ -1,12 +1,12 @@
 ---
-title: "Inferential Statistics"
+title: "Probability foundations"
 toc: false
 ---
 
-Read the teaching slides and run the R examples in the same notebook: probability distributions, estimation, hypothesis testing and regression.
+Start with random experiments, outcomes and events, then study random variables and probability distributions with explained R examples.
 
 | Resource | Read online | Download |
 |---|---|---|
-| [Inferential Statistics]{#practical} | [Read](../lessons/03-inferential-statistics.qmd) | [PDF](../pdf/03-inferential-statistics.pdf) · [Download R code files](../downloads/03-inferential-statistics.R){download="03-inferential-statistics.R"} |
+| Probability foundations | [Read](../lessons/03-probability-foundations.qmd) | [PDF](../pdf/03-probability-foundations.pdf) · [Download R code files](../downloads/03-probability-foundations.R){download="03-probability-foundations.R"} |
 
 [Home](../index.qmd)

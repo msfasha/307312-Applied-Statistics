@@ -8,8 +8,7 @@ from urllib.parse import unquote
 from course_documents import DOCUMENTS, STUDENT_PROJECT_ZIP
 
 # Website/PDF documents remain unchanged; the Positron ZIP contains runnable work only.
-RUNNABLE_DOCUMENTS = [(f, n) for f, n in DOCUMENTS
-                     if f != "lessons" or n in {"01-introduction-to-r", "02-descriptive-statistics", "03-inferential-statistics"}]
+RUNNABLE_DOCUMENTS = list(DOCUMENTS)
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = 'https://msfasha.github.io/307312-Applied-Statistics/'
@@ -18,7 +17,8 @@ def student_path(name):
     if name.startswith('lessons/_includes/'):
         return name.replace('lessons/_includes/', 'support/', 1)
     if name.startswith('lessons/'):
-        part = 'part-1-introduction-to-r' if Path(name).stem in ['01-introduction-to-r'] else ('part-2-descriptive-statistics' if Path(name).stem == '02-descriptive-statistics' else 'part-3-inferential-statistics')
+        stem = Path(name).stem
+        part = f'part-{int(stem[:2])}-{stem[3:]}'
         return part+'/'+Path(name).name
     return name
 
@@ -113,17 +113,18 @@ Open the folders in this order:
 
 1. **part-1-introduction-to-r/** — one combined Introduction to R notebook, from basic R to dplyr and ggplot2.
 2. **part-2-descriptive-statistics/** — combined Descriptive Statistics notebook: explanations, diagrams and 20 runnable R examples, including line and dot plots.
-3. **part-3-inferential-statistics/** — Inferential Statistics: the teaching slides and executable R examples together, from probability through regression.
-4. **extended-cases/** — optional business applications, including Superstore.
+3. **part-3-probability-foundations/** — events, random variables and probability distributions.
+4. **part-4-statistical-inference-and-estimation/** — inference, sampling distributions, standard error, CLT, estimation, hypothesis testing and regression.
+5. **extended-cases/** — optional business applications, including Superstore.
 
 Each course part has one notebook and a plain .R script containing its code.
 Run the .R scripts from the top-level folder with data/ in place.
-Each course part has one notebook. The same sources generate the website, PDFs
-and the notebooks in this project. Parts 2 and 3 include their teaching material
+The same Quarto sources generate the website, PDFs
+and the notebooks in this project. Parts 2–4 include their teaching material
 and executable R examples together; there are no separate practical notebooks.
 
 Keep data/, assets/ and support/ in place: they contain required data, images and a
-shared R helper. There are 12 runnable notebooks. Supporting editable Part 2
+shared R helper. There are 13 runnable notebooks. Supporting editable Part 2
 diagrams are under support/. Website navigation pages and unused draft notebooks are excluded.
 
 Keep the project root as the working directory. Open the top-level course folder in Positron and select an R interpreter.

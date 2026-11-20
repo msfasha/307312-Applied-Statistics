@@ -7,10 +7,21 @@ BUILD=ROOT/'_build/part3-consolidation'
 
 
 def check():
-    source=(ROOT/'lessons/03-inferential-statistics.qmd').read_text()
+    from course_documents import LESSONS
+    sources = {name: (ROOT/'lessons'/(name+'.qmd')).read_text() for name in LESSONS[2:]}
+    source='\n'.join(sources.values())
     ids=re.findall(r'\.source-slide #(part3-[\w-]+)',source)
     expected=[f'part3-{deck:02}-slide-{slide:02}' for deck,n in enumerate([37,26,57,21],1) for slide in range(1,n+1)]
-    assert ids==expected,'The original 141 teaching positions must stay in order'
+    assert len(ids)==141 and set(ids)==set(expected), 'Preserve every original teaching position once'
+    manifest=json.loads((ROOT/'instructor/inferential-original-content-manifest.json').read_text())
+    from course_sections import inferential_blocks
+    for name, text in sources.items():
+        assert [key for key,_ in inferential_blocks(text)] == manifest['teaching_order_2026_11_20'][name], ('Approved teaching order changed', name)
+    assert sources['04-statistical-inference-and-estimation'].index('#inference-sampling-distributions') < sources['04-statistical-inference-and-estimation'].index('#part3-02-slide-12') < sources['04-statistical-inference-and-estimation'].index('#part3-02-slide-06'), 'Sampling distributions and CLT must precede confidence intervals'
+    probability = sources['03-probability-foundations']
+    markers = ['#probability-outcomes-events', '#probability-event-rules', '#probability-combining-events', '#probability-events-to-variables', '#part3-01-slide-07', '#part3-01-slide-11']
+    positions = [probability.index(marker) for marker in markers]
+    assert positions == sorted(positions), 'Teach events before random variables and distributions'
     assert not re.search(r'Excel|CONFIDENCE[.]|NORM[.]DIST|BINOM[.]DIST|POISSON[.]DIST|```python',source)
     cells=re.findall(r'^```\{r\}\n(.*?)^```',source,re.M|re.S)
     codes=json.loads((ROOT/'scripts/inferential-r-examples.json').read_text())
@@ -23,7 +34,7 @@ def check():
     assert actual=={k:v.strip() for k,v in codes.items()},'Canonical notebook R cells differ from the documented examples'
     manifest=json.loads((ROOT/'instructor/inferential-original-content-manifest.json').read_text())
     from course_sections import inferential_blocks, r_panel
-    for key, block in inferential_blocks(source):
+    for key, block in (pair for text in sources.values() for pair in inferential_blocks(text)):
         panel=r_panel(block)
         if key in codes:
             assert panel and '**Before running:**' in panel[0] and '**Read the result:**' in panel[0],key

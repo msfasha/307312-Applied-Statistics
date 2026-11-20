@@ -9,7 +9,8 @@ from html.parser import HTMLParser
 from html import escape
 import argparse, hashlib, json, re, subprocess
 ROOT = Path(__file__).resolve().parents[1]
-LESSONS = [ROOT/'lessons'/f'{n}.qmd' for n in ['02-descriptive-statistics','03-inferential-statistics']]
+from course_documents import LESSONS as CORE_LESSONS
+LESSONS = [ROOT/'lessons'/f'{n}.qmd' for n in CORE_LESSONS[1:]]
 MANIFEST = ROOT/'instructor/native-markdown-conversion.json'
 RAW = re.compile(r'^```\{=html\}\n(.*?)^```', re.M | re.S)
 
@@ -128,7 +129,7 @@ def migrate():
         prepared[path]=new
         report['lessons'][path.name]={**counts,'source_before_sha256':sha(old),'source_after_sha256':sha(new)}
     for path,new in prepared.items():path.write_text(new)
-    part3=LESSONS[1].read_text();f=ROOT/'instructor/inferential-original-content-manifest.json';m=json.loads(f.read_text())
+    part3='\n'.join(path.read_text() for path in LESSONS[1:]);f=ROOT/'instructor/inferential-original-content-manifest.json';m=json.loads(f.read_text())
     m['native_markdown_bodies']={}
     from course_sections import inferential_blocks
     for key,b in inferential_blocks(part3):

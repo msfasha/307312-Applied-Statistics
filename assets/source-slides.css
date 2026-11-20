@@ -168,3 +168,11 @@
 .source-slide img.compact-marathon { width: 100%; min-width: 0; max-width: 120px; }
 @media print { .continuous-examples { break-inside: avoid; grid-template-columns: minmax(0, 1fr) 28mm; } }
 @media screen and (max-width: 450px) { .continuous-examples { grid-template-columns: minmax(0, 1fr) 85px; gap: .75rem; } }
+
+/* Keep compact foundation explanations together in student PDF exports. */
+@media print {
+  .source-slide.course-foundation {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

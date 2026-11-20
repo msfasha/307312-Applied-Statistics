@@ -4,26 +4,29 @@ Students use <https://msfasha.github.io/307312-Applied-Statistics/>.
 
 ## One source for each part
 
-The user’s latest instruction, 19 November 2026, is to keep the original teaching
-slides and incorporate explained, executable R examples in place of spreadsheet
-instructions. There are no alternative Part 3 lessons or separate practical.
+The user authorized a four-part course on 20 November 2026. Quarto is the
+canonical editable source; HTML and PDF are display versions of the same material.
 
 - Part 1: `lessons/01-introduction-to-r.qmd`.
 - Part 2: `lessons/02-descriptive-statistics.qmd`, including 20 R examples.
-- Part 3: `lessons/03-inferential-statistics.qmd`, preserving the original four-part
-  sequence and all 141 teaching positions, with 36 R examples. Spreadsheet
-  instructions/dialogs and standalone Python implementations are replaced by R.
+- Part 3: `lessons/03-probability-foundations.qmd`: events, random variables and distributions.
+- Part 4: `lessons/04-statistical-inference-and-estimation.qmd`: inference, sampling distributions, SE, CLT, point/interval estimation, hypothesis testing and regression.
 - Six numbered extended cases and three Superstore applications remain separate.
 
-`scripts/course_documents.py` lists twelve canonical notebook/PDF pairs. The PDF
-ZIP contains those twelve PDFs once each. The Positron ZIP contains those same
-twelve runnable notebooks, grouped by course part or extended case. The Part 3
-QMD in the ZIP is checked byte-for-byte against the source used for HTML and PDF.
+Parts 3–4 retain every one of the 141 historical teaching positions once and all
+36 explained R examples. The authorized reordered sequence lives in the instructor
+manifest; sampling distributions, SE and CLT precede confidence intervals.
+
+`scripts/course_documents.py` lists thirteen canonical notebook/PDF pairs. Both
+bundles contain each document once. All thirteen notebooks are runnable; the Part
+3 and Part 4 Quarto copies in the student ZIP must match their canonical sources
+byte-for-byte. The four core plain `.R` downloads are exported reproducibly from
+the notebooks; the old combined inference file is not regenerated.
 
 Original PPTX/PDF reference decks remain unchanged under `sources/slides/`.
 Original source errors and interpretation limits remain documented in `instructor/`;
 preservation does not mean that every historical claim is validated. Non-software
-Part 3 slide bodies are guarded by an instructor content manifest. The raw original
+Parts 3–4 slide bodies are guarded by an instructor content manifest. The raw original
 reference files are not public student downloads.
 
 ## Build and validate locally
@@ -32,16 +35,16 @@ reference files are not public student downloads.
 python3 scripts/build-course.py
 ```
 
-This checks the R examples, rebuilds the complete website, prints all twelve PDFs
+This checks the R examples, rebuilds the complete website, prints all thirteen PDFs
 from executed HTML, packages both student bundles and validates pages, links,
 slide positions, data, source equality and exclusions. It never pushes/publishes.
 
 - `_build/website/` is the generated site.
-- `scripts/check-inferential.py` checks all 141 original Part 3 positions,
+- `scripts/check-inferential.py` checks all 141 historical positions across Parts 3–4,
   preserved non-software text and all 36 explained R cells/results.
 - `scripts/sync-descriptive-r-references.py --check` checks the 20 executable
   examples in the combined Part 2 notebook.
-- `scripts/check-course.py` checks all twelve notebooks, pinned data,
+- `scripts/check-course.py` checks all thirteen notebooks, pinned data,
   project-root imports and teaching results.
 - Validate a fresh extraction of the Positron ZIP by running `quarto render`.
 
@@ -67,7 +70,7 @@ Each part landing page has one resource row with its HTML/PDF; each part also of
 a plain `.R` script exported from its executable notebook cells.
 
 The student project is `downloads/applied-statistics-positron.zip`; the PDF bundle
-is `downloads/applied-statistics-pdfs.zip`. Only the twelve canonical PDFs and
+is `downloads/applied-statistics-pdfs.zip`. Only the thirteen canonical PDFs and
 current download names are generated. Superseded entry pages, redirects and
 duplicate downloads have been removed. Old external bookmarks may no longer work.
 Refresh the home-page cache query when changing the download.
@@ -108,11 +111,11 @@ has one resource row and that the ZIP has one notebook per part.
 
 ## Editing in Positron
 
-Parts 2 and 3 use native Markdown for teaching prose and source tables, so the
+Parts 2–4 use native Markdown for teaching prose and source tables, so the
 Visual Editor can show editable text instead of raw `<div>`/`<p>` blocks. Diagram
 HTML/SVG remains where its layout requires it. Custom Petra styling appears in
 the rendered preview. `scripts/native_source_markdown.py` checks this convention;
-its one-time conversion report is local instructor material. Part 3 keeps the
+its one-time conversion report is local instructor material. Parts 3–4 keep the
 historical body checksums and a separate guard for the native-format equivalent.
 Part 1 plot setup uses boolean `echo: false` in separate hidden chunks, avoiding
 the invalid `echo: !expr -1` option while retaining visible chart code.

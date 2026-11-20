@@ -6,14 +6,16 @@
 
 1. **Introduction to R:** one notebook covering Positron setup, base R, data frames, dplyr and ggplot2.
 2. **Descriptive Statistics:** the original teaching sequence, approved figures/survey additions and 20 executable R examples together.
-3. **Inferential Statistics:** the original probability → estimation → hypothesis testing → regression slides, with explained executable R in place of spreadsheet instructions. All 141 teaching positions remain.
+3. **Probability foundations:** experiments, outcomes, events, random variables and probability distributions, with explained R examples.
+4. **Statistical inference and estimation:** populations and samples, sampling distributions, standard error, CLT, estimation, hypothesis testing and regression.
 
-Each part has one Quarto source for its HTML, PDF and Positron notebook. There
-are twelve canonical documents: these three parts, three Superstore applications
-and six extended cases. Both bundles contain each canonical document once.
-Each part page also offers its R code as a plain `.R` script. The complete course
-ZIP includes these scripts alongside the notebooks and required data.
-There is no separate inferential practical or alternative probability lesson.
+Quarto is the editable teaching source for each part. HTML and PDF are display
+versions built from that same source. The course has thirteen canonical documents:
+four parts and nine extended applications. Both bundles contain each document once.
+Each part page offers a plain `.R` script; the complete course ZIP includes all
+four scripts, the thirteen runnable Quarto notebooks and their required data.
+Parts 3–4 include all 141 retained teaching positions and the same 36 R examples,
+reordered so sampling distributions, SE and CLT precede confidence intervals.
 
 ## Work locally
 
@@ -23,7 +25,7 @@ Shared `.vscode/settings.json` sends interactive chunks to that Console.
 Install R, Quarto and the R packages listed in the student README; MASS supports
 the source distribution-fitting example. Run cells in order, then preview.
 
-- `lessons/`: the three course notebooks and shared Part 2 fragments/R helper.
+- `lessons/`: the four course notebooks and shared Part 2 fragments/R helper.
 - `extended-cases/`: the nine separate business applications.
 - `data/`: canonical CSVs and guides; only the configured allowlist is published.
 - `assets/`: required teaching images and the shared Petra burgundy/gray theme.
@@ -56,7 +58,7 @@ assumptions and distinguish an estimate, a probability and a causal conclusion.
 
 ## Build and publish
 
-- `python3 scripts/build-course.py`: check and build all twelve documents, PDFs and both bundles locally.
+- `python3 scripts/build-course.py`: check and build all thirteen documents, PDFs and both bundles locally.
 - `python3 scripts/publish-course.py`: build and deploy the current committed source.
 - `python3 scripts/verify-live-course.py`: verify the release and actual download bytes.
 - See [PUBLISHING.md](PUBLISHING.md) for the workflow, exclusions and download policy.

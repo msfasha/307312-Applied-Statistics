@@ -1,0 +1,1018 @@
+---
+title: "Probability foundations"
+subtitle: "307312 Applied Statistics — Masters Level"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-tools: true
+    code-copy: true
+    code-overflow: wrap
+    lightbox: false
+    embed-resources: true
+    html-math-method: mathml
+execute:
+  echo: true
+  warning: false
+  message: false
+  fig-width: 7
+  fig-height: 4.5
+---
+
+Read each topic and run the **Try this in R** examples beside it.
+
+- Open the top-level course folder in Positron and keep the R Console at that project root.
+- Run the R cells in order to explore probability models and calculate probabilities.
+- These examples generate their values in R. Install MASS if needed for the distribution-fitting example.
+
+<div class="original-branding"><img src="../assets/descriptive-statistics/original-branding.png" alt="Institute of Analytics and University of Petra" width="230"></div>
+
+:::::: {.source-slide #part3-01-slide-01}
+
+## 3.1 Random events and probability {#part3-01}
+
+::::::
+
+:::::: {.source-slide #part3-01-slide-02}
+
+### Contents {#part3-title-01-02}
+
+- **Random events and probability:** outcomes, sample spaces, events and basic probability rules.
+- **Random variables:** numerical descriptions of uncertain outcomes; discrete and continuous variables.
+- **Probability distributions:** probability mass, density, cumulative probability, common models and normal probabilities.
+
+::::::
+
+:::::: {.source-slide #probability-outcomes-events .course-foundation}
+
+### Experiments, outcomes and events
+
+A **random experiment** is a process whose outcome is uncertain before it occurs.
+
+- **Outcome:** one possible result. For a die roll, an outcome is 4.
+- **Sample space** $\Omega$: the set of all possible outcomes; here $\{1,2,3,4,5,6\}$.
+- **Event:** a set of outcomes of interest. An even result is $A=\{2,4,6\}$.
+- The event occurs when the observed outcome belongs to that set.
+- A customer purchasing a product and an order arriving late are business examples of events.
+
+::::::
+
+:::::: {.source-slide #probability-event-rules .course-foundation}
+
+### Probabilities describe how likely events are
+
+The probability $P(A)$ measures the chance that event $A$ occurs under a stated model.
+
+- $0\leq P(A)\leq1$; the full sample space has probability 1.
+- The complement $A^c$ means that $A$ does not occur: $P(A^c)=1-P(A)$.
+- For a **fair** die, six outcomes are equally likely: $P(A)=3/6=0.5$ for an even result.
+- Counting favourable outcomes and dividing by all outcomes works only when those outcomes are equally likely.
+- An observed relative frequency estimates a probability; it need not equal the model probability in a small dataset.
+
+::::::
+
+:::::: {.source-slide #probability-combining-events .course-foundation}
+
+### Combining events and conditioning
+
+**“A or B”** means at least one event occurs; **“A and B”** means both occur.
+
+- Union: $P(A\cup B)=P(A)+P(B)-P(A\cap B)$; subtract the overlap counted twice.
+- Mutually exclusive events cannot occur together: $P(A\cap B)=0$.
+- Conditional probability restricts attention to cases where $B$ occurs:
+  $P(A\mid B)=P(A\cap B)/P(B)$, provided $P(B)>0$.
+- Independent events satisfy $P(A\cap B)=P(A)P(B)$; knowing one does not change the probability of the other.
+- Mutually exclusive events with positive probabilities are not independent.
+
+For a fair die, let $A$ mean even and $B$ mean greater than 3. Then $A\cap B=\{4,6\}$, so $P(A\mid B)=2/3$.
+
+::::::
+
+:::::: {.source-slide #probability-events-to-variables .course-foundation}
+
+### From an event to a random variable
+
+A **random variable** assigns a numerical value to each possible outcome of a random experiment.
+
+- Let $X$ be the number of heads in two coin tosses. Its possible values are 0, 1 and 2.
+- The event “exactly one head” is written $\{X=1\}$ and contains outcomes HT and TH.
+- Let $T$ be an order's delivery time in days. “Delivery takes more than two days” is the event $\{T>2\}$.
+- A probability distribution describes how probability is allocated across a random variable's possible values.
+
+::::::
+
+:::::: {.source-slide #part3-01-slide-07}
+
+## 3.2 Random variables {#part3-title-01-07}
+
+::: source-text
+Understanding the Basics of Probability in Statistics
+:::
+
+![](../assets/inferential-statistics/part-01-slide-07-graphic-02.png){.compact-coin width="25%" fig-alt="Coin toss"}
+
+::::::
+
+:::::: {.source-slide #part3-01-slide-08}
+
+### What is a Random Variable?  {#part3-title-01-08}
+
+![](../assets/inferential-statistics/part-01-slide-08-graphic-01.png){.compact-dice width="25%" fig-alt="Two dice"}
+
+::: source-text
+A random variable is a variable whose possible values are outcomes of a random process.
+:::
+
+::: source-text
+A random process is a process or event or where the outcome cannot be predicted with certainty, and each possible outcome has an associated probability.
+
+It can be classified as discrete or continuous depending on the range of values that it assumes.
+
+A discrete random variable assumes a countable number of distinct values, whereas a continuous random variable is characterized by measurable (uncountable) values.
+
+Example: Flipping a coin (discrete), measuring the amount of rain in a day (continuous)
+:::
+
+::::::
+
+:::::: {.source-slide #part3-01-slide-09}
+
+### Discrete Random Variables {#part3-title-01-09}
+
+::: source-text
+A Discrete Random Variable is a variable which can take on only a countable number of distinct values like 0, 1, 2, 3, 4, 5...100, 1 million, etc.
+
+Examples of discrete random variables:
+
+The number of cars that passes through a toll booth everyday in a given day.
+
+The number of times a coin lands on tails after being flipped 20 times.
+
+The number of defective widgets in a box of 50 widgets.
+
+Number of Calls Received by a Call Center.
+
+Number of Emails Received in a Day
+:::
+
+![](../assets/inferential-statistics/part-01-slide-09-graphic-02.png){width="34%" fig-alt="Illustration: Discrete Random Variables"}
+
+![](../assets/inferential-statistics/part-01-slide-09-graphic-03.png){width="34%" fig-alt="Illustration: Discrete Random Variables"}
+
+::::::
+
+:::::: {.source-slide #part3-01-slide-10}
+
+### Continuous Random Variables {#part3-title-01-10}
+
+![](../assets/inferential-statistics/part-01-slide-10-graphic-01.png){width="30%" fig-alt="Illustration: Continuous Random Variables"}
+
+:::: {.continuous-examples}
+
+::: source-text
+A Continuous Random Variable is a variable which can take on an infinite number of possible values.
+
+Examples of continuous random variables:
+
+Business profits.
+
+The height of a tree.
+
+The weight of an animal.
+
+Arrival times of airlines.
+
+Time required to run a marathon.
+
+The weight of a chocolate bar on a production line.
+:::
+
+![](../assets/inferential-statistics/part-01-slide-10-graphic-03.png){.compact-marathon width="100%" fig-alt="Marathon finishing time: a continuous measurement"}
+
+
+::::
+
+::::::
+
+:::::: {.source-slide #part3-01-slide-11}
+
+## 3.3 Probability distributions {#part3-title-01-11}
+
+::: source-text
+Discrete and Continuous Probability Distributions
+:::
+
+![](../assets/inferential-statistics/part-01-slide-11-graphic-02.png){width="58%" fig-alt="Illustration: Introduction to Probability Distributions"}
+
+::::::
+
+:::::: {.source-slide #part3-01-slide-12}
+
+::::::
+
+:::::: {.source-slide #part3-01-slide-13}
+
+### Introduction to Probability Distributions {#part3-title-01-13}
+
+::: source-text
+Probability distributions are mathematical functions that describe the likelihood of various outcomes in a statistical experiment.
+
+They provide a mathematical framework for modeling random phenomena.
+
+Discrete vs. Continuous Probability Distributions
+
+Discrete distributions: Outcomes are countable and have finite or countably infinite values.
+
+Continuous distributions: Outcomes are uncountable and have an infinite range of values.
+
+For a probability distribution to be valid, it must satisfy the following two criteria:
+
+The probability for each outcome must be between 0 and 1.
+
+The sum of all the probabilities must add up to 1.
+:::
+
+::::::
+
+:::::: {.source-slide #part3-01-slide-14}
+
+### Discrete Uniform Distribution {#part3-title-01-14}
+
+Equal probability is assigned to each integer from $a$ to $b$, where $a$ and $b$ are integers and $a \le b$.
+
+- **Notation:** $X \sim U\{a, a+1,\ldots,b\}$; there are $k=b-a+1$ possible outcomes.
+- **Probability mass function:** $P(X=x)=\dfrac{1}{b-a+1}=\dfrac{1}{k}$ for $x\in\{a,\ldots,b\}$; zero otherwise.
+- **Expected value:** $E(X)=\dfrac{a+b}{2}$.
+- **Variance:** $\operatorname{Var}(X)=\dfrac{(b-a+1)^2-1}{12}$.
+
+**Example — a fair six-sided die:** $a=1$, $b=6$. Each face has probability $1/6$, $E(X)=3.5$ and $\operatorname{Var}(X)=35/12\approx2.917$. The expected value is the long-run average; it need not be a possible single outcome.
+
+```{=html}
+<figure class="petra-diagram uniform-chart"><svg viewBox="0 0 640 230" role="img" aria-label="Fair die probability mass function: six outcomes, each with probability one sixth"><text x="24" y="24">P(X = x)</text><path d="M70 45V180H610" fill="none" stroke="#555" stroke-width="2"/><path d="M70 80H610" stroke="#bbb" stroke-dasharray="4 4"/><text x="30" y="85">1/6</text><path d="M154 180V80" stroke="#763D52" stroke-width="4"/><circle cx="154" cy="80" r="5" fill="#763D52"/><text x="154" y="205" text-anchor="middle">1</text><path d="M228 180V80" stroke="#763D52" stroke-width="4"/><circle cx="228" cy="80" r="5" fill="#763D52"/><text x="228" y="205" text-anchor="middle">2</text><path d="M302 180V80" stroke="#763D52" stroke-width="4"/><circle cx="302" cy="80" r="5" fill="#763D52"/><text x="302" y="205" text-anchor="middle">3</text><path d="M376 180V80" stroke="#763D52" stroke-width="4"/><circle cx="376" cy="80" r="5" fill="#763D52"/><text x="376" y="205" text-anchor="middle">4</text><path d="M450 180V80" stroke="#763D52" stroke-width="4"/><circle cx="450" cy="80" r="5" fill="#763D52"/><text x="450" y="205" text-anchor="middle">5</text><path d="M524 180V80" stroke="#763D52" stroke-width="4"/><circle cx="524" cy="80" r="5" fill="#763D52"/><text x="524" y="205" text-anchor="middle">6</text><text x="616" y="184">x</text></svg><figcaption>Fair die: all six outcomes have the same probability.</figcaption></figure>
+```
+
+
+
+::::::
+
+:::::: {.source-slide #part3-01-slide-15}
+
+### Discrete Uniform – PMF Uses {#part3-title-01-15}
+
+::: source-text
+**Calculating individual probabilities**
+
+Example: For a fair die (U(1,6)), the probability of rolling a 3 is:
+
+P(X = 3) = 1/(6-1+1) = 1/6 ≈ 0.167
+
+**Finding probabilities of events**
+
+For multiple outcomes: Sum the individual probabilities
+
+Example: Probability of rolling an even number:
+
+P(X ∈ {2,4,6}) = P(X=2) + P(X=4) + P(X=6) = 1/6 + 1/6 + 1/6 = 3/6 = 0.5
+
+**Range probabilities**
+
+Example: Probability of rolling between 2 and 5 inclusive:
+
+P(2 ≤ X ≤ 5) = (5-2+1)/(6-1+1) = 4/6 = 0.667
+:::
+
+:::: {.try-in-r #r-example-01-15}
+
+#### Try this in R {.unlisted}
+
+- **Purpose:** Calculate probabilities for a fair die.
+- **Before running:** `1:6` lists the six values; `rep(1/6,6)` gives each the same probability. `sum()` adds selected probabilities. `%in%` tests membership; `&` requires both comparisons; `>=` and `<=` include the endpoints.
+
+```{r}
+#| label: inferential-1-15
+# rep() assigns equal mass to the six fair-die outcomes; sum() adds the selected probabilities.
+# %in% selects even outcomes; the second selection includes both endpoints 2 and 5.
+outcomes <- 1:6
+probability <- rep(1/6, 6)
+c(three = probability[3], even = sum(probability[outcomes %in% c(2,4,6)]),
+  between_2_and_5 = sum(probability[outcomes >= 2 & outcomes <= 5]))
+```
+
+**Read the result:** One specified face has probability 1/6, even faces 1/2 and values 2 through 5 have probability 2/3. Equal probabilities are assumed.
+
+::::
+::::::
+
+:::::: {.source-slide #part3-01-slide-16}
+
+### Binomial Distribution {#part3-title-01-16}
+
+The binomial distribution models the **number of successes in $n$ independent Bernoulli trials**, each with the same success probability $p$. A Bernoulli trial has two outcomes: success or failure.
+
+- **Notation:** $X\sim\operatorname{Binomial}(n,p)$; $X$ counts successes.
+- **Parameters:** $n$ is the fixed number of trials; $p$ is the success probability on each trial.
+- **Probability mass function:**
+
+$$P(X=x)=\binom{n}{x}p^x(1-p)^{n-x},\qquad x=0,1,\ldots,n.$$
+
+Here $\binom{n}{x}$ counts the ways to choose $x$ successes among $n$ trials; $1-p$ is the failure probability.
+
+- **Expected value:** $E(X)=np$, the average number of successes over repeated sets of $n$ trials.
+- **Variance:** $\operatorname{Var}(X)=np(1-p)$, the spread of the success count in squared count units.
+
+**Example:** If 80 cars each independently have a 2% defect probability, $n=80$ and $p=0.02$. Counting a defect as a “success”, $E(X)=80(0.02)=1.6$ defective cars per group of 80 on average; $\operatorname{Var}(X)=80(0.02)(0.98)=1.568$.
+
+
+
+
+::: source-text
+Example: The defect ratio in a car factory is 2% and the factory produces 80 cars in a month,. We can use the binomial distribution to answer questions similar to:
+
+what is the probability that exactly 2 cars are defective?
+
+what is the probability that less than 2 cars are defective?
+
+what is the probability that more than 2 cars are defective?
+
+What is the probability that all cars produced in a month will have no defects?
+:::
+
+![](../assets/inferential-statistics/part-01-slide-16-graphic-04.png){.compact-logo width="18%" fig-alt="Tesla logo"}
+
+:::: {.try-in-r #r-example-01-16}
+
+#### Try this in R {.unlisted}
+
+- **Purpose:** Count defective cars among the stated 80 independent cars.
+- **Before running:** `dbinom(x, size, prob)` gives an exact binomial count probability. `pbinom(q, size, prob)` gives the probability at or below cutoff q; `lower.tail=FALSE` instead gives above q. `size=80` is the trial count and `prob=0.02` is the per-car defect chance. Thus fewer than two uses cutoff 1.
+
+```{r}
+#| label: inferential-1-16
+# dbinom() gives exact counts; pbinom() gives cumulative probabilities for 80 independent cars.
+# less than 2 means X<=1; lower.tail=FALSE computes P(X>2), using the stated defect probability 0.02.
+c(exactly_2 = dbinom(2, size=80, prob=0.02), less_than_2 = pbinom(1,80,0.02),
+  more_than_2 = pbinom(2,80,0.02,lower.tail=FALSE), no_defects = dbinom(0,80,0.02))
+```
+
+**Read the result:** Interpret each labelled probability as a batch event under the independent, common-probability model; an expected count is not a guaranteed batch result.
+
+::::
+::::::
+
+:::::: {.source-slide #part3-01-slide-17}
+
+### The Binomial Distribution {#part3-title-01-17}
+
+::: source-text
+What is the probability of having 2 Heads ONLY out of 10 trials, knowing that the probability of Head = 50%?
+:::
+
+::: source-text
+A binomial distribution is symmetric when p = 0.5 and skewed when p is close to 0 or 1. A normal approximation improves when both np and n(1 − p) are sufficiently large; increasing n alone is not a universal guarantee.
+:::
+
+:::: {.try-in-r #r-example-01-17}
+
+#### Try this in R {.unlisted}
+
+- **Purpose:** See how the number of trials $n$ and success probability $p$ affect the binomial shape.
+- **Before running:** `c()` combines values into vectors; `[i]` selects the ith value. `1:4` lists the four panel numbers, and the `for` loop repeats the plotting steps for each panel. `0:n` lists every possible success count from zero to $n$.
+- `dbinom(x, size, prob)` gives the probability at each count `x`; `size` is $n$ and `prob` is $p$. These are theoretical probabilities, not simulated data.
+- `par(mfrow = c(2, 2))` arranges two rows and two columns; `mar` sets bottom, left, top and right margins. Assigning its result to `old_par` saves the old settings; `par(old_par)` restores them.
+- `plot(x, y)` draws counts against probabilities. `type = "h"` draws vertical probability masses, `lwd` sets line width, `col` sets colour, `xlab`/`ylab` label axes and `main` sets a title. `paste()` joins the title text and parameter values.
+- `if` runs the highlighted step only when both conditions hold: `==` tests equality and `&&` means “and”. `segments()` draws the burgundy line from `(x0, y0)` to `(x1, y1)` at two successes.
+
+```{r}
+#| label: inferential-1-17
+# Compare success probabilities at n = 10, then increase n to 100.
+# Save the current plotting layout so it can be restored afterwards.
+old_par <- par(mfrow = c(2, 2), mar = c(4, 4, 3, 1))
+trial_counts <- c(10, 10, 10, 100)
+success_probs <- c(0.2, 0.5, 0.8, 0.5)
+for (i in 1:4) {
+  n <- trial_counts[i]
+  p <- success_probs[i]
+  x <- 0:n
+  probabilities <- dbinom(x = x, size = n, prob = p)
+  plot(x = x, y = probabilities, type = "h", lwd = 3,
+       col = "#595959", xlab = "Number of successes",
+       ylab = "Probability", main = paste("n =", n, "; p =", p))
+  if (n == 10 && p == 0.5) {
+    # Highlight the question: exactly two heads in ten fair tosses.
+    segments(x0 = 2, y0 = 0, x1 = 2,
+             y1 = dbinom(x = 2, size = n, prob = p),
+             col = "#763D52", lwd = 4)
+  }
+}
+par(old_par)
+dbinom(x = 2, size = 10, prob = 0.5)
+```
+
+**Read the result:** At $n=10$, $p=0.2$ gives right skew, $p=0.5$ gives symmetry, and $p=0.8$ gives left skew. At $n=100$, $p=0.5$, the discrete shape is more bell-like and centred at $np=50$. In the ten-toss fair-coin panel, the burgundy line marks exactly two heads: probability 0.0439453, about 4.39%. Compare the axis scales as well as the shapes.
+
+::::
+::::::
+
+:::::: {.source-slide #part3-01-slide-18}
+
+### Discrete Probability Distributions The Poisson Distribution {#part3-title-01-18}
+
+::: source-text
+- Poisson Distribution can be used to model the number of times an event occurs within a specified time period or in a given space.
+- It\'s particularly useful for estimating the likelihood of rare events over short intervals.
+- The key feature of the Poisson distribution is that it is defined by just one parameter, **λ** (lambda), which represents the average rate at which events occur.
+:::
+
+**Poisson probability mass function**
+
+$$P(X=x)=\frac{\lambda^x e^{-\lambda}}{x!},\qquad x=0,1,2,\ldots.$$
+
+- $X$ counts occurrences in a specified time interval or region.
+- $\lambda>0$ is the expected number of occurrences in that interval or region.
+- $e\approx2.71828$ is Euler's number; $x!$ is the factorial of $x$, with $0!=1$.
+- **Expected value:** $E(X)=\lambda$.
+- **Variance:** $\operatorname{Var}(X)=\lambda$; the standard deviation is $\sqrt{\lambda}$.
+- **Model assumptions:** occurrences are independent, with a constant rate over the interval or region.
+
+**Example:** At an average of 1,000 calls per hour, a Poisson model has $\lambda=1000$ for a one-hour interval. Its expected count is 1,000 calls, variance 1,000 calls squared, and standard deviation approximately 31.62 calls.
+
+
+::: source-text
+Example: Suppose that Zein call center receives 1000 calls/hour on average, and that data center has a capacity of receiving 1100 calls/hours.
+
+Use the Poisson Distribution to find the probability that the number of calls will exceed the call center\'s capacity, which will require additional temporary staff?
+:::
+
+![](../assets/inferential-statistics/part-01-slide-18-graphic-04.png){.compact-logo width="14%" fig-alt="Zain logo"}
+
+:::: {.try-in-r #r-example-01-18}
+
+#### Try this in R {.unlisted}
+
+- **Purpose:** Find the probability of exceeding the stated call-centre capacity.
+- **Before running:** `ppois(q=1100, lambda=1000, lower.tail=FALSE)` gives the chance of more than 1,100 events when the expected count is 1,000 per hour. The cutoff and rate refer to the same hour.
+
+```{r}
+#| label: inferential-1-18
+# ppois() uses the stated one-hour mean lambda=1000 under a homogeneous Poisson model.
+# lower.tail=FALSE gives P(X>1100), so exactly 1100 calls does not exceed capacity.
+ppois(1100, lambda=1000, lower.tail=FALSE)
+```
+
+**Read the result:** This is the chance of exceeding the threshold under the Poisson model; exactly 1,100 is excluded. A probability alone does not determine staffing.
+
+::::
+::::::
+
+:::::: {.source-slide #part3-01-slide-19}
+
+### Poisson Distribution {#part3-title-01-19}
+
+::: source-text
+A Poisson distribution models counts, not continuous measurements. Small λ gives a right-skewed shape. As λ increases, it becomes more symmetric and approximately bell-shaped, while its possible outcomes remain whole numbers.
+:::
+
+:::: {.try-in-r #r-example-01-19}
+
+#### Try this in R {.unlisted}
+
+- **Purpose:** Compare a visibly skewed Poisson distribution ($\lambda=2$) with the more symmetric $\lambda=20$ case, and calculate the probability of exactly 15 events.
+- **Before running:** `dpois(x, lambda)` gives the probability at each whole-number count `x`; `lambda` is the expected count for the interval. `qpois(p = 0.999, lambda)` gives the smallest count whose cumulative probability is at least 99.9%, setting a practical plotting limit. The distribution itself continues beyond that limit.
+- `c(2, 20)` combines the two parameter values; the `for` loop draws one panel per value. `0:` constructs the sequence of counts from zero to the chosen limit.
+- `par(mfrow = c(1, 2))` places two panels side by side; `mar` sets the bottom, left, top and right margins. Save these settings in `old_par`, then restore the previous layout with `par(old_par)`.
+- `plot(x, y)` draws counts against probabilities; `type = "h"` uses separate vertical masses, `lwd` sets width, `col` sets colour, `xlab`/`ylab` label axes and `main` supplies a title. `paste()` joins the title text with the parameter value.
+- `if (lambda == 20)` highlights only the second panel: `==` tests equality. `segments()` draws the burgundy line from `(x0, y0)` to `(x1, y1)` at 15 events.
+
+```{r}
+#| label: inferential-1-19
+# Compare a small expected count with the calculator example, lambda = 20.
+old_par <- par(mfrow = c(1, 2), mar = c(4, 4, 3, 1))
+lambda_values <- c(2, 20)
+for (lambda in lambda_values) {
+  # Display counts through the 99.9th percentile; a small right tail is omitted.
+  x <- 0:qpois(p = 0.999, lambda = lambda)
+  probabilities <- dpois(x = x, lambda = lambda)
+  plot(x = x, y = probabilities, type = "h", lwd = 3,
+       col = "#595959", xlab = "Number of events",
+       ylab = "Probability", main = paste("Poisson: lambda =", lambda))
+  if (lambda == 20) {
+    segments(x0 = 15, y0 = 0, x1 = 15,
+             y1 = dpois(x = 15, lambda = lambda),
+             col = "#763D52", lwd = 4)
+  }
+}
+par(old_par)
+dpois(x = 15, lambda = 20)
+```
+
+**Read the result:** The $\lambda=2$ panel is right-skewed; the $\lambda=20$ panel looks more bell-shaped. Both show **discrete Poisson probabilities**, not a continuous normal density. At $\lambda=20$, the burgundy line marks $P(X=15)\approx0.05165$, or 5.16%. Compare the different axis scales too.
+
+::::
+::::::
+
+:::::: {.source-slide #part3-01-slide-20}
+
+### Continuous Probabilities Distributions {#part3-title-01-20}
+
+::::::
+
+:::::: {.source-slide #part3-01-slide-21}
+
+### The Continuous Uniform Distribution {#part3-title-01-21}
+
+A continuous uniform distribution has **constant probability density** on the interval $[a,b]$, where $a<b$. Equal-length subintervals have equal probability.
+
+- **Notation:** $X\sim U(a,b)$.
+- **Density:** $f(x)=\dfrac{1}{b-a}$ for $a\le x\le b$, and zero otherwise.
+- **Expected value:** $E(X)=\dfrac{a+b}{2}$.
+- **Variance:** $\operatorname{Var}(X)=\dfrac{(b-a)^2}{12}$; standard deviation $\sigma=\dfrac{b-a}{\sqrt{12}}$.
+- **Interval probability:** $P(c\le X\le d)=\dfrac{d-c}{b-a}$ for $a\le c\le d\le b$.
+- **One exact value:** $P(X=x)=0$. Probabilities are areas, not density heights.
+
+**Example — delivery time from 2 to 5 days:** $E(X)=3.5$ days, variance $0.75$ days squared. Delivery between 3 and 4 days has probability $(4-3)/(5-2)=1/3$.
+
+
+```{=html}
+<figure class="petra-diagram uniform-chart"><svg viewBox="0 0 640 250" role="img" aria-label="Continuous uniform density between a and b, shaded interval c to d"><text x="20" y="28">Density f(x)</text><path d="M85 50V190H610" fill="none" stroke="#555" stroke-width="2"/><rect x="245" y="80" width="155" height="110" fill="#ddd"/><path d="M150 190V80H520V190" fill="none" stroke="#763D52" stroke-width="3"/><text x="15" y="85">1/(b−a)</text><text x="150" y="215" text-anchor="middle">a</text><text x="245" y="215" text-anchor="middle">c</text><text x="400" y="215" text-anchor="middle">d</text><text x="520" y="215" text-anchor="middle">b</text><text x="615" y="195">x</text><text x="320" y="135" text-anchor="middle">Probability = area</text></svg><figcaption>The shaded rectangle has width d − c and height 1/(b − a).</figcaption></figure>
+```
+
+::::::
+
+:::::: {.source-slide #part3-01-slide-22}
+
+### The Continuous Uniform Distribution Business Cases Studies {#part3-title-01-22}
+
+::: source-text
+**Inventory Arrival**
+
+A retailer\'s deliveries arrive uniformly between 8 AM and 12 PM.
+:::
+
+::: source-text
+**Manufacturing**
+
+A machine produces widgets with diameters uniformly distributed between 9.8mm and 10.2mm.
+:::
+
+**Delivery arrivals: $X\sim U(8,12)$, in hours on the clock**
+
+- **Mean arrival time:** $E(X)=(8+12)/2=10$, or 10 AM.
+- **Before 9 AM:** $P(X<9)=(9-8)/(12-8)=0.25=25\%$.
+- **Planning:** be ready from 8 AM. The uniform model gives the same arrival probability to every one-hour interval; 10 AM is not a predicted peak.
+
+
+**Widget diameter: $X\sim U(9.8,10.2)$, in millimetres**
+
+- **Mean diameter:** $E(X)=(9.8+10.2)/2=10.0$ mm.
+- **Above 10.1 mm:** $P(X>10.1)=(10.2-10.1)/(10.2-9.8)=0.25=25\%$.
+- **Variance:** $\operatorname{Var}(X)=(10.2-9.8)^2/12\approx0.01333$ mm squared.
+- **Quality interpretation:** under this model, 25% of widgets exceed 10.1 mm. This is not a defect rate unless 10.1 mm is the specified upper limit.
+
+
+:::: {.try-in-r #r-example-01-22}
+
+#### Try this in R {.unlisted}
+
+- **Purpose:** Apply the two uniform models.
+- **Before running:** `punif(q, min, max)` returns the probability at or below cutoff `q`, with interval endpoints `min` and `max`. `lower.tail = FALSE` returns the probability above the cutoff. `c()` combines the labelled results.
+- `par(mfrow = c(1, 2))` places two charts side by side. `mar` sets bottom, left, top and right margins; save previous settings as `old_par` and restore them using `par(old_par)`.
+- `plot(x, y, type = "n")` sets up axes without drawing data; the two-element `x` and `y` vectors set the displayed ranges. `xlab`, `ylab` and `main` supply axis labels and the title.
+- `rect()` shades a rectangle bounded by `xleft`, `xright`, `ybottom` and `ytop`. `col` sets its fill; `border = NA` omits the border. `segments()` draws the horizontal density from `(x0, y0)` to `(x1, y1)`; `lwd` sets its width.
+- Arrival values are clock hours; diameters are millimetres. A density can exceed 1: its **area**, rather than its height, must total 1.
+
+```{r}
+#| label: inferential-1-22
+# Exact interval probabilities from the two stated continuous uniform models.
+c(arrival_before_9 = punif(q = 9, min = 8, max = 12),
+  diameter_above_10_1 = punif(q = 10.1, min = 9.8, max = 10.2,
+                             lower.tail = FALSE))
+# Plot density heights; shaded areas represent the required probabilities.
+old_par <- par(mfrow = c(1, 2), mar = c(4, 4, 3, 1))
+plot(x = c(8, 12), y = c(0, 0.30), type = "n",
+     xlab = "Arrival hour", ylab = "Density", main = "Arrive before 9 AM")
+rect(xleft = 8, ybottom = 0, xright = 9, ytop = 1 / (12 - 8),
+     col = "#D8D8D8", border = NA)
+segments(x0 = 8, y0 = 0.25, x1 = 12, y1 = 0.25,
+         col = "#763D52", lwd = 3)
+plot(x = c(9.8, 10.2), y = c(0, 3), type = "n",
+     xlab = "Diameter (mm)", ylab = "Density", main = "Diameter above 10.1 mm")
+rect(xleft = 10.1, ybottom = 0, xright = 10.2, ytop = 1 / (10.2 - 9.8),
+     col = "#D8D8D8", border = NA)
+segments(x0 = 9.8, y0 = 2.5, x1 = 10.2, y1 = 2.5,
+         col = "#763D52", lwd = 3)
+par(old_par)
+```
+
+**Read the result:** Both probabilities are 0.25. Uniformity means equal-length intervals have equal probability; the midpoint is not a peak.
+
+::::
+::::::
+
+:::::: {.source-slide #part3-01-slide-23}
+
+### The Normal Distribution {#part3-title-01-23}
+
+![](../assets/inferential-statistics/part-01-slide-23-graphic-01.png){width="44%" fig-alt="Illustration: The Normal Distribution"}
+
+::: source-text
+The normal distribution is the most extensively used probability distribution in statistical work.
+
+It is also known as the Gaussian distribution and the Bell Curve.
+
+The x-axis represents the outcomes of the normal process (e.g. students scores, heights, salaries...etc.).
+
+The AREA UNDER THE CURVE represents the probability of the outcome.
+
+The normal distribution has a symmetric distribution where most of the observations cluster around the central peak.
+
+Theoretically, a normal random variable can assume any value between minus infinity and plus infinity.
+
+Normal Distribution Main Features:
+
+Symmetrically distributed
+
+Long Tails / Bell Shaped
+
+Mean/ Mode and Median are the same
+:::
+
+![](../assets/inferential-statistics/part-01-slide-23-graphic-04.png){width="32%" fig-alt="Illustration: The Normal Distribution"}
+
+::::::
+
+:::::: {.source-slide #part3-01-slide-24}
+
+### Parameters of the Normal Distribution {#part3-title-01-24}
+
+![](../assets/inferential-statistics/part-01-slide-24-graphic-01.png){width="38%" fig-alt="Illustration: Parameters of the Normal Distribution"}
+
+::: source-text
+The normal distribution is completely described by two parameters, the Mean and the Standard Deviation.
+
+Where X is a continuous random variable (the expected outcome of a continuous random process).
+
+μ = The Mean of the Outcomes of the Random Process.
+
+σ = The Standard Deviation of the Outcomes of the Random Process.
+
+π is approximately 3.14159.
+
+e is approximately 2.71828.
+:::
+
+![](../assets/inferential-statistics/part-01-slide-24-graphic-03.png){width="35%" fig-alt="Illustration: Parameters of the Normal Distribution"}
+
+![](../assets/inferential-statistics/part-01-slide-24-graphic-04.png){width="38%" fig-alt="Illustration: Parameters of the Normal Distribution"}
+
+::::::
+
+:::::: {.source-slide #part3-01-slide-25}
+
+### The Empirical Rule for the Normal Distribution {#part3-title-01-25}
+
+![](../assets/inferential-statistics/part-01-slide-25-graphic-01.png){width="44%" fig-alt="Illustration: The Empirical Rule for the Normal Distribution"}
+
+::: source-text
+The Empirical Rule describes how data (continuous outcomes) are spread in a normal distribution.
+
+The proportion of the area that falls under the curve between two points on a probability distribution indicates the probability that a value will fall within that interval.
+
+If we know that the data are drawn from a relatively symmetric and bell-shaped distribution - perhaps by a visual inspection of its histogram, then we can make statements about the percentage of observations that fall within certain intervals.
+:::
+
+::: source-text
+- Approximately 68% of data fall within one standard deviation (σ) of the mean (μ).
+- Around 95% are within two standard deviations.
+- About 99.7% lie within three standard deviations.
+:::
+
+::::::
+
+:::::: {.source-slide #part3-01-slide-26}
+
+### Empirical Rule Example {#part3-title-01-26}
+
+::: source-text
+A large lecture class has 280 students. The professor has announced that the mean score in an exam is 74 with a standard deviation of 8.
+
+Use the Empirical Rule to answer the following:
+
+- Approximately how many students within 58 and 90?
+  - Approximately how many students scored higher than 90?
+:::
+
+![](../assets/inferential-statistics/part-01-slide-26-graphic-02.png){width="41%" fig-alt="Illustration: Empirical Rule Example"}
+
+::::::
+
+:::::: {.source-slide #part3-01-slide-27}
+
+### The Z - Score {#part3-title-01-27}
+
+![](../assets/inferential-statistics/part-01-slide-27-graphic-01.png){width="53%" fig-alt="Illustration: The Z - Score"}
+
+![](../assets/inferential-statistics/part-01-slide-27-graphic-02.png){width="59%" fig-alt="Illustration: The Z - Score"}
+
+::: source-text
+Where X is a data point, μ is the mean, and σ is the standard deviation.
+:::
+
+::: source-text
+Interpretation:
+
+- A z-score of 0 corresponds to a data point that is exactly at the mean.
+- Positive z-scores indicate values above the mean.
+- Negative z-scores indicate values below the mean.
+:::
+
+::::::
+
+:::::: {.source-slide #part3-01-slide-28}
+
+### Back to our Empirical Rule Example {#part3-title-01-28}
+
+::: source-text
+A large lecture class has 280 students. The professor has announced that the mean score in an exam is 74 with a standard deviation of 8.
+
+Use the Empirical Rule to answer the following:
+
+- Approximately how many students within 58 and 90?
+  - Approximately how many students scored higher than 90?
+:::
+
+![](../assets/inferential-statistics/part-01-slide-28-graphic-02.png){width="41%" fig-alt="Illustration: Back to our Empirical Rule Example"}
+
+::: source-text
+**Solution for part (a)**
+
+- First, we find the z-scores corresponding to 58 and 90.
+  - Z for 58 = (58 -- 74) / 8 = -16/8 = -2, Z for 90 = (58 -- 74) / 8 = 16/8 = +2
+  - Using the empirical rule, we know that 95% of observations falls within 2 standard deviations (each side) from the mean, therefore, the number of students under this criteria = 280 x .95 = 266 students.
+:::
+
+![](../assets/inferential-statistics/part-01-slide-28-graphic-04.png){width="30%" fig-alt="Illustration: Back to our Empirical Rule Example"}
+
+::: source-text
+**Solution for part (b)**
+
+- The score 90 is 2 standard deviations above the mean.
+  - Therefore, 97.5% of students are below that value and 2.5% are above it.
+  - Consequently, 2.5/100 \* 280 = 7 students are above 90.
+:::
+
+:::: {.try-in-r #r-example-01-28}
+
+#### Try this in R {.unlisted}
+
+- **Purpose:** Use the stated empirical-rule approximation to calculate expected counts.
+- **Before running:** `c()` combines the two calculations. Multiplication by 280 converts a model probability into an expected count. The remaining 5% is divided equally between the two tails of a normal model.
+
+```{r}
+#| label: inferential-1-28
+# c() collects the two approximate expected counts, using the original 95% empirical-rule approximation.
+# These are normal-model approximations for 280 students, not observed counts.
+c(between_58_and_90 = 280*0.95, above_90 = 280*0.025)
+```
+
+**Read the result:** The approximate expected counts are 266 between the limits and 7 above the upper limit. These are not observed class totals.
+
+::::
+::::::
+
+:::::: {.source-slide #part3-01-slide-29}
+
+### Z-Scores Uses in Statistics {#part3-title-01-29}
+
+::: source-text
+- **Standardization**: Z-scores standardize different distributions to be comparable by converting them to a common scale.
+- **Identification of Outliers**: Data points with z-scores less than -2 or greater than 2 are often considered outliers.
+- **Compare values** from different populations (e.g. exam results between courses).
+- **Probabilities and Percentiles**: Z-scores link data points to their probabilities and percentiles in a normal distribution. E.g., a z-score of 1.96 corresponds to the 97.5th percentile.
+:::
+
+![](../assets/inferential-statistics/part-01-slide-29-graphic-02.png){width="61%" fig-alt="Illustration: Z-Scores Uses in Statistics"}
+
+::::::
+
+:::::: {.source-slide #part3-01-slide-30}
+
+### Z-Scores Example – Comparing Values {#part3-title-01-30}
+
+::: source-text
+Khalid achieved 90 in both Python & Database exams. The mean μ for the Python exam was 70 and σ = 10, The μ for the Database exam was 80 and σ = 10.
+
+Use standard scores to determine where did Khalid achieve a better score.
+:::
+
+![](../assets/inferential-statistics/part-01-slide-30-graphic-02.png){width="40%" fig-alt="Illustration: Z-Scores Example – Comparing Values"}
+
+::: source-text
+- Standard score for the Python Exam: (90−70)/10 =2
+- Standard score for the Database Exam: (90−80)/10 =1
+- Khalid\'s Z-score for the Python exam is 2, which means his score was 2 standard deviations above the mean.
+- His Z-score for the Database exam is 1, indicating his score was 1 standard deviation above the mean.
+- Khalid performed better on the Python exam than Database exam since his Z-score is higher for that exam.
+:::
+
+:::: {.try-in-r #r-example-01-30}
+
+#### Try this in R {.unlisted}
+
+- **Purpose:** Compare the two exam results in SD units.
+- **Before running:** Parentheses make subtraction happen first; `/` divides by the course SD. `c()` labels the two standardised scores. A z-score is a relative position, not automatically a normal percentile.
+
+```{r}
+#| label: inferential-1-30
+# Standardization subtracts the stated course mean and divides by that course's SD.
+# Both exam scores are 90; a larger z-score means a higher position relative to the course mean.
+c(Python = (90-70)/10, Database = (90-80)/10)
+```
+
+**Read the result:** The scores are 2 and 1 SDs above their respective means. This compares relative positions; it does not establish identical exam difficulty.
+
+::::
+::::::
+
+:::::: {.source-slide #part3-01-slide-31}
+
+### How to Find the Right Distribution {#part3-title-01-31}
+
+:::: {.try-in-r #r-example-01-31}
+
+#### Try this in R {.unlisted}
+
+- **Purpose:** Compare three candidate models for explicitly simulated data.
+- **Before running:** `set.seed()` makes the simulation reproducible. `rnorm(2000,mean=25,sd=8)` generates 2,000 values. `MASS::fitdistr()` fits a specified family; `::` selects a function from the MASS package. `lapply()` applies the anonymous function to each family; `sapply()` extracts their AIC values. `names()` labels them. Lower AIC compares only these candidates.
+
+```{r}
+#| label: inferential-1-31
+# set.seed() makes rnorm() reproducible; the 2,000 simulated values use the source mean 25 and SD 8.
+# MASS::fitdistr() fits three candidate families by maximum likelihood; this is a limited R comparison.
+set.seed(307312)
+y <- rnorm(2000, mean=25, sd=8)
+# lapply() passes each family name to the anonymous function and collects its fitted model.
+fits <- lapply(c("normal","logistic","cauchy"), function(family) MASS::fitdistr(y, family))
+# AIC() trades fit against parameter count; lower AIC only compares these candidates, not all distributions.
+# sapply() applies AIC to each fitted object; names label the results for interpretation.
+aic <- sapply(fits, AIC)
+names(aic) <- c("normal","logistic","cauchy")
+aic
+```
+
+**Read the result:** These are simulated values, not business observations. The comparison is limited to normal, logistic and Cauchy models; it does not establish a true distribution or check the data-collection design.
+
+::::
+::::::
+
+:::::: {.source-slide #part3-01-slide-32}
+
+::: source-text
+Z-Tables
+:::
+
+::::::
+
+:::::: {.source-slide #part3-01-slide-33}
+
+### The Z-Tables {#part3-title-01-33}
+
+::: source-text
+The area under the curve in continuous probability distributions represents the probability of outcome occurrence.
+
+The Empirical Rule has pre-defined areas for certain Z-Scores.
+
+What can we do if we need the area between other Z-Scores e.g. +1.25, -2.33?
+
+It will be hard to compute the integral for different intervals:
+
+A simpler solution would be to use a table of pre-computed areas (The Z-Table).
+
+But we need to compute that area ONCE. Therefore, we need to create a Standard Distribution.
+:::
+
+![](../assets/inferential-statistics/part-01-slide-33-graphic-02.png){width="45%" fig-alt="Illustration: The Z-Tables"}
+
+![](../assets/inferential-statistics/part-01-slide-33-graphic-03.png){width="33%" fig-alt="Illustration: The Z-Tables"}
+
+::::::
+
+:::::: {.source-slide #part3-01-slide-34}
+
+### Standard Normal Distribution and Standard Z Scores {#part3-title-01-34}
+
+![](../assets/inferential-statistics/part-01-slide-34-graphic-01.png){width="36%" fig-alt="Illustration: Standard Normal Distribution and Standard Z Scores"}
+
+::: source-text
+The standard normal distribution is a special case of the normal distribution where the mean is zero and the standard deviation is 1.
+
+This distribution is also known as the Z-distribution.
+
+A value on the standard normal distribution is known as a standard score or a Z-score.
+
+A standard score represents the number of standard deviations above or below the mean that a specific observation falls.
+
+For example, a standard score of 1.5 indicates that the observation is 1.5 standard deviations above the mean.
+
+On the other hand, a negative score represents a value below the average.
+
+The mean has a Z-score of 0.
+:::
+
+![](../assets/inferential-statistics/part-01-slide-34-graphic-03.png){width="30%" fig-alt="Illustration: Standard Normal Distribution and Standard Z Scores"}
+
+::: source-text
+https://medium.com/towards-data-science/what-is-p-value-370056b8244d
+:::
+
+::::::
+
+:::::: {.source-slide #part3-01-slide-35}
+
+### Z-Table for Z Values above 0 {#part3-title-01-35}
+
+::: source-text
+**Z-Table for Z Values below 0**
+:::
+
+![](../assets/inferential-statistics/part-01-slide-35-graphic-02.png){width="45%" fig-alt="Illustration: Z-Table for Z Values above 0"}
+
+![](../assets/inferential-statistics/part-01-slide-35-graphic-03.png){width="44%" fig-alt="Illustration: Z-Table for Z Values above 0"}
+
+![](../assets/inferential-statistics/part-01-slide-35-graphic-04.png){width="30%" fig-alt="Illustration: Z-Table for Z Values above 0"}
+
+![](../assets/inferential-statistics/part-01-slide-35-graphic-05.png){width="30%" fig-alt="Illustration: Z-Table for Z Values above 0"}
+
+::::::
+
+:::::: {.source-slide #part3-01-slide-36}
+
+### Z-Tables Example {#part3-title-01-36}
+
+::: source-text
+The average score for the MID exam in Descriptive Statistics course was 70. The standard Deviation for that exam was 6.
+
+Knowing that the exam scores are normally distributed, what is the probability of having a score higher than 75 in that exam?
+:::
+
+![](../assets/inferential-statistics/part-01-slide-36-graphic-03.png){width="45%" fig-alt="Illustration: Z-Tables Example"}
+
+::: source-text
+First, we need to find the standard position (z-score) for the 75 score.
+
+Z score for (75) = (75 -- 70) / 6 = 5/6 = .833
+
+Using the z table, the closest value for .833 is: 0.7967 which corresponds to 79.67% of scores are below 75.
+
+To find the probability of having a score over 75, we subtract 79.67% out of the total probability of 100%:
+
+100 -- 79.67 = 20.33%
+:::
+
+:::: {.try-in-r #r-example-01-36}
+
+#### Try this in R {.unlisted}
+
+- **Purpose:** Find the upper-tail normal probability for the stated score threshold.
+- **Before running:** `pnorm(q,mean,sd)` returns a cumulative normal probability. Here the first argument 75 is q, mean is 70 and SD is 6. `lower.tail=FALSE` gives the area above 75.
+
+```{r}
+#| label: inferential-1-36
+# pnorm() integrates the stated normal model: mean 70, SD 6, and a score threshold of 75.
+# lower.tail=FALSE gives P(score>75) directly, without rounding the z-score to a table entry.
+pnorm(75, mean=70, sd=6, lower.tail=FALSE)
+```
+
+**Read the result:** The model probability is about 0.20233, or 20.233%. A probability and its percentage use different scales.
+
+::::
+::::::
+
+:::::: {.source-slide #part3-01-slide-37}
+
+### Normal probabilities in R {#part3-title-01-37}
+
+::: source-text
+The average score for the MID exam in Descriptive Statistics course was 70. The standard Deviation for that exam was 6.
+
+What is the probability of having a score higher than 90 in that exam?
+:::
+
+:::: {.try-in-r #r-example-01-37}
+
+#### Try this in R {.unlisted}
+
+- **Purpose:** Answer this slide’s question: a score above 90.
+- **Before running:** `pnorm(q=90,mean=70,sd=6,lower.tail=FALSE)` calculates the upper normal tail. `<-` stores it; `c()` displays it as a probability and after multiplying by 100 as a percentage.
+
+```{r}
+#| label: inferential-1-37
+# The question on this slide asks for a score above 90.
+p_above_90 <- pnorm(q=90, mean=70, sd=6, lower.tail=FALSE)
+c(probability=p_above_90, percentage=100*p_above_90)
+```
+
+**Read the result:** The result is about 0.000429, or 0.0429%. This follows the stated threshold 90; the former spreadsheet illustration used a different threshold.
+
+::::
+::::::
+

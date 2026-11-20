@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify the twelve course notebooks, pinned data and project-root imports."""
+"""Verify the approved course notebooks, pinned data and project-root imports."""
 import csv
 import hashlib
 import json
@@ -59,9 +59,12 @@ stopifnot(nrow(car_data) == 32, !anyNA(car_data[c('weight_kg', 'mpg', 'cylinders
             continue
         if notebook.name == '02-descriptive-statistics.qmd':
             assert len(worked) == 20, 'The combined descriptive notebook must execute all 20 examples'
-        if notebook.name == '03-inferential-statistics.qmd':
-            subprocess.run(['python3', str(ROOT/'scripts/check-inferential.py')], cwd=ROOT, check=True)
+        if notebook.name.startswith(('03-probability-', '04-statistical-inference-')):
+            if notebook.name.startswith('03-'):
+                subprocess.run(['python3', str(ROOT/'scripts/check-inferential.py')], cwd=ROOT, check=True)
+            run_r('\n'.join(worked), ROOT, warnings_as_errors=False)
             checks += 1
+            print('Passed independent notebook execution:', notebook.name, flush=True)
             continue
         assert imports and worked, notebook.name
         for import_cell in imports:

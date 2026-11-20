@@ -15,7 +15,7 @@ execute:
   fig-height: 4.5
 ---
 
-- **Start after:** sampling distributions, confidence intervals and one-mean testing in [Part 3](../lessons/03-inferential-statistics.qmd).
+- **Start after:** sampling distributions, confidence intervals and one-mean testing in [Part 4](../lessons/04-statistical-inference-and-estimation.qmd).
 - **Suggested time:** 50–60 minutes.
 - **Business question:** Does the reported sample provide evidence that mean box weight differs from the 368 g target?
 

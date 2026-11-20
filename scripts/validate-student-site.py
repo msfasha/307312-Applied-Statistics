@@ -12,7 +12,7 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / '_build/website'
 from student_project import student_path, RUNNABLE_DOCUMENTS, project_files
-from course_documents import DOCUMENTS, NAVIGATION_PAGES, R_CODE_DOWNLOADS, STUDENT_PROJECT_ZIP
+from course_documents import LESSONS, DOCUMENTS, NAVIGATION_PAGES, R_CODE_DOWNLOADS, STUDENT_PROJECT_ZIP
 
 class Links(HTMLParser):
     def __init__(self):
@@ -51,7 +51,7 @@ if __name__ == '__main__':
     scripts = r_code_files()
     for name, code in scripts.items():
         assert (SITE/'downloads'/name).read_text() == code
-    assert len(DOCUMENTS)==12 and len(RUNNABLE_DOCUMENTS)==12
+    assert len(DOCUMENTS)==13 and len(RUNNABLE_DOCUMENTS)==13
     assert not (SITE/'practicals').exists(), 'Obsolete practical entry pages returned'
     assert {p.name for p in (SITE/'pdf').iterdir()} == {n+'.pdf' for _, n in DOCUMENTS}, 'Unexpected duplicate PDF downloads'
     assert {p.name for p in (SITE/'downloads').iterdir()} == {STUDENT_PROJECT_ZIP, 'applied-statistics-pdfs.zip', *R_CODE_DOWNLOADS}, 'Unexpected duplicate downloads'
@@ -72,8 +72,9 @@ if __name__ == '__main__':
     with zipfile.ZipFile(SITE/'downloads'/STUDENT_PROJECT_ZIP) as bundle:
         names = set(bundle.namelist())
         assert '.vscode/settings.json' in names
-        part3=student_path('lessons/03-inferential-statistics.qmd')
-        assert bundle.read(part3)==(ROOT/'lessons/03-inferential-statistics.qmd').read_bytes(), 'Part 3 must be the exact same source in the ZIP'
+        for name in LESSONS[2:]:
+            lesson = 'lessons/'+name+'.qmd'
+            assert bundle.read(student_path(lesson)) == (ROOT/lesson).read_bytes(), 'Same Quarto source required: '+name
         assert not any('inferential-statistics-r-practical' in n or 'probability-distributions-draft' in n or 'inferential-statistics-integrated' in n for n in names)
         for image in ['pipe_operator.png', 'clipboard-834917176.png']:
             original = 'assets/introduction-to-r/' + image

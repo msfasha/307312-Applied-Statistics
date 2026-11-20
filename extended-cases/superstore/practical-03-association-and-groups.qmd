@@ -197,6 +197,6 @@ knitr::kable(correlations, digits = 3)
 
 ## 8. Move from description to inference
 
-- [Part 3](../../lessons/03-inferential-statistics.qmd) covers probability, estimation, hypothesis testing and regression.
+- [Part 4](../../lessons/04-statistical-inference-and-estimation.qmd) covers estimation, hypothesis testing and regression; Part 3 provides the probability foundations.
 - The descriptive evidence here concerns the complete fixed extract; p-values are not required to describe its totals.
 - `data/business/README.md`.

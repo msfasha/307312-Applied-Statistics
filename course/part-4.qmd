@@ -1,0 +1,12 @@
+---
+title: "Statistical inference and estimation"
+toc: false
+---
+
+Study inference, sampling distributions, standard error and the CLT before confidence intervals. Continue with hypothesis testing and regression, with explained R examples throughout.
+
+| Resource | Read online | Download |
+|---|---|---|
+| Statistical inference and estimation | [Read](../lessons/04-statistical-inference-and-estimation.qmd) | [PDF](../pdf/04-statistical-inference-and-estimation.pdf) · [Download R code files](../downloads/04-statistical-inference-and-estimation.R){download="04-statistical-inference-and-estimation.R"} |
+
+[Home](../index.qmd)

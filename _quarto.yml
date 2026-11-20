@@ -38,10 +38,12 @@ project:
     - course/part-1.qmd
     - course/part-2.qmd
     - course/part-3.qmd
+    - course/part-4.qmd
     - extended-cases/index.qmd
     - lessons/01-introduction-to-r.qmd
     - lessons/02-descriptive-statistics.qmd
-    - lessons/03-inferential-statistics.qmd
+    - lessons/03-probability-foundations.qmd
+    - lessons/04-statistical-inference-and-estimation.qmd
     - extended-cases/superstore/index.qmd
     - extended-cases/superstore/practical-01-categorical-business-data.qmd
     - extended-cases/superstore/practical-02-numerical-business-data.qmd

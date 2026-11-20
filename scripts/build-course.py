@@ -4,16 +4,14 @@ from pathlib import Path
 import argparse
 import shutil
 import subprocess
-from course_documents import EXTENDED, DOCUMENTS, NAVIGATION_PAGES, R_CODE_DOWNLOADS, STUDENT_PROJECT_ZIP
+from course_documents import LESSONS, EXTENDED, DOCUMENTS, NAVIGATION_PAGES, R_CODE_DOWNLOADS, STUDENT_PROJECT_ZIP
 
 ROOT = Path(__file__).resolve().parents[1]
 
 def validate(site):
     required=[n+'.html' for n in NAVIGATION_PAGES]
-    required += ['index.html','lessons/02-descriptive-statistics.html','lessons/03-inferential-statistics.html','lessons/01-introduction-to-r.html']
     required += [f'{folder}/{name}.html' for folder, name in DOCUMENTS]
     required += ['pdf/'+name+'.pdf' for _, name in DOCUMENTS]
-    required += ['pdf/'+p+'.pdf' for p in ['01-introduction-to-r','02-descriptive-statistics','03-inferential-statistics']]
     required += ['extended-cases/superstore/index.html']
     required += ['extended-cases/'+p+'.html' for p in EXTENDED]+['pdf/'+p+'.pdf' for p in EXTENDED]
     import re
@@ -28,7 +26,8 @@ def validate(site):
     expected = {
         'lessons/01-introduction-to-r.html': ['Getting started', 'Variables and atomic data types', 'Working with a classical data frame', 'Preparing data with dplyr', 'Build a meaningful business pipeline', 'Understanding ggplot2', 'Map a group to colour and shape', 'Filter data then draw a histogram', 'Summarise data then draw a bar chart'],
         'lessons/02-descriptive-statistics.html': ['What is Statistics?', 'source-title-87'],
-        'lessons/03-inferential-statistics.html': ['part3-01-slide-01', 'part3-04-slide-21'],
+        'lessons/03-probability-foundations.html': ['probability-outcomes-events', 'part3-01-slide-37'],
+        'lessons/04-statistical-inference-and-estimation.html': ['inference-sampling-distributions', 'part3-04-slide-21'],
     }
     for page, markers in expected.items():
         content = (site/page).read_text()
@@ -51,14 +50,14 @@ def validate(site):
     landing = (site/'course/part-2.html').read_text()
     if 'descriptive-statistics-r-practical.html' in landing:
         raise RuntimeError('Part 2 landing page still presents a separate practical')
-    inferential = (site/'lessons/03-inferential-statistics.html').read_text()
+    inferential = '\n'.join((site/'lessons'/(name+'.html')).read_text() for name in LESSONS[2:])
     if any(f'id="part3-{k:02d}-slide-{i:02d}"' not in inferential
            for k, count in enumerate([37, 26, 57, 21], 1) for i in range(1, count+1)):
         raise RuntimeError('Incomplete original inferential slides: expected 141')
     if len(re.findall(r'id="r-example-[\d-]+"',inferential)) != 36:
-        raise RuntimeError('Part 3 must include 36 executable R examples')
-    if any(term in (site/'course/part-3.html').read_text() for term in ['original core slides','Revised 3.1','Open practical','coming soon','forthcoming']):
-        raise RuntimeError('Part 3 must present one combined resource')
+        raise RuntimeError('Parts 3–4 must include the 36 executable R examples')
+    if any(term in (site/'course/part-4.html').read_text() for term in ['original core slides','Revised 3.1','Open practical','coming soon','forthcoming']):
+        raise RuntimeError('Part 4 must present one canonical resource')
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)

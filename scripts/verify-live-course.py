@@ -57,4 +57,4 @@ if __name__ == '__main__':
     output = ROOT/'_build/extended-review/live-verification.json'
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, indent=2)+'\n')
-    print(f'Verified live revision, {len(DOCUMENTS)} notebook pages, {len(DOCUMENTS)} PDFs, both ZIPs, three core R scripts and all approved data.', flush=True)
+    print(f'Verified live revision, {len(DOCUMENTS)} notebook pages, {len(DOCUMENTS)} PDFs, both ZIPs, four core R scripts and all approved data.', flush=True)
