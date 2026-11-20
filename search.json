@@ -317,35 +317,35 @@
   {
     "objectID": "lessons/03-inferential-statistics.html",
     "href": "lessons/03-inferential-statistics.html",
-    "title": "Part 3: Inferential Statistics",
+    "title": "Inferential Statistics",
     "section": "",
-    "text": "Read the teaching slides and run the Try this in R examples beside the matching topics. The same notebook produces this page, its PDF and the Part 3 file in the Positron project."
+    "text": "Read each topic and run the Try this in R examples beside it."
   },
   {
     "objectID": "lessons/03-inferential-statistics.html#part3-01",
     "href": "lessons/03-inferential-statistics.html#part3-01",
-    "title": "Part 3: Inferential Statistics",
+    "title": "Inferential Statistics",
     "section": "3.1 Introduction to Probability Distributions",
     "text": "3.1 Introduction to Probability Distributions"
   },
   {
     "objectID": "lessons/03-inferential-statistics.html#part3-02",
     "href": "lessons/03-inferential-statistics.html#part3-02",
-    "title": "Part 3: Inferential Statistics",
+    "title": "Inferential Statistics",
     "section": "3.2 Introduction to Estimation in Statistics",
     "text": "3.2 Introduction to Estimation in Statistics"
   },
   {
     "objectID": "lessons/03-inferential-statistics.html#part3-03",
     "href": "lessons/03-inferential-statistics.html#part3-03",
-    "title": "Part 3: Inferential Statistics",
+    "title": "Inferential Statistics",
     "section": "3.3 Introduction to Hypothesis Testing",
     "text": "3.3 Introduction to Hypothesis Testing"
   },
   {
     "objectID": "lessons/03-inferential-statistics.html#part3-04",
     "href": "lessons/03-inferential-statistics.html#part3-04",
-    "title": "Part 3: Inferential Statistics",
+    "title": "Inferential Statistics",
     "section": "3.4 Introduction to Linear Regression",
     "text": "3.4 Introduction to Linear Regression"
   },
@@ -450,16 +450,16 @@
   {
     "objectID": "course/part-3.html",
     "href": "course/part-3.html",
-    "title": "Part 3: Inferential Statistics",
+    "title": "Inferential Statistics",
     "section": "",
-    "text": "Read the teaching slides and run the R examples in the same notebook: probability distributions, estimation, hypothesis testing and regression.\n\n\n\nResource\nRead online\nDownload\n\n\n\n\nInferential Statistics\nRead\nPDF · Quarto notebook\n\n\n\nHome"
+    "text": "Read the teaching slides and run the R examples in the same notebook: probability distributions, estimation, hypothesis testing and regression.\n\n\n\nResource\nRead online\nDownload\n\n\n\n\nInferential Statistics\nRead\nPDF · Download R code files\n\n\n\nHome"
   },
   {
     "objectID": "course/part-1.html",
     "href": "course/part-1.html",
     "title": "Part 1: Introduction to R",
     "section": "",
-    "text": "One concise, runnable notebook covers R and Positron, basic programming, data frames, dplyr, conventional plots and ggplot2 pipelines.\n\n\n\nNotebook\nRead online\nDownload\n\n\n\n\nIntroduction to R\nRead\nPDF\n\n\n\nHome"
+    "text": "One concise, runnable notebook covers R and Positron, basic programming, data frames, dplyr, conventional plots and ggplot2 pipelines.\n\n\n\nNotebook\nRead online\nDownload\n\n\n\n\nIntroduction to R\nRead\nPDF · Download R code files\n\n\n\nHome"
   },
   {
     "objectID": "index.html",
@@ -480,14 +480,14 @@
     "href": "index.html#other-downloads",
     "title": "307312 Applied Statistics",
     "section": "Other Downloads",
-    "text": "Other Downloads\n\nPositron files (.zip)\nPDF collection (.zip)\nExtended scenarios"
+    "text": "Other Downloads\n\nDownload R code files\nPDF collection (.zip)\nExtended scenarios"
   },
   {
     "objectID": "course/part-2.html",
     "href": "course/part-2.html",
     "title": "Part 2: Descriptive Statistics",
     "section": "",
-    "text": "Read the explanations and run the 20 R examples in one notebook. The examples use the supplied student dataset and a historical airline time series.\n\n\n\nResource\nRead online\nDownload\n\n\n\n\nDescriptive Statistics — explanations and R examples\nRead\nPDF\n\n\n\nHome"
+    "text": "Read the explanations and run the 20 R examples in one notebook. The examples use the supplied student dataset and a historical airline time series.\n\n\n\nResource\nRead online\nDownload\n\n\n\n\nDescriptive Statistics — explanations and R examples\nRead\nPDF · Download R code files\n\n\n\nHome"
   },
   {
     "objectID": "extended-cases/index.html",
