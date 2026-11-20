@@ -4,7 +4,7 @@
     "href": "extended-cases/case-06-harnswell-quality.html",
     "title": "Extended Case 6 — Harnswell Quality",
     "section": "",
-    "text": "Start after: descriptive statistics and inference in Parts 2 and 3.\nOptional advanced case: introduces statistical process control; read the chart primer below first.\nSuggested time: 90–120 minutes.\nBusiness question: Is the cam-roller grinding process stable, and does its output meet engineering specifications?\nLearning outcomes:"
+    "text": "Start after: descriptive statistics and inference in Parts 2 and 4.\nOptional advanced case: introduces statistical process control; read the chart primer below first.\nSuggested time: 90–120 minutes.\nBusiness question: Is the cam-roller grinding process stable, and does its output meet engineering specifications?\nLearning outcomes:"
   },
   {
     "objectID": "extended-cases/case-06-harnswell-quality.html#the-quality-managers-brief",
@@ -74,7 +74,7 @@
     "href": "extended-cases/case-04-perfect-parachute.html",
     "title": "Extended Case 4 — Perfect Parachute",
     "section": "",
-    "text": "Start after: independent-group comparisons and more than two means in Part 3.\nSuggested time: 70–90 minutes, including the ANOVA introduction below.\nBusiness question: Do the four suppliers differ in mean tensile strength, and what evidence should guide procurement?\nLearning outcomes:"
+    "text": "Start after: independent-group comparisons and more than two means in Part 4.\nSuggested time: 70–90 minutes, including the ANOVA introduction below.\nBusiness question: Do the four suppliers differ in mean tensile strength, and what evidence should guide procurement?\nLearning outcomes:"
   },
   {
     "objectID": "extended-cases/case-04-perfect-parachute.html#the-procurement-managers-brief",
@@ -137,7 +137,7 @@
     "href": "extended-cases/case-02-oxford-cereal.html",
     "title": "Extended Case 2 — Oxford Cereal",
     "section": "",
-    "text": "Start after: sampling distributions, confidence intervals and one-mean testing in Part 3.\nSuggested time: 50–60 minutes.\nBusiness question: Does the reported sample provide evidence that mean box weight differs from the 368 g target?\nLearning outcomes:"
+    "text": "Start after: sampling distributions, confidence intervals and one-mean testing in Part 4.\nSuggested time: 50–60 minutes.\nBusiness question: Does the reported sample provide evidence that mean box weight differs from the 368 g target?\nLearning outcomes:"
   },
   {
     "objectID": "extended-cases/case-02-oxford-cereal.html#the-packaging-managers-brief",
@@ -249,7 +249,7 @@
     "href": "extended-cases/superstore/practical-03-association-and-groups.html#move-from-description-to-inference",
     "title": "Practical 3 — Superstore discounts and profit",
     "section": "8. Move from description to inference",
-    "text": "8. Move from description to inference\n\nPart 3 covers probability, estimation, hypothesis testing and regression.\nThe descriptive evidence here concerns the complete fixed extract; p-values are not required to describe its totals.\ndata/business/README.md."
+    "text": "8. Move from description to inference\n\nPart 4 covers estimation, hypothesis testing and regression; Part 3 provides the probability foundations.\nThe descriptive evidence here concerns the complete fixed extract; p-values are not required to describe its totals.\ndata/business/README.md."
   },
   {
     "objectID": "extended-cases/superstore/practical-01-categorical-business-data.html",
@@ -315,39 +315,172 @@
     "text": "8. Continue\n\nKeep your tables and briefing in your Positron workspace.\nContinue to Practical 2: Order size.\nSource definitions and extract limits: data/business/README.md."
   },
   {
-    "objectID": "lessons/03-inferential-statistics.html",
-    "href": "lessons/03-inferential-statistics.html",
-    "title": "Inferential Statistics",
+    "objectID": "lessons/04-statistical-inference-and-estimation.html",
+    "href": "lessons/04-statistical-inference-and-estimation.html",
+    "title": "Statistical inference and estimation",
     "section": "",
     "text": "Read each topic and run the Try this in R examples beside it."
   },
   {
-    "objectID": "lessons/03-inferential-statistics.html#part3-01",
-    "href": "lessons/03-inferential-statistics.html#part3-01",
-    "title": "Inferential Statistics",
-    "section": "3.1 Introduction to Probability Distributions",
-    "text": "3.1 Introduction to Probability Distributions"
+    "objectID": "lessons/04-statistical-inference-and-estimation.html#part3-02",
+    "href": "lessons/04-statistical-inference-and-estimation.html#part3-02",
+    "title": "Statistical inference and estimation",
+    "section": "4.1 Statistical inference and estimation",
+    "text": "4.1 Statistical inference and estimation"
   },
   {
-    "objectID": "lessons/03-inferential-statistics.html#part3-02",
-    "href": "lessons/03-inferential-statistics.html#part3-02",
-    "title": "Inferential Statistics",
-    "section": "3.2 Introduction to Estimation in Statistics",
-    "text": "3.2 Introduction to Estimation in Statistics"
+    "objectID": "lessons/04-statistical-inference-and-estimation.html#part3-03",
+    "href": "lessons/04-statistical-inference-and-estimation.html#part3-03",
+    "title": "Statistical inference and estimation",
+    "section": "4.2 Hypothesis testing",
+    "text": "4.2 Hypothesis testing"
   },
   {
-    "objectID": "lessons/03-inferential-statistics.html#part3-03",
-    "href": "lessons/03-inferential-statistics.html#part3-03",
-    "title": "Inferential Statistics",
-    "section": "3.3 Introduction to Hypothesis Testing",
-    "text": "3.3 Introduction to Hypothesis Testing"
+    "objectID": "lessons/04-statistical-inference-and-estimation.html#part3-04",
+    "href": "lessons/04-statistical-inference-and-estimation.html#part3-04",
+    "title": "Statistical inference and estimation",
+    "section": "4.3 Regression",
+    "text": "4.3 Regression"
   },
   {
-    "objectID": "lessons/03-inferential-statistics.html#part3-04",
-    "href": "lessons/03-inferential-statistics.html#part3-04",
-    "title": "Inferential Statistics",
-    "section": "3.4 Introduction to Linear Regression",
-    "text": "3.4 Introduction to Linear Regression"
+    "objectID": "lessons/02-descriptive-statistics.html",
+    "href": "lessons/02-descriptive-statistics.html",
+    "title": "Part 2: Descriptive Statistics",
+    "section": "",
+    "text": "This notebook combines the descriptive-statistics teaching material with all 20 executable R examples. Read each topic, then run its Try this in R example in Positron. Open the top-level course folder first and run Example 1 to load students; later examples reuse it."
+  },
+  {
+    "objectID": "lessons/02-descriptive-statistics.html#source-title-01",
+    "href": "lessons/02-descriptive-statistics.html#source-title-01",
+    "title": "Part 2: Descriptive Statistics",
+    "section": "307312 Applied Statistics — Masters Level",
+    "text": "307312 Applied Statistics — Masters Level"
+  },
+  {
+    "objectID": "lessons/02-descriptive-statistics.html#source-title-07",
+    "href": "lessons/02-descriptive-statistics.html#source-title-07",
+    "title": "Part 2: Descriptive Statistics",
+    "section": "Types of Data & Levels of Measurements",
+    "text": "Types of Data & Levels of Measurements"
+  },
+  {
+    "objectID": "lessons/02-descriptive-statistics.html#data-collection-and-survey-quality",
+    "href": "lessons/02-descriptive-statistics.html#data-collection-and-survey-quality",
+    "title": "Part 2: Descriptive Statistics",
+    "section": "Data collection and survey quality",
+    "text": "Data collection and survey quality\nBefore summarizing data, ask how they were obtained.\n\nSource: Are suitable data already available, or must we collect them?\nSelection: Who or what should be included?\nMeasurement: How will we obtain comparable, trustworthy answers?\n\nBy the end of this section, you should be able to select a collection approach, justify a survey mode and sampling method, and identify likely survey errors."
+  },
+  {
+    "objectID": "lessons/02-descriptive-statistics.html#source-title-13",
+    "href": "lessons/02-descriptive-statistics.html#source-title-13",
+    "title": "Part 2: Descriptive Statistics",
+    "section": "Descriptive Statistics Tools",
+    "text": "Descriptive Statistics Tools"
+  },
+  {
+    "objectID": "lessons/02-descriptive-statistics.html#source-title-20",
+    "href": "lessons/02-descriptive-statistics.html#source-title-20",
+    "title": "Part 2: Descriptive Statistics",
+    "section": "Data Visualization",
+    "text": "Data Visualization"
+  },
+  {
+    "objectID": "lessons/02-descriptive-statistics.html#source-title-35",
+    "href": "lessons/02-descriptive-statistics.html#source-title-35",
+    "title": "Part 2: Descriptive Statistics",
+    "section": "Numerical Measures in Descriptive Statistics",
+    "text": "Numerical Measures in Descriptive Statistics"
+  },
+  {
+    "objectID": "lessons/02-descriptive-statistics.html#source-title-57",
+    "href": "lessons/02-descriptive-statistics.html#source-title-57",
+    "title": "Part 2: Descriptive Statistics",
+    "section": "Measures of Association",
+    "text": "Measures of Association\n\nCovariance and Coefficient of Correlation"
+  },
+  {
+    "objectID": "lessons/02-descriptive-statistics.html#source-title-65",
+    "href": "lessons/02-descriptive-statistics.html#source-title-65",
+    "title": "Part 2: Descriptive Statistics",
+    "section": "Measures of Distribution",
+    "text": "Measures of Distribution\n\nSymmetry and Skewness"
+  },
+  {
+    "objectID": "lessons/02-descriptive-statistics.html#source-title-70",
+    "href": "lessons/02-descriptive-statistics.html#source-title-70",
+    "title": "Part 2: Descriptive Statistics",
+    "section": "Percentiles, Quartiles and Boxplots",
+    "text": "Percentiles, Quartiles and Boxplots"
+  },
+  {
+    "objectID": "lessons/02-descriptive-statistics.html#review-together",
+    "href": "lessons/02-descriptive-statistics.html#review-together",
+    "title": "Part 2: Descriptive Statistics",
+    "section": "Review together",
+    "text": "Review together\n\nWhich tables summarize a single variable, and which compare two variables?\nWhich charts suit categorical data, and which suit numerical data?\nWhen should observations be joined by a line? How does a dot plot differ from a histogram?\nHow do the mean and median describe different aspects of the same distribution?\nWhich dispersion measures retain the original units, and which do not?\nWhat do the 90th percentile and the quartiles tell us about the data?\nWhy does an outlier flag call for investigation rather than automatic deletion?"
+  },
+  {
+    "objectID": "extended-cases/index.html",
+    "href": "extended-cases/index.html",
+    "title": "Extended scenarios",
+    "section": "",
+    "text": "Apply the course methods to another business setting after the relevant course topics.\nEach case stays together as one notebook, with a worked analysis and independent business tasks.\nYour instructor may assign selected cases or sections; the extended cases are optional.\nANOVA, forecasting and process control include introductions and are marked as extensions.\nCases 1–6 draw on Berenson, Levine and Krehbiel’s Basic Business Statistics: Concepts and Applications, ninth edition. Each identifies its source, observational unit and limits; Oxford uses reported summary inputs rather than raw box weights."
+  },
+  {
+    "objectID": "extended-cases/index.html#downloads",
+    "href": "extended-cases/index.html#downloads",
+    "title": "Extended scenarios",
+    "section": "Downloads",
+    "text": "Downloads\n\nPositron files (.zip) — editable notebooks and data for running the code.\nPDF collection (.zip) — all lessons and scenarios for reading.\n\nHome"
+  },
+  {
+    "objectID": "course/part-3.html",
+    "href": "course/part-3.html",
+    "title": "Probability foundations",
+    "section": "",
+    "text": "Start with random experiments, outcomes and events, then study random variables and probability distributions with explained R examples.\n\n\n\nResource\nRead online\nDownload\n\n\n\n\nProbability foundations\nRead\nPDF · Download R code files\n\n\n\nHome"
+  },
+  {
+    "objectID": "course/part-1.html",
+    "href": "course/part-1.html",
+    "title": "Part 1: Introduction to R",
+    "section": "",
+    "text": "One concise, runnable notebook covers R and Positron, basic programming, data frames, dplyr, conventional plots and ggplot2 pipelines.\n\n\n\nNotebook\nRead online\nDownload\n\n\n\n\nIntroduction to R\nRead\nPDF · Download R code files\n\n\n\nHome"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "307312 Applied Statistics",
+    "section": "",
+    "text": "Part 1 - Introduction to R\nPart 2 - Descriptive Statistics\nPart 3 - Probability foundations\nPart 4 - Statistical inference and estimation"
+  },
+  {
+    "objectID": "index.html#course-material",
+    "href": "index.html#course-material",
+    "title": "307312 Applied Statistics",
+    "section": "",
+    "text": "Part 1 - Introduction to R\nPart 2 - Descriptive Statistics\nPart 3 - Probability foundations\nPart 4 - Statistical inference and estimation"
+  },
+  {
+    "objectID": "index.html#other-downloads",
+    "href": "index.html#other-downloads",
+    "title": "307312 Applied Statistics",
+    "section": "Other Downloads",
+    "text": "Other Downloads\n\nDownload R code files\nPDF collection (.zip)\nExtended scenarios"
+  },
+  {
+    "objectID": "course/part-2.html",
+    "href": "course/part-2.html",
+    "title": "Part 2: Descriptive Statistics",
+    "section": "",
+    "text": "Read the explanations and run the 20 R examples in one notebook. The examples use the supplied student dataset and a historical airline time series.\n\n\n\nResource\nRead online\nDownload\n\n\n\n\nDescriptive Statistics — explanations and R examples\nRead\nPDF · Download R code files\n\n\n\nHome"
+  },
+  {
+    "objectID": "course/part-4.html",
+    "href": "course/part-4.html",
+    "title": "Statistical inference and estimation",
+    "section": "",
+    "text": "Study inference, sampling distributions, standard error and the CLT before confidence intervals. Continue with hypothesis testing and regression, with explained R examples throughout.\n\n\n\nResource\nRead online\nDownload\n\n\n\n\nStatistical inference and estimation\nRead\nPDF · Download R code files\n\n\n\nHome"
   },
   {
     "objectID": "lessons/01-introduction-to-r.html",
@@ -448,137 +581,32 @@
     "text": "Sources\nCondensed and adapted from the four supplied 307307 R introduction notebooks and their images, retained in the course reference history. The Superstore CSV is unchanged tutorial data supplied with those materials. The original pipe and Grammar of Graphics illustrations are retained unchanged from the supplied 307307 material. The car examples use the built-in R datasets::mtcars data and the units/provenance documented in ?mtcars.\nOfficial references: R project contributors, Introduction to R, dplyr, ggplot2, Quarto with R, and Positron workspace layout."
   },
   {
-    "objectID": "course/part-3.html",
-    "href": "course/part-3.html",
-    "title": "Inferential Statistics",
+    "objectID": "lessons/03-probability-foundations.html",
+    "href": "lessons/03-probability-foundations.html",
+    "title": "Probability foundations",
     "section": "",
-    "text": "Read the teaching slides and run the R examples in the same notebook: probability distributions, estimation, hypothesis testing and regression.\n\n\n\nResource\nRead online\nDownload\n\n\n\n\nInferential Statistics\nRead\nPDF · Download R code files\n\n\n\nHome"
+    "text": "Read each topic and run the Try this in R examples beside it."
   },
   {
-    "objectID": "course/part-1.html",
-    "href": "course/part-1.html",
-    "title": "Part 1: Introduction to R",
-    "section": "",
-    "text": "One concise, runnable notebook covers R and Positron, basic programming, data frames, dplyr, conventional plots and ggplot2 pipelines.\n\n\n\nNotebook\nRead online\nDownload\n\n\n\n\nIntroduction to R\nRead\nPDF · Download R code files\n\n\n\nHome"
+    "objectID": "lessons/03-probability-foundations.html#part3-01",
+    "href": "lessons/03-probability-foundations.html#part3-01",
+    "title": "Probability foundations",
+    "section": "3.1 Random events and probability",
+    "text": "3.1 Random events and probability"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "307312 Applied Statistics",
-    "section": "",
-    "text": "Part 1 - Introduction to R\nPart 2 - Descriptive Statistics\nPart 3 - Inferential Statistics"
+    "objectID": "lessons/03-probability-foundations.html#part3-title-01-07",
+    "href": "lessons/03-probability-foundations.html#part3-title-01-07",
+    "title": "Probability foundations",
+    "section": "3.2 Random variables",
+    "text": "3.2 Random variables\n\nUnderstanding the Basics of Probability in Statistics"
   },
   {
-    "objectID": "index.html#course-material",
-    "href": "index.html#course-material",
-    "title": "307312 Applied Statistics",
-    "section": "",
-    "text": "Part 1 - Introduction to R\nPart 2 - Descriptive Statistics\nPart 3 - Inferential Statistics"
-  },
-  {
-    "objectID": "index.html#other-downloads",
-    "href": "index.html#other-downloads",
-    "title": "307312 Applied Statistics",
-    "section": "Other Downloads",
-    "text": "Other Downloads\n\nDownload R code files\nPDF collection (.zip)\nExtended scenarios"
-  },
-  {
-    "objectID": "course/part-2.html",
-    "href": "course/part-2.html",
-    "title": "Part 2: Descriptive Statistics",
-    "section": "",
-    "text": "Read the explanations and run the 20 R examples in one notebook. The examples use the supplied student dataset and a historical airline time series.\n\n\n\nResource\nRead online\nDownload\n\n\n\n\nDescriptive Statistics — explanations and R examples\nRead\nPDF · Download R code files\n\n\n\nHome"
-  },
-  {
-    "objectID": "extended-cases/index.html",
-    "href": "extended-cases/index.html",
-    "title": "Extended scenarios",
-    "section": "",
-    "text": "Apply the course methods to another business setting after the core practicals or the relevant Part 3 topics.\nEach case stays together as one notebook, with a worked analysis and independent business tasks.\nYour instructor may assign selected cases or sections; the extended cases are optional.\nANOVA, forecasting and process control include introductions and are marked as extensions.\nCases 1–6 draw on Berenson, Levine and Krehbiel’s Basic Business Statistics: Concepts and Applications, ninth edition. Each identifies its source, observational unit and limits; Oxford uses reported summary inputs rather than raw box weights."
-  },
-  {
-    "objectID": "extended-cases/index.html#downloads",
-    "href": "extended-cases/index.html#downloads",
-    "title": "Extended scenarios",
-    "section": "Downloads",
-    "text": "Downloads\n\nPositron files (.zip) — editable notebooks and data for running the code.\nPDF collection (.zip) — all lessons and scenarios for reading.\n\nHome"
-  },
-  {
-    "objectID": "lessons/02-descriptive-statistics.html",
-    "href": "lessons/02-descriptive-statistics.html",
-    "title": "Part 2: Descriptive Statistics",
-    "section": "",
-    "text": "This notebook combines the descriptive-statistics teaching material with all 20 executable R examples. Read each topic, then run its Try this in R example in Positron. Open the top-level course folder first and run Example 1 to load students; later examples reuse it."
-  },
-  {
-    "objectID": "lessons/02-descriptive-statistics.html#source-title-01",
-    "href": "lessons/02-descriptive-statistics.html#source-title-01",
-    "title": "Part 2: Descriptive Statistics",
-    "section": "307312 Applied Statistics — Masters Level",
-    "text": "307312 Applied Statistics — Masters Level"
-  },
-  {
-    "objectID": "lessons/02-descriptive-statistics.html#source-title-07",
-    "href": "lessons/02-descriptive-statistics.html#source-title-07",
-    "title": "Part 2: Descriptive Statistics",
-    "section": "Types of Data & Levels of Measurements",
-    "text": "Types of Data & Levels of Measurements"
-  },
-  {
-    "objectID": "lessons/02-descriptive-statistics.html#data-collection-and-survey-quality",
-    "href": "lessons/02-descriptive-statistics.html#data-collection-and-survey-quality",
-    "title": "Part 2: Descriptive Statistics",
-    "section": "Data collection and survey quality",
-    "text": "Data collection and survey quality\nBefore summarizing data, ask how they were obtained.\n\nSource: Are suitable data already available, or must we collect them?\nSelection: Who or what should be included?\nMeasurement: How will we obtain comparable, trustworthy answers?\n\nBy the end of this section, you should be able to select a collection approach, justify a survey mode and sampling method, and identify likely survey errors."
-  },
-  {
-    "objectID": "lessons/02-descriptive-statistics.html#source-title-13",
-    "href": "lessons/02-descriptive-statistics.html#source-title-13",
-    "title": "Part 2: Descriptive Statistics",
-    "section": "Descriptive Statistics Tools",
-    "text": "Descriptive Statistics Tools"
-  },
-  {
-    "objectID": "lessons/02-descriptive-statistics.html#source-title-20",
-    "href": "lessons/02-descriptive-statistics.html#source-title-20",
-    "title": "Part 2: Descriptive Statistics",
-    "section": "Data Visualization",
-    "text": "Data Visualization"
-  },
-  {
-    "objectID": "lessons/02-descriptive-statistics.html#source-title-35",
-    "href": "lessons/02-descriptive-statistics.html#source-title-35",
-    "title": "Part 2: Descriptive Statistics",
-    "section": "Numerical Measures in Descriptive Statistics",
-    "text": "Numerical Measures in Descriptive Statistics"
-  },
-  {
-    "objectID": "lessons/02-descriptive-statistics.html#source-title-57",
-    "href": "lessons/02-descriptive-statistics.html#source-title-57",
-    "title": "Part 2: Descriptive Statistics",
-    "section": "Measures of Association",
-    "text": "Measures of Association\n\nCovariance and Coefficient of Correlation"
-  },
-  {
-    "objectID": "lessons/02-descriptive-statistics.html#source-title-65",
-    "href": "lessons/02-descriptive-statistics.html#source-title-65",
-    "title": "Part 2: Descriptive Statistics",
-    "section": "Measures of Distribution",
-    "text": "Measures of Distribution\n\nSymmetry and Skewness"
-  },
-  {
-    "objectID": "lessons/02-descriptive-statistics.html#source-title-70",
-    "href": "lessons/02-descriptive-statistics.html#source-title-70",
-    "title": "Part 2: Descriptive Statistics",
-    "section": "Percentiles, Quartiles and Boxplots",
-    "text": "Percentiles, Quartiles and Boxplots"
-  },
-  {
-    "objectID": "lessons/02-descriptive-statistics.html#review-together",
-    "href": "lessons/02-descriptive-statistics.html#review-together",
-    "title": "Part 2: Descriptive Statistics",
-    "section": "Review together",
-    "text": "Review together\n\nWhich tables summarize a single variable, and which compare two variables?\nWhich charts suit categorical data, and which suit numerical data?\nWhen should observations be joined by a line? How does a dot plot differ from a histogram?\nHow do the mean and median describe different aspects of the same distribution?\nWhich dispersion measures retain the original units, and which do not?\nWhat do the 90th percentile and the quartiles tell us about the data?\nWhy does an outlier flag call for investigation rather than automatic deletion?"
+    "objectID": "lessons/03-probability-foundations.html#part3-title-01-11",
+    "href": "lessons/03-probability-foundations.html#part3-title-01-11",
+    "title": "Probability foundations",
+    "section": "3.3 Probability distributions",
+    "text": "3.3 Probability distributions\n\nDiscrete and Continuous Probability Distributions"
   },
   {
     "objectID": "extended-cases/superstore/index.html",
@@ -655,7 +683,7 @@
     "href": "extended-cases/case-01-springville-herald.html",
     "title": "Extended Case 1 — Springville Herald",
     "section": "",
-    "text": "Start after: Part 2 for Section A; Part 3 regression for Section B.\nOptional advanced work: Section C introduces trend forecasting.\nSuggested time: 45 minutes for A; 60 minutes for B; 30 minutes for C.\nBusiness question: How can a newspaper describe calling activity, plan telemarketing and forecast its subscription base?\nLearning outcomes:"
+    "text": "Start after: Part 2 for Section A; Part 4 regression for Section B.\nOptional advanced work: Section C introduces trend forecasting.\nSuggested time: 45 minutes for A; 60 minutes for B; 30 minutes for C.\nBusiness question: How can a newspaper describe calling activity, plan telemarketing and forecast its subscription base?\nLearning outcomes:"
   },
   {
     "objectID": "extended-cases/case-01-springville-herald.html#the-circulation-managers-brief",
@@ -704,7 +732,7 @@
     "href": "extended-cases/case-03-retail-display.html",
     "title": "Extended Case 3 — BLK Retail Display",
     "section": "",
-    "text": "Start after: the independent-groups comparison in Part 3.\nSuggested time: 50–60 minutes.\nRole: apply independent-group comparisons to COLA data and prepare a commercial briefing.\nLearning outcomes:"
+    "text": "Start after: the independent-groups comparison in Part 4.\nSuggested time: 50–60 minutes.\nRole: apply independent-group comparisons to COLA data and prepare a commercial briefing.\nLearning outcomes:"
   },
   {
     "objectID": "extended-cases/case-03-retail-display.html#the-merchandising-managers-brief",
@@ -753,7 +781,7 @@
     "href": "extended-cases/case-05-mountain-states-potato.html",
     "title": "Extended Case 5 — Mountain States Potato",
     "section": "",
-    "text": "Start after: multiple regression and model diagnostics in Part 3.\nSuggested time: 90–120 minutes.\nBusiness question: Which measured production factors help explain filter-cake solids content, and what should management investigate?\nLearning outcomes:"
+    "text": "Start after: multiple regression and model diagnostics in Part 4.\nSuggested time: 90–120 minutes.\nBusiness question: Which measured production factors help explain filter-cake solids content, and what should management investigate?\nLearning outcomes:"
   },
   {
     "objectID": "extended-cases/case-05-mountain-states-potato.html#the-production-managers-brief",
