@@ -350,97 +350,6 @@
     "text": "3.4 Introduction to Linear Regression"
   },
   {
-    "objectID": "lessons/r-04-ggplot2.html",
-    "href": "lessons/r-04-ggplot2.html",
-    "title": "Introduction to R",
-    "section": "",
-    "text": "The R introduction is now one concise notebook covering setup, basic R, dplyr, conventional plots and ggplot2.\nOpen the combined introduction\nDownload the combined PDF\nPart 1 resources"
-  },
-  {
-    "objectID": "lessons/r-02-basic-concepts.html",
-    "href": "lessons/r-02-basic-concepts.html",
-    "title": "Introduction to R",
-    "section": "",
-    "text": "The R introduction is now one concise notebook covering setup, basic R, dplyr, conventional plots and ggplot2.\nOpen the combined introduction\nDownload the combined PDF\nPart 1 resources"
-  },
-  {
-    "objectID": "extended-cases/index.html",
-    "href": "extended-cases/index.html",
-    "title": "Extended scenarios",
-    "section": "",
-    "text": "Apply the course methods to another business setting after the core practicals or the relevant Part 3 topics.\nEach case stays together as one notebook, with a worked analysis and independent business tasks.\nYour instructor may assign selected cases or sections; the extended cases are optional.\nANOVA, forecasting and process control include introductions and are marked as extensions.\nCases 1–6 draw on Berenson, Levine and Krehbiel’s Basic Business Statistics: Concepts and Applications, ninth edition. Each identifies its source, observational unit and limits; Oxford uses reported summary inputs rather than raw box weights."
-  },
-  {
-    "objectID": "extended-cases/index.html#downloads",
-    "href": "extended-cases/index.html#downloads",
-    "title": "Extended scenarios",
-    "section": "Downloads",
-    "text": "Downloads\n\nPositron files (.zip) — editable notebooks and data for running the code.\nPDF collection (.zip) — all lessons and scenarios for reading.\n\nHome"
-  },
-  {
-    "objectID": "course/part-2.html",
-    "href": "course/part-2.html",
-    "title": "Part 2: Descriptive Statistics",
-    "section": "",
-    "text": "Read the explanations and run the 20 R examples in one notebook. The examples use the supplied student dataset and a historical airline time series.\n\n\n\nResource\nRead online\nDownload\n\n\n\n\nDescriptive Statistics — explanations and R examples\nRead\nPDF\n\n\n\nHome"
-  },
-  {
-    "objectID": "course/index.html",
-    "href": "course/index.html",
-    "title": "307312 Applied Statistics",
-    "section": "",
-    "text": "Part 1 - Introduction to R\nPart 2 - Descriptive Statistics\nPart 3 - Inferential Statistics"
-  },
-  {
-    "objectID": "course/index.html#course-material",
-    "href": "course/index.html#course-material",
-    "title": "307312 Applied Statistics",
-    "section": "",
-    "text": "Part 1 - Introduction to R\nPart 2 - Descriptive Statistics\nPart 3 - Inferential Statistics"
-  },
-  {
-    "objectID": "course/index.html#other-downloads",
-    "href": "course/index.html#other-downloads",
-    "title": "307312 Applied Statistics",
-    "section": "Other Downloads",
-    "text": "Other Downloads\n\nPositron files (.zip)\nPDF collection (.zip)\nExtended scenarios"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "307312 Applied Statistics",
-    "section": "",
-    "text": "Part 1 - Introduction to R\nPart 2 - Descriptive Statistics\nPart 3 - Inferential Statistics"
-  },
-  {
-    "objectID": "index.html#course-material",
-    "href": "index.html#course-material",
-    "title": "307312 Applied Statistics",
-    "section": "",
-    "text": "Part 1 - Introduction to R\nPart 2 - Descriptive Statistics\nPart 3 - Inferential Statistics"
-  },
-  {
-    "objectID": "index.html#other-downloads",
-    "href": "index.html#other-downloads",
-    "title": "307312 Applied Statistics",
-    "section": "Other Downloads",
-    "text": "Other Downloads\n\nPositron files (.zip)\nPDF collection (.zip)\nExtended scenarios"
-  },
-  {
-    "objectID": "course/part-1.html",
-    "href": "course/part-1.html",
-    "title": "Part 1: Introduction to R",
-    "section": "",
-    "text": "One concise, runnable notebook covers R and Positron, basic programming, data frames, dplyr, conventional plots and ggplot2 pipelines.\n\n\n\nNotebook\nRead online\nDownload\n\n\n\n\nIntroduction to R\nRead\nPDF\n\n\n\nHome"
-  },
-  {
-    "objectID": "course/part-3.html",
-    "href": "course/part-3.html",
-    "title": "Part 3: Inferential Statistics",
-    "section": "",
-    "text": "Read the teaching slides and run the R examples in the same notebook: probability distributions, estimation, hypothesis testing and regression.\n\n\n\nResource\nRead online\nDownload\n\n\n\n\nInferential Statistics\nRead\nPDF · Quarto notebook\n\n\n\nHome"
-  },
-  {
     "objectID": "lessons/01-introduction-to-r.html",
     "href": "lessons/01-introduction-to-r.html",
     "title": "Introduction to R",
@@ -539,11 +448,60 @@
     "text": "Sources\nCondensed and adapted from the four supplied 307307 R introduction notebooks and their images, retained in the course reference history. The Superstore CSV is unchanged tutorial data supplied with those materials. The original pipe and Grammar of Graphics illustrations are retained unchanged from the supplied 307307 material. The car examples use the built-in R datasets::mtcars data and the units/provenance documented in ?mtcars.\nOfficial references: R project contributors, Introduction to R, dplyr, ggplot2, Quarto with R, and Positron workspace layout."
   },
   {
-    "objectID": "lessons/r-03-dplyr.html",
-    "href": "lessons/r-03-dplyr.html",
-    "title": "Introduction to R",
+    "objectID": "course/part-3.html",
+    "href": "course/part-3.html",
+    "title": "Part 3: Inferential Statistics",
     "section": "",
-    "text": "The R introduction is now one concise notebook covering setup, basic R, dplyr, conventional plots and ggplot2.\nOpen the combined introduction\nDownload the combined PDF\nPart 1 resources"
+    "text": "Read the teaching slides and run the R examples in the same notebook: probability distributions, estimation, hypothesis testing and regression.\n\n\n\nResource\nRead online\nDownload\n\n\n\n\nInferential Statistics\nRead\nPDF · Quarto notebook\n\n\n\nHome"
+  },
+  {
+    "objectID": "course/part-1.html",
+    "href": "course/part-1.html",
+    "title": "Part 1: Introduction to R",
+    "section": "",
+    "text": "One concise, runnable notebook covers R and Positron, basic programming, data frames, dplyr, conventional plots and ggplot2 pipelines.\n\n\n\nNotebook\nRead online\nDownload\n\n\n\n\nIntroduction to R\nRead\nPDF\n\n\n\nHome"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "307312 Applied Statistics",
+    "section": "",
+    "text": "Part 1 - Introduction to R\nPart 2 - Descriptive Statistics\nPart 3 - Inferential Statistics"
+  },
+  {
+    "objectID": "index.html#course-material",
+    "href": "index.html#course-material",
+    "title": "307312 Applied Statistics",
+    "section": "",
+    "text": "Part 1 - Introduction to R\nPart 2 - Descriptive Statistics\nPart 3 - Inferential Statistics"
+  },
+  {
+    "objectID": "index.html#other-downloads",
+    "href": "index.html#other-downloads",
+    "title": "307312 Applied Statistics",
+    "section": "Other Downloads",
+    "text": "Other Downloads\n\nPositron files (.zip)\nPDF collection (.zip)\nExtended scenarios"
+  },
+  {
+    "objectID": "course/part-2.html",
+    "href": "course/part-2.html",
+    "title": "Part 2: Descriptive Statistics",
+    "section": "",
+    "text": "Read the explanations and run the 20 R examples in one notebook. The examples use the supplied student dataset and a historical airline time series.\n\n\n\nResource\nRead online\nDownload\n\n\n\n\nDescriptive Statistics — explanations and R examples\nRead\nPDF\n\n\n\nHome"
+  },
+  {
+    "objectID": "extended-cases/index.html",
+    "href": "extended-cases/index.html",
+    "title": "Extended scenarios",
+    "section": "",
+    "text": "Apply the course methods to another business setting after the core practicals or the relevant Part 3 topics.\nEach case stays together as one notebook, with a worked analysis and independent business tasks.\nYour instructor may assign selected cases or sections; the extended cases are optional.\nANOVA, forecasting and process control include introductions and are marked as extensions.\nCases 1–6 draw on Berenson, Levine and Krehbiel’s Basic Business Statistics: Concepts and Applications, ninth edition. Each identifies its source, observational unit and limits; Oxford uses reported summary inputs rather than raw box weights."
+  },
+  {
+    "objectID": "extended-cases/index.html#downloads",
+    "href": "extended-cases/index.html#downloads",
+    "title": "Extended scenarios",
+    "section": "Downloads",
+    "text": "Downloads\n\nPositron files (.zip) — editable notebooks and data for running the code.\nPDF collection (.zip) — all lessons and scenarios for reading.\n\nHome"
   },
   {
     "objectID": "lessons/02-descriptive-statistics.html",
