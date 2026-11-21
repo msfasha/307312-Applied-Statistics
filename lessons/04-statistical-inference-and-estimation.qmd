@@ -104,11 +104,25 @@ Inferential statistics is used in various fields and contexts to make prediction
 **Statistic**: A numerical characteristic of a sample (e.g., sample mean, sample proportion).
 :::
 
-::: source-text
-https://medium.com/towards-data-science/what-is-p-value-370056b8244d
+![](../assets/inferential-statistics/part-01-slide-05-graphic-04.png){width="30%" fig-alt="Illustration: Introduction to Inferential Statistics"}
+
+::::: {.recovered-resources #original-resources-1-5}
+
+:::: {.recovered-resource}
+::: {.resource-description}
+**Background reading — p-values**
+
+Further reading on p-values, used in hypothesis testing.
+
+<https://medium.com/towards-data-science/what-is-p-value-370056b8244d>
 :::
 
-![](../assets/inferential-statistics/part-01-slide-05-graphic-04.png){width="30%" fig-alt="Illustration: Introduction to Inferential Statistics"}
+::: {.resource-qr}
+[![](../assets/inferential-statistics/resources/p-value-reading.svg){.compact-resource-qr width="144" fig-alt="QR code: Background reading — p-values"}](https://medium.com/towards-data-science/what-is-p-value-370056b8244d)
+:::
+::::
+
+:::::
 
 ::::::
 
@@ -217,14 +231,29 @@ Scan to open the video.
 
 <https://www.youtube.com/watch?v=NTq0BO6pbbg>
 
-**Interactive sampling tool — StatKey:**
-
-<https://www.lock5stat.com/StatKey/sampling_1_quant/sampling_1_quant.html>
 :::
 
 ::: source-text
 Distinguish the population distribution from the sampling distributions illustrated above.
 :::
+
+::::: {.recovered-resources #original-resources-2-12}
+
+:::: {.recovered-resource}
+::: {.resource-description}
+**Sampling simulation — StatKey**
+
+Choose a sample size, generate repeated samples and compare the population, individual samples and sampling distribution of the mean.
+
+<https://www.lock5stat.com/StatKey/sampling_1_quant/sampling_1_quant.html>
+:::
+
+::: {.resource-qr}
+[![](../assets/inferential-statistics/resources/sampling-statkey.svg){.compact-resource-qr width="144" fig-alt="QR code: Sampling simulation — StatKey"}](https://www.lock5stat.com/StatKey/sampling_1_quant/sampling_1_quant.html)
+:::
+::::
+
+:::::
 
 ::::::
 
@@ -436,9 +465,23 @@ The **confidence level** and the **significance level (α)** are inverse and com
 
 ![](../assets/inferential-statistics/part-02-slide-07-graphic-02.png){width="52%" fig-alt="Illustration: Computing Confidence Intervals"}
 
-::: source-text
-https://medium.com/@ashisharora2204/hypothesis-testing-confidence-interval-level-margin-of-error-39aa7c7ddcd2
+::::: {.recovered-resources #original-resources-2-7}
+
+:::: {.recovered-resource}
+::: {.resource-description}
+**Background reading — confidence intervals and margin of error**
+
+Read about confidence levels, interval width and margin of error.
+
+<https://medium.com/@ashisharora2204/hypothesis-testing-confidence-interval-level-margin-of-error-39aa7c7ddcd2>
 :::
+
+::: {.resource-qr}
+[![](../assets/inferential-statistics/resources/confidence-interval-reading.svg){.compact-resource-qr width="144" fig-alt="QR code: Background reading — confidence intervals and margin of error"}](https://medium.com/@ashisharora2204/hypothesis-testing-confidence-interval-level-margin-of-error-39aa7c7ddcd2)
+:::
+::::
+
+:::::
 
 ::::::
 
@@ -555,9 +598,23 @@ What is the 90% confidence interval for the true population mean weight?
 
 ![](../assets/inferential-statistics/part-02-slide-20-graphic-03.png){width="39%" fig-alt="Illustration: Transitioning to T-Distribution"}
 
-::: source-text
-https://www.scribbr.com/statistics/t-distribution/
+::::: {.recovered-resources #original-resources-2-20}
+
+:::: {.recovered-resource}
+::: {.resource-description}
+**Background reading — Student's t distribution**
+
+Reference material on the t distribution and its use in inference.
+
+<https://www.scribbr.com/statistics/t-distribution/>
 :::
+
+::: {.resource-qr}
+[![](../assets/inferential-statistics/resources/t-distribution-reading.svg){.compact-resource-qr width="144" fig-alt="QR code: Background reading — Student's t distribution"}](https://www.scribbr.com/statistics/t-distribution/)
+:::
+::::
+
+:::::
 
 ::::::
 
@@ -1077,7 +1134,25 @@ The critical value is computed based on the given significance level α and the 
 The critical value divides the area under the probability distribution curve in rejection region(s) and non-rejection region.
 :::
 
-![](../assets/inferential-statistics/part-03-slide-15-graphic-02.png){width="30%" fig-alt="Illustration: The Critical Value and the p-Value Approach to Hypothesis Testing"}
+[![](../assets/inferential-statistics/part-03-slide-15-graphic-02.png){width="30%" fig-alt="Illustration: The Critical Value and the p-Value Approach to Hypothesis Testing"}](https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Introduction-to-Hypothesis-Testing/Critical-Value-and-the-p-Value-Approach/index.html)
+
+::::: {.recovered-resources #original-resources-3-15}
+
+:::: {.recovered-resource}
+::: {.resource-description}
+**Worked guide — critical-value and p-value approaches**
+
+Compare critical regions and p-values in two-sided and one-sided hypothesis tests.
+
+<https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Introduction-to-Hypothesis-Testing/Critical-Value-and-the-p-Value-Approach/index.html>
+:::
+
+::: {.resource-qr}
+[![](../assets/inferential-statistics/resources/critical-value-p-value.svg){.compact-resource-qr width="144" fig-alt="QR code: Worked guide — critical-value and p-value approaches"}](https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Introduction-to-Hypothesis-Testing/Critical-Value-and-the-p-Value-Approach/index.html)
+:::
+::::
+
+:::::
 
 ::::::
 
@@ -1089,7 +1164,25 @@ The critical value divides the area under the probability distribution curve in 
 
 ![](../assets/inferential-statistics/part-03-slide-16-graphic-02.png){width="78%" fig-alt="Illustration: The Critical Value Approach to Hypothesis Testing"}
 
-![](../assets/inferential-statistics/part-03-slide-16-graphic-03.png){width="30%" fig-alt="Illustration: The Critical Value Approach to Hypothesis Testing"}
+[![](../assets/inferential-statistics/part-03-slide-16-graphic-03.png){width="30%" fig-alt="Illustration: The Critical Value Approach to Hypothesis Testing"}](https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Introduction-to-Hypothesis-Testing/Critical-Value-and-the-p-Value-Approach/index.html)
+
+::::: {.recovered-resources #original-resources-3-16}
+
+:::: {.recovered-resource}
+::: {.resource-description}
+**Worked guide — critical-value and p-value approaches**
+
+Compare critical regions and p-values in two-sided and one-sided hypothesis tests.
+
+<https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Introduction-to-Hypothesis-Testing/Critical-Value-and-the-p-Value-Approach/index.html>
+:::
+
+::: {.resource-qr}
+[![](../assets/inferential-statistics/resources/critical-value-p-value.svg){.compact-resource-qr width="144" fig-alt="QR code: Worked guide — critical-value and p-value approaches"}](https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Introduction-to-Hypothesis-Testing/Critical-Value-and-the-p-Value-Approach/index.html)
+:::
+::::
+
+:::::
 
 ::::::
 
@@ -1109,7 +1202,25 @@ If the p-value (**Green Area**) is less than or equal to the specified significa
 
 ![](../assets/inferential-statistics/part-03-slide-17-graphic-02.png){width="65%" fig-alt="Illustration: The p-Value Approach to Hypothesis Testing"}
 
-![](../assets/inferential-statistics/part-03-slide-17-graphic-03.png){width="30%" fig-alt="Illustration: The p-Value Approach to Hypothesis Testing"}
+[![](../assets/inferential-statistics/part-03-slide-17-graphic-03.png){width="30%" fig-alt="Illustration: The p-Value Approach to Hypothesis Testing"}](https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Introduction-to-Hypothesis-Testing/Critical-Value-and-the-p-Value-Approach/index.html)
+
+::::: {.recovered-resources #original-resources-3-17}
+
+:::: {.recovered-resource}
+::: {.resource-description}
+**Worked guide — critical-value and p-value approaches**
+
+Compare critical regions and p-values in two-sided and one-sided hypothesis tests.
+
+<https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Introduction-to-Hypothesis-Testing/Critical-Value-and-the-p-Value-Approach/index.html>
+:::
+
+::: {.resource-qr}
+[![](../assets/inferential-statistics/resources/critical-value-p-value.svg){.compact-resource-qr width="144" fig-alt="QR code: Worked guide — critical-value and p-value approaches"}](https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Introduction-to-Hypothesis-Testing/Critical-Value-and-the-p-Value-Approach/index.html)
+:::
+::::
+
+:::::
 
 ::::::
 
@@ -1354,7 +1465,25 @@ The weight of a person can be measured individually before and after going into 
 
 ![](../assets/inferential-statistics/part-03-slide-26-graphic-03.png){width="43%" fig-alt="Illustration: Two Samples T-Test – Testing Dependent Groups (Paired T Test)"}
 
-![](../assets/inferential-statistics/part-03-slide-26-graphic-04.png){width="30%" fig-alt="Illustration: Two Samples T-Test – Testing Dependent Groups (Paired T Test)"}
+[![](../assets/inferential-statistics/part-03-slide-26-graphic-04.png){width="30%" fig-alt="Illustration: Two Samples T-Test – Testing Dependent Groups (Paired T Test)"}](https://datatab.net/tutorial/paired-t-test)
+
+::::: {.recovered-resources #original-resources-3-26}
+
+:::: {.recovered-resource}
+::: {.resource-description}
+**Tutorial — paired-samples t-test (DATAtab / numiqo)**
+
+Review paired measurements, the mean difference, assumptions and interpretation.
+
+<https://datatab.net/tutorial/paired-t-test>
+:::
+
+::: {.resource-qr}
+[![](../assets/inferential-statistics/resources/paired-t-tutorial.svg){.compact-resource-qr width="144" fig-alt="QR code: Tutorial — paired-samples t-test (DATAtab / numiqo)"}](https://datatab.net/tutorial/paired-t-test)
+:::
+::::
+
+:::::
 
 ::::::
 
@@ -1454,7 +1583,25 @@ We want to examine if the group of students, which attended the online statistic
 +---+------------------------------------------------------------------------+
 :::
 
-![](../assets/inferential-statistics/part-03-slide-27-graphic-04.png){width="30%" fig-alt="Illustration: Two Samples T-Test – Testing Dependent Groups (Paired T Test)"}
+[![](../assets/inferential-statistics/part-03-slide-27-graphic-04.png){width="30%" fig-alt="Illustration: Two Samples T-Test – Testing Dependent Groups (Paired T Test)"}](https://datatab.net/tutorial/paired-t-test)
+
+::::: {.recovered-resources #original-resources-3-27}
+
+:::: {.recovered-resource}
+::: {.resource-description}
+**Tutorial — paired-samples t-test (DATAtab / numiqo)**
+
+Review paired measurements, the mean difference, assumptions and interpretation.
+
+<https://datatab.net/tutorial/paired-t-test>
+:::
+
+::: {.resource-qr}
+[![](../assets/inferential-statistics/resources/paired-t-tutorial.svg){.compact-resource-qr width="144" fig-alt="QR code: Tutorial — paired-samples t-test (DATAtab / numiqo)"}](https://datatab.net/tutorial/paired-t-test)
+:::
+::::
+
+:::::
 
 :::: {.try-in-r #r-example-03-27}
 
@@ -1485,7 +1632,25 @@ c(n=nrow(paired), mean_change=mean(paired$score2 - paired$score1))
 - This finding is supported by the test statistic and the p-value, therefore we REJECT the null hypothesis, and we conclude that the online tutorial helped students in enhancing their exam performance.
 :::
 
-![](../assets/inferential-statistics/part-03-slide-28-graphic-08.png){width="30%" fig-alt="Illustration: Two Samples T-Test – Testing Dependent Groups (Paired T Test)"}
+[![](../assets/inferential-statistics/part-03-slide-28-graphic-08.png){width="30%" fig-alt="Illustration: Two Samples T-Test – Testing Dependent Groups (Paired T Test)"}](https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Paired-Samples/index.html)
+
+::::: {.recovered-resources #original-resources-3-28}
+
+:::: {.recovered-resource}
+::: {.resource-description}
+**Worked example — paired-samples t-test**
+
+Follow the analysis of paired before-and-after measurements.
+
+<https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Paired-Samples/index.html>
+:::
+
+::: {.resource-qr}
+[![](../assets/inferential-statistics/resources/paired-t-worked.svg){.compact-resource-qr width="144" fig-alt="QR code: Worked example — paired-samples t-test"}](https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Paired-Samples/index.html)
+:::
+::::
+
+:::::
 
 :::: {.try-in-r #r-example-03-28}
 
@@ -1598,7 +1763,25 @@ The question is, whether there is a difference (at α 5%) in the mean annual sal
 +---+------------------------------------------------------------+
 :::
 
-![](../assets/inferential-statistics/part-03-slide-29-graphic-05.png){width="30%" fig-alt="Illustration: Two Samples T-Test – Testing Independent Groups (Unpaired T Test) (variance assumed to be equal)"}
+[![](../assets/inferential-statistics/part-03-slide-29-graphic-05.png){width="30%" fig-alt="Illustration: Two Samples T-Test – Testing Independent Groups (Unpaired T Test) (variance assumed to be equal)"}](https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Standard-Deviations-Assumed-Equal/index.html)
+
+::::: {.recovered-resources #original-resources-3-29}
+
+:::: {.recovered-resource}
+::: {.resource-description}
+**Worked example — independent means with equal variances**
+
+Follow the pooled t-test example, with its equal-variance assumption.
+
+<https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Standard-Deviations-Assumed-Equal/index.html>
+:::
+
+::: {.resource-qr}
+[![](../assets/inferential-statistics/resources/pooled-t-worked.svg){.compact-resource-qr width="144" fig-alt="QR code: Worked example — independent means with equal variances"}](https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Standard-Deviations-Assumed-Equal/index.html)
+:::
+::::
+
+:::::
 
 :::: {.try-in-r #r-example-03-29}
 
@@ -1628,7 +1811,25 @@ c(male_mean=mean(salaries$male), female_mean=mean(salaries$female))
 - This finding is supported by the test statistic and the p-value, therefore we REJECT the null hypothesis, and we conclude that the salaries of male graduates and female graduates are not equal.
 :::
 
-![](../assets/inferential-statistics/part-03-slide-30-graphic-09.png){width="30%" fig-alt="Illustration: Two Samples T-Test – Testing Independent Groups (Unpaired T Test) (variance assumed to be equal)"}
+[![](../assets/inferential-statistics/part-03-slide-30-graphic-09.png){width="30%" fig-alt="Illustration: Two Samples T-Test – Testing Independent Groups (Unpaired T Test) (variance assumed to be equal)"}](https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Standard-Deviations-Assumed-Equal/index.html)
+
+::::: {.recovered-resources #original-resources-3-30}
+
+:::: {.recovered-resource}
+::: {.resource-description}
+**Worked example — independent means with equal variances**
+
+Follow the pooled t-test example, with its equal-variance assumption.
+
+<https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Standard-Deviations-Assumed-Equal/index.html>
+:::
+
+::: {.resource-qr}
+[![](../assets/inferential-statistics/resources/pooled-t-worked.svg){.compact-resource-qr width="144" fig-alt="QR code: Worked example — independent means with equal variances"}](https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Standard-Deviations-Assumed-Equal/index.html)
+:::
+::::
+
+:::::
 
 :::: {.try-in-r #r-example-03-30}
 
@@ -1739,7 +1940,25 @@ We want to test at α 1%, whether the mean political science salary is higher th
 +---+------------------------------------------------------------------+
 :::
 
-![](../assets/inferential-statistics/part-03-slide-31-graphic-05.png){width="30%" fig-alt="Illustration: Two Samples T-Test – Testing Independent Groups (Unpaired T Test) (variance assumed to be NOT equal)"}
+[![](../assets/inferential-statistics/part-03-slide-31-graphic-05.png){width="30%" fig-alt="Illustration: Two Samples T-Test – Testing Independent Groups (Unpaired T Test) (variance assumed to be NOT equal)"}](https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Standard-Deviations-Not-Assumed-Equal/index.html)
+
+::::: {.recovered-resources #original-resources-3-31}
+
+:::: {.recovered-resource}
+::: {.resource-description}
+**Worked example — independent means with unequal variances**
+
+Follow the unequal-variance t-test example.
+
+<https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Standard-Deviations-Not-Assumed-Equal/index.html>
+:::
+
+::: {.resource-qr}
+[![](../assets/inferential-statistics/resources/welch-t-worked.svg){.compact-resource-qr width="144" fig-alt="QR code: Worked example — independent means with unequal variances"}](https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Standard-Deviations-Not-Assumed-Equal/index.html)
+:::
+::::
+
+:::::
 
 :::: {.try-in-r #r-example-03-31}
 
@@ -1770,7 +1989,25 @@ c(political_science_mean=mean(majors$political_science),
 - This finding is supported by the test statistic and the p-value, therefore we FAIL TO REJECT the null hypothesis which states that the salaries of political science and social science are equal for female graduates.
 :::
 
-![](../assets/inferential-statistics/part-03-slide-32-graphic-08.png){width="30%" fig-alt="Illustration: Two Samples T-Test – Testing Independent Groups (Unpaired T Test) (variance assumed to be NOT equal)"}
+[![](../assets/inferential-statistics/part-03-slide-32-graphic-08.png){width="30%" fig-alt="Illustration: Two Samples T-Test – Testing Independent Groups (Unpaired T Test) (variance assumed to be NOT equal)"}](https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Standard-Deviations-Not-Assumed-Equal/index.html)
+
+::::: {.recovered-resources #original-resources-3-32}
+
+:::: {.recovered-resource}
+::: {.resource-description}
+**Worked example — independent means with unequal variances**
+
+Follow the unequal-variance t-test example.
+
+<https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Standard-Deviations-Not-Assumed-Equal/index.html>
+:::
+
+::: {.resource-qr}
+[![](../assets/inferential-statistics/resources/welch-t-worked.svg){.compact-resource-qr width="144" fig-alt="QR code: Worked example — independent means with unequal variances"}](https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Standard-Deviations-Not-Assumed-Equal/index.html)
+:::
+::::
+
+:::::
 
 :::: {.try-in-r #r-example-03-32}
 

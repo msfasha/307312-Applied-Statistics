@@ -371,6 +371,38 @@ What is the probability of having 2 Heads ONLY out of 10 trials, knowing that th
 A binomial distribution is symmetric when p = 0.5 and skewed when p is close to 0 or 1. A normal approximation improves when both np and n(1 − p) are sufficiently large; increasing n alone is not a universal guarantee.
 :::
 
+::::: {.recovered-resources #original-resources-1-17}
+
+:::: {.recovered-resource}
+::: {.resource-description}
+**Interactive calculator — binomial distribution (StatCrunch)**
+
+Try n = 10, p = 0.5 and P(X = 2), then change n or p to inspect the distribution.
+
+<https://www.statcrunch.com/app/calculator.html?calculator=binomial>
+:::
+
+::: {.resource-qr}
+[![](../assets/inferential-statistics/resources/binomial-statcrunch.svg){.compact-resource-qr width="144" fig-alt="QR code: Interactive calculator — binomial distribution (StatCrunch)"}](https://www.statcrunch.com/app/calculator.html?calculator=binomial)
+:::
+::::
+
+:::: {.recovered-resource}
+::: {.resource-description}
+**Interactive calculator — binomial distribution (Matt Bognar)**
+
+Choose the trial count and success probability; compare exact-count and cumulative probabilities.
+
+<https://mabognar.github.io/apps/bin.html>
+:::
+
+::: {.resource-qr}
+[![](../assets/inferential-statistics/resources/binomial-bognar.svg){.compact-resource-qr width="144" fig-alt="QR code: Interactive calculator — binomial distribution (Matt Bognar)"}](https://mabognar.github.io/apps/bin.html)
+:::
+::::
+
+:::::
+
 :::: {.try-in-r #r-example-01-17}
 
 #### Try this in R {.unlisted}
@@ -471,6 +503,38 @@ ppois(1100, lambda=1000, lower.tail=FALSE)
 ::: source-text
 A Poisson distribution models counts, not continuous measurements. Small λ gives a right-skewed shape. As λ increases, it becomes more symmetric and approximately bell-shaped, while its possible outcomes remain whole numbers.
 :::
+
+::::: {.recovered-resources #original-resources-1-19}
+
+:::: {.recovered-resource}
+::: {.resource-description}
+**Interactive calculator — Poisson distribution (StatCrunch)**
+
+Try an expected count of 20 and P(X = 15), then change the expected count to inspect the shape.
+
+<https://www.statcrunch.com/app/calculator.html?calculator=poisson>
+:::
+
+::: {.resource-qr}
+[![](../assets/inferential-statistics/resources/poisson-statcrunch.svg){.compact-resource-qr width="144" fig-alt="QR code: Interactive calculator — Poisson distribution (StatCrunch)"}](https://www.statcrunch.com/app/calculator.html?calculator=poisson)
+:::
+::::
+
+:::: {.recovered-resource}
+::: {.resource-description}
+**Interactive calculator — Poisson distribution (Matt Bognar)**
+
+Set the expected count for the interval, then calculate exact-count or cumulative probabilities.
+
+<https://mabognar.github.io/apps/pois.html>
+:::
+
+::: {.resource-qr}
+[![](../assets/inferential-statistics/resources/poisson-bognar.svg){.compact-resource-qr width="144" fig-alt="QR code: Interactive calculator — Poisson distribution (Matt Bognar)"}](https://mabognar.github.io/apps/pois.html)
+:::
+::::
+
+:::::
 
 :::: {.try-in-r #r-example-01-19}
 
@@ -837,6 +901,24 @@ c(Python = (90-70)/10, Database = (90-80)/10)
 
 ### How to Find the Right Distribution {#part3-title-01-31}
 
+::::: {.recovered-resources #original-resources-1-31}
+
+:::: {.recovered-resource}
+::: {.resource-description}
+**Background reading — choosing a probability distribution**
+
+Read about choosing and fitting probability distributions.
+
+<https://medium.com/data-science-collective/how-to-find-the-right-distribution-for-your-data-a-practical-guide-for-non-statistician-with-two-dc2aa0ed707f>
+:::
+
+::: {.resource-qr}
+[![](../assets/inferential-statistics/resources/distribution-fitting-reading.svg){.compact-resource-qr width="144" fig-alt="QR code: Background reading — choosing a probability distribution"}](https://medium.com/data-science-collective/how-to-find-the-right-distribution-for-your-data-a-practical-guide-for-non-statistician-with-two-dc2aa0ed707f)
+:::
+::::
+
+:::::
+
 :::: {.try-in-r #r-example-01-31}
 
 #### Try this in R {.unlisted}
@@ -920,9 +1002,23 @@ The mean has a Z-score of 0.
 
 ![](../assets/inferential-statistics/part-01-slide-34-graphic-03.png){width="30%" fig-alt="Illustration: Standard Normal Distribution and Standard Z Scores"}
 
-::: source-text
-https://medium.com/towards-data-science/what-is-p-value-370056b8244d
+::::: {.recovered-resources #original-resources-1-34}
+
+:::: {.recovered-resource}
+::: {.resource-description}
+**Background reading — p-values**
+
+Further reading on p-values, used in hypothesis testing.
+
+<https://medium.com/towards-data-science/what-is-p-value-370056b8244d>
 :::
+
+::: {.resource-qr}
+[![](../assets/inferential-statistics/resources/p-value-reading.svg){.compact-resource-qr width="144" fig-alt="QR code: Background reading — p-values"}](https://medium.com/towards-data-science/what-is-p-value-370056b8244d)
+:::
+::::
+
+:::::
 
 ::::::
 

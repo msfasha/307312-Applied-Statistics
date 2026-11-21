@@ -1,0 +1,497 @@
+{
+  "date": "2026-11-21",
+  "source_decks": [
+    "sources/slides/307102-inferential-01-original.pptx",
+    "sources/slides/307102-inferential-02-original.pptx",
+    "sources/slides/307102-inferential-03-original.pptx",
+    "sources/slides/307102-inferential-04-original.pptx"
+  ],
+  "original_link_placements": 21,
+  "distinct_resources": 15,
+  "decoded_original_qr_codes": [
+    {
+      "deck": 1,
+      "slide": 17,
+      "media": "ppt/media/image24.png",
+      "url": "https://homepage.divms.uiowa.edu/~mbognar/applets/bin.html"
+    },
+    {
+      "deck": 1,
+      "slide": 17,
+      "media": "ppt/media/image22.png",
+      "url": "https://www.statcrunch.com/app/calculator.html?calculator=binomial"
+    },
+    {
+      "deck": 1,
+      "slide": 19,
+      "media": "ppt/media/image30.png",
+      "url": "https://homepage.divms.uiowa.edu/~mbognar/applets/pois.html"
+    },
+    {
+      "deck": 1,
+      "slide": 19,
+      "media": "ppt/media/image28.png",
+      "url": "https://www.statcrunch.com/app/calculator.html?calculator=poisson"
+    }
+  ],
+  "original_records": [
+    {
+      "deck": 1,
+      "slide": 5,
+      "title": "Introduction to Inferential Statistics",
+      "url": "https://medium.com/towards-data-science/what-is-p-value-370056b8244d"
+    },
+    {
+      "deck": 1,
+      "slide": 17,
+      "title": "The Binomial Distribution",
+      "url": "https://www.statcrunch.com/app/calculator.html?calculator=binomial"
+    },
+    {
+      "deck": 1,
+      "slide": 17,
+      "title": "The Binomial Distribution",
+      "url": "https://homepage.divms.uiowa.edu/~mbognar/applets/bin.html"
+    },
+    {
+      "deck": 1,
+      "slide": 19,
+      "title": "Excel Function",
+      "url": "https://www.statcrunch.com/app/calculator.html?calculator=poisson"
+    },
+    {
+      "deck": 1,
+      "slide": 19,
+      "title": "Excel Function",
+      "url": "https://homepage.divms.uiowa.edu/~mbognar/applets/pois.html"
+    },
+    {
+      "deck": 1,
+      "slide": 31,
+      "title": "How to Find the Right Distribution",
+      "url": "https://medium.com/data-science-collective/how-to-find-the-right-distribution-for-your-data-a-practical-guide-for-non-statistician-with-two-dc2aa0ed707f"
+    },
+    {
+      "deck": 1,
+      "slide": 34,
+      "title": "Standard Normal Distribution and Standard Z Scores",
+      "url": "https://medium.com/towards-data-science/what-is-p-value-370056b8244d"
+    },
+    {
+      "deck": 2,
+      "slide": 7,
+      "title": "Computing Confidence Intervals",
+      "url": "https://medium.com/@ashisharora2204/hypothesis-testing-confidence-interval-level-margin-of-error-39aa7c7ddcd2"
+    },
+    {
+      "deck": 2,
+      "slide": 12,
+      "title": "The Central Limit Theorem",
+      "url": "https://www.lock5stat.com/StatKey/sampling_1_quant/sampling_1_quant.html"
+    },
+    {
+      "deck": 2,
+      "slide": 12,
+      "title": "The Central Limit Theorem",
+      "url": "https://www.youtube.com/watch?v=NTq0BO6pbbg&list=PLLTSM0eKjC2eSEO7y7MZWb1sdDJiAejoI&index=10"
+    },
+    {
+      "deck": 2,
+      "slide": 20,
+      "title": "Transitioning to T-Distribution",
+      "url": "https://www.scribbr.com/statistics/t-distribution/"
+    },
+    {
+      "deck": 3,
+      "slide": 15,
+      "title": "The Critical Value and the p-Value Approach to Hypothesis Testing",
+      "url": "https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Introduction-to-Hypothesis-Testing/Critical-Value-and-the-p-Value-Approach/index.html"
+    },
+    {
+      "deck": 3,
+      "slide": 16,
+      "title": "The Critical Value Approach to Hypothesis Testing",
+      "url": "https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Introduction-to-Hypothesis-Testing/Critical-Value-and-the-p-Value-Approach/index.html"
+    },
+    {
+      "deck": 3,
+      "slide": 17,
+      "title": "The p-Value Approach to Hypothesis Testing",
+      "url": "https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Introduction-to-Hypothesis-Testing/Critical-Value-and-the-p-Value-Approach/index.html"
+    },
+    {
+      "deck": 3,
+      "slide": 26,
+      "title": "Two Samples T-Test \u2013 Testing Dependent Groups (Paired T Test)",
+      "url": "https://datatab.net/tutorial/paired-t-test"
+    },
+    {
+      "deck": 3,
+      "slide": 27,
+      "title": "Two Samples T-Test \u2013 Testing Dependent Groups (Paired T Test)",
+      "url": "https://datatab.net/tutorial/paired-t-test"
+    },
+    {
+      "deck": 3,
+      "slide": 28,
+      "title": "Two Samples T-Test \u2013 Testing Dependent Groups (Paired T Test)",
+      "url": "https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Paired-Samples/index.html"
+    },
+    {
+      "deck": 3,
+      "slide": 29,
+      "title": "Two Samples T-Test \u2013 Testing Independent Groups (Unpaired T Test)",
+      "url": "https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Standard-Deviations-Assumed-Equal/index.html"
+    },
+    {
+      "deck": 3,
+      "slide": 30,
+      "title": "Two Samples T-Test \u2013 Testing Independent Groups (Unpaired T Test)",
+      "url": "https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Standard-Deviations-Assumed-Equal/index.html"
+    },
+    {
+      "deck": 3,
+      "slide": 31,
+      "title": "Two Samples T-Test \u2013 Testing Independent Groups (Unpaired T Test)",
+      "url": "https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Standard-Deviations-Not-Assumed-Equal/index.html"
+    },
+    {
+      "deck": 3,
+      "slide": 32,
+      "title": "Two Samples T-Test \u2013 Testing Independent Groups (Unpaired T Test)",
+      "url": "https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Standard-Deviations-Not-Assumed-Equal/index.html"
+    }
+  ],
+  "resources": [
+    {
+      "id": "p-value-reading",
+      "title": "Background reading \u2014 p-values",
+      "purpose": "Further reading on p-values, used in hypothesis testing.",
+      "original_url": "https://medium.com/towards-data-science/what-is-p-value-370056b8244d",
+      "active_url": "https://medium.com/towards-data-science/what-is-p-value-370056b8244d",
+      "placements": [
+        "1-5",
+        "1-34"
+      ],
+      "original_url_check": {
+        "url": "https://medium.com/towards-data-science/what-is-p-value-370056b8244d",
+        "http_status": "403",
+        "effective_url": "https://medium.com/towards-data-science/what-is-p-value-370056b8244d",
+        "error": ""
+      },
+      "recovery_note": "Original article retained; automated access returned 403, so its contents were not revalidated.",
+      "linked_original_images": {}
+    },
+    {
+      "id": "binomial-statcrunch",
+      "title": "Interactive calculator \u2014 binomial distribution (StatCrunch)",
+      "purpose": "Try n = 10, p = 0.5 and P(X = 2), then change n or p to inspect the distribution.",
+      "original_url": "https://www.statcrunch.com/app/calculator.html?calculator=binomial",
+      "active_url": "https://www.statcrunch.com/app/calculator.html?calculator=binomial",
+      "placements": [
+        "1-17"
+      ],
+      "original_url_check": {
+        "url": "https://www.statcrunch.com/app/calculator.html?calculator=binomial",
+        "http_status": "200",
+        "effective_url": "https://statcrunch.pearson.com:443/app/calculator.html?calculator=binomial",
+        "error": ""
+      },
+      "recovery_note": "Original resource retained; redirects were checked.",
+      "linked_original_images": {
+        "1-17": [
+          "assets/inferential-statistics/part-01-slide-17-graphic-02.png"
+        ]
+      }
+    },
+    {
+      "id": "binomial-bognar",
+      "title": "Interactive calculator \u2014 binomial distribution (Matt Bognar)",
+      "purpose": "Choose the trial count and success probability; compare exact-count and cumulative probabilities.",
+      "original_url": "https://homepage.divms.uiowa.edu/~mbognar/applets/bin.html",
+      "active_url": "https://mabognar.github.io/apps/bin.html",
+      "placements": [
+        "1-17"
+      ],
+      "original_url_check": {
+        "url": "https://homepage.divms.uiowa.edu/~mbognar/applets/bin.html",
+        "http_status": "404",
+        "effective_url": "https://homepage.divms.uiowa.edu/~mbognar/applets/bin.html",
+        "error": ""
+      },
+      "recovery_note": "Current applet verified on the original author's applet directory; old Iowa URL returns 404.",
+      "linked_original_images": {}
+    },
+    {
+      "id": "poisson-statcrunch",
+      "title": "Interactive calculator \u2014 Poisson distribution (StatCrunch)",
+      "purpose": "Try an expected count of 20 and P(X = 15), then change the expected count to inspect the shape.",
+      "original_url": "https://www.statcrunch.com/app/calculator.html?calculator=poisson",
+      "active_url": "https://www.statcrunch.com/app/calculator.html?calculator=poisson",
+      "placements": [
+        "1-19"
+      ],
+      "original_url_check": {
+        "url": "https://www.statcrunch.com/app/calculator.html?calculator=poisson",
+        "http_status": "200",
+        "effective_url": "https://statcrunch.pearson.com:443/app/calculator.html?calculator=poisson",
+        "error": ""
+      },
+      "recovery_note": "Original resource retained; redirects were checked.",
+      "linked_original_images": {
+        "1-19": [
+          "assets/inferential-statistics/part-01-slide-19-graphic-02.png"
+        ]
+      }
+    },
+    {
+      "id": "poisson-bognar",
+      "title": "Interactive calculator \u2014 Poisson distribution (Matt Bognar)",
+      "purpose": "Set the expected count for the interval, then calculate exact-count or cumulative probabilities.",
+      "original_url": "https://homepage.divms.uiowa.edu/~mbognar/applets/pois.html",
+      "active_url": "https://mabognar.github.io/apps/pois.html",
+      "placements": [
+        "1-19"
+      ],
+      "original_url_check": {
+        "url": "https://homepage.divms.uiowa.edu/~mbognar/applets/pois.html",
+        "http_status": "404",
+        "effective_url": "https://homepage.divms.uiowa.edu/~mbognar/applets/pois.html",
+        "error": ""
+      },
+      "recovery_note": "Current applet verified on the original author's applet directory; old Iowa URL returns 404.",
+      "linked_original_images": {}
+    },
+    {
+      "id": "distribution-fitting-reading",
+      "title": "Background reading \u2014 choosing a probability distribution",
+      "purpose": "Read about choosing and fitting probability distributions.",
+      "original_url": "https://medium.com/data-science-collective/how-to-find-the-right-distribution-for-your-data-a-practical-guide-for-non-statistician-with-two-dc2aa0ed707f",
+      "active_url": "https://medium.com/data-science-collective/how-to-find-the-right-distribution-for-your-data-a-practical-guide-for-non-statistician-with-two-dc2aa0ed707f",
+      "placements": [
+        "1-31"
+      ],
+      "original_url_check": {
+        "url": "https://medium.com/data-science-collective/how-to-find-the-right-distribution-for-your-data-a-practical-guide-for-non-statistician-with-two-dc2aa0ed707f",
+        "http_status": "403",
+        "effective_url": "https://medium.com/data-science-collective/how-to-find-the-right-distribution-for-your-data-a-practical-guide-for-non-statistician-with-two-dc2aa0ed707f",
+        "error": ""
+      },
+      "recovery_note": "Original article retained; automated access returned 403, so its contents were not revalidated.",
+      "linked_original_images": {}
+    },
+    {
+      "id": "confidence-interval-reading",
+      "title": "Background reading \u2014 confidence intervals and margin of error",
+      "purpose": "Read about confidence levels, interval width and margin of error.",
+      "original_url": "https://medium.com/@ashisharora2204/hypothesis-testing-confidence-interval-level-margin-of-error-39aa7c7ddcd2",
+      "active_url": "https://medium.com/@ashisharora2204/hypothesis-testing-confidence-interval-level-margin-of-error-39aa7c7ddcd2",
+      "placements": [
+        "2-7"
+      ],
+      "original_url_check": {
+        "url": "https://medium.com/@ashisharora2204/hypothesis-testing-confidence-interval-level-margin-of-error-39aa7c7ddcd2",
+        "http_status": "403",
+        "effective_url": "https://medium.com/@ashisharora2204/hypothesis-testing-confidence-interval-level-margin-of-error-39aa7c7ddcd2",
+        "error": ""
+      },
+      "recovery_note": "Automated HTTP fetch returned 403. Publisher search retrieval confirmed the title and author; the course does not adopt the article's imprecise confidence-level wording.",
+      "linked_original_images": {}
+    },
+    {
+      "id": "sampling-statkey",
+      "title": "Sampling simulation \u2014 StatKey",
+      "purpose": "Choose a sample size, generate repeated samples and compare the population, individual samples and sampling distribution of the mean.",
+      "original_url": "https://www.lock5stat.com/StatKey/sampling_1_quant/sampling_1_quant.html",
+      "active_url": "https://www.lock5stat.com/StatKey/sampling_1_quant/sampling_1_quant.html",
+      "placements": [
+        "2-12"
+      ],
+      "original_url_check": {
+        "url": "https://www.lock5stat.com/StatKey/sampling_1_quant/sampling_1_quant.html",
+        "http_status": "200",
+        "effective_url": "https://www.lock5stat.com/StatKey/sampling_1_quant/sampling_1_quant.html",
+        "error": ""
+      },
+      "recovery_note": "Original resource retained; redirects were checked.",
+      "linked_original_images": {}
+    },
+    {
+      "id": "clt-video",
+      "title": "Video tutorial \u2014 central limit theorem (TileStats)",
+      "purpose": "The central limit theorem explained with a simple example.",
+      "original_url": "https://www.youtube.com/watch?v=NTq0BO6pbbg&list=PLLTSM0eKjC2eSEO7y7MZWb1sdDJiAejoI&index=10",
+      "active_url": "https://www.youtube.com/watch?v=NTq0BO6pbbg",
+      "placements": [
+        "2-12"
+      ],
+      "original_url_check": {
+        "url": "https://www.youtube.com/watch?v=NTq0BO6pbbg&list=PLLTSM0eKjC2eSEO7y7MZWb1sdDJiAejoI&index=10",
+        "http_status": "200",
+        "effective_url": "https://www.youtube.com/watch?v=NTq0BO6pbbg&list=PLLTSM0eKjC2eSEO7y7MZWb1sdDJiAejoI&index=10",
+        "error": ""
+      },
+      "recovery_note": "Original resource recovered; canonical video URL omits playlist parameters.",
+      "linked_original_images": {
+        "2-12": [
+          "assets/inferential-statistics/part-02-slide-12-graphic-04.png"
+        ]
+      }
+    },
+    {
+      "id": "t-distribution-reading",
+      "title": "Background reading \u2014 Student's t distribution",
+      "purpose": "Reference material on the t distribution and its use in inference.",
+      "original_url": "https://www.scribbr.com/statistics/t-distribution/",
+      "active_url": "https://www.scribbr.com/statistics/t-distribution/",
+      "placements": [
+        "2-20"
+      ],
+      "original_url_check": {
+        "url": "https://www.scribbr.com/statistics/t-distribution/",
+        "http_status": "403",
+        "effective_url": "https://www.scribbr.com/statistics/t-distribution/",
+        "error": ""
+      },
+      "recovery_note": "Original resource retained. Scribbr content was accessible through browser retrieval despite the automated 403.",
+      "linked_original_images": {}
+    },
+    {
+      "id": "critical-value-p-value",
+      "title": "Worked guide \u2014 critical-value and p-value approaches",
+      "purpose": "Compare critical regions and p-values in two-sided and one-sided hypothesis tests.",
+      "original_url": "https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Introduction-to-Hypothesis-Testing/Critical-Value-and-the-p-Value-Approach/index.html",
+      "active_url": "https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Introduction-to-Hypothesis-Testing/Critical-Value-and-the-p-Value-Approach/index.html",
+      "placements": [
+        "3-15",
+        "3-16",
+        "3-17"
+      ],
+      "original_url_check": {
+        "url": "https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Introduction-to-Hypothesis-Testing/Critical-Value-and-the-p-Value-Approach/index.html",
+        "http_status": "200",
+        "effective_url": "https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Introduction-to-Hypothesis-Testing/Critical-Value-and-the-p-Value-Approach/index.html",
+        "error": ""
+      },
+      "recovery_note": "Original resource retained; redirects were checked.",
+      "linked_original_images": {
+        "3-15": [
+          "assets/inferential-statistics/part-03-slide-15-graphic-02.png"
+        ],
+        "3-16": [
+          "assets/inferential-statistics/part-03-slide-16-graphic-03.png"
+        ],
+        "3-17": [
+          "assets/inferential-statistics/part-03-slide-17-graphic-03.png"
+        ]
+      }
+    },
+    {
+      "id": "paired-t-tutorial",
+      "title": "Tutorial \u2014 paired-samples t-test (DATAtab / numiqo)",
+      "purpose": "Review paired measurements, the mean difference, assumptions and interpretation.",
+      "original_url": "https://datatab.net/tutorial/paired-t-test",
+      "active_url": "https://datatab.net/tutorial/paired-t-test",
+      "placements": [
+        "3-26",
+        "3-27"
+      ],
+      "original_url_check": {
+        "url": "https://datatab.net/tutorial/paired-t-test",
+        "http_status": "200",
+        "effective_url": "https://numiqo.com/tutorial/paired-t-test",
+        "error": ""
+      },
+      "recovery_note": "Original resource retained; redirects were checked.",
+      "linked_original_images": {
+        "3-26": [
+          "assets/inferential-statistics/part-03-slide-26-graphic-04.png"
+        ],
+        "3-27": [
+          "assets/inferential-statistics/part-03-slide-27-graphic-04.png"
+        ]
+      }
+    },
+    {
+      "id": "paired-t-worked",
+      "title": "Worked example \u2014 paired-samples t-test",
+      "purpose": "Follow the analysis of paired before-and-after measurements.",
+      "original_url": "https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Paired-Samples/index.html",
+      "active_url": "https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Paired-Samples/index.html",
+      "placements": [
+        "3-28"
+      ],
+      "original_url_check": {
+        "url": "https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Paired-Samples/index.html",
+        "http_status": "200",
+        "effective_url": "https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Paired-Samples/index.html",
+        "error": ""
+      },
+      "recovery_note": "Original resource retained; redirects were checked.",
+      "linked_original_images": {
+        "3-28": [
+          "assets/inferential-statistics/part-03-slide-28-graphic-08.png"
+        ]
+      }
+    },
+    {
+      "id": "pooled-t-worked",
+      "title": "Worked example \u2014 independent means with equal variances",
+      "purpose": "Follow the pooled t-test example, with its equal-variance assumption.",
+      "original_url": "https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Standard-Deviations-Assumed-Equal/index.html",
+      "active_url": "https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Standard-Deviations-Assumed-Equal/index.html",
+      "placements": [
+        "3-29",
+        "3-30"
+      ],
+      "original_url_check": {
+        "url": "https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Standard-Deviations-Assumed-Equal/index.html",
+        "http_status": "200",
+        "effective_url": "https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Standard-Deviations-Assumed-Equal/index.html",
+        "error": ""
+      },
+      "recovery_note": "Original resource retained; redirects were checked.",
+      "linked_original_images": {
+        "3-29": [
+          "assets/inferential-statistics/part-03-slide-29-graphic-05.png"
+        ],
+        "3-30": [
+          "assets/inferential-statistics/part-03-slide-30-graphic-09.png"
+        ]
+      }
+    },
+    {
+      "id": "welch-t-worked",
+      "title": "Worked example \u2014 independent means with unequal variances",
+      "purpose": "Follow the unequal-variance t-test example.",
+      "original_url": "https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Standard-Deviations-Not-Assumed-Equal/index.html",
+      "active_url": "https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Standard-Deviations-Not-Assumed-Equal/index.html",
+      "placements": [
+        "3-31",
+        "3-32"
+      ],
+      "original_url_check": {
+        "url": "https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Standard-Deviations-Not-Assumed-Equal/index.html",
+        "http_status": "200",
+        "effective_url": "https://www.geo.fu-berlin.de/en/v/soga-r/Basics-of-statistics/Hypothesis-Tests/Hypothesis-Tests-for-Two-Population-Means/Standard-Deviations-Not-Assumed-Equal/index.html",
+        "error": ""
+      },
+      "recovery_note": "Original resource retained; redirects were checked.",
+      "linked_original_images": {
+        "3-31": [
+          "assets/inferential-statistics/part-03-slide-31-graphic-05.png"
+        ],
+        "3-32": [
+          "assets/inferential-statistics/part-03-slide-32-graphic-08.png"
+        ]
+      }
+    }
+  ],
+  "source_notes": [
+    "The p-value article appears on two original slides with broader/different topics. It is labelled as p-value background rather than described as a z-score reference.",
+    "External references are restored as references; this does not validate every statement in them. In particular, t and normal distributions remain distinct in the course.",
+    "The original regression deck contains no external hyperlinks or decodable QR links.",
+    "Synthetic-data generation and sampling simulations already present as R examples are retained unchanged.",
+    "The recovered confidence-interval article is indexed and identifiable, but some wording describes confidence as sample statistics meeting the population parameter. Retain the course's repeated-interval coverage interpretation; do not adopt that wording. The Scribbr article likewise should not be used to classify t as a type of normal distribution."
+  ]
+}

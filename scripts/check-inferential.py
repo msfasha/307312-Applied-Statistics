@@ -45,6 +45,21 @@ def check():
             assert hashlib.sha256(block.strip().encode()).hexdigest()==manifest['authorized_visual_updates'][key]['sha256'],('Authorized slide changed',key)
         elif key in manifest['unchanged_slide_bodies_excluding_R']:
             assert hashlib.sha256(block.strip().encode()).hexdigest()==manifest['unchanged_slide_bodies_excluding_R'][key],('Original theory changed',key)
+    # Every recovered source resource remains attached to its original teaching position.
+    catalog=json.loads((ROOT/'instructor/inferential-resource-recovery.json').read_text())
+    blocks=dict(pair for text in sources.values() for pair in inferential_blocks(text))
+    recovered=set()
+    for resource in catalog['resources']:
+        for key in resource['placements']:
+            assert resource['active_url'] in blocks[key], ('Missing recovered URL',key,resource['id'])
+            image='clt-video-qr.svg' if resource['id']=='clt-video' else 'resources/'+resource['id']+'.svg'
+            assert image in blocks[key] and (ROOT/'assets/inferential-statistics'/image).exists(), ('Missing recovered QR',key,resource['id'])
+            for original_image in resource.get('linked_original_images',{}).get(key,[]):
+                if '../'+original_image in blocks[key]:
+                    pattern=r'\[!\[[^\]]*\]\(\.\./'+re.escape(original_image)+r'\)(?:\{[^}]*\})?\]\('+re.escape(resource['active_url'])+r'\)'
+                    assert re.search(pattern,blocks[key]), ('Original image link missing',key,original_image)
+            recovered.add((key,resource['id']))
+    assert len(catalog['resources'])==15 and len(recovered)==21
     extra=r'''
 stopifnot(abs(dbinom(2,10,.5)-.0439453125)<1e-12)
 stopifnot(abs(dpois(x=15,lambda=20)-.0516488535317584)<1e-12)

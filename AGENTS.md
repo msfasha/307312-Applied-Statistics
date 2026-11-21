@@ -451,3 +451,12 @@
 - Probability foundations starts with random experiments, outcomes, sample spaces and events, followed by random variables and distributions. The detailed inference introduction moves to Part 4. Its order is sampling distributions → standard error → CLT → point estimates → confidence intervals → testing → regression. Mean/variance identities do not depend on the CLT; distinguish exact normal/t inference from large-sample approximations.
 - Preserve all 141 historical positions once across Parts 3–4, with the explicitly approved teaching order stored in the instructor manifest, the 36 explained R examples and original reference decks unchanged. New foundations use native Quarto prose/math and existing shared styling.
 - Publish thirteen canonical notebook/PDF pairs, four core plain-R downloads and both student bundles. The student ZIP contains all thirteen notebooks; Parts 3–4 must match the canonical Quarto source byte-for-byte. Update every home/part/case link and validation with the split; retain nine business applications.
+
+## Restore every original inferential resource — 21 November 2026
+
+- User authorized recovering all original external resources and publishing when complete. Keep the four-part canonical structure and existing teaching/R code.
+- The four original decks contain 15 distinct resources across 21 link placements; four original QR codes repeat the binomial/Poisson links. The regression deck has no external resource links.
+- `instructor/inferential-resource-recovery.json` records every original URL, placement, recovered QR payload and destination check. Two obsolete Iowa applet URLs use the original author's current mabognar.github.io versions. Other original addresses are retained; the video uses its canonical URL without playlist parameters.
+- Add purpose-labelled full URLs and compact, scannable QR codes at the corresponding slides. Preserve all approved R panels rather than restoring obsolete software screenshots. The CLT's compact formula/video layout remains.
+- Reproduce with scripts/audit-inferential-resources.py and scripts/recover-inferential-resources.py; qrcode/zxing-cpp are maintainer utilities, not student dependencies. The content manifest and inferential checks deliberately guard the authorized additions and all 21 resource placements.
+- Medium pages blocked automated access; preserve their original links without claiming their contents were validated. Distinguish calculators, sampling simulations, video and reading references.
