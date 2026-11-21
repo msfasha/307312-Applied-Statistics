@@ -193,3 +193,21 @@
  .source-slide img.compact-tutorial-qr { width: 108px; }
 }
 @media print { .clt-resources, .clt-resource-links { break-inside: avoid; } }
+
+/* Recovered original resources: explicit purpose, readable URL and compact QR. */
+.recovered-resources { margin: 1.2rem 0; }
+.recovered-resource { display: grid; grid-template-columns: minmax(0, 1fr) 144px; gap: 1rem; align-items: center; padding: .85rem 1rem; margin: .75rem 0; border: 1px solid #D6D6D6; background: #F7F7F7; break-inside: avoid; }
+.recovered-resource > div { min-width: 0; }
+.recovered-resource p { margin: .25rem 0 .5rem; }
+.recovered-resource a { overflow-wrap: anywhere; }
+.recovered-resource .resource-description > p:last-child { font-size: .85rem; }
+.recovered-resource .quarto-figure { margin: 0; }
+.source-slide img.compact-resource-qr { width: 144px; min-width: 0; max-width: 144px; height: auto; }
+@media screen and (max-width: 600px) {
+ .recovered-resource { grid-template-columns: minmax(0, 1fr); }
+ .recovered-resource .resource-qr { justify-self: center; }
+}
+@media print {
+ .recovered-resource { gap: .7rem; padding: .6rem .8rem; }
+ .recovered-resource .resource-description > p:last-child { font-size: 8.5pt; }
+}
