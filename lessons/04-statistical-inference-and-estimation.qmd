@@ -196,9 +196,31 @@ The **central limit theorem (CLT)** explains why the sampling distribution of a 
 
 ![](../assets/inferential-statistics/part-02-slide-12-graphic-02.png){width="47%" fig-alt="Illustration: The Central Limit Theorem"}
 
-![](../assets/inferential-statistics/part-02-slide-12-graphic-03.png){width="30%" fig-alt="Illustration: The Central Limit Theorem"}
+::: {.clt-resources}
+::: {.clt-identities}
+![](../assets/inferential-statistics/part-02-slide-12-graphic-03.png){.compact-clt-identities width="120" fig-alt="Mean and standard error of the sample mean"}
+:::
 
-![](../assets/inferential-statistics/part-02-slide-12-graphic-04.png){width="30%" fig-alt="Illustration: The Central Limit Theorem"}
+::: {.clt-video}
+[![](../assets/inferential-statistics/part-02-slide-12-graphic-04.png){.compact-video-tutorial width="100" fig-alt="Open the original central limit theorem video tutorial"}](https://www.youtube.com/watch?v=NTq0BO6pbbg)
+:::
+
+::: {.clt-qr}
+![](../assets/inferential-statistics/clt-video-qr.svg){.compact-tutorial-qr width="116" fig-alt="QR code for the original central limit theorem video tutorial"}
+
+Scan to open the video.
+:::
+:::
+
+::: {.clt-resource-links}
+**Video tutorial — TileStats:** *The central limit theorem | Explained with a simple example*
+
+<https://www.youtube.com/watch?v=NTq0BO6pbbg>
+
+**Interactive sampling tool — StatKey:**
+
+<https://www.lock5stat.com/StatKey/sampling_1_quant/sampling_1_quant.html>
+:::
 
 ::: source-text
 Distinguish the population distribution from the sampling distributions illustrated above.

@@ -248,7 +248,7 @@
     "1-5": "b91867d11821b5834fc610e016d3484eacb222e8cd8954b1c9cacd10fa198194",
     "1-6": "3b213d9e682c75937df9328572f9ec86cf69b94be2b8495dd035c9b491c1120a",
     "2-11": "823454e7032bdcd80c51500a0abf90a6c157cfbf11482e1c6b602f28cf1b9c2f",
-    "2-12": "6bff8e4867fb207ea3d24566253c753c3feace543302e4ef1cb2a61c7fce1f87",
+    "2-12": "f1e70e1a6a7ec7fcc34f81d2a7db3402288d2b342fc1d6a982ff359ae2ffa326",
     "2-16": "e887b8ca6909b0ed7c1bdfde212662f6cb8c4dbad305224929fc41e6a5782788",
     "2-3": "942d1df9791d3cd2a83c725fa42b82357b622d76499b07727873378230f0c53b",
     "2-5": "fdada8d0f703feaf98e526d0c57d91cf723ecfa4057f776339b1da1dfbce2ec1",
@@ -496,5 +496,12 @@
       "4-20",
       "4-21"
     ]
+  },
+  "resource_restorations": {
+    "2-12": {
+      "date": "2026-11-21",
+      "change": "Compact original formula/video graphics; recover original video and StatKey links; add explicit URLs and video QR. Teaching text and R cells unchanged.",
+      "provenance": "instructor/clt-tutorial-source.json"
+    }
   }
 }
