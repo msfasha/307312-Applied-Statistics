@@ -4342,6 +4342,29 @@ a { text-decoration: none !important; }
 .source-slide img.compact-marathon { width: 100%; min-width: 0; max-width: 120px; }
 @media print { .continuous-examples { break-inside: avoid; grid-template-columns: minmax(0, 1fr) 28mm; } }
 @media screen and (max-width: 450px) { .continuous-examples { grid-template-columns: minmax(0, 1fr) 85px; gap: .75rem; } }
+
+@media print {
+.source-slide.course-foundation {
+break-inside: avoid;
+page-break-inside: avoid;
+}
+}
+
+.clt-resources { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1.5rem; margin: 1rem 0; }
+.clt-resources > div { min-width: 0; text-align: center; }
+.clt-resources .quarto-figure { margin: .25rem auto; }
+.clt-resources p { margin: .35rem 0; font-size: .85rem; }
+.source-slide img.compact-clt-identities { width: 120px; min-width: 0; max-width: 120px; }
+.source-slide img.compact-video-tutorial { width: 100px; min-width: 0; max-width: 100px; }
+.source-slide img.compact-tutorial-qr { width: 116px; min-width: 0; max-width: 116px; }
+.clt-resource-links a { overflow-wrap: anywhere; }
+@media (max-width: 450px) {
+.clt-resources { gap: .75rem; }
+.source-slide img.compact-clt-identities { width: 96px; }
+.source-slide img.compact-video-tutorial { width: 80px; }
+.source-slide img.compact-tutorial-qr { width: 108px; }
+}
+@media print { .clt-resources, .clt-resource-links { break-inside: avoid; } }
 </style>
 <style type="text/css">
 #quarto-document-content li { margin-bottom: .45rem; }
