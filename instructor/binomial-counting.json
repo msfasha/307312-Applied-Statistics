@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-22",
+  "slide": "1-17",
+  "asset": "assets/inferential-statistics/binomial-three-toss-arrangements.svg",
+  "source": "Course-authored theoretical enumeration of three independent fair coin tosses.",
+  "decision": "User requested a minimal clarification of the existing binomial example. Supplied dice chart and separate sections not adopted.",
+  "counts": [
+    1,
+    3,
+    3,
+    1
+  ],
+  "two_heads_probability": "3/8",
+  "ten_toss_two_heads_probability": "45/1024"
+}

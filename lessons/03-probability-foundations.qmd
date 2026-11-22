@@ -101,27 +101,6 @@ A **random variable** assigns a numerical value to each possible outcome of a ra
 
 ::::::
 
-:::::: {.source-slide #probability-dice-sums .course-foundation}
-
-### Different outcomes can give the same total
-
-The **probability of a total** is the sum of the probabilities of all outcomes that produce it.
-
-For two **independent, fair six-sided dice**, let $S=D_1+D_2$ be their sum. Label the dice first and second, as the two colours distinguish them in the chart.
-
-![](../assets/inferential-statistics/dice-sum-outcomes.jpg){.dice-sum-chart width="512" fig-alt="All 36 ordered outcomes of two fair dice, stacked by their sum from 2 to 12"}
-
-- There are $6\times6=36$ equally likely **ordered pairs**, each with probability $1/36$.
-- A total of **7** occurs for $(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)$.
-- Thus $P(S=7)=6/36=1/6\approx16.67\%$; a total of 2 has only $(1,1)$, so $P(S=2)=1/36$.
-- $(1,6)$ and $(6,1)$ are different outcomes. The **pairs** are equally likely; the eleven possible **totals** are not.
-
-The column heights count the pairs that give each total: $1,2,3,4,5,6,5,4,3,2,1$.
-
-Illustration supplied by the instructor. This chart shows a **dice-sum distribution**.
-
-::::::
-
 :::::: {.source-slide #part3-01-slide-07}
 
 ## 3.2 Random variables {#part3-title-01-07}
@@ -324,36 +303,6 @@ c(three = probability[3], even = sum(probability[outcomes %in% c(2,4,6)]),
 ::::
 ::::::
 
-:::::: {.source-slide #probability-binomial-arrangements .course-foundation}
-
-### Why the binomial formula uses combinations
-
-A **binomial model** counts successes in a fixed number of independent trials with the same success probability. Its **combination coefficient** counts which trial positions contain the successes.
-
-For three independent fair coin tosses, let $X$ be the number of heads. H means head and T means tail; each ordered sequence has probability $1/8$.
-
-![](../assets/inferential-statistics/binomial-three-toss-arrangements.svg){.binomial-arrangements-chart width="640" fig-alt="All eight three-toss sequences grouped by head count: TTT; HTT, THT, TTH; HHT, HTH, THH; HHH"}
-
-Exactly two heads occurs in **HHT, HTH or THH**. These correspond to head positions $\{1,2\}$, $\{1,3\}$ or $\{2,3\}$: three choices.
-
-The number of sequences is the **combination coefficient** (read “$n$ choose $k$”):
-
-$$\binom{n}{k}=\frac{n!}{k!(n-k)!}.$$
-
-Multiply this count by the probability of one such sequence:
-
-$$P(X=k)=\binom{n}{k}p^k(1-p)^{n-k}.$$
-
-- $n$ is the number of trials, $k$ the number of successes and $p$ the success probability per trial. The factor $p^k(1-p)^{n-k}$ is the probability of one specified sequence with $k$ successes.
-- The symbol $!$ means **factorial**: multiply the positive whole numbers up to that number; for example, $4!=4\times3\times2\times1=24$. By definition, $0!=1$.
-- We **choose a set of success positions**; we do not order the selected positions again. This is why the factor is a **combination** count.
-- Here $\binom{3}{2}=3$, so $P(X=2)=3(1/2)^2(1/2)=3/8=37.5\%$.
-- In the later ten-toss example, exactly two heads has $\binom{10}{2}=45$ possible head-position choices.
-
-**Connection to the dice chart:** both diagrams group outcomes and add their probabilities. The dice chart groups ordered pairs by their **sum**; the binomial diagram groups success/failure sequences by their **success count**.
-
-::::::
-
 :::::: {.source-slide #part3-01-slide-16}
 
 ### Binomial Distribution {#part3-title-01-16}
@@ -414,9 +363,22 @@ c(exactly_2 = dbinom(2, size=80, prob=0.02), less_than_2 = pbinom(1,80,0.02),
 
 ### The Binomial Distribution {#part3-title-01-17}
 
+**What does the combination term count?** It counts the choices of trial positions that contain successes.
+
+For a small illustration, toss a fair coin independently three times. H means head and T means tail; the eight sequences below each have probability $1/8$.
+
+![](../assets/inferential-statistics/binomial-three-toss-arrangements.svg){.binomial-arrangements-chart width="640" fig-alt="Eight equally likely three-toss sequences grouped by head count; HHT, HTH and THH are the three ways to get exactly two heads"}
+
+- **Exactly two heads:** HHT, HTH or THH. We choose head positions $\{1,2\}$, $\{1,3\}$ or $\{2,3\}$.
+- Thus $\binom{3}{2}=3$ (read “3 choose 2”) counts the three sequences, and $P(X=2)=3\times1/8=3/8$.
+
+**Apply the same idea to the existing ten-toss example:**
+
 ::: source-text
 What is the probability of having 2 Heads ONLY out of 10 trials, knowing that the probability of Head = 50%?
 :::
+
+There are $\binom{10}{2}=45$ choices of head positions. Each ten-toss sequence has probability $(1/2)^{10}$, so $P(X=2)=45(1/2)^{10}\approx0.04395$, or **4.39%**.
 
 ::: source-text
 A binomial distribution is symmetric when p = 0.5 and skewed when p is close to 0 or 1. A normal approximation improves when both np and n(1 − p) are sufficiently large; increasing n alone is not a universal guarantee.

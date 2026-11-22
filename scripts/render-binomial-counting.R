@@ -1,4 +1,4 @@
-# Reproduce the course-authored companion to the instructor-supplied dice chart.
+# Reproduce the compact counting illustration in the existing binomial example.
 # All eight sequences are theoretical outcomes of three independent fair tosses.
 out <- 'assets/inferential-statistics/binomial-three-toss-arrangements.svg'
 svg(out, width=7.2, height=3.05, pointsize=15, bg='white')

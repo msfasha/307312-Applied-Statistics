@@ -220,7 +220,7 @@
     "1-14": "e37b176363dbc1743d5cd7f05e358ffb51e038479f529928a630d16e33b09f17",
     "1-15": "45cbf90e075f39480d8e32d29a08662ad7558298110477358dd681d46f395b69",
     "1-16": "3085411c6ef03cb847bb881efb31804eb111fc1f257a9032334d80787422e222",
-    "1-17": "ff41182664df6c149011090c2778c9ef298c4f39506ada3cbb4a5da7e3c70e52",
+    "1-17": "165645eaa3b3d440685ffc5d802115c2cd2804440245c57d84820bf83a0e2ce6",
     "1-18": "bb4e03e0c21c95d06c9f0cc3db9e23a9cb4397b16dd12c1643b6dbda3eba6f8d",
     "1-19": "6fdcc47ad03d6827644c3eb2f63b11fa39939da4bdfc30faa02e228ac8a32d7a",
     "1-20": "5485f5cafe8b8ad735b3408f6fb6eafdaa7ec976812b3665669058bcf021e386",
@@ -530,8 +530,8 @@
       "note": "Original article/calculator/tutorial links restored with explicit labels, URLs and QR codes. Two obsolete Iowa links updated to the original author's verified current applets. Existing teaching prose, slide order and R cells preserved."
     }
   },
-  "authored_counting_additions_2026_11_22": {
-    "probability-dice-sums": "6bdf0e431da2f0ea0c044c5e34cef56ba436d5f1dfbdb05df764e3c03e0fda44",
-    "probability-binomial-arrangements": "269655def2337f6cb97f995ae9b1def712092ab6cf5edb8f472acb7fed229fb6"
+  "binomial_clarification_2026_11_22": {
+    "slide": "1-17",
+    "note": "User requested simplicity: no dice addition or separate new sections. Small three-toss visual explains success-position combinations within the existing coin-toss example; all original prose, resources and executable R retained."
   }
 }
