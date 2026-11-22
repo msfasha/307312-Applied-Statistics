@@ -4357,6 +4357,14 @@ page-break-inside: avoid;
 .recovered-resource { gap: .7rem; padding: .6rem .8rem; }
 .recovered-resource .resource-description > p:last-child { font-size: 8.5pt; }
 }
+
+.source-slide img.binomial-arrangements-chart { width: 90%; min-width: 0; max-width: 640px; }
+@media screen and (max-width: 600px) {
+.source-slide img.binomial-arrangements-chart { width: 100%; }
+}
+@media print {
+.source-slide img.binomial-arrangements-chart { width: 145mm; }
+}
 </style>
 <style type="text/css">
 #quarto-document-content li { margin-bottom: .45rem; }
