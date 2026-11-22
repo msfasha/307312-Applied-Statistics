@@ -123,6 +123,17 @@ normal generated-site commit to `gh-pages`; it never force-pushes. `--skip-rende
 is only for a fully completed, checked HTML build and still refreshes downloads.
 Use a full build after structural changes. A source push alone is not publication.
 
+If a local environment cannot run Chrome or publish through Git, the
+`.github/workflows/publish-course.yml` workflow runs the same publisher on a
+GitHub-hosted runner. It supports manual dispatch and runs when that workflow
+file changes on `main`; ordinary source pushes do not automatically publish.
+Its second job verifies every deployed byte against the saved build artifact.
+When the publisher uses GitHub's automatic workflow token, GitHub Pages may not
+start a branch deployment. In that case, use an authenticated GitHub connection
+to add a normal empty commit to the generated `gh-pages` tree after the build
+job finishes. The build log records its exact publication commit and tree for
+this purpose. Do not change any generated teaching/download bytes.
+
 The live verifier checks the deployed source revision and actual bytes of all
 canonical pages/PDFs, data, source downloads and both bundles.
 It writes `_build/extended-review/live-verification.json`. Confirm each Part page

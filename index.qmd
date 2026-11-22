@@ -15,6 +15,6 @@ toc: false
 
 ## Other Downloads
 
-- [Download R code files](downloads/applied-statistics-positron.zip?v=20261120-four-parts)
+- [Download R code files](downloads/applied-statistics-positron.zip?v=20261122-jupyter)
 - [PDF collection (.zip)](downloads/applied-statistics-pdfs.zip)
 - [Extended scenarios](extended-cases/index.qmd){#extended-business-cases}
