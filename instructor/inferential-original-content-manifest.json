@@ -529,5 +529,9 @@
       ],
       "note": "Original article/calculator/tutorial links restored with explicit labels, URLs and QR codes. Two obsolete Iowa links updated to the original author's verified current applets. Existing teaching prose, slide order and R cells preserved."
     }
+  },
+  "authored_counting_additions_2026_11_22": {
+    "probability-dice-sums": "6bdf0e431da2f0ea0c044c5e34cef56ba436d5f1dfbdb05df764e3c03e0fda44",
+    "probability-binomial-arrangements": "269655def2337f6cb97f995ae9b1def712092ab6cf5edb8f472acb7fed229fb6"
   }
 }

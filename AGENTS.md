@@ -460,3 +460,9 @@
 - Add purpose-labelled full URLs and compact, scannable QR codes at the corresponding slides. Preserve all approved R panels rather than restoring obsolete software screenshots. The CLT's compact formula/video layout remains.
 - Reproduce with scripts/audit-inferential-resources.py and scripts/recover-inferential-resources.py; qrcode/zxing-cpp are maintainer utilities, not student dependencies. The content manifest and inferential checks deliberately guard the authorized additions and all 21 resource placements.
 - Medium pages blocked automated access; preserve their original links without claiming their contents were validated. Distinguish calculators, sampling simulations, video and reading references.
+
+## Dice outcomes and binomial combinations — 22 November 2026
+
+- User supplied `binomial.jpg` and authorized using its stacked outcomes in the material. Preserve the supplied image unchanged as `assets/inferential-statistics/dice-sum-outcomes.jpg`; its original creator is unestablished. It shows the sum of two independent fair dice, not a binomial distribution.
+- The new Part 3 foundation sections `probability-dice-sums` and `probability-binomial-arrangements` distinguish the 36 ordered die pairs from binomial success-position choices. Six pairs give seven; three of eight fair three-toss sequences give two heads.
+- Reproduce the editable companion SVG with `scripts/render-binomial-counting.R`. Explain the combination coefficient, factorial notation and sequence probabilities explicitly. Preserve all historical positions, R examples and original source decks.

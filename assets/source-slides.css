@@ -211,3 +211,14 @@
  .recovered-resource { gap: .7rem; padding: .6rem .8rem; }
  .recovered-resource .resource-description > p:last-child { font-size: 8.5pt; }
 }
+
+/* Instructor-supplied dice chart and the matching binomial counting illustration. */
+.source-slide img.dice-sum-chart { width: 70%; min-width: 0; max-width: 512px; }
+.source-slide img.binomial-arrangements-chart { width: 90%; min-width: 0; max-width: 640px; }
+@media screen and (max-width: 600px) {
+ .source-slide img.dice-sum-chart, .source-slide img.binomial-arrangements-chart { width: 100%; }
+}
+@media print {
+ .source-slide img.dice-sum-chart { width: 105mm; }
+ .source-slide img.binomial-arrangements-chart { width: 145mm; }
+}

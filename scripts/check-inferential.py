@@ -22,6 +22,11 @@ def check():
     markers = ['#probability-outcomes-events', '#probability-event-rules', '#probability-combining-events', '#probability-events-to-variables', '#part3-01-slide-07', '#part3-01-slide-11']
     positions = [probability.index(marker) for marker in markers]
     assert positions == sorted(positions), 'Teach events before random variables and distributions'
+    assert probability.index('#probability-events-to-variables') < probability.index('#probability-dice-sums') < probability.index('#part3-01-slide-07')
+    assert probability.index('#part3-01-slide-15') < probability.index('#probability-binomial-arrangements') < probability.index('#part3-01-slide-16')
+    for key, expected_hash in manifest['authored_counting_additions_2026_11_22'].items():
+        block=re.search(r'^:::::: \{\.source-slide #'+key+r'[^\n]*\}\n.*?(?=^:::::: \{\.source-slide #|\Z)',probability,re.M|re.S)[0]
+        assert hashlib.sha256(block.strip().encode()).hexdigest()==expected_hash, ('Counting explanation changed',key)
     assert not re.search(r'Excel|CONFIDENCE[.]|NORM[.]DIST|BINOM[.]DIST|POISSON[.]DIST|```python',source)
     cells=re.findall(r'^```\{r\}\n(.*?)^```',source,re.M|re.S)
     codes=json.loads((ROOT/'scripts/inferential-r-examples.json').read_text())
@@ -61,6 +66,10 @@ def check():
             recovered.add((key,resource['id']))
     assert len(catalog['resources'])==15 and len(recovered)==21
     extra=r'''
+dice_totals <- outer(1:6, 1:6, '+')
+stopifnot(sum(dice_totals==7)==6, length(dice_totals)==36,
+          identical(as.integer(table(dice_totals)),c(1L,2L,3L,4L,5L,6L,5L,4L,3L,2L,1L)),
+          choose(3,2)==3, choose(10,2)==45, abs(dbinom(2,3,.5)-3/8)<1e-12)
 stopifnot(abs(dbinom(2,10,.5)-.0439453125)<1e-12)
 stopifnot(abs(dpois(x=15,lambda=20)-.0516488535317584)<1e-12)
 stopifnot(abs(punif(q=9,min=8,max=12)-.25)<1e-12)
