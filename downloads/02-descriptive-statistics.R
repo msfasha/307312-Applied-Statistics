@@ -1,4 +1,4 @@
-# 307312 Applied Statistics — Descriptive Statistics
+# 307312 Applied Statistics — Part 2: Descriptive Statistics
 # Run sections in order from the course root folder containing data/.
 # Download the complete course ZIP for the required CSV files.
 # Explanations and output interpretation are in the matching course notebook.

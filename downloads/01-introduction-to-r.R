@@ -1,4 +1,4 @@
-# 307312 Applied Statistics — Introduction To R
+# 307312 Applied Statistics — Introduction to R
 # Run sections in order from the course root folder containing data/.
 # Download the complete course ZIP for the required CSV files.
 # Explanations and output interpretation are in the matching course notebook.

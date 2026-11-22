@@ -1,4 +1,4 @@
-# 307312 Applied Statistics — Probability Foundations
+# 307312 Applied Statistics — Probability foundations
 # Run sections in order from the course root folder containing data/.
 # Download the complete course ZIP for the required CSV files.
 # Explanations and output interpretation are in the matching course notebook.
