@@ -2,11 +2,18 @@
 """Build and validate all student outputs locally; never push or publish."""
 from pathlib import Path
 import argparse
+import hashlib
+import json
 import shutil
 import subprocess
 from course_documents import LESSONS, EXTENDED, DOCUMENTS, NAVIGATION_PAGES, R_CODE_DOWNLOADS, STUDENT_PROJECT_ZIP
 
 ROOT = Path(__file__).resolve().parents[1]
+
+def teaching_source_hashes():
+    from student_project import project_files
+    names = project_files() | {n+'.qmd' for n in NAVIGATION_PAGES} | {'_quarto.yml'}
+    return {name: hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in sorted(names)}
 
 def validate(site):
     required=[n+'.html' for n in NAVIGATION_PAGES]
@@ -64,16 +71,23 @@ def main():
     parser.add_argument('--skip-render', action='store_true',
                         help='Reuse a completed full HTML build; refresh all downloads.')
     args = parser.parse_args()
+    subprocess.run(['python3', str(ROOT/'scripts/jupyter_notebooks.py')], cwd=ROOT, check=True)
     subprocess.run(['python3', str(ROOT/'scripts/native_source_markdown.py')], cwd=ROOT, check=True)
     subprocess.run(['python3', str(ROOT/'scripts/render-descriptive-chart-additions.py')], cwd=ROOT, check=True)
     subprocess.run(['python3', str(ROOT/'scripts/sync-descriptive-r-references.py'), '--check'], cwd=ROOT, check=True)
     subprocess.run(['python3', str(ROOT/'scripts/check-course.py')], cwd=ROOT, check=True)
+    source_hashes = teaching_source_hashes()
+    render_manifest = ROOT/'_build/rendered-course-sources.json'
+    if args.skip_render:
+        if not render_manifest.exists() or json.loads(render_manifest.read_text()) != source_hashes:
+            raise RuntimeError('Teaching sources changed or no verified render exists. Run the full build without --skip-render to synchronize all five formats.')
     if not args.skip_render:
         site = ROOT/'_build/website'
         if site.exists():
             shutil.rmtree(site)
         quarto = shutil.which('quarto') or 'quarto'
         subprocess.run([quarto, 'render', '--quiet'], cwd=ROOT, check=True)
+        render_manifest.write_text(json.dumps(source_hashes, indent=2)+'\n')
     # Re-stage the explicit data allowlist even when Quarto reuses a resource cache.
     # A previous partial render may have removed files that the cache marks copied.
     import re
@@ -84,6 +98,8 @@ def main():
     subprocess.run(['python3', str(ROOT/'scripts/build-student-downloads.py')], cwd=ROOT, check=True)
     validate(ROOT/'_build/website')
     subprocess.run(['python3', str(ROOT/'scripts/validate-student-site.py')], cwd=ROOT, check=True)
+    if teaching_source_hashes() != source_hashes:
+        raise RuntimeError('Teaching sources changed during the build. Rebuild before committing or publishing.')
     print(f'Local build verified: {len(DOCUMENTS)} notebooks, {len(DOCUMENTS)} PDFs and both student bundles. Nothing published.', flush=True)
 
 if __name__ == '__main__':

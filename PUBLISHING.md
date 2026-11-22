@@ -5,7 +5,9 @@ Students use <https://msfasha.github.io/307312-Applied-Statistics/>.
 ## One source for each part
 
 The user authorized a four-part course on 20 November 2026. Quarto is the
-canonical editable source; HTML and PDF are display versions of the same material.
+canonical editable source. Fixed requirement (22 November 2026): QMD, HTML, PDF,
+plain R and IPYNB must always stay synchronized. Never edit generated teaching
+copies independently or release a mixture of current and stale formats.
 
 - Part 1: `lessons/01-introduction-to-r.qmd`.
 - Part 2: `lessons/02-descriptive-statistics.qmd`, including 20 R examples.
@@ -20,8 +22,10 @@ manifest; sampling distributions, SE and CLT precede confidence intervals.
 `scripts/course_documents.py` lists thirteen canonical notebook/PDF pairs. Both
 bundles contain each document once. All thirteen notebooks are runnable; the Part
 3 and Part 4 Quarto copies in the student ZIP must match their canonical sources
-byte-for-byte. The four core plain `.R` downloads are exported reproducibly from
-the notebooks; the old combined inference file is not regenerated.
+byte-for-byte. All thirteen plain `.R` downloads and R-kernel `.ipynb` notebooks
+are exported reproducibly from the QMDs; the old combined inference file is not
+regenerated. Each student ZIP contains thirteen QMDs, thirteen IPYNBs and thirteen
+plain-R scripts (plus the required shared R helper).
 
 Original PPTX/PDF reference decks remain unchanged under `sources/slides/`.
 Original source errors and interpretation limits remain documented in `instructor/`;
@@ -35,9 +39,18 @@ reference files are not public student downloads.
 python3 scripts/build-course.py
 ```
 
-This checks the R examples, rebuilds the complete website, prints all thirteen PDFs
+This regenerates all thirteen IPYNBs, checks the R examples, rebuilds the complete website, prints all thirteen PDFs
 from executed HTML, packages both student bundles and validates pages, links,
 slide positions, data, source equality and exclusions. It never pushes/publishes.
+The builder records teaching-source fingerprints. `--skip-render` rejects a
+changed source set, and a source change during a build invalidates that build.
+
+To refresh/check only the committed notebook exports:
+
+```sh
+python3 scripts/jupyter_notebooks.py
+python3 scripts/jupyter_notebooks.py --check
+```
 
 - `_build/website/` is the generated site.
 - `scripts/check-inferential.py` checks all 141 historical positions across Parts 3–4,
@@ -60,6 +73,11 @@ Open the extracted top-level folder containing `_quarto.yml`, `data/` and
 and fixed `data/...` CSV paths. Do not introduce notebook-relative data imports.
 There is no RStudio project-file requirement.
 
+For IPYNB files, select an R kernel and run from the top. Their first code cell
+sets the course-root working directory, preserving the same fixed CSV paths.
+Manual installation examples are Markdown cells so Run All does not install
+packages. Teaching includes are expanded; full Petra styling stays in HTML/PDF.
+
 The shared Petra theme is `assets/petra-theme.md`, synchronized with
 `../petra_theme/petra_theme.md`. Use the shared burgundy headings, neutral teaching
 surfaces, centred figures and consistent meaningful analytical colours.
@@ -67,7 +85,8 @@ surfaces, centred figures and consistent meaningful analytical colours.
 ## Downloads
 
 Each part landing page has one resource row with its HTML/PDF; each part also offers
-a plain `.R` script exported from its executable notebook cells.
+a plain `.R` script exported from its executable notebook cells. All thirteen
+plain-R scripts and both notebook formats are included in the student project.
 
 The student project is `downloads/applied-statistics-positron.zip`; the PDF bundle
 is `downloads/applied-statistics-pdfs.zip`. Only the thirteen canonical PDFs and

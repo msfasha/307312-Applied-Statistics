@@ -47,7 +47,7 @@ if __name__ == '__main__':
             assert path.exists(), (page.name, href)
             if target.fragment and path.suffix == '.html':
                 assert unquote(target.fragment) in parsed[path].ids, (page.name, href, 'missing fragment')
-    from r_code_files import r_code_files
+    from r_code_files import r_code_files, r_code_source
     scripts = r_code_files()
     for name, code in scripts.items():
         assert (SITE/'downloads'/name).read_text() == code
@@ -89,10 +89,20 @@ if __name__ == '__main__':
             if Path(name).suffix.lower() in {'.qmd', '.r', '.md'}:
                 assert 'rstudio' not in bundle.read(name).decode().lower(), name
 
-        script_paths = {student_path('lessons/'+n) for n in scripts}
-        assert names == {student_path(n) for n in project_files()} | {'README.md', '_quarto.yml'} | script_paths
+        script_paths = {str(Path(student_path(r_code_source(n))).with_suffix('.R')) for n in scripts}
+        jupyter_paths = {str(Path(student_path(f'{f}/{n}.qmd')).with_suffix('.ipynb'))
+                         for f,n in RUNNABLE_DOCUMENTS}
+        assert names == {student_path(n) for n in project_files()} | {'README.md', '_quarto.yml'} | script_paths | jupyter_paths
+        from jupyter_notebooks import validate_notebook
+        for name in jupyter_paths:
+            notebook = json.loads(bundle.read(name))
+            validate_notebook(notebook)
+            source = notebook['metadata']['course']['source']
+            assert notebook['metadata']['course']['source_sha256'] == hashlib.sha256(bundle.read(source)).hexdigest()
         for name, code in scripts.items():
-            assert bundle.read(student_path('lessons/'+name)).decode() == code
+            from student_project import rewrite
+            source = r_code_source(name)
+            assert bundle.read(str(Path(student_path(source)).with_suffix('.R'))).decode() == rewrite(source, code, project_files())
         config = yaml.safe_load(bundle.read('_quarto.yml'))
         assert 'website' not in config
         assert config['project']['execute-dir'] == 'project'

@@ -9,5 +9,5 @@ DOCUMENTS = ([('lessons', n) for n in LESSONS]
              + [('extended-cases/superstore', n) for n in SUPERSTORE])
 NAVIGATION_PAGES = ['index', 'course/part-1', 'course/part-2', 'course/part-3', 'course/part-4',
                     'extended-cases/index', 'extended-cases/superstore/index']
-R_CODE_DOWNLOADS = [name+'.R' for name in LESSONS]
+R_CODE_DOWNLOADS = [name+'.R' for _, name in DOCUMENTS]
 STUDENT_PROJECT_ZIP = 'applied-statistics-positron.zip'

@@ -1,15 +1,21 @@
-"""Export each core notebook's R cells in teaching order as a plain R script."""
+"""Export every approved notebook's R cells in teaching order as a plain R script."""
 from pathlib import Path
 import re
-from course_documents import LESSONS
+import yaml
+from course_documents import DOCUMENTS
 ROOT = Path(__file__).resolve().parents[1]
+
+def r_code_source(filename):
+    return next(f'{folder}/{name}.qmd' for folder, name in DOCUMENTS
+                if filename == name+'.R')
 
 def r_code_files():
     files = {}
-    for name in LESSONS:
-        source = (ROOT/'lessons'/(name+'.qmd')).read_text()
+    for folder, name in DOCUMENTS:
+        source = (ROOT/folder/(name+'.qmd')).read_text()
         chunks = re.findall(r'^```\{r[^\n]*\}\n(.*?)^```', source, re.M | re.S)
-        parts = [f'# 307312 Applied Statistics — {name[3:].replace("-", " ").title()}\n'
+        title = yaml.safe_load(source.split('---', 2)[1])['title']
+        parts = [f'# 307312 Applied Statistics — {title}\n'
                  '# Run sections in order from the course root folder containing data/.\n'
                  '# Download the complete course ZIP for the required CSV files.\n'
                  '# Explanations and output interpretation are in the matching course notebook.\n']

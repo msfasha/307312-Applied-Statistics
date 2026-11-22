@@ -1,5 +1,18 @@
 # Applied Statistics project rules
 
+## Five synchronized formats — 22 November 2026
+
+- Fixed user requirement: keep QMD, HTML, PDF, R and IPYNB versions synchronized.
+- QMD is the single editable teaching source. Generate the other formats from
+  the approved canonical document list; do not maintain separate teaching copies.
+- Every complete build must refresh the Jupyter exports, HTML, PDFs, plain-R
+  exports and student bundles, and verify source/code fidelity before release.
+- IPYNB exports must use an explicit R kernel, preserve teaching code and
+  comments, expand includes, and run from the course root in Positron.
+- Generate current exports after any source change. Commit generated IPYNBs
+  together with their canonical QMD changes. Never publish a partial release
+  containing stale versions. A Git push alone does not update the live website.
+
 ## Current direction — user decision, 1 November 2026
 
 - The previous course is retired in full under `archived/2026-11-01-retired-course/`.

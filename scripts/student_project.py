@@ -95,9 +95,18 @@ def build_student_project(output):
                 z.writestr(student_path(name), rewrite(name, (ROOT/name).read_text(), names))
             else:
                 z.write(ROOT/name, student_path(name))
-        from r_code_files import r_code_files
+        from jupyter_notebooks import notebook, serialize
+        notebook_sources = {student_path(n): rewrite(n, (ROOT/n).read_text(), names)
+                            for n in names if n.endswith('.qmd')}
+        for folder, stem in RUNNABLE_DOCUMENTS:
+            source = student_path(f'{folder}/{stem}.qmd')
+            z.writestr(str(Path(source).with_suffix('.ipynb')),
+                       serialize(notebook(source, notebook_sources)))
+        from r_code_files import r_code_files, r_code_source
         for name, code in r_code_files().items():
-            z.writestr(student_path('lessons/'+name), code)
+            source = r_code_source(name)
+            code = rewrite(source, code, names)
+            z.writestr(str(Path(student_path(source)).with_suffix('.R')), code)
         z.writestr('_quarto.yml', yaml.safe_dump(config, sort_keys=False, allow_unicode=True))
         z.writestr('README.md', '''# 307312 Applied Statistics — start here
 
@@ -117,7 +126,12 @@ Open the folders in this order:
 4. **part-4-statistical-inference-and-estimation/** — inference, sampling distributions, standard error, CLT, estimation, hypothesis testing and regression.
 5. **extended-cases/** — optional business applications, including Superstore.
 
-Each course part has one notebook and a plain .R script containing its code.
+Each teaching notebook is supplied as .qmd and .ipynb, generated from the same
+Quarto source. Each notebook also has a plain .R script containing its code.
+For Jupyter notebooks, select an R kernel in Positron and Run All from the top.
+The first code cell sets the course-root working directory automatically.
+Package-installation examples are manual Markdown cells, so Run All does not
+install packages. Notebook styling is simpler than the published HTML/PDF.
 Run the .R scripts from the top-level folder with data/ in place.
 The same Quarto sources generate the website, PDFs
 and the notebooks in this project. Parts 2–4 include their teaching material

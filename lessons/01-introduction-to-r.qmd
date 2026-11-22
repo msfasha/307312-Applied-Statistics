@@ -17,7 +17,6 @@ execute:
   fig-height: 3.4
   fig-align: center
   dpi: 200
-editor: source
 ---
 
 ```{r}
