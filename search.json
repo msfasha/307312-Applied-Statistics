@@ -592,21 +592,21 @@
     "href": "lessons/03-probability-foundations.html#part3-01",
     "title": "Probability foundations",
     "section": "3.1 Random events and probability",
-    "text": "3.1 Random events and probability"
+    "text": "3.1 Random events and probability\nProbability is the chance that something happens. This lesson follows the approach and examples of Berenson, Levine et al., Basic Business Statistics: Concepts and Applications, 9th ed., Chapters 4 and 5.\n\nExample 1 (3.1): a survey of 1,000 households asked whether they planned to buy a big-screen television and whether they actually bought one.\nExample 2 (3.2–3.3): the number of home mortgages a bank branch approves in a week."
   },
   {
     "objectID": "lessons/03-probability-foundations.html#part3-title-01-07",
     "href": "lessons/03-probability-foundations.html#part3-title-01-07",
     "title": "Probability foundations",
     "section": "3.2 Random variables",
-    "text": "3.2 Random variables\n\nUnderstanding the Basics of Probability in Statistics"
+    "text": "3.2 Random variables\nUnderstanding the Basics of Probability in Statistics"
   },
   {
     "objectID": "lessons/03-probability-foundations.html#part3-title-01-11",
     "href": "lessons/03-probability-foundations.html#part3-title-01-11",
     "title": "Probability foundations",
     "section": "3.3 Probability distributions",
-    "text": "3.3 Probability distributions\n\nDiscrete and Continuous Probability Distributions"
+    "text": "3.3 Probability distributions\n\nDiscrete and Continuous Probability Distributions\nA distribution shows how the total probability of 1 is shared among the values of a random variable."
   },
   {
     "objectID": "extended-cases/superstore/index.html",
