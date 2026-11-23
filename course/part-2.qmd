@@ -5,8 +5,6 @@ toc: false
 
 Read the explanations and run the 20 R examples in one notebook. The examples use the supplied student dataset and a historical airline time series.
 
-| Resource | Read online | Download |
-|---|---|---|
-| [Descriptive Statistics — explanations and R examples]{#practical} | [Read](../lessons/02-descriptive-statistics.qmd) | [PDF](../pdf/02-descriptive-statistics.pdf) · [Download R code files](../downloads/02-descriptive-statistics.R){download="02-descriptive-statistics.R"} |
+- [Descriptive Statistics — explanations and R examples]{#practical}: [HTML](../lessons/02-descriptive-statistics.qmd) · [PDF](../pdf/02-descriptive-statistics.pdf) · [R code (.R)](../downloads/02-descriptive-statistics.R){download="02-descriptive-statistics.R"}
 
 [Home](../index.qmd)

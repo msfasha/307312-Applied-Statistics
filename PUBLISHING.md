@@ -84,7 +84,7 @@ surfaces, centred figures and consistent meaningful analytical colours.
 
 ## Downloads
 
-Each part landing page has one resource row with its HTML/PDF; each part also offers
+Each part landing page has one resource line, formats side by side (HTML · PDF · R code), the same layout as the 307307 GenAI site; each part also offers
 a plain `.R` script exported from its executable notebook cells. All thirteen
 plain-R scripts and both notebook formats are included in the student project.
 
@@ -137,7 +137,7 @@ this purpose. Do not change any generated teaching/download bytes.
 The live verifier checks the deployed source revision and actual bytes of all
 canonical pages/PDFs, data, source downloads and both bundles.
 It writes `_build/extended-review/live-verification.json`. Confirm each Part page
-has one resource row and that the ZIP has one notebook per part.
+has one resource line (`Name: HTML · PDF · R code (.R)`) and that the ZIP has one notebook per part.
 
 ## Editing in Positron
 

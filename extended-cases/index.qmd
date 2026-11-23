@@ -11,15 +11,15 @@ toc: false
 
 ::: {.table-responsive}
 
-| Extended case | Start after / focus | Read online | Download |
-|---|---|---|---|
-| 1. Springville Herald | Part 2: daily calls; Part 4: regression; optional forecasting | [Open case](case-01-springville-herald.qmd) | [PDF](../pdf/case-01-springville-herald.pdf) |
-| 2. Oxford Cereal | Part 4: sampling, estimation and one-mean testing | [Open case](case-02-oxford-cereal.qmd) | [PDF](../pdf/case-02-oxford-cereal.pdf) |
-| 3. BLK Retail Display | Part 4: independent-group comparisons applied to COLA | [Open case](case-03-retail-display.qmd) | [PDF](../pdf/case-03-retail-display.pdf) |
-| 4. Perfect Parachute | Part 4: extend two-group comparisons to ANOVA | [Open case](case-04-perfect-parachute.qmd) | [PDF](../pdf/case-04-perfect-parachute.pdf) |
-| 5. Mountain States Potato | Part 4: multiple regression and diagnostics | [Open case](case-05-mountain-states-potato.qmd) | [PDF](../pdf/case-05-mountain-states-potato.pdf) |
-| 6. Harnswell Quality | After Parts 2–3: optional process-control extension | [Open case](case-06-harnswell-quality.qmd) | [PDF](../pdf/case-06-harnswell-quality.pdf) |
-| 7. Superstore — three notebooks | Part 2: categorical data, numerical measures, association and groups | [Open case](superstore/index.qmd) | On the Superstore page |
+| Extended case | Start after / focus | Open |
+|---|---|---|
+| 1. Springville Herald | Part 2: daily calls; Part 4: regression; optional forecasting | [HTML](case-01-springville-herald.qmd) · [PDF](../pdf/case-01-springville-herald.pdf) |
+| 2. Oxford Cereal | Part 4: sampling, estimation and one-mean testing | [HTML](case-02-oxford-cereal.qmd) · [PDF](../pdf/case-02-oxford-cereal.pdf) |
+| 3. BLK Retail Display | Part 4: independent-group comparisons applied to COLA | [HTML](case-03-retail-display.qmd) · [PDF](../pdf/case-03-retail-display.pdf) |
+| 4. Perfect Parachute | Part 4: extend two-group comparisons to ANOVA | [HTML](case-04-perfect-parachute.qmd) · [PDF](../pdf/case-04-perfect-parachute.pdf) |
+| 5. Mountain States Potato | Part 4: multiple regression and diagnostics | [HTML](case-05-mountain-states-potato.qmd) · [PDF](../pdf/case-05-mountain-states-potato.pdf) |
+| 6. Harnswell Quality | After Parts 2–3: optional process-control extension | [HTML](case-06-harnswell-quality.qmd) · [PDF](../pdf/case-06-harnswell-quality.pdf) |
+| 7. Superstore — three notebooks | Part 2: categorical data, numerical measures, association and groups | [HTML](superstore/index.qmd) (PDFs on that page) |
 
 :::
 

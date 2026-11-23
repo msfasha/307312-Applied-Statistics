@@ -9,11 +9,11 @@ subtitle: "Three descriptive R applications · 307312 Applied Statistics — Mas
 - Work through the three notebooks in order. Each includes explained R code, worked results and independent business tasks.
 - [Positron files (.zip)](../../downloads/applied-statistics-positron.zip) contain the editable notebooks, data and data guide.
 
-| Notebook | Focus | Download |
+| Notebook | Focus | Open |
 |---|---|---|
-| [1. Product mix](practical-01-categorical-business-data.qmd) | Categories, frequencies, percentages and charts | [PDF](../../pdf/practical-01-categorical-business-data.pdf) |
-| [2. Order size](practical-02-numerical-business-data.qmd) | Centre, spread, percentiles and boxplots | [PDF](../../pdf/practical-02-numerical-business-data.pdf) |
-| [3. Discounts, profit and groups](practical-03-association-and-groups.qmd) | Association and group comparisons | [PDF](../../pdf/practical-03-association-and-groups.pdf) |
+| 1. Product mix | Categories, frequencies, percentages and charts | [HTML](practical-01-categorical-business-data.qmd) · [PDF](../../pdf/practical-01-categorical-business-data.pdf) |
+| 2. Order size | Centre, spread, percentiles and boxplots | [HTML](practical-02-numerical-business-data.qmd) · [PDF](../../pdf/practical-02-numerical-business-data.pdf) |
+| 3. Discounts, profit and groups | Association and group comparisons | [HTML](practical-03-association-and-groups.qmd) · [PDF](../../pdf/practical-03-association-and-groups.pdf) |
 
 - Return status means membership in the source Returns sheet, not verified refund accounting.
 - The analyses are descriptive; they do not establish causal discount effects or represent actual retailers.

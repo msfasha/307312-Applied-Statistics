@@ -5,8 +5,6 @@ toc: false
 
 Start with random experiments, outcomes and events, then study random variables and probability distributions with explained R examples.
 
-| Resource | Read online | Download |
-|---|---|---|
-| Probability foundations | [Read](../lessons/03-probability-foundations.qmd) | [PDF](../pdf/03-probability-foundations.pdf) · [Download R code files](../downloads/03-probability-foundations.R){download="03-probability-foundations.R"} |
+- Probability foundations: [HTML](../lessons/03-probability-foundations.qmd) · [PDF](../pdf/03-probability-foundations.pdf) · [R code (.R)](../downloads/03-probability-foundations.R){download="03-probability-foundations.R"}
 
 [Home](../index.qmd)

@@ -5,8 +5,6 @@ toc: false
 
 One concise, runnable notebook covers R and Positron, basic programming, data frames, dplyr, conventional plots and ggplot2 pipelines.
 
-| Notebook | Read online | Download |
-|---|---|---|
-| Introduction to R | [Read](../lessons/01-introduction-to-r.qmd) | [PDF](../pdf/01-introduction-to-r.pdf) · [Download R code files](../downloads/01-introduction-to-r.R){download="01-introduction-to-r.R"} |
+- Introduction to R: [HTML](../lessons/01-introduction-to-r.qmd) · [PDF](../pdf/01-introduction-to-r.pdf) · [R code (.R)](../downloads/01-introduction-to-r.R){download="01-introduction-to-r.R"}
 
 [Home](../index.qmd)
