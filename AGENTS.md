@@ -155,22 +155,20 @@
 - Apply this preference to future practicals; preserve original source-slide
   wording in the main lessons unless separately authorized.
 
-## Burgundy and gray teaching theme — 6 November 2026
+## Burgundy teaching theme, unified across courses — 23 November 2026
 
-- The user approved the muted burgundy preview for all authored course headings,
-  superseding the previous grayscale and pale pink heading palettes. Use
-  `assets/petra-theme.md`; synchronize it with `../petra_theme/petra_theme.md`.
-- Use `#763D52` for H2–H4 heading bands with white text and `#542638` for the
-  document title panel. Keep diagrams, table fills and note surfaces neutral
-  gray with dark labels. Keep heading and content color tokens separate.
-  Follow the shared CSS, not per-notebook overrides.
+- The user chose the 307307 Generative AI website look for **all** courses (supersedes the
+  6 November burgundy heading bands, title panel and blue links). Use `assets/petra-theme.md`;
+  synchronize it with `../petra_theme/petra_theme.md`.
+- Brand burgundy `#7a1f3d`: burgundy text headings (no bands), burgundy links (hover `#5a1730`),
+  burgundy navbar with white links and white search icon. Keep diagrams, table fills and note
+  surfaces neutral gray with dark labels. Follow the shared CSS, not per-notebook overrides.
 - Our generated charts use neutral defaults; meaningful analytical group and
   ordered-category colors remain appropriate. Preserve labels and consistent mappings.
 - Keep source-slide images and R plots centered. Small instructional images use
   at least half the content width; retain aspect ratio and cover artwork sizing.
 - Original reference decks, source images and logos retain their colors and attribution.
-- Refresh HTML, all six PDFs and both student bundles on publication. Include the
-  tracked theme specification in the student RStudio project.
+- Refresh HTML, all PDFs and both student bundles on publication.
 
 ## Superstore business-course revision — 6 November 2026
 

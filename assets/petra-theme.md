@@ -1,11 +1,13 @@
-# Petra burgundy and gray teaching theme
+# Petra burgundy teaching theme
 
-Approved revision: **6 November 2026**. The user approved the preview with muted
-burgundy heading bands and white title text, retaining gray charts and tables.
-This supersedes the earlier all-gray heading palette and the original pale pink
-palette. White reading surfaces and charcoal body text remain unchanged. This
-teaching-document theme is inspired by the University of Petra context; it is
-not an official university identity manual.
+Approved revision: **23 November 2026**. The user chose the look of the 307307
+Generative AI website for **all** courses so that they stay in sync: Petra burgundy
+`#7a1f3d` on Quarto's `cosmo` theme. Headings and links are burgundy text on white,
+and the navbar is burgundy with **white** links and a white search icon. This
+supersedes the 6 November 2026 burgundy heading bands, the burgundy title panel
+and the blue links. Reading surfaces, charcoal body text, neutral gray tables and
+diagrams, and analytical chart colors are unchanged. This is a teaching-document
+theme inspired by the University of Petra context, not an official identity manual.
 
 ## Scope and sources of truth
 
@@ -36,70 +38,50 @@ than separate heading-color rules in individual notebooks.
 | Role | Hex | Usage |
 |---|---|---|
 | Reading surface | `#FFFFFF` | Main content and diagram backgrounds |
-| Main title surface | `#542638` | Deep burgundy document title panel |
-| Heading text | `#FFFFFF` | White text on document title and H2–H4 bands |
-| Main title top rule and heading accent | `#542638` | Burgundy rules for headings only |
-| Subtitle | `#F3EAF0` | Light text inside the burgundy title panel |
-| H2, H3 and H4 surface | `#763D52` | Approved muted burgundy topic bands |
+| Brand burgundy | `#7a1f3d` | Navbar fill, headings (H1-H4), document title, links, active TOC item |
+| Brand burgundy, dark | `#5a1730` | Link hover, button hover |
+| Navbar text and icons | `#FFFFFF` | Navbar brand, links, search icon: always white, never gray |
+| H2 rule | `#D6D6D6` | Thin rule under H2 |
 | Diagram labels | `#262626` | Dark text on light gray content fills |
-| Diagram connectors and borders | `#A3A3A3` | Neutral gray, independent of heading accents |
+| Diagram connectors and borders | `#A3A3A3` | Neutral gray |
 | Body text | `#303030` | Dark text on white |
-| Secondary text | `#666666` | Captions, metadata and minor labels |
+| Secondary text | `#666666` | Captions, metadata, subtitles |
 | Diagram root and table header | `#F2F2F2` | Neutral header surface |
 | Diagram node | `#F7F7F7` | Light content fill |
 | Diagram leaf and table row header | `#FAFAFA` | Lightest content fill |
-| Inline code text | `#303030` | Variable names and short code references |
 | Table and code divider | `#D6D6D6` | Subtle separators |
-| Note header | `#F5F5F5` | Neutral note surface |
-| Note left rule | `#A3A3A3` | Neutral callout accent |
-| Links | `#356B8C` | Readable blue interactive links |
-| Link hover | `#244D68` | Darker blue |
+| Note header / rule | `#F5F5F5` / `#A3A3A3` | Neutral callouts |
 
-The hex values define the palette. Burgundy distinguishes authored title and heading bands. In the approved median,
+The hex values define the palette. Burgundy distinguishes authored headings, links and the navbar. In the approved median,
 mean-absolute-deviation and squared-deviation diagrams it also marks the middle values or mean
 reference line. Other diagram boxes, table headers and note surfaces remain
 neutral gray.
 Existing university logos and preserved source figures retain their original
-colors and attribution. Blue links and meaningful analytical chart colors remain
+colors and attribution. Meaningful analytical chart colors (blue/orange) remain
 appropriate; do not recolor every visual indiscriminately.
 
 ## Heading hierarchy and layout
 
-| Semantic role | Source | Treatment |
-|---|---|---|
-| Document title | YAML `title`, or one H1 in a native notebook | `#542638` deep burgundy panel, white text, 3 px dark top rule |
-| Subtitle | YAML `subtitle`, or a subtitle paragraph | Smaller `#F3EAF0` text within the title panel |
-| Main section | H2 / `##` | `#763D52` burgundy fill, white text and a thin deep burgundy left rule |
-| Topic | H3 / `###` | Same approved burgundy fill and white text |
-| Subtopic | H4 / `####` | Same approved burgundy fill and white text, with smaller type and padding |
-| Minor labels | H5/H6 | Plain dark headings on white |
+| Semantic role | Treatment |
+|---|---|
+| Document title (YAML `title`) | Burgundy `#7a1f3d` text on white, no panel; subtitle in `#666666` |
+| H2 / `##` | Burgundy text, semibold, thin `#D6D6D6` rule underneath |
+| H3, H4 | Burgundy text, semibold, no fill |
+| H5/H6 | Plain dark headings |
+| Navbar | `#7a1f3d` fill, white links, white search icon |
+| Links | Burgundy, darker burgundy on hover |
+| Landing pages | Module/part list as burgundy links with bold titles, a Downloads section, no cards required |
 
-The main title panel is deeper burgundy than the H2–H4 bands. Apply the topic
-bands to all slide/topic titles, such as “Types of data”, across lessons and
-practicals, not only the document's opening title. White on `#763D52` has a
-contrast ratio of approximately 8.2:1; white on `#542638` approximately 12.3:1.
-Keep links, bold text and inline code inside heading bands white as well.
+No filled heading bands and no title panels. Keep genuine heading levels and normal
+navigation. Body content stays on white; avoid shadows and filled paragraph backgrounds.
+Burgundy appears in text, links and the navbar, and as a marker for analytical emphasis
+(median, mean reference line in the approved diagrams, token `--course-topic-bg`).
+Use a readable sans-serif face with line spacing around 1.5-1.65. Keep headings with
+their following content in print.
 
-Keep heading tokens (`--course-title-bg`, `--course-section-bg`,
-`--course-topic-bg`, `--course-subtopic-bg`, `--course-heading-text`,
-`--course-heading-accent`) separate from content tokens
-(`--course-diagram-*-bg`, `--course-table-*-bg`, `--course-title-text` for dark
-diagram labels, and `--course-accent` for gray diagram connectors). Do not reuse
-heading text or fill colors for diagram boxes or table headers.
-
-Keep genuine heading levels and normal navigation; do not promote all topics to
-H2 just to imitate slides. Distinguish levels through size, weight, whitespace and
-consistent burgundy bands. Body content stays on white. Avoid heavy shadows
-and filled backgrounds behind paragraphs; burgundy belongs to headings only.
-
-The current HTML title panel uses `1.5rem 1.75rem` padding and 8 px lower corner
-rounding. H2 uses `.75rem 1.1rem` padding with about `2.3rem` preceding space.
-H3/H4 have progressively smaller padding. Full-width heading bands should wrap
-cleanly on narrow screens. Reduce padding before shrinking essential text.
-
-Use a readable sans-serif face and comfortable line spacing, around 1.5–1.65.
-Preserve the platform's normal type hierarchy. Keep breadcrumbs above the title
-panel on white. Keep headings with their following content in print.
+Shared CSS tokens: `--course-brand`, `--course-brand-dark`, `--course-heading-text`.
+Keep them separate from content tokens (`--course-diagram-*-bg`, `--course-table-*-bg`,
+`--course-title-text`, `--course-accent`). Do not reuse burgundy for diagram boxes or table headers.
 
 ## Diagrams, tables and notes
 
@@ -175,3 +157,10 @@ In Applied Statistics, follow `PUBLISHING.md`: rebuild all six approved lesson a
 practical PDFs and both student bundles, test the extracted Positron workspace, and
 verify the live website and downloads. A source push alone is not publication.
 The Positron bundle includes the tracked theme guide for future reference.
+
+## Reference implementations
+
+- Applied Statistics: `assets/petra-brand.css` (this repo).
+- 307307 Generative AI: `20261/site/styles.css` in that repo (Quarto `cosmo` plus the same burgundy rules).
+When the theme changes, update both CSS files, this document (and its copy in
+`../petra_theme/petra_theme.md`), and each course's publishing instructions.
