@@ -438,14 +438,14 @@
     "href": "course/part-3.html",
     "title": "Probability foundations",
     "section": "",
-    "text": "Start with random experiments, outcomes and events, then study random variables and probability distributions with explained R examples.\n\n\n\nResource\nRead online\nDownload\n\n\n\n\nProbability foundations\nRead\nPDF · Download R code files\n\n\n\nHome"
+    "text": "Start with random experiments, outcomes and events, then study random variables and probability distributions with explained R examples.\n\nProbability foundations: HTML · PDF · R code (.R)\n\nHome"
   },
   {
     "objectID": "course/part-1.html",
     "href": "course/part-1.html",
     "title": "Part 1: Introduction to R",
     "section": "",
-    "text": "One concise, runnable notebook covers R and Positron, basic programming, data frames, dplyr, conventional plots and ggplot2 pipelines.\n\n\n\nNotebook\nRead online\nDownload\n\n\n\n\nIntroduction to R\nRead\nPDF · Download R code files\n\n\n\nHome"
+    "text": "One concise, runnable notebook covers R and Positron, basic programming, data frames, dplyr, conventional plots and ggplot2 pipelines.\n\nIntroduction to R: HTML · PDF · R code (.R)\n\nHome"
   },
   {
     "objectID": "index.html",
@@ -473,14 +473,14 @@
     "href": "course/part-2.html",
     "title": "Part 2: Descriptive Statistics",
     "section": "",
-    "text": "Read the explanations and run the 20 R examples in one notebook. The examples use the supplied student dataset and a historical airline time series.\n\n\n\nResource\nRead online\nDownload\n\n\n\n\nDescriptive Statistics — explanations and R examples\nRead\nPDF · Download R code files\n\n\n\nHome"
+    "text": "Read the explanations and run the 20 R examples in one notebook. The examples use the supplied student dataset and a historical airline time series.\n\nDescriptive Statistics — explanations and R examples: HTML · PDF · R code (.R)\n\nHome"
   },
   {
     "objectID": "course/part-4.html",
     "href": "course/part-4.html",
     "title": "Statistical inference and estimation",
     "section": "",
-    "text": "Study inference, sampling distributions, standard error and the CLT before confidence intervals. Continue with hypothesis testing and regression, with explained R examples throughout.\n\n\n\nResource\nRead online\nDownload\n\n\n\n\nStatistical inference and estimation\nRead\nPDF · Download R code files\n\n\n\nHome"
+    "text": "Study inference, sampling distributions, standard error and the CLT before confidence intervals. Continue with hypothesis testing and regression, with explained R examples throughout.\n\nStatistical inference and estimation: HTML · PDF · R code (.R)\n\nHome"
   },
   {
     "objectID": "lessons/01-introduction-to-r.html",
@@ -613,7 +613,7 @@
     "href": "extended-cases/superstore/index.html",
     "title": "Superstore — Extended Business Case",
     "section": "",
-    "text": "Start after: Part 2: Descriptive Statistics and its R examples.\nBusiness: Superstore, Tableau’s fictitious retailer; the fixed official extract downloaded 6 November 2026 contains US orders placed in 2023–2025.\nScope: 6,682 product lines, 3,322 orders and 782 customer IDs. Keep these observational units distinct.\nWork through the three notebooks in order. Each includes explained R code, worked results and independent business tasks.\nPositron files (.zip) contain the editable notebooks, data and data guide.\n\n\n\n\nNotebook\nFocus\nDownload\n\n\n\n\n1. Product mix\nCategories, frequencies, percentages and charts\nPDF\n\n\n2. Order size\nCentre, spread, percentiles and boxplots\nPDF\n\n\n3. Discounts, profit and groups\nAssociation and group comparisons\nPDF\n\n\n\n\nReturn status means membership in the source Returns sheet, not verified refund accounting.\nThe analyses are descriptive; they do not establish causal discount effects or represent actual retailers.\nAll extended business cases."
+    "text": "Start after: Part 2: Descriptive Statistics and its R examples.\nBusiness: Superstore, Tableau’s fictitious retailer; the fixed official extract downloaded 6 November 2026 contains US orders placed in 2023–2025.\nScope: 6,682 product lines, 3,322 orders and 782 customer IDs. Keep these observational units distinct.\nWork through the three notebooks in order. Each includes explained R code, worked results and independent business tasks.\nPositron files (.zip) contain the editable notebooks, data and data guide.\n\n\n\n\nNotebook\nFocus\nOpen\n\n\n\n\n1. Product mix\nCategories, frequencies, percentages and charts\nHTML · PDF\n\n\n2. Order size\nCentre, spread, percentiles and boxplots\nHTML · PDF\n\n\n3. Discounts, profit and groups\nAssociation and group comparisons\nHTML · PDF\n\n\n\n\nReturn status means membership in the source Returns sheet, not verified refund accounting.\nThe analyses are descriptive; they do not establish causal discount effects or represent actual retailers.\nAll extended business cases."
   },
   {
     "objectID": "extended-cases/superstore/practical-02-numerical-business-data.html",
