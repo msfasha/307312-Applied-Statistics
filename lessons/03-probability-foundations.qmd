@@ -31,73 +31,227 @@ Read each topic and run the **Try this in R** examples beside it.
 
 ## 3.1 Random events and probability {#part3-01}
 
+**Probability** is the chance that something happens. This lesson follows the approach and examples of Berenson, Levine et al., *Basic Business Statistics: Concepts and Applications*, 9th ed., Chapters 4 and 5.
+
+- **Example 1 (3.1):** a survey of 1,000 households asked whether they *planned* to buy a big-screen television and whether they *actually bought* one.
+- **Example 2 (3.2–3.3):** the number of home mortgages a bank branch approves in a week.
+
 ::::::
 
 :::::: {.source-slide #part3-01-slide-02}
 
 ### Contents {#part3-title-01-02}
 
-- **Random events and probability:** outcomes, sample spaces, events and basic probability rules.
-- **Random variables:** numerical descriptions of uncertain outcomes; discrete and continuous variables.
-- **Probability distributions:** probability mass, density, cumulative probability, common models and normal probabilities.
+- **Random events and probability:** what probability means, and how to find the chance of an event from a table of survey results.
+- **Random variables:** a variable whose value is left to chance, either a category or a number; numerical ones are discrete (counted) or continuous (measured).
+- **Probability distributions:** a list of every value a numerical random variable can take, with its probability; its mean and standard deviation; and the standard models used in later lessons.
+
+::::::
+
+:::::: {.source-slide #probability-random-processes .course-foundation}
+
+### Life is full of random processes
+
+A **random process** is anything whose result we cannot predict with certainty each time it happens.
+
+- Whether a household buys a television, how many mortgages a branch approves this week, how long a delivery takes, tomorrow's share price.
+- We cannot say what the next result will be, but results often show a **pattern** when we look at many of them.
+
+**Some random processes follow a clear pattern.**
+
+- The pattern stays stable over many repetitions, for example the share of households that buy, or the weekly mortgage counts.
+- We can describe it with a **probability distribution**, a short list or formula of the possible results and their probabilities.
+- This is the territory of conventional statistics, and the subject of this lesson.
+
+**Others are far more complicated.**
+
+- The result depends on many interacting factors, changes over time, or has no simple shape: language, images, market behaviour.
+- A single standard distribution does not describe them well.
+- They often need tools beyond the conventional statistics toolbox, such as machine learning, neural networks and deep learning.
+- Those methods still rely on probability ideas, so the foundations below remain useful.
 
 ::::::
 
 :::::: {.source-slide #probability-outcomes-events .course-foundation}
 
-### Experiments, outcomes and events
+### What is probability?
 
-A **random experiment** is a process whose outcome is uncertain before it occurs.
+**Probability** is the likelihood or chance that a particular **event** will occur. An event is simply one type of occurrence, such as “a household buys a television”.
 
-- **Outcome:** one possible result. For a die roll, an outcome is 4.
-- **Sample space** $\Omega$: the set of all possible outcomes; here $\{1,2,3,4,5,6\}$.
-- **Event:** a set of outcomes of interest. An even result is $A=\{2,4,6\}$.
-- The event occurs when the observed outcome belongs to that set.
-- A customer purchasing a product and an order arriving late are business examples of events.
+- **In real life:** businesses face random events every day, such as whether a customer buys or an order arrives late. Probability puts a number on each, so we can plan stock, staffing and promotions.
+- A probability is always between **0 and 1**.
+- An impossible event has probability 0; an event that is certain to occur has probability 1.
+- Probability describes the *long run*. If a card is drawn from a deck and then replaced, the proportion of black cards drawn approaches 0.50, but the next two draws need not contain exactly one black card.
+
+There are three ways to arrive at a probability:
+
+| Approach | Where the probability comes from | Example |
+|:--|:--|:--|
+| **A priori** (classical) | prior knowledge of the process, with equally likely outcomes | a deck has 26 black cards out of 52, so $P(\text{black})=26/52=0.50$ |
+| **Empirical** | observed data | 60% of poll respondents prefer one candidate, so a randomly chosen respondent has probability 0.60 of preferring that candidate |
+| **Subjective** | an individual's judgement | a development team assigns 0.6 to a product's success and the company president assigns 0.3 |
+
+Most of this lesson uses the *empirical* approach: probability $=\dfrac{X}{T}$, where $X$ is the number of ways the event occurs and $T$ is the total number of elementary outcomes.
+
+::::::
+
+:::::: {.source-slide #probability-sample-space .course-foundation}
+
+### Sample space and events
+
+A Consumer Electronics Company surveyed **1,000 households** about big-screen television sets.
+
+- **Sample space:** the collection of all possible events. Here it is the whole set of 1,000 households, each classified by what it planned and what it did.
+- **Event:** each possible type of occurrence. How we define events depends on the question: purchase plans, or actual purchases.
+- **Simple event:** described by a single characteristic, such as “planned to purchase”.
+- **Joint event:** has two or more characteristics, such as “planned to purchase **and** actually purchased”.
+- **Complement** $A'$: everything that is *not* part of $A$.
+
+**Table 4.1.** Purchase behaviour for big-screen television sets (number of households)
+
+| Planned to purchase | Actually purchased: Yes | Actually purchased: No | Total |
+|:--|--:|--:|--:|
+| Yes | 200 | 50 | 250 |
+| No | 100 | 650 | 750 |
+| **Total** | **300** | **700** | **1,000** |
+
+Define $A$ = planned to purchase, $A'$ = did not plan to purchase, $B$ = actually purchased and $B'$ = did not actually purchase.
 
 ::::::
 
 :::::: {.source-slide #probability-event-rules .course-foundation}
 
-### Probabilities describe how likely events are
+### Simple (marginal) probability
 
-The probability $P(A)$ measures the chance that event $A$ occurs under a stated model.
+**Simple probability** is the chance of a single event. It is also called **marginal probability** because the count comes from a margin (total) of the table.
 
-- $0\leq P(A)\leq1$; the full sample space has probability 1.
-- The complement $A^c$ means that $A$ does not occur: $P(A^c)=1-P(A)$.
-- For a **fair** die, six outcomes are equally likely: $P(A)=3/6=0.5$ for an even result.
-- Counting favourable outcomes and dividing by all outcomes works only when those outcomes are equally likely.
-- An observed relative frequency estimates a probability; it need not equal the model probability in a small dataset.
+$$P(A)=\frac{\text{number of households in the event}}{\text{total number of households}}$$
+
+- **Planned to purchase:** $P(A)=\dfrac{250}{1{,}000}=0.25$. There is a 25% chance that a household planned to purchase.
+- **Actually purchased:** $P(B)=\dfrac{300}{1{,}000}=0.30$.
+- **Complement:** $P(A')=\dfrac{750}{1{,}000}=0.75$, which equals $1-P(A)$.
+
+::::::
+
+:::::: {.source-slide #probability-joint-events .course-foundation}
+
+### Joint probability
+
+**Joint probability** is the chance that two or more events occur together, shown by one cell in the middle of the table.
+
+- **Planned and purchased:** only one cell, “Yes and Yes”, contains these households.
+  $P(A\text{ and }B)=\dfrac{200}{1{,}000}=0.20$.
+- A marginal probability is the sum of its joint probabilities:
+  $P(A)=P(A\text{ and }B)+P(A\text{ and }B')=\dfrac{200}{1{,}000}+\dfrac{50}{1{,}000}=0.25$.
+- This agrees with the margin of the table, $250/1{,}000$.
 
 ::::::
 
 :::::: {.source-slide #probability-combining-events .course-foundation}
 
-### Combining events and conditioning
+### “A or B”: the addition rule
 
-**“A or B”** means at least one event occurs; **“A and B”** means both occur.
+**“$A$ or $B$”** means at least one of the events occurs: planned to purchase, actually purchased, or both.
 
-- Union: $P(A\cup B)=P(A)+P(B)-P(A\cap B)$; subtract the overlap counted twice.
-- Mutually exclusive events cannot occur together: $P(A\cap B)=0$.
-- Conditional probability restricts attention to cases where $B$ occurs:
-  $P(A\mid B)=P(A\cap B)/P(B)$, provided $P(B)>0$.
-- Independent events satisfy $P(A\cap B)=P(A)P(B)$; knowing one does not change the probability of the other.
-- Mutually exclusive events with positive probabilities are not independent.
+- **Addition rule:** $P(A\text{ or }B)=P(A)+P(B)-P(A\text{ and }B)$.
+- Here $P(A\text{ or }B)=0.25+0.30-0.20=0.35$.
+- Subtract the joint probability because the 200 households in both events were counted twice.
+- Check from the table: $\dfrac{200+50+100}{1{,}000}=0.35$.
 
-For a fair die, let $A$ mean even and $B$ mean greater than 3. Then $A\cap B=\{4,6\}$, so $P(A\mid B)=2/3$.
+**Two useful terms:**
+
+- **Mutually exclusive** events cannot both occur. “Planned” ($A$) and “did not plan” ($A'$) are mutually exclusive; $A$ and $B$ are not, because 200 households are in both.
+- **Collectively exhaustive** events cover every possibility, so one of them must occur. $A$ and $A'$ are collectively exhaustive. Being male and being female is the book's other example: nobody is both, and everyone is one or the other.
 
 ::::::
 
-:::::: {.source-slide #probability-events-to-variables .course-foundation}
+:::::: {.source-slide #probability-conditional .course-foundation}
 
-### From an event to a random variable
+### Conditional probability
 
-A **random variable** assigns a numerical value to each possible outcome of a random experiment.
+**Conditional probability** is the chance of one event *given that* another has occurred. We keep only the households in the given event and count within them.
 
-- Let $X$ be the number of heads in two coin tosses. Its possible values are 0, 1 and 2.
-- The event “exactly one head” is written $\{X=1\}$ and contains outcomes HT and TH.
-- Let $T$ be an order's delivery time in days. “Delivery takes more than two days” is the event $\{T>2\}$.
-- A probability distribution describes how probability is allocated across a random variable's possible values.
+- **Given that a household planned to purchase,** what is the chance it actually purchased?
+  Use the 250 households in the “Yes” row: $P(B\mid A)=\dfrac{200}{250}=0.80$.
+- The formula gives the same answer: $P(B\mid A)=\dfrac{P(A\text{ and }B)}{P(A)}=\dfrac{0.20}{0.25}=0.80$.
+- The reverse question is different. Among the 300 buyers, 200 had planned to purchase: $P(A\mid B)=\dfrac{200}{300}\approx0.67$.
+- Read $P(B\mid A)$ as “the probability of $B$ given $A$”.
+
+::::::
+
+:::::: {.source-slide #probability-independence .course-foundation}
+
+### Independent events
+
+Two events are **independent** if knowing that one occurred does not change the probability of the other.
+
+- **Test:** $A$ and $B$ are independent if $P(B\mid A)=P(B)$.
+- **Our survey:** $P(B\mid A)=0.80$ but $P(B)=0.30$. Knowing that a household planned to purchase raises the chance of purchase from 30% to 80%.
+- So *planning to purchase* and *actually purchasing* are **not independent**.
+- An equivalent test: independence means $P(A\text{ and }B)=P(A)\,P(B)$. Here $0.25\times0.30=0.075$, but the joint probability is $0.20$.
+
+::::::
+
+:::::: {.source-slide #probability-joint-rule .course-foundation}
+
+### Joint probability: dependent and independent events
+
+A joint probability, $P(A\text{ and }B)$, exists for any two events. How we calculate it depends on whether the events are independent or dependent.
+
+| Events | Rule | Survey: $A$ = planned, $B$ = purchased |
+|:--|:--|:--|
+| **Any events** (general rule) | $P(A\text{ and }B)=P(A)\times P(B\mid A)$ | $0.25\times0.80=0.20$ (matches the table) |
+| **Independent events only** | $P(A\text{ and }B)=P(A)\times P(B)$ | $0.25\times0.30=0.075$ (does **not** match) |
+
+- The general rule is the conditional-probability formula rearranged: $P(B\mid A)=\dfrac{P(A\text{ and }B)}{P(A)}$ gives $P(A\text{ and }B)=P(A)\,P(B\mid A)$.
+- If the events are independent, $P(B\mid A)=P(B)$, so the general rule becomes the simpler product $P(A)\,P(B)$.
+- If the events are dependent, use the conditional probability. Multiplying the two marginal probabilities would give 0.075 instead of 0.20.
+- Independence is a property of the **pair of events**. The joint probability is the quantity we calculate for that pair.
+
+::::::
+
+:::::: {.source-slide #probability-conditioning-reference .course-foundation}
+
+### Conditioning shrinks the reference group
+
+A conditional probability is calculated inside a smaller group. The condition chooses a row (or column) of Table 4.1 as the new total.
+
+| Probability | Reference group (the total) | Households in group | Of those, bought ($B$) | Probability |
+|:--|:--|--:|--:|--:|
+| $P(B)$ | all households | 1,000 | 300 | $300/1{,}000=0.30$ |
+| $P(B\mid A)$ | planned to purchase | 250 | 200 | $200/250=0.80$ |
+| $P(B\mid A')$ | did not plan to purchase | 750 | 100 | $100/750\approx0.13$ |
+
+- **Given $A$**, the reference group shrinks from 1,000 households to 250, and we count only buyers inside that group.
+- The same 200 households appear in two different probabilities:
+  - joint probability $P(A\text{ and }B)=200/1{,}000=0.20$, relative to **all** households;
+  - conditional probability $P(B\mid A)=200/250=0.80$, relative to the **planners** only.
+- The probability of buying changes with the reference group (0.30, 0.80 or 0.13), so $A$ and $B$ are dependent.
+- **In real life:** a retailer that knows planners buy about 80% of the time, against about 13% for non-planners, can decide where to focus its promotion. Using the right reference group changes the decision.
+
+::::::
+
+:::::: {.source-slide #probability-dependent-cards .course-foundation}
+
+### A classic dependent case: drawing cards without replacement
+
+Draw two cards from a standard deck of 52, which contains 4 aces. Let $A_1$ = the first card is an ace and $A_2$ = the second card is an ace.
+
+| Probability | Cards left in the deck | Aces left | Probability |
+|:--|--:|--:|--:|
+| $P(A_1)$ | 52 | 4 | $4/52\approx0.0769$ |
+| $P(A_2\mid A_1)$, first card **kept** (no replacement) | 51 | 3 | $3/51\approx0.0588$ |
+| $P(A_2\mid A_1)$, first card **returned** (replacement) | 52 | 4 | $4/52\approx0.0769$ |
+
+- **Without replacement**, the first card changes the deck: the reference group shrinks from 52 to 51 cards and the aces from 4 to 3. The draws are **dependent**.
+- **With replacement**, the deck is restored, so $P(A_2\mid A_1)=P(A_2)$ and the draws are **independent**.
+
+| Both cards are aces | Calculation | Result |
+|:--|:--|--:|
+| Dependent (no replacement) | $P(A_1)\,P(A_2\mid A_1)=\dfrac{4}{52}\times\dfrac{3}{51}$ | $\dfrac{12}{2{,}652}\approx0.0045$ |
+| Independent (with replacement) | $P(A_1)\,P(A_2)=\dfrac{4}{52}\times\dfrac{4}{52}$ | $\dfrac{16}{2{,}704}\approx0.0059$ |
+
+- Counting check without replacement: there are $52\times51=2{,}652$ ordered pairs of cards, and $4\times3=12$ of them are two aces.
 
 ::::::
 
@@ -105,9 +259,7 @@ A **random variable** assigns a numerical value to each possible outcome of a ra
 
 ## 3.2 Random variables {#part3-title-01-07}
 
-::: source-text
 Understanding the Basics of Probability in Statistics
-:::
 
 ![](../assets/inferential-statistics/part-01-slide-07-graphic-02.png){.compact-coin width="25%" fig-alt="Coin toss"}
 
@@ -117,21 +269,22 @@ Understanding the Basics of Probability in Statistics
 
 ### What is a Random Variable?  {#part3-title-01-08}
 
-![](../assets/inferential-statistics/part-01-slide-08-graphic-01.png){.compact-dice width="25%" fig-alt="Two dice"}
+A **variable** is a characteristic recorded for every item in a survey or process. A **random variable** records the result of a **random process**: its value differs from item to item and is not known in advance, because it depends on which item is selected or on what happens.
 
-::: source-text
-A random variable is a variable whose possible values are outcomes of a random process.
-:::
+- In the survey, pick one household and record whether it planned to purchase. The answer, yes or no, is a random variable.
+- The data we collect are the **observed outcomes** (observed values) of random variables.
+- No two items are exactly alike, so the observed values will virtually always differ.
 
-::: source-text
-A random process is a process or event or where the outcome cannot be predicted with certainty, and each possible outcome has an associated probability.
+There are two types:
 
-It can be classified as discrete or continuous depending on the range of values that it assumes.
+| Type | What it records | Examples |
+|:--|:--|:--|
+| **Categorical** | a category, such as yes or no | planned to purchase a television; day of the week for dinner out |
+| **Numerical** | a number | number of magazines subscribed to; height; mortgages approved per week |
 
-A discrete random variable assumes a countable number of distinct values, whereas a continuous random variable is characterized by measurable (uncountable) values.
+Numerical random variables are either **discrete** or **continuous**. Probability distributions, below, are built for numerical random variables.
 
-Example: Flipping a coin (discrete), measuring the amount of rain in a day (continuous)
-:::
+**In real life:** a random variable turns a random process into numbers we can analyse. Weekly mortgage approvals, a delivery time or a daily sales figure can be summarised, compared and used for decisions such as staffing or stock levels.
 
 ::::::
 
@@ -140,19 +293,18 @@ Example: Flipping a coin (discrete), measuring the amount of rain in a day (cont
 ### Discrete Random Variables {#part3-title-01-09}
 
 ::: source-text
-A Discrete Random Variable is a variable which can take on only a countable number of distinct values like 0, 1, 2, 3, 4, 5...100, 1 million, etc.
+A **discrete random variable** gives a number that arises from a **counting** process. Its values can be listed one by one, such as 0, 1, 2, 3, …
 
 Examples of discrete random variables:
 
-The number of cars that passes through a toll booth everyday in a given day.
+- The number of home mortgages approved per week at a bank branch: 0, 1, 2, …
+- The number of magazines you subscribe to.
+- The number of cars that pass through a toll booth in a day.
+- The number of times a coin lands on tails after being flipped 20 times.
+- The number of defective widgets in a box of 50.
+- The number of calls received by a call centre, or of emails received in a day.
 
-The number of times a coin lands on tails after being flipped 20 times.
-
-The number of defective widgets in a box of 50 widgets.
-
-Number of Calls Received by a Call Center.
-
-Number of Emails Received in a Day
+Because the values can be listed, each value can have its own probability, $P(X=x)$.
 :::
 
 ![](../assets/inferential-statistics/part-01-slide-09-graphic-02.png){width="34%" fig-alt="Illustration: Discrete Random Variables"}
@@ -170,21 +322,20 @@ Number of Emails Received in a Day
 :::: {.continuous-examples}
 
 ::: source-text
-A Continuous Random Variable is a variable which can take on an infinite number of possible values.
+A **continuous random variable** gives a number that arises from a **measuring** process. It can take any value in an interval, so its values cannot be listed.
+
+Your height is an example: it could be 67 inches, 67 1/8 inches or 67 1/4 inches, depending on the precision of the measuring instrument. Measuring instruments round the values, so ties appear in data even though the variable is truly continuous.
 
 Examples of continuous random variables:
 
-Business profits.
+- Business profits (money is usually modelled as continuous).
+- The height of a tree.
+- The weight of an animal.
+- Arrival times of airlines.
+- The time required to run a marathon.
+- The weight of a chocolate bar on a production line.
 
-The height of a tree.
-
-The weight of an animal.
-
-Arrival times of airlines.
-
-Time required to run a marathon.
-
-The weight of a chocolate bar on a production line.
+Between any two possible values there are more values, so the probability of one *exact* value is 0. We find the probability that the value falls in an interval, such as $P(T>2)$.
 :::
 
 ![](../assets/inferential-statistics/part-01-slide-10-graphic-03.png){.compact-marathon width="100%" fig-alt="Marathon finishing time: a continuous measurement"}
@@ -194,12 +345,30 @@ The weight of a chocolate bar on a production line.
 
 ::::::
 
+:::::: {.source-slide #probability-discrete-or-continuous .course-foundation}
+
+### Discrete or continuous? Count or measure
+
+Ask one question: **do the values come from counting or from measuring?**
+
+| | Discrete | Continuous |
+|:--|:--|:--|
+| How values arise | counting | measuring |
+| Possible values | can be listed: 0, 1, 2, … | any value in an interval |
+| Probability of one exact value | can be positive | always 0 |
+| Probabilities come from | adding the probabilities of values | the area under a curve |
+| Examples | mortgages approved per week, magazines subscribed to | height, delivery time, weight |
+
+::::::
+
 :::::: {.source-slide #part3-01-slide-11}
 
 ## 3.3 Probability distributions {#part3-title-01-11}
 
 ::: source-text
 Discrete and Continuous Probability Distributions
+
+A distribution shows how the total probability of 1 is shared among the values of a random variable.
 :::
 
 ![](../assets/inferential-statistics/part-01-slide-11-graphic-02.png){width="58%" fig-alt="Illustration: Introduction to Probability Distributions"}
@@ -214,23 +383,80 @@ Discrete and Continuous Probability Distributions
 
 ### Introduction to Probability Distributions {#part3-title-01-13}
 
-::: source-text
-Probability distributions are mathematical functions that describe the likelihood of various outcomes in a statistical experiment.
+A **probability distribution for a discrete random variable** is a listing of all possible numerical values of the variable, with a probability for each value. It tells us which values are possible and how likely each is, so we can find the probability of any event about the variable.
 
-They provide a mathematical framework for modeling random phenomena.
+- The values are **mutually exclusive** (only one can occur) and **collectively exhaustive** (one of them must occur), so the probabilities must add to 1.
+- **Discrete variable:** the **probability mass function** (PMF), $p(x)=P(X=x)$, gives the probability of each value.
+- **Continuous variable:** the **probability density function** (PDF), $f(x)$, is a curve. The probability of an interval is the **area** under the curve; the height itself is not a probability.
+- **Both types:** the **cumulative distribution function** (CDF), $F(x)=P(X\leq x)$, gives the probability of being at or below $x$.
+- A distribution is a **model**: a mathematical description of a random process under stated assumptions.
+- **Why model?** When a process shows a stable pattern, a distribution answers practical questions, such as “how likely are four or more approvals this week?”, so we can plan. When the pattern is too complicated for a simple distribution, other tools are needed, as the earlier slide on random processes explained.
 
-Discrete vs. Continuous Probability Distributions
+For a probability distribution to be valid, it must satisfy two criteria:
 
-Discrete distributions: Outcomes are countable and have finite or countably infinite values.
+- Every probability is between 0 and 1 (for a density, $f(x)\geq0$ everywhere).
+- All probabilities add up to 1 (for a density, the total area is 1).
 
-Continuous distributions: Outcomes are uncountable and have an infinite range of values.
+::::::
 
-For a probability distribution to be valid, it must satisfy the following two criteria:
+:::::: {.source-slide #probability-mortgage-distribution .course-foundation}
 
-The probability for each outcome must be between 0 and 1.
+### Example: mortgages approved per week
 
-The sum of all the probabilities must add up to 1.
-:::
+Let $X$ be the number of home mortgages approved per week at a bank branch (Table 5.1 of the textbook). The table gives the PMF, $P(X=x)$, and the CDF, $F(x)=P(X\leq x)$, for each value $x$.
+
+| $x$ | 0 | 1 | 2 | 3 | 4 | 5 | 6 |
+|:--|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| $P(X=x)$ | 0.10 | 0.10 | 0.20 | 0.30 | 0.15 | 0.10 | 0.05 |
+| $F(x)=P(X\leq x)$ | 0.10 | 0.20 | 0.40 | 0.70 | 0.85 | 0.95 | 1.00 |
+
+```{=html}
+<figure class="petra-diagram uniform-chart"><svg viewBox="0 0 640 230" role="img" aria-label="Probability distribution of home mortgages approved per week: 0 has 0.10, 1 has 0.10, 2 has 0.20, 3 has 0.30, 4 has 0.15, 5 has 0.10 and 6 has 0.05"><text x="24" y="24">P(X = x)</text><path d="M70 45V180H610" fill="none" stroke="#555" stroke-width="2"/><path d="M70 140H610" stroke="#bbb" stroke-dasharray="4 4"/><path d="M70 100H610" stroke="#bbb" stroke-dasharray="4 4"/><path d="M70 60H610" stroke="#bbb" stroke-dasharray="4 4"/><text x="22" y="145">0.10</text><text x="22" y="105">0.20</text><text x="22" y="65">0.30</text><path d="M120 180V140" stroke="#763D52" stroke-width="4"/><circle cx="120" cy="140" r="5" fill="#763D52"/><text x="120" y="205" text-anchor="middle">0</text><path d="M192 180V140" stroke="#763D52" stroke-width="4"/><circle cx="192" cy="140" r="5" fill="#763D52"/><text x="192" y="205" text-anchor="middle">1</text><path d="M264 180V100" stroke="#763D52" stroke-width="4"/><circle cx="264" cy="100" r="5" fill="#763D52"/><text x="264" y="205" text-anchor="middle">2</text><path d="M336 180V60" stroke="#763D52" stroke-width="4"/><circle cx="336" cy="60" r="5" fill="#763D52"/><text x="336" y="205" text-anchor="middle">3</text><path d="M408 180V120" stroke="#763D52" stroke-width="4"/><circle cx="408" cy="120" r="5" fill="#763D52"/><text x="408" y="205" text-anchor="middle">4</text><path d="M480 180V140" stroke="#763D52" stroke-width="4"/><circle cx="480" cy="140" r="5" fill="#763D52"/><text x="480" y="205" text-anchor="middle">5</text><path d="M552 180V160" stroke="#763D52" stroke-width="4"/><circle cx="552" cy="160" r="5" fill="#763D52"/><text x="552" y="205" text-anchor="middle">6</text><text x="616" y="184">x</text></svg><figcaption>Home mortgages approved per week: the probabilities add to 1.</figcaption></figure>
+```
+
+- **Valid?** Every probability is between 0 and 1, and $0.10+0.10+0.20+0.30+0.15+0.10+0.05=1$.
+- **A statement about $X$ is an event.** $\{X=3\}$ has $P(X=3)=0.30$.
+- **Add the values in the event:** $P(X\geq4)=0.15+0.10+0.05=0.30$.
+- **Use the CDF directly:** $P(X\leq2)=F(2)=0.40$.
+- **In real life:** $P(X\geq4)=0.30$ means that, over many weeks, about 3 weeks in 10 need capacity for four or more approvals. A manager can use this when planning staff.
+
+::::::
+
+:::::: {.source-slide #probability-distribution-summary .course-foundation}
+
+### Mean and standard deviation of a distribution
+
+Two numbers summarise where a distribution is centred and how spread out it is.
+
+- **Expected value (mean):** $E(X)=\mu=\sum x\,P(x)$, a **weighted average** of all values, weighted by their probabilities.
+- **Variance:** $\sigma^2=\sum\,[x-E(X)]^2\,P(x)$, the weighted average of the squared differences from the mean. The **standard deviation** is $\sigma=\sqrt{\sigma^2}$.
+- For continuous variables the sums become integrals, but the meaning is the same.
+
+**Mortgages approved per week:**
+
+- $E(X)=(0)(0.10)+(1)(0.10)+(2)(0.20)+(3)(0.30)+(4)(0.15)+(5)(0.10)+(6)(0.05)=2.8$.
+- $\sigma^2=(0-2.8)^2(0.10)+(1-2.8)^2(0.10)+\dots+(6-2.8)^2(0.05)=2.46$.
+- $\sigma=\sqrt{2.46}\approx1.57$.
+- The mean of 2.8 is not literally possible in one week; it is the average number approved per week over the long run.
+
+::::::
+
+:::::: {.source-slide #probability-distribution-roadmap .course-foundation}
+
+### The models we will use
+
+Some random processes follow a pattern that a standard distribution describes well. These are the models used in later lessons.
+
+| Model | Type | It describes | A real-life process |
+|:--|:--|:--|:--|
+| Discrete uniform | discrete | equally likely whole-number values | a fair die; a draw from numbered tickets |
+| Binomial | discrete | the number of successes in $n$ independent yes/no trials | defective items in a sample; customers who buy out of 20 visits |
+| Poisson | discrete | the number of events in a fixed interval | calls per hour; emails per day |
+| Continuous uniform | continuous | equally likely values across an interval | the waiting time when a shuttle arrives at a random moment within a fixed window |
+| Normal | continuous | a bell-shaped model for measurements | heights, measurement errors, many exam scores |
+
+- Choosing a model means checking that the process really behaves this way.
+- If no standard distribution fits, a more flexible method such as machine learning may be needed.
 
 ::::::
 

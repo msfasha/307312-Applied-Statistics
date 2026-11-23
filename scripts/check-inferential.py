@@ -19,7 +19,7 @@ def check():
         assert [key for key,_ in inferential_blocks(text)] == manifest['teaching_order_2026_11_20'][name], ('Approved teaching order changed', name)
     assert sources['04-statistical-inference-and-estimation'].index('#inference-sampling-distributions') < sources['04-statistical-inference-and-estimation'].index('#part3-02-slide-12') < sources['04-statistical-inference-and-estimation'].index('#part3-02-slide-06'), 'Sampling distributions and CLT must precede confidence intervals'
     probability = sources['03-probability-foundations']
-    markers = ['#probability-outcomes-events', '#probability-event-rules', '#probability-combining-events', '#probability-events-to-variables', '#part3-01-slide-07', '#part3-01-slide-11']
+    markers = ['#part3-01-slide-02', '#probability-random-processes', '#probability-outcomes-events', '#probability-sample-space', '#probability-event-rules', '#probability-joint-events', '#probability-combining-events', '#probability-conditional', '#probability-independence', '#probability-joint-rule', '#probability-conditioning-reference', '#probability-dependent-cards', '#part3-01-slide-07', '#part3-01-slide-08', '#probability-discrete-or-continuous', '#part3-01-slide-11', '#probability-mortgage-distribution', '#probability-distribution-summary', '#probability-distribution-roadmap']
     positions = [probability.index(marker) for marker in markers]
     assert positions == sorted(positions), 'Teach events before random variables and distributions'
     assert '#probability-dice-sums' not in probability and '#probability-binomial-arrangements' not in probability

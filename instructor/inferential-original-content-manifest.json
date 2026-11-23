@@ -147,14 +147,12 @@
   "source_before_sha256": "32412d12add157f09b7eb62f4a8f6d71609a118da70232873162ffa2173a4a20",
   "authorized_visual_updates": {
     "1-2": {
-      "reason": "Full Part 3 contents through regression",
-      "sha256": "7ebdeb3a14485c74d8672d9fa0ad6794bc2d346985fdacf81082ec0d799a9490",
-      "authorized": "2026-11-19"
+      "sha256": "f7ae85e94db20a751296a6415d4aac898bf6cff7ba8170f53ecf04d8a37dd19b",
+      "note": "Rewritten 2026-11-22 in the style and examples of Berenson/Levine Chapters 1, 4 and 5"
     },
     "1-7": {
-      "reason": "Smaller coin image",
-      "sha256": "22931e0ac5e9ffa252a63a5a7a4ebc859190f91241df08b3ee080cafdfbe3732",
-      "authorized": "2026-11-19"
+      "sha256": "ddecddc805397d3771cef6a6295af8331e912a42617d0c22b6e2d2541e384d98",
+      "note": "Rewritten 2026-11-22 in the style and examples of Berenson/Levine Chapters 1, 4 and 5"
     },
     "1-12": {
       "reason": "Remove duplicate title",
@@ -197,26 +195,40 @@
       "authorized": "2026-11-19"
     },
     "1-8": {
-      "reason": "Smaller dice illustration requested by user",
-      "sha256": "9bc7006a0c0ffdd379871a7ba8f2eaee91b34e5821bd7cd23d4de1c9377b1b67",
-      "authorized": "2026-11-19"
+      "sha256": "404c352405717dd07efd49122022f62c7b36edad54fad3ca78293da5db2a292d",
+      "note": "Rewritten 2026-11-22 in the style and examples of Berenson/Levine Chapters 1, 4 and 5"
     },
     "1-10": {
-      "reason": "Compact marathon photograph beside preceding continuous-variable examples; keep text and image together",
-      "sha256": "8bd18b4f7d14ca3a3b657fcd8202db0001d635be49209ba083adaabf5aba60bc",
-      "authorized": "2026-11-19"
+      "sha256": "d5b68545b33dd0bd9c5b9916c27c7eafeecd20191dd04521275983d7a5e8980b",
+      "note": "Rewritten 2026-11-22 in the style and examples of Berenson/Levine Chapters 1, 4 and 5"
+    },
+    "1-1": {
+      "sha256": "7b3cfae56e7333cc611da8de4b225c84f8c129619bd3dede71e55c0c13967338",
+      "note": "Rewritten 2026-11-22 in the style and examples of Berenson/Levine Chapters 1, 4 and 5"
+    },
+    "1-9": {
+      "sha256": "dd92b1253cb8ff9b2e28574233f8e8599a74d032f04dcc9c32b75cffd8c4e07b",
+      "note": "Rewritten 2026-11-22 in the style and examples of Berenson/Levine Chapters 1, 4 and 5"
+    },
+    "1-11": {
+      "sha256": "ae200f00a2dbfc4714faf37dcf7a93a5db89bb238a84e399c456e857ff7747bd",
+      "note": "Rewritten 2026-11-22 in the style and examples of Berenson/Levine Chapters 1, 4 and 5"
+    },
+    "1-13": {
+      "sha256": "305ff2455c536c37c9d0d736a5ca21d2bc72fdce9c08e7a76c300ac76cd5f402",
+      "note": "Rewritten 2026-11-22 in the style and examples of Berenson/Levine Chapters 1, 4 and 5"
     }
   },
   "native_markdown_bodies": {
-    "1-1": "541b8b935510e4b844cf1405068ed3481ef9632e0726bcab46dcf41987348a7a",
-    "1-2": "a033b2445f40419052cb8decf34bcf34fb975fbb5b56e3f4c44238b87dea0c99",
-    "1-7": "f51a5ec302c23d4fd2a7a0ab4415408ba1ce6b50d282d577ebe890d980df58ba",
-    "1-8": "2c1ba4d23f54ab1b72aa934ff34f1d1ae23792f9bb9b2ec51c878c4702b1e2b2",
-    "1-9": "29066282afcf131478d248602a32563815800da9bea2d68f98a139cbb24e308a",
-    "1-10": "7c672b58f96dce04ccd04cc1ed7c79d6f422c8384a3ab4db605cf25fd25a7e60",
-    "1-11": "18c17df8a7bcba5e3cc42c0d38545d27dcb4d2efb1af8f57503cc9f8b6d3e0e4",
+    "1-1": "7b3cfae56e7333cc611da8de4b225c84f8c129619bd3dede71e55c0c13967338",
+    "1-2": "f7ae85e94db20a751296a6415d4aac898bf6cff7ba8170f53ecf04d8a37dd19b",
+    "1-7": "ddecddc805397d3771cef6a6295af8331e912a42617d0c22b6e2d2541e384d98",
+    "1-8": "404c352405717dd07efd49122022f62c7b36edad54fad3ca78293da5db2a292d",
+    "1-9": "dd92b1253cb8ff9b2e28574233f8e8599a74d032f04dcc9c32b75cffd8c4e07b",
+    "1-10": "d5b68545b33dd0bd9c5b9916c27c7eafeecd20191dd04521275983d7a5e8980b",
+    "1-11": "ae200f00a2dbfc4714faf37dcf7a93a5db89bb238a84e399c456e857ff7747bd",
     "1-12": "6c5bbb51258c749fc69f255503b5347bb1376096353fff46e7471502dbfa1862",
-    "1-13": "891f1ea16b305bc6b5b7d5e8861634fc2eb3afbf19ecaf82e8ab0d645754dbb5",
+    "1-13": "305ff2455c536c37c9d0d736a5ca21d2bc72fdce9c08e7a76c300ac76cd5f402",
     "1-14": "e37b176363dbc1743d5cd7f05e358ffb51e038479f529928a630d16e33b09f17",
     "1-15": "45cbf90e075f39480d8e32d29a08662ad7558298110477358dd681d46f395b69",
     "1-16": "3085411c6ef03cb847bb881efb31804eb111fc1f257a9032334d80787422e222",
@@ -533,5 +545,35 @@
   "binomial_clarification_2026_11_22": {
     "slide": "1-17",
     "note": "User requested simplicity: no dice addition or separate new sections. Small three-toss visual explains success-position combinations within the existing coin-toss example; all original prose, resources and executable R retained."
+  },
+  "probability_introduction_2026_11_22": {
+    "authorized": "full user authorization to reword, merge and trim original slides 1-1,1-2,1-7,1-8,1-9,1-10,1-11,1-13",
+    "approach": "Berenson/Levine 9th ed.: Table 4.1 (1,000 household TV survey, p.139) for events/probability; Table 5.1 (mortgages approved per week) for the discrete distribution; Section 1.8 for random variables",
+    "removed": "coin-toss running example, random experiment/process wording, dice image on 1-8",
+    "new_foundation_slides": [
+      "probability-sample-space",
+      "probability-joint-events",
+      "probability-conditional",
+      "probability-independence",
+      "probability-discrete-or-continuous",
+      "probability-mortgage-distribution",
+      "probability-distribution-summary",
+      "probability-distribution-roadmap",
+      "probability-joint-rule",
+      "probability-conditioning-reference",
+      "probability-dependent-cards",
+      "probability-random-processes"
+    ],
+    "verified_numbers": {
+      "P(A)": 0.25,
+      "P(B)": 0.3,
+      "P(A and B)": 0.2,
+      "P(A or B)": 0.35,
+      "P(B|A)": 0.8,
+      "mortgage_mean": 2.8,
+      "mortgage_variance": 2.46,
+      "mortgage_sd": 1.57
+    },
+    "user_direction": "Use \"random process\" (not random experiment); present patterned processes modelled by distributions versus complex ones needing machine learning/neural networks"
   }
 }
